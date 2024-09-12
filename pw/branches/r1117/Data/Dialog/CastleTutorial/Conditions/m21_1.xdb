@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<code>foreach building in Buildings do
+  if building.PersistentId == "Talent_Production" and building.Level &gt; 3 then
+    return 1
+  end
+end
+return 0</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/m21_1" id="DDE77123-CFFB-494D-8055-89405F4D2DD9">
+			<SendRequestCondition>
+				<name>building_upgrade</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/m21_1" id="4AEB6F42-91A1-49EC-B3A8-CE57517F4ADA">
+			<SendRequestCondition>
+				<name>move_from_pocket</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>

@@ -1,0 +1,863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvMapCreep parent="/Creeps/Champions/Champion2/_Parent.CREEP">
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Spawners/Leshij2.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Spawners/sirinHealer.NCSPN" Count="2" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Spawners/Zubastik2.NCSPN" Count="2" />
+	<BackLink DBID="/Maps/Test/CoopCreaturesTest/spawners/Champion2_Healer.NCSPN" Count="1" />
+	<abilities>
+		<Item skip="1" />
+		<Item href="/Creeps/Champions/Champion2/A1_Heal_PVE_Coop1.ABLT" />
+		<Item href="/Creeps/Champions/Champion2/A2_Aura.ABLT" />
+		<Item href="" />
+		<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="B0710134-4609-43F1-8DC3-7D575FB33146">
+			<Ability>
+				<activeCustomTrigger>true</activeCustomTrigger>
+				<allowChase>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</allowChase>
+				<alternativeTargets />
+				<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+				<aoeHeight>0</aoeHeight>
+				<aoeMaterial href="" />
+				<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+				<aoeSize>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</aoeSize>
+				<aoeType>None</aoeType>
+				<applicators>
+					<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="862B88E0-FFD2-49A3-972D-7C8BA316326A">
+						<StatusApplicator>
+							<applicators>
+								<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="380A24AC-1645-4D09-8D83-A41AA0A45545">
+									<FlagsApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption>флаги</caption>
+										<consumables />
+										<effect>
+											<Item href="/Effects/Buffs/Cure/_1.EFFT" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>131456</flag>
+										<formulaName>CantDeath</formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+								<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="CDB36366-7B23-4E55-A927-DB7492662303">
+									<TriggerApplicator>
+										<actionsCount>
+											<compiledString></compiledString>
+											<returnType>int</returnType>
+											<sString>0</sString>
+										</actionsCount>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption>канселять все диспатчи от врагов</caption>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<playAck>false</playAck>
+										<processor href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="C08FFDDB-3C6E-4494-9DF1-3758736FF687">
+											<EventProcessorCancelDispatch>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<checkSender>0</checkSender>
+												<filter>
+													<abilitiesList />
+													<abilityCondition>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</abilityCondition>
+													<abilityCostMode>Energy</abilityCostMode>
+													<exceptThis>false</exceptThis>
+													<flags>1073743103</flags>
+													<onlySingleTarget>false</onlySingleTarget>
+												</filter>
+												<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+												<spell href="" />
+											</EventProcessorCancelDispatch>
+										</processor>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<useAbilityCooldown>false</useAbilityCooldown>
+										<useAbilityOwnerMana>false</useAbilityOwnerMana>
+									</TriggerApplicator>
+								</Item>
+								<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="3553AAFB-4F5A-4F89-82E4-572685C02A47">
+									<StatModApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption>регенерация</caption>
+										<constraint>None</constraint>
+										<dontUpdate>true</dontUpdate>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<modifier>
+											<addValue>
+												<compiledString>FQ0AAAACAAAAHAAAAC8AAABMaWZlUmVnZW5NdWwAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcJVMAAACLRQyLEItNDIuC+AAAAN1d+P/Q3E342V302UX0i+VdwwAAAAAAAPA/</compiledString>
+												<returnType>float</returnType>
+												<sString>(cLifeRegenMul - 1) * rLifeRegenTotal</sString>
+											</addValue>
+											<multValue>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>1.0f</sString>
+											</multValue>
+											<stat>LifeRegenerationAbsolute</stat>
+											<topModifier>true</topModifier>
+											<variable></variable>
+										</modifier>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<statModName></statModName>
+									</StatModApplicator>
+								</Item>
+							</applicators>
+							<applyTarget>AbilityTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption></caption>
+							<customCounter>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</customCounter>
+							<customProgress>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</customProgress>
+							<description textref="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP_862b88e0ffd249a3972d7c8ba316326a_description.txt" />
+							<dispellPriority>Medium</dispellPriority>
+							<effect>
+								<Item href="/Effects/Buffs/Invulnerability/_.EFFT" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flags>0</flags>
+							<formulaName></formulaName>
+							<image href="/UI/Styles/Icons/Statuses/Standard/Invulnerability.ITEX" />
+							<lifeTime>
+								<compiledString>FQkAAAABAAAAFQAAAER1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>cDuration</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<name textref="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP_862b88e0ffd249a3972d7c8ba316326a_name.txt" />
+							<power>0</power>
+							<providerName></providerName>
+							<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+							<stackCount>0</stackCount>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statusPosition>0</statusPosition>
+							<stopBehaviour>StopByTime</stopBehaviour>
+							<unstackableWith href="" />
+						</StatusApplicator>
+					</Item>
+				</applicators>
+				<autoTargetSelector href="" />
+				<caption>кладем неубиваемость+реген</caption>
+				<castAllowRange>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</castAllowRange>
+				<castLimitations>
+					<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="B781F79D-485F-4EFE-BB92-0C83414B10EF">
+						<ConditionCastLimitation>
+							<condition>
+								<compiledString>FQAAAAAAAAAAVYvsaIAAAACLRQyLEItNDItCaP/QD7bA99gbwIPAAV3D</compiledString>
+								<returnType>bool</returnType>
+								<sString>!rFlag(128)</sString>
+							</condition>
+							<uiEvent href="" />
+						</ConditionCastLimitation>
+					</Item>
+				</castLimitations>
+				<commonDescription textref="" />
+				<compiledDescriptionA textref="" />
+				<compiledDescriptionB textref="" />
+				<conditionFormulas />
+				<constants href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="36F01E0A-2FF8-4AD6-AF19-ABB4B0119BFC">
+					<UnitConstantsContainer>
+						<vars>
+							<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="69D6B4FD-1C7D-4C5A-A7B1-CCBD5638D796">
+								<UnitConstant>
+									<name>TriggerLife</name>
+									<var>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.1f</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="3E3A8EA3-456E-4B40-AEA7-9D0404BAA52D">
+								<UnitConstant>
+									<name>Duration</name>
+									<var>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+										<returnType>float</returnType>
+										<sString>5</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="2B36B682-57B4-4500-9D6D-57B8C85ED3C8">
+								<UnitConstant>
+									<name>LifeRegenMul</name>
+									<var>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+										<returnType>float</returnType>
+										<sString>5</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="6B0BEFBA-D1AF-4C35-A346-C10767D9A031">
+								<UnitConstant>
+									<name>Cooldown</name>
+									<var>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+										<returnType>float</returnType>
+										<sString>10</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+						</vars>
+					</UnitConstantsContainer>
+				</constants>
+				<cooldownTime>
+					<compiledString>FQkAAAABAAAAFQAAAENvb2xkb3duAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cCooldown</sString>
+				</cooldownTime>
+				<cooldownTimeSecondState>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</cooldownTimeSecondState>
+				<description textref="" />
+				<dispatch href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="CA777A62-D279-4963-BB33-C1A1E454B84D">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>true</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+				<flags>1</flags>
+				<image href="" />
+				<imageSecondState href="" />
+				<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+				<manaCost>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABwQg==</compiledString>
+					<returnType>float</returnType>
+					<sString>60</sString>
+				</manaCost>
+				<marker>doCast2</marker>
+				<microAI href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="A7164A4E-75E4-4BC6-B455-5BDC48504F3E">
+					<TargetSelectorMicroAI>
+						<castWhenIdle>false</castWhenIdle>
+						<condition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</condition>
+						<targetSelector href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="0793BEBE-A49F-4F71-9796-5F2D3EE604D1">
+							<FirstTargetSelector>
+								<nearestTarget>false</nearestTarget>
+								<targetSelector href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="DE6C0794-6F3E-4A58-B9BA-6B0D141467BE">
+									<CountingTargetSelector>
+										<enableSorting>false</enableSorting>
+										<flags>0</flags>
+										<heroesFirst>false</heroesFirst>
+										<mode>Normal</mode>
+										<order>Increasing</order>
+										<sortingValue>
+											<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nld9NlF9IvlXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>rLife / rMaxLife</sString>
+										</sortingValue>
+										<targetSelector href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="8DAB8712-972C-4443-B0F6-2680C7BE2395">
+											<NotTargetOfSameAbilitySelector>
+												<abilityCastersSelector href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="379900FF-7A94-4B1A-A55F-71E8D8AEAC76">
+													<AreaTargetSelector>
+														<absolutePosition>
+															<x>0</x>
+															<y>0</y>
+														</absolutePosition>
+														<flags>0</flags>
+														<mode>Normal</mode>
+														<range>
+															<compiledString>FQ0AAAABAAAAGgAAAFJhbmdlX01lZGl1bQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcwNld/NlF/IvlXcM=</compiledString>
+															<returnType>float</returnType>
+															<sString>cRange_Medium * 2</sString>
+														</range>
+														<targetFilter>268435488</targetFilter>
+														<targetSelector href="" />
+													</AreaTargetSelector>
+												</abilityCastersSelector>
+												<flags>0</flags>
+												<minDistBetweenTargets>
+													<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+													<returnType>float</returnType>
+													<sString>0</sString>
+												</minDistBetweenTargets>
+												<mode>Normal</mode>
+												<targetSelector href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="3CD187E9-2D3E-4D4B-9989-0A9E95F8B876">
+													<ConditionTargetSelector>
+														<condition>
+															<compiledString>FQwAAAABAAAANwAAAFRyaWdnZXJMaWZlAFWL7IPsFItFDIsQi00MiwL/0ItNDIsRi00Mi0IM3V34/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfD/0NxN8Nxd+N/g9sRBdQnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+															<returnType>bool</returnType>
+															<sString>rLife &lt; rMaxLife * cTriggerLife</sString>
+														</condition>
+														<flags>0</flags>
+														<mode>Normal</mode>
+														<targetSelector href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="4B88983C-12CD-4717-8F34-411983FF89B2">
+															<AreaTargetSelector>
+																<absolutePosition>
+																	<x>0</x>
+																	<y>0</y>
+																</absolutePosition>
+																<flags>0</flags>
+																<mode>Normal</mode>
+																<range>
+																	<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cRange_Medium</sString>
+																</range>
+																<targetFilter>403963904</targetFilter>
+																<targetSelector href="" />
+															</AreaTargetSelector>
+														</targetSelector>
+													</ConditionTargetSelector>
+												</targetSelector>
+											</NotTargetOfSameAbilitySelector>
+										</targetSelector>
+										<targetsNumber>
+											<compiledString></compiledString>
+											<returnType>int</returnType>
+											<sString>1</sString>
+										</targetsNumber>
+									</CountingTargetSelector>
+								</targetSelector>
+							</FirstTargetSelector>
+						</targetSelector>
+					</TargetSelectorMicroAI>
+				</microAI>
+				<minUseRangeCorrection>0</minUseRangeCorrection>
+				<name textref="" />
+				<node>ability2</node>
+				<passiveApplicators />
+				<requireLineOfSight>true</requireLineOfSight>
+				<shortDescription textref="" />
+				<targetType>403963904</targetType>
+				<type>Active</type>
+				<useRange>
+					<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cRange_Medium</sString>
+				</useRange>
+				<useRangeMaterial href="" />
+				<warFogRemoveRadius>0</warFogRemoveRadius>
+				<warFogRemoveTime>0</warFogRemoveTime>
+			</Ability>
+		</Item>
+	</abilities>
+	<attackAbility href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="98EA6711-29EF-409E-AADB-9654B10D0D3B">
+		<BaseAttack>
+			<activeCustomTrigger>true</activeCustomTrigger>
+			<allowChase>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</allowChase>
+			<alternativeTargets />
+			<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+			<aoeHeight>0</aoeHeight>
+			<aoeMaterial href="" />
+			<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+			<aoeSize>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</aoeSize>
+			<aoeType>None</aoeType>
+			<applicators>
+				<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="69978739-D8B1-4621-974C-3E5FF556C81E">
+					<SpellApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>AoE Dmg</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="259067AB-0A1F-4DD8-938F-21790887764A">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="40DABC16-B492-4532-8B92-79A3CD3635C8">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>дамаг</caption>
+											<damage>
+												<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4IEAQAA/9BR2Rwk6DgAAACDxARQi00IixGLTQiLggABAAD/0FHZHCToGwAAAIPEBFCLTRCLEYtNEItCXP/QiUX820X8i+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>random ( f2l(sDamageMin), f2l(sDamageMax))</sString>
+											</damage>
+											<damageMode>3</damageMode>
+											<damageType>Native</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="275C3A89-9403-4ADF-B425-7E4580FAE7FF">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>2</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="C581096E-5D89-410E-BFFF-E7112BF09F4F">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX1Nob3J0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cRange_Short</sString>
+								</range>
+								<targetFilter>538837503</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+			</applicators>
+			<autoTargetSelector href="" />
+			<caption></caption>
+			<castAllowRange>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</castAllowRange>
+			<castLimitations />
+			<commonDescription textref="" />
+			<compiledDescriptionA textref="" />
+			<compiledDescriptionB textref="" />
+			<conditionFormulas />
+			<constants href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="7B37551A-0B33-4DF2-9BEC-862CA760C9A8">
+				<UnitConstantsContainer>
+					<vars>
+						<Item href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="04427D17-E5C5-4DC8-B4DE-11E98DEE0802">
+							<UnitConstant>
+								<name>Attack_Speed</name>
+								<var>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+									<returnType>float</returnType>
+									<sString>30</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+					</vars>
+				</UnitConstantsContainer>
+			</constants>
+			<cooldownTime>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</cooldownTime>
+			<cooldownTimeSecondState>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTimeSecondState>
+			<description textref="" />
+			<dispatch href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="8AA75AC8-5330-4E7C-A287-CF38E23C1CE3">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>2</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+			<flags>1</flags>
+			<image href="" />
+			<imageSecondState href="" />
+			<isMelee>false</isMelee>
+			<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+			<manaCost>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</manaCost>
+			<marker></marker>
+			<microAI href="" />
+			<minUseRangeCorrection>0</minUseRangeCorrection>
+			<name textref="" />
+			<node></node>
+			<passiveApplicators />
+			<requireLineOfSight>false</requireLineOfSight>
+			<shortDescription textref="" />
+			<targetType>1966591</targetType>
+			<type>Simple</type>
+			<useRange>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</useRange>
+			<useRangeMaterial href="" />
+			<warFogRemoveRadius>0</warFogRemoveRadius>
+			<warFogRemoveTime>0</warFogRemoveTime>
+		</BaseAttack>
+	</attackAbility>
+	<creepType>NeutralNormal</creepType>
+	<deathParameters href="/GameLogic/Creep.UNDP" />
+	<description textref="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP_description.txt" />
+	<recolor>
+		<A>1</A>
+		<B>0.7372549</B>
+		<G>0.01960784</G>
+		<R>0.5215687</R>
+	</recolor>
+	<stats href="/Creeps/Champions/Champion2/PvE_Coop1_Suppport.CREEP" id="96E9122F-92FC-4327-B028-F43094D6A7CC">
+		<StatsContainer>
+			<stats>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Life</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAD6Qw==</compiledString>
+						<returnType>float</returnType>
+						<sString>500</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Energy</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQw==</compiledString>
+						<returnType>float</returnType>
+						<sString>200</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Intellect</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>20</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Range</statId>
+					<value>
+						<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cRange_Medium</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>EnergyDamageDecrease</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAMQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>35</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>AttackSpeed</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>30</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+						<returnType>float</returnType>
+						<sString>0.5</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>LifeRegenerationAbsolute</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>10</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>EnergyRegenerationAbsolute</statId>
+					<value>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+						<returnType>float</returnType>
+						<sString>3</sString>
+					</increment>
+					<levelUpgrades>
+						<Item>
+							<increment>0.8</increment>
+							<level>0</level>
+						</Item>
+						<Item>
+							<increment>0</increment>
+							<level>10</level>
+						</Item>
+					</levelUpgrades>
+					<statId>NaftaForKill</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>12</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+						<returnType>float</returnType>
+						<sString>3</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>TeamNaftaForKill</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>12</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>MoveSpeed</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAMQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>35</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Stamina</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>10</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Will</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABcQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>55</sString>
+					</value>
+				</Item>
+			</stats>
+		</StatsContainer>
+	</stats>
+	<targetingParams href="/GameLogic/TargetingParams_PvE_Coop1_Ranged.UNTP" />
+</AdvMapCreep>

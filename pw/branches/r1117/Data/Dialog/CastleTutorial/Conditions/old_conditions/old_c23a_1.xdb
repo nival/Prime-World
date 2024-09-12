@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<code>foreach building in Buildings do
+  if (building.PersistentId == "Production_Resource1" or building.PersistentId == "Production_Resource2") and building.ProductionState == 1  and building.FriendsInBuilding.Count &gt; 0 then
+    return 1
+  end
+end
+return 0</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/old_conditions/old_c23a_1" id="02AB797A-F947-4557-B818-799F94DC4555">
+			<SendRequestCondition>
+				<name>start_building_production</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>
