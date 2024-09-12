@@ -1,0 +1,1136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/MagicGirl.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/MagicGirl_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/MagicGirl/Ability_A2_SUP.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/MagicGirl/Ability_A2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/MagicGirl_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/MagicGirl/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/MagicGirl/Epic_Str.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets>
+		<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="1E638CE7-D03D-4216-B3C3-4DB361282FC3">
+			<AlternativeTarget>
+				<alternativeActivity href="" />
+				<fromMinimap>false</fromMinimap>
+				<index>0</index>
+				<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="A0941C78-416D-4BA4-A583-4E74B44CBEC3">
+					<NearestTargetSelector>
+						<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="3FDD9A0A-647A-4DF6-A5B5-AE0C5B234BAD">
+							<ConditionTargetSelector>
+								<condition>
+									<compiledString>FQoAAAABAAAAFAAAAEEyX1BvcnRhbABVi+xqAItFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+									<returnType>bool</returnType>
+									<sString>receiver.applA2_Portal(GLOBAL) != pMisc</sString>
+								</condition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="A96DCD72-740C-4AE2-8FD6-018538751A50">
+									<AreaTargetSelector>
+										<absolutePosition>
+											<x>0</x>
+											<y>0</y>
+										</absolutePosition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<range>
+											<compiledString>FRcAAAABAAAAIwAAAFRFQ0hfTG9vazRQb3J0YWxfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+											<returnType>float</returnType>
+											<sString>cTECH_Look4Portal_Range</sString>
+										</range>
+										<targetFilter>268500996</targetFilter>
+										<targetSelector href="" />
+									</AreaTargetSelector>
+								</targetSelector>
+							</ConditionTargetSelector>
+						</targetSelector>
+					</NearestTargetSelector>
+				</targetSelector>
+				<updateTarget>true</updateTarget>
+			</AlternativeTarget>
+		</Item>
+	</alternativeTargets>
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQoAAAABAAAAFgAAAEEyX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_Radius</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="A5FC76A7-96C8-4981-A83B-A450DF44E267">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQnD/0IPAAV3D</compiledString>
+					<returnType>int</returnType>
+					<sString>mAlternativeTargetIndex +1</sString>
+				</activeSpellIndex>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Создать портал или взорвать его</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="C5ED37F1-1202-4D09-9797-0A935AE02011">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="F6321279-0C07-482E-AE77-1C7E6A16E644">
+									<SpellApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<caption>ансуммонить ближайщий портал если их уже 3</caption>
+										<enabled>
+											<compiledString>FRgAAAACAAAAHwAAADwAAABQb3J0YWxDb3VudABBMl9NYXhDb3VudABVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgMAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sRBegnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>sender.vPortalCount &gt;= cA2_MaxCount</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="BA19A1E7-2E16-4BEE-AAE1-C2981A8FB106">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="7781EEA6-B6D6-4B37-A5A4-4AE4C8B37E58">
+														<KillApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>unsummon</caption>
+															<dontGiveRewards>true</dontGiveRewards>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<flag>Unsummon</flag>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+														</KillApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="1CBA0959-F381-494F-AC1D-E0227D377B71">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>0</flags>
+														<instantApply>false</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="C7304ADF-D7C0-46FE-87CD-D64A63BC6C8C">
+											<ComparingTargetSelector>
+												<referenceValue>
+													<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAMB5RA==</compiledString>
+													<returnType>float</returnType>
+													<sString>999.0f</sString>
+												</referenceValue>
+												<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="BF96D024-037D-4907-BF9D-3653BC52C4BE">
+													<ConditionTargetSelector>
+														<condition>
+															<compiledString>FQwAAAACAAAAEQAAACcAAABJbU1hZ2ljR2F0ZQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1JAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+															<returnType>bool</returnType>
+															<sString>receiver.vImMagicGate == 1</sString>
+														</condition>
+														<flags>0</flags>
+														<mode>Normal</mode>
+														<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="20CF4EA4-42C1-4A49-BE63-A7EC1E5EA339">
+															<ApplicatorRecipientsTargetSelector>
+																<applicator href="/Items/Talents/Class/MagicGirl/status_IAmPortal.APLR" />
+																<flags>0</flags>
+																<mode>Normal</mode>
+															</ApplicatorRecipientsTargetSelector>
+														</targetSelector>
+													</ConditionTargetSelector>
+												</targetSelector>
+												<valueToCompare>
+													<compiledString>FQAAAAAAAAEAugAAAFWL7IPsEI1F+FCLTQyLEYtNDIuCjAEAAP/QUI1N8FGLVQiLAotNCIuQjAEAAP/SUOgHAAAAg8QIi+Vdw1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6B7///+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+													<returnType>float</returnType>
+													<sString>d( sPos, rPos)</sString>
+												</valueToCompare>
+											</ComparingTargetSelector>
+										</targetSelector>
+									</SpellApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="B3780EA0-0040-4050-AD1F-1119EAAFBCA8">
+									<SpellApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>Создать портал</caption>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="A554FD4F-E5B9-4855-B127-323AC2B5CC6F">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="942F5378-546C-4099-B630-BD9F3C2D1A43">
+														<SummonApplicator>
+															<applicators>
+																<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="052F64F5-3F7F-400F-B020-E2CC49A744C4">
+																	<StatModApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>144</behaviorFlags>
+																		<caption>Проверяем взят апгрейд А2 или нет</caption>
+																		<constraint>None</constraint>
+																		<dontUpdate>false</dontUpdate>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString>FR4AAAACAAAAJQAAAD4AAABNYWdpY0dpcmxfQTJ1AAAATWFnaWNHaXJsX0EydQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+																			<returnType>bool</returnType>
+																			<sString>tal("MagicGirl_A2u")</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<modifier>
+																			<addValue>
+																				<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>1.0f</sString>
+																			</addValue>
+																			<multValue>
+																				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</multValue>
+																			<stat>Life</stat>
+																			<topModifier>false</topModifier>
+																			<variable>A2u_TurnOn</variable>
+																		</modifier>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<statModName></statModName>
+																	</StatModApplicator>
+																</Item>
+																<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="00160561-A580-49AC-831D-B571EF7ACB8A">
+																	<TriggerApplicator>
+																		<actionsCount>
+																			<compiledString></compiledString>
+																			<returnType>int</returnType>
+																			<sString>0</sString>
+																		</actionsCount>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>144</behaviorFlags>
+																		<caption>Меняем входящий урон </caption>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName>Ward</formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<playAck>false</playAck>
+																		<processor href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="A54C7ABC-13C7-4995-ADE2-BE99684359EC">
+																			<EventProcessorDamageTransformer>
+																				<abilityFilter>
+																					<abilitiesList />
+																					<abilityCondition>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</abilityCondition>
+																					<abilityCostMode>Energy</abilityCostMode>
+																					<exceptThis>false</exceptThis>
+																					<flags>1610614015</flags>
+																					<onlySingleTarget>false</onlySingleTarget>
+																				</abilityFilter>
+																				<add>
+																					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																					<returnType>float</returnType>
+																					<sString>1.0f</sString>
+																				</add>
+																				<applyTarget>ApplicatorTarget</applyTarget>
+																				<checkSender>0</checkSender>
+																				<damageTypeFilter>31</damageTypeFilter>
+																				<flags>0</flags>
+																				<matchTargetInverted>false</matchTargetInverted>
+																				<mul>
+																					<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																					<returnType>float</returnType>
+																					<sString>0.0f</sString>
+																				</mul>
+																				<objectFilter>1901055</objectFilter>
+																				<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+																				<spell href="" />
+																				<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+																			</EventProcessorDamageTransformer>
+																		</processor>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<useAbilityCooldown>false</useAbilityCooldown>
+																		<useAbilityOwnerMana>false</useAbilityOwnerMana>
+																	</TriggerApplicator>
+																</Item>
+																<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="CEAAB5B8-3796-4ECB-AE11-91295520FF24">
+																	<TriggerApplicator>
+																		<actionsCount>
+																			<compiledString></compiledString>
+																			<returnType>int</returnType>
+																			<sString>0</sString>
+																		</actionsCount>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>144</behaviorFlags>
+																		<caption>канселять все диспатчи от врагов</caption>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<playAck>false</playAck>
+																		<processor href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="522F66E4-B440-4097-998F-A53B45EC2445">
+																			<EventProcessorCancelDispatch>
+																				<applyTarget>ApplicatorTarget</applyTarget>
+																				<checkSender>0</checkSender>
+																				<filter>
+																					<abilitiesList />
+																					<abilityCondition>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</abilityCondition>
+																					<abilityCostMode>Any</abilityCostMode>
+																					<exceptThis>false</exceptThis>
+																					<flags>1073743102</flags>
+																					<onlySingleTarget>false</onlySingleTarget>
+																				</filter>
+																				<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+																				<spell href="" />
+																			</EventProcessorCancelDispatch>
+																		</processor>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<useAbilityCooldown>false</useAbilityCooldown>
+																		<useAbilityOwnerMana>false</useAbilityOwnerMana>
+																	</TriggerApplicator>
+																</Item>
+																<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="D4687C73-BC5F-472F-A05E-4FB21E9D8C02">
+																	<GhostMoveApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>ghost move</caption>
+																		<collisionFlags>1</collisionFlags>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<pushUnits>true</pushUnits>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																	</GhostMoveApplicator>
+																</Item>
+																<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="CB88F8FD-65FA-48E9-AF84-9A4E94288000">
+																	<ProgramApplicator>
+																		<applicators>
+																			<Item>
+																				<applicator href="/Items/Talents/Class/MagicGirl/status_IAmPortal.APLR" />
+																				<continueCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>2</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																			<Item>
+																				<applicator href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="3E1B4839-05FB-46D3-A383-10204929948A">
+																					<FlagsApplicator>
+																						<applyTarget>ApplicatorTarget</applyTarget>
+																						<behaviorFlags>232</behaviorFlags>
+																						<caption>FX Unsummon</caption>
+																						<consumables />
+																						<effect>
+																							<Item href="/Summons/Portal2/_Death.EFFT" />
+																							<Item href="" />
+																						</effect>
+																						<enabled>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</enabled>
+																						<flag>0</flag>
+																						<formulaName></formulaName>
+																						<lifeTime>
+																							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+																							<returnType>float</returnType>
+																							<sString>3.0f</sString>
+																						</lifeTime>
+																						<LoggingEvent>-1</LoggingEvent>
+																						<providerName></providerName>
+																						<startCondition>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</startCondition>
+																						<talents />
+																						<useListAs>ListAsRule</useListAs>
+																					</FlagsApplicator>
+																				</applicator>
+																				<continueCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>1</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																			<Item>
+																				<applicator href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="EE471890-1275-488D-93F1-FEC1CE5FA0B0">
+																					<KillApplicator>
+																						<applyTarget>ApplicatorTarget</applyTarget>
+																						<caption>Убить портал</caption>
+																						<dontGiveRewards>true</dontGiveRewards>
+																						<enabled>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</enabled>
+																						<flag>Unsummon</flag>
+																						<formulaName></formulaName>
+																						<LoggingEvent>-1</LoggingEvent>
+																						<providerName></providerName>
+																					</KillApplicator>
+																				</applicator>
+																				<continueCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>1</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																		</applicators>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>152</behaviorFlags>
+																		<caption>Программа жизни</caption>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																	</ProgramApplicator>
+																</Item>
+															</applicators>
+															<applyTarget>AbilityOwner</applyTarget>
+															<behaviour href="" />
+															<caption>Саммоним портал</caption>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<flags>129</flags>
+															<formulaName></formulaName>
+															<lifeTime>
+																<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0f</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<openWarFog>true</openWarFog>
+															<placeMode>ByTargetSelector</placeMode>
+															<placeSelector href="/Items/Talents/Class/MagicGirl/SummonPortalA2.TGSL" />
+															<providerName></providerName>
+															<spawnStats>
+																<energy>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</energy>
+																<life>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</life>
+															</spawnStats>
+															<summonedUnitIndex>
+																<compiledString></compiledString>
+																<returnType>int</returnType>
+																<sString>0</sString>
+															</summonedUnitIndex>
+															<summonedUnits>
+																<Item href="/Summons/Portal2/_.SUMMONED" />
+															</summonedUnits>
+															<summonedUnitsCount>
+																<compiledString></compiledString>
+																<returnType>int</returnType>
+																<sString>1</sString>
+															</summonedUnitsCount>
+															<summonGroupName></summonGroupName>
+															<summonSource>ByApplicator</summonSource>
+															<takeModDmg>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>1.0f</sString>
+															</takeModDmg>
+															<takeTypeUnit>10428927</takeTypeUnit>
+															<unsummonSortCriterion>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>0.0f</sString>
+															</unsummonSortCriterion>
+														</SummonApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="FB0C20EA-D30B-41D8-AD12-4B50FC6C5A0F">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>0</flags>
+														<instantApply>false</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="/Items/Talents/Class/MagicGirl/SummonPortalA2.TGSL" />
+									</SpellApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="3898992F-890E-40E7-93D3-7B580637CC7A">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="968FA335-A2A9-4F15-A42C-12502A1F110F">
+									<FlagsApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>1</behaviorFlags>
+										<caption>Проигрываем анимацию А2</caption>
+										<consumables />
+										<effect>
+											<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="FD7D6582-E14D-4B17-B807-217F328BBB68">
+												<PlayAnimationEffect>
+													<animGraphNode>ability2</animGraphNode>
+													<deathType>Anim</deathType>
+													<enableCondition href="" />
+													<goToOtherNodeOnStop>true</goToOtherNodeOnStop>
+													<lifeTime>0</lifeTime>
+													<marker></marker>
+													<markerReachTime>0</markerReachTime>
+													<returnAnimGraphNode></returnAnimGraphNode>
+												</PlayAnimationEffect>
+											</Item>
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>1</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPg==</compiledString>
+											<returnType>float</returnType>
+											<sString>0.40</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="A379C862-BF2A-4548-B65A-2FCE42AF6ECC">
+									<SpellApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<caption>наносим урон и станим</caption>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="BE87399C-16D8-4D39-8AF5-C398A73C0FBA">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="7AF9F44F-E633-4011-9FCD-F81CCEA62BB8">
+														<DamageApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<cancelInvisibility>true</cancelInvisibility>
+															<caption>урон</caption>
+															<damage>
+																<compiledString>FQoAAAABAAAAFgAAAEEyX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cA2_Damage</sString>
+															</damage>
+															<damageMode>4</damageMode>
+															<damageType>Material</damageType>
+															<enabled>
+																<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<timeLimiter>-1</timeLimiter>
+															<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+														</DamageApplicator>
+													</Item>
+													<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="E2C6A53D-E6CA-4CE5-9209-9B97E79AB651">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>1</flags>
+														<instantApply>false</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="8B47D945-40BA-4D86-BF11-58B5DD908EF4">
+											<ConditionTargetSelector>
+												<condition>
+													<compiledString>FQUAAAACAAAATQAAAF8AAABXYXJkAFWL7IPsCItFDIsQi00Mi0JQ/9AzyYP4EQ+VwYlN/NtF/FHZHCRR2e7ZHCRqAYtVDIsCi00Mi1BY/9IPtsBQ6FMAAACDxAzcHY8AAADf4PbERHspagCLTRBRaAAAAACLVQyLAotNDIuQnAEAAP/SO0UQdQnHRfgBAAAA6wfHRfgAAAAAikX4i+VdwwAAAAAAAAAAAAAAAFWL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>ut_bldg( false, rUnitKind != 17 ) &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+												</condition>
+												<flags>0</flags>
+												<mode>Normal</mode>
+												<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="F9B7B5B5-2FB6-4AF9-88F2-C9C85A6DACDB">
+													<AreaTargetSelector>
+														<absolutePosition>
+															<x>0</x>
+															<y>0</y>
+														</absolutePosition>
+														<flags>0</flags>
+														<mode>Normal</mode>
+														<range>
+															<compiledString>FQoAAAABAAAAFgAAAEEyX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+															<returnType>float</returnType>
+															<sString>cA2_Radius</sString>
+														</range>
+														<targetFilter>538771519</targetFilter>
+														<targetSelector href="" />
+													</AreaTargetSelector>
+												</targetSelector>
+											</ConditionTargetSelector>
+										</targetSelector>
+									</SpellApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="F3BD3053-5182-45B2-A96E-54FEB725F863">
+									<FlagsApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>96</behaviorFlags>
+										<caption>FX</caption>
+										<consumables />
+										<effect>
+											<Item href="/Effects/Shots/FireBall/_OrangeUpHit2.EFFT" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>0</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="F85ED841-7C8F-4D6E-AE61-55C1E8044781">
+									<KillApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<caption>Убить портал</caption>
+										<dontGiveRewards>true</dontGiveRewards>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>InstantRemove</flag>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+									</KillApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="5F6F16CC-8636-42F2-8156-BA39C5583B04">
+									<RefreshCooldownApplicator>
+										<allowCdIncrease>true</allowCdIncrease>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>добавляем кд</caption>
+										<enabled>
+											<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLgpAAAAD/0A+2wPfYG8CDwAFdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>!mIsNight</sString>
+										</enabled>
+										<flags>128</flags>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<reduceByPercent>false</reduceByPercent>
+										<reductionAmount>
+											<compiledString>FRcAAAADAAAAJgAAAEIAAABYAAAAQmFzZUNEAABBMl9DRF9JbmNyZWFzZQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tngi0UMUItNCFFoCAAAAItVEIsCi00Qi1BQ3V34/9LcJWkAAADcTfjZXfTZRfSL5V3DAAAAAAAA8D8=</compiledString>
+											<returnType>float</returnType>
+											<sString>-cBaseCD * (cA2_CD_Increase - 1)</sString>
+										</reductionAmount>
+										<refreshThis>true</refreshThis>
+										<talents>
+											<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" />
+										</talents>
+										<useListAs>ListAsRule</useListAs>
+									</RefreshCooldownApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="5AED669B-BB14-4A4A-A466-930E5B07618C">
+									<SpellApplicator parent="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_G766_RefreshAndNotify.APLR">
+										<enabled>
+											<compiledString>FRUAAAAEAAAANwAAAFAAAACGAAAArAAAAEc3NjYAAAAARzc2NgAAAABHNzY2AFWL7IPsFItFEIsQi00Qi4KQAAAA/9APtsiFyQ+FmQAAAGgAAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoCAAAAItFCIsQi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdEpoEAAAAItVCIsCi00Ii5CoAQAA/9KJRfSLRfSLEItN9ItCHP/Q3B3dAAAA3+D2xER6CcdF8AEAAADrB8dF8AAAAACLTfCJTezrB8dF7AAAAACKReyL5V3DAAAAAAAA8D8=</compiledString>
+											<returnType>bool</returnType>
+											<sString>!mIsNight &amp;&amp; tal("G766") ? pFirst-&gt;GetTalent("G766")-&gt;GetPreparedness() == 1.0f : false</sString>
+										</enabled>
+									</SpellApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А2. Звездные врата</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="52CF9F91-8FBE-4855-99F9-2E568DC2CB66">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABNYWdpY0dpcmxfQTJ1AAAATWFnaWNHaXJsX0EydQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("MagicGirl_A2u")</sString>
+				</condition>
+				<name>MagicGirl_A2u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="16908BFD-EF01-4E87-BD88-CE0A028E161F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSUAAAACAAAALAAAAEUAAABNYWdpY0dpcmxfQTJfU1VQAAAAAE1hZ2ljR2lybF9BMl9TVVAAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgUAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("MagicGirl_A2_SUP")</sString>
+				</condition>
+				<name>MagicGirl_A2_SUP</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="01790A57-F9DB-4E6D-BB64-423C78F0D7C0">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="D5B3EC3B-79AD-4E87-ACEF-4AFFA1A8BAD4">
+					<UnitConstant>
+						<name>A2_PortalSearchRange</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="25C7417A-683D-4A13-A817-AE72980AAE8D">
+					<UnitConstant>
+						<name>A2_PortalDuration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/const_A2_DebuffDuration" />
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="916C1804-E795-4BC1-9275-DCE12DF06C3C">
+					<UnitConstant>
+						<name>A2_Radius</name>
+						<var>
+							<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX1Nob3J0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Short</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="C39121C5-97A8-4C41-B7EC-37EF792D2215">
+					<UnitConstant>
+						<name>Stun_StartCondition</name>
+						<var>
+							<compiledString>FR4AAAACAAAAJQAAAD4AAABNYWdpY0dpcmxfQTJ1AAAATWFnaWNHaXJsX0EydQBVi+yD7AxoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuJTfTbRfSL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("MagicGirl_A2u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/const_A2_StunDuration" />
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="BA0972DE-C916-46B2-88DF-6FAC4D0AE515">
+					<UnitConstant>
+						<name>A2_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACWQgAADEQ=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sStrength, 75, 560)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="B968E5A6-74D8-47F8-B9C5-01E8FFCFD905">
+					<UnitConstant>
+						<name>A2_Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="73DA1BF5-6F92-4131-972A-E5E3F967A2D3">
+					<UnitConstant>
+						<name>TECH_Look4Portal_Range</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/const_A2u_BonusMS" />
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="5DA6E943-E075-4413-AEF5-07131C69D3C3">
+					<UnitConstant>
+						<name>A2_CD_Increase</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>8.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="2F53A792-02BF-4C99-B330-7EFD8265DAFD">
+					<UnitConstant>
+						<name>A2_BonusMS_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="F7B078BC-0E44-4CE9-BF1F-7DFAAF8ADBED">
+					<UnitConstant>
+						<name>A2_MaxCount</name>
+						<var>
+							<compiledString>FToAAAAEAAAAQQAAAFoAAACaAAAAswAAAE1hZ2ljR2lybF9BMl9TVVAAAAAATWFnaWNHaXJsX0EyX1NVUAAAAABBMl9TVVBfQm9udXNDb3VudABVi+yD7BhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBQAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuJTfTbRfSLVQxSi0UIUGgoAAAAi00QixGLTRCLQlDdXez/0NxN7NwFwQAAANld6NlF6IvlXcMAAAAAAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2 + tal("MagicGirl_A2_SUP") * cA2_SUP_BonusCount</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/const_A2_SUP_BonusCount" />
+				<Item href="/Items/Talents/Class/MagicGirl/const_A2_SUP_DmgReduction" />
+				<Item href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="77D8D968-88F6-4360-A15C-6D9137CCE59B">
+					<UnitConstant>
+						<name>BaseCD</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQcAAAABAAAAEwAAAEJhc2VDRABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cBaseCD</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="0732E8F7-0402-4DDD-970C-0B19873951C9">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>3</flags>
+	<forceBonus>9</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/MagicGirl/A2_1.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACqQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>85</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="82C79E86-978D-40C0-A751-2825D19BD390">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQ4AAAABAAAAGAAAAEEzX0NoYW5nZUZvcm0AVYvsagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>sender.applA3_ChangeForm(UNIT) != pMisc</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="47BEA1F8-30E0-4448-8DF1-32CA04B22F87">
+				<PointTargetSelector>
+					<checkMinRange>false</checkMinRange>
+					<mode>RangeFromTarget</mode>
+					<offset>
+						<x>0</x>
+						<y>1</y>
+					</offset>
+					<paralleledTarget>false</paralleledTarget>
+					<range>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</range>
+					<targetSelector href="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" id="8A48AD7F-1371-4713-98A1-09A47E2174F2">
+						<NearestTargetSelector>
+							<targetSelector href="/Items/Talents/Class/MagicGirl/PortalTargetSelector.TGSL" />
+						</NearestTargetSelector>
+					</targetSelector>
+					<traceMode>0</traceMode>
+				</PointTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId>MagicGirl_A2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>285278212</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

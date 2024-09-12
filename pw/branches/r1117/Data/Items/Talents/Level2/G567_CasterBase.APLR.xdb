@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="2" />
+	<applicators>
+		<Item>
+			<applicator href="/Effects/Shots/HitsApplicators/G567_Hit.APLR" />
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Level2/G567_CasterBase.APLR" id="DE014AB4-A2F8-4D62-B780-A9C8EF7FFE2D">
+				<SpellSwitchApplicator>
+					<activeSpellIndex>
+						<compiledString>FQsAAAABAAAAFQAAAEc1NjdTdGF0dXMAVYvsagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlcGLwV3D</compiledString>
+						<returnType>int</returnType>
+						<sString>receiver.applG567Status(UNIT) == pMisc ? 0 : 1</sString>
+					</activeSpellIndex>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>выбор повесить статус или его обновить</caption>
+					<dontUseDispatches>true</dontUseDispatches>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<spells>
+						<Item href="/Items/Talents/Level2/G567_CasterBase.APLR" id="F920D28A-A24A-4374-98C4-C7612AA0F183">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Level2/G581_StackProgram.APLR" />
+									<Item href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" />
+								</applicators>
+								<dispatch href="" />
+							</Spell>
+						</Item>
+						<Item href="/Items/Talents/Level2/G567_CasterBase.APLR" id="FBDE83A5-C4ED-4AD9-AC04-CA7BE1967D43">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Level2/G581_StackProgram.APLR" />
+									<Item href="/Items/Talents/Level2/G567_CasterBase.APLR" id="DB1D8C16-2732-4B14-918E-8DBD245D9157">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Продлеваем уже работающий статус</caption>
+											<durationToAdd>
+												<compiledString>FQ4AAAABAAAAGgAAAEc1NjdfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cG567_Duration</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+									<Item href="/Items/Talents/Level2/G567_CasterBase.APLR" id="62C50D84-E091-46D6-9684-2FF08CE4D426">
+										<PermanentStatModApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>G567_SavedDamage</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString>FQwAAAACAAAAEQAAACcAAABHNTcxX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.vG571_Active &gt; 0</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQUAAAABAAAAGgAAAFNURVAAVYvsi0UQUGgABAAAi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9BR2Rwki00IixGLTQiLgvABAAD/0F3D</compiledString>
+													<returnType>float</returnType>
+													<sString>sender.GetDamageDealtEx(cSTEP, DMG_TALENT_CLASS, pMisc )</sString>
+												</addValue>
+												<multValue>
+													<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>G567_SavedDamage</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="" />
+							</Spell>
+						</Item>
+					</spells>
+				</SpellSwitchApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption></caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLgpQAAAD/0F3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>pMisc-&gt;CheckUpgradePerCastPerTarget()</sString>
+	</startCondition>
+</ProgramApplicator>

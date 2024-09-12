@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/GameLogic/AILogic.AILP" Count="2" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_Rar5_Set2" Count="1" />
+	<BackLink DBID="/Test/Talents/TestSet13.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/FallenAngel/Epic_IntSpeed.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Hunter/Elite_PvE.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Naga/Elite_PvE.TALENTSET" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="3" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_OrangeSet2.ROLLCONT" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G329: Тайное увлечение</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="B4088F43-F85B-4796-BCB0-24D1E17AE91E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHMzI5X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF0CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>!(sender.vG329_Active&gt;0)</sString>
+				</condition>
+				<name>InForma</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="CE28638E-03C8-42CD-A195-316C56644477">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="B0CFE622-E5F1-4D48-B22E-E1563EC1B611">
+					<UnitConstant>
+						<name>Add_AttackSpeed</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAQEHNzIw/</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(12, 1.1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="BB368F42-6811-4984-99F7-1C8C13F07DC8">
+					<UnitConstant>
+						<name>DefenceAmount</name>
+						<var>
+							<compiledString>FQAAAAADAAAABwAAABEAAAAnAAAAVYvsUVHZBUEAAADZHCRR2QU9AAAA2Rwki0UQixCLTRCLQmz/0Nw1NQAAANld/NlF/IvlXcMAAAAAAAAAQAAAcEEzMzM/</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(15, 0.7)/2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="73642EA8-B1D9-415F-9A68-EB7873870386">
+					<UnitConstant>
+						<name>TECH_StepValue</name>
+						<var>
+							<compiledString>FR4AAAACAAAALQAAAEcAAABEZWZlbmNlQW1vdW50AAAAVEVDSF9NYXhTdGVwcwBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBAAAACLVRCLAotNEItQUN1d+P/S3H342V302UX0i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cDefenceAmount/cTECH_MaxSteps</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="EB3FEAD2-9796-471D-9BFE-DCEEF29A6DDE">
+					<UnitConstant>
+						<name>TT_DefenceAmount</name>
+						<var>
+							<compiledString>FQ4AAAABAAAAGwAAAERlZmVuY2VBbW91bnQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3MDZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cDefenceAmount * 2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="F5AA3797-12D9-42CC-8D1C-EE5EA5F15BD9">
+					<UnitConstant>
+						<name>TECH_MaxSteps</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="31DF33C8-0955-4A56-98FC-C678AFCD34FE">
+					<UnitConstant>
+						<name>TT_StepValue</name>
+						<var>
+							<compiledString>FQ4AAAADAAAAGwAAADIAAAA4AAAAVEVDSF9NYXhTdGVwcwBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LZ6N7x3A1OAAAA3DVGAAAA2V382UX8i+VdwwAAAAAAAABAAAAAAAAAWUAAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>1/cTECH_MaxSteps*100/2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentSet2/const_G328_MaxForm" />
+				<Item href="/Items/Talents/TalentSet2/const_G329Add_Stacks" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="" />
+	<flags>1</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_329.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>5</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="06ADB185-E107-4697-9A1E-70B6C768D577">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Add_AttackSpeed</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRAAAAABAAAAHAAAAEFkZF9BdHRhY2tTcGVlZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cAdd_AttackSpeed</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="2D8884C0-C6E6-404B-A1DC-980753AE9F1F">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Initialise DefPosition329</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>DefPosition329</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="CBCFEDC6-ABB9-4CCC-BBAE-5DA4D1734E28">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>увеличение Э защиты</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FR4AAAACAAAAJQAAAEQAAABEZWZQb3NpdGlvbjMyOQAARGVmZW5jZUFtb3VudABVi+yD7AxoAAAAAItFDIsQi00Mi4KIAQAA/9DZ4ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3EX42V302UX0i+Vdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>-receiver.vDefPosition329 + cDefenceAmount</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Will</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="FB63CD7E-9C8C-4EB7-ABC9-F1DF55C60FD1">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>увеличение М защиты</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FR4AAAACAAAAJQAAAEIAAABEZWZQb3NpdGlvbjMyOQAARGVmZW5jZUFtb3VudABVi+yD7AxoAAAAAItFDIsQi00Mi4KIAQAA/9CLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXfj/0NxF+Nld9NlF9IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>receiver.vDefPosition329 + cDefenceAmount</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Stamina</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="BF7EAA89-FC87-4AB4-A214-CDF8107898F4">
+			<OnDamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>реакция на М урон</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FS8AAAADAAAANgAAAFMAAABwAAAARGVmUG9zaXRpb24zMjkAAERlZmVuY2VBbW91bnQAAABURUNIX1N0ZXBWYWx1ZQBVi+yD7BRoAAAAAItFDIsQi00Mi4KIAQAA/9CLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXfj/0ItNDFGLVQhSaCAAAACLRRCLEItNEItCUN1d8P/Q3G3w3F343+D2xAF1CcdF7AEAAADrB8dF7AAAAACKReyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vDefPosition329 &lt;= cDefenceAmount - cTECH_StepValue</sString>
+				</enabled>
+				<filterFlags>7</filterFlags>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="2A45D9D3-1105-45F7-9E94-C92ACBDB723B">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="177F2EEA-5393-49AF-89AF-13F1BA9CCECC">
+								<PermanentStatModApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption></caption>
+									<customApplyType>None</customApplyType>
+									<enabled>
+										<compiledString>FS8AAAADAAAANgAAAFMAAABwAAAARGVmUG9zaXRpb24zMjkAAERlZmVuY2VBbW91bnQAAABURUNIX1N0ZXBWYWx1ZQBVi+yD7BRoAAAAAItFDIsQi00Mi4KIAQAA/9CLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXfj/0ItNDFGLVQhSaCAAAACLRRCLEItNEItCUN1d8P/Q3G3w3F343+D2xAF1CcdF7AEAAADrB8dF7AAAAACKReyL5V3D</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.vDefPosition329 &lt;= cDefenceAmount - cTECH_StepValue</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString>FQ8AAAABAAAAGwAAAFRFQ0hfU3RlcFZhbHVlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>cTECH_StepValue</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>DefPosition329</variable>
+									</modifier>
+									<providerName></providerName>
+								</PermanentStatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="7285438A-1D7C-4F4B-8789-DB98E1E744D7">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>AbilityOwner</spellTarget>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</OnDamageApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="247B18F2-6D83-41BA-B905-6381BB05C9B4">
+			<OnDamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>реакция на Э урон</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FS4AAAADAAAANQAAAFIAAAByAAAARGVmUG9zaXRpb24zMjkAAFRFQ0hfU3RlcFZhbHVlAABEZWZlbmNlQW1vdW50AFWL7IPsFGgAAAAAi0UMixCLTQyLgogBAAD/0ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3G34i00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ3V3w/9DZ4Nxd8N/g9sRBegnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vDefPosition329 - cTECH_StepValue &gt;= -cDefenceAmount</sString>
+				</enabled>
+				<filterFlags>11</filterFlags>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="7924962E-7EE0-4759-9D07-2589D883FAAA">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="A519F9E7-F672-4BE3-A5A4-45165159C705">
+								<PermanentStatModApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption></caption>
+									<customApplyType>None</customApplyType>
+									<enabled>
+										<compiledString>FS4AAAADAAAANQAAAFIAAAByAAAARGVmUG9zaXRpb24zMjkAAFRFQ0hfU3RlcFZhbHVlAABEZWZlbmNlQW1vdW50AFWL7IPsFGgAAAAAi0UMixCLTQyLgogBAAD/0ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3G34i00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ3V3w/9DZ4Nxd8N/g9sRBegnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.vDefPosition329 - cTECH_StepValue &gt;= -cDefenceAmount</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString>FQ8AAAABAAAAGwAAAFRFQ0hfU3RlcFZhbHVlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S2eBdww==</compiledString>
+											<returnType>float</returnType>
+											<sString>-cTECH_StepValue</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>DefPosition329</variable>
+									</modifier>
+									<providerName></providerName>
+								</PermanentStatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="C62DCCFF-39AB-4DB3-AC6A-6AECCE83816F">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>AbilityOwner</spellTarget>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</OnDamageApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentSet2/G328_FormCounter.APLR" />
+		<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" id="9571D154-7ED1-419E-B0FB-7E6FDFD14F58">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>G329_Active</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FSkAAAADAAAAMAAAAE0AAAB/AAAARzMyOF9Gb3JtQ291bnRlcgAAAABHMzI4X01heEZvcm0AAAAARzMyOABVi+yD7BBoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgUAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sQBdTWLTQiLEYtNCIuCfAEAAP/QiUX0aCQAAACLTfSLEYtN9IuCqAEAAP/QhcB0CcdF8AEAAADrB8dF8AAAAACKRfCL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>(sender.vG328_FormCounter &lt;= cG328_MaxForm)&amp;&amp;(sObjectMaster-&gt;GetTalent("G328"))</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>G329_Active</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>G329</persistentId>
+	<prerequisiteTalents />
+	<rarity>exclusive</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>136258047</targetType>
+	<type>Simple</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

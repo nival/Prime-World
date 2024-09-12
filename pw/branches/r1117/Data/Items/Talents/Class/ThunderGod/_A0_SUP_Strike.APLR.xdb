@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/ThunderGod/Ability2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/ThunderGod/Ability3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/ThunderGod/Ability4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/ThunderGod/Ability4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" Count="1" />
+	<BackLink DBID="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" Count="1" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>Доп. урон A0_SUP</caption>
+	<enabled>
+		<compiledString>FR8AAAACAAAAJgAAAD8AAABUaHVuZGVyX0EwX1NVUAAAVGh1bmRlcl9BMF9TVVAAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Thunder_A0_SUP")</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/ThunderGod/_A0_SUP_Strike.APLR" id="9BE24E62-6D02-4046-938A-1625496DDB1C">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/ThunderGod/_A0_SUP_Strike.APLR" id="F0EBC73E-8426-457B-855A-CC14276D8D9A">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>Урон A0_SUP</caption>
+						<damage>
+							<compiledString>FQ0AAAABAAAAGQAAAEEwX0FkZERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA0_AddDamage</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/ThunderGod/_A0_SUP_Strike.APLR" id="3A41518D-289E-4467-99CC-9AA9A9744CC1">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="/Effects/Debuffs/Discharge/Prepare1.EFFT" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>1</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/ThunderGod/_A0_SUP_Strike.APLR" id="ABA8B2B2-8574-40A6-8FC7-91C9AAE56046">
+		<CountingTargetSelector>
+			<enableSorting>true</enableSorting>
+			<flags>0</flags>
+			<heroesFirst>true</heroesFirst>
+			<mode>Normal</mode>
+			<order>Increasing</order>
+			<sortingValue>
+				<compiledString>FQAAAAAAAAEAugAAAFWL7IPsEI1F+FCLTQyLEYtNDIuCjAEAAP/QUI1N8FGLVQiLAotNCIuQjAEAAP/SUOgHAAAAg8QIi+Vdw1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6B7///+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+				<returnType>float</returnType>
+				<sString>d(sPos, rPos)</sString>
+			</sortingValue>
+			<targetSelector href="/Items/Talents/Class/ThunderGod/_A0_SUP_Strike.APLR" id="A6675053-5A4E-4B03-BDCF-A8D71C788BDA">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQsAAAACAAAAGAAAACsAAABSYW5nZV9Mb25nAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFOQAAANld/NlF/IvlXcMAAAAAAADwPw==</compiledString>
+						<returnType>float</returnType>
+						<sString>cRange_Long + 1</sString>
+					</range>
+					<targetFilter>672923711</targetFilter>
+					<targetSelector href="/Items/Talents/Class/ThunderGod/_A0_SUP_Strike.APLR" id="DBE9862E-3CB6-4FAF-B2EB-1E4A0A85529A">
+						<SelectApplicatorTarget>
+							<applicatorIndex>0</applicatorIndex>
+							<applicatorName></applicatorName>
+							<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+							<selectTarget>AbilityOwner</selectTarget>
+						</SelectApplicatorTarget>
+					</targetSelector>
+				</AreaTargetSelector>
+			</targetSelector>
+			<targetsNumber>
+				<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+				<returnType>int</returnType>
+				<sString>1</sString>
+			</targetsNumber>
+		</CountingTargetSelector>
+	</targetSelector>
+</SpellApplicator>

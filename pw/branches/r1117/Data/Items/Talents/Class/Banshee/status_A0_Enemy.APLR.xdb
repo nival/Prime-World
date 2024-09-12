@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Banshee/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Heroes/Banshee/_.HROB" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="FF7E78F4-C588-465F-A8CE-38F0466D8409">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Дереген ХП</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQsAAAACAAAAGAAAACsAAABBMF9EZXJlZ2VuAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNOQAAANld/NlF/IvlXcMAAAAAAADwvw==</compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0f * cA0_Deregen</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>LifeRegenerationAbsolute</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+		<Item href="/Items/Talents/Class/Banshee/trigger_A0_1hp.APLR" />
+		<Item href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="9A72BCF9-86AC-4621-9A83-70256D774159">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>(upg) Триггер на смерть</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQsAAAACAAAAEgAAADgAAABCYW5zaGVlX0E1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IlF/ItN/IsRi038i0Ic/9DcHVoAAADf4PbERHoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAADwPw==</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;GetTalent("Banshee_A5")-&gt;GetPreparedness() == 1.0f</sString>
+				</enabled>
+				<formulaName>BansheeA0_TriggerA5</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="35528988-4FC3-4EDF-8435-08A7611DA6CD">
+					<EventProcessorOnDeath>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<castSpellDelay>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</castSpellDelay>
+						<checkSender>0</checkSender>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="182018FF-47CE-4DBE-8548-75AD0748F900">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="D8B625E1-B6BC-4E92-B693-6EA515869B6D">
+										<FlagsApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>248</behaviorFlags>
+											<caption>FX на жертве</caption>
+											<consumables />
+											<effect>
+												<Item href="/Effects/Buffs/Sacrifice/_.EFFT" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<flag>0</flag>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<talents />
+											<useListAs>ListAsRule</useListAs>
+										</FlagsApplicator>
+									</Item>
+									<Item href="/Items/Talents/Class/Banshee/appl_A5_TriggerFlag.APLR" />
+									<Item href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="8CD543BA-8420-4135-8B47-BC8FB7BD98EE">
+										<RefreshCooldownApplicator>
+											<allowCdIncrease>false</allowCdIncrease>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>Сбросить КД</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<flags>128</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<reduceByPercent>false</reduceByPercent>
+											<reductionAmount>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0f</sString>
+											</reductionAmount>
+											<refreshThis>false</refreshThis>
+											<talents>
+												<Item href="/Items/Talents/Class/Banshee/Ability_A1.TALENT" />
+												<Item href="/Items/Talents/Class/Banshee/Ability_A2.TALENT" />
+												<Item href="/Items/Talents/Class/Banshee/Ability_A3.TALENT" />
+											</talents>
+											<useListAs>ListAsRule</useListAs>
+										</RefreshCooldownApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="B1156931-3D7F-4F8D-9B80-3926DF3E36D7">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnDeath>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FTQAAAAFAAAAOwAAAFQAAACeAAAAtAAAAMYAAABCYW5zaGVlX0E1AABCYW5zaGVlX0E1AABJc0Nsb25lAEJhbnNoZWVBMF9UcmlnZ2VyQTUAVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0X4tVDIsCi00Mi1BU/9IPtsCFwHUiaBgAAACLTQyLEYtNDIuCiAEAAP/Q3B32AAAA3+D2xEF1KWoBi00QUWggAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Banshee_A5") &amp;&amp; (rIsHero || receiver.vIsClone &gt; 0) &amp;&amp; pSecond-&gt;FindApplicator("BansheeA0_TriggerA5", pMisc, UNIT) == pMisc</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" id="5FB51753-86AF-4A65-9E6D-FCF9677F8EDE">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Items/Talents/Class/Banshee/status_A0_Self.APLR" />
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>2</behaviorFlags>
+				<caption>Тех.статус для логики «один бафф с цели»</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="/Effects/Buffs/Regen/_CycleBlue.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>146</behaviorFlags>
+	<caption>Статус А0 - дереген ХП</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>3</flags>
+	<formulaName>BansheeA0_Enemy</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Banshee/A0.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEwX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA0_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>PartiallyStackable</stackableAcrossUnits>
+	<stackCount>4</stackCount>
+	<startCondition>
+		<compiledString>FRIAAAACAAAAHwAAADIAAABBMF9TdGFydENvbmRpdGlvbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHU4AAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>cA0_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

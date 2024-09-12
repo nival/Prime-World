@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Level1/G598_RegEnergy.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G600_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level3/G601_DexStrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G599_Dex.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="50035E16-7EE0-4E6D-BEA2-A1DE316CD965">
+				<PermanentStatModApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>Add_EnergyReg_Redset5_5Counter</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</addValue>
+						<multValue>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>Add_EnergyReg_Redset5_5Counter</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="F9ECFFEA-17B7-4EC9-B3B8-CDAF12462F17">
+				<TriggerApplicator>
+					<actionsCount>
+						<compiledString></compiledString>
+						<returnType>int</returnType>
+						<sString>0</sString>
+					</actionsCount>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>152</behaviorFlags>
+					<caption>триггер на использование таланта</caption>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<playAck>false</playAck>
+					<processor href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="02B78C33-4347-4924-9E41-B718185CA348">
+						<EventProcessorAbilityManacostTransformer>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<filter>
+								<abilitiesList />
+								<abilityCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</abilityCondition>
+								<abilityCostMode>Any</abilityCostMode>
+								<exceptThis>false</exceptThis>
+								<flags>536871040</flags>
+								<onlySingleTarget>false</onlySingleTarget>
+							</filter>
+							<spell href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="3DE18598-0BF7-4250-A757-EEF0647805D4">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="49821C03-BE27-44A4-BE22-BDEB544629AA">
+											<SpellSwitchApplicator>
+												<activeSpellIndex>
+													<compiledString>FQ8AAAACAAAAFAAAACoAAABQYW50aGVySXNBbGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1YAAAA3+D2xER7CcdF/AEAAADrB8dF/AAAAADbRfxR2Rwk6A8AAACDxASL5V3DAAAAAAAA8D+4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+													<returnType>int</returnType>
+													<sString>f2l(sender.vPantherIsAlive != 1)</sString>
+												</activeSpellIndex>
+												<applyTarget>AbilityOwner</applyTarget>
+												<caption>Выбор: мы одни или с кошкой</caption>
+												<dontUseDispatches>true</dontUseDispatches>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<spells>
+													<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="40312C5C-3FCE-458B-BA8D-207DB389D80B">
+														<Spell>
+															<applicators>
+																<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="2DE9709A-B6CE-40B9-9616-719206CB3CBF">
+																	<SpellApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<caption>Есть кошка: спелл в саммона с хилами</caption>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<spell href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="58E63C4E-AEBC-4797-BFA9-25AF627A7AFF">
+																			<Spell>
+																				<applicators>
+																					<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="0A77D092-79E5-401C-B58C-F01044389076">
+																						<PermanentStatModApplicator>
+																							<applyTarget>AbilityOwner</applyTarget>
+																							<caption>Запоминаем нехватку Здоровья у кошки</caption>
+																							<customApplyType>None</customApplyType>
+																							<enabled>
+																								<compiledString></compiledString>
+																								<returnType>bool</returnType>
+																								<sString>true</sString>
+																							</enabled>
+																							<formulaName></formulaName>
+																							<LoggingEvent>-1</LoggingEvent>
+																							<modifier>
+																								<addValue>
+																									<compiledString>FR8AAAAEAAAAJgAAADwAAABPAAAAZAAAAFBhbnRoZXJJc0FsaXZlAABUYXJnZXQAAFRhcmdldABVi+yD7BxoAAAAAItFCIsQi00Ii4KIAQAA/9DcHa8AAADf4PbERHsH2e7dXfjrTGgQAAAAi00QixGLTRCLQkz/0IlF9GgYAAAAi00QixGLTRCLQkz/0IlF8ItN8IsRi03wiwL/0ItN9IsRi030i0IM3V3o/9DcZejdXfjdRfjZXeTZReSL5V3DAAAAAAAAAAAAAAAAAADwPw==</compiledString>
+																									<returnType>float</returnType>
+																									<sString>sender.vPantherIsAlive != 1 ? 0 : appl.oTarget.MaxLife - appl.oTarget.Life</sString>
+																								</addValue>
+																								<multValue>
+																									<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																									<returnType>float</returnType>
+																									<sString>0</sString>
+																								</multValue>
+																								<stat>Life</stat>
+																								<topModifier>false</topModifier>
+																								<variable>Redset5_ThisHealPantherLifeLack</variable>
+																							</modifier>
+																							<providerName></providerName>
+																						</PermanentStatModApplicator>
+																					</Item>
+																					<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="268D3348-28D0-4A04-BB65-25305AD45C47">
+																						<HealApplicator>
+																							<amount>
+																								<compiledString>FTAAAAACAAAAPAAAAFIAAABSZWRzZXQ1XzVfSGVhbAAAUmVkc2V0NV9UaGlzSGVhbFBhbnRoZXJMaWZlTGFjawBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0lHZHCRoEAAAAItFCIsQi00Ii4KIAQAA/9BR2Rwk6AUAAACDxAhdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+																								<returnType>float</returnType>
+																								<sString>min(sender.vRedset5_ThisHealPantherLifeLack, cRedset5_5_Heal)</sString>
+																							</amount>
+																							<applyTarget>ApplicatorTarget</applyTarget>
+																							<caption>Есть кошка: хил в саммона</caption>
+																							<enabled>
+																								<compiledString>FSAAAAACAAAAJQAAADsAAABSZWRzZXQ1X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHV0AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+																								<returnType>bool</returnType>
+																								<sString>sender.vRedset5_ThisHealPantherLifeLack &gt; 0</sString>
+																							</enabled>
+																							<formulaName></formulaName>
+																							<healTarget>Health</healTarget>
+																							<ignoreHealingMods>false</ignoreHealingMods>
+																							<LoggingEvent>-1</LoggingEvent>
+																							<providerName></providerName>
+																							<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+																						</HealApplicator>
+																					</Item>
+																					<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="6966BA34-7B9A-4FEB-A381-6ABC5B4C2918">
+																						<HealApplicator>
+																							<amount>
+																								<compiledString>FTAAAAACAAAAPwAAAFEAAABSZWRzZXQ1XzVfSGVhbAAAUmVkc2V0NV9UaGlzSGVhbFBhbnRoZXJMaWZlTGFjawBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0mgQAAAAi0UIixCLTQiLgogBAADdXfj/0Nxt+Nld9NlF9FHZHCRR2e7ZHCToCwAAAIPECIvlXcMAAAAAVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+																								<returnType>float</returnType>
+																								<sString>max(0, cRedset5_5_Heal - sender.vRedset5_ThisHealPantherLifeLack)</sString>
+																							</amount>
+																							<applyTarget>AbilityOwner</applyTarget>
+																							<caption>Есть кошка: хил в героя</caption>
+																							<enabled>
+																								<compiledString>FS8AAAACAAAANgAAAFMAAABSZWRzZXQ1X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFJlZHNldDVfNV9IZWFsAFWL7IPsDGgAAAAAi0UIixCLTQiLgogBAAD/0ItNDFGLVQhSaCAAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xEF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+																								<returnType>bool</returnType>
+																								<sString>sender.vRedset5_ThisHealPantherLifeLack &lt; cRedset5_5_Heal</sString>
+																							</enabled>
+																							<formulaName></formulaName>
+																							<healTarget>Health</healTarget>
+																							<ignoreHealingMods>false</ignoreHealingMods>
+																							<LoggingEvent>-1</LoggingEvent>
+																							<providerName></providerName>
+																							<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+																						</HealApplicator>
+																					</Item>
+																				</applicators>
+																				<dispatch href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="F11D8E41-BDC1-4B31-B44E-DF380FAA8EF1">
+																					<DispatchImmediate>
+																						<alwaysApply>false</alwaysApply>
+																						<applyEffect>
+																							<Item href="" />
+																							<Item href="" />
+																						</applyEffect>
+																						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																						<applyEffectOrientation>Default</applyEffectOrientation>
+																						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																						<dieAfterApply>true</dieAfterApply>
+																						<dispatchEffect>
+																							<Item href="" />
+																							<Item href="" />
+																						</dispatchEffect>
+																						<flags>0</flags>
+																						<instantApply>true</instantApply>
+																					</DispatchImmediate>
+																				</dispatch>
+																			</Spell>
+																		</spell>
+																		<spellTarget>ApplicatorTarget</spellTarget>
+																		<targetSelector href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="DBA656C5-E590-479A-B295-A6DF353E1B3F">
+																			<RelativeUnitTargetSelector>
+																				<relation>AlphaSummon</relation>
+																			</RelativeUnitTargetSelector>
+																		</targetSelector>
+																	</SpellApplicator>
+																</Item>
+															</applicators>
+															<dispatch href="" />
+														</Spell>
+													</Item>
+													<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="16619CA7-C066-4C7D-8C62-E5636377C7BE">
+														<Spell>
+															<applicators>
+																<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="66DB1EFC-E7CC-4EDC-8C81-15380A542EBE">
+																	<HealApplicator parent="/GameLogic/GeneralApplicators/Heal.APLR">
+																		<amount>
+																			<compiledString>FQ8AAAABAAAAGwAAAFJlZHNldDVfNV9IZWFsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																			<returnType>float</returnType>
+																			<sString>cRedset5_5_Heal</sString>
+																		</amount>
+																	</HealApplicator>
+																</Item>
+															</applicators>
+															<dispatch href="" />
+														</Spell>
+													</Item>
+												</spells>
+											</SpellSwitchApplicator>
+										</Item>
+										<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/status_Redset5_5_Cooldown.APLR" />
+									</applicators>
+									<dispatch href="/Items/Talents/TalentKits/Redset5_5_Caster/Program_Redset5_5_Add_EnergyReg.APLR" id="C9B500F7-8B4D-409E-8203-C31577C75513">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>true</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+						</EventProcessorAbilityManacostTransformer>
+					</processor>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FR8AAAADAAAAJAAAADoAAABUAAAAQWRkX0VuZXJneVJlZ19SZWRzZXQ1XzVDb3VudGVyAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHX4AAADf4PbERHoji00QixGLTRCLQhz/0NwddgAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAPA/AAAAAAAAAEA=</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.vAdd_EnergyReg_Redset5_5Counter == 2 &amp;&amp; mPreparedness == 1.0f</sString>
+					</startCondition>
+					<useAbilityCooldown>true</useAbilityCooldown>
+					<useAbilityOwnerMana>false</useAbilityOwnerMana>
+				</TriggerApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Add_HealPerCast_Redset5_5</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

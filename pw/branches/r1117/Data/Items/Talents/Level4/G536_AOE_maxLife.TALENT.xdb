@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/GameLogic/AILogic.AILP" Count="1" />
+	<BackLink DBID="/GameLogic/TalentGroup.TGRP" Count="1" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_Rar6_Set3" Count="1" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_Rar6_Set3_kit5" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset3_5_AOE/Redset3_5_AOE.TALKIT" Count="2" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/GhostLord_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="3" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_NormTal.ROLLCONT" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_RedSet3.ROLLCONT" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet3.TALENTSET" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_Season9_Mediocre.ROLLCONT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Ratcatcher_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_NY2020_MediocreList.ROLLCONT" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_Season13_MediocreList.ROLLCONT" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="383EF070-2D86-4B3F-AAFD-216D11755B9B">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Эффект при использовании</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/Buffs/Defence/_GreenUp.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="CE2A2881-309A-406F-9371-130D7A31EFF1">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Спел с хилом</caption>
+				<enabled>
+					<compiledString>FQsAAAABAAAAFQAAAEc1MzZTdGF0dXMAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.FindApplicator("G536Status",pMisc,GLOBAL) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="6978AB3F-1E7E-48DA-AED8-486290DB02E8">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="27AA736D-B4A4-4230-98E9-23DFFA09B3C2">
+								<HealApplicator>
+									<amount>
+										<compiledString>FQ8AAAABAAAAQQAAAEhlYWx0aEluY3JlYXNlAFWL7IPsFItFDIsQi00MiwL/0ItNDIsRi00Mi0IM3V34/9DcffjZ6N7hi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3w/9DcTfDZXezZReyL5V3DAAAAAAAA8D8=</compiledString>
+										<returnType>float</returnType>
+										<sString>(1 - rLife/rMaxLife) *cHealthIncrease</sString>
+									</amount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>Heal</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<healTarget>Health</healTarget>
+									<ignoreHealingMods>false</ignoreHealingMods>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="" />
+								</HealApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="66CF23A6-9370-4587-A79E-B9C0E885F0CE">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="06A621F2-7BA5-459D-957E-B334B9D8EE9A">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Спел со статусом</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="339C71D8-061F-415A-B56E-88687ED7CE7A">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Level4/status_G536_AddHealth.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="6DCE7FA1-5994-4411-9136-6F1D8FB0FAA3">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="AC21B5D6-67C1-4BE7-9EF0-F33567C717E3">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange</sString>
+						</range>
+						<targetFilter>1342177311</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G536: Воодушевляющий гимн</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Level4/G536_AOE_maxLife.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="60B6829C-0577-4DD1-9A56-33AE438348EF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSEAAAAEAAAAMAAAAEMAAABPAAAAaAAAAEc1MzZfa2l0Q291bnRlcl9UVAAARzUzNgAAAABHNTM2AFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B20AAAA3+D2xEF1WGgUAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoHAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdAnHRfQAAAAA6wfHRfQBAAAAikX0i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>!(cG536_kitCounter_TT&gt;0&amp;&amp;(tal("G536")))</sString>
+				</condition>
+				<name>FormNotActiveSession</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="0397855B-1912-46A3-AC66-7DB3CBE0E58E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSEAAAACAAAAMAAAAEoAAABHNTM2X2tpdENvdW50ZXJfVFQAAEc1MzZfTWF4Rm9ybQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBQAAACLVRCLAotNEItQUN1d+P/S3F343+D2xAV6CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>cG536_kitCounter_TT&gt;cG536_MaxForm</sString>
+				</condition>
+				<name>FormOverChargedSession</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="F789E7A4-DB05-4B63-A14D-176A56FF3F19">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSkAAAAEAAAAOAAAAEsAAABXAAAAcAAAAEc1MzZfa2l0Q291bnRlcl9UVF9DYXN0bGUAAABHNTM2AAAAAEc1MzYAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHbwAAADf4PbEQXVYaBwAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgkAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0CcdF9AAAAADrB8dF9AEAAACKRfSL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>!(cG536_kitCounter_TT_Castle&gt;0&amp;&amp;(tal("G536")))</sString>
+				</condition>
+				<name>FormNotActiveCastle</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="D3D46A8C-5F00-41D6-98DF-48BAA6DDFB0D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSkAAAACAAAAOAAAAFIAAABHNTM2X2tpdENvdW50ZXJfVFRfQ2FzdGxlAAAARzUzNl9NYXhGb3JtAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/Si0UMUItNCFFoHAAAAItVEIsCi00Qi1BQ3V34/9LcXfjf4PbEBXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cG536_kitCounter_TT_Castle&gt;cG536_MaxForm</sString>
+				</condition>
+				<name>FormOverChargedCastle</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="E65AE88E-F8BA-4F36-B96B-26BE0D2DB974">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTM3X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1tAAAA3+D2xEF1LYtNDIsRi00Mi0JQ/9CD+AN0EotNDIsRi00Mi0JQ/9CD+AR1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>(sender.vG537_Active &gt; 0) &amp;&amp; (receiver.UnitKind == 3 || receiver.UnitKind == 4)</sString>
+				</condition>
+				<name>G537_Creeps</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="063D9A76-A3A8-44A0-AD8D-E0839320D197">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTM4X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG538_Active &gt; 0</sString>
+				</condition>
+				<name>G538_Aura_Sta</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="1913F63A-D989-4717-A87F-E9FDCD318A1D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTM5X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG539_Active &gt; 0</sString>
+				</condition>
+				<name>G539_Aura_Will</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="EF7E12C7-36E6-43C5-BD1D-D17207C17476">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTQwX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG540_Active &gt; 0</sString>
+				</condition>
+				<name>G540_Aura_Str</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="9E0E0C90-60DA-4AB0-9ACF-F9E16999BFAF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTQxX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG541_Active &gt; 0</sString>
+				</condition>
+				<name>G541_Aura_Int</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="2DE26251-E286-4ECB-BBF4-807031628B86">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FTAAAAAIAAAANQAAAEsAAABXAAAAbQAAAHkAAACPAAAAmwAAALEAAABHNTQwX0FjdGl2ZQBHNTQxX0FjdGl2ZQBHNTM4X0FjdGl2ZQBHNTM5X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B3TAAAA3+D2xEF0b2gMAAAAi00IixGLTQiLgogBAAD/0Nwd0wAAAN/g9sRBdE1oGAAAAItNCIsRi00Ii4KIAQAA/9DcHdMAAADf4PbEQXQraCQAAACLTQiLEYtNCIuCiAEAAP/Q3B3TAAAA3+D2xEF0CcdF/AAAAADrB8dF/AEAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG540_Active &gt; 0 || sender.vG541_Active &gt; 0 || sender.vG538_Active &gt; 0 || sender.vG539_Active &gt; 0</sString>
+				</condition>
+				<name>G540orG541orG538orG539</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="15D1BD28-0C84-4042-8147-A2C24B302FDB">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTQ2X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG546_Active &gt; 0</sString>
+				</condition>
+				<name>G546_Life_StaOrWill</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="E54E63DE-A452-4646-8FD4-3702CE313613">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTM3X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG537_Active &gt; 0</sString>
+				</condition>
+				<name>G537_StrOrInt</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="50279E03-DE2D-4ACC-86F7-D73E7376FB88">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G536_MaxForm" />
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="436BB86D-408E-44B3-8F4A-A2543D90E522">
+					<UnitConstant>
+						<name>G536_kitCounter_TT</name>
+						<var>
+							<compiledString>FQ0AAAACAAAAFAAAAC0AAABHNTM2AAAAAEc1MzYAVYvsg+wYaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCLTRCLEYtNEItCeP/QiUX020X0Udnu2RwkUdno2RwkD7ZN+1HdXezoGAAAAIPEDNxt7Nld6NlF6IvlXcMAAIA/AAAAAFWL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>mActivatedWithinKit - s(tal("G536"), 1 , 0)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="0F647B83-A9AB-4686-BB97-FDF60D5C5B21">
+					<UnitConstant>
+						<name>G536_kitCounter_TT_Castle</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUVHZ7tkcJItFEIsQi00Qi0J4/9CD6AGJRfzbRfxR2Rwk6AsAAACDxAiL5V3DAAAAAFWL7FHZRQjZRQze2d/g9sQFegjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>max(mActivatedWithinKit - 1, 0)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="742D8584-BEE1-4DDD-96C6-AD675230EF27">
+					<UnitConstant>
+						<name>TECH_FormCapacity</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAEc1MzZfTWF4Rm9ybQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cG536_MaxForm</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="22629B57-7C02-4503-8C96-37A082F1F00C">
+					<UnitConstant>
+						<name>Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="BC7B2CC2-1EDB-4EE5-A6D7-D0BF5E81BBB1">
+					<UnitConstant>
+						<name>Duration</name>
+						<var>
+							<compiledString>FScAAAAEAAAALgAAAEQAAAB8AAAAnAAAAEc1MzdfQWN0aXZlAEc1MzdfQWRkX2hlYWx0aF9Gb3JfQ3JlZXBzAFWL7IPsCGgAAAAAi0UIixCLTQiLgogBAAD/0NwdtgAAAN/g9sRBdUOLTQyLEYtNDItCUP/Qg/gDdBKLTQyLEYtNDItCUP/Qg/gEdR+LTQxRi1UIUmgMAAAAi0UQixCLTRCLQlD/0Nld/OsF2ejZXfzZRfzcDaoAAADZXfjZRfiL5V3DAAAAAAAANEAAAIA/AAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>20 * (sender.vG537_Active &gt; 0 &amp;&amp; (rUnitKind == 3 || rUnitKind == 4) ? cG537_Add_health_For_Creeps : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="5689E954-AA35-4FAA-800D-CE6C22FD2207">
+					<UnitConstant>
+						<name>HealthIncrease</name>
+						<var>
+							<compiledString>FTcAAAAEAAAAPgAAAFQAAACMAAAAsAAAAEc1MzZfSGVhbHRoSW5jAABHNTM3X0FjdGl2ZQBHNTM3X0FkZF9oZWFsdGhfRm9yX0NyZWVwcwBVi+yD7AhoEAAAAItFCIsQi00Ii4KIAQAA/9DcHdIAAADf4PbEQXVDi00MixGLTQyLQlD/0IP4A3QSi00MixGLTQyLQlD/0IP4BHUfi00MUYtVCFJoHAAAAItFEIsQi00Qi0JQ/9DZXfzrBdno2V38i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9DYTfzZXfjZRfiL5V3DAACAPwAAAAAAAAAA</compiledString>
+							<returnType>float</returnType>
+							<sString>cG536_HealthInc * (sender.vG537_Active &gt; 0 &amp;&amp; (rUnitKind == 3 || rUnitKind == 4) ? cG537_Add_health_For_Creeps : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G537_Add_Health_For_Creeps" />
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G538_Add_Stamina" />
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G540_Add_Str" />
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G541_Add_Int" />
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="224FBB47-AFE3-450D-A69D-85D0C9AE24EB">
+					<UnitConstant>
+						<name>G536_HealthInc</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAm0MAAHBB</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(310, 15)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G546_Haste_Duration" />
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G546_Haste_Percent" />
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="73829996-C605-4815-8D7A-972651A151A7">
+					<UnitConstant>
+						<name>Haste_Duration</name>
+						<var>
+							<compiledString>FRQAAAABAAAAIAAAAEc1NDZfSGFzdGVfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cG546_Haste_Duration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="3B95D48C-BD84-4F19-A78E-EBDE45BDA025">
+					<UnitConstant>
+						<name>Haste_Percent</name>
+						<var>
+							<compiledString>FRMAAAABAAAAHwAAAEc1NDZfSGFzdGVfUGVyY2VudABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cG546_Haste_Percent</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="F68496CE-38CF-40AA-8520-1F671165A121">
+					<UnitConstant>
+						<name>Haste_StartCondition</name>
+						<var>
+							<compiledString>FQwAAAACAAAAEQAAACcAAABHNTQ2X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vG546_Active &gt; 0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="E39659F1-50F0-43AF-BDEC-756B3E698B90">
+					<UnitConstant>
+						<name>Add_Life</name>
+						<var>
+							<compiledString>FQsAAAADAAAAFAAAAB4AAAA7AAAATGlmZUJ1ZGdldABVi+yD7AxR2QVgAAAA2RwkUdkFXAAAANkcJItFEIsQi00Qi0Js/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0NxN+Nld9NlF9IvlXcMAAOBAuB4FPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(7,0.52)*cLifeBudget</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/const_G539_Add_Will" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAWQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>150</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level4/G536_AOE_maxLife.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="950B18A3-33E4-4809-BE79-89D05BA54B59">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>3</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_536.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>3</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level4/G536_AOE_maxLife.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" id="795BDDAC-E62E-47BF-A9D1-7CD5007073D0">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Add_Life</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQkAAAABAAAAFQAAAEFkZF9MaWZlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cAdd_Life</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>G536</persistentId>
+	<prerequisiteTalents />
+	<rarity>outstanding</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Level4/G536_AOE_maxLife.TALENT_shortDescription.txt" />
+	<talentRollGroups>16</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

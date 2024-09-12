@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/Katana/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Katana/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Katana/status_A0_SUP_Burn.APLR" id="8F19571B-6510-4B0E-A180-39F302B7AADC">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>burn every tick</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRAAAAABAAAAGgAAAEthdGFuYV9CdXJuX0RvVABVi+xqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.applKatana_Burn_DoT(UNIT) == pMisc</sString>
+				</enabled>
+				<formulaName>Katana_Burn_DoT</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FRMAAAABAAAAHwAAAEEwX1NVUF9CdXJuX1BlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cA0_SUP_Burn_Period</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Katana/status_A0_SUP_Burn.APLR" id="FC0168A6-A5E2-4102-98CE-03F160F28C34">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Katana/status_A0_SUP_Burn.APLR" id="548348CB-7D3C-449D-8139-E0CF6CE2CCD6">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>deal dmg</caption>
+									<damage>
+										<compiledString>FSMAAAACAAAAMgAAAEoAAABBMF9TVVBfQnVybl9EUFMAS2F0YW5hX0EwX1NVUF9CdXJuAFWL7IPsEItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SagGLRRBQaBAAAACLTQyLEYtNDIuCoAEAAN1d+P/QiUX020X03E342V3w2UXwi+Vdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cA0_SUP_Burn_DPS * receiver.CountApplicators( "Katana_A0_SUP_Burn", pMisc, UNIT )</sString>
+									</damage>
+									<damageMode>0</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Katana/status_A0_SUP_Burn.APLR" id="391A0799-5814-448B-BD20-A08B7AE79A4A">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Katana/status_FX_A0_SUP_Burn.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>A0_SUP_Burn</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Katana/status_A0_SUP_Burn.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ0AAAAEAAAAVQAAAHUAAACLAAAAnQAAAElzQ2xvbmUAV2FyZABVi+yD7AiLRQyLEItNDItCUP/QM8mD+BEPlcGJTfzbRfxR2RwkUdnu2RwkagGLVQyLAotNDItQWP/SD7bAUOiJAAAAg8QM3B3NAAAA3+D2xER7X4tNCIsRi00Ii0JU/9APtsiFyXUiaAAAAACLVQiLAotNCIuQiAEAAP/S3B3NAAAA3+D2xER7KWoAi0UQUGgIAAAAi00MixGLTQyLgpwBAAD/0DtFEHUJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAAAAAABVi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>ut_bldg( false, rUnitKind != 17 ) &amp;&amp; (sIsHero || sender.vIsClone != 0) &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+	</enabled>
+	<flags>3</flags>
+	<formulaName>Katana_A0_SUP_Burn</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Katana/A0.ITEX" />
+	<lifeTime>
+		<compiledString>FRUAAAABAAAAIQAAAEEwX1NVUF9CdXJuX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA0_SUP_Burn_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Katana/status_A0_SUP_Burn.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>2</stackCount>
+	<startCondition>
+		<compiledString>FR4AAAACAAAAJQAAAD4AAABLYXRhbmFfQTBfU1VQAAAAS2F0YW5hX0EwX1NVUABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Katana_A0_SUP")</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

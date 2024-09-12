@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Summons/JackInTheBox/_.SUMMONED" Count="1" />
+	<applicators>
+		<Item href="/Summons/JackInTheBox/status_PinkGirl_Taunt.APLR" id="64352488-A3CD-4BC4-967E-D47FED856A65">
+			<TauntApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> -- таунтим на AbilityOwner (для героев)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQlT/0F3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>rIsHero</sString>
+				</startCondition>
+				<strongTarget>true</strongTarget>
+				<tauntTarget>AbilityOwner</tauntTarget>
+			</TauntApplicator>
+		</Item>
+		<Item href="/Summons/JackInTheBox/status_PinkGirl_Taunt.APLR" id="FB702688-C279-4A4E-8D46-53972818922E">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> -- запрещаем все кроме автоатаки</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/Debuffs/Taunt/_.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>8914554</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsException</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Summons/JackInTheBox/status_PinkGirl_Taunt.APLR" id="27A8572A-6D81-463C-8E9A-657D8CDA6906">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>set Taunted</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Taunted</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption> -- Taunt status (Taunt_Duration, таунт получателя статуса на AbilityOwner)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Summons/JackInTheBox/status_PinkGirl_Taunt.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAADAAAAFAAAACoAAABDAAAASW1tdW5lMkNvbnRyb2wAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdZQAAAN/g9sREeiKLTQiLEYtNCIsC/9DcHWUAAADf4PbERHsJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vImmune2Control == 0 &amp;&amp; pFirst-&gt;Life != 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>StatusTaunt</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/PinkGirl/A5.ITEX" />
+	<lifeTime>
+		<compiledString>FQ8AAAABAAAAGwAAAFRhdW50X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cTaunt_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Summons/JackInTheBox/status_PinkGirl_Taunt.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRUAAAACAAAAIgAAADUAAABUYXVudF9TdGFydENvbmRpdGlvbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVEAAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>cTaunt_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

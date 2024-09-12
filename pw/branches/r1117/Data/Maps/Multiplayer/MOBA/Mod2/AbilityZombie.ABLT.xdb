@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/Multiplayer/PFmap/Mod2/_.ADMPSTTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mod2/_.ADMPSTTN" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption>Статус для мод2 на ПвП карте накладываем на ГЗ</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT" id="FF482DCF-108C-4466-8912-8023F4903157">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT" id="755DCC2E-6565-4A1E-A734-83FB100F5B54">
+					<UnitConstant>
+						<name>CreateProc</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACMQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>70</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT" id="117FCC6C-80E0-4E1E-BDAF-0ABFBED134E2">
+					<UnitConstant>
+						<name>CreateProcAbility</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT" id="3B45DFD0-0199-4A20-9122-E2792B49BA59">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Раздаем всем героям</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT" id="845D493F-0011-4137-8CB5-339E9834A837">
+					<Spell>
+						<applicators>
+							<Item href="/Maps/Multiplayer/MOBA/Mod2/StatusHeroes.APLR" />
+						</applicators>
+						<dispatch href="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT" id="D1A75F71-789A-4C9A-8841-2A3729E76A9C">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Maps/Multiplayer/MOBA/Mod2/AbilityZombie.ABLT" id="2DA6A5F8-70EC-4247-96AA-7AFD92634741">
+					<HeroEnumerator>
+						<flags>2</flags>
+						<mode>SendOnce</mode>
+						<targetFilter>272629763</targetFilter>
+					</HeroEnumerator>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

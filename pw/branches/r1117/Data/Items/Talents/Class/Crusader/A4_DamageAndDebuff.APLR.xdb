@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Crusader/A4_Dispatch.DSCH" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>рассылаем урон врагам и понижаем им защиту</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="458A3FEC-73F6-4629-86C0-B7CBCEFA9EB1">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="8616001D-7129-4FAA-96B9-CE7A0E94CB33">
+					<SpellSwitchApplicator>
+						<activeSpellIndex>
+							<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgkABAAD/0ItNDIsRi00Mi4JEAQAA3V34/9DcXfjf4PbEBXoJx0X0AAAAAOsHx0X0AQAAAItF9IvlXcM=</compiledString>
+							<returnType>int</returnType>
+							<sString>rStamina &gt; rWill ? 0 : 1</sString>
+						</activeSpellIndex>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем, что понижать</caption>
+						<dontUseDispatches>true</dontUseDispatches>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spells>
+							<Item href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="F0B05654-4EA0-4AF8-929F-963B6178606F">
+								<Spell>
+									<applicators>
+										<Item href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+							<Item href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="9D0A51A1-F0DC-492E-AD79-288F64431E0A">
+								<Spell>
+									<applicators>
+										<Item href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+						</spells>
+					</SpellSwitchApplicator>
+				</Item>
+				<Item href="/Heroes/DefaultStatus/_BLIND_status.APLR" />
+				<Item href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="A9D350C9-E3FF-4C9A-A5F5-0EC98717C3A1">
+					<PermanentStatModApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>Набираем счётчик целей</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+								<returnType>float</returnType>
+								<sString>1</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Crusader_A4Targets</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/var_A0_AddStack.APLR" />
+				<Item href="/Items/Talents/Class/Crusader/fx_A0_AddStack.APLR" />
+				<Item href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="866A0AFA-59CF-4696-864F-9808C4ED720C">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>урон</caption>
+						<damage>
+							<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_Damage</sString>
+						</damage>
+						<damageMode>4</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="CF582530-A44D-48BE-BDDD-43032F20BCA1">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>1</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/Crusader/A4_DamageAndDebuff.APLR" id="764D8C16-9C8E-4585-97C0-5298DB965F75">
+		<CapsuleTargetSelector>
+			<cutoffFirstSegment>true</cutoffFirstSegment>
+			<flags>0</flags>
+			<mode>SendOnce</mode>
+			<range>
+				<compiledString>FQYAAAACAAAAEwAAACYAAABXaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTQAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+				<returnType>float</returnType>
+				<sString>cWidth * 0.5</sString>
+			</range>
+			<rangeFromOwner>
+				<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>cA4_Range</sString>
+			</rangeFromOwner>
+			<segmentBegin>PreviousPosition</segmentBegin>
+			<segmentDirectionOffset>0</segmentDirectionOffset>
+			<segmentEnd>CurrentPosition</segmentEnd>
+			<segmentEndTargetSelector href="" />
+			<targetFilter>538771519</targetFilter>
+		</CapsuleTargetSelector>
+	</targetSelector>
+</SpellPeriodicallyApplicator>

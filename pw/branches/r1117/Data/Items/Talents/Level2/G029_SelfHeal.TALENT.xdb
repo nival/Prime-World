@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Ador/m4/m41_qB" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Dokt/m4/m41_qA" Count="1" />
+	<BackLink DBID="/GameLogic/TalentGroup.TGRP" Count="1" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_Rar4" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G509_SelfHeal.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G623_SelfHeal.TALENT" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="1" />
+	<BackLink DBID="/Test/Talents/TestSet4.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Archeress/Elite_Stat_1.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Hunter/Elite_PvE.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Mage/Elite_PvE.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Thunder/Elite_Str_1.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="C88301C7-7D36-4FBD-A94D-A38EE22C772D">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FQ8AAAACAAAAFAAAACoAAABQYW50aGVySXNBbGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1YAAAA3+D2xER7CcdF/AEAAADrB8dF/AAAAADbRfxR2Rwk6A8AAACDxASL5V3DAAAAAAAA8D+4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+					<returnType>int</returnType>
+					<sString>f2l(sender.vPantherIsAlive != 1)</sString>
+				</activeSpellIndex>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Выбор: мы одни или с кошкой</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="AFC0A130-31B0-4E05-B394-BBDFA35E6755">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="E073B4D4-CC05-46AB-8ECB-38FF01600CEA">
+									<SpellApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<caption>Есть кошка: спелл в саммона с хилами</caption>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="16C07AB1-EEB1-47EE-A292-F1FE9F7F5115">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="7F5A1DF2-578E-4A18-B3A2-8A05434B3AC1">
+														<PermanentStatModApplicator>
+															<applyTarget>AbilityOwner</applyTarget>
+															<caption>Запоминаем нехватку Здоровья у кошки</caption>
+															<customApplyType>None</customApplyType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FR8AAAAEAAAAJgAAADwAAABPAAAAZAAAAFBhbnRoZXJJc0FsaXZlAABUYXJnZXQAAFRhcmdldABVi+yD7BxoAAAAAItFCIsQi00Ii4KIAQAA/9DcHa8AAADf4PbERHsH2e7dXfjrTGgQAAAAi00QixGLTRCLQkz/0IlF9GgYAAAAi00QixGLTRCLQkz/0IlF8ItN8IsRi03wiwL/0ItN9IsRi030i0IM3V3o/9DcZejdXfjdRfjZXeTZReSL5V3DAAAAAAAAAAAAAAAAAADwPw==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>sender.vPantherIsAlive != 1 ? 0 : appl.oTarget.MaxLife - appl.oTarget.Life</sString>
+																</addValue>
+																<multValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>false</topModifier>
+																<variable>G029_ThisHealPantherLifeLack</variable>
+															</modifier>
+															<providerName></providerName>
+														</PermanentStatModApplicator>
+													</Item>
+													<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="E55D0AB6-CF59-401D-9313-5BA6EC8DE8F2">
+														<HealApplicator>
+															<amount>
+																<compiledString>FSkAAAACAAAANQAAAEsAAABIZWFsQW1vdW50AABHMDI5X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJGgMAAAAi0UIixCLTQiLgogBAAD/0FHZHCToBQAAAIPECF3DVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+																<returnType>float</returnType>
+																<sString>min(sender.vG029_ThisHealPantherLifeLack, cHealAmount)</sString>
+															</amount>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>Есть кошка: хил в саммона</caption>
+															<enabled>
+																<compiledString>FR0AAAACAAAAIgAAADgAAABHMDI5X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHVoAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+																<returnType>bool</returnType>
+																<sString>sender.vG029_ThisHealPantherLifeLack &gt; 0</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<healTarget>Health</healTarget>
+															<ignoreHealingMods>false</ignoreHealingMods>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+														</HealApplicator>
+													</Item>
+													<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="6EC183DF-2717-4F0A-84FC-D9C4ABF0E07E">
+														<HealApplicator>
+															<amount>
+																<compiledString>FSkAAAACAAAAOAAAAEoAAABIZWFsQW1vdW50AABHMDI5X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SaAwAAACLRQiLEItNCIuCiAEAAN1d+P/Q3G342V302UX0UdkcJFHZ7tkcJOgLAAAAg8QIi+VdwwAAAABVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+																<returnType>float</returnType>
+																<sString>max(0, cHealAmount - sender.vG029_ThisHealPantherLifeLack)</sString>
+															</amount>
+															<applyTarget>AbilityOwner</applyTarget>
+															<caption>Есть кошка: хил в героя</caption>
+															<enabled>
+																<compiledString>FSsAAAACAAAAMgAAAE8AAABHMDI5X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAAAAAEhlYWxBbW91bnQAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+																<returnType>bool</returnType>
+																<sString>sender.vG029_ThisHealPantherLifeLack &lt; cHealAmount</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<healTarget>Health</healTarget>
+															<ignoreHealingMods>false</ignoreHealingMods>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+														</HealApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="943C715B-A25F-432A-A9CF-6C5B5CA52EDF">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>0</flags>
+														<instantApply>true</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="483D560A-3543-40EA-A7CE-1CD7A6E5685A">
+											<RelativeUnitTargetSelector>
+												<relation>AlphaSummon</relation>
+											</RelativeUnitTargetSelector>
+										</targetSelector>
+									</SpellApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="62DE1A20-2A58-4162-ABBD-6AD3FF02E514">
+						<Spell>
+							<applicators>
+								<Item href="/GameLogic/GeneralApplicators/Heal.APLR" />
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+	</applicators>
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G029: Дыхание жизни</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Level2/G029_SelfHeal.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<conflictingTalents>
+		<Item href="/Items/Talents/Level2/G509_SelfHeal.TALENT" />
+		<Item href="/Items/Talents/Level2/G623_SelfHeal.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="8126A1FA-F70E-42A7-A791-0CEC3EF64358">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="9F830F80-1D6B-438E-8758-91EE36955216">
+					<UnitConstant>
+						<name>HealAmount</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAekMAAHBB</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(250, 15)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>80</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level2/G029_SelfHeal.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="2A6E5399-B47D-4C7D-8B95-DD1370FA6DB0">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Buffs/Regen/_.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>19</flags>
+	<forceBonus>9</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_029.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Items/Talents/Level2/G029_SelfHeal.TALENT" id="C7092C15-274B-41D5-9497-46D07ABF396A">
+		<BasicMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQsAAAABAAAANgAAAEhlYWxBbW91bnQAVYvsg+wUi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d8P/Q3G3w3F343+D2xEF1CcdF7AEAAADrB8dF7AAAAACKReyL5V3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>rLife &lt; rMaxLife - cHealAmount</sString>
+			</condition>
+		</BasicMicroAI>
+	</microAI>
+	<minLevel>1</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level2/G029_SelfHeal.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId>G029</persistentId>
+	<prerequisiteTalents />
+	<rarity>magnificent</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Level2/G029_SelfHeal.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

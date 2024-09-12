@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/GhostLord/A2_Enemy.SPLL" id="9A9623C7-2BC4-4D87-97E0-6848E2AEA202">
+			<VariableProxyApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/GhostLord/A2_Enemy.SPLL" id="2550EE75-E608-4F20-8B7D-3F7820790DC1">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+								<damage>
+									<compiledString>FREAAAABAAAAHQAAAEExX0RhbWFnZVBlclRpY2sAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>cA1_DamagePerTick</sString>
+								</damage>
+								<damageMode>4</damageMode>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString></compiledString>
+								</enabled>
+								<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/GhostLord/A2_Enemy.SPLL" id="1DB0CEF3-2E8E-4BBA-8C49-79D4926BB335">
+							<HealApplicator>
+								<amount>
+									<compiledString>FUYAAAAEAAAATQAAAGYAAACkAAAAyAAAAEExX0hlYWxQZXJUaWNrAABHaG9zdExvcmRfQTF1AAAAR2hvc3RMb3JkX0ExdQAAAEExdV9JbmNIZWFsaW5nUGVyVGljawBVi+yD7BBoEAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaCAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQfi1UMUotFCFBoMAAAAItNEIsRi00Qi0JQ/9DZXfTrBdnu2V30i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9DYRfTZXfDZRfCL5V3DAAAAAA==</compiledString>
+									<returnType>float</returnType>
+									<sString>cA1_HealPerTick + (tal("GhostLord_A1u") ? cA1u_IncHealingPerTick : 0)</sString>
+								</amount>
+								<applyTarget>AbilityOwner</applyTarget>
+								<caption>лечение</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<healTarget>Health</healTarget>
+								<ignoreHealingMods>false</ignoreHealingMods>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+							</HealApplicator>
+						</applicator>
+						<variableNames>
+							<Item>amountRestored</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/GhostLord/A2_Enemy.SPLL" id="0ECFD4F6-887D-47C7-849B-3BB91B5E251F">
+							<PermanentStatModApplicator>
+								<applyTarget>AbilityOwner</applyTarget>
+								<caption>записать лечение в GhostLordA1_TotalLife</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString>FQ8AAAABAAAAJAAAAGFtb3VudFJlc3RvcmVkAFWL7FGLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Qi+Vdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>$ParentApplVariable("amountRestored")</sString>
+									</addValue>
+									<multValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>GhostLordA1_TotalLife</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</applicator>
+						<variableNames />
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>урон и лечение</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+			</VariableProxyApplicator>
+		</Item>
+	</applicators>
+	<dispatch href="/Items/Talents/Class/GhostLord/A2_Enemy.SPLL" id="8E55F923-0648-4D5E-8735-A5664F0432C8">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Buffs/Regen/_TimeShortPurple.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>1</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

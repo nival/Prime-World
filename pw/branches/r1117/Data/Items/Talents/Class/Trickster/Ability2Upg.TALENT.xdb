@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Items/Talents/Trickster.TALENTSET" Count="1" />
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Trickster_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Trickster_Mighty.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/ThunderGod/_A0_SUP_Strike.APLR" />
+		<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="2D24F52E-3B6B-4964-B59C-070619DD7918">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>на родной земле или нет</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQcAAAABAAAAEQAAAFN0b3BOVABVi+xqAotFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applStopNT(ABILITY) == pMisc</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName>Sender_NativeTerrain</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FRUAAAACAAAAIgAAADUAAABTZW5kZXJfTmF0aXZlVGVycmFpbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVEAAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cSender_NativeTerrain</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/ThunderGod/_ElectroStack_ModeOn.APLR" />
+		<Item href="/Items/Talents/Class/ThunderGod/status_A0_ChainLighting.APLR" />
+		<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="7F7AB8B4-DC5B-49F8-9C2D-7B73BFA35484">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - тут собственно диспатч молнии и дамаг (вынес отдельно, чтобы А0 вешался на героя сразу)</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="1D3DC056-CD99-47E6-B498-117FED144A88">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="FD72C3EE-D031-4A49-9815-0B2AFEF9FAE0">
+								<SpellApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>анимация аое дамага</caption>
+									<enabled>
+										<compiledString>FRUAAAABAAAAHwAAAFNlbmRlcl9OYXRpdmVUZXJyYWluAFWL7GoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DPJO0UQD5XBisFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>sender.applSender_NativeTerrain(ABILITY) != pMisc; //cSender_NativeTerrain</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spell href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="98F1C94F-114A-4DDC-94E2-FDF5BABA97E0">
+										<Spell>
+											<applicators>
+												<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="FE5CE224-7A81-47E9-B7B2-8ABC70153D7A">
+													<FlagsApplicator>
+														<applyTarget>AbilityOwner</applyTarget>
+														<behaviorFlags>216</behaviorFlags>
+														<caption>затычка для останова Sender_NativeTerrain</caption>
+														<consumables />
+														<effect>
+															<Item href="" />
+															<Item href="" />
+														</effect>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<flag>0</flag>
+														<formulaName>StopNT</formulaName>
+														<lifeTime>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>0.1</sString>
+														</lifeTime>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<startCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</startCondition>
+														<talents />
+														<useListAs>ListAsRule</useListAs>
+													</FlagsApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="72998F09-8C2B-406E-94CD-F4C5C20C7C9E">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="/Effects/Debuffs/ShockWave/_Purple.EFFT" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>true</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+									<spellTarget>ApplicatorTarget</spellTarget>
+									<targetSelector href="" />
+								</SpellApplicator>
+							</Item>
+							<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="81F9C410-53A3-46AD-BB48-11CE34BFD4AC">
+								<SpellApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>Дамаг цели</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spell href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="A8BE2264-3199-4EC9-A34A-928AA54A4481">
+										<Spell>
+											<applicators>
+												<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="48B27B73-CDBA-4A85-8B43-9FB0E57B6865">
+													<DamageApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<cancelInvisibility>false</cancelInvisibility>
+														<caption></caption>
+														<damage>
+															<compiledString>FQkAAAABAAAAFQAAAEEyZGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+															<returnType>float</returnType>
+															<sString>cA2damage</sString>
+														</damage>
+														<damageMode>0</damageMode>
+														<damageType>Energy</damageType>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<timeLimiter>-1</timeLimiter>
+														<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+													</DamageApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="05DCEFD8-4A40-4012-AF81-9B554F4E816D">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>1</flags>
+													<instantApply>false</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+									<spellTarget>ApplicatorTarget</spellTarget>
+									<targetSelector href="" />
+								</SpellApplicator>
+							</Item>
+							<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="BDCEA402-3874-42BE-9AAA-FA755C0AED4C">
+								<SpellApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>Аое дамаг</caption>
+									<enabled>
+										<compiledString>FRUAAAABAAAAHwAAAFNlbmRlcl9OYXRpdmVUZXJyYWluAFWL7GoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DPJO0UQD5XBisFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>sender.applSender_NativeTerrain(ABILITY) != pMisc; //cSender_NativeTerrain</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spell href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="3C8A8373-D9B6-484F-A53C-7905217FFDDB">
+										<Spell>
+											<applicators>
+												<Item href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="8820612F-8F8D-4861-9622-BDDC6CC3F394">
+													<DamageApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<cancelInvisibility>false</cancelInvisibility>
+														<caption> - Нанесение урона</caption>
+														<damage>
+															<compiledString>FQwAAAABAAAAGAAAAEEyYW9lZGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+															<returnType>float</returnType>
+															<sString>cA2aoedamage</sString>
+														</damage>
+														<damageMode>0</damageMode>
+														<damageType>Energy</damageType>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<timeLimiter>-1</timeLimiter>
+														<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+													</DamageApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="3920025E-19FC-49F3-B8AA-A27618FB6701">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>1</flags>
+													<instantApply>false</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+									<spellTarget>ApplicatorTarget</spellTarget>
+									<targetSelector href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="6860CC86-45CF-4EA4-BCCF-CD0E283107A2">
+										<AreaTargetSelector>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<flags>1</flags>
+											<mode>Normal</mode>
+											<range>
+												<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX1Nob3J0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cRange_Short</sString>
+											</range>
+											<targetFilter>547160127</targetFilter>
+											<targetSelector href="" />
+										</AreaTargetSelector>
+									</targetSelector>
+								</SpellApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="1600E397-2415-4486-9776-78656B56FADE">
+							<DispatchLinear>
+								<aiming>Homing</aiming>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Shots/Lightning/_Hit.EFFT" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Effects/Shots/Lightning/_Ball.EFFT" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<flyMode>Linear</flyMode>
+								<fromLocator>Attack</fromLocator>
+								<height>0</height>
+								<killEffect>true</killEffect>
+								<locatorOrient>true</locatorOrient>
+								<maxDeviation>180</maxDeviation>
+								<maxDistance>40</maxDistance>
+								<maxRise>0.5</maxRise>
+								<minRise>0</minRise>
+								<persistentApplicators />
+								<speed>6</speed>
+								<suspendTime>0</suspendTime>
+								<toLocator>Body</toLocator>
+							</DispatchLinear>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А2у. Рокировка.</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Trickster/condition_Trickster_A2" />
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="4E504E2E-599F-47E4-922C-E61C81658343">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Trickster/const_A2u_Heal_Amount" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>8</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Trickster/Ability2Upg.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Trickster/Ability2Upg.TALENT" id="4D1B5A3D-CB70-45CE-B5FD-571D8FE246AE">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>3</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Trickster/A2_2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACqQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>85</sString>
+	</manaCost>
+	<marker>doCast2</marker>
+	<microAI href="" />
+	<minLevel>1</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>290</naftaCost>
+	<name textref="/Items/Talents/Class/Trickster/Ability2Upg.TALENT_name.txt" />
+	<node>ability2</node>
+	<passiveApplicators />
+	<persistentId>Trickster_A2u</persistentId>
+	<prerequisiteTalents>
+		<Item href="/Items/Talents/Class/Trickster/Ability2.TALENT" />
+	</prerequisiteTalents>
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>672923711</targetType>
+	<type>Passive</type>
+	<upgradeLevel>1</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

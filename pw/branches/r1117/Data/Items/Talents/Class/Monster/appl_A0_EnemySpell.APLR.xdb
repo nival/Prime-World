@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Monster/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Monster/appl_A0_Trigger.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Спелл во врагов</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Monster/appl_A0_EnemySpell.APLR" id="E2A131BF-CF7F-4BCF-98F7-45A6532E1C07">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Monster/status_A0_Explosion.APLR" />
+				<Item href="/Items/Talents/Class/Monster/appl_A0_EnemySpell.APLR" id="9B08496F-563F-4942-AA0B-48F13222601A">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>Урон А0</caption>
+						<damage>
+							<compiledString>FQoAAAABAAAAFgAAAEEwX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA0_Damage</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Monster/appl_A0_EnemySpell.APLR" id="9FC4D37E-3F9C-4808-9C9A-D4C3F3005A6B">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/Monster/appl_A0_EnemySpell.APLR" id="FA704942-C8FC-4E91-A316-065EB694C54B">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FQ4AAAABAAAAGAAAAE5ldXRyYWxTdGF0dXMAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.FindApplicator("NeutralStatus", pMisc, GLOBAL) == pMisc</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<targetSelector href="/Items/Talents/Class/Monster/appl_A0_EnemySpell.APLR" id="78C4FB29-5C29-45E9-8240-053F53F51B0D">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>1</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQkAAAABAAAAFQAAAEEwX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA0_Range</sString>
+					</range>
+					<targetFilter>538705983</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellApplicator>

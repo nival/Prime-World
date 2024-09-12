@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Level2/status_G487_MarkDmg.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="EDABF489-65C5-4D88-8DD1-E1B266A05339">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>217</behaviorFlags>
+				<caption>Триггер на смерть цели</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQYAAAABAAAAEgAAAERlbGF5AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cDelay</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="B4FDC3FA-DA7F-46A1-AC7B-FC9345D26707">
+					<EventProcessorOnDeath>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<castSpellDelay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</castSpellDelay>
+						<checkSender>0</checkSender>
+						<objectFilter>807206975</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="ACE29395-340D-4B21-AA2D-BA695D698DC0">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="163DAF14-31AB-47CD-9072-C04359393923">
+										<ApplicatorNameOverrider>
+											<applicator href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" />
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Раздаем статус</caption>
+											<enabled>
+												<compiledString>FQ4AAAACAAAAGwAAAC4AAABNYXJrQ29uZGl0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdSgAAAN/g9sREewbGRf8B6wTGRf8AikX/i+VdwwAAAAAAAAAA</compiledString>
+												<returnType>bool</returnType>
+												<sString>cMarkCondition</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+										</ApplicatorNameOverrider>
+									</Item>
+									<Item href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="26113B98-D4FD-4104-B738-4D3098B08CF6">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>true</cancelInvisibility>
+											<caption>Урон</caption>
+											<damage>
+												<compiledString>FQcAAAABAAAAEwAAAERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cDamage</sString>
+											</damage>
+											<damageMode>4</damageMode>
+											<damageType>Material</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+										</DamageApplicator>
+									</Item>
+									<Item href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="B17479CE-AFB4-45E7-BDE3-DA367120FD80">
+										<RefreshCooldownApplicator>
+											<allowCdIncrease>false</allowCdIncrease>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>Уменьшаем КД</caption>
+											<enabled>
+												<compiledString>FRMAAAACAAAAIAAAADMAAABSZWZyZXNoQ0RDb25kaXRpb24AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1PAAAA3+D2xER7BsZF/wHrBMZF/wCKRf+L5V3DAAAAAAAAAAA=</compiledString>
+												<returnType>bool</returnType>
+												<sString>cRefreshCDCondition</sString>
+											</enabled>
+											<flags>60</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<reduceByPercent>true</reduceByPercent>
+											<reductionAmount>
+												<compiledString>FREAAAACAAAAHgAAADEAAABHNDkwX0NEUmVkdWN0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNPwAAANld/NlF/IvlXcN7FK5H4XqEPw==</compiledString>
+												<returnType>float</returnType>
+												<sString>cG490_CDReduction * 0.01</sString>
+											</reductionAmount>
+											<refreshThis>false</refreshThis>
+											<talents />
+											<useListAs>ListAsRule</useListAs>
+										</RefreshCooldownApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="ABD8B9A2-B13D-4CC5-9FEC-36462C1A74E4">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnDeath>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQgAAAACAAAADQAAACMAAABJc0Nsb25lAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUUAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsClone == 0</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level2/status_G487_MarkDmg.APLR" id="A9C12533-078A-4E98-B337-AE6D394876D5">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>65</behaviorFlags>
+				<caption>Коррекция времени смерти</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRUAAAACAAAAIgAAADUAAABHNDkxX1RpbWVUb1Jlc3N1cmVjdABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDUMAAADZXfzZRfyL5V3DexSuR+F6hD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>cG491_TimeToRessurect*0.01</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>ReviveTimeScale</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FRkAAAACAAAAJgAAADkAAABUaW1lVG9SZXNzdXJlY3RDb25kaXRpb24AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1VAAAA3+D2xER7BsZF/wHrBMZF/wCKRf+L5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cTimeToRessurectCondition</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>153</behaviorFlags>
+	<caption>Метка на цели</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Effects/Debuffs/Mark/_.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Talents/_487.ITEX" />
+	<lifeTime>
+		<compiledString>FQYAAAABAAAAEgAAAERlbGF5AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cDelay</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQ4AAAAFAAAAcgAAAH4AAACUAAAAoAAAALYAAABJc0Nsb25lAElzUGV0AFWL7IPsCItFDIsQi00Mi0JQ/9CD+BF0G4tNDIsRi00Mi0JQ/9CD+BB0CcdF/AEAAADrB8dF/AAAAADbRfxR2RwkUdnu2RwkagGLTQyLEYtNDItCWP/QD7bIUeh3AAAAg8QM3B3YAAAA3+D2xER7TWgAAAAAi1UIiwKLTQiLkIgBAAD/0twd2AAAAN/g9sREeitoCAAAAItFCIsQi00Ii4KIAQAA/9DcHdgAAADf4PbERHoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAAAAAABVi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>ut_bldg( false, rUnitKind != 17 &amp;&amp; rUnitKind != 16 ) &amp;&amp; sender.vIsClone == 0 &amp;&amp; sender.vIsPet == 0</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

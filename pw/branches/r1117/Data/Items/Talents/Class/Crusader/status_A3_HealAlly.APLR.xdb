@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Crusader/status_A3_HealSelf.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR" id="FE6F5A3E-4740-476F-A152-01D9DE0BA85C">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>период лечение</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR" id="1A7AC1F0-90A5-462E-80EF-6133927205D2">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR" id="358DDA04-6D24-4828-BD09-BF2383DAFCCD">
+								<HealApplicator>
+									<amount>
+										<compiledString>FRMAAAABAAAAHwAAAEEzX0FsbHlfSGVhbFBlclNlYwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA3_Ally_HealPerSec</sString>
+									</amount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>лечить</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<healTarget>Health</healTarget>
+									<ignoreHealingMods>false</ignoreHealingMods>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+								</HealApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR" id="3CC43ED1-C3C6-4CA3-B7E6-AA1BA6B63BDD">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Buffs/Regen/_TimeShort.EFFT" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.5f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR" id="FB644C01-D6FA-458C-8909-C0B77CD0CF94">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption>Add Will</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQ8AAAACAAAAFgAAACwAAABWYW1wUmVzU3RhcnRlZABVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9DcHXsAAADf4PbERHo2i00MixGLTQyLgsgAAAD/0ItNDIsRi00Mi4LMAAAA3V34/9DcXfjf4PbEAXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vVampResStarted == 0 &amp;&amp; rBaseStamina &lt;= rBaseWill</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQwAAAABAAAAGAAAAEEzdV9BZGRXaWxsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA3u_AddWill</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Will</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABDcnVzYWRlcl9BM19TVVAAQ3J1c2FkZXJfQTNfU1VQAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Crusader_A3_SUP")</sString>
+				</startCondition>
+				<statModName>Add_Will</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR" id="8C3540E2-28FE-49B7-81CA-D7626C665857">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption>Add Stamina</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQ8AAAACAAAAFgAAACwAAABWYW1wUmVzU3RhcnRlZABVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9DcHXsAAADf4PbERHo2i00MixGLTQyLgsgAAAD/0ItNDIsRi00Mi4LMAAAA3V34/9DcXfjf4PbEBXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vVampResStarted == 0 &amp;&amp; rBaseStamina &gt; rBaseWill</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQwAAAABAAAAGAAAAEEzdV9BZGRXaWxsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA3u_AddWill</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Stamina</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABDcnVzYWRlcl9BM19TVVAAQ3J1c2FkZXJfQTNfU1VQAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Crusader_A3_SUP")</sString>
+				</startCondition>
+				<statModName>Add_Stamina</statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>Статус самого исцеления</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FSQAAAADAAAAMQAAAFEAAABjAAAAQTNPblRpbWUAAAAAZHVyYXRpb24AAAAAQTNfRHVyYXRpb24AVYvsg+wQagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QiUX8i00MUYtVCFJoGAAAAItFEIsQi00Qi0JQ/9BoDAAAAItN/IsRi038i0JU3V30/9DcdfTZXfDZRfCL5V3D</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.applA3OnTime(UNIT).GetVariable("duration") / cA3_Duration</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>64</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Crusader/A3.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Crusader/status_A3_HealAlly.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

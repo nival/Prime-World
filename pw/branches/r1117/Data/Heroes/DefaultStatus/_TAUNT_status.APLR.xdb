@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlAppl.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlStatusesWithoutSlow.APLS" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/status_A2u_ControlTimeDecrease.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Naga/status_A4_Enemies.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Witcher/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level3/G350_AoE.TALENT" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Episode1/Talents/witcher/Ability1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_TAUNT_status.APLR" id="BF59B5B7-06F0-4B71-903B-3EFBE788A666">
+			<TauntApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> -- таунтим на AbilityOwner (для героев)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQlT/0F3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>rIsHero</sString>
+				</startCondition>
+				<strongTarget>true</strongTarget>
+				<tauntTarget>AbilityOwner</tauntTarget>
+			</TauntApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_TAUNT_status.APLR" id="54309633-A616-41E9-83EE-995F561049E3">
+			<TauntApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> -- таунтим на AbilityOwner (для остальных)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQlT/0A+2wPfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>!rIsHero</sString>
+				</startCondition>
+				<strongTarget>false</strongTarget>
+				<tauntTarget>AbilityOwner</tauntTarget>
+			</TauntApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_TAUNT_status.APLR" id="D224CC28-06B4-4541-8327-3F6341A638CB">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> -- запрещаем все кроме автоатаки</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/Debuffs/Taunt/_.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>8914554</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/Shadow/Ability_A3u.TALENT" />
+				</talents>
+				<useListAs>ListAsException</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_TAUNT_status.APLR" id="3ED06196-7621-4AE3-ABDE-ACC231262025">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>set Taunted</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Taunted</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption> -- Taunt status (Taunt_Duration, таунт получателя статуса на AbilityOwner)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/_TAUNT_status.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vImmune2Control == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>StatusTaunt</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Naga/A4.ITEX" />
+	<lifeTime>
+		<compiledString>FQ8AAAABAAAAGwAAAFRhdW50X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cTaunt_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/_TAUNT_status.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRUAAAACAAAAIgAAADUAAABUYXVudF9TdGFydENvbmRpdGlvbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVEAAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>cTaunt_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

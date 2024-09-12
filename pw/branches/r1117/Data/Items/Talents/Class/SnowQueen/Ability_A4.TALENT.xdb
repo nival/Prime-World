@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/SnowQueen.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/SnowQueen/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/SnowQueen/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/SnowQueen/Ability_A4u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_7_Ultimate/Status_Redset5_7_Cooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/SnowQueen_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet6.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_4.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet8.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/SnowQueen/Duel.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/SnowQueen/Elite_IntLife.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/SnowQueen/Elite_StrInt.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/SnowQueen/Epic_IntLife.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_5.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_6.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_7.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_8.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_10.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_11.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="072F5920-D6BC-45F3-866D-3AF7035B3435">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Проверка на РЗ</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvsUVaLRQiLEItNCItCTP/Qi/CLTQiLEYtNCIuCkAEAAP/QM8k78A+UwYlN/NtF/F6L5V3D</compiledString>
+						<returnType>float</returnType>
+						<sString>(sTerrainType == sFctn ? 1 : 0 )</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>A4_TerrCast</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="87D92082-62BD-4C8A-968F-F34633BDA787">
+			<VariableProxyApplicator parent="/Items/Talents/Class/SnowQueen/damageWithA0.APLR">
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="02612D70-1323-4576-BA8F-8475716FF0F7">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+								<damage>
+									<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cA4_Damage</sString>
+								</damage>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString></compiledString>
+								</enabled>
+								<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+							</DamageApplicator>
+						</applicator>
+					</Item>
+					<Item skip="1" />
+				</applicators>
+				<enabled>
+					<compiledString></compiledString>
+				</enabled>
+			</VariableProxyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" />
+	</applicators>
+	<askId>4</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А4. Вечность</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="113F9843-FD13-4936-B3BD-F9014DCAB971">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vImmune2Control == 0</sString>
+				</condition>
+				<uiEvent href="/UI/Events/ErrorMessages/CastError_Immune2Ctrl.UIEV" />
+			</ConditionCastLimitation>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="BE75B3EF-81AA-4D67-95DE-0B76CE559B1F">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FSAAAAACAAAAJQAAAD4AAABTbm93UXVlZW5fQTRfMgAAU25vd1F1ZWVuX0E0XzJ1AFWL7FFoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHUiaBAAAACLTQiLEYtNCIuCqAEAAP/QhcB1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>!sender.GetTalent( "SnowQueen_A4_2" ) &amp;&amp; !sender.GetTalent( "SnowQueen_A4_2u" )</sString>
+				</condition>
+				<uiEvent href="" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="51A2F38C-61EA-4EB1-96F0-00B54007FFD2">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABTbm93UXVlZW5fQTR1AAAAU25vd1F1ZWVuX0E0dQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("SnowQueen_A4u") == false</sString>
+				</condition>
+				<name>SnowQueen_A4u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="A46D428E-B543-4385-AA9A-E8DCC37875A5">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRMAAAACAAAAGAAAAC4AAABTbm93UXVlZW5fQTRDYXN0TlQAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUAAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vSnowQueen_A4CastNT == false</sString>
+				</condition>
+				<name>SnowQueen_A4CastNT</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4_2.TALENT" />
+		<Item href="/Items/Talents/Class/SnowQueen/Ability_A4_2u.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="A6A827A8-4ABE-4BC3-860B-CC36AEBFCC65">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="26176F90-F83E-4683-9B7A-9F329728193D">
+					<UnitConstant>
+						<name>A4_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACGQgAA+kM=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 67, 500)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="027EE2F2-E6AB-4E82-891D-BD057D54BEAD">
+					<UnitConstant>
+						<name>A4_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="E3C46011-4949-4D1A-A959-C7A5C380FEDB">
+					<UnitConstant>
+						<name>A4_MinDuration</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="C1456E79-5CDB-4D36-99B1-7BD76022C99B">
+					<UnitConstant>
+						<name>A4_ManaBurn_TT</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>25</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="E14353AA-0E4C-4A82-981B-F0185E018D32">
+					<UnitConstant>
+						<name>A4_ManaBurn</name>
+						<var>
+							<compiledString>FQ8AAAACAAAAKwAAAEQAAABBNF9NYW5hQnVybl9UVABVi+yD7AyLRQyLEItNDItCEP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcTfjcDVIAAADZXfTZRfSL5V3DAAAAQOF6hD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>rMaxEnergy * cA4_ManaBurn_TT * 0.01f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="7541DDDF-598D-45D8-89CD-DDCC6B6B4825">
+					<UnitConstant>
+						<name>A4_MBPeriod</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="3442131C-743C-4E50-8CEA-0F6A5E860631">
+					<UnitConstant>
+						<name>A4_MeltRange</name>
+						<var>
+							<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX1Nob3J0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Short</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/const_A4u_BonusDuration" />
+				<Item href="/Items/Talents/Class/SnowQueen/const_A0_AttackSpeedDec" />
+				<Item href="/Items/Talents/Class/SnowQueen/const_A0_Duration" />
+				<Item href="/Items/Talents/Class/SnowQueen/const_A0_MoveSpeedPercent" />
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="DA223BF2-40F7-4529-ADCF-ABB438173FE3">
+					<UnitConstant>
+						<name>A4_CommonDuration_TT</name>
+						<var>
+							<compiledString>FR4AAAACAAAALQAAAEcAAABBNF9EdXJhdGlvbgBBNHVfQm9udXNEdXJhdGlvbgBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaAwAAACLVRCLAotNEItQUN1d+P/S3EX42V302UX0i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_Duration + cA4u_BonusDuration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/const_A0_AttackSpeedDec_Total" />
+				<Item href="/Items/Talents/Class/SnowQueen/const_A0_MoveSpeedPercent_Total" />
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="4DCC2E58-3570-4AE5-BDB2-2B4B7F81EEEB">
+					<UnitConstant>
+						<name>A0_ManaBurn</name>
+						<var>
+							<compiledString>FUgAAAAFAAAATwAAAGgAAACeAAAAvgAAAOIAAABBMF9Tbm93UXVlZW4AAAAAQTBfU25vd1F1ZWVuAAAAAEEwX1Nub3dRdWVlbgAAAABNYW5hQnVybgAAAABBNF9NYW5hQnVybgBVi+yD7BRoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aCAAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoMAAAAItV9IsCi030i1BQ/9LZXfDrBdnu2V3wi0UMUItNCFFoPAAAAItVEIsCi00Qi1BQ/9LYRfDZXezZReyL5V3DAAAAAA==</compiledString>
+							<returnType>float</returnType>
+							<sString>talconst("A0_SnowQueen", "ManaBurn") + cA4_ManaBurn</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="51D753AB-C982-4FCF-9AFB-26BFFF7F1DC0">
+					<UnitConstant>
+						<name>A0_StartCondition</name>
+						<var>
+							<compiledString>FQwAAAACAAAAEwAAACkAAABBNF9UZXJyQ2FzdABVi+yD7AhoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUwAAADf4PbEQXUGxkX/AesExkX/AA+2Tf+JTfjbRfiL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vA4_TerrCast &gt; 0 ? true : false</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="3EFFB8C7-B732-4471-A894-9A9E8C7BF205">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC0Qg==</compiledString>
+		<returnType>float</returnType>
+		<sString>90</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="CBA4FC88-C814-4735-9329-F41A3B9E6B9B">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>1</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>11</flags>
+	<forceBonus>13</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/SnowQueen/A4.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAClQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>330</sString>
+	</manaCost>
+	<marker>doCast2</marker>
+	<microAI href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="25B9595E-BD99-4A43-AD4A-D9C5F25030CF">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="1C033FF7-FDF6-4DA9-AD2C-CF883740F0F1">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="CC3055DE-9CDF-42BF-9DAE-45B98E7FDC4A">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+								<returnType>bool</returnType>
+								<sString>receiver.vImmune2Control == 0</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelector href="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" id="6353E745-D6E3-42AD-B12D-CE9DDA65BFF0">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange_Long</sString>
+									</range>
+									<targetFilter>679477251</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT_name.txt" />
+	<node>ability2</node>
+	<passiveApplicators />
+	<persistentId>SnowQueen_A4</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>672399363</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

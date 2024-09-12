@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/FallenAngel/_.HROB" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/FallenAngel/status_tech_forA0.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Статус отсутсвия доп урона</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/FallenAngel/status_A0_DamageStat.APLR_description.txt" />
+	<dispellPriority>Low</dispellPriority>
+	<effect>
+		<Item href="/Items/Talents/Class/FallenAngel/status_A0_DamageStat.APLR" id="E6AA2674-0A76-429A-B782-43407198C44B">
+			<EffectSwitcher>
+				<deathType>Manual</deathType>
+				<effectOnInvisible href="/Effects/Debuffs/Mark/_Aim3Ally.EFFT" />
+				<effectOnVisible href="/Effects/Debuffs/Mark/_Aim3Enemy.EFFT" />
+				<enableCondition href="" />
+				<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+				<lifeTime>0</lifeTime>
+				<logic>FactionVisibility</logic>
+			</EffectSwitcher>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQgAAAABAAAAJAAAAEEwX0Rpc3QAVYvsg+wMi0UQixCLTRCLQgz/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xAF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>mDist2Target &lt;= cA0_Dist</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>A0_DamageStat</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/FallenAngel/A0.ITEX" />
+	<lifeTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/FallenAngel/status_A0_DamageStat.APLR_name.txt" />
+	<power>1</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRkAAAAEAAAAJgAAADkAAABtAAAAkQAAAEEwU3RhcnRfQ29uZGl0aW9uAAAAV2FyZABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHckAAADf4PbERHtvUdno2RwkUdnu2RwkagGLRQyLEItNDItCWP/QD7bIUehpAAAAg8QM3B3JAAAA3+D2xER7O4tVDIsCi00Mi1BQ/9KD+BF0KWoAi0UQUGgUAAAAi00MixGLTQyLgpwBAAD/0DtFEHUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAACAPwAAAAAAAAAAVYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>cA0Start_Condition &amp;&amp; ut_bldg(false, true) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByChild</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>
