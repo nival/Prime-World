@@ -1,0 +1,68 @@
+; Update settings
+[update]
+
+; update script to use
+updater = cvs.cmd
+
+; Build settings
+[build]
+
+; Solution file name
+solution = Src/PF
+
+; Builder to use. By now there are two: msdev.cmd and buildconsole.cmd
+builder = "C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\devenv.exe"
+
+; Set to 1 to enable projects cleaning before build, to 0 otherwise
+shouldClean = 1
+
+; Email settings
+[email]
+
+; SMTP host to use
+host = 10.0.0.1
+
+; Address to send reports from
+fromAddress = usename@domain.org
+
+; File containing users' mail addresses
+users = users
+
+; XHTML report settings
+[xhtml]
+
+; Cheetah template to generate success report
+successTemplate = xhtml/stdSuccessReport.tmpl
+
+; Cheetah template to generate test failure report
+testFailureTemplate = xhtml/stdTestFailureReport.tmpl
+
+; Cheetah template to generate fatal failure report
+fatalFailureTemplate = xhtml/stdFatalFailureReport.tmpl
+
+; CSS file to use in reports
+cssFile = xhtml/simple.css
+
+; Width (in pixels) of images in reports
+imageWidth = 400
+
+; Common test applications related settings
+[testapplications-common]
+
+; Expected FPS
+expectedFps: 10
+
+; Screenshotter test application related settings
+[screenshotter]
+
+; Overall time for an application to start and shut down
+overall: 60000
+
+; Time to take a screenshot and to store it into a file
+screenshotTime: 10000
+
+; PerformanceMeter test application related settings
+[performanceMeter]
+
+; Overall time for an application to start and shut down
+overall: 60000

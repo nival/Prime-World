@@ -1,0 +1,54 @@
+#include "stdafx.h"
+#include "MMakingGameRequest.h"
+
+namespace mmaking
+{
+
+GameRequest::GameRequest( lobby::TGameId _gameId ) :
+gameId( _gameId )
+{
+}
+
+
+
+bool GameRequest::Init( const NDb::MapMMakingSettings * _dbSettings, int _teamSize, const SGame & _gameData, IHeroesTable * _heroes, IRankTable * _ranks, const GeoTable & _locales, const GeoTable & _geolocations, Loger * _loger )
+{
+  int total = _gameData.bots.size();
+  for ( int pi = 0; pi < _gameData.humans.size(); ++pi )
+    total += _gameData.humans[pi].members.size();
+
+  draft.Init( _teamSize, EBasket::Undefined, _heroes );
+
+  for ( int pi = 0; pi < _gameData.humans.size(); ++pi )
+  {
+    const SGameParty & pty = _gameData.humans[pi];
+    StrongMT<MmRequest> req = new MmRequest( _dbSettings, 0, 0, pty.common );
+    if ( !req->Init( pty.members, _heroes, _ranks, _locales, _geolocations, _loger ) )
+      return false;
+
+    draft.AddMembers( req );
+  }
+
+  for ( int i = 0; i < _gameData.bots.size(); ++i )
+    draft.AddBot( _gameData.bots[i].team, _gameData.bots[i].heroId );
+
+  NI_VERIFY( draft.GameSize() < _teamSize * 2, "", return false );
+
+  return true;
+}
+
+
+
+void GameRequest::SetStartTime( timer::Time _now )
+{
+  for ( int ti = 0; ti < 2; ++ti ) {
+    lobby::ETeam::Enum t = lobby::ETeam::Index( ti );
+    for ( int i = 0; i < draft.RequestsCount( t ); ++i ) {
+      MmRequest * req = draft.GetRequest( t, i );
+      req->SetStartTime( _now );
+    }
+  }
+}
+
+
+} //namespace mmaking

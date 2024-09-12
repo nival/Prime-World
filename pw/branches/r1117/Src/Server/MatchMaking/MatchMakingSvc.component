@@ -1,0 +1,35 @@
+sources = [
+  'MatchMakingSvc.cpp',
+  'MatchMakingSvc.h',
+  'MatchMakingSvcCfg.cpp',
+  'MatchMakingSvcCfg.h',
+  'MatchMakingManager.cpp',
+  'MatchMakingManager.h',
+  'MatchMakingSession.cpp',
+  'MatchMakingSession.h',
+  'MatchMakingSessionIface.h',
+  'MatchMakingClient.cpp',
+  'MatchMakingClient.h',
+  'MatchMakingTypes.h',
+  'MatchMakingNaming.h',
+  'MatchMakingClientCtx.cpp',
+  'MatchMakingClientCtx.h',
+  'MatchMakingGameSvcMngrGetter.h',
+  'specific.h',
+  'stdafx.cpp',
+  'stdafx.h',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'Server/MatchMaking/MatchMakingClientR',
+  'Server/Statistic/GameStatClient',
+  'Server/Statistic/StatClientHttpDispatcher',
+  'HybridServer/HybridServer',
+]
+
+builders = [
+    RPCBuilder( 'Local', 'MatchMakingManager.h', '', ['RMatchMakingClient.auto.h']) ,
+    RPCBuilder( 'Local', 'MatchMakingSessionIface.h ', ''),
+    RPCBuilder( 'Remote', 'MatchMakingSessionIface.h ', '', ['MatchMakingTypes.h', 'Game/PF/HybridServer/GameServerDispenserIface.h']),
+]

@@ -1,0 +1,77 @@
+- перевести на наш аллокатор
+- проверить что при всевозможных fail'ах операции всегда удаляются
+- обработать закрытие tcp соединения к бэкенду при активной операциии установки сквозного соединения поверх этого tcp соединениня
+- чтобы избавиться при копировании в C2STransmissionOp, необходимо заводить мастер операцию, 
+	кот. будет дисейблить чтение в начале обработки и энейблить после обработки всех C2STransmissionOp возникших в NetworkProtocolHandler::HandleInput
+- при закрытии соединения с backend - отсылать fail'ы на запросы по установлению канала поверх этого соединения
+- добавить диагностику в лог
+- прошит размер аллоцируемой памяти для сообщения в TransportProtocolHandler::HandleOutput()
+  Нет способа узнать сколько памяти требуется для сериализованного сообщения
+- реконнект при отвалившемся соединении к backend'у
+- контроль длины очереди сообщений на отправку к клиенту и в бэкенд
+- ввести коды возращаемых значений (fail, not implemented)
+
+Сделано:
++ логирование в файл в rs2, в нужную директорию
++ OpenChnl2Svc -> OpenChnl2SvcOp
++ keep alive/ping, реализация keepalive timer
++ возможность запуска rs или rs2 - опция
++ передача параметров для rs2
+	+ timeout на регистрацию клиента после установления соединения
+	+ кол-во потоков
+	+ keepalive timeout
+	+ loglevel
+	+ дефолтный размер блока памяти под отсылаемый/принимаемый блок данных
+	+ ограничение на кол-во клиентов поддерживаемых сервером
++ проверить что работает с другими сервисами
+	+ написан relaytest service
+	+ c lobby ts не работает и со старым relay, надо как-то по другому проверить (свой простой клиент и сервис?)
++ проверить что работает через relay balancer
++ timer - сколько времени ждать 1го сообщения от приконнектившегося клиента, пересекается с keepalive, 
+  но если клиент приконнектиться и будет посылать только keepalive - тоже не гуд, поэтому по идее отдельный контроль
++ res -> rc
+
++ посмотреть корректную обработку дисконнекта клиента
+08/04 18:58:26.82 assert: Second login attempt with username A
+08/04 18:58:26.82 LoginServer: Failed login (1000)
+
++ weak_ptr в protocol handler'е позволит не искать контекст по id соединения
+
+Транспортынй уровень:
++ new connection
+	+ direct
+		+ receive request
+		+ send response
++ close connection
+- keep alive/ping
+	+ ignore for first time
+	- handle completely
+
+Relay
++ new through-connection
+	+ receive request
+		-	find client context by connection id
+	+ set up connection to backend
+	+ send response
+	+ have to ensure that only 1 tcp connection established to destination service
+
+- translate msgs
+	+ client->backend
+	+ backend->client
+	- client->client
+
++ механизм асихнхонной обработки сообщений
+	(когда начинается обработка в 1м handler'е, а заканчивается в другом)
+	
+
+- протащить параметры в relay
+	- timeout на регистрацию клиента после установления соединения
+	- keepalive timeout
+	-	loglevel
+	+	listen address
+	+		frontend
+	+		backend
+
+
+- похоже нужны интерфейсы для клиенсткого менеджера и для backend менеджера, 
+	которые будет реализовывать RelayChannelManager

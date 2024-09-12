@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="LeaverPointsLog">
+
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">leaverpointslog_id_sequence</param>
+      </generator>
+    </id>
+
+    <many-to-one name="Player" not-null="true" />
+
+    <property name="PersistentId" />
+    <property name="LeaverPointsChange" not-null="true" />
+    <property name="LeaverPointsTotal" not-null="true" />
+    <property name="IsLeaverChanged" not-null="true" />
+    <property name="IsLeaver" not-null="true" />
+    <property name="Timestamp" not-null="true" />
+    <property name="IsBadBehaviour" not-null="true" />
+    <property name="Type" />
+
+    <sql-insert check="none">
+      INSERT INTO leaverpointslog
+      (player, persistentid, leaverpointschange, leaverpointstotal, isleaverchanged, isleaver, timestamp, isbadbehaviour, type, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+
+</hibernate-mapping>

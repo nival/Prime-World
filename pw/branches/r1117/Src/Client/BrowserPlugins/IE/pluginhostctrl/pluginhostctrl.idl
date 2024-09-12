@@ -1,0 +1,102 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is the Netscape security libraries.
+ *
+ * The Initial Developer of the Original Code is
+ * Netscape Communications Corporation.
+ * Portions created by the Initial Developer are Copyright (C) 1994-2000
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adam Lock <adamlock@netscape.com>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+// pluginhostctrl.idl : IDL source for pluginhostctrl.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (pluginhostctrl.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(A37A5A60-071D-48A5-AA8A-CC6B57F691CF),
+		dual,
+		helpstring("INivalPluginHostCtrl Interface"),
+		pointer_default(unique)
+	]
+	interface INivalPluginHostCtrl : IDispatch
+	{
+		[propget, id(DISPID_HWND)]
+		HRESULT Window([out, retval]long* phwnd);
+		[propput, id(DISPID_TEXT)]
+		HRESULT Text([in]BSTR strText);
+		[propget, id(DISPID_TEXT)]
+		HRESULT Text([out, retval]BSTR* pstrText);
+		[propget, id(1), helpstring("property PluginContentType")] HRESULT PluginContentType([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property PluginContentType")] HRESULT PluginContentType([in] BSTR newVal);
+		[propget, id(2), helpstring("property PluginSource")] HRESULT PluginSource([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property PluginSource")] HRESULT PluginSource([in] BSTR newVal);
+		[propget, id(3), helpstring("property PluginsPage")] HRESULT PluginsPage([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property PluginsPage")] HRESULT PluginsPage([in] BSTR newVal);
+		[propget, id(4), helpstring("property PluginVersion")] HRESULT PluginVersion([out, retval] BSTR *pVal);
+		[propput, id(4), helpstring("property PluginVersion")] HRESULT PluginVersion([in] BSTR newVal);
+	};
+
+[
+	uuid(5C670C1C-33A2-4B67-8D1A-CC2CF8091A0A),
+	version(1.0),
+	helpstring("nivalhostctrl 1.0 Type Library")
+]
+library PLUGINHOSTCTRLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(A059405A-2AFA-4C24-9140-F9AD6FE2B11B),
+		helpstring("_INivalPluginHostCtrlEvents Interface")
+	]
+	dispinterface _INivalPluginHostCtrlEvents
+	{
+		properties:
+		methods:
+	};
+
+	[
+		uuid(AAA2DE32-61F1-4F7F-BEB8-A37F5BC24EE2),
+		helpstring("Nival PluginHostCtrl Class")
+	]
+	coclass NivalPluginHostCtrl
+	{
+		[default] interface INivalPluginHostCtrl;
+		[default, source] dispinterface _INivalPluginHostCtrlEvents;
+	};
+};

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project
+	DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+	ToolsVersion="4.0">
+	<PropertyGroup>
+		<Configuration
+			Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform
+			Condition=" '$(Platform)' == '' ">Win32</Platform>
+		<ProjectGuid>{66E75FE1-7475-4096-B532-F8F8C033FE9A}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>PF_Types.DBTypes</RootNamespace>
+		<AssemblyName>PF_Types.DBTypes</AssemblyName>
+		<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+		<TargetFrameworkProfile />
+	</PropertyGroup>
+	<PropertyGroup
+		Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+		<DebugSymbols>False</DebugSymbols>
+		<DebugType>pdbonly</DebugType>
+		<Optimize>True</Optimize>
+		<OutputPath>..\_Release\</OutputPath>
+		<DefineConstants>TRACE;</DefineConstants>
+		<ErrorReport>none</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<UseVSHostingProcess>False</UseVSHostingProcess>
+		<AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+		<PlatformTarget>x86</PlatformTarget>
+	</PropertyGroup>
+	<PropertyGroup
+		Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+		<DebugSymbols>True</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>False</Optimize>
+		<OutputPath>..\_Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE;</DefineConstants>
+		<ErrorReport>none</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<UseVSHostingProcess>False</UseVSHostingProcess>
+		<AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+		<PlatformTarget>x86</PlatformTarget>
+	</PropertyGroup>
+	<PropertyGroup
+		Condition=" '$(Configuration)|$(Platform)' == 'Shipping|Win32' ">
+		<OutputPath>..\_Shipping\</OutputPath>
+		<DefineConstants>TRACE;</DefineConstants>
+		<Optimize>true</Optimize>
+		<DebugType>pdbonly</DebugType>
+		<PlatformTarget>x86</PlatformTarget>
+		<UseVSHostingProcess>false</UseVSHostingProcess>
+		<ErrorReport>none</ErrorReport>
+	</PropertyGroup>
+	<PropertyGroup
+		Condition=" '$(Configuration)|$(Platform)' == 'ShippingSingleExe|Win32' ">
+		<OutputPath>..\_ShippingSingleExe\</OutputPath>
+		<DefineConstants>TRACE;</DefineConstants>
+		<Optimize>true</Optimize>
+		<DebugType>pdbonly</DebugType>
+		<PlatformTarget>x86</PlatformTarget>
+		<UseVSHostingProcess>false</UseVSHostingProcess>
+		<ErrorReport>none</ErrorReport>
+	</PropertyGroup>
+	<PropertyGroup
+		Condition=" '$(Configuration)|$(Platform)' == 'ReleaseSingleExe|Win32' ">
+		<OutputPath>..\_ReleaseSingleExe\</OutputPath>
+		<DefineConstants>TRACE;</DefineConstants>
+		<Optimize>true</Optimize>
+		<DebugType>pdbonly</DebugType>
+		<PlatformTarget>x86</PlatformTarget>
+		<UseVSHostingProcess>false</UseVSHostingProcess>
+		<ErrorReport>none</ErrorReport>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference
+			Include="System" />
+		<Reference
+			Include="System.Core">
+			<RequiredTargetFramework>3.5</RequiredTargetFramework>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include="..\CommonAssemblyInfo.cs">
+			<Link>CommonAssemblyInfo.cs</Link>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile
+			Include="Properties\AssemblyInfo.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBStats.cs" />
+		<Compile
+			Include=".\DBAdvMap.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference
+			Include="..\libdb.NET\libdb.NET.csproj">
+			<Project>{2369C873-8C70-4197-8CAB-67D34C9D5412}</Project>
+			<Name>libdb.NET</Name>
+		</ProjectReference>
+		<ProjectReference
+			Include="..\Types.DBTypes\Types.DBTypes.csproj">
+			<Project>{CB33BF48-712E-4EAB-8436-E64DC30CBCD7}</Project>
+			<Name>Types.DBTypes</Name>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBGameLogic.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBUnit.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBAbility.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBMinigames.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBClinic.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBEffect.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBEasel.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBImpulsiveBuffs.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBPFEffect.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBAnimations.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBConsumable.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBSessionRoots.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBMinigamesTypes.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBSound.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBHeroesList.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBTalent.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBVisualRoots.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBServer.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\SocialClient.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DbMapList.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBHeroRanks.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBSessionMessages.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBGuild.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBSmartChat.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBDayNight.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile
+			Include=".\DBResources.cs" />
+	</ItemGroup>
+	<Import
+		Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+	<PropertyGroup>
+		<PreBuildEvent>$(ProjectDir)..\..\Vendor\BuildUtils\DBCodeGen.exe $(ProjectDir)..\PF_Types\PF_Types.csproj "--solution=$(ProjectDir)..\PF.sln" --project=$(ProjectName) --target=cs</PreBuildEvent>
+	</PropertyGroup>
+	<!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="GuildDailyStats">
+
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">guilddailystats_id_sequence</param>
+      </generator>
+    </id>
+
+    <many-to-one name="Guild" not-null="true" />
+
+    <property name="Rating" not-null="true" />
+    <property name="GuildPoints" not-null="true" />
+    <property name="GuildPointsToday" not-null="true" />
+    <property name="Rank" not-null="true" />
+    <property name="VassalsCount" not-null="true" />
+    <property name="VassalsPoints" not-null="true" />
+    <property name="Timestamp" not-null="true" />
+
+    <sql-insert check="none">
+      INSERT INTO guilddailystats
+      (guild, rating, guildpoints, guildpointstoday, rank, vassalscount, vassalspoints, timestamp, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

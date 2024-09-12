@@ -1,0 +1,20 @@
+void ModifyColor( const HDRColor &mul, const HDRColor &add )
+{
+  PrimaryColor = mul;
+  SecondaryColor = add;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void UpdateInternals()
+{
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void OnPrepareRender()
+{
+	Material::OnPrepareRender();
+
+  GetRenderer()->SetPixelShaderConstantsHDRColor( PSHADER_LOCALCONST0, PrimaryColor );
+  GetRenderer()->SetPixelShaderConstantsHDRColor( PSHADER_LOCALCONST1, SecondaryColor );
+}

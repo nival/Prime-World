@@ -1,0 +1,28 @@
+sources = [
+  'mballocator/stdafx.h',
+  'mballocator/stdafx.cpp',
+  'mballocator/specific.h',
+  'mballocator/MessageBlockFactory.cpp',
+  'mballocator/MessageBlockFactory.h',
+  'mballocator/MessageBlockAllocator.cpp',
+  'mballocator/MessageBlockAllocator.h',
+  'mballocator/MessageBlock.cpp',
+  'mballocator/MessageBlock.h',
+  'mballocator/MessageBlockType.h',
+  'mballocator/Types.h',
+]
+
+components = [
+  'System/Dumpers',
+  'System/FileSystem',
+  'Vendor/Libc',
+  'Vendor/Terabit',
+]
+
+includePaths = [
+    '.',
+]
+
+compilerKeys = [ '/D _CRT_NONSTDC_NO_WARNINGS', '/D _CRT_SECURE_NO_WARNINGS' ]
+
+platformFeatures = { 'win32' : Win32Features( 'mballocator/stdafx.h' ) }

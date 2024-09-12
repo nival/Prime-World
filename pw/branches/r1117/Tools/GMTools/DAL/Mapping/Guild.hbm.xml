@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="Guild">
+    <cache usage="read-write" />
+    <id name="Id" />
+    <property name="ShortName" />
+    <property name="FullName" />
+    <property name="CreationDate" />
+    <property name="DisbandingDate" />
+    <property name="MembersCount" />
+    <many-to-one name="Creator" class="Player" />
+    <many-to-one name="ResourceLog" not-found="ignore" />
+  </class>
+</hibernate-mapping>

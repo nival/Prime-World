@@ -1,0 +1,53 @@
+${rpc_namespaces_start}
+
+class L${rpc_classname} : public rpc::ILocalEntity, public BaseObjectMT
+{
+  NI_DECLARE_REFCOUNT_CLASS_2(L${rpc_classname}, rpc::ILocalEntity, BaseObjectMT);
+public:
+  L${rpc_classname}():entityMap(0) {}
+  L${rpc_classname}(${rpc_fullnamespace}::${rpc_classname}* _localObject, rpc::IEntityMap* _entityMap, rpc::ILocalEntityFactory* _factory=0)
+  :   factory(_factory)
+  ,   entityMap(_entityMap)
+  ,   localObject(_localObject) 
+  {
+    localObject->SetOwner( this );
+  }
+
+  ~L${rpc_classname}() 
+  {
+    if (factory)
+    {
+      factory->Destroy(this);
+    }
+  }
+  
+  virtual rpc::CallResult::Enum Call(const rpc::MethodCallHeader& call, rpc::MethodCall& resultCall, rpc::Arguments& args, const byte* paramsData, int _paramsSize)
+  {
+    entityId = resultCall.info.header.entityId;
+    ${rpc_stack}
+  }
+
+  virtual void Publish()
+  {
+    StrongMT<rpc::IEntityMap> sentityMap = entityMap.Lock();
+    if (sentityMap)
+    {
+      sentityMap->Publish( entityId, this );
+    }
+  }
+
+  bool vcall( byte method_id, rpc::MethodCall& call, rpc::MethodCallStack& stack );
+  virtual void* _Get( uint classId ) { return (classId == rpc::_GetId("${rpc_fullnamespace}::${rpc_classname}", rpc::GeneratedType) ) ? localObject : 0; }
+  virtual uint GetClassCrc() const { return ${rpc_crc32}; }
+  static uint GetClassCrcStatic() { return ${rpc_crc32}; }
+${rpc_data_vset}
+${rpc_data_getmember}
+${rpc_data_update}
+private:
+  StrongMT<${rpc_fullnamespace}::${rpc_classname}> localObject;
+  rpc::ILocalEntityFactory* factory;
+  WeakMT<rpc::IEntityMap> entityMap;
+  rpc::EntityId entityId;
+};
+
+${rpc_namespaces_end}

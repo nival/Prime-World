@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <ProjectGuid>{AEB9B15A-6C51-4B9B-8838-7254064A4E98}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EditorLib</RootNamespace>
+    <AssemblyName>EditorLib</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\_Release\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Shipping|Win32' ">
+    <OutputPath>..\_Shipping\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ShippingSingleExe|Win32' ">
+    <OutputPath>..\_ShippingSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseSingleExe|Win32' ">
+    <OutputPath>..\_ReleaseSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SharpSvn, Version=1.8009.3299.43, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Vendor\SharpSvn\SharpSvn.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSvn.UI, Version=1.8009.3299.43, Culture=neutral, PublicKeyToken=33789aa53ca44aa9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Vendor\SharpSvn\SharpSvn.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.3.1.31872, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vendor\WinFormsUI\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BacklinksInfo\BacklinksInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BacklinksInfo\BacklinksInfo.Designer.cs">
+      <DependentUpon>BacklinksInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Binds\Bind.cs" />
+    <Compile Include="Binds\BindConfig.cs" />
+    <Compile Include="Binds\BindsManager.cs" />
+    <Compile Include="Binds\BindsManagerConfig.cs" />
+    <Compile Include="Binds\IBind.cs" />
+    <Compile Include="Binds\MouseAxis.cs" />
+    <Compile Include="Extensions\EditorsPool.cs" />
+    <Compile Include="Extensions\Wizard.cs" />
+    <Compile Include="H6Clipboard.cs" />
+    <Compile Include="ContextMenus\ItemContextMenu.cs" />
+    <Compile Include="EditorApplicationInterface.cs" />
+    <Compile Include="EditorLibResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditorLibResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\TwoTypedExtensionContainer.cs" />
+    <Compile Include="Extensions\TypedExtensionContainer.cs" />
+    <Compile Include="Extensions\ExtensionsManager.cs" />
+    <Compile Include="Functions.cs" />
+    <Compile Include="IO\ConfigFileSystem.cs" />
+    <Compile Include="IO\Crc32ChecksumGenerator.cs" />
+    <Compile Include="IO\ObjectsSelector.cs" />
+    <Compile Include="IO\RootFileSystem.cs" />
+    <Compile Include="IO\RootFileSystemCommand.cs" />
+    <Compile Include="IO\RootFileSystemConfigurator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IO\RootFileSystemConfigurator.Designer.cs">
+      <DependentUpon>RootFileSystemConfigurator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IO\SourceFileSystem.cs" />
+    <Compile Include="IO\SourceFileSystemCommand.cs" />
+    <Compile Include="IO\SourceFileSystemConfig.cs" />
+    <Compile Include="MainFormConfig.cs" />
+    <Compile Include="Menu\CommandGroups.cs" />
+    <Compile Include="Menu\EditorMenu.cs" />
+    <Compile Include="Menu\EditorToolbar.cs" />
+    <Compile Include="Menu\IEditorCommand.cs" />
+    <Compile Include="Menu\MenuCommand.cs">
+    </Compile>
+    <Compile Include="Menu\MenuGroup.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuUpdater.cs" />
+    <Compile Include="NameUtils.cs" />
+    <Compile Include="ObjectsBrowser\FolderBookmarks.cs" />
+    <Compile Include="OutputPanel\OutputPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputPanel\OutputPanel.Designer.cs">
+      <DependentUpon>OutputPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputPanel\OutputPanelConfig.cs" />
+    <Compile Include="OutputPanel\OutputTraceListener.cs" />
+    <Compile Include="Extensions\ConsoleCommandsManager.cs" />
+    <Compile Include="PropertiesEditor\BrowseQueryObject.cs" />
+    <Compile Include="PropertiesEditor\BrowseSourceFileQueryObject.cs" />
+    <Compile Include="PropertiesEditor\ConvertQueryObject.cs" />
+    <Compile Include="PropertiesEditor\PropertiesEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertiesEditorControl.Designer.cs">
+      <DependentUpon>PropertiesEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesEditor\TextRefConvertor.cs" />
+    <Compile Include="PropertiesEditor\SrcFileListDescriptionProvider.cs" />
+    <Compile Include="PropertiesEditor\SrcFileListDescriptor.cs" />
+    <Compile Include="PropertiesEditor\SrcFileListMemberDescriptor.cs" />
+    <Compile Include="PropertiesEditor\SrcFilePropertyTypeConverter.cs" />
+    <Compile Include="States\IStateMachine.cs" />
+    <Compile Include="States\State.cs" />
+    <Compile Include="States\StateMachine.cs" />
+    <Compile Include="CollectionUtils.cs" />
+    <Compile Include="ToolBox\ToolBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToolBox\ToolBox.Designer.cs">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolBox\ToolBoxItem.cs" />
+    <Compile Include="ToolBox\ToolBoxPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\SimpleConfigObject.cs" />
+    <Compile Include="ShortcutsInterceptor.cs" />
+    <Compile Include="Extensions\AbstractEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extensions\AbstractPropertyEditor.cs">
+    </Compile>
+    <Compile Include="Extensions\Checker.cs" />
+    <Compile Include="Extensions\ConsoleCommand.cs" />
+    <Compile Include="Extensions\Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extensions\Attributes.cs" />
+    <Compile Include="Extensions\Importer.cs" />
+    <Compile Include="Extensions\StructImporter.cs" />
+    <Compile Include="ObjectsBrowser\ObjectsBrowserControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ObjectsBrowser\ObjectsBrowserControl.Designer.cs">
+      <DependentUpon>ObjectsBrowserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectsBrowser\ObjectsBrowserPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObjectsBrowser\ObjectsBrowserPanel.designer.cs">
+      <DependentUpon>ObjectsBrowserPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IO\ObjectsRootFolder.cs" />
+    <Compile Include="IO\ObjectsFolder.cs" />
+    <Compile Include="ObjectSelector\ObjectSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObjectSelector\ObjectSelectorForm.Designer.cs">
+      <DependentUpon>ObjectSelectorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\EditorPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelsManager.cs" />
+    <Compile Include="PropertiesEditor\DBPtrConvertor.cs" />
+    <Compile Include="PropertiesEditor\DBPtrEditor.cs">
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertiesEditorPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertiesEditorPanel.Designer.cs">
+      <DependentUpon>PropertiesEditorPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesEditor\ListConvertor.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ConfigObject.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
+    <Compile Include="EditorCommonApplication.cs" />
+    <Compile Include="Operations\Executor.cs" />
+    <Compile Include="Operations\Executor.OperationContext.cs" />
+    <Compile Include="Operations\NoThreadExecutor.cs" />
+    <Compile Include="Operations\OperationContext.cs" />
+    <Compile Include="Operations\SingleThreadExecutor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UndoRedo\FolderCreateOperation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libdb.NET\libdb.NET.csproj">
+      <Project>{2369C873-8C70-4197-8CAB-67D34C9D5412}</Project>
+      <Name>libdb.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win32\Win32.csproj">
+      <Project>{7398874F-AEA0-4A0E-8239-E3A6668A3712}</Project>
+      <Name>Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BacklinksInfo\BacklinksInfo.resx">
+      <DependentUpon>BacklinksInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeType\ChangeTypeForm.resx">
+      <DependentUpon>ChangeTypeForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorLibResources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditorLibResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Extensions\AbstractEditor.resx">
+      <DependentUpon>AbstractEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Extensions\ImportRecursive.resx">
+      <DependentUpon>ImportRecursive.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IO\RootFileSystemConfigurator.resx">
+      <DependentUpon>RootFileSystemConfigurator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectsBrowser\ObjectsBrowserPanel.resx">
+      <DependentUpon>ObjectsBrowserPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectSelector\ObjectSelectorForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ObjectSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputPanel\OutputPanel.resx">
+      <DependentUpon>OutputPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertiesEditor\PropertiesEditorControl.resx">
+      <DependentUpon>PropertiesEditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertiesEditor\PropertiesEditorPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PropertiesEditorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertiesEditor\PropertyPresets\EditorConfigEditForm.resx">
+      <DependentUpon>EditorConfigEditForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertiesEditor\PropertyPresets\PresetConfigManager.resx">
+      <DependentUpon>PresetConfigManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertiesEditor\States\StatesManagementForm.resx">
+      <DependentUpon>StatesManagementForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\ScriptsPanel.resx">
+      <DependentUpon>ScriptsPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\DefineTemplateForm.resx">
+      <DependentUpon>DefineTemplateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolBox\ToolBox.resx">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\RemoteImportWizardForm.resx">
+      <DependentUpon>RemoteImportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChangeType\ChangeTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeType\ChangeTypeForm.Designer.cs">
+      <DependentUpon>ChangeTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\AbstractEditorConfig.cs" />
+    <Compile Include="Extensions\ImportRecursive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extensions\ImportRecursive.Designer.cs">
+      <DependentUpon>ImportRecursive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\ITypesCollector.cs" />
+    <Compile Include="Extensions\TypesCollector.cs" />
+    <Compile Include="FieldProcessor\DefaultListEditor.cs" />
+    <Compile Include="FieldProcessor\DescriptionConfigObject.cs" />
+    <Compile Include="FieldProcessor\FullTypeDescriptorWrapper.cs" />
+    <Compile Include="FieldProcessor\FieldDescriptor.cs" />
+    <Compile Include="FieldProcessor\FullTypeConverter.cs" />
+    <Compile Include="FieldProcessor\FullTypeDescriptor.cs" />
+    <Compile Include="FieldProcessor\FullTypeEditorWrapper.cs" />
+    <Compile Include="FieldProcessor\FullTypePropertyDescriptor.cs" />
+    <Compile Include="FieldProcessor\ListElementDescriptor.cs" />
+    <Compile Include="FieldProcessor\CustomStandardValues.cs" />
+    <Compile Include="FieldProcessor\NoneValueEditor.cs" />
+    <Compile Include="FieldProcessor\StandardValuesProvider.cs" />
+    <Compile Include="FieldProcessor\StringConvertor.cs" />
+    <Compile Include="FieldProcessor\ValueEditor.cs" />
+    <Compile Include="FieldProcessor\ValuePainter.cs" />
+    <Compile Include="FolderSelector\FolderSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderSelector\FolderSelectorForm.Designer.cs">
+      <DependentUpon>FolderSelectorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImprovedTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IO\ObjectsWalker.cs" />
+    <Compile Include="IO\RootDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IO\RootDirectory.Designer.cs">
+      <DependentUpon>RootDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IO\SVNFileSysConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IO\SVNFileSysConfigure.Designer.cs">
+      <DependentUpon>SVNFileSysConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IO\SVNFileSystem.cs" />
+    <Compile Include="IO\WinFileSystem.cs" />
+    <Compile Include="Menu\ToolbarGuids.cs" />
+    <Compile Include="ObjectsBrowser\FolderHistory.cs" />
+    <Compile Include="ObjectsBrowser\BreadcrumbControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ObjectsBrowser\BreadcrumbControl.Designer.cs">
+      <DependentUpon>BreadcrumbControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectsBrowser\NewItemTypesConfig.cs" />
+    <Compile Include="ObjectsBrowser\ObjectsBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectsBrowser\ObjectsBrowser.Designer.cs">
+      <DependentUpon>ObjectsBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectsBrowser\ItemSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObjectsBrowser\ItemSelectorForm.Designer.cs">
+      <DependentUpon>ItemSelectorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectsBrowser\TemplateDefinition.cs" />
+    <Compile Include="OutputPanel\OutputMessage.cs" />
+    <Compile Include="Panels\HotkeyPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\FastOutlinerColoursForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\FastOutlinerColoursForm.Designer.cs">
+      <DependentUpon>FastOutlinerColoursForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesEditor\FlagsEnumControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\FlagsEnumControl.Designer.cs">
+      <DependentUpon>FlagsEnumControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesEditor\FlagsEnumConverter.cs" />
+    <Compile Include="PropertiesEditor\ImprovedOutliner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\ImprovedOutliner.designer.cs">
+      <DependentUpon>ImprovedOutliner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertiesEditorCopy.cs" />
+    <Compile Include="PropertiesEditor\PropertyPresets\EditorConfigEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertyPresets\EditorConfigEditForm.Designer.cs">
+      <DependentUpon>EditorConfigEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertyPresets\FilteredEnumProvider.cs" />
+    <Compile Include="PropertiesEditor\PropertyPresets\PresetConfigManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertyPresets\PresetConfigManager.Designer.cs">
+      <DependentUpon>PresetConfigManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesEditor\PropertyPresets\PresetConfigObject.cs" />
+    <Compile Include="PropertiesEditor\PropertiesEditorConfig.cs" />
+    <Compile Include="PropertiesEditor\States\StatesManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertiesEditor\States\StatesManagementForm.Designer.cs">
+      <DependentUpon>StatesManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\ScriptMachine.cs" />
+    <Compile Include="Scripts\ScriptsConfig.cs" />
+    <Compile Include="Scripts\ScriptsPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scripts\ScriptsPanel.Designer.cs">
+      <DependentUpon>ScriptsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DefineTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templates\DefineTemplateForm.Designer.cs">
+      <DependentUpon>DefineTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DefineTemplateMenuItem.cs" />
+    <Compile Include="Templates\TemplateStruct.cs" />
+    <Compile Include="Utils\EventSuppressor.cs" />
+    <Compile Include="Utils\FormUtils.cs" />
+    <Compile Include="Utils\HtmlFragment.cs" />
+    <Compile Include="Utils\ListViewColumnSorter.cs" />
+    <Compile Include="Utils\ListViewSortIconExtension.cs" />
+    <Compile Include="Utils\TextHelpers.cs" />
+    <Compile Include="Wizards\RemoteImportWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\RemoteImportWizardForm.Designer.cs">
+      <DependentUpon>RemoteImportWizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\CheckedMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\CheckedMenu.Designer.cs">
+      <DependentUpon>CheckedMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FieldProcessor\FakeDescriptorContext.cs" />
+    <Compile Include="FieldProcessor\FakePropertyDescriptor.cs" />
+    <Compile Include="Wizards\TableDataEditing\PropertyFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\PropertyFilterForm.Designer.cs">
+      <DependentUpon>PropertyFilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\TableData.cs" />
+    <Compile Include="Wizards\TableDataEditing\TableDataConfig.cs" />
+    <Compile Include="Wizards\TableDataEditing\TableDataPresetsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\TableDataPresetsForm.Designer.cs">
+      <DependentUpon>TableDataPresetsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\TableDataPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\TableDataPanel.Designer.cs">
+      <DependentUpon>TableDataPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\TableDataEditing\TableDataPreset.cs" />
+    <Compile Include="Wizards\WizardAttributes.cs" />
+    <Compile Include="Wizards\WizardsManager.cs" />
+    <None Include="ObjectsBrowser\Resources\BookmarkedFolder.bmp" />
+    <Content Include="ObjectsBrowser\Resources\BookmarkFolder.bmp" />
+    <Content Include="ObjectsBrowser\Resources\Delete.bmp" />
+    <Content Include="ObjectsBrowser\Resources\Folder.png" />
+    <Content Include="ObjectsBrowser\Resources\FolderUp.png" />
+    <Content Include="ObjectsBrowser\Resources\Item.png" />
+    <Content Include="ObjectsBrowser\Resources\NewFolder.bmp" />
+    <Content Include="ObjectsBrowser\Resources\NewItem.bmp" />
+    <Content Include="ObjectsBrowser\Resources\ObjectsBrowser.ico" />
+    <Content Include="ObjectsBrowser\Resources\Rename.bmp" />
+    <Content Include="ObjectsBrowser\Resources\View.bmp" />
+    <None Include="PropertiesEditor\Resources\Alphabetical.bmp" />
+    <None Include="PropertiesEditor\Resources\Categorized.bmp" />
+    <None Include="PropertiesEditor\Resources\Pin.bmp" />
+    <Content Include="OutputPanel\Resources\OutputPanel.ico" />
+    <Content Include="PropertiesEditor\Resources\ClearItems.bmp" />
+    <Content Include="PropertiesEditor\Resources\InsertBefore.bmp" />
+    <Content Include="PropertiesEditor\Resources\InsertLast.bmp" />
+    <Content Include="PropertiesEditor\Resources\PropertiesEditor.ico" />
+    <Content Include="PropertiesEditor\Resources\RemoveItem.bmp" />
+    <None Include="Resources\Add.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\New.png" />
+    <None Include="Resources\Rename.png" />
+    <None Include="Resources\manage.png" />
+    <None Include="Resources\sortByType.png" />
+    <None Include="Resources\sortByName.png" />
+    <None Include="Resources\filterOn.gif" />
+    <None Include="Resources\filterOff.gif" />
+    <EmbeddedResource Include="FolderSelector\FolderSelectorForm.resx">
+      <DependentUpon>FolderSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IO\RootDirectory.resx">
+      <DependentUpon>RootDirectory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IO\SVNFileSysConfigure.resx">
+      <DependentUpon>SVNFileSysConfigure.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectsBrowser\ObjectsBrowser.resx">
+      <DependentUpon>ObjectsBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectsBrowser\ItemSelectorForm.resx">
+      <DependentUpon>ItemSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertiesEditor\ImprovedOutliner.resx">
+      <DependentUpon>ImprovedOutliner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\HotkeyPanel.resx">
+      <DependentUpon>HotkeyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\move_up.png" />
+    <EmbeddedResource Include="Resources\move_down.png" />
+    <EmbeddedResource Include="Resources\history.png" />
+    <EmbeddedResource Include="Resources\bookmarks.png" />
+    <EmbeddedResource Include="PropertiesEditor\FastOutlinerColoursForm.resx">
+      <DependentUpon>FastOutlinerColoursForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Rainbow.png" />
+    <EmbeddedResource Include="Resources\BigRedButton.png" />
+    <EmbeddedResource Include="Wizards\TableDataEditing\CheckedMenu.resx">
+      <DependentUpon>CheckedMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\TableDataEditing\PropertyFilterForm.resx">
+      <DependentUpon>PropertyFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\TableDataEditing\TableDataPresetsForm.resx">
+      <DependentUpon>TableDataPresetsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\TableDataEditing\TableDataPanel.resx">
+      <DependentUpon>TableDataPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\ElementListExpand.png" />
+    <None Include="Resources\ElementExpand.png" />
+    <None Include="Resources\ElementEditable.png" />
+    <None Include="Resources\ElementCollapse.png" />
+    <None Include="Resources\ElementVisible.png" />
+    <None Include="Scripts\stop_script.png" />
+    <None Include="Scripts\run_script.png" />
+    <None Include="Scripts\remove_script.png" />
+    <None Include="Scripts\add_script.png" />
+    <None Include="Resources\Lock.png" />
+    <None Include="Resources\Outliner.png" />
+    <None Include="Resources\Write.bmp" />
+    <None Include="Resources\history-back.bmp" />
+    <None Include="Resources\history-fwd.bmp" />
+    <None Include="Resources\Redo.bmp" />
+    <None Include="Resources\Undo.bmp" />
+    <None Include="OutputPanel\Resources\infoA.png" />
+    <None Include="OutputPanel\Resources\errorA.png" />
+    <None Include="OutputPanel\Resources\warningA.png" />
+    <None Include="PropertiesEditor\Resources\ShowDescription.bmp" />
+    <None Include="PropertiesEditor\Resources\ShowCommands.bmp" />
+    <None Include="PropertiesEditor\Resources\Refresh.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IO\Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

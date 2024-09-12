@@ -1,0 +1,48 @@
+#include "TamarinPCH.h"
+
+#include "../../FlashMovieAvmCore.h"
+
+#include "TextFieldAutoSize.h"
+
+namespace avmplus
+{
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TextFieldAutoSize::TextFieldAutoSize( AvmCore * _core ) :
+  MMgc::GCRoot(_core->gc),
+  value(ETextFieldAutoSize::NONE)
+{
+  kCENTER = _core->internConstantStringLatin1("center");
+  kLEFT = _core->internConstantStringLatin1("left");
+  kNONE = _core->internConstantStringLatin1("none");
+  kRIGHT = _core->internConstantStringLatin1("right");
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void TextFieldAutoSize::SetStringValue( AvmString _stringValue )
+{
+  if ( _stringValue == kCENTER ) value = ETextFieldAutoSize::CENTER;
+  else if ( _stringValue == kLEFT ) value = ETextFieldAutoSize::LEFT;
+  else if ( _stringValue == kNONE ) value = ETextFieldAutoSize::NONE;
+  else if ( _stringValue == kRIGHT ) value = ETextFieldAutoSize::RIGHT;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+AvmString TextFieldAutoSize::GetStringValue()
+{
+  switch ( value )
+  {
+  case ETextFieldAutoSize::CENTER: return kCENTER;
+  case ETextFieldAutoSize::LEFT: return kLEFT;
+  case ETextFieldAutoSize::NONE: return kNONE;
+  case ETextFieldAutoSize::RIGHT: return kRIGHT;
+  }
+
+  return kNONE;
+}
+
+} // namespace flash

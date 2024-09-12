@@ -1,0 +1,27 @@
+sources = [
+	'RelayTestSvc/RelayTestServer.h',
+	'RelayTestSvc/RelayTestServer.cpp',
+	'RelayTestSvc/RelayTestServerObject.cpp',
+	'RelayTestSvc/RelayTestServerObject.h',
+	'RelayTestSvc/RelayTestServerRunner.cpp',
+	'RelayTestSvc/RelayTestServerRunner.h',
+	'RelayTestSvc/RelayTestServerRunner2.cpp',
+	'RelayTestSvc/RelayTestServerRunner2.h',
+	'RelayTestSvc/LRelayTestServerObject.auto.cpp',
+	'RelayTestSvc/LRelayTestServerObject.auto.h',
+	'RelayTestSvc/RRelayTestClientObject.auto.cpp',
+	'RelayTestSvc/RRelayTestClientObject.auto.h',
+	'RelayTestSvc/specific.h',
+	'RelayTestSvc/stdafx.cpp',
+	'RelayTestSvc/stdafx.h',
+]
+
+components = [ 
+	'Vendor/Libc',
+	'RPC/all',
+]
+
+builders = [
+    RPCBuilder( 'Remote', 'RelayTestSvc/RelayTestClientObject.h', '' ) ,
+    RPCBuilder( 'Local', 'RelayTestSvc/RelayTestServerObject.h', '' ),
+]

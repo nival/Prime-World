@@ -1,0 +1,15 @@
+# Configuration component for inline profiler UI
+# Put  'settings.enableProfiler = true' in your .application to enable profiling
+
+sources = []
+
+if settings.get( 'enableProfiler' ) :
+  components = [
+    'System/InlineProfiler3/UI',
+  ]
+else:
+  components = [
+    'Vendor/Libc',
+  ]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

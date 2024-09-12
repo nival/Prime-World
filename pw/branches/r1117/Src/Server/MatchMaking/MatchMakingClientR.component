@@ -1,0 +1,11 @@
+sources = [
+]
+
+components = [ 
+  'RPC/all',
+]
+
+builders = [
+    RPCBuilder( 'Local',  'MatchMakingClient.h', '', ['RMatchMakingSessionIface.auto.h']),
+    RPCBuilder( 'Remote', 'MatchMakingClient.h', '', ['RMatchMakingSessionIface.auto.h', 'HybridServer/RPeered.auto.h']),
+]

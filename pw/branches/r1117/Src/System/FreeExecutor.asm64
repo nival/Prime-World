@@ -1,0 +1,204 @@
+;TODO check whether stack alignment is really needed!!!
+IFDEF DEBUG
+DebugStackShift equ 10h
+ELSE
+DebugStackShift equ 0h
+ENDIF
+
+.data 
+ALIGN 16
+CallRetAddr dq 0,0,0 ; call return and two bytes from stack we can overwrite
+.code
+;unaligned version works as leaf but dangerouse, since it crash in descenats on SIMD calls
+internalEpilogue_unaligned PROC PRIVATE
+sub rsp, 10h
+mov r8, CallRetAddr
+mov qword ptr [rsp], r8
+; and we do not care about this
+xor r8, r8
+mov CallRetAddr, r8
+ret
+internalEpilogue_unaligned ENDP
+?ExecuteFreeStackless@DataExecutor@@AEBAXXZ_unaligned PROC PUBLIC
+;the stack here in debug is: ret_addr(ExecuteFreeStackless), 38h, ret_addr(ExecuteFree), reg_home, r9, desired stack
+;the stack here in relese is: ret_addr(ExecuteFreeStackless), 28h, ret_addr(ExecuteFree), reg_home, r9, desired stack
+;rcx has this
+ movd rax, xmm1
+ movd xmm0, rax
+ movd rax, xmm2
+ movd xmm1, rax
+ movd rax, xmm3
+ movd xmm2, rax
+ ;copy normal one
+ mov rax, rcx
+ mov rcx, rdx
+ mov rdx, r8
+ mov r8, r9
+ mov r9, qword ptr [rsp + 30h + DebugStackShift]
+ ;save return addr
+ mov CallRetAddr, r9 
+ mov r9, internalEpilogue_unaligned
+ mov qword ptr [rsp + 38h + DebugStackShift], r9 ;fake return address
+ mov r9, qword ptr [rsp + 58h + DebugStackShift] ; take last parameter for callee from stack
+ ;duplicate r9 in case it was a float, precision regardless
+ movd xmm3, r9
+ add rsp, 38h + DebugStackShift
+ mov rax, qword ptr [rax]
+ push rax
+ ret
+ ret
+?ExecuteFreeStackless@DataExecutor@@AEBAXXZ_unaligned ENDP
+
+internalEpilogue PROC PRIVATE
+sub rsp, 18h
+mov r8, CallRetAddr
+mov qword ptr [rsp], r8
+
+; restore stack content
+mov r8, CallRetAddr + 8h
+mov qword ptr [rsp + 28h], r8 
+mov r8, CallRetAddr + 10h  
+mov qword ptr [rsp + 30h], r8 
+
+; and we do not care about this
+xor r8, r8
+mov CallRetAddr, r8
+ret
+internalEpilogue ENDP
+?ExecuteFreeStackless@DataExecutor@@AEBAXXZ PROC PUBLIC
+;the stack here in debug is: ret_addr(ExecuteFreeStackless), 38h, ret_addr(ExecuteFree), reg_home, r9, desired stack
+;the stack here in relese is: ret_addr(ExecuteFreeStackless), 28h, ret_addr(ExecuteFree), reg_home, r9, desired stack
+;rcx has this
+;rdx has zero, we need for alignment!
+ ;copy float parameters via rax. Copying throug memory will be right BUT coz M$ suck and do not follow ABI they pass __m128 via reference
+ movd rax, xmm2
+ movd xmm0, rax
+ movd rax, xmm3
+ movd xmm1, rax
+ ;copy normal one
+ mov rax, rcx
+ mov rcx, r8
+ mov rdx, r9
+ mov r9, qword ptr [rsp + 30h + DebugStackShift]
+ mov r8, rax
+ xor rax, rax
+ ;save return addr thread safe
+ lock cmpxchg CallRetAddr, r9
+ cmp rax, 0
+ jz ThreadOk
+ ;stopping here means thread safety was violated
+ int 3
+ ThreadOk:
+ mov rax, r8
+ 
+ mov r9, internalEpilogue
+ mov qword ptr [rsp + 40h + DebugStackShift], r9 ;fake return address
+ mov r8, qword ptr [rsp + 58h + DebugStackShift] ; take prev. last parameter for callee from stack
+ mov r9, qword ptr [rsp + 60h + DebugStackShift] ; take last parameter for callee from stack
+ ;duplicate r9 and r8 in case it was a float, precision regardless
+ movd xmm2, r8
+ movd xmm3, r9
+
+ ;save stack in danger
+ mov CallRetAddr + 8h, r8  ; may be useful for callee
+ mov CallRetAddr + 10h, r9 ;may be useful for callee
+
+ ;shift stack skipping two parent parameters
+ add rsp, 40h + DebugStackShift
+ mov rax, qword ptr [rax]
+ push rax
+ ret
+ ret
+?ExecuteFreeStackless@DataExecutor@@AEBAXXZ ENDP
+
+?ExecuteV@DataExecutor@@QEBAXDIZZ  PROC PUBLIC
+;rcx - this
+;dl - return type
+;r8d - stack size to be copied
+;r9  - return addr if dl != 'V' or first param if dl == 'V'
+SaveRegArea equ 28h
+HomeArea    equ 20h
+LocalParam  equ SaveRegArea + HomeArea
+push rbx
+push rdi
+push rsi
+push r12
+push r13 ; align stack
+;align stack ((value + (size - 1)) & ~(size - 1))
+add r8d, 15
+and r8w, 0fff0h 
+;allocate stack size
+xor r13, r13
+mov r13d, r8d
+mov rsi, rsp
+sub rsp, r13 
+mov rdi, rsp
+;allocate home
+sub rsp, HomeArea
+
+; we do not care, we just extract parametrs from regs and stack
+;save this for future
+mov rbx, rcx
+
+;check return type and save to r12
+movzx r12, dl
+;copy stack
+mov cl, 3
+shr r8d, cl
+movzx rcx, r8w
+cmp r12w, 'V'
+jne NonVoidReturn
+add rsi, LocalParam + 20h 
+;rdi is already set 
+rep movsq
+;regs
+mov rcx, r9
+movd xmm0, rcx
+mov rdx, qword ptr [rsp + r13 + LocalParam + HomeArea + 8h] ;first stack param
+movd xmm1, rdx
+mov r8, qword ptr [rsp + r13 + LocalParam + HomeArea + 10h] ;second stack param
+movd xmm2, r8
+mov r9, qword ptr [rsp + r13 + LocalParam + HomeArea + 18h] ;third stack param
+movd xmm3, r9
+mov rbx, qword ptr [rbx]
+call rbx
+jmp Finalize
+
+NonVoidReturn:
+;we have return
+add rsi, LocalParam + 28h 
+rep movsq
+
+;save return address in rsi
+mov rsi, r9
+
+;fill parameters
+mov rcx, qword ptr [rsp + r13 + LocalParam + HomeArea + 8h] ;first stack param
+movd xmm0, rcx
+mov rdx, qword ptr [rsp + r13 + LocalParam + HomeArea + 10h] ;second stack param
+movd xmm1, rdx
+mov r8, qword ptr [rsp + r13 + LocalParam + HomeArea + 18h] ;third stack param
+movd xmm2, r8
+mov r9, qword ptr [rsp + r13 + LocalParam + HomeArea + 20h] ;fourth stack param
+movd xmm3, r9
+mov rbx, qword ptr [rbx]
+call rbx
+cmp r12w, 'F'
+je FloatReturn
+mov dword ptr[rsi], eax
+jmp Finalize
+FloatReturn:
+movd rax, xmm0
+mov dword ptr[rsi], eax
+jmp Finalize
+Finalize:
+add rsp, r13
+add rsp, 20h
+pop r13
+pop r12
+pop rsi
+pop rdi
+pop rbx
+ret
+?ExecuteV@DataExecutor@@QEBAXDIZZ  ENDP
+end

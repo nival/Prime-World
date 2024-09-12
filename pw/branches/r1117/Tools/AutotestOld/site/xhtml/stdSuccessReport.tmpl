@@ -1,0 +1,38 @@
+#from stdBase import stdBase
+#extends stdBase
+
+#def KIND: success
+
+#def cls: class = "shortReport"
+
+#def head($config, $kind)
+  #if $kind == "passed"
+    $config
+  #else
+    <a href = "#$config">$config</a>
+  #end if
+#end def
+
+#def shortReport
+<a id = "shortReport"/>
+<h2>Short Report</h2>
+<table $cls>
+  <col $cls id = "configuration"/><col span = "3" $cls id = "result"/>
+
+  <thead $cls>
+    <tr $cls>
+      <th $cls>Configuration</th><td $cls>Passed</td><td $cls>Warned</td><td $cls>Failed</td>
+    </tr>
+  </thead>
+  <tbody $cls>
+    #for $kind, $config, $passed, $warned, $failed in $SHORT_REPORT
+    <tr $cls id = "$kind">
+      <th $cls>$head($config, $kind)</th>
+      <td $cls>$passed</td><td $cls>$warned</td><td $cls>$failed</td>
+    </tr>
+    #end for
+  </tbody>
+</table>
+#end def
+
+#def BODY: $shortReport

@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9B74F824-6C7E-43D1-835D-6AFDEF87C079}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ControlCenter</RootNamespace>
+    <AssemblyName>ControlCenter</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Vendor\log4net\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Vendor\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Microsoft ASP.NET\ASP.NET MVC 2\\Assemblies\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="thrift-csharp-0.9.1, Version=0.9.1.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Vendor\Thrift\thrift-csharp-0.9.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\InfoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\Models\RoleModels.cs" />
+    <Compile Include="Areas\Admin\Models\UserModels.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Cluster\ClusterAreaRegistration.cs" />
+    <Compile Include="Areas\Cluster\Controllers\ServiceController.cs" />
+    <Compile Include="Areas\Cluster\Models\ClusterService.cs" />
+    <Compile Include="Areas\Cluster\Models\ServiceModels.cs" />
+    <Compile Include="Areas\EventTool\Binders.cs" />
+    <Compile Include="Areas\EventTool\Controllers\EventsController.cs" />
+    <Compile Include="Areas\EventTool\EventsAreaRegistration.cs" />
+    <Compile Include="Areas\EventTool\Models\DonateEventModel.cs" />
+    <Compile Include="Areas\EventTool\Models\SeasonEventShopGroupModel.cs" />
+    <Compile Include="Areas\EventTool\Models\SeasonEventModel.cs" />
+    <Compile Include="Areas\EventTool\Models\CustomEventModel.cs" />
+    <Compile Include="Areas\EventTool\Models\CustomMapModel.cs" />
+    <Compile Include="Areas\EventTool\Models\EventsModels.cs" />
+    <Compile Include="Areas\EventTool\EventsService.cs" />
+    <Compile Include="Areas\EventTool\Models\FirstBuyPriceModel.cs" />
+    <Compile Include="Areas\EventTool\Models\GWEventsModel.cs" />
+    <Compile Include="Areas\EventTool\Models\HeroPriceModel.cs" />
+    <Compile Include="Areas\EventTool\Models\ModelHelper.cs" />
+    <Compile Include="Areas\EventTool\Models\NewsBannerModel.cs" />
+    <Compile Include="Areas\EventTool\Models\QuestEventModel.cs" />
+    <Compile Include="Areas\EventTool\Models\QuestEventStageModel.cs" />
+    <Compile Include="Areas\EventTool\Models\QuestEventStageStepChoiceModel.cs" />
+    <Compile Include="Areas\EventTool\Models\QuestEventStageStepModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopBannerModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopGroupCurrenciesModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopGroupSlotsModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopGroupPriceModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopGroupProbabilityModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopPremiumNotInactiveModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopPriceModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopSlotAmountModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopSlotsModel.cs" />
+    <Compile Include="Areas\EventTool\Models\ReforgeTalentsEventModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopSlotPriceModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RerollShopTooltipModel.cs" />
+    <Compile Include="Areas\EventTool\Models\ResourcesTableSmallModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RollEventItemModel.cs" />
+    <Compile Include="Areas\EventTool\Models\RollEventModel.cs" />
+    <Compile Include="Areas\EventTool\Models\SkinPriceModel.cs" />
+    <Compile Include="Areas\EventTool\Models\TalentDropRarityModel.cs" />
+    <Compile Include="Areas\EventTool\Models\TechsModel.cs" />
+    <Compile Include="Areas\EventTool\Models\TradeEventGroupModel.cs" />
+    <Compile Include="Areas\EventTool\Models\TradeEventModel.cs" />
+    <Compile Include="Areas\EventTool\Models\TransmutationEventModel.cs" />
+    <Compile Include="Areas\GM\ASPNETKeyValuePair.cs" />
+    <Compile Include="Areas\GM\Controllers\AccountController.cs" />
+    <Compile Include="Areas\GM\Controllers\AuidListController.cs" />
+    <Compile Include="Areas\GM\Controllers\BroadcastController.cs" />
+    <Compile Include="Areas\GM\Controllers\ComplaintController.cs" />
+    <Compile Include="Areas\GM\Controllers\DynamicQuestController.cs" />
+    <Compile Include="Areas\GM\Controllers\GameSessionController.cs" />
+    <Compile Include="Areas\GM\Controllers\GuildController.cs" />
+    <Compile Include="Areas\GM\Controllers\HistoryUIController.cs" />
+    <Compile Include="Areas\GM\Controllers\BruteForceDefenderController.cs" />
+    <Compile Include="Areas\GM\Controllers\PlayerWipeController.cs" />
+    <Compile Include="Areas\GM\GMAreaRegistration.cs" />
+    <Compile Include="Areas\GM\Models\AccountModels.cs" />
+    <Compile Include="Areas\GM\Models\AccountService.cs" />
+    <Compile Include="Areas\GM\Models\AuidListModel.cs" />
+    <Compile Include="Areas\GM\Models\BroadcastModel.cs" />
+    <Compile Include="Areas\GM\Models\ComplaintModels.cs" />
+    <Compile Include="Areas\GM\Models\ComplaintService.cs" />
+    <Compile Include="Areas\GM\Models\DeleteSAAccountModel.cs" />
+    <Compile Include="Areas\GM\Models\DynamicQuestEnums.cs" />
+    <Compile Include="Areas\GM\Models\DynamicQuestModel.cs" />
+    <Compile Include="Areas\GM\Models\DynamicQuestService.cs" />
+    <Compile Include="Areas\GM\Models\GeolocationCache.cs" />
+    <Compile Include="Areas\GM\Models\GuildModels.cs" />
+    <Compile Include="Areas\GM\Models\GuildService.cs" />
+    <Compile Include="Areas\GM\Models\HistoryUIService.cs" />
+    <Compile Include="Areas\GM\Models\PlayerWipeModel.cs" />
+    <Compile Include="Areas\GM\Models\QuestEventsStepsModel.cs" />
+    <Compile Include="Areas\GM\Models\SearchModels.cs" />
+    <Compile Include="Areas\GM\Models\GameSessionModels.cs" />
+    <Compile Include="Areas\GM\Models\GameSessionService.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthenticationController.cs" />
+    <Compile Include="Areas\GM\Models\BruteForceDefenderModels.cs" />
+    <Compile Include="Areas\GM\Models\BruteForceDefenderService.cs" />
+    <Compile Include="Areas\GM\Models\QuestsForTalentsModel.cs" />
+    <Compile Include="Areas\GM\OperationDetails.cs" />
+    <Compile Include="Areas\GM\HtmlExtensions.cs" />
+    <Compile Include="Areas\MassOperations\Controllers\MassOperationsController.cs" />
+    <Compile Include="Areas\MassOperations\MassOperationsAreaRegistration.cs" />
+    <Compile Include="Areas\MassOperations\Models\MassOperationsModel.cs" />
+    <Compile Include="Areas\Monitoring\Controllers\MonitoringController.cs" />
+    <Compile Include="Areas\Monitoring\Models\MonitoringModels.cs" />
+    <Compile Include="Areas\Monitoring\MonitoringAreaRegistration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Models\MembershipService.cs" />
+    <Compile Include="Areas\Admin\Models\InfoModels.cs" />
+    <Compile Include="Areas\Admin\Models\FormsAuthenticationService.cs" />
+    <Compile Include="Helpers\AuthorizeWithPermissionAttribute.cs" />
+    <Compile Include="Helpers\Binders.cs" />
+    <Compile Include="Helpers\CustomIdentity.cs" />
+    <Compile Include="Helpers\HttpStatusCodeResult.cs" />
+    <Compile Include="Helpers\PagingHelpers.cs" />
+    <Compile Include="Helpers\SortingHelpers.cs" />
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Models\WarningModels.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Providers\GMToolsMembershipProvider.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Providers\GMToolsRoleProvider.cs" />
+    <Compile Include="Areas\Admin\Providers\GMToolsPermissionProvider.cs" />
+    <Compile Include="Areas\Admin\Models\AuthenticationModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\EventTool\Views\Events\DonateEvent.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\SeasonEvent.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\FirstBuyPrice.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\QuestEvent.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\ReforgeTalents.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\Custom.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\CustomMap.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\Index.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\HeroPrice.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\NewsBanner.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollGroupCurrencies.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollGroupPrice.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollGroupProbabilities.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollGroupSlots.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollPrice.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollShopBanner.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollShopPremiumNotInactive.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollShopTooltip.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollSlotAmount.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollSlotPrice.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RerollSlots.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\RollEvent.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\SkinPrice.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\TalentDrop.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\Techs.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\TradeEvent.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\Transmutation.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\GWEvent.aspx" />
+    <Content Include="Areas\GM\Views\Account\BrokenAccounts.aspx" />
+    <Content Include="Areas\GM\Views\Account\EditQuestForTalent.aspx" />
+    <Content Include="Areas\GM\Views\Account\EditSeasonInfo.aspx" />
+    <Content Include="Areas\GM\Views\Account\Skins.aspx" />
+    <Content Include="Areas\GM\Views\Account\TalentUpgradeEntities.aspx" />
+    <Content Include="Areas\GM\Views\BruteForceDefender\UnBan.aspx" />
+    <Content Include="Areas\GM\Views\BruteForceDefender\UnBanIp.aspx" />
+    <Content Include="Areas\GM\Views\PlayerWipe\DeleteSAAccount.aspx" />
+    <Content Include="Areas\GM\Views\PlayerWipe\PlayerWipe.aspx" />
+    <Content Include="Areas\GM\Views\Account\QuestsForTalents.aspx" />
+    <Content Include="Areas\GM\Views\Account\SeasonsInfo.aspx" />
+    <Content Include="Areas\GM\Views\Account\EditSeasonAwards.aspx" />
+    <Content Include="Areas\GM\Views\Account\Friends.aspx" />
+    <Content Include="Areas\GM\Views\Account\UpgradeHeroTalentsInfo.aspx" />
+    <Content Include="Areas\GM\Views\AuidList\AuidListMember.aspx" />
+    <Content Include="Areas\GM\Views\BruteForceDefender\Details.aspx" />
+    <Content Include="Areas\GM\Views\BruteForceDefender\BannedIp.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\AddQuestPull.aspx" />
+    <Content Include="Areas\GM\Views\AuidList\Index.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\AddQuestsToPull.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\DynamicQuestInfo.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\EditQuestPull.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\_preconditions.ascx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\QuestPulls.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\RemoveQuestsFromPull.aspx" />
+    <Content Include="Areas\GM\Views\GameSession\GameReplays.aspx" />
+    <Content Include="Areas\EventTool\Views\Events\GWEventHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\GWEventPoolPointsHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\GWEventPoolPointsHistoryToGuild.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\LeavePointsHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\QuestEventsStepsHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\RuneHistory.aspx" />
+    <Content Include="Areas\MassOperations\Views\MassOperations\Index.aspx" />
+    <Content Include="Areas\MassOperations\Views\MassOperations\MassOperationsInfo.aspx" />
+    <Content Include="Content\services-common.css" />
+    <Content Include="Content\services-details.css" />
+    <Content Include="Content\services-index.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\CommonScripts.js" />
+    <Content Include="Scripts\PageSpecific\DynamicQuestInfo.js" />
+    <Content Include="Scripts\service-view.js" />
+    <Content Include="Areas\Admin\Views\Authentication\LogOn.aspx" />
+    <Content Include="Areas\Admin\Views\Info\Index.aspx" />
+    <Content Include="Areas\Admin\Views\Roles\Create.aspx" />
+    <Content Include="Areas\Admin\Views\Roles\Details.aspx" />
+    <Content Include="Areas\Admin\Views\Roles\Edit.aspx" />
+    <Content Include="Areas\Admin\Views\Roles\Members.aspx" />
+    <Content Include="Areas\Admin\Views\Roles\Index.aspx" />
+    <Content Include="Areas\Admin\Views\Users\Create.aspx" />
+    <Content Include="Areas\Admin\Views\Users\Details.aspx" />
+    <Content Include="Areas\Admin\Views\Users\Edit.aspx" />
+    <Content Include="Areas\Admin\Views\Users\ResetPassword.aspx" />
+    <Content Include="Areas\Admin\Views\Users\Index.aspx" />
+    <Content Include="Views\Shared\EditorTemplates\AccountShortInfoView.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\DonateRangeModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\DonateRewardModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\SeasonEventShopGroupModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\SeasonEventShopItemModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\QuestEventStageModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\QuestEventStageStepChoiceModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\QuestEventStageStepModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\ResourceTableSmallModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\RollEventItemModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\TradeEventGroupModel.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\TradeGroupMemberModel.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.min-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Areas\Admin\Views\Authentication\ChangePassword.aspx" />
+    <Content Include="Areas\Admin\Views\Authentication\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\Tools\GMTools\DAL\DAL.csproj">
+      <Project>{7951773E-1351-440A-81EE-E1A6A5769D26}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccountLib\AccountLib.csproj">
+      <Project>{CAFB0C07-03D4-412C-8C44-EB3ED2806343}</Project>
+      <Name>AccountLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdminLib\AdminLib.csproj">
+      <Project>{9211B0DF-3802-4E12-9B00-1F387432BDB5}</Project>
+      <Name>AdminLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClusterLib\ClusterLib.csproj">
+      <Project>{A279CFF9-F620-4A22-944D-29045822C97A}</Project>
+      <Name>ClusterLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonitoringSummaryLib\MonitoringSummaryLib.csproj">
+      <Project>{5C47DEA3-9515-499E-BE5B-909C2658E1C6}</Project>
+      <Name>MonitoringSummaryLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.datasources.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Cluster\Views\Service\Details.aspx" />
+    <Content Include="Areas\Cluster\Views\Service\Index.aspx" />
+    <Content Include="Areas\Cluster\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\GM\Views\Account\Details.aspx" />
+    <Content Include="Areas\GM\Views\Account\Heroes.aspx" />
+    <Content Include="Areas\GM\Views\Account\Index.aspx" />
+    <Content Include="Areas\GM\Views\GameSession\Details.aspx" />
+    <Content Include="Areas\GM\Views\Web.config" />
+    <Content Include="Content\gm-sessions.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Authentication\Profile.aspx" />
+    <Content Include="Areas\Admin\Views\Roles\ShowError.aspx" />
+    <Content Include="Areas\Admin\Views\Users\EditRoles.aspx" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\GM\Views\Account\AddBuilding.aspx" />
+    <Content Include="Areas\GM\Views\Account\AddTalents.aspx" />
+    <Content Include="Areas\GM\Views\Account\AdminMessages.aspx" />
+    <Content Include="Areas\GM\Views\Account\ApplyUserDump.aspx" />
+    <Content Include="Areas\GM\Views\Account\BindGeolocation.aspx" />
+    <Content Include="Areas\GM\Views\Account\Buildings.aspx" />
+    <Content Include="Areas\GM\Views\Account\CheckAccountValidity.aspx" />
+    <Content Include="Areas\GM\Views\Account\Complaints.aspx" />
+    <Content Include="Areas\GM\Views\Account\Flags.aspx" />
+    <Content Include="Areas\GM\Views\Account\Geolocation.aspx" />
+    <Content Include="Areas\GM\Views\Account\Quests.aspx" />
+    <Content Include="Areas\GM\Views\Account\TournamentGames.aspx" />
+    <Content Include="Areas\GM\Views\Account\TournamentTicketGiven.aspx" />
+    <Content Include="Areas\GM\Views\Account\LampInfo.aspx" />
+    <Content Include="Areas\GM\Views\Account\PayChangeFaction.aspx" />
+    <Content Include="Areas\GM\Views\Account\PayEditNickname.aspx" />
+    <Content Include="Areas\GM\Views\Account\PayService.aspx" />
+    <Content Include="Areas\GM\Views\Account\SearchByNickResults.aspx" />
+    <Content Include="Areas\GM\Views\Account\TournamentInfo.aspx" />
+    <Content Include="Areas\GM\Views\Account\UserOperation.aspx" />
+    <Content Include="Areas\GM\Views\Complaint\ByGMUserOperation.aspx" />
+    <Content Include="Areas\GM\Views\Complaint\Overview.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\Overview.aspx" />
+    <Content Include="Areas\GM\Views\DynamicQuest\RemoveDynamicQuest.aspx" />
+    <Content Include="Areas\GM\Views\Guild\AddGuildSuzerain.aspx" />
+    <Content Include="Areas\GM\Views\Guild\ChangeLeader.aspx" />
+    <Content Include="Areas\GM\Views\Guild\Details.aspx" />
+    <Content Include="Areas\GM\Views\Guild\Edit.aspx" />
+    <Content Include="Areas\GM\Views\Guild\EditMember.aspx" />
+    <Content Include="Areas\GM\Views\Guild\FreeGuildBankTalents.aspx" />
+    <Content Include="Areas\GM\Views\Guild\TakenGuildBankTalents.aspx" />
+    <Content Include="Areas\GM\Views\Guild\ViewMembers.aspx" />
+    <Content Include="Areas\GM\Views\Guild\RemoveMembers.aspx" />
+    <Content Include="Areas\GM\Views\Guild\Search.aspx" />
+    <Content Include="Areas\GM\Views\Guild\SetIcon.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\CWGuildResourcesHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\FractionChangeHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\GMOperationsHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\BanAndMuteHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\CWPlayerResourcesHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\LoginHistory.aspx" />
+    <Content Include="Areas\GM\Views\HistoryUI\ResourcesHistory.aspx" />
+    <Content Include="Areas\Monitoring\Views\Monitoring\Index.aspx" />
+    <Content Include="Areas\Monitoring\Views\Web.config" />
+    <Content Include="Areas\EventTool\Views\Web.config" />
+    <Content Include="Areas\MassOperations\Views\Web.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Areas\GM\Views\Account\AddHero.aspx" />
+    <Content Include="Areas\GM\Views\Account\EditAccount.aspx" />
+    <Content Include="Areas\GM\Views\Account\EditHero.aspx" />
+    <Content Include="Areas\GM\Views\Account\EditTalent.aspx" />
+    <Content Include="Areas\GM\Views\Account\Library.aspx" />
+    <Content Include="Areas\GM\Views\Account\SendMessageUser.aspx" />
+    <Content Include="Areas\GM\Views\Account\ShowError.aspx" />
+    <Content Include="Areas\GM\Views\Broadcast\CreateNew.aspx" />
+    <Content Include="Areas\GM\Views\Broadcast\EditMessage.aspx" />
+    <Content Include="Areas\GM\Views\Broadcast\GetBroadcastList.aspx" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui-1.8.17.custom.css" />
+    <Content Include="Content\pager.css" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-sliderAccess.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\jquery.localizeDate.js" />
+    <Content Include="Scripts\jquery.ui.slider.js" />
+    <Content Include="Views\Shared\Forbidden.aspx" />
+    <Content Include="Views\Shared\Warning.aspx" />
+    <Content Include="Web.gmAccounting.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\GM\Views\Account\TalentSet.aspx" />
+    <Content Include="Web.cluster.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Cluster\Views\Shared\" />
+    <Folder Include="Areas\GM\Views\Shared\" />
+    <Folder Include="Areas\MassOperations\Views\Shared\" />
+    <Folder Include="Areas\Monitoring\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58829</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

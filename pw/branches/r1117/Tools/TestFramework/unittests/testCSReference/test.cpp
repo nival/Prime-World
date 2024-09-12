@@ -1,0 +1,11 @@
+//!Component("test1")
+#include "cxxtest/TestSuite.h"
+
+struct CSReference : public CxxTest::TestSuite 
+{
+    void testAddition( void )
+    {
+        TS_ASSERT( 1 + 1 > 1 );
+        TS_ASSERT_EQUALS( 1 + 1, 2 );
+    }
+};

@@ -1,0 +1,180 @@
+${rpc_namespaces_start}
+
+public class R${rpc_classname} : ManagedRPC.IRemoteEntityObject
+{
+  public static uint ID = ${rpc_iid};
+  private static uint CRC32 = ${rpc_crc32};
+  ManagedRPC.RClassCallInfo info = null;
+  ManagedRPC.IEnvironment env = null;
+  public delegate void callback(bool result);
+  callback cb = null;
+
+  public R${rpc_classname}()
+  {
+  }
+
+  public R${rpc_classname}( ManagedRPC.IEnvironment _env )
+  {
+    env = _env;
+  }
+
+  public void CreateRClass()
+  {
+    info = ManagedRPC.EntitiesContainer.RegisterRClass( env, ID, CRC32 );
+    if ( info != null )
+      info.SetRObject( this );
+${rpc_list_setinfo}
+  }
+
+  public void CreateRClass( params object[] constructParams )
+  {
+    info = ManagedRPC.EntitiesContainer.RegisterRClass( env, ID, CRC32, constructParams );
+    if ( info != null )
+      info.SetRObject( this );
+${rpc_list_setinfo}
+  }
+
+  public void QueryRClass( string name, string pass )
+  {
+    ManagedRPC.EntitiesContainer.Query( SetRClassCallInfo, env, ID, CRC32, name, pass );
+  }
+
+  public override void SetRClassCallInfo( ManagedRPC.RClassCallInfo _info )
+  {
+    info = _info;
+    if ( info != null )
+    {
+      if ( info.GetRObject() == null )
+          info.SetRObject( this );
+    }
+${rpc_list_setinfo}
+    if ( cb != null )
+    {
+      cb( info != null && info.IsNotNull() );
+    }
+  }
+
+  public void SetRClassCallInfoWOCallback( ManagedRPC.RClassCallInfo _info )
+  {
+    info = _info;
+    if ( info != null )
+      if ( info.GetRObject() == null )
+          info.SetRObject( this );
+${rpc_list_setinfo}
+  }
+
+  public override ManagedRPC.RClassCallInfo GetRClassCallInfo()
+  {
+    return info;
+  }
+
+  public void SetCallback( callback _cb )
+  {
+    cb = _cb;
+  }
+
+  public uint GetID()
+  {
+    return ID;
+  }
+
+  public uint GetCRC32()
+  {
+    return CRC32;
+  }
+
+${rpc_cs_funcs}
+
+  public bool IsUpdated()
+  {
+    if ( info != null )
+    {
+      return info.IsUpdated();
+    }
+    return false;
+  }
+
+  public void Commit(bool publishAfterCommit)
+  {
+    if ( info != null )
+    {
+      info.Commit(publishAfterCommit);
+    }
+  }
+
+  public void Rollback()
+  {
+    if ( info != null )
+    {
+      info.Rollback();
+    }
+  }
+
+  public bool Update()
+  {
+    if ( info != null )
+    {
+      return info.Update( null );
+    }
+    return false;
+  }
+
+  public bool Update( ManagedRPC.UpdateCallbackDelegate cb )
+  {
+    if ( info != null )
+    {
+      return info.Update( cb );
+    }
+    return false;
+  }
+
+  public bool SetUpdateCallback( ManagedRPC.UpdateCallbackDelegate cb )
+  {
+    if ( info != null )
+    {
+      return info.SetUpdateCallback( cb );
+    }
+    return false;
+  }
+
+  public void ReadOnly( bool val )
+  {
+    if ( info != null )
+    {
+      info.ReadOnly( val );
+    }
+  }
+
+  public void Publish()
+  {
+    if ( info != null )
+    {
+      info.Publish();
+    }
+  }
+
+  public void SetData( int memberId, System.Object obj )
+  {
+    switch ( memberId )
+    {
+${rpc_cs_data_rsetdata}
+    default:
+      break;
+    }
+    return;
+  }
+
+  public System.Type GetDataType( int memberId )
+  {
+    switch ( memberId )
+    {
+${rpc_cs_data_rgetdatatype}
+    default:
+      return null;
+    }
+  }
+${rpc_cs_data_dataproperties}
+${rpc_cs_data_datavalues}
+}
+
+${rpc_namespaces_end}

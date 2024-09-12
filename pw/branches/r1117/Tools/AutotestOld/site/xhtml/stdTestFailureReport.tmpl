@@ -1,0 +1,49 @@
+#from stdSuccessReport import stdSuccessReport
+#extends stdSuccessReport
+
+#def KIND: testFailure
+
+#def renderComparison($info, $goldenImage, $produced)
+    <p class = "comparison">$info</p>
+    <table class = "comparison">
+      <thead class = "comparison">
+        <tr class = "comparison">
+          <td class = "comparison">golden image</td>
+          <td class = "comparison">produced</td>
+        </tr>
+      </thead>
+      <tbody class = "comparison">
+        <tr class = "comparison">
+          <td class = "comparison">$goldenImage</td>
+          <td class = "comparison">$produced</td>
+        </tr>
+      </tbody>
+    </table>
+#end def
+
+#def BODY
+$shortReport
+
+<h2>Detailed Report</h2>
+#for $config, $failedTests, $warnedTests in $sorted($DETAILED_REPORT)
+  <a id = "$config"/>
+  <h3>$config</h3>
+  #if $failedTests
+    <h4>Failed tests</h4>
+    #for $test, $report in $failedTests
+      <h5>$test: against $test.configurations[$config]</h5>
+        $RENDER($report)
+    #end for
+  #end if
+  #if $warnedTests
+    <h4>Warned tests</h4>
+    #for $test, $warnings in $warnedTests
+      <h5>$test: against $test.configurations[$config]</h5>
+        #for $warning in $warnings
+          $RENDER($warning)
+        #end for
+    #end for
+  #end if
+  <p><a href = "#shortReport">Back to the short report</a></p>
+#end for
+#end def

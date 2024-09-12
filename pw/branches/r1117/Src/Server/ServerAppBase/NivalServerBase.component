@@ -1,0 +1,22 @@
+sources = [ 
+    'NivalServerBase.h',
+    'NivalServerBase.cpp',
+    'ServerRunner.h',
+] 
+
+components = [
+    'ServerAppBase/ServerCfg',
+    'NetworkAIO/transport',
+    'Network/RealDriver', 
+    'Network/ClusterConfiguration', 
+    'Network/StreamAllocator', 
+    'System/FileSystem',
+    'System/Commands',
+    'Server/LogMonitorAgent/LogMonitorAgent',
+]
+
+if platform == 'win32':
+  components += [
+    'RdpTransport/RdpTransport',
+    'RdpTransport/RdpFrontendTransport'
+  ]

@@ -1,0 +1,537 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc simpleAnimExport( string $sDst )
+{
+	global int $gnSuccess;
+	$gnSuccess = 0;
+         currentTime -e `playbackOptions -q -min`;
+	h6export -t anim -f $sDst -ct 2.5;
+
+	$gnSuccess = 1;
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc resultDialog( string $sResult )
+{
+	switch ( $sResult )
+	{
+		case "error":
+		{
+			confirmDialog
+				-title "Export result"
+				-message "Export failed."
+				-button "Ok";
+		}
+		break;
+
+		case "success":
+		{
+			confirmDialog
+				-title "Export result"
+				-message "Export successful."
+				-button "Ok";
+		}
+		break;
+
+		default:
+		{
+			confirmDialog
+				-title "Export result"
+				-message "Unknown"
+				-button "Ok";
+		}
+		break;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string makeFilename( string $sName, string $sSystem )
+{
+	global string $gsH6EX_File;
+	$gsH6EX_File = `file -q -sn`;
+	if ( $gsH6EX_File == "" )
+	{
+		error "Please, save the scene first.";
+	}
+
+	string $sPath = `dirname $gsH6EX_File`;
+
+	string $sScene = `basenameEx $gsH6EX_File`;
+
+	// Look for H6_DATA
+	string $sH6_DATA = `getenv H6_DATA`;
+	if ( `file -q -ex $sH6_DATA` )
+	{
+		// Look for H6_ASSETS
+		string $sH6_ASSETS = `getenv H6_ASSETS`;
+		if ( `file -q -ex $sH6_ASSETS` )
+		{
+			if ( `startsWith $sPath $sH6_ASSETS` )
+			{
+				if ( $sSystem == "H6_DATA" )
+				{
+					$sPath = `substitute $sH6_ASSETS $sPath $sH6_DATA`;
+				}
+			}
+		}
+	}
+
+	if ( `match "_[.]" $sName` != "" )
+	{
+		$sName = `substitute "_[.]" $sName "."`;
+	}
+
+	$sName = $sScene + $sName;
+
+	return ( $sPath + "/" + $sName );
+}
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string makeFilenameNew( string $sName )
+{
+	global string $gsH6EX_Dir;
+	global string $gsH6EX_Scene;
+
+	$sName = $gsH6EX_Scene + "_" + $sName;
+
+	// Remove starting "_"
+	$sName = `substitute "^_*" $sName ""`;
+
+	// Leave only single "_"
+	while ( `match "__" $sName` != "" )
+	{
+		$sName = `substitute "__" $sName "_"`;
+	}
+
+	// Add starting "_" if starts with digit or dot
+	if ( `match "^[0-9.]" $sName` != "" )
+	{
+		$sName = "_" + $sName;
+	}
+
+	return ( $gsH6EX_Dir + "/" + $sName );
+}
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc deleteAllClips()
+{
+	// This proc deletes all clips in scene
+
+	string $list[] = `ls -typ animClip`;
+
+	for ( $sClip in $list )
+	{
+		delete $sClip;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc exportClip(string $fileName, string $clipName)
+{
+	string $clipLibs[] = `clip -isolate -name $clipName`;
+	if (size($clipLibs)) 
+	{
+		string $sel[] = `ls -sl`;
+		select -r $clipLibs;
+		file -f -type "mayaAscii" -exportSelected -channels true -constructionHistory true $fileName;
+		select -r $sel;
+	} 
+	else 
+	{
+		error("Unable to export. See script editor for details.");
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getNonUnique( string $sSet )
+{
+	// This proc tests the presence of dag path delimeter ("|") in set's members
+	// names and push them in result array if found one.
+
+	string $notUnique[] = {};
+
+	string $list[] = `sets -q $sSet`;
+	for ( $sItem in $list )
+	{
+		if ( `gmatch $sItem "*|*"` )
+		{
+			$notUnique[`size $notUnique`] = `match "[^\.]*" $sItem`;
+		}
+	}
+
+	$notUnique = `stringArrayRemoveDuplicates $notUnique `;
+
+	return $notUnique;
+}
+
+proc saveClip()
+{
+	global string $gsH6EX_Anim;
+
+	string $tmp[] = `ls -typ character`;
+	if ( `size $tmp` == 0 )
+	{
+		error "Cannot create clip. No characters in scene.";
+	}
+
+	string $sChar = $tmp[0];
+
+	// Check the character for unique members
+	string $notUnique[] = `getNonUnique $sChar`;
+	if ( `size $notUnique` != 0 )
+	{
+	  print "Not unique members:\n";
+	  print `sort $notUnique`;
+	  error ( $sChar + " contains non-unique members. See script editor for details." );
+	}
+
+	// Character is OK. Proceed.
+
+	// Warn user if there are clips in scene
+	if ( size( `ls -typ animClip` ) != 0 )
+	{
+		string $sConfirm = `confirmDialog 
+			-title "Warning!" 
+			-message "There are clips in scene. All clips will be deleted!"
+			-button "Ok"
+			-button "Cancel"
+			-defaultButton "Cancel"
+			-cancelButton "Cancel"
+			-dismissString "Cancel"`;
+
+		if ( $sConfirm == "Cancel" )
+		{
+			warning "User canceled deletion of all clips";
+			return;
+		}
+	}
+
+	string $sClipFname =  makeFilename( $gsH6EX_Anim + ".ma", "" );
+
+	// Warn if file will be overwrited
+	if ( `file -q -ex $sClipFname` )
+	{
+		string $sConfirm = `confirmDialog 
+			-title "Warning!" 
+			-message ("File " + $sClipFname + " already exists. Overwrite?")
+			-button "Yes"
+			-button "No"
+			-defaultButton "No"
+			-cancelButton "No"
+			-dismissString "No"`;
+
+		if ( $sConfirm == "No" )
+		{
+			error "User canceled file overwrite";
+		}
+	}
+
+	deleteAllClips;
+
+	int $nStart = `playbackOptions -q -min`;
+	int $nEnd = `playbackOptions -q -max`;
+
+	if (catch(`clip -name $gsH6EX_Anim -scheduleClip 1 -startTime $nStart -endTime $nEnd $sChar` ) == 0 ) 
+	{
+		exportClip($sClipFname, $gsH6EX_Anim );
+
+		string $sourceClipName = `clip -q -sourceClipName $gsH6EX_Anim`;
+		clip -edit -active $sourceClipName $sChar;
+		delete $sourceClipName;
+	}
+	else 
+	{
+		error ( "Can't create (to be saved) clip from animation of " + $sChar + " character" );
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6EX_exportStat( string $sExtension )
+{
+	global string $gsH6EX_File;
+
+	if ( size( `ls -sl -ni -dag -type mesh` ) == 0 )
+	{
+		error "No meshes found in selection";
+	}
+
+	string $sRes = `confirmDialog
+		-title "Warning!"
+		-message "This will save and reload your scene."
+		-button "Ok"
+		-button "Cancel"`;
+
+	if ( $sRes != "Ok" )
+	{
+		return;
+	}
+
+	file -f -s;
+
+	string $list[] = `ls -sl`;
+
+	global int $gnSuccess;
+	$gnSuccess = 0;
+	for ( $sItem in $list )
+	{
+		if ( size( `ls -ni -dag -type mesh $sItem` ) == 0 )
+		{
+			continue;
+		}
+
+		string $sDst =  makeFilename( $sItem + "." + $sExtension, "H6_DATA" );
+		catch ( H6_exportStat( $gsH6EX_File, $sItem, $sDst ));
+	}
+
+	if ( $gnSuccess )
+	{
+		resultDialog "success";
+	}
+	else
+	{
+		resultDialog "error";
+	}
+
+	file -f -o $gsH6EX_File;
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6EX_exportSkin()
+{
+	global string $gsH6EX_File;
+
+	string $list[] = `ls -sl -ni -dag -type mesh`;
+	if ( `size $list` == 0 )
+	{
+		error "No meshes found in selection";
+	}
+
+	string $sRes = `confirmDialog
+		-title "Warning!"
+		-message "This will save and reload your scene."
+		-button "Ok"
+		-button "Cancel"`;
+
+	if ( $sRes != "Ok" )
+	{
+		return;
+	}
+
+	file -f -s;
+
+	global int $gnSuccess;
+	$gnSuccess = 0;
+	for ( $sMesh in $list )
+	{
+		string $sName = stringArrayToString( `listRelatives -p $sMesh`, "" );
+		string $sDst =  makeFilename( $sName + ".mayaSkin", "H6_DATA" );
+		select -r $sMesh;
+		catch ( H6_exportSkin( $gsH6EX_File, $gsH6EX_File, $sName, $sDst ));
+	}
+
+	if ( $gnSuccess )
+	{
+		resultDialog "success";
+	}
+	else
+	{
+		resultDialog "error";
+	}
+
+	file -f -o $gsH6EX_File;
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6EX_exportSkel()
+{
+	global string $gsH6EX_File;
+
+	string $list[] = `ls -sl -type joint`;
+	if ( `size $list` == 0 )
+	{
+		error "No joints found in selection";
+	}
+
+	string $sName = $list[0];
+	if ( $sName == "root" )
+	{
+		$sName = "_";
+	}
+	string $sDst = makeFilename( $sName + ".mayaSkel", "H6_DATA" );
+
+	global int $gnSuccess;
+	$gnSuccess = 0;
+
+	catch ( H6_exportSkel( $gsH6EX_File, $list[0], $sDst ));
+
+	if ( $gnSuccess )
+	{
+		resultDialog "success";
+	}
+	else
+	{
+		resultDialog "error";
+	}
+
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6EX_exportPart()
+{
+	global string $gsH6EX_File;
+
+	string $list[] = `ls -sl -typ objectSet`;
+	if ( `size $list` == 0 )
+	{
+		error "No sets found in selection";
+	}
+
+	global int $gnSuccess;
+	$gnSuccess = 0;
+
+	for ( $sSet in $list )
+	{
+		string $sDst = makeFilename( $sSet + ".mayaPart", "H6_DATA" );
+		catch ( H6_exportPart( $gsH6EX_File, $sSet, $sDst, 2.5 ));
+	}
+
+	if ( $gnSuccess )
+	{
+		resultDialog "success";
+	}
+	else
+	{
+		resultDialog "error";
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6EX_exportAnim()
+{
+	global string $gsH6EX_File;
+	global string $gsH6EX_Anim;
+
+	string $list[] = `ls -sl -type joint`;
+	if ( `size $list` == 0 )
+	{
+		error "No joints found in selection";
+	}
+
+	string $sName;
+	string $sRes = `promptDialog
+		-title "Export animation"
+		-message "Enter animation name:"
+		-text $gsH6EX_Anim
+		-button "OK" -button "Cancel"
+		-defaultButton "OK" -cancelButton "Cancel"
+		-dismissString "Cancel"`;
+
+	if ($sRes != "OK")
+	{
+		return;
+	}
+
+	$sName = `promptDialog -query -text`;
+	if ( $sName == "" )
+	{
+		error "Non-empty name required.";
+	}
+
+	if ( `match "[^a-z_A-Z0-9]" $sName` != "" )
+	{
+		error "Illegal symbols in name. Only a-z A-Z 0-9 _ allowed.";
+	}
+
+	if ( `match "^[0-9]" $sName` != "" )
+	{
+		error "Name cannot start with a digit.";
+	}
+
+	$gsH6EX_Anim = $sName;
+
+	saveClip;
+
+	string $sDst = makeFilename( $sName + ".mayaAnim", "H6_DATA" );
+
+	global int $gnSuccess;
+	$gnSuccess = 0;
+
+	catch ( simpleAnimExport( $sDst ) );
+
+	if ( $gnSuccess )
+	{
+		resultDialog "success";
+	}
+	else
+	{
+		resultDialog "error";
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_export()
+{
+	// Let's build the UI!
+	string $H6_export = "H6_export";
+	if (`window -exists $H6_export`) 
+	{
+		deleteUI -window $H6_export;
+	}
+
+	// This is for correct sizing of an each new instance of a window
+	if (`windowPref -exists $H6_export`) 
+	{
+		windowPref -remove $H6_export;
+	}
+
+	window
+		-title "H6 Export"
+		-toolbox true
+		-sizeable false
+		-resizeToFitChildren true
+
+		$H6_export;
+
+	frameLayout
+		-labelVisible false
+		-marginWidth 10
+		-marginHeight 10;
+
+	string $columnLayout = `columnLayout`;
+	columnLayout
+		-edit
+		-adjustableColumn true 
+		-columnAlign left
+		$columnLayout;
+
+	// Building buttons
+
+	int $half = 55;
+	int $width = $half * 2;
+
+	button -label "Collision" -align center -w $width -c ( "H6EX_exportStat( \"mayaColl\" )" );
+	button -label "Static Meshes" -align center -w $width -c ( "H6EX_exportStat( \"mayaStat\" )" );
+	button -label "Skins" -align center -w $width -c ( "H6EX_exportSkin()" );
+	button -label "Skeleton" -align center -w $width -c ( "H6EX_exportSkel()" );
+	button -label "Animation" -align center -w $width -c ( "H6EX_exportAnim()" );
+	button -label "Particles" -align center -w $width -c ( "H6EX_exportPart()" );
+	
+	showWindow $H6_export;
+
+	return;
+}
+
+H6_export;

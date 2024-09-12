@@ -1,0 +1,1 @@
+virtual const vector<VisualObjectState>& GetStates() const { static vector<VisualObjectState> noStates; return noStates; }

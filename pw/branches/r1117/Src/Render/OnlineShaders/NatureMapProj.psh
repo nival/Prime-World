@@ -1,0 +1,18 @@
+#include "_commonPostProcess.h"
+
+sampler diffuseMap : register(s0);
+sampler depthMap : register(s1);
+
+float4x4 matViewInverse : register( PSHADER_LOCALCONST0 );
+float4 camPos : register( PSHADER_LOCALCONST4 );
+float4 mapScaleOffset : register( PSHADER_LOCALCONST5 );
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  float4 posCS = float4(Input.Texcoord * float2(2, -2) + float2(-1, 1), 1.f, 1.f);
+  float4 posWS = mul(posCS, matViewInverse);
+  float z = tex2D(depthMap, Input.Texcoord);
+
+  float4 landPos = lerp(camPos, posWS, z);
+  return tex2D(diffuseMap, landPos.xy * mapScaleOffset.xy + mapScaleOffset.zw);
+}

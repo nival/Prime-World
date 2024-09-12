@@ -1,0 +1,17 @@
+# Configuration component for inline profiler
+# Put  'settings.enableProfiler = true' in your .application to enable profiling
+
+sources = [
+    'InlineProfiler.h',
+  ]
+
+if settings.get( 'enableProfiler' ) :
+  components = [
+    'System/InlineProfiler3/Sampler',
+  ]
+else:
+  components = [
+    'System/InlineProfiler3/SamplerStub',
+  ]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

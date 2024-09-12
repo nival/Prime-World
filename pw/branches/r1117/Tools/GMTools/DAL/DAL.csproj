@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7951773E-1351-440A-81EE-E1A6A5769D26}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Src\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Src\_Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\log4net\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\Npgsql\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=6876f2ea66c9f443, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\NHibernate\NHibernate.Caches.SysCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.0.11.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\Npgsql\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DALContext.cs" />
+    <Compile Include="DALException.cs" />
+    <Compile Include="Entities\AbilityType.cs" />
+    <Compile Include="Entities\AfterParty.cs" />
+    <Compile Include="Entities\AfterPartyMember.cs" />
+    <Compile Include="Entities\Building.cs" />
+    <Compile Include="Entities\CastleBuilding.cs" />
+    <Compile Include="Entities\CharacterUnlock.cs" />
+    <Compile Include="Entities\Claim.cs" />
+    <Compile Include="Entities\Consumable.cs" />
+    <Compile Include="Entities\Creature.cs" />
+    <Compile Include="Entities\Achievement.cs" />
+    <Compile Include="Entities\DynamicQuestChange.cs" />
+    <Compile Include="Entities\FactionChange.cs" />
+    <Compile Include="Entities\GMOperation.cs" />
+    <Compile Include="Entities\GMUserOperation.cs" />
+    <Compile Include="Entities\Guild.cs" />
+    <Compile Include="Entities\GuildBuff.cs" />
+    <Compile Include="Entities\GuildDailyStats.cs" />
+    <Compile Include="Entities\GuildInteraction.cs" />
+    <Compile Include="Entities\GuildMembership.cs" />
+    <Compile Include="Entities\GuildPointsLog.cs" />
+    <Compile Include="Entities\GuildShopBuy.cs" />
+    <Compile Include="Entities\GuildShopItem.cs" />
+    <Compile Include="Entities\GuildSiege.cs" />
+    <Compile Include="Entities\LeaverPointsLog.cs" />
+    <Compile Include="Entities\QuestEventsStagesLog.cs" />
+    <Compile Include="Entities\QuestEventsStepsLog.cs" />
+    <Compile Include="Entities\ReRollShopLog.cs" />
+    <Compile Include="Entities\Rune.cs" />
+    <Compile Include="Entities\RuneRoll.cs" />
+    <Compile Include="Entities\TalentJoinSession.cs" />
+    <Compile Include="Entities\HistoryEntitiesForUI.cs" />
+    <Compile Include="Entities\MMakingPlayer.cs" />
+    <Compile Include="Entities\MMakingSession.cs" />
+    <Compile Include="Entities\MoveToBath.cs" />
+    <Compile Include="Entities\Quest.cs" />
+    <Compile Include="Entities\QuestChange.cs" />
+    <Compile Include="Entities\RatingChange.cs" />
+    <Compile Include="Entities\ResourceLog.cs" />
+    <Compile Include="Entities\TalentLog.cs" />
+    <Compile Include="Entities\TournamentQuestChange.cs" />
+    <Compile Include="Entities\Unmapped\GMOperationType.cs" />
+    <Compile Include="Entities\Unmapped\GuildInteractionType.cs" />
+    <Compile Include="Entities\Unmapped\GuildPointsLogType.cs" />
+    <Compile Include="Entities\GWEventLog.cs" />
+    <Compile Include="Entities\Unmapped\PlayerConnectionStatus.cs" />
+    <Compile Include="Entities\Unmapped\Faction.cs" />
+    <Compile Include="Entities\Unmapped\GMUserOperationType.cs" />
+    <Compile Include="Entities\Unmapped\QuestChangeType.cs" />
+    <Compile Include="Entities\Unmapped\RatingType.cs" />
+    <Compile Include="Entities\Unmapped\SessionResult.cs" />
+    <Compile Include="Entities\Unmapped\SessionType.cs" />
+    <Compile Include="Entities\MGBoost.cs" />
+    <Compile Include="Entities\SocialSession.cs" />
+    <Compile Include="Entities\Talent.cs" />
+    <Compile Include="Entities\DictionaryEntity.cs" />
+    <Compile Include="Entities\GameSession.cs" />
+    <Compile Include="Entities\ImpulsiveBuff.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\PlayerCharacter.cs" />
+    <Compile Include="Entities\SessionToPlayer.cs" />
+    <Compile Include="Entities\UnitType.cs" />
+    <Compile Include="Entities\Unmapped\TalentRarity.cs" />
+    <Compile Include="Entities\GuildSiegeParticipant.cs" />
+    <EmbeddedResource Include="Mapping\TournamentQuestChange.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Entities\Unmapped\TournamentQuestResult.cs" />
+    <Compile Include="NHibernateHelper.cs" />
+    <Compile Include="Repositories\AbilityTypeRepository.cs" />
+    <Compile Include="Repositories\CharacterUnlockRepository.cs" />
+    <Compile Include="Repositories\ClaimRepository.cs" />
+    <Compile Include="Repositories\GMOperationRepository.cs" />
+    <Compile Include="Repositories\GMUserOperationRepository.cs" />
+    <Compile Include="Repositories\GuildMembershipRepository.cs" />
+    <Compile Include="Repositories\GuildRepository.cs" />
+    <Compile Include="Repositories\GWEventsLogRepository.cs" />
+    <Compile Include="Repositories\HistoryRecordsRepository.cs" />
+    <Compile Include="Repositories\BuildingRepository.cs" />
+    <Compile Include="Repositories\ConsumableRepository.cs" />
+    <Compile Include="Repositories\CreatureRepository.cs" />
+    <Compile Include="Repositories\AchievementRepository.cs" />
+    <Compile Include="Repositories\QuestEventsStepsRepository.cs" />
+    <Compile Include="Repositories\QuestEventsStagesRepository.cs" />
+    <Compile Include="Repositories\MGBoostRepository.cs" />
+    <Compile Include="Repositories\MMakingPlayerRepository.cs" />
+    <Compile Include="Repositories\MMakingSessionRepository.cs" />
+    <Compile Include="Repositories\ResourceLogRepository.cs" />
+    <Compile Include="Repositories\RuneRollRepository.cs" />
+    <Compile Include="Repositories\SocialSessionRepository.cs" />
+    <Compile Include="Repositories\TalentLogRepository.cs" />
+    <Compile Include="Repositories\TalentRepository.cs" />
+    <Compile Include="Repositories\CharacterRepository.cs" />
+    <Compile Include="Entities\Character.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GameSessionRepository.cs" />
+    <Compile Include="Repositories\ImpulsiveBuffRepository.cs" />
+    <Compile Include="Repositories\PlayerCharacterRepository.cs" />
+    <Compile Include="Repositories\PlayerRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\SessionToPlayerRepository.cs" />
+    <Compile Include="Repositories\UnitTypeRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Mapping\QuestEventsStepsLog.hbm.xml" />
+    <EmbeddedResource Include="Mapping\QuestEventsStagesLog.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\GWEventLog.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\ReRollShopLog.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\LeaverPointsLog.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\AfterParty.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\AfterPartyMember.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\GuildPointsLog.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GuildInteraction.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GuildDailyStats.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GuildShopBuy.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GuildSiegeParticipant.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GuildSiege.hbm.xml" />
+    <EmbeddedResource Include="Mapping\DynamicQuestChange.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GMOperation.hbm.xml" />
+    <EmbeddedResource Include="Mapping\TalentLog.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Claim.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GMUserOperation.hbm.xml" />
+    <EmbeddedResource Include="Mapping\CastleBuilding.hbm.xml" />
+    <EmbeddedResource Include="Mapping\RuneRoll.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\Rune.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Guild.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GuildMembership.hbm.xml" />
+    <EmbeddedResource Include="Mapping\QuestChange.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Quest.hbm.xml" />
+    <EmbeddedResource Include="Mapping\FactionChange.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ResourceLog.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\MoveToBath.hbm.xml" />
+    <EmbeddedResource Include="Mapping\MMakingSession.hbm.xml" />
+    <EmbeddedResource Include="Mapping\MMakingPlayer.hbm.xml" />
+    <EmbeddedResource Include="Mapping\CharacterUnlock.hbm.xml" />
+    <EmbeddedResource Include="Mapping\SocialSession.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Achievement.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Consumable.hbm.xml" />
+    <EmbeddedResource Include="Mapping\AbilityType.hbm.xml" />
+    <EmbeddedResource Include="Mapping\UnitType.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Building.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Creature.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Functions.hbm.xml" />
+    <EmbeddedResource Include="Mapping\MGBoost.hbm.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\Player.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ImpulsiveBuff.hbm.xml" />
+    <EmbeddedResource Include="Mapping\SessionToPlayer.hbm.xml" />
+    <EmbeddedResource Include="Mapping\PlayerCharacter.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GameSession.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Talent.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\Character.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\GuildBuff.hbm.xml" />
+    <EmbeddedResource Include="Mapping\GuildShopItem.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
