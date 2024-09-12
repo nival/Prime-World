@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="GMOperation" table="gm_operation">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">gm_operation_id_sequence</param>
+      </generator>
+    </id>
+    <property name="Type" type="NHibernate.Type.EnumStringType`1[[DAL.Entities.GMOperationType, DAL]], NHibernate" />
+    <property name="Data" />
+    <property name="GMLogin" />
+    <property name="Timestamp" />
+    <many-to-one name="Player" not-null="true" />
+  </class>
+</hibernate-mapping>

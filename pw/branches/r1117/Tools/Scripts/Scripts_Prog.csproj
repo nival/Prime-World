@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C3B1E4EE-A387-4FA6-95DB-D8ACDEA89853}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Scripts</RootNamespace>
+    <AssemblyName>Scripts</AssemblyName>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EditorLib, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\EditorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EditorNative, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\EditorNative.dll</HintPath>
+    </Reference>
+    <Reference Include="EditorPlugins, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\EditorPlugins.dll</HintPath>
+    </Reference>
+    <Reference Include="libdb.NET, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\libdb.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="MayaExeInteraction, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\MayaExeInteraction.dll</HintPath>
+    </Reference>
+    <Reference Include="PF_Editor, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\PF_Editor.exe</HintPath>
+    </Reference>
+    <Reference Include="PF_EditorC, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\PF_EditorC.exe</HintPath>
+    </Reference>
+    <Reference Include="PF_Types.DBTypes, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\PF_Types.DBTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSvn, Version=1.6003.1304.38397, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\Vendor\SharpSvn\SharpSvn.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Types.DBTypes, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\Types.DBTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.3.1.34440, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\_Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckAnimCurves.cs" />
+    <Compile Include="CheckAttackWorkingTime.cs" />
+    <Compile Include="CheckGFXTextureSourceNames.cs" />
+    <Compile Include="CheckReimport.cs" />
+    <Compile Include="CleanupDb.cs" />
+    <Compile Include="CollectFormulas.cs" />
+    <Compile Include="CollectLinked.cs" />
+    <Compile Include="CopyRelatedXdb.cs" />
+    <Compile Include="CreateGlobalAtlas.cs" />
+    <Compile Include="CreateLockMask.cs" />
+    <Compile Include="DeleteUnusedUITextures.cs" />
+    <Compile Include="ExportSocialData.cs" />
+    <Compile Include="FillCompiledTooltips.cs" />
+    <Compile Include="FindAllFTD.cs" />
+    <Compile Include="FindBrokenMaterials.cs" />
+    <Compile Include="FindBrokenAnimCurves.cs" />
+    <Compile Include="FixGuildBonuses.cs" />
+    <Compile Include="FixNextNode.cs" />
+    <Compile Include="FixNodesDuration.cs" />
+    <Compile Include="FixRandomNodes.cs" />
+    <Compile Include="FixTalentsAnimation.cs" />
+    <Compile Include="GetAllResources.cs" />
+    <Compile Include="ImportDescriptions.cs" />
+    <Compile Include="ModifiedSourceFilesChecker.cs" />
+    <Compile Include="ModifiedSceneFilesChecker.cs" />
+    <Compile Include="EventsSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExstensionFixer.cs" />
+    <Compile Include="FixAGSpeed.cs" />
+    <Compile Include="FixFileRefCases.cs" />
+    <Compile Include="HelloWorld.cs" />
+    <Compile Include="ObjectSearch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveSharpness.cs" />
+    <Compile Include="RemoveUnusedFiles.cs" />
+    <Compile Include="RescaleMinigame.cs" />
+    <Compile Include="ReturnShadows.cs" />
+    <Compile Include="RotateTrees.cs" />
+    <Compile Include="SourceFilesChecker.cs" />
+    <Compile Include="UpdateAmulets.cs">
+    </Compile>
+    <Compile Include="StoreDescriptions.cs" />
+    <Compile Include="UpdateFontStylesInUIRoot.cs" />
+    <Compile Include="ValidateBackLinks.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScriptsForms\ScriptsForms.csproj">
+      <Project>{F39BF710-A513-4FEE-B695-1CA794655FA2}</Project>
+      <Name>ScriptsForms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

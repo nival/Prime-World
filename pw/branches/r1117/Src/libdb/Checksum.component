@@ -1,0 +1,26 @@
+sources = [
+    'Checksum.cpp', 
+]
+
+includePaths = [ 
+    '../Vendor/zlib/include', 
+]
+
+if platform == 'win32' :
+  libDependencies = [
+      'zdll.lib',
+  ]
+else :
+  libDependencies = [
+      'libz.so',
+  ]
+
+libPaths = [
+    '../Vendor/zlib/lib',
+]
+
+builders = [ 
+    InstallBuilder( '../Vendor/zlib/zlib1.dll' ), 
+]
+
+components = [ 'Vendor/Libc' ]

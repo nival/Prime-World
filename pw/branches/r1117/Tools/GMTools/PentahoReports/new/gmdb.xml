@@ -1,0 +1,4228 @@
+<?xml version="1.0"?>
+<Schema name="gmdb">
+	<Dimension name="Time" type="TimeDimension">
+		<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="gamesession_analysisid" rightAlias="gamesession" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+					<Table name="gamesession"/>
+					<Table name="datehierarchy"/>
+				</Join>
+			</Join>
+			<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+			<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+			<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Push">
+		<Hierarchy hasAll="true" allMemberName="All Pushes" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="gamesession_analysisid" rightAlias="gamesession" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+					<Table name="gamesession"/>
+					<Table name="datehierarchy"/>
+				</Join>
+			</Join>
+			<Level name="Push" column="push" table="datehierarchy"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="SessionType">
+		<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="gamesession_analysisid" rightAlias="gamesession" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Table name="gamesession"/>
+			</Join>
+			<Level name="SessionType" column="sessiontype" table="gamesession"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Spring">
+		<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Table name="sessiontoplayer"/>
+			<Level name="Spring" column="spring" table="sessiontoplayer"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Player">
+		<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="playercharacter_analysisid" rightAlias="playercharacter" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter"/>
+					<Table name="player"/>
+				</Join>
+			</Join>
+			<Level name="Player" column="nickname" table="player"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Auid">
+		<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="playercharacter_analysisid" rightAlias="playercharacter" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter"/>
+					<Table name="player"/>
+				</Join>
+			</Join>
+			<Level name="Auid" column="id" table="player"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Creature">
+		<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="creature">
+			<Table name="creature" />
+			<Level name="Creature" column="name" uniqueMembers="true" />
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Nival">
+		<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="playercharacter_analysisid" rightAlias="playercharacter" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter"/>
+					<Table name="player"/>
+				</Join>
+			</Join>
+			<Level name="Nival" column="nival" table="player"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Sex">
+		<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="playercharacter_analysisid" rightAlias="playercharacter" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Join leftAlias="player" leftKey="sex" rightAlias="sextable" rightKey="id">
+						<Table name="player" />
+						<InlineTable alias="sextable">
+							<ColumnDefs>
+								<ColumnDef name="id" type="Integer"/>
+								<ColumnDef name="desc" type="String"/>
+							</ColumnDefs>
+							<Rows>
+								<Row>
+									<Value column="id">0</Value>
+									<Value column="desc">None</Value>
+								</Row>
+								<Row>
+									<Value column="id">1</Value>
+									<Value column="desc">Male</Value>
+								</Row>
+								<Row>
+									<Value column="id">2</Value>
+									<Value column="desc">Female</Value>
+								</Row>
+							</Rows>
+						</InlineTable>
+					</Join>			
+				</Join>
+			</Join>
+			<Level name="Sex" table="sextable" column="desc" uniqueMembers="true" />
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Map">
+		<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="sessiontoplayer">
+			<Join leftAlias="sessiontoplayer" leftKey="gamesession_analysisid" rightAlias="gamesession" rightKey="analysisid">
+				<Table name="sessiontoplayer"/>
+				<Table name="gamesession"/>
+			</Join>
+			<Level name="Map" column="map" table="gamesession"/>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="TalentUsages" defaulMeasure="Total Usages">
+		<Table name="event_talentused" />
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Talent" foreignKey="talentid">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="Talent" column="name" uniqueMembers="false" >
+					<Property name="Cooldown" column="cooldown" type="Numeric"/>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="TalentType" foreignKey="talentid">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="talent">
+				<Join leftAlias="talent" leftKey="abilitytype" rightAlias="abilitytype" rightKey="id">
+					<Table name="talent" />
+					<Table name="abilitytype" />
+				</Join>
+				<Level name="TalentType" table="abilitytype" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Sex" source="Sex" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Usages" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="Duration" column="duration" aggregator="avg" />
+
+		<CalculatedMember name="Talent Cooldown" dimension="Measures">
+			<Formula>[Talent].CurrentMember.Properties("Cooldown")</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="Usages To Cooldown" dimension="Measures">
+			<Formula>[Measures].[Total Usages] * [Measures].[Talent Cooldown]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+
+		<CalculatedMember name="Usages Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Usages] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+
+		<CalculatedMember name="Usages Per SessionToPlayer Per Cooldown" dimension="Measures">
+			<Formula>[Measures].[Usages To Cooldown] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="TalentUnlocked" defaulMeasure="Total Unlocked">
+		<Table name="event_talentunlocked" />
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Talent" foreignKey="talentid">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="Talent" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="TalentType" foreignKey="talentid">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="talent">
+				<Join leftAlias="talent" leftKey="abilitytype" rightAlias="abilitytype" rightKey="id">
+					<Table name="talent" />
+					<Table name="abilitytype" />
+				</Join>
+				<Level name="TalentType" table="abilitytype" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="UnlockMinute">
+			<Hierarchy hasAll="true">
+				<Level name="UnlockMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Sex" source="Sex" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Unlocked" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Unlocked Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Unlocked] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Flags" defaultMeasure="Total Flag Events">
+		<Table name="event_flag"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Faction">
+			<Hierarchy hasAll="true">
+				<Level name="Faction" column="faction"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Road">
+			<Hierarchy hasAll="true">
+				<Level name="Road" column="road"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Segment">
+			<Hierarchy hasAll="true">
+				<Level name="Segment" column="segment"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Raised">
+			<Hierarchy hasAll="true">
+				<Level name="Raised" column="raised"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when activatorcreatureid = 0 then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Flag Events" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Events Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Flag Events] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Flags2" defaultMeasure="Total Flag Events">
+		<Table name="v_event_flag"/>
+		<Dimension name="Activator">
+			<Hierarchy hasAll="true">
+				<Level name="ActivatorType" column="activatortype" uniqueMembers="true" />
+				<Level name="Activator" column="activatorname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Faction">
+			<Hierarchy hasAll="true">
+				<Level name="Faction" column="faction"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Road">
+			<Hierarchy hasAll="true">
+				<Level name="Road" column="road"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Segment">
+			<Hierarchy hasAll="true">
+				<Level name="Segment" column="segment"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Raised">
+			<Hierarchy hasAll="true">
+				<Level name="Raised" column="raised"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when activatorcreatureid = 0 then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Flag Events" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Events Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Flag Events] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="CharacterUsages" defaultMeasure="Character Usages">
+		<Table name="sessiontoplayer"/>
+		<Dimension name="Character" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="character" />
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Player" table="player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Auid" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Auid" table="player" column="id" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Nival" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Nival" table="player" column="nival" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Sex" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Join leftAlias="player" leftKey="sex" rightAlias="sextable" rightKey="id">
+						<Table name="player" />
+						<InlineTable alias="sextable">
+							<ColumnDefs>
+								<ColumnDef name="id" type="Integer"/>
+								<ColumnDef name="desc" type="String"/>
+							</ColumnDefs>
+							<Rows>
+								<Row>
+									<Value column="id">0</Value>
+									<Value column="desc">None</Value>
+								</Row>
+								<Row>
+									<Value column="id">1</Value>
+									<Value column="desc">Male</Value>
+								</Row>
+								<Row>
+									<Value column="id">2</Value>
+									<Value column="desc">Female</Value>
+								</Row>
+							</Rows>
+						</InlineTable>
+					</Join>			
+				</Join>
+				<Level name="Sex" table="sextable" column="desc" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="RatingInterval">
+			<Hierarchy hasAll="true">
+				<Level name="Rating">
+				<KeyExpression>
+					<SQL dialect="generic">
+						(case 
+							when ratingtotal &gt;= 2000 then '2000+'
+							when ratingtotal &lt; 1550 then '&lt;1550'
+							when ratingtotal &gt;= 1550 and ratingtotal &lt; 1750 then '1550-1750'
+							when ratingtotal &gt;= 1750 and ratingtotal &lt; 2000 then '1750-2000'
+					 	 end) 
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="PartyMembers">
+			<Hierarchy hasAll="true">
+				<Level name="PartyMembers">
+				<KeyExpression>
+					<SQL dialect="generic">
+						(case 
+							when partymembers = 2 or partymembers = 3 then 'Party_2_3'
+							when partymembers = 4 or partymembers = 5 then 'Party_4_5'
+							else 'NoParty'
+					 	 end) 
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="StartTime" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="StartTime" column="starttime"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="StartTime2" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="StartTime2">
+				<KeyExpression>
+					<SQL dialect="generic">
+						to_char(starttime, 'HH24:MI')
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Hour" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="Hour">
+				<KeyExpression>
+					<SQL dialect="generic">
+						date_part('hour', starttime)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="EndTime" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="EndTime" column="endtime"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+					<Table name="gamesession"/>
+					<Table name="datehierarchy"/>
+				</Join>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" allMemberName="All Pushes" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+					<Table name="gamesession"/>
+					<Table name="datehierarchy"/>
+				</Join>
+				<Level name="Push" column="push" table="datehierarchy"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionType" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="SessionType" column="sessiontype" table="gamesession"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Side" foreignKey="faction">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="faction">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Burn</Value>
+						</Row>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">Freeze</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Side" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SideWon" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="SideWon" column="sidewon"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Spring">
+			<Hierarchy hasAll="true">
+				<Level name="Spring" column="spring"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="FinalLevel">
+			<Hierarchy hasAll="true">
+				<Level name="FinalLevel" column="finallevel"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="FinalLevel0">
+			<Hierarchy hasAll="true">
+				<Level name="FinalLevel0">
+				<KeyExpression>
+					<SQL dialect="generic">
+						(finallevel = 0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						false
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsLeaver">
+			<Hierarchy hasAll="true">
+				<Level name="IsLeaver" column="leaver"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="Map" column="map"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Surrended" foreignKey="gamesession_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="Surrended">
+				<KeyExpression>
+					<SQL dialect="generic">
+						(surrendervote > 0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Character Usages" column="analysisid" datatype="Integer" aggregator="count" />
+		<Measure name="Unical PlayerCharacters" column="playercharacter_analysisid" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="Kills" column="kills" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Deaths" column="deaths" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Assists" column="assists" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Score" column="score" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="ScoreMax" column="score" datatype="Integer" aggregator="max" formatString="#,##0.0" />
+		<Measure name="Final Level" column="finallevel" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Enemy Creeps Killed" column="enemycreepskilled" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Neutral Creeps Killed" column="neutralcreepskilled" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Duration" datatype="Integer" aggregator="sum" >
+			<MeasureExpression>
+				<SQL dialect="generic">
+					coalesce(round(date_part('hour', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)*60 +
+					date_part('minute', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end) + 
+				     	date_part('second', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)/60), 0)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+	</Cube>
+
+
+	<!-- 
+		Redesigned cube for session/characters reports 
+	-->
+	<Cube name="CharacterUsages_v2" defaultMeasure="Character Usages">
+		
+		<Table name="v_sessiontoplayer_joined"/>
+		
+		<Dimension name="Character" foreignKey="character">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="character">
+				<Table name="character"/>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="Player" foreignKey="player">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="player">
+				<Table name="player" />
+				<Level name="Player" table="player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="RatingInterval" foreignKey="ratinginterval">
+			<Hierarchy hasAll="true">
+				<InlineTable alias="ratingtable">
+					<ColumnDefs>
+						<ColumnDef name="name" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="name">null</Value>
+						</Row>
+						<Row>
+							<Value column="name">&lt;1550</Value>
+						</Row>
+						<Row>
+							<Value column="name">1550-1750</Value>
+						</Row>
+						<Row>
+							<Value column="name">1750-2000</Value>
+						</Row>
+						<Row>
+							<Value column="name">2000+</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Rating" table="ratingtable" column="name" />
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="v_pentaho_datehierarchy">
+				<Table name="v_pentaho_datehierarchy"/>
+				<Level name="Year" column="year" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Pushes" primaryKey="id" primaryKeyTable="v_pentaho_datehierarchy">
+				<Table name="v_pentaho_datehierarchy"/>
+				<Level name="Push" column="push" ordinalColumn="startid" />
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="PartyMembers" foreignKey="partymembers">
+			<Hierarchy hasAll="true">
+				<InlineTable alias="partymemberstable">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">1</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+						</Row>
+						<Row>
+							<Value column="id">3</Value>
+						</Row>
+						<Row>
+							<Value column="id">4</Value>
+						</Row>
+						<Row>
+							<Value column="id">5</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="PartyMembers" table="partymemberstable" column="id" />
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="Map" foreignKey="map">
+			<Hierarchy hasAll="true" primaryKey="map" primaryKeyTable="pentaho_map">
+				<Table name="pentaho_map"/>
+				<Level name="Map" column="map" table="pentaho_map"/>
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="Faction" foreignKey="faction">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="factiontable">
+				<InlineTable alias="factiontable" >
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="name" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="name">FactionA</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="name">FactionB</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Faction" table="factiontable" column="name" />
+			</Hierarchy>
+		</Dimension>
+
+		<Dimension name="Result" foreignKey="result">
+			<Hierarchy hasAll="true">
+				<InlineTable alias="resulttable" >
+					<ColumnDefs>
+						<ColumnDef name="name" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="name">Win</Value>
+						</Row>
+						<Row>
+							<Value column="name">Lose</Value>
+						</Row>
+						<Row>
+							<Value column="name">Leave</Value>
+						</Row>
+						<Row>
+							<Value column="name">None</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Result" table="resulttable" column="name" />
+			</Hierarchy>
+		</Dimension>
+
+
+		<Measure name="Character Usages" column="stpid" datatype="Integer" aggregator="count" />
+		<Measure name="Unique Players" column="player" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="Kills" column="kills" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Deaths" column="deaths" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="Assists" column="assists" datatype="Integer" aggregator="avg" formatString="#,##0.0" />
+
+	</Cube>
+
+
+
+	<Cube name="TimeSlices" defaultMeasure="CharacterLevel">
+		<Table name="event_timeslice"/>
+		<Dimension name="Character" foreignKey="sessiontoplayerid">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="sessiontoplayer">
+				<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+					<Table name="sessiontoplayer" />
+					<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+						<Table name="playercharacter" />
+						<Table name="character" />
+					</Join>
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Slice">
+			<Hierarchy hasAll="true">
+				<Level name="Slice" column="slice"/>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="CharacterLevel" column="level" datatype="Numeric" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="TotalNafta" column="totalnafta" datatype="Numeric" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="CurrentNafta" column="currentnafta" datatype="Numeric" aggregator="avg" formatString="#,##0.0" />
+		<Measure name="SalaryNafta" column="salarynafta" datatype="Numeric" aggregator="sum" formatString="#,##0.0" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="SalaryNafta Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[SalaryNafta] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Sessions" defaultMeasure="Sessions">
+		<Table name="gamesession"/>
+		<Dimension name="Time" type="TimeDimension" foreignKey="timehierarchyid">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="timehierarchyid">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="StartTime">
+			<Hierarchy hasAll="true">
+				<Level name="StartTime" column="starttime"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="StartTime2">
+			<Hierarchy hasAll="true">
+				<Level name="StartTime2">
+				<KeyExpression>
+					<SQL dialect="generic">
+						to_char(starttime, 'HH24:MI')
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Duration">
+			<Hierarchy hasAll="true">
+				<Level name="Duration">
+				<KeyExpression>
+					<SQL dialect="generic">
+						coalesce(round(date_part('hour', case when isfinite(endtime) then endtime - starttime 
+					     	else null
+					     	end)*60 +
+						date_part('minute', case when isfinite(endtime) then endtime - starttime 
+					     	else null
+					     	end) + 
+					     	date_part('second', case when isfinite(endtime) then endtime - starttime 
+					     	else null
+					     	end)/60), -1)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionType">
+			<Hierarchy hasAll="true">
+				<Level name="SessionType" table="gamesession" column="sessiontype"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SideWon">
+			<Hierarchy hasAll="true">
+				<Level name="SideWon" table="gamesession" column="sidewon"/> 	
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Result" foreignKey="sessionresult">
+			<Hierarchy hasAll="true" primareKey="id">
+				<InlineTable alias="result">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">-1</Value>
+							<Value column="desc">Undefined</Value>
+						</Row>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">SyncResult</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">NoResult</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">NobodyCame</Value>
+						</Row>
+						<Row>
+							<Value column="id">3</Value>
+							<Value column="desc">AsyncResult</Value>
+						</Row>
+						<Row>
+							<Value column="id">4</Value>
+							<Value column="desc">Async</Value>
+						</Row>
+						<Row>
+							<Value column="id">5</Value>
+							<Value column="desc">Unknown</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Result" column="id" nameColumn="desc"/> 	
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map">
+			<Hierarchy hasAll="true">
+				<Level name="Map" column="map"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Surrended">
+			<Hierarchy hasAll="true">
+				<Level name="Surrended">
+				<KeyExpression>
+					<SQL dialect="generic">
+						(surrendervote > 0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Sessions" column="analysisid" datatype="Integer" aggregator="count" />
+		<Measure name="Duration" datatype="Integer" aggregator="sum" >
+			<MeasureExpression>
+				<SQL dialect="generic">
+					coalesce(round(date_part('hour', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)*60 +
+					date_part('minute', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end) + 
+				     	date_part('second', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)/60), -1)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+	</Cube>
+	<Cube name="Player">
+		<Table name="player"/>
+		<Dimension name="Side" foreignKey="faction">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="side">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Burn</Value>
+						</Row>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">Freeze</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Side" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Sex" foreignKey="sex">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="sextable">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">None</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Male</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">Female</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Sex" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Nival">
+			<Hierarchy hasAll="true">
+				<Level name="Nival" column="nival"/>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Players" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+	<Cube name="Kills" defaultMeasure="Total Kills">
+		<Table name="event_kill"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Victim" foreignKey="victimcharacterid">
+			<Hierarchy hasAll="true" allMembersName="All Victims" primaryKey="id">
+				<Table name="character" />
+				<Level name="Victim" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when victimcreatureid = 0 then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>	
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Creature" source="Creature" foreignKey="victimcreatureid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayer_analysisid"/>
+		<Measure name="Total Kills" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayer_analysisid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Kills Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Kills] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Kills3" defaultMeasure="Total Kills">
+		<Table name="event_kill"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when victimcreatureid IS NULL then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>	
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Creature" source="Creature" foreignKey="victimcreatureid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayer_analysisid"/>
+		<Measure name="Total Kills" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayer_analysisid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Kills Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Kills] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Deaths" defaultMeasure="Total Deaths">
+		<Table name="event_death"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Killer" foreignKey="killercharacterid">
+			<Hierarchy hasAll="true" allMembersName="All Killers" primaryKey="id">
+				<Table name="character" />
+				<Level name="Killer" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="KilledByCreep">
+			<Hierarchy hasAll="true">
+				<Level name="KilledByCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when killercreatureid IS NULL then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						false
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Creature" source="Creature" foreignKey="killercreatureid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayer_analysisid"/>
+		<Measure name="Total Deaths" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayer_analysisid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Deaths Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Deaths] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Deaths3" defaultMeasure="Total Deaths">
+		<Table name="event_death"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="KilledByCreep">
+			<Hierarchy hasAll="true">
+				<Level name="KilledByCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when killercreatureid IS NULL then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Creature" source="Creature" foreignKey="killercreatureid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayer_analysisid"/>
+		<Measure name="Total Deaths" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayer_analysisid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Deaths Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Deaths] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Levelups" defaultMeasure="Total Levelups">
+		<Table name="event_levelup"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Level">
+			<Hierarchy hasAll="true">
+				<Level name="Level" column="level"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Levelups" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Levelups Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Levelups] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Ressurections" defaultMeasure="Total Ressurections">
+		<Table name="event_ressurection"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Ressurections" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Ressurections Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Ressurections] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Assists" defaultMeasure="Total Assists">
+		<Table name="event_assist"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Victim" foreignKey="victimcharacterid">
+			<Hierarchy hasAll="true" allMembersName="All Victims" primaryKey="id">
+				<Table name="character" />
+				<Level name="Victim" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Killer" foreignKey="killercharacterid">
+			<Hierarchy hasAll="true" allMembersName="All Killers" primaryKey="id">
+				<Table name="character" />
+				<Level name="Killer" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="KillerCreature" foreignKey="killercreatureid">
+			<Hierarchy hasAll="true" allMembersName="All KillerCreatures" primaryKey="id">
+				<Table name="creature" />
+				<Level name="KillerCreature" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						false
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Assists" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Assists Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Assists] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Assists2" defaultMeasure="Total Assists">
+		<Table name="v_event_assist"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Killer">
+			<Hierarchy hasAll="true">
+				<Level name="KillerType" column="killertype" uniqueMembers="true" />
+				<Level name="Killer" column="killername" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Assists" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Assists Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Assists] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Buildingdestroyed" defaultMeasure="Total Buildings Destroyed">
+		<Table name="event_buildingdestroyed"/>
+		<Dimension name="Character" foreignKey="destroyercharacterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Building" foreignKey="buildingid">
+			<Hierarchy hasAll="true" allMembersName="All Buildings" primaryKey="id">
+				<Table name="building" />
+				<Level name="Building" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when destroyercreatureid IS NULL then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Creature" source="Creature" foreignKey="destroyercreatureid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Buildings Destroyed" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Buildings Destroyed Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Buildings Destroyed] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Buildingdestroyed2" defaultMeasure="Total Buildings Destroyed">
+		<Table name="v_event_buildingdestroyed"/>
+		<Dimension name="Building" foreignKey="buildingid">
+			<Hierarchy hasAll="true" allMembersName="All Buildings" primaryKey="id">
+				<Table name="building" />
+				<Level name="Building" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Destroyer">
+			<Hierarchy hasAll="true">
+				<Level name="DestroyerType" column="destroyertype" uniqueMembers="true" />
+				<Level name="Destroyer" column="destroyername" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsCreep">
+			<Hierarchy hasAll="true">
+				<Level name="IsCreep">
+				<KeyExpression>
+					<SQL dialect="generic">
+						case when destroyercreatureid IS NULL then false else true end
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Buildings Destroyed" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Buildings Destroyed Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Buildings Destroyed] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="ImpulsiveBuffUsages" defaultMeasure="Total ImpulsiveBuff Usages">
+		<Table name="event_impulsivebuffused"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="ImpulsiveBuff" foreignKey="impulsivebuffid">
+			<Hierarchy hasAll="true" allMembersName="All ImpulsiveBuffs" primaryKey="id">
+				<Table name="impulsivebuff" />
+				<Level name="ImpulsiveBuff" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total ImpulsiveBuff Usages" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="ImpulsiveBuff Usages Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total ImpulsiveBuff Usages] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="ImpulsiveBuffSuggested" defaultMeasure="Total ImpulsiveBuff Usages">
+		<Table name="event_impulsivebuffsuggested"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="ImpulsiveBuff" foreignKey="impulsivebuffid">
+			<Hierarchy hasAll="true" allMembersName="All ImpulsiveBuffs" primaryKey="id">
+				<Table name="impulsivebuff" />
+				<Level name="ImpulsiveBuff" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total ImpulsiveBuff Usages" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="ImpulsiveBuff Usages Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total ImpulsiveBuff Usages] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Cheats">
+		<Table name="event_cheatused"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Command">
+			<Hierarchy hasAll="true">
+				<Level name="Command" column="command"/>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Cheats Used" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+	<Cube name="NaftaIncome">
+		<Table name="event_naftaincome"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IncomeFrom" foreignKey="incomefrom">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="t_incomefrom">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">HeroKill</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">CreatureKill</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">BuildingDestroy</Value>
+						</Row>
+						<Row>
+							<Value column="id">3</Value>
+							<Value column="desc">TalentUsage</Value>
+						</Row>
+						<Row>
+							<Value column="id">4</Value>
+							<Value column="desc">ImpulseBuff</Value>
+						</Row>
+						<Row>
+							<Value column="id">5</Value>
+							<Value column="desc">Minigame</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="IncomeFrom" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="NaftaForKill" column="naftaforkill" datatype="Integer" aggregator="sum" />
+		<Measure name="NaftaSpecForKill" column="naftaspecforkill" datatype="Integer" aggregator="sum" />
+		<Measure name="TeamNaftaForKill" column="teamnaftaforkill" datatype="Integer" aggregator="sum" />
+		<Measure name="TalentNafta" column="nafta" datatype="Integer" aggregator="sum" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="Total Nafta" dimension="Measures">
+			<Formula>[Measures].[NaftaForKill] + [Measures].[NaftaSpecForKill] + [Measures].[TeamNaftaForKill] + [Measures].[TalentNafta]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="Nafta Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Nafta] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Damage">
+		<Table name="event_damage"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Talent" foreignKey="talentid">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="Talent" column="name" uniqueMembers="false" >
+					<Property name="Cooldown" column="cooldown" type="Numeric"/>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Dealt">
+			<Hierarchy hasAll="true">
+				<Level name="Dealt" column="dealt"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="OpponentCharacter" foreignKey="opponentid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="character" />
+				<Level name="OpponentCharacter" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="OpponentCreature" foreignKey="opponentid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="creature" />
+				<Level name="OpponentCreature" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="OpponentBuilding" foreignKey="opponentid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="building" />
+				<Level name="OpponentBuilding" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="UnitType" foreignKey="unittype">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="unittype" />
+				<Level name="UnitType" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="PhysicalDamage" column="physicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="MagicalDamage" column="magicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="PureDamage" column="puredamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<CalculatedMember name="TotalDamage" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] + [Measures].[MagicalDamage] + [Measures].[PureDamage]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="PhysicalDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="MagicalDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[MagicalDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="PureDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[PureDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="TotalDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[TotalDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="Damage2">
+		<Table name="v_event_damage"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Talent" foreignKey="talentid">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="Talent" column="name" uniqueMembers="false" >
+					<Property name="Cooldown" column="cooldown" type="Numeric"/>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Dealt">
+			<Hierarchy hasAll="true">
+				<Level name="Dealt" column="dealt"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Opponent">
+			<Hierarchy hasAll="true">
+				<Level name="OpponentType" column="opponenttype" uniqueMembers="true" />
+				<Level name="OpponentName" column="opponentname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="UnitType" foreignKey="opponentunittype">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="unittype" />
+				<Level name="UnitType" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="PhysicalDamage" column="physicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="MagicalDamage" column="magicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="PureDamage" column="puredamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<CalculatedMember name="TotalDamage" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] + [Measures].[MagicalDamage] + [Measures].[PureDamage]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="PhysicalDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="MagicalDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[MagicalDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="PureDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[PureDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="TotalDamage Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[TotalDamage] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="DebugVars" defaultMeasure="ValueAvg">
+		<Table name="event_debugvar"/>
+		<Dimension name="Character" foreignKey="sessiontoplayerid">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="sessiontoplayer">
+				<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+					<Table name="sessiontoplayer" />
+					<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+						<Table name="playercharacter" />
+						<Table name="character" />
+					</Join>
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Step">
+			<Hierarchy hasAll="true">
+				<Level name="Step" column="step"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="DebugVar">
+			<Hierarchy hasAll="true">
+				<Level name="DebugVar" column="name"/>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Dimension name="ValueStr">
+			<Hierarchy hasAll="true">
+				<Level name="ValueStr" column="value"/>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Count" column="id" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="ValueAvg" aggregator="avg" formatString="#,##0.00" >
+			<MeasureExpression>
+				<SQL dialect="generic">
+					(CASE WHEN value ~ E'^\\d+$' THEN value::real ELSE 0 END)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		<Measure name="ValueMin" aggregator="min" formatString="#,##0.00" >
+			<MeasureExpression>
+				<SQL dialect="generic">
+					(CASE WHEN value ~ E'^\\d+$' THEN value::real ELSE 0 END)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		<Measure name="ValueMax" aggregator="max" formatString="#,##0.00" >
+			<MeasureExpression>
+				<SQL dialect="generic">
+					(CASE WHEN value ~ E'^\\d+$' THEN value::real ELSE 0 END)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+	</Cube>
+
+	<Cube name="MGSessions" defaultMeasure="MGSessions">
+		<Table name="event_mg_session"/>
+		<Dimension name="Character" foreignKey="sessiontoplayerid">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="sessiontoplayer">
+				<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+					<Table name="sessiontoplayer" />
+					<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+						<Table name="playercharacter" />
+						<Table name="character" />
+					</Join>
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(startstep/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionFinishMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionFinishMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(finishstep/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Duration">
+			<Hierarchy hasAll="true">
+				<Level name="Duration">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round((finishstep - startstep)/600.0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="DurationSec">
+			<Hierarchy hasAll="true">
+				<Level name="DurationSec">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round((finishstep - startstep)/10.0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Sex" source="Sex" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="MGSessions" column="startid" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="MGSessions Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[MGSessions] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="MGLevels" defaultMeasure="MGLevels">
+		<Table name="event_mg_level"/>
+		<Dimension name="Character" foreignKey="mgsessionid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_session">
+				<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+					<Table name="event_mg_session"/>
+					<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+						<Table name="sessiontoplayer" />
+						<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+							<Table name="playercharacter" />
+							<Table name="character" />
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(event_mg_level.startstep/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Duration">
+			<Hierarchy hasAll="true">
+				<Level name="Duration">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round((event_mg_level.finishstep - event_mg_level.startstep)/600.0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="DurationSec">
+			<Hierarchy hasAll="true">
+				<Level name="DurationSec">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round((event_mg_level.finishstep - event_mg_level.startstep)/10.0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Level">
+			<Hierarchy hasAll="true">
+				<Level name="Level" column="level"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Paint">
+			<Hierarchy hasAll="true">
+				<Level name="Paint" column="paint"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Success">
+			<Hierarchy hasAll="true">
+				<Level name="Success" column="success"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" foreignKey="mgsessionid">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="startid" primaryKeyTable="event_mg_session">
+				<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+					<Table name="event_mg_session"/>
+					<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+						<Table name="sessiontoplayer"/>
+						<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+							<Table name="gamesession"/>
+							<Table name="datehierarchy"/>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="mgsessionid">
+			<Hierarchy hasAll="true" allMemberName="All Pushes" primaryKey="startid" primaryKeyTable="event_mg_session">
+				<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+					<Table name="event_mg_session"/>
+					<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+						<Table name="sessiontoplayer"/>
+						<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+							<Table name="gamesession"/>
+							<Table name="datehierarchy"/>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Push" column="push" table="datehierarchy"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionType" foreignKey="mgsessionid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_session">
+				<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+					<Table name="event_mg_session"/>
+					<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+						<Table name="sessiontoplayer"/>
+						<Table name="gamesession"/>
+					</Join>
+				</Join>
+				<Level name="SessionType" table="gamesession" column="sessiontype"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="mgsessionid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_session">
+				<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+					<Table name="event_mg_session"/>
+					<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+						<Table name="sessiontoplayer"/>
+						<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+							<Table name="playercharacter"/>
+							<Table name="player"/>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Player" column="nickname" table="player"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Nival" foreignKey="mgsessionid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_session">
+				<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+					<Table name="event_mg_session"/>
+					<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+						<Table name="sessiontoplayer"/>
+						<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+							<Table name="playercharacter"/>
+							<Table name="player"/>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Nival" column="nival" table="player"/>
+			</Hierarchy>
+		</Dimension>
+
+		<Measure name="MGLevels" column="startid" datatype="Integer" aggregator="count" />
+	</Cube>
+
+	<Cube name="MGZZBoostUsed">
+		<Table name="event_mg_zzboostused"/>
+		<Dimension name="Character" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+							<Table name="sessiontoplayer" />
+							<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+								<Table name="playercharacter" />
+								<Table name="character" />
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+								<Table name="gamesession"/>
+								<Table name="datehierarchy"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" allMemberName="All Pushes" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+								<Table name="gamesession"/>
+								<Table name="datehierarchy"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Push" column="push" table="datehierarchy"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionType" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Table name="gamesession"/>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="SessionType" table="gamesession" column="sessiontype"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+								<Table name="playercharacter"/>
+								<Table name="player"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Player" column="nickname" table="player"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Nival" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+								<Table name="playercharacter"/>
+								<Table name="player"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Nival" column="nival" table="player"/>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="MGZZBoostUsed" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+
+	<Cube name="MGZZBoostSuggested">
+		<Table name="event_mg_zzboostsuggested"/>
+		<Dimension name="Character" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+							<Table name="sessiontoplayer" />
+							<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+								<Table name="playercharacter" />
+								<Table name="character" />
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+								<Table name="gamesession"/>
+								<Table name="datehierarchy"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" allMemberName="All Pushes" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="gamesession" leftKey="timehierarchyid" rightAlias="datehierarchy" rightKey="id">
+								<Table name="gamesession"/>
+								<Table name="datehierarchy"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Push" column="push" table="datehierarchy"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionType" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="gamesession" rightAlias="gamesession" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Table name="gamesession"/>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="SessionType" table="gamesession" column="sessiontype"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+								<Table name="playercharacter"/>
+								<Table name="player"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Player" column="nickname" table="player"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Nival" foreignKey="mglevelid">
+			<Hierarchy hasAll="true" primaryKey="startid" primaryKeyTable="event_mg_level">
+				<Join leftAlias="event_mg_level" leftKey="mgsessionid" rightAlias="event_mg_session" rightKey="startid">
+					<Table name="event_mg_level"/>
+					<Join leftAlias="event_mg_session" leftKey="sessiontoplayerid" rightAlias="sessiontoplayer" rightKey="id">
+						<Table name="event_mg_session"/>
+						<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">
+							<Table name="sessiontoplayer"/>
+							<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+								<Table name="playercharacter"/>
+								<Table name="player"/>
+							</Join>
+						</Join>
+					</Join>
+				</Join>
+				<Level name="Nival" column="nival" table="player"/>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="MGZZBoostUsed" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+
+	<Cube name="ConsumableUsed" defaulMeasure="Total Usages">
+		<Table name="event_consumableused" />
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Consumable" foreignKey="consumableid">
+			<Hierarchy hasAll="true" allMembersName="All Consumables" primaryKey="id">
+				<Table name="consumable" />
+				<Level name="Consumable" column="name" uniqueMembers="false" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Sex" source="Sex" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Usages" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+
+		<CalculatedMember name="Usages Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Usages] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="ConsumableBought" defaulMeasure="Total Bought">
+		<Table name="event_consumablebought" />
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Consumable" foreignKey="consumableid">
+			<Hierarchy hasAll="true" allMembersName="All Consumables" primaryKey="id">
+				<Table name="consumable" />
+				<Level name="Consumable" column="name" uniqueMembers="false" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Sex" source="Sex" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Bought" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="Nafta" column="nafta" datatype="Integer" aggregator="sum" />
+
+		<CalculatedMember name="Bought Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Bought] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+		<CalculatedMember name="Nafta Spent Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Nafta] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="Achievements" defaulMeasure="Total Usages">
+		<Table name="event_achievement" />
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Achievement" foreignKey="achievementid">
+			<Hierarchy hasAll="true" allMembersName="All Consumables" primaryKey="id">
+				<Table name="achievement" />
+				<Level name="Achievement" column="name" uniqueMembers="false" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(step/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Spring" source="Spring" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Nival" source="Nival" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Sex" source="Sex" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Measure name="Total Achievements" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+
+		<CalculatedMember name="Achievements Per SessionToPlayer" dimension="Measures">
+			<Formula>[Measures].[Total Achievements] / [Measures].[SessionToPlayer]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0.0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="Lags">
+		<Table name="event_exceedingsteptime"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(startstep/600) + 1
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Step">
+			<Hierarchy hasAll="true">
+				<Level name="Step" column="startstep"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Type" foreignKey="typeid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="side">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">Client</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Server</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Type" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Hour">
+			<Hierarchy hasAll="true">
+				<Level name="Hour">
+				<KeyExpression>
+					<SQL dialect="generic">
+						date_part('hour', starttime)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="LagStepCount" column="stepcount" datatype="Integer" aggregator="sum" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+		<CalculatedMember name="LagsSeconds" dimension="Measures">
+			<Formula>[Measures].[LagStepCount] / 10</Formula>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="MMSessionCandidates">
+		<Table name="mmakingsession"/>
+		<Dimension name="Status" foreignKey="status">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="status">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">None</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Successfull</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">Failed</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Status" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map" foreignKey="persistentid">
+			<Hierarchy hasAll="true" primaryKey="persistentid" primaryKeyTable="gamesession">
+				<Table name="gamesession"/>
+				<Level name="Map" column="map" table="gamesession" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total SessionCandidates" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+	
+	<Cube name="MMPlayerCandidates">
+		<Table name="mmakingplayer"/>
+		<Dimension name="Character" foreignKey="playercharacter">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="character" />
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="playercharacter">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Player" table="player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Side" foreignKey="faction">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="side">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Burn</Value>
+						</Row>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">Freeze</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Side" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Sex" foreignKey="sex">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="sextable">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Male</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">Female</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Sex" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Rating">
+			<Hierarchy hasAll="true">
+				<Level name="Rating" column="rating"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IsParty">
+			<Hierarchy hasAll="true">
+				<Level name="IsParty">
+				<KeyExpression>
+					<SQL dialect="generic">
+						(party > 0)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="WaitTime">
+			<Hierarchy hasAll="true">
+				<Level name="WaitTime">
+				<KeyExpression>
+					<SQL dialect="generic">
+						round(waitinterval)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Force">
+			<Hierarchy hasAll="true">
+				<Level name="Force">
+				<KeyExpression>
+					<SQL dialect="generic">
+						100*round(force/10)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Reaction" foreignKey="lobbyreaction">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="reactiontable">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">None</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Accept</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">Cancel</Value>
+						</Row>
+						<Row>
+							<Value column="id">3</Value>
+							<Value column="desc">Slowpoke</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Reaction" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionStatus" foreignKey="mmakingsession">
+			<Hierarchy hasAll="true" allMembersName="All Consumables" primaryKeyTable="mmakingsession" primaryKey="id">
+				<Join leftAlias="mmakingsession" leftKey="status" rightAlias="status" rightKey="id">
+					<Table name="mmakingsession" />
+					<InlineTable alias="status">
+						<ColumnDefs>
+							<ColumnDef name="id" type="Integer"/>
+							<ColumnDef name="desc" type="String"/>
+						</ColumnDefs>
+						<Rows>
+							<Row>
+								<Value column="id">0</Value>
+								<Value column="desc">None</Value>
+							</Row>
+							<Row>
+								<Value column="id">1</Value>
+								<Value column="desc">Successfull</Value>
+							</Row>
+							<Row>
+								<Value column="id">2</Value>
+								<Value column="desc">Failed</Value>
+							</Row>
+						</Rows>
+					</InlineTable>
+				</Join>
+				<Level name="Status" table="status" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="mmakingsession">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="mmakingsession">
+				<Join leftAlias="mmakingsession" leftKey="datehierarchy" rightAlias="datehierarchy" rightKey="id">
+					<Table name="mmakingsession"/>
+					<Table name="datehierarchy"/>
+				</Join>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="mmakingsession">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="mmakingsession">
+				<Join leftAlias="mmakingsession" leftKey="datehierarchy" rightAlias="datehierarchy" rightKey="id">
+					<Table name="mmakingsession"/>
+					<Table name="datehierarchy"/>
+				</Join>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map" foreignKey="mmakingsession">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="mmakingsession">
+				<Join leftAlias="mmakingsession" leftKey="persistentid" rightAlias="gamesession" rightKey="persistentid">
+					<Table name="mmakingsession"/>
+					<Table name="gamesession"/>
+				</Join>
+				<Level name="Map" column="map" table="gamesession" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Player Candidates" column="id" datatype="Integer" aggregator="count"/>
+		<Measure name="Session Candidates" column="mmakingsession" datatype="Integer" aggregator="distinct-count"/>
+		<Measure name="Unical PlayerCharacters" column="playercharacter" datatype="Integer" aggregator="distinct-count"/>
+		<Measure name="Rating" column="rating" datatype="Integer" aggregator="avg"/>
+		<Measure name="WaitTime" column="waitinterval" datatype="Integer" aggregator="avg"/>
+	</Cube>              
+
+	<Cube name="LauncherStart">
+		<Table name="launcherstart"/>
+		<Dimension name="Version">		
+			<Hierarchy hasAll="true">
+				<Level name="Version" column="version"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Starts" column="id" datatype="Integer" aggregator="count"/>
+	</Cube>     
+
+	<Cube name="LauncherPackageStart">
+		<Table name="launcherdstart"/>
+		<Dimension name="Version">		
+			<Hierarchy hasAll="true">
+				<Level name="Version" column="version"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Package">		
+			<Hierarchy hasAll="true">
+				<Level name="Package" column="package"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Starts" column="id" datatype="Integer" aggregator="count"/>
+	</Cube>     
+
+	<Cube name="LauncherPackageEnd">
+		<Table name="launcherdend"/>
+		<Dimension name="Version">		
+			<Hierarchy hasAll="true">
+				<Level name="Version" column="version"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Package">		
+			<Hierarchy hasAll="true">
+				<Level name="Package" column="package"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Status" foreignKey="status">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="status">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">Complete</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">Stopped</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">DownloadFailure</Value>
+						</Row>
+						<Row>
+							<Value column="id">3</Value>
+							<Value column="desc">NotApplied</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Status" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Downloads" column="id" datatype="Integer" aggregator="count"/>
+	</Cube>     
+
+	<Cube name="SocialRegister">
+		<Table name="socialregister"/>
+		<Dimension name="Auid">
+			<Hierarchy hasAll="true">
+				<Level name="Auid" column="playerid"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Snid">
+			<Hierarchy hasAll="true">
+				<Level name="Snid" column="snid"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Snuid">
+			<Hierarchy hasAll="true">
+				<Level name="Snuid" column="snuid"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Registers" column="id" datatype="Integer" aggregator="count"/>
+	</Cube>
+
+	<Cube name="SocialJoin">
+		<Table name="socialjoin"/>
+		<Dimension name="Auid">
+			<Hierarchy hasAll="true">
+				<Level name="Auid" column="playerid"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Snid">
+			<Hierarchy hasAll="true">
+				<Level name="Snid" column="snid"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Snuid">
+			<Hierarchy hasAll="true">
+				<Level name="Snuid" column="snuid"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Joins" column="id" datatype="Integer" aggregator="count"/>
+	</Cube>
+
+	<Cube name="SocialMerge">
+		<Table name="socialmerge"/>
+		<Dimension name="Auid1">
+			<Hierarchy hasAll="true">
+				<Level name="Auid1" column="playerid1"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Auid2">
+			<Hierarchy hasAll="true">
+				<Level name="Auid2" column="playerid2"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Merges" column="id" datatype="Integer" aggregator="count"/>
+	</Cube>
+
+	<Cube name="ResourceLog">
+		<Table name="resourcelog"/>
+		<Dimension name="Auid">
+			<Hierarchy hasAll="true">
+				<Level name="Auid" column="player"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="player">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="player">
+				<Table name="player" />
+				<Level name="Player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Gain">
+			<Hierarchy hasAll="true">
+				<Level name="Gain" column="gain"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Source">
+			<Hierarchy hasAll="true">
+				<Level name="Source" column="source"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Building">
+			<Hierarchy hasAll="true">
+				<Level name="Building" column="buildingname"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="GoldChange" column="goldchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="SilverChange" column="silverchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="PerlChange" column="perlchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="PopulationChange" column="populationchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="Resource1Change" column="resource1change" datatype="Integer" aggregator="sum"/>
+		<Measure name="Resource2Change" column="resource2change" datatype="Integer" aggregator="sum"/>
+		<Measure name="Resource3Change" column="resource3change" datatype="Integer" aggregator="sum"/>
+		<Measure name="Count" column="id" datatype="Integer" aggregator="count"/>
+	</Cube>
+
+	<Cube name="ResourceLogAgg">
+		<Table name="resourcelog_agg_source"/>
+		<Dimension name="Gain">
+			<Hierarchy hasAll="true">
+				<Level name="Gain" column="gain"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Source">
+			<Hierarchy hasAll="true">
+				<Level name="Source" column="source"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Building">
+			<Hierarchy hasAll="true">
+				<Level name="Building" column="buildingname"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Datehierarchy" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="datehierarchy" primaryKeyTable="socialsession_agg_dau">
+				<Table name="socialsession_agg_dau"/>
+				<Level name="Datehierarchy" column="datehierarchy" table="socialsession_agg_dau" uniqueMembers="true" >
+					<Property name="Dau" column="dau" type="Numeric"/>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="GoldChange" column="goldchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="SilverChange" column="silverchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="PerlChange" column="perlchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="PopulationChange" column="populationchange" datatype="Integer" aggregator="sum"/>
+		<Measure name="Resource1Change" column="resource1change" datatype="Integer" aggregator="sum"/>
+		<Measure name="Resource2Change" column="resource2change" datatype="Integer" aggregator="sum"/>
+		<Measure name="Resource3Change" column="resource3change" datatype="Integer" aggregator="sum"/>
+		<CalculatedMember name="Dau" dimension="Measures">
+			<Formula>[Datehierarchy].CurrentMember.Properties("Dau")</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="GoldChangePerPlayer" dimension="Measures">
+			<Formula>[Measures].[GoldChange] / [Measures].[Dau]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="SilverChangePerPlayer" dimension="Measures">
+			<Formula>[Measures].[SilverChange] / [Measures].[Dau]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="PerlChangePerPlayer" dimension="Measures">
+			<Formula>[Measures].[PerlChange] / [Measures].[Dau]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="PopulationChangePerPlayer" dimension="Measures">
+			<Formula>[Measures].[PopulationChange] / [Measures].[Dau]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="Resource1ChangePerPlayer" dimension="Measures">
+			<Formula>[Measures].[Resource1Change] / [Measures].[Dau]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="Resource2ChangePerPlayer" dimension="Measures">
+			<Formula>[Measures].[Resource2Change] / [Measures].[Dau]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="Resource3ChangePerPlayer" dimension="Measures">
+			<Formula>[Measures].[Resource3Change] / [Measures].[Dau]</Formula>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="Pings">
+		<Table name="event_exceedingpingtime"/>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Dimension name="Type" foreignKey="typeid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="side">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">GameServerRPC</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">GameServerTransport</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">LobbyServerTransport</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Type" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Hour">
+			<Hierarchy hasAll="true">
+				<Level name="Hour">
+				<KeyExpression>
+					<SQL dialect="generic">
+						date_part('hour', starttime)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="PingCount" column="pingcount" datatype="Integer" aggregator="sum" />
+		<Measure name="PingTimeAvg" column="pingtimeavg" datatype="Integer" aggregator="avg" />
+		<Measure name="PingTimeMin" column="pingtimemin" datatype="Integer" aggregator="avg" />
+		<Measure name="PingTimeMax" column="pingtimemax" datatype="Integer" aggregator="avg" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+	</Cube>
+
+	<Cube name="Disconnects">
+		<Table name="event_disconnect" />
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<Dimension name="Reason" foreignKey="reason">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="reason">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">4</Value>
+							<Value column="desc">DisconnectedByClient</Value>
+						</Row>
+						<Row>
+							<Value column="id">5</Value>
+							<Value column="desc">DisconnectedByServer</Value>
+						</Row>
+						<Row>
+							<Value column="id">6</Value>
+							<Value column="desc">ConnectionTimedOut</Value>
+						</Row>
+						<Row>
+							<Value column="id">7</Value>
+							<Value column="desc">DisconnectedByCheatAttempt</Value>
+						</Row>
+						<Row>
+							<Value column="id">8</Value>
+							<Value column="desc">DisconnectedByClientIntentionally</Value>
+						</Row>
+						<Row>
+							<Value column="id">9</Value>
+							<Value column="desc">ConnectionTimedOutOnReconnect</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="Reason" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Hour">
+			<Hierarchy hasAll="true">
+				<Level name="Hour">
+				<KeyExpression>
+					<SQL dialect="generic">
+						date_part('hour', timestamp)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Disconnected" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="SessionToPlayer" column="sessiontoplayerid" datatype="Integer" aggregator="distinct-count" />
+	</Cube>
+
+	<Cube name="MoveToBath">
+		<Table name="movetobath" />
+		<Dimension name="Character" foreignKey="playercharacter">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="character" />
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="playercharacter">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Player" table="player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Faction" foreignKey="playercharacter">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Faction" table="player" column="faction" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Sex" foreignKey="playercharacter">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Sex" table="player" column="sex" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Moves" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="Total Silver" column="silver" datatype="Integer" aggregator="sum" />
+		<Measure name="Total Minutes" column="minutes" datatype="Integer" aggregator="sum" />
+	</Cube>
+
+	<Cube name="HeroesUnlocked">
+		<Table name="characterunlock" />
+		<Dimension name="Character" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="character" />
+				</Join>
+				<Level name="Character" table="character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Table name="player" />
+				</Join>
+				<Level name="Player" table="player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Sex" foreignKey="playercharacter_analysisid">
+			<Hierarchy hasAll="true" primaryKey="analysisid" primaryKeyTable="playercharacter">
+				<Join leftAlias="playercharacter" leftKey="player" rightAlias="player" rightKey="id">
+					<Table name="playercharacter" />
+					<Join leftAlias="player" leftKey="sex" rightAlias="sextable" rightKey="id">
+						<Table name="player" />
+						<InlineTable alias="sextable">
+							<ColumnDefs>
+								<ColumnDef name="id" type="Integer"/>
+								<ColumnDef name="desc" type="String"/>
+							</ColumnDefs>
+							<Rows>
+								<Row>
+									<Value column="id">0</Value>
+									<Value column="desc">None</Value>
+								</Row>
+								<Row>
+									<Value column="id">1</Value>
+									<Value column="desc">Male</Value>
+								</Row>
+								<Row>
+									<Value column="id">2</Value>
+									<Value column="desc">Female</Value>
+								</Row>
+							</Rows>
+						</InlineTable>
+					</Join>			
+				</Join>
+				<Level name="Sex" table="sextable" column="desc" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Unlocks" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+
+	<Cube name="SocialSession">
+		<Table name="socialsession" />
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Hour">
+			<Hierarchy hasAll="true">
+				<Level name="Hour">
+				<KeyExpression>
+					<SQL dialect="generic">
+						date_part('hour', starttime)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="player">
+			<Hierarchy hasAll="true" allMemberName="All Players" primaryKey="id" primaryKeyTable="player">
+				<Table name="player"/>
+				<Level name="Player" column="nickname" table="player" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Server">
+			<Hierarchy hasAll="true">
+				<Level name="Server" column="server"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Duration">
+			<Hierarchy hasAll="true">
+				<Level name="Duration">
+				<KeyExpression>
+					<SQL dialect="generic">
+						coalesce(round(date_part('hour', case when isfinite(endtime) then endtime - starttime 
+					     	else null
+					     	end)*60 +
+						date_part('minute', case when isfinite(endtime) then endtime - starttime 
+					     	else null
+					     	end) + 
+					     	date_part('second', case when isfinite(endtime) then endtime - starttime 
+					     	else null
+					     	end)/60), -1)
+					</SQL>
+				</KeyExpression>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Sessions" column="id" datatype="Integer" aggregator="count" />
+		<Measure name="Total UU" column="player" datatype="Integer" aggregator="distinct-count" />
+		<Measure name="Duration" datatype="Integer" aggregator="sum" >
+			<MeasureExpression>
+				<SQL dialect="generic">
+					coalesce(round(date_part('hour', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)*60 +
+					date_part('minute', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end) + 
+				     	date_part('second', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)/60), -1)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		<Measure name="SocialDuration" datatype="Integer" aggregator="sum" >
+			<MeasureExpression>
+				<SQL dialect="generic">
+					coalesce(round(date_part('hour', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)*60 +
+					date_part('minute', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end) + 
+				     	date_part('second', case when isfinite(endtime) then endtime - starttime 
+				     	else null
+				     	end)/60), 0)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+	</Cube>
+
+	<Cube name="CheatDisconnects">
+		<Table name="event_cheat" />
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayerid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayerid"/>
+		<Dimension name="CheatType" foreignKey="cheattype">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<InlineTable alias="cheattype">
+					<ColumnDefs>
+						<ColumnDef name="id" type="Integer"/>
+						<ColumnDef name="desc" type="String"/>
+					</ColumnDefs>
+					<Rows>
+						<Row>
+							<Value column="id">0</Value>
+							<Value column="desc">None</Value>
+						</Row>
+						<Row>
+							<Value column="id">1</Value>
+							<Value column="desc">ProtocolViolation</Value>
+						</Row>
+						<Row>
+							<Value column="id">2</Value>
+							<Value column="desc">GameLogicHack</Value>
+						</Row>
+						<Row>
+							<Value column="id">3</Value>
+							<Value column="desc">Async</Value>
+						</Row>
+					</Rows>
+				</InlineTable>
+				<Level name="CheatType" column="id" nameColumn="desc" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="ClientIP">
+			<Hierarchy hasAll="true">
+				<Level name="ClientIP" column="clientip"/>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Total Disconnects" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+
+	<Cube name="TalentRoll">
+		<Table name="talentroll" />
+		<Dimension name="Talent" foreignKey="talent">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="Talent" column="name" uniqueMembers="false" >
+					<Property name="Cooldown" column="cooldown" type="Numeric"/>
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="TalentType" foreignKey="talent">
+			<Hierarchy hasAll="true" primaryKey="id" primaryKeyTable="talent">
+				<Join leftAlias="talent" leftKey="abilitytype" rightAlias="abilitytype" rightKey="id">
+					<Table name="talent" />
+					<Table name="abilitytype" />
+				</Join>
+				<Level name="TalentType" table="abilitytype" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="TalentTour" foreignKey="talent">
+			<Hierarchy hasAll="true" primaryKey="id" >
+				<Table name="talent" />
+				<Level name="TalentTour" column="tour" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="TalentRarity" foreignKey="talent">
+			<Hierarchy hasAll="true" primaryKey="id" >
+				<Table name="talent" />
+				<Level name="TalentRarity" column="rarity" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Character" foreignKey="sessiontoplayer">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKeyTable="sessiontoplayer" primaryKey="id">
+				<Join leftAlias="sessiontoplayer" leftKey="playercharacter" rightAlias="playercharacter" rightKey="id">>
+					<Table name="sessiontoplayer" />
+					<Join leftAlias="playercharacter" leftKey="character" rightAlias="character" rightKey="id">>
+						<Table name="playercharacter" />
+						<Table name="character" />
+					</Join>
+				</Join>
+				<Level name="Character" column="name" table="character" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayer"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayer"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayer"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayer"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayer"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayer"/>
+		<Measure name="TalentRoll" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+
+
+	<Cube name="NaftaIncomeAgg">
+		<Table name="event_naftaincome_agg_minute"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="SessionMinute">
+			<Hierarchy hasAll="true">
+				<Level name="SessionMinute" column="minute" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IncomeFrom">
+			<Hierarchy hasAll="true">
+				<Level name="IncomeFrom" column="incomefrom" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map">
+			<Hierarchy hasAll="true">
+				<Level name="Map" column="map" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="NaftaForKill" column="naftaforkill" datatype="Integer" aggregator="sum" />
+		<Measure name="NaftaSpecForKill" column="naftaspecforkill" datatype="Integer" aggregator="sum" />
+		<Measure name="TeamNaftaForKill" column="teamnaftaforkill" datatype="Integer" aggregator="sum" />
+		<Measure name="TalentNafta" column="nafta" datatype="Integer" aggregator="sum" />
+		<Measure name="SessionCount" column="sessioncount" datatype="Integer" aggregator="sum" />
+		<CalculatedMember name="Total Nafta" dimension="Measures">
+			<Formula>[Measures].[NaftaForKill] + [Measures].[NaftaSpecForKill] + [Measures].[TeamNaftaForKill] + [Measures].[TalentNafta]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+		<CalculatedMember name="Total Nafta Per Session" dimension="Measures">
+			<Formula>[Measures].[Total Nafta] / [Measures].[SessionCount] </Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+	</Cube>
+
+
+	<Cube name="DamageAggBuilding">
+		<Table name="event_damage_agg_building"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Dealt">
+			<Hierarchy hasAll="true">
+				<Level name="Dealt" column="dealt"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Building" foreignKey="buildingid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="building" />
+				<Level name="Building" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map">
+			<Hierarchy hasAll="true">
+				<Level name="Map" column="map" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="PhysicalDamage" column="physicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="MagicalDamage" column="magicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="PureDamage" column="puredamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<CalculatedMember name="TotalDamage" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] + [Measures].[MagicalDamage] + [Measures].[PureDamage]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+	</Cube>
+
+
+	<Cube name="DamageAggCharacter">
+		<Table name="event_damage_agg_character"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Dealt">
+			<Hierarchy hasAll="true">
+				<Level name="Dealt" column="dealt"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="OpponentCharacter" foreignKey="opponentcharacterid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="character" />
+				<Level name="OpponentCharacter" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map">
+			<Hierarchy hasAll="true">
+				<Level name="Map" column="map" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="PhysicalDamage" column="physicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="MagicalDamage" column="magicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="PureDamage" column="puredamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<CalculatedMember name="TotalDamage" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] + [Measures].[MagicalDamage] + [Measures].[PureDamage]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="DamageAggCreature">
+		<Table name="event_damage_agg_creature"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Dealt">
+			<Hierarchy hasAll="true">
+				<Level name="Dealt" column="dealt"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Creature" foreignKey="creatureid">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="creature" />
+				<Level name="Creature" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map">
+			<Hierarchy hasAll="true">
+				<Level name="Map" column="map" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="PhysicalDamage" column="physicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="MagicalDamage" column="magicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="PureDamage" column="puredamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<CalculatedMember name="TotalDamage" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] + [Measures].[MagicalDamage] + [Measures].[PureDamage]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="DamageAggUnittype">
+		<Table name="event_damage_agg_unittype"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Dealt">
+			<Hierarchy hasAll="true">
+				<Level name="Dealt" column="dealt"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Unittype" foreignKey="unittype">
+			<Hierarchy hasAll="true" primaryKey="id">
+				<Table name="unittype" />
+				<Level name="Unittype" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Map">
+			<Hierarchy hasAll="true">
+				<Level name="Map" column="map" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="PhysicalDamage" column="physicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="MagicalDamage" column="magicaldamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<Measure name="PureDamage" column="puredamage" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+		<CalculatedMember name="TotalDamage" dimension="Measures">
+			<Formula>[Measures].[PhysicalDamage] + [Measures].[MagicalDamage] + [Measures].[PureDamage]</Formula>
+			<CalculatedMemberProperty name="FORMAT_STRING" value="#,##0"/>
+		</CalculatedMember>
+	</Cube>
+
+	<Cube name="TalentUsedAgg">
+		<Table name="event_talentused_agg_talent"/>
+		<Dimension name="Character" foreignKey="characterid">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Talent" foreignKey="talentid">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="Talent" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="UsageCount" column="usagecount" datatype="Numeric" aggregator="sum" formatString="#,##0" />
+	</Cube>
+
+	<Cube name="IgnoreAdd">
+		<Table name="ignoreadd"/>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="player">
+			<Hierarchy hasAll="true" allMemberName="All Players" primaryKey="id" primaryKeyTable="player">
+				<Table name="player"/>
+				<Level name="Player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IgnoredPlayer" foreignKey="ignoredplayer">
+			<Hierarchy hasAll="true" allMemberName="All Ignored Players" primaryKey="id" primaryKeyTable="player">
+				<Table name="player"/>
+				<Level name="IgnoredPlayer" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="IgnoreAdded" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+
+
+	<Cube name="IgnoreRemove">
+		<Table name="ignoreremove"/>
+		<Dimension name="Time" type="TimeDimension" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Year" column="year" table="datehierarchy" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Month" column="month" table="datehierarchy" uniqueMembers="false" levelType="TimeMonths" type="Numeric"/>
+				<Level name="Day" column="dayinmonth" table="datehierarchy" uniqueMembers="false" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Push" foreignKey="datehierarchy">
+			<Hierarchy hasAll="true" allMemberName="All Periods" primaryKey="id" primaryKeyTable="datehierarchy">
+				<Table name="datehierarchy"/>
+				<Level name="Push" column="push" table="datehierarchy" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Player" foreignKey="player">
+			<Hierarchy hasAll="true" allMemberName="All Players" primaryKey="id" primaryKeyTable="player">
+				<Table name="player"/>
+				<Level name="Player" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="IgnoredPlayer" foreignKey="ignoredplayer">
+			<Hierarchy hasAll="true" allMemberName="All Ignored Players" primaryKey="id" primaryKeyTable="player">
+				<Table name="player"/>
+				<Level name="IgnoredPlayer" column="nickname" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Measure name="IgnoreRemoved" column="id" datatype="Integer" aggregator="count" />
+	</Cube>
+
+	<Cube name="TalentJoinSession">
+		<Table name="talentjoinsession"/>
+		<Dimension name="Character" foreignKey="character">
+			<Hierarchy hasAll="true" allMembersName="All Characters" primaryKey="id">
+				<Table name="character" />
+				<Level name="Character" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Talent" foreignKey="talent">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="Talent" column="name" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="TalentTour" foreignKey="talent">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="TalentTour" column="tour" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="TalentRarity" foreignKey="talent">
+			<Hierarchy hasAll="true" allMembersName="All Talents" primaryKey="id">
+				<Table name="talent" />
+				<Level name="TalentRarity" column="rarity" uniqueMembers="true" />
+			</Hierarchy>
+		</Dimension>
+		<DimensionUsage name="Player" source="Player" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Auid" source="Auid" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Push" source="Push" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="SessionType" source="SessionType" foreignKey="sessiontoplayer_analysisid"/>
+		<DimensionUsage name="Map" source="Map" foreignKey="sessiontoplayer_analysisid"/>
+		<Measure name="CUCount" column="sessiontoplayer_analysisid" datatype="Integer" aggregator="distinct-count" />
+	</Cube>
+
+	<VirtualCube name="TalentUsagesNormalized" defaultMeasure="Normalized Usages">
+		<CubeUsages>
+			<CubeUsage cubeName="TalentUsages"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="TalentUsages" name="Talent"/>
+		<VirtualCubeDimension cubeName="TalentUsages" name="Character"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="TalentUsages" name="[Measures].[Total Usages]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Normalized Usages" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Usages] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="DeathsNormalized" defaultMeasure="Total Deaths Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="Deaths"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="Deaths" name="Character"/>
+		<VirtualCubeDimension cubeName="Deaths" name="SessionType"/>
+		<VirtualCubeDimension cubeName="Deaths" name="Player"/>
+		<VirtualCubeDimension cubeName="Deaths" name="Nival"/>
+		<VirtualCubeDimension cubeName="Deaths" name="KilledByCreep"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="Deaths" name="[Measures].[Total Deaths]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total Deaths Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Deaths] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="KillsNormalized" defaultMeasure="Total Kills Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="Kills"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="Kills" name="Character"/>
+		<VirtualCubeDimension cubeName="Kills" name="SessionType"/>
+		<VirtualCubeDimension cubeName="Kills" name="Player"/>
+		<VirtualCubeDimension cubeName="Kills" name="Nival"/>
+		<VirtualCubeDimension cubeName="Kills" name="IsCreep"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="Kills" name="[Measures].[Total Kills]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total Kills Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Kills] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="AssistsNormalized" defaultMeasure="Total Assists Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="Assists"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="Assists" name="Character"/>
+		<VirtualCubeDimension cubeName="Assists" name="SessionType"/>
+		<VirtualCubeDimension cubeName="Assists" name="Player"/>
+		<VirtualCubeDimension cubeName="Assists" name="Nival"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="Assists" name="[Measures].[Total Assists]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total Assists Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Assists] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="RessurectionsNormalized" defaultMeasure="Total Ressurections Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="Ressurections"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="Ressurections" name="Character"/>
+		<VirtualCubeDimension cubeName="Ressurections" name="SessionType"/>
+		<VirtualCubeDimension cubeName="Ressurections" name="Player"/>
+		<VirtualCubeDimension cubeName="Ressurections" name="Nival"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="Ressurections" name="[Measures].[Total Ressurections]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total Ressurections Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Ressurections] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="LevelupsNormalized" defaultMeasure="Total Levelups Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="Levelups"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="Levelups" name="Character"/>
+		<VirtualCubeDimension cubeName="Levelups" name="SessionType"/>
+		<VirtualCubeDimension cubeName="Levelups" name="Player"/>
+		<VirtualCubeDimension cubeName="Levelups" name="Nival"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="Levelups" name="[Measures].[Total Levelups]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total Levelups Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Levelups] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="BuildingdestroyedNormalized" defaultMeasure="Total Buildings Destroyed Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="Buildingdestroyed"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="Buildingdestroyed" name="Character"/>
+		<VirtualCubeDimension cubeName="Buildingdestroyed" name="SessionType"/>
+		<VirtualCubeDimension cubeName="Buildingdestroyed" name="Player"/>
+		<VirtualCubeDimension cubeName="Buildingdestroyed" name="Nival"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="Buildingdestroyed" name="[Measures].[Total Buildings Destroyed]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total Buildings Destroyed Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Buildings Destroyed] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="ImpulsiveBuffUsagesNormalized" defaultMeasure="Total ImpulsiveBuff Usages Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="ImpulsiveBuffUsages"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="ImpulsiveBuffUsages" name="Character"/>
+		<VirtualCubeDimension cubeName="ImpulsiveBuffUsages" name="ImpulsiveBuff"/>
+		<VirtualCubeDimension cubeName="ImpulsiveBuffUsages" name="SessionType"/>
+		<VirtualCubeDimension cubeName="ImpulsiveBuffUsages" name="Player"/>
+		<VirtualCubeDimension cubeName="ImpulsiveBuffUsages" name="Nival"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeMeasure cubeName="ImpulsiveBuffUsages" name="[Measures].[Total ImpulsiveBuff Usages]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total ImpulsiveBuff Usages Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total ImpulsiveBuff Usages] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="KADNormalized" defaultMeasure="Total KAD Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="Kills"/>
+			<CubeUsage cubeName="Assists"/>
+			<CubeUsage cubeName="Deaths"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="Deaths" name="Character"/>
+		<VirtualCubeDimension cubeName="Deaths" name="SessionType"/>
+		<VirtualCubeDimension cubeName="Deaths" name="Player"/>
+		<VirtualCubeDimension cubeName="Deaths" name="Nival"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeDimension cubeName="Kills" name="IsCreep"/>
+		<VirtualCubeMeasure cubeName="Kills" name="[Measures].[Total Kills]"/>
+		<VirtualCubeMeasure cubeName="Assists" name="[Measures].[Total Assists]"/>
+		<VirtualCubeMeasure cubeName="Deaths" name="[Measures].[Total Deaths]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="Total KAD Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>([Measures].[Total Kills] + [Measures].[Total Assists]) / ([Measures].[Total Deaths] + 1)</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="Total KD Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[Total Kills] / ([Measures].[Total Deaths] + 1)</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="MGSessionsNormalized" defaultMeasure="MGSessions Normalized">
+		<CubeUsages>
+			<CubeUsage cubeName="MGSessions"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension cubeName="MGSessions" name="Character"/>
+		<VirtualCubeDimension cubeName="MGSessions" name="SessionType"/>
+		<VirtualCubeDimension cubeName="MGSessions" name="Player"/>
+		<VirtualCubeDimension cubeName="MGSessions" name="Nival"/>
+		<VirtualCubeDimension cubeName="MGSessions" name="Sex"/>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeMeasure cubeName="MGSessions" name="[Measures].[MGSessions]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="MGSessions Normalized" dimension="Measures" formatString="#,##0.0">
+			<Formula>[Measures].[MGSessions] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="LagsNormalized" defaultMeasure="">	
+		<CubeUsages>
+			<CubeUsage cubeName="Lags"/>
+			<CubeUsage cubeName="Sessions"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeDimension cubeName="Lags" name="SessionType"/>
+		<VirtualCubeMeasure cubeName="Lags" name="[Measures].[LagsSeconds]"/>
+		<VirtualCubeMeasure cubeName="Sessions" name="[Measures].[Duration]"/>
+		<VirtualCubeMeasure cubeName="Sessions" name="[Measures].[Sessions]"/>
+		<VirtualCubeMeasure cubeName="Lags" name="[Measures].[SessionToPlayer]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="LagsPercent" dimension="Measures" formatString="##0.00">
+			<Formula>[Measures].[LagsSeconds] / [Measures].[Duration] / 60 * 100</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="SessionPercent" dimension="Measures" formatString="##0.00">
+			<Formula>[Measures].[SessionToPlayer] / [Measures].[Character Usages] * 100</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="DisconnectsNormalized" defaultMeasure="">	
+		<CubeUsages>
+			<CubeUsage cubeName="Disconnects"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeDimension cubeName="CharacterUsages" name="Hour"/>
+		<VirtualCubeDimension cubeName="CharacterUsages" name="SessionType"/>
+		<VirtualCubeDimension cubeName="CharacterUsages" name="Player"/>
+		<VirtualCubeMeasure cubeName="Disconnects" name="[Measures].[Total Disconnected]"/>
+		<VirtualCubeMeasure cubeName="Disconnects" name="[Measures].[SessionToPlayer]"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Character Usages]"/>
+		<CalculatedMember name="DisconnectsPerCU" dimension="Measures" formatString="##0.00">
+			<Formula>[Measures].[Total Disconnected] / [Measures].[Character Usages]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="SessionPercent" dimension="Measures" formatString="##0">
+			<Formula>[Measures].[SessionToPlayer] / [Measures].[Character Usages] * 100</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+	<VirtualCube name="TimeInGame" defaultMeasure="">	
+		<CubeUsages>
+			<CubeUsage cubeName="SocialSession"/>
+			<CubeUsage cubeName="CharacterUsages"/>
+		</CubeUsages>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Push"/>
+		<VirtualCubeDimension name="Map"/>
+		<VirtualCubeDimension cubeName="CharacterUsages" name="Player"/>
+		<VirtualCubeMeasure cubeName="CharacterUsages" name="[Measures].[Duration]"/>
+		<VirtualCubeMeasure cubeName="SocialSession" name="[Measures].[SocialDuration]"/>
+		<CalculatedMember name="TotalDuration" dimension="Measures" formatString="##0.00">
+			<Formula>[Measures].[Duration] + [Measures].[SocialDuration]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+</Schema>

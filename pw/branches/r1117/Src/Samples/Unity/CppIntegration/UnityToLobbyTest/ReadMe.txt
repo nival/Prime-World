@@ -1,0 +1,1 @@
+Cpp Test файл Lobby в каталоге DeviceMethod

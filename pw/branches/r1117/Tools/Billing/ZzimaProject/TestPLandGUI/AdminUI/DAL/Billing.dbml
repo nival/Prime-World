@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingTest" Class="BillingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=b210.SITE.com;Initial Catalog=BillingTest;User ID=bill" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="billiConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Accounts" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Account_SubAccount" Member="SubAccounts" ThisKey="id" OtherKey="accid" Type="SubAccount" />
+      <Association Name="Account_User" Member="Users" ThisKey="id" OtherKey="accid" Type="User" />
+      <Association Name="Account_Operation" Member="Operations" ThisKey="id" OtherKey="srcaccid" Type="Operation" />
+      <Association Name="Account_Operation1" Member="Operations1" ThisKey="id" OtherKey="destaccid" Type="Operation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Currencies" Member="Currencies">
+    <Type Name="Currency">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="rate" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Currency_Service" Member="Services" ThisKey="id" OtherKey="currencyid" Type="Service" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmployeeGroups" Member="EmployeeGroups">
+    <Type Name="EmployeeGroup">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="EmployeeGroup_Employee" Member="Employees" ThisKey="id" OtherKey="groupid" Type="Employee" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.Data.Linq.Binary" DbType="VarBinary(80) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="groupid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_Promocode" Member="Promocodes" ThisKey="id" OtherKey="empid" Type="Promocode" />
+      <Association Name="Employee_Protocol" Member="Protocols" ThisKey="id" OtherKey="empid" Type="Protocol" />
+      <Association Name="Employee_Operation" Member="Operations" ThisKey="id" OtherKey="empid" Type="Operation" />
+      <Association Name="EmployeeGroup_Employee" Member="EmployeeGroup" ThisKey="groupid" OtherKey="id" Type="EmployeeGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ErrorCodes" Member="ErrorCodes">
+    <Type Name="ErrorCode">
+      <Column Name="code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OperationTypes" Member="OperationTypes">
+    <Type Name="OperationType">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Association Name="OperationType_Operation" Member="Operations" ThisKey="id" OtherKey="type" Type="Operation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PaymentSystems" Member="PaymentSystems">
+    <Type Name="PaymentSystem">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PaymentSystem_SubAccount" Member="SubAccounts" ThisKey="id" OtherKey="systemid" Type="SubAccount" />
+      <Association Name="PaymentSystem_ProtocolPaymentSystem" Member="ProtocolPaymentSystem" ThisKey="id" OtherKey="systemid" Type="ProtocolPaymentSystem" Cardinality="One" />
+      <Association Name="PaymentSystem_Operation" Member="Operations" ThisKey="id" OtherKey="systemid" Type="Operation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Profiles" Member="Profiles">
+    <Type Name="Profile">
+      <Column Name="createdat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="referalCode" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="agreement" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="teplateid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Template_Profile" Member="Template" ThisKey="teplateid" OtherKey="id" Type="Template" IsForeignKey="true" />
+      <Association Name="User_Profile" Member="User" ThisKey="userid" OtherKey="id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Promocodes" Member="Promocodes">
+    <Type Name="Promocode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="generatedat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="empid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="operationid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_Promocode" Member="Employee" ThisKey="empid" OtherKey="id" Type="Employee" IsForeignKey="true" />
+      <Association Name="Operation_Promocode" Member="Operation" ThisKey="operationid" OtherKey="id" Type="Operation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Protocols" Member="Protocols">
+    <Type Name="Protocol">
+      <Column Name="occurredat" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="typeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="operationid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="parameters" Type="System.Data.Linq.Binary" DbType="VarBinary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="result" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employee_Protocol" Member="Employee" ThisKey="empid" OtherKey="id" Type="Employee" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="RecordType_Protocol" Member="RecordType" ThisKey="typeid" OtherKey="id" Type="RecordType" IsForeignKey="true" />
+      <Association Name="Service_Protocol" Member="Service" ThisKey="serviceid" OtherKey="id" Type="Service" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RecordTypes" Member="RecordTypes">
+    <Type Name="RecordType">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Association Name="RecordType_Protocol" Member="Protocols" ThisKey="id" OtherKey="typeid" Type="Protocol" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReferalCodes" Member="ReferalCodes">
+    <Type Name="ReferalCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="partnerid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mask" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Association Name="PartnerProgram_ReferalCode" Member="PartnerProgram" ThisKey="partnerid" OtherKey="id" Type="PartnerProgram" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Services" Member="Services">
+    <Type Name="Service">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cbtMode" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.Data.Linq.Binary" DbType="VarBinary(80) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="currencyid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="independent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Service_Protocol" Member="Protocols" ThisKey="id" OtherKey="serviceid" Type="Protocol" />
+      <Association Name="Service_ProtocolService" Member="ProtocolService" ThisKey="id" OtherKey="serviceid" Type="ProtocolService" Cardinality="One" />
+      <Association Name="Service_Operation" Member="Operations" ThisKey="id" OtherKey="serviceid" Type="Operation" />
+      <Association Name="Currency_Service" Member="Currency" ThisKey="currencyid" OtherKey="id" Type="Currency" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sessions" Member="Sessions">
+    <Type Name="Session">
+      <Column Name="usrservid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="logonat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.String" DbType="VarChar(80) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="logoffat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="UserService_Session" Member="UserService" ThisKey="usrservid" OtherKey="id" Type="UserService" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Settings" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="name" Type="System.String" DbType="VarChar(40) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="value" Type="System.Object" DbType="Variant NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubAccounts" Member="SubAccounts">
+    <Type Name="SubAccount">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="systemid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="accid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SubAccount_Transaction" Member="Transactions" ThisKey="id" OtherKey="subaccid" Type="Transaction" />
+      <Association Name="Account_SubAccount" Member="Account" ThisKey="accid" OtherKey="id" Type="Account" IsForeignKey="true" />
+      <Association Name="PaymentSystem_SubAccount" Member="PaymentSystem" ThisKey="systemid" OtherKey="id" Type="PaymentSystem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Templates" Member="Templates">
+    <Type Name="Template">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="mask" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="parameters" Type="System.Xml.Linq.XElement" DbType="Xml NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Template_Profile" Member="Profiles" ThisKey="id" OtherKey="teplateid" Type="Profile" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transactions" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="operationid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="subaccid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="SubAccount_Transaction" Member="SubAccount" ThisKey="subaccid" OtherKey="id" Type="SubAccount" IsForeignKey="true" />
+      <Association Name="Operation_Transaction" Member="Operation" ThisKey="operationid" OtherKey="id" Type="Operation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserServices" Member="UserServices">
+    <Type Name="UserService">
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="serviceid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ban" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="properties" Type="System.Data.Linq.Binary" DbType="VarBinary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="accountid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="UserService_Session" Member="Sessions" ThisKey="id" OtherKey="usrservid" Type="Session" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartnerPrograms" Member="PartnerPrograms">
+    <Type Name="PartnerProgram">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="authorizationClass" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Association Name="PartnerProgram_ReferalCode" Member="ReferalCodes" ThisKey="id" OtherKey="partnerid" Type="ReferalCode" />
+      <Association Name="PartnerProgram_User" Member="Users" ThisKey="id" OtherKey="partnerid" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProtocolServices" Member="ProtocolServices">
+    <Type Name="ProtocolService">
+      <Column Name="serviceid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Service_ProtocolService" Member="Service" ThisKey="serviceid" OtherKey="id" Type="Service" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProtocolSettings" Member="ProtocolSettings">
+    <Type Name="ProtocolSetting">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="loglevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="timeout" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProtocolPaymentSystems" Member="ProtocolPaymentSystems">
+    <Type Name="ProtocolPaymentSystem">
+      <Column Name="systemid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PaymentSystem_ProtocolPaymentSystem" Member="PaymentSystem" ThisKey="systemid" OtherKey="id" Type="PaymentSystem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.Data.Linq.Binary" DbType="VarBinary(80) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="accid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="partnerid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="finalBan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="tempBan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_Profile" Member="Profile" ThisKey="id" OtherKey="userid" Type="Profile" Cardinality="One" />
+      <Association Name="User_Operation" Member="Operations" ThisKey="id" OtherKey="userid" Type="Operation" />
+      <Association Name="Account_User" Member="Account" ThisKey="accid" OtherKey="id" Type="Account" IsForeignKey="true" />
+      <Association Name="PartnerProgram_User" Member="PartnerProgram" ThisKey="partnerid" OtherKey="id" Type="PartnerProgram" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Operations" Member="Operations">
+    <Type Name="Operation">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="executedat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="srcaccid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="destaccid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="empid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="systemid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Operation_Promocode" Member="Promocodes" ThisKey="id" OtherKey="operationid" Type="Promocode" />
+      <Association Name="Operation_Transaction" Member="Transactions" ThisKey="id" OtherKey="operationid" Type="Transaction" />
+      <Association Name="User_Operation" Member="User" ThisKey="userid" OtherKey="id" Type="User" IsForeignKey="true" />
+      <Association Name="OperationType_Operation" Member="OperationType" ThisKey="type" OtherKey="id" Type="OperationType" IsForeignKey="true" />
+      <Association Name="Account_Operation" Member="Account" ThisKey="srcaccid" OtherKey="id" Type="Account" IsForeignKey="true" />
+      <Association Name="Account_Operation1" Member="Account1" ThisKey="destaccid" OtherKey="id" Type="Account" IsForeignKey="true" />
+      <Association Name="Employee_Operation" Member="Employee" ThisKey="empid" OtherKey="id" Type="Employee" IsForeignKey="true" />
+      <Association Name="PaymentSystem_Operation" Member="PaymentSystem" ThisKey="systemid" OtherKey="id" Type="PaymentSystem" IsForeignKey="true" />
+      <Association Name="Service_Operation" Member="Service" ThisKey="serviceid" OtherKey="id" Type="Service" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

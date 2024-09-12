@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<TITLE>Scriptable Plug-in Test</TITLE>
+</HEAD>
+<BODY id="bodyId">
+
+<center>
+<h1>Sample Scriptable Plug-in </h1>
+</center>
+
+Plugin testing page
+<a href="https://SITE/zzima/Nival3dPlugin_inst_Win.xpi">Netscape Media Plugin</a> (for the Netscape, Firefox browsers)
+
+<br><br>
+
+<center>
+
+<script>
+function bar(arg)
+{
+  document.getElementById("result").innerHTML += "<p>" + "function bar(" + arg + ") called!" + "</p>";
+
+  return 4;
+}
+</script>
+
+<div id="result">
+<p>results go here:</p>
+</div>
+<br>
+<br>                                            
+<br>
+<!-- <embed id="embed1" type="application/x-vnd-Nival-NiDl" dllModule="D:/Projects/pf/Src/_Debug/TestRenderer.dll" cmdLine="I do not care" width=640 height=480><br> -->
+<!-- <embed id="CommuniGateAV" type="application/npCommuniGateAV-plugin" width="0" height="0"        pluginurl="http://www.communigate.com/MediaPlugin/1.0/npCommuniGateAV.xpi"> </embed> -->
+<script type="text/javascript" src="autoinstall.js"></script>
+
+<embed id="embed1" type="application/x-vnd-Nival-NiDl"  PLUGINSPAGE="instrFF.html" pluginurl="Nival3dPlugin_inst_Win.xpi" codebase="Nival3dPlugin_inst_Win.xpi" dllModule="http://www.d-inter.ru/nivaltest/TestRenderer.dll" cmdLine="I do not care" width=640 height=480>
+</embed><br> 
+
+<!-- <embed type="application/x-java-vnd-Nival-NiDl" style="display: block; width: 50%; height: 100px;"><br> -->
+
+
+<script>
+var embed1 = document.getElementById('embed1');
+</script>
+
+<br>
+<!--
+<form name="formname">
+<input type=button value="Call pluginobj.foo()" onclick='alert(pluginobj.foo())'>
+<input type=button value="alert(pluginobj.bar)" onclick='alert(pluginobj.bar)'>
+<input type=button value="alert(pluginobj('foo'))" onclick='alert(pluginobj("foo"))'>
+<br>
+<input type=button value="alert(embed1.bar)" onclick='alert(embed1.bar)'>
+<input type=button value="alert(embed1.foo())" onclick='alert(embed1.foo())'>
+<input type=button value="alert(embed1())" onclick='alert(embed1())'>
+<input type=button value="embed1.bar='foo'" onclick='embed1.bar="foo";'>
+</form>
+-->
+</center>
+
+</BODY>
+</HTML>

@@ -1,0 +1,21 @@
+filter = "LocationServer/LocationServer"
+
+sources = { '' : 
+    [ 
+        'LocationServer.cpp',
+        'LocationServer.h',
+        'LocationServerImpl.h',
+        'LocationServerRunner.h',
+    ] 
+}
+
+components = [ 
+    'Vendor/Libc',
+    'System/Random',
+    'Samples/SimpleGame/World',
+]
+
+builders = [ 
+  RPCBuilder( 'Remote', 'LocationClient.h', '', ['LocationTypes.h','RBattleServer.auto.h'] ),
+  RPCBuilder( 'Local',  'LocationServer.h' ),   
+]

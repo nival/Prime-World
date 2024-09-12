@@ -1,0 +1,20 @@
+#include "_commonPostProcess.h"
+
+sampler heightTexture : register(s0);
+static const float dxdyScale = 4;
+
+float4 texDUDV        : register(PSHADER_LOCALCONST0);
+
+float4 PS_main(VS_OUTPUT Input) : COLOR 
+{
+  float height = tex2D( heightTexture, Input.Texcoord ).r;
+  
+  float2 texStepX = { texDUDV.x, 0 }, texStepY = { 0, texDUDV.y };
+  half hl = tex2D( heightTexture, Input.Texcoord - texStepX ).r,
+       hr = tex2D( heightTexture, Input.Texcoord + texStepX ).r,
+       ht = tex2D( heightTexture, Input.Texcoord - texStepY ).r,
+       hb = tex2D( heightTexture, Input.Texcoord + texStepY ).r;
+  
+  half2 dxdy = dxdyScale * half2( hl - hr, ht - hb) * 0.5f + 0.5f;
+  return half4( dxdy, height, 1.0f );
+}

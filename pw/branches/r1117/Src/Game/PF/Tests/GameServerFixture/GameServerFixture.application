@@ -1,0 +1,16 @@
+sources = [
+    'main.cpp',
+]
+ 
+# Uncomment this to enable Inline Profiler
+settings.enableProfiler = True
+
+components = [ 
+    'MemoryLib/NewDelete',
+    'Game/PF/HybridServer/Peered',
+    'Server/AppFramework/TimeSlicer',
+    'System/Asserts',
+]
+
+if settings.get( 'enableProfiler' ) :
+  components.extend( [ 'System/InlineProfiler3/UI', 'System/InlineProfiler' ] )

@@ -1,0 +1,25 @@
+sources = [ 
+    'ServerAppBase.h', 
+    'ServerAppBase.cpp', 
+] 
+
+components = [
+    'Network/ClusterConfiguration', 
+    'Coordinator/CoordinatorServer', 
+    'Network/StreamAllocator', 
+    'System/LogUtils',
+    'System/Dumpers',
+    'System/ServerDumpers',
+    'System/FileSystem',
+    'System/ConfigFiles',
+    'Vendor/Libc',
+    'ServerAppBase/NivalServer',
+    'Server/Db',
+]
+
+if platform == 'win32':
+  components += [ 'System/CrashHandler' ]
+
+  libDependencies = [
+      'rpcrt4.lib' , 'shlwapi.lib'
+  ]

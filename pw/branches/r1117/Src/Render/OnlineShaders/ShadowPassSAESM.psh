@@ -1,0 +1,142 @@
+#include "_commonPostProcess.h"
+
+sampler depthMap : register(s0);
+sampler shadowMap : register(s1);
+
+float4 uvScaleOffset : register( PSHADER_LOCALCONST0 );
+float4 shadowColor : register( PSHADER_LOCALCONST1 );
+float4 params : register( PSHADER_LOCALCONST2 ); // size, 1/size, isMultiply, --
+float4 range : register( PSHADER_LOCALCONST3 ); // fadeMUL, fadeADD, blur radius, esm power
+float4x4 ViewToLightSpace : register( PSHADER_LOCALCONST4 ); // ViewInv * LightViewProj
+float4 screenScaleOffset : register( SCREEN_TO_TEXTURE );
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float ComputeSummedArea( float3 pixel, float window )
+{
+  float texel = params.y;
+
+  float A = tex2D(shadowMap, pixel.xy + float2( window * texel,  window * texel) ).r;
+  float B = tex2D(shadowMap, pixel.xy + float2(-window * texel,  window * texel) ).r;
+  float C = tex2D(shadowMap, pixel.xy + float2( window * texel, -window * texel) ).r;
+  float D = tex2D(shadowMap, pixel.xy + float2(-window * texel, -window * texel) ).r;
+
+  float denom = window * window * 4;
+
+  float result = A - C - B + D;
+  float final = result / denom;
+
+  final += 0.5;
+
+  return final;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float CheckShadow( float3 pixel )
+{
+  return tex2D( shadowMap, pixel.xy ).r;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float ComputeShadow( float3 pixel )
+{
+  // no shadows for farthest pixels
+  if (pixel.z > 1.0)
+    return 0.0f;
+
+  // named params
+  float width = params.x;
+  float texel = params.y;
+
+  // split coordinates
+  float2 whole;
+  float2 fraction = modf(pixel.xy * width - 0.5, whole);
+  pixel.xy = whole * texel;
+
+  // sample the anchor point
+  float shade = CheckShadow(pixel);
+
+// #ifdef SHADOW_PCF
+
+  // supersample the buffer (PCF = Percentage Closer Filtering)
+  float shadeQ[3];
+  shadeQ[0] = CheckShadow(pixel + float3(texel,     0, 0) );
+  shadeQ[1] = CheckShadow(pixel + float3(    0, texel, 0) );
+  shadeQ[2] = CheckShadow(pixel + float3(texel, texel, 0) );
+
+  // perform bilinear interpolation
+  float shade1 = lerp(
+    lerp(shade,     shadeQ[0], fraction.x),
+    lerp(shadeQ[1], shadeQ[2], fraction.x), fraction.y
+  ) * exp(-range.w * pixel.z );
+
+// #endif // SHADOW_PCF
+
+  return shade1;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float ComputeShadow2( float3 pixel, float window )
+{
+  // no shadows for farthest pixels
+  if (pixel.z > 1.0)
+    return 0.0f;
+
+  // named params
+  float width = params.x;
+  float texel = params.y;
+
+  // split coordinates
+  float2 whole1;
+  float2 whole2;
+
+  modf(pixel.xy * width, whole1);
+  
+  float2 fraction = pixel.xy - whole1 * texel;
+
+  float2 fractionN = fraction / max( fraction.x, fraction.y );
+
+  modf(pixel.xy * width + fractionN, whole2);
+
+  // sample the anchor point
+  pixel.xy = whole1 * texel;
+  float shade1 = CheckShadow(pixel);
+  pixel.xy = whole2 * texel;
+  float shade2 = CheckShadow(pixel);
+
+  float shade = lerp( shade1, shade2, length( fraction ) );
+
+  return shade;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+half4 PS_main(VS_OUTPUT Input, float4 PixelPos : VPOS ) : COLOR
+{
+  // restore position in View Space
+  float z = tex2D(depthMap, PixelPos.xy * screenScaleOffset.xy + screenScaleOffset.zw ).r;
+  float2 xy = (Input.Texcoord * uvScaleOffset.xy + uvScaleOffset.zw) * z;
+  float4 PositionVS = float4(xy, z, 1);
+
+  // convert to shadow coordinates
+  float4 PositionLS = mul(PositionVS, ViewToLightSpace);
+  PositionLS.xyz /= PositionLS.w;
+  float4 halfScaleOffset = float4(0.5, -0.5, 1.0, -0.0001);
+  float3 pixel = PositionLS.xyz * halfScaleOffset.xyz + halfScaleOffset.xxw;
+
+// smirnov [2009/02/02]: useless, because fxc puts this in the end of the compiled shader (bug or feature?)
+//  // skip pixels outside of light frustum
+//  clip(min(pixel, 1 - pixel));
+
+
+  float alpha = ( 1 - ComputeShadow(pixel) ) * shadowColor.a;
+
+  // fade in the distance
+  alpha *= saturate(float(z) * float(range.x) + float(range.y));
+
+  // select between multiplicative and blended shadows
+  float3 Color = shadowColor;
+//  return half4(Color, alpha);
+//  return half4(lerp(1, Color, alpha), alpha);
+  float3 color = (params.z == 0) ? Color : lerp(1, Color, alpha);
+  return float4(color, alpha);
+}

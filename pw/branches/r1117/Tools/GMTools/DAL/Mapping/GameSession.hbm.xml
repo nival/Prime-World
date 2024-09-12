@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="GameSession">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">gamesession_id_sequence</param>
+      </generator>
+    </id>
+    <property name="PersistentId" not-null="true" />
+    <property name="Server" not-null="true" />
+    <property name="ServerAddress" />
+    <property name="Cluster" />
+    <property name="Map" not-null="true" />
+    <property name="SessionType" not-null="true" />
+    <property name="StartTime" not-null="true" />
+    <property name="EndTime" />
+    <property name="SideWon" />
+    <property name="SessionResult" />
+    <property name="SurrenderVote" />
+
+    <sql-insert check="none">
+      INSERT INTO gamesession
+      (persistentid, server, serveraddress, cluster, map, sessiontype, starttime, endtime, sidewon, sessionresult, surrendervote, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CCF1ADBE-B8AA-44BC-9C81-A09F64172F7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessLogic.Tests</RootNamespace>
+    <AssemblyName>BusinessLogic.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\log4net\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\Moq\bin\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\NUnit\bin\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBLogs\MappingsTests.cs" />
+    <Compile Include="DBLogs\StorageTests.cs" />
+    <Compile Include="Tasks\AfterPartyTaskTests.cs" />
+    <Compile Include="Tasks\GuildDisbandTaskTests.cs" />
+    <Compile Include="Tasks\CharacterUnlockTaskTests.cs" />
+    <Compile Include="Tasks\DynamicQuestChangeTaskTests.cs" />
+    <Compile Include="Tasks\GMOperationTests.cs" />
+    <Compile Include="Tasks\GMUserOperationTaskTests.cs" />
+    <Compile Include="Tasks\GuildCreateTaskTests.cs" />
+    <Compile Include="Tasks\GuildDailyStatsTaskTests.cs" />
+    <Compile Include="Tasks\GuildInteractionTaskTests.cs" />
+    <Compile Include="Tasks\GuildJoinTaskTests.cs" />
+    <Compile Include="Tasks\GuildLeaveTaskTests.cs" />
+    <Compile Include="Tasks\GuildRenameTaskTests.cs" />
+    <Compile Include="Tasks\GuildShopBuyTaskTests.cs" />
+    <Compile Include="Tasks\GuildSiegeTaskTests.cs" />
+    <Compile Include="Tasks\MMakingSessionTaskTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DBLogs\StorageTableTests.cs" />
+    <Compile Include="Queuing\TaskExecutorTests.cs" />
+    <Compile Include="Queuing\WorkerTests.cs" />
+    <Compile Include="Tasks\FactionChangeTaskTests.cs" />
+    <Compile Include="Tasks\MMakingPlayerTaskTests.cs" />
+    <Compile Include="Tasks\MoveToBathTaskTests.cs" />
+    <Compile Include="Tasks\QuestChangeTaskTests.cs" />
+    <Compile Include="Tasks\ResourcesLogTaskTests.cs" />
+    <Compile Include="Tasks\SessionAwardTaskTests.cs" />
+    <Compile Include="Tasks\SessionRelayInfoTaskTests.cs" />
+    <Compile Include="Tasks\SessionResultTaskTests.cs" />
+    <Compile Include="Tasks\SessionStartTaskTests.cs" />
+    <Compile Include="Tasks\SocialLoginTaskTests.cs" />
+    <Compile Include="Tasks\SocialLogoutTaskTests.cs" />
+    <Compile Include="Tasks\TalentLogTaskTest.cs" />
+    <Compile Include="Tasks\TournamentQuestChangeTaskTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{404C6432-668E-43E4-A42A-01C3BBBF1793}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{7951773E-1351-440A-81EE-E1A6A5769D26}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLogging\DataLogging.csproj">
+      <Project>{2FAA8FEF-186A-4018-BCD2-4812CDAFAB6F}</Project>
+      <Name>DataLogging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

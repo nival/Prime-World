@@ -1,0 +1,129 @@
+#include "stdafx.h"
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include "../Scripts/lua.hpp"
+#include "PageTabControl.h"
+#include "RadioButton.h"
+
+namespace UI
+{
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  BEGIN_LUA_TYPEINFO(PageTabControl, ImageLabel)
+  END_LUA_TYPEINFO(PageTabControl)
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void PageTabControl::OnInit()
+  {
+    ImageLabel::OnInit();
+    nSelectedTab = 0;
+
+
+    eventSelect = "default_pagetabcontrol_select";
+    SetCPPMsgHandler("tab_selected", (Window::TCPPMessageHandler)&UI::PageTabControl::OnTabClick );
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void PageTabControl::AddTabPage(const PageTabElement& tab) 
+  { 
+    int nTab = elements.size();
+
+    elements.push_back(tab); 
+    AddChild( tab.button );
+    AddChild( tab.page );
+
+    ActivateTab(nTab, nTab==nSelectedTab);
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  bool PageTabControl::OnTabClick( Window *wndFrom, const UIMessage & msg )
+  {
+    if(msg.msg != "tab_selected")
+      return false;
+
+    NI_VERIFY( wndFrom,"Invalid Window", return false );
+    SelectTab( GetIndexFromString( wndFrom->GetWindowName().c_str() ) - 1 );
+
+    return true;
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void PageTabControl::SelectTab( int nTab )
+  {
+    NI_VERIFY(nTab >= 0 && nTab < elements.size(),"Invalid Tab Index",return);
+    ActivateTab(nSelectedTab,false);
+    ActivateTab(nTab,true);
+    nSelectedTab = nTab;
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void PageTabControl::ActivateTab( int nTab, bool bShow )
+  {
+    NI_VERIFY(nTab >= 0 && nTab < elements.size(),"Invalid Tab Index",return);
+    elements[nTab].page->Show(bShow);
+
+    RadioButton * rbtn = dynamic_cast<RadioButton *>( elements[nTab].button.Get() );
+    NI_VERIFY( rbtn, "invalid button type", return );
+    rbtn->SetSelected( bShow, 0 ); 
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  PageTabElement PageTabControl::GetTabPage(int nTab)
+  {
+    NI_VERIFY(nTab >= 0 && nTab < elements.size(),"Invalid Tab Index",return PageTabElement(0,0));
+    return elements[nTab];
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void PageTabControl::OnEnable( bool _enable )
+  {
+    if ( _enable )
+    {
+    }
+    else
+    {
+    }
+
+    ImageLabel::OnEnable( _enable );
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  bool PageTabControl::GetCustomCursor( string * name, const Point & screenCoords ) const
+  {
+    if ( !name )
+      return false;
+
+    if (GetWindowLayout()->cursors.pushable.empty())
+      return false;
+
+    *name = GetWindowLayout()->cursors.pushable;
+    return true;
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void PageTabControl::OnShow( bool _show )
+  {
+    if ( _show )
+    {
+    }
+
+    ImageLabel::OnShow( _show );
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void PageTabControl::OnMouseOver( bool over, const Point & mouse )
+  {
+    if ( over )
+    {
+    }
+    else
+    {
+    }
+
+    ImageLabel::OnMouseOver( over, mouse );
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  bool PageTabControl::OnMouseUp( EMButton::Enum mbutton )
+  {
+    if ( mbutton == EMButton::Left )
+    {
+      return false;
+    }
+
+    ImageLabel::OnMouseUp( mbutton );
+    return true;
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  REGISTER_CONTROLTYPE( NDb::UIPageTabControlLayout, PageTabControl );
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}

@@ -1,0 +1,25 @@
+sources = [
+    'managed.cpp',
+    'managed.h',
+    'stdafx.cpp',
+    'stdafx.h',
+]
+
+inlined = False
+type = 'dll'
+
+if configuration == "debug":
+    globalCompilerKeys = [ '/MDd', '/Zi' ]
+else:
+    globalCompilerKeys = [ '/MD', '/Zi' ]
+
+globalCompilerKeys.append('/D"_DO_ASSERT"')
+globalCompilerKeys.append('/D"WIN32"')
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h', True ) }  
+
+components = [
+    'MemoryLib/Tests/Native',
+    'MemoryLib/NewDelete',
+    #'System/Asserts',
+]

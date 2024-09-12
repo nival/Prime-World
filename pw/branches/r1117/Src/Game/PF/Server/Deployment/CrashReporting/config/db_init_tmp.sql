@@ -1,0 +1,2 @@
+CREATE USER %(db_user)s WITH PASSWORD '%(db_password)s' SUPERUSER CREATEDB CREATEROLE LOGIN;
+CREATE DATABASE %(db_name)s WITH OWNER %(db_user)s TEMPLATE=template0 ENCODING='utf-8'

@@ -1,0 +1,37 @@
+#pragma once
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class CTextRef
+{
+	friend class XmlChunkSaver;
+
+public:
+  CTextRef() {}
+  CTextRef( const string & _fileName );
+
+	const string & GetSource() const { return fileName; }
+	const wstring & GetText() const;
+
+  void DropCache();
+
+  CTextRef& operator = ( const CTextRef & other )
+  {
+    fileName = other.fileName;
+    return *this;
+  }
+
+private:
+	ZDATA
+	string fileName;
+public:
+  ZEND int operator&( IBinSaver &f ) { f.Add(2, &fileName); return 0; }
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+inline bool operator == ( const CTextRef & left, const CTextRef & right )
+{
+  return left.GetSource() == right.GetSource();
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void ReloadTexts();
+void StoreTextsCache( const char* fileName, bool fullRead );
+bool TryLoadTextsCache( const char* fileName );
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

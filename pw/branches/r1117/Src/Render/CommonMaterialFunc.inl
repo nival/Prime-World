@@ -1,0 +1,3 @@
+void UpdateInternals();
+void OnPrepareRender();
+

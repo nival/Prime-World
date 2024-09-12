@@ -1,0 +1,32 @@
+﻿namespace DAL.Entities
+{
+  public enum GMOperationType
+  {
+    TalentAdd,
+    TalentDelete,
+    HeroLock,
+    HeroUnlock,
+    PlayerEdit,
+    QuestAdd,
+    QuestAccept,
+    QuestComplete,
+    QuestDelete,
+    BuildingAdd,
+    BuildingDelete,
+    BuildingMoveToStorage,
+    SkinAdd,
+    SkinDelete,
+    FlagLock,
+    FlagUnlock,
+    GuildEdit,
+    GuildLock,
+    GuildUnlock,
+    GuildStopSiege,
+    GuildSuzerainChange,
+    SeasonAwardsAdd,
+    SeasonAwardsChange,
+    SeasonInfoAdd,
+    SeasonInfoChange,
+    TalentUpgradeEntityDelete
+  }
+}

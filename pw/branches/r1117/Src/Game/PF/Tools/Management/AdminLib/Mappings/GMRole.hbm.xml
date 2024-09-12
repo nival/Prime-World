@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AdminLib"
+                   namespace="AdminLib.Entities">
+  <class name="GMRole" table="gm_roles">
+    <id name="RoleId">
+      <generator class="sequence">
+        <param name="sequence">gm_role_roleid_sequence</param>
+      </generator>
+    </id>
+    <property name="RoleName" unique="true" not-null="true" />
+    <property name="Description" />
+    <property name="Locale" />
+    <property name="Muid" />
+
+    <idbag name="Users" table="gm_users_in_roles">
+      <collection-id column="id" type="int">
+        <generator class="sequence">
+          <param name="sequence">gm_users_in_roles_id_sequence</param>
+        </generator>
+      </collection-id>
+      <key column="RoleId" />
+      <many-to-many column="UserId" class="GMUser" />
+    </idbag>
+
+    <idbag name="Permissions" table="gm_roles_has_permissions">
+      <collection-id column="id" type="int">
+        <generator class="sequence">
+          <param name="sequence">gm_roles_has_permissions_id_sequence</param>
+        </generator>
+      </collection-id>
+      <key column="RoleId" />
+      <many-to-many column="PermissionId" class="GMPermission" />
+    </idbag>
+
+
+  </class>
+</hibernate-mapping>

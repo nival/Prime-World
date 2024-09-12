@@ -1,0 +1,21 @@
+#include "_commonPostProcess.h"
+
+sampler ZMap : register(s0);
+
+float2 QZnQ : register(PSHADER_LOCALCONST0);
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  // float4 encodedZ = tex2D(ZMap, Input.Texcoord);
+  // float Z = dot( encodedZ.arg, float3(0.996093809371817670572857294849,
+                                      // 0.0038909914428586627756752238080039,
+                                      // 1.5199185323666651467481343000015e-5) );
+  float3 rawval = floor( 255.0 * tex2D(ZMap, Input.Texcoord).arg + 0.5);
+  float Z = dot( rawval, float3(0.996093809371817670572857294849,
+                                0.0038909914428586627756752238080039,
+                                1.5199185323666651467481343000015e-5) / 255.0);
+  float ZLinear = QZnQ.x / (QZnQ.y - Z);
+  return ZLinear;
+}
+
+

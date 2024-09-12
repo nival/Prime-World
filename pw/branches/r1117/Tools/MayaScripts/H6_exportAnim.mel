@@ -1,0 +1,183 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_exportAnim( string $sSkel, string $CRC, string $sDst, string $sRoot, string $sClip, float $fTol){
+
+	global string $gCRC;
+	global string $gSkinPoseClipName;
+	$clipsQuantity = size(`clip -q -allClips`);
+    cycleCheck -e off;
+
+	if ( $sSkel != `file -q -sceneName` || $CRC != $gCRC || $clipsQuantity>100 ){
+  		file -o -iv -f $sSkel;
+    	$gCRC = $CRC;
+//    	warning ("CRC is changed from " + $gCRC + " to new " + $CRC);
+// поиск клипа skinPose. его имя идет в глобальную переменную $gSkinPoseClipName
+		$gSkinPoseClipName = `findSkinPoseClip`;
+// удаление нод, которые требуют недоступных плагинов
+		$unknownNodes = `ls -type unknown`;
+    	if (size ($unknownNodes) > 0){
+    		delete $unknownNodes;
+    	}
+	}
+
+/* проверка на большое количество загруженных клипов теперь живет абзацем выше
+// проверка на слишком большое количество уже загруженных клипов
+    if (size(`clip -q -allClips`)>100){
+        file -o -iv -f $sSkel;
+        // удаление нод, которые требуют недоступных плагинов
+        $unknownNodes = `ls -type unknown`;
+        if (size ($unknownNodes) > 0){
+            delete $unknownNodes;
+    	}
+    }*/
+
+// проверка корректности сцены
+    if ( $sRoot == "" ){
+      $sRoot = "root";
+    }
+
+    if (size(`ls $sRoot`) > 1){
+        error ("Указанная для экспорта рутовая кость " + $sRoot + " не является уникальной в сцене " + $sSkel);
+    }
+
+	if (size(`ls $sRoot`) == 0){
+        error ("Указанная для экспорта рутовая кость " + $sRoot + " не найдена в сцене " + $sSkel);
+    }
+
+    if ( `nodeType $sRoot` != "joint" ){
+        error ("Указанная рутовая кость " + $sRoot + " не является джоинтом (joint) в сцене " + $sSkel);
+    }
+
+// загрузка клипа с проверкой на автоклип: анимация, которая создана в сцене без Character Set
+// пустой файл автоклипа создается при анализе сцены красной кнопкой
+    $clipName = `basename $sClip ".ma"`;
+    $sceneName = `basename $sSkel ".mb"`;
+    $checkAuto = $sceneName + "_autoClip";
+    $checkAutoOLD = $sceneName + "autoClip";
+    string $list[] = `ls -typ character`;
+
+//   дв: в сцене с авктолипом может не быть ЧС, поставил двойную проверку
+//   damat: добавил проверку на страрые имена автоклипов без подчерка $checkAutoOLD
+    if ( `size $list` == 0 && $clipName != $checkAuto && $clipName != $checkAutoOLD){
+        error ( "В сцене " + $sSkel + " нет ни одного Character Set");
+    }
+
+    if ( `size $list` > 1){
+        error ( "В сцене " + $sSkel + " более одного Character Set");
+    }
+
+// загрузка клипа
+    if ($clipName != $checkAuto && $clipName != $checkAutoOLD) {
+        loadClip $sClip $list[0];
+    }
+
+
+// Подготовка к экспорту
+    global int $gnSuccess;
+    $gnSuccess = 0;
+
+    select -r $sRoot;
+    print ( "Выполняется экспорт анимации из " + $sClip + "\n");
+    currentTime -e `playbackOptions -q -min`;
+//  print ("h6export -f $sDst -t anim -ct" + $fTol + " -lofik" + $sRoot);
+	h6export -f $sDst -t anim -ct $fTol -lofik $sRoot;
+
+// выключаем только что проэкспорченный клип, и, если skinPose клип существует - активируем его.
+
+    $gnSuccess = 1;
+    print ( "Экспорт завершен\n" );
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc loadClip( string $sClipFilename, string $sChar )
+{
+    source doImportClipArgList.mel;
+
+    global int $gImportClipToCharacter;
+    global int $gScheduleClipOnCharacter;
+    global string $gImportToCharacter;
+    global string $gImportClipArgs[];
+    global string $gSkinPoseClipName;
+
+    $gImportClipToCharacter = 1;
+    $gScheduleClipOnCharacter = 1;
+    $gImportToCharacter = $sChar;
+    $gImportClipArgs = {"1", "-1",""};
+
+    // подготовка сцены: выставление времени в нулевой кадр, выставление playback в NTFC (30 кадров в секунду)
+    currentTime 0;
+    currentUnit -t ntsc;
+
+    // отключение всех клипов
+    $clips = `clip -q -allClips`;
+    for ($clip in $clips) {
+        setAttr ($clip + ".enable") 0;
+    };
+// включаем скинпозу
+/*    if ($gSkinPoseClipName == "") отключил, тк видим будет бажить потестить без проверки */ $gSkinPoseClipName = `findSkinPoseClip`;
+    if ($gSkinPoseClipName != "") {
+    	setAttr ($gSkinPoseClipName + ".enable") 1;
+    } else warning ("В сцене не найдено ни одного skinPose клипа. Батч экспор может содержать ошибки.");
+
+
+    // получаем список клипов в сцене до импорта
+    $clipsInScene = `ls -typ animClip`;
+
+    // загружаем клип
+    string $cmd = "clipEditorImportClip  " + "\"" + $sClipFilename +  "\" \"ma\"";
+    eval $cmd;
+
+    // после импорта клипа сравниваем список клипов до импорта и после
+    $list = stringArrayRemove ($clipsInScene, `ls -typ animClip`);
+    $list = stringArrayRemove (`clip -q -allSourceClips`, $list);
+
+    // анализируем разницу в списках. Должен быть один клип
+    if ( `size $list` == 0){
+        error ( "В сцене " + $sClipFilename + " нет анимационных клипов");
+    }
+
+    if ( `size $list` > 1){
+        error ( "В сцене " + $sClipFilename +  "более одного анимационного клипа ");
+    }
+
+    // выключаем скинпозу, включаем загруженый клип
+    if ($gSkinPoseClipName != "") {
+        currentTime -e `playbackOptions -q -min`;
+        setAttr ($gSkinPoseClipName + ".enable") 0;
+    }
+
+    string $sClip = $list[0];
+    setAttr ($sClip + ".enable") 1;
+
+    //выставляем временную шкалу по длине клипа
+    float $startFrame = `getAttr ($sClip + ".startFrame")`;
+    float $sourceStart = `getAttr ($sClip + ".sourceStart")`;
+    float $sourceEnd = `getAttr ($sClip + ".sourceEnd")`;
+    float $scale = `getAttr ($sClip + ".scale")`;
+    float $preCycle = `getAttr ($sClip + ".preCycle")`;
+    float $postCycle = `getAttr ($sClip + ".postCycle")`;
+
+    float $start = $startFrame - ($sourceEnd - $sourceStart)*$preCycle*$scale;
+    float $end = $startFrame + ($sourceEnd - $sourceStart)*(1 + $postCycle)*$scale;
+
+    playbackOptions -ast $start -aet $end -min $start -max $end;
+}
+
+global proc string findSkinPoseClip () {
+
+	$sourcecips = `clip -q -asc`;
+	$allclips = `clip -q -ac`;
+	$sheduleClips = `stringArrayRemove $sourcecips  $allclips`;
+	$skinPoseClipName = "";
+	$i=0;
+	global string $fakeClip;
+	for ($clip in $sheduleClips) {
+		$fakeClip = $clip;
+		$clipName = `eval "tolower $fakeClip"`;
+		if ($clipName == "skinpose" || $clipName == "bindpose" || $clipName == "tpose") {
+			$skinPoseClipName = $clip;
+			$i++;
+		}
+	}
+	if ($i > 1) error ("Найдено больше одного skinPose клипа в сцене.");
+	else return $skinPoseClipName;
+}

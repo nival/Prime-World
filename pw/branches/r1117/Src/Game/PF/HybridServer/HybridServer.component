@@ -1,0 +1,42 @@
+sources = [
+  'HybridServerDispencer.cpp',
+  'HybridServerDispencer.h',
+  'GameService.h',
+  'GameService.cpp',
+  'GameServerDispenserIface.h',
+  'GameServerAllocatorIface.h',
+  'GameServerRegistratorIface.h',
+  'HybridServerNaming.h',
+  'HybridServerDumpersIfaces.h',
+  'HybridServerDumpers.h',
+  'HybridServerDumpers.cpp',
+  'HybridServerConfig.h',
+  'HybridServerConfig.cpp',
+  'HybridServerMulticastIface.h',
+  'HybridServerMulticast.h',
+  'HybridServerMulticast.cpp',
+]
+
+components = [ 
+    'HybridServer/PeeredClient',
+    'Game/PF/HybridServer/Peered',
+    'Game/PF/HybridServer/AwardsRoll',
+    'Server/RPC',
+    'System/InlineProfiler',
+    'Server/LobbyPvx/SessionHybridLinkRemote',
+    'Server/Roll/RollTypes',
+    'System/BlockData',
+]
+
+if platform == 'win32' :
+  components += [
+    'Server/Statistic/GameStatClient',
+    'Server/Statistic/StatClientHttpDispatcher',
+  ]
+
+builders = [
+    RPCBuilder( 'Remote', 'GameServerDispenserIface.h', '', ['RPeered.auto.h', 'HybridServerNaming.h', 'Server/LobbyPvx/RISessionHybridLink.auto.h']) ,
+    RPCBuilder( 'Local', 'GameServerDispenserIface.h', '', ['RPeered.auto.h', 'HybridServerNaming.h']),
+    RPCBuilder( 'Remote', 'GameServerAllocatorIface.h', '', ['HybridServerNaming.h'] ) ,
+    RPCBuilder( 'Local', 'GameServerAllocatorIface.h', '', ['HybridServerNaming.h'] ),
+]

@@ -1,0 +1,172 @@
+#include "stdafx.h"
+#include "MinigamesBase.h"
+#include "MinigameBase.h"
+
+#include "MinigamesMain.h"
+#include "MinigameCommands.h"
+
+#include "../PF_GameLogic/PFMinigamePlace.h"
+
+
+namespace PF_Minigames
+{
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+MinigamesBase::MinigamesBase( NWorld::PFWorld * _pWorld ) :
+PF_Core::WorldObjectBase( _pWorld, false ),
+paused( false ),
+isLocal( false )
+{
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+MinigamesBase::~MinigamesBase()
+{
+}
+
+
+void MinigamesBase::ReinitGames()
+{
+  minigames.clear();
+  InitGames();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::RegisterMinigame( const CObj<ISingleMinigame> & mg, const char * id )
+{
+  minigames.insert( MinigamesList::value_type( id, mg ) );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::OnMapLoaded()
+{
+  MinigamesList::iterator it = minigames.begin();
+  MinigamesList::iterator last = minigames.end();
+  
+  for ( ; it != last; ++it )
+  {
+    it->second->OnMapLoaded();
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool MinigamesBase::StartMinigame( NWorld::PFMinigamePlace * place )
+{
+  const string & name = place->MinigameId();
+
+  MinigamesList::iterator it = minigames.find( name );
+
+	if ( minigames.end() == it )
+		return false;
+	
+	currentMinigame = it->second;
+
+  currentMinigame->Start( place );
+
+  if( isLocal )
+    currentMinigame->StartClient();
+
+  return true;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::LeaveMinigame()
+{
+  if ( IsValid( currentMinigame ) )
+  {
+    currentMinigame->Leave();
+    currentMinigame = 0;
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::PauseMinigame( bool enablePause )
+{
+  paused = enablePause;
+
+  if ( IsValid( currentMinigame ) )
+		return currentMinigame->OnPause( enablePause );
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::ForceLeaveMinigame()
+{
+  if ( IsValid( currentMinigame ) )
+    currentMinigame->SendLeaveMinigameCommand( worldSessInterface );
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::UpdateM( float deltaTime )
+{
+  if ( IsValid( currentMinigame ) )
+		currentMinigame->Update( deltaTime, paused ); 
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+IMinigamesMain* MinigamesBase::GetMain() const
+{
+  return main;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::OnStep( float deltaTime )
+{
+  if ( IsValid( currentMinigame ) )
+    return currentMinigame->OnStep( deltaTime ); 
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int MinigamesBase::MinigamesCount()
+{
+  return (int)minigames.size();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ISingleMinigame * MinigamesBase::GetMinigame( const char * id )
+{
+  MinigamesList::iterator it = minigames.find( id );
+
+  return ( it == minigames.end() ) ? 0 : it->second;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ISingleMinigame * MinigamesBase::GetMinigame( int index )
+{
+  if( index < 0 || index >= minigames.size() )
+    return 0;
+  MinigamesList::iterator it = minigames.begin();
+  advance( it, index );
+  return it->second;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const char * MinigamesBase::GetMinigameId( int index )
+{
+  if( index < 0 || index >= minigames.size() )
+    return 0;
+  MinigamesList::iterator it = minigames.begin();
+  advance( it, index );
+  return it->first.c_str();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MinigamesBase::SetSessionInterface( IWorldSessionInterface * _worldInterface)
+{
+  worldSessInterface = _worldInterface;
+}
+
+} // namespace PF_Minigames
+
+REGISTER_SAVELOAD_CLASS_NM( MinigamesBase, PF_Minigames )

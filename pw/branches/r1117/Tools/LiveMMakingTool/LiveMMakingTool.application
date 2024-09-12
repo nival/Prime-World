@@ -1,0 +1,46 @@
+sources = {
+  'SourceFiles' :
+  [
+    'SimpleParser.h',
+    'MmToolSource.h',
+    'MmToolExpect.h',
+    'MmScriptPlayer.h',
+    'MmToolStat.h',
+    'MmToolStat.cpp',
+    'MmToolLog.h',
+    'MmLogPlayback.h',
+    'MmLogPlayback.cpp',
+    'MmToolCounter.h',
+    'MmLogScaner.h',
+    'MmTool.cpp',
+    'MmVisualization.h',
+    'MmVisualization.cpp',
+    'MmData.h',
+  ],
+}
+
+components = [
+  'LiveMMakingTool/MMakingLogParser',
+  'Server/LiveMMaking/RatingSortMmLogic',
+  'Server/LiveMMaking/SimpleMMaking',
+  'Server/LiveMMaking/RankMatchmaking',
+  'Server/LiveMMaking/LiveMMakingConfigVars',
+  'Server/LiveMMaking/GameEstimFunction',
+  'LiveMMakingTool/DataHistogram',
+  'System/Asserts',
+  'System/Dumpers',
+  'System/ServerDumpers',
+  'System/CrashHandler',
+  'System/ConfigFiles',
+  'System/CmdLineLite',
+  'System/InlineProfilerUI',
+  'System/CrashRptWrapper',
+  'Server/LobbySocial/SocialLobby',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+# Enable CrashRpt
+settings.enableCrashRpt = True
+
+settings.enableProfiler = True

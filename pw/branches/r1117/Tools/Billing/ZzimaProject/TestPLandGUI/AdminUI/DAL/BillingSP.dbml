@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingTest" Class="BillingSPDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=b210.SITE.com;Initial Catalog=BillingTest;User ID=bill" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="billiConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vw_gui_Templates" Member="vw_gui_Templates">
+    <Type Name="vw_gui_Template">
+      <Column Name="id" Member="TemplateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Member="Name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="mask" Member="Mask" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_gui_protocolServices" Member="vw_gui_protocolServices">
+    <Type Name="vw_gui_protocolService">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="protocol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_gui_protocolPaymentSystems" Member="vw_gui_protocolPaymentSystems">
+    <Type Name="vw_gui_protocolPaymentSystem">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="protocol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_gui_Balances" Member="vw_gui_Balances">
+    <Type Name="vw_gui_Balance">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RealBalance" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="BonusMoney" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_UserBalance" Member="vw_UserBalances">
+    <Type Name="vw_UserBalance">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="systemid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cnt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_gui_Payments" Member="vw_gui_Payments">
+    <Type Name="vw_gui_Payment">
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentSystem" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_gui_Users" Member="vw_gui_Users">
+    <Type Name="vw_gui_User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="RealBalance" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="BonusMoney" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="PartnerProgram" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_api_accountMap" Member="vw_api_accountMaps">
+    <Type Name="vw_api_accountMap">
+      <Column Name="serviceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="accId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="opId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cbtMode" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_gui_setProtocolNodeSettings" Method="sp_gui_setProtocolNodeSettings">
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="enable" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_gui_setProtocolSettings" Method="sp_gui_setProtocolSettings">
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="loglevel" Type="System.Int32" DbType="Int" />
+    <Parameter Name="timeout" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_gui_getAccountCBTDetails" Method="sp_gui_getAccountCBTDetails">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_gui_getAccountCBTDetailsResult">
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(0,0) NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name1" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getSubscribedIndepndentServices" Method="sp_gui_getSubscribedIndepndentServices">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_gui_getSubscribedIndepndentServicesResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getLastSession" Method="sp_gui_getLastSession">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="serviceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_gui_getLastSessionResult">
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="occurredat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_GetAccountNameByUserIDAndServiceID" Method="sp_gui_GetAccountNameByUserIDAndServiceID">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ServiceID" Parameter="serviceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_gui_GetAccountNameByUserIDAndServiceIDResult">
+      <Column Name="NAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_adminWriteOff" Method="sp_gui_adminWriteOff">
+    <Parameter Name="empid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="password" Type="System.Data.Linq.Binary" DbType="VarBinary(80)" />
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="accid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="systemid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="amount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="reason" Type="System.String" DbType="Text" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_gui_AuthorizeAdministrator" Method="sp_gui_AuthorizeAdministrator">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(80)" />
+    <Parameter Name="password" Type="System.Data.Linq.Binary" DbType="VarBinary(80)" />
+    <ElementType Name="sp_gui_AuthorizeAdministratorResult">
+      <Column Name="groupid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_deleteTemplate" Method="sp_gui_deleteTemplate">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="admid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_gui_saveTemplate" Method="sp_gui_saveTemplate">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(80)" />
+    <Parameter Name="description" Type="System.String" DbType="Text" />
+    <Parameter Name="mask" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="parameters" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Parameter Name="empid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_gui_saveTemplateResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_generatePromocodes" Method="sp_gui_generatePromocodes">
+    <Parameter Name="empid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="count" Type="System.Int32" DbType="Int" />
+    <Parameter Name="amount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="reason" Type="System.String" DbType="Text" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_gui_generatePromocodesResult">
+      <Column Name="code" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(0,0) NOT NULL" CanBeNull="false" />
+      <Column Name="generatedat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getPaymentsHistory" Method="sp_gui_getPaymentsHistory">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="toDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fromAmount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="toAmount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="paymentSystem" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_gui_getPaymentsHistoryResult">
+      <Column Name="AMOUNT" Type="System.Decimal" DbType="Decimal(0,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EXECUTEDAT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SYSTEMID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PAYMENTSYSTEM" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="REASON" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_adminWriteOffHistory" Method="sp_gui_adminWriteOffHistory">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="toDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fromAmount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="toAmount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="gmaLogin" Type="System.String" DbType="NVarChar(80)" />
+    <Parameter Name="reason" Type="System.String" DbType="Text" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_gui_adminWriteOffHistoryResult">
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(0,0) NOT NULL" CanBeNull="false" />
+      <Column Name="executedat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="reason" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="gmaLogin" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getBonusesHistory" Method="sp_gui_getBonusesHistory">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="toDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fromAmount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="toAmount" Type="System.Decimal" DbType="Decimal" />
+    <Parameter Name="reason" Type="System.String" DbType="Text" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_gui_getBonusesHistoryResult">
+      <Column Name="AMOUNT" Type="System.Decimal" DbType="Decimal(0,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EXECUTEDAT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REASON" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getRealPaymentSystems" Method="sp_gui_getRealPaymentSystems">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_gui_getRealPaymentSystemsResult">
+      <Column Name="systemid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getSubscribedServices" Method="sp_gui_getSubscribedServices">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_gui_getSubscribedServicesResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getActualBalanceFiltered" Method="sp_gui_getActualBalanceFiltered">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="serviceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_gui_getActualBalanceFilteredResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentSystemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentSystemName" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_api_getBalance" Method="sp_api_getBalance">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="svcid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_api_getBalanceResult">
+      <Column Name="AMOUNT" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_gui_getTransfersHistory" Method="sp_gui_getTransfersHistory">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="toDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fromAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="toAmount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="sp_gui_getTransfersHistoryResult">
+      <Column Name="AMOUNT" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="EXECUTEDAT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="REASON" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SRCACCID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESTACCID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_api_replenish" Method="sp_api_replenish">
+    <Parameter Name="svcid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="user" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="account" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="paymentsystem" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="amount" Type="System.Decimal" DbType="Decimal(15,2)" />
+    <Parameter Name="reason" Type="System.String" DbType="Text" />
+    <Parameter Name="error" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

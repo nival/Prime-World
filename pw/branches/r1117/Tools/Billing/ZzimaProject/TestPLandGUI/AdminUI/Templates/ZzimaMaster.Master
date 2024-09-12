@@ -1,0 +1,146 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ZzimaMaster.Master.cs" Inherits="ZzimaBilling.AdminUI.Templates.ZzimaMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register src="WebUserControls/MainMenu.ascx" tagname="MainMenu" tagprefix="uc2" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <link href="~/AdminUI/css/Zzima.css" rel="stylesheet" type="text/css" />
+    <link href="~/AdminUI/css/Top.css" rel="stylesheet" type="text/css" />
+    <link href="~/AdminUI/css/Protocol.css" rel="stylesheet" type="text/css" />  
+    <link href="~/AdminUI/css/GridView.css" rel="stylesheet" type="text/css" />
+    <link href="~/AdminUI/css/Info.css" rel="stylesheet" type="text/css" />
+   
+    <script>
+
+    function OnHelp()
+    {
+        window.open('/AdminUI/Forms/Help.aspx');
+    }
+
+    function resizeWindow()
+    {
+        /*var windowHeight;
+        if (self.innerHeight) 
+        {     
+            windowHeight = self.innerHeight; 
+        }
+        else if (document.documentElement && document.documentElement.clientHeight) 
+        { 
+            windowHeight = document.documentElement.clientHeight; 
+        }
+        else if (document.body) 
+        {   
+            windowHeight = document.body.clientHeight; 
+        }     
+
+        var trBody = document.getElementById("bodyRow");
+        if(trBody)
+        {
+            trBody.height = windowHeight-165;
+        }*/
+    }
+
+    </script> 
+       
+</head>
+
+<body class="background" style="margin:0px;padding:0px;border:1px" onload="resizeWindow()" >
+    <form id="form1" runat="server" style="border-width:0px;">
+    <table class="bodyTable" valign="top" align="center" cellpadding="0" cellspacing="0" style="empty-cells: show;">
+       
+        <tr style="height:90px;" valign="top">
+            <td class="bodyBorderWidth" style="height:90px;overflow:auto;" ><div class="bodyBorderWidth">&nbsp;</div></td>
+            
+            <td colspan="4" class="RightConer" style="overflow:auto;">
+                <table style="height:90px;" width="100%" valign="top" width="100%" cellpadding="0" cellspacing="0">
+                    <tr height="90px">
+                        <td valign="middle"  class="mainLogo"> &nbsp; </td>
+                        <td style="width:160px;" >
+                            <table cellpadding="0" cellspacing="0">
+                                <tr height="45px">
+                                    <td style="text-align:right;width:70px;height:45px;">
+                                        <asp:LinkButton ID="Logoff" Text="<%$ resources:AdminUI, Top.Logoff %>" 
+                                            runat="server" CssClass="RightConerFont" onclick="Logoff_Click" />
+                                    </td>
+                                    
+                                    <td style="text-align:center;width:20px;">|</td>
+                                    
+                                    <td style="text-align:left;width:70px;height:45px;">
+                                        <a href="javascript:void(0)" onclick="OnHelp();" id="helpButton" class="RightConerFont">
+                                        <asp:Literal ID="Literal1" runat="server" Text="<%$ resources:AdminUI, Top.Help %>"></asp:Literal></a>
+                                    </td>
+                                </tr>
+                                
+                                <tr height="45px">
+                                    <td colspan="3" width="160px" height="45px"> &nbsp;
+                                    </td>
+                                </tr>
+                            </table>                               
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
+        <tr class="menuHeight" valign="top">
+            <td class="bodyBorderWidth"> &nbsp;</td>
+            
+            <td colspan="4">
+                    <table style="width:100%" cellpadding="0" cellspacing="0">
+                        <tr valign="middle">
+                            <td class="menuLeft"></td>
+                            <td class="menuCenter" width="100px">
+                            <asp:SiteMapDataSource 
+                                 ID="SiteMapDataSource1" 
+                                 ShowStartingNode="false"
+                                 runat="server" />
+                            <asp:Menu ID="MainMenu" runat="server"  
+                                    Orientation="Horizontal"
+                                    Height="42px" DynamicHorizontalOffset="0" 
+                                    staticdisplaylevels="1" 
+                                    MaximumDynamicDisplayLevels ="0"
+                                    DataSourceID="SiteMapDataSource1" >
+                               
+                                <StaticHoverStyle Width="190px" CssClass="menuBtnHover" />
+                                <StaticMenuItemStyle Width="190px" CssClass="menuBtn"/>
+                                <StaticSelectedStyle Width="190px" CssClass="menuBtnSelected" />
+                            </asp:Menu>
+                            </td>
+
+                            <td class="menuRight" >&nbsp 
+                            </td>
+                        </tr>
+                    </table>
+            </td>
+        </tr>        
+        
+        <tr height="8px"> <td colspan="5" ></td> </tr>        
+        <tr height="2px"> <td colspan="5" class="line" ></td> </tr>        
+        
+        <tr valign="top" id="bodyRow" height="*">
+            <td class="bodyBorder">&nbsp;</td>
+            <td class="bodyBorder1">&nbsp;</td>
+        
+            <td class="bodyBackground" >
+                <asp:Panel Visible="false" CssClass="errorMessageBar" runat="server" id="mainInfoPanel">
+                    <asp:Literal runat="server" id="mainInfoMessage"/>
+                </asp:Panel>            
+                 <asp:ContentPlaceHolder ID="BodyPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        
+            <td class="bodyBorder1">&nbsp;</td>
+            <td class="bodyBorder">&nbsp;</td>
+        </tr>
+    
+        <tr class="bottomLineHeight" >
+            <td class="bodyBorder" >&nbsp;</td>
+            <td colspan="3" class="bottomLine">&nbsp;</td>
+            <td class="bodyBorder" >&nbsp;</td>
+        </tr>
+    </table>  
+      
+    </form>        
+</body>
+</html>

@@ -1,0 +1,326 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
+using log4net;
+using MonitoringLib;
+using StatisticCore.Thrift;
+using ThreadState=System.Threading.ThreadState;
+
+namespace MonitoringService
+{
+  public class MonitoringStorage : MonitoringSummary.Iface
+  {
+    private static ILog _log = LogManager.GetLogger(typeof(MonitoringSummaryHost));
+
+    /// <summary>
+    /// List of pairs (field,counter)
+    /// </summary>
+    private Dictionary<string, string> fields = new Dictionary<string, string>();
+    /// <summary>
+    /// List of pairs (counter,Sample)
+    /// </summary>
+    private Dictionary<string, Sample> storage = new Dictionary<string, Sample>();
+    private readonly object locker = new object();
+
+    private IStatisticProvider statProvider;
+    private int statPeriod;
+
+    private Thread workingThread;
+    private volatile bool stopFlag;
+
+    private int selfMonitoringPeriod = 60 * 1000;
+    private Timer selfmonitoringTimer;
+
+    private class Sample
+    {
+      public object value;
+      public Type type;
+      public DateTime timestamp;
+
+      public int unix_timestamp
+      {
+        get
+        {
+          TimeSpan delta = timestamp - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+          return Convert.ToInt32(delta.TotalSeconds);
+        }
+      }
+
+      public Sample()
+      {
+        value = -1;
+        type = typeof (Int32);
+        timestamp = DateTime.UtcNow;
+      }
+
+      public void Update(PerfCounterSample counterSample)
+      {
+        int parsed;
+        if (!Int32.TryParse(counterSample.Value, out parsed))
+        {
+          _log.Warn("Cannot parse as Int32 value of sample " + counterSample);
+          parsed = -1;
+        }
+        value = parsed;
+        timestamp = ConvertFromUnixTimestamp(counterSample.Timestamp);
+      }
+
+      public override string ToString()
+      {
+        return String.Format("Sample(value: {0}, timestamp: {1})", value, timestamp);
+      }
+
+      private static DateTime ConvertFromUnixTimestamp(long timestamp)
+      {
+        var timezero = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        try
+        {
+          return timezero.AddSeconds(timestamp);
+        }
+        catch (Exception ex)
+        {
+          _log.ErrorFormat("Cannot convert unix timestamp value {0} to DateTime. {1}", timestamp, ex.Message);
+          return timezero;
+        }
+      }
+    }
+
+    /// <summary>
+    /// Ctor
+    /// </summary>
+    public MonitoringStorage(Uri statisticUrl, int statisticPeriod)
+    {
+      if (statisticUrl == null) throw new ArgumentNullException("statisticUrl");
+
+      statProvider = new StatisticProvider(statisticUrl);
+      statPeriod = statisticPeriod * 1000; // sec -> ms
+
+#if DEBUG
+      selfMonitoringPeriod = 10 * 1000;
+      statPeriod = 10 * 1000;
+#endif
+      selfmonitoringTimer = new Timer(SelfMonitoring, null, selfMonitoringPeriod, selfMonitoringPeriod);
+    }
+
+    private void SelfMonitoring(object state)
+    {
+      string storage_info = "empty";
+      try
+      {
+        if (fields.Count != 0)
+        {
+          storage_info = String.Empty;
+          foreach (var pair in fields)
+            storage_info += String.Format("\n  field={0}, counter={1}, value={2}",
+                                          pair.Key, pair.Value, storage[pair.Value]);
+        }
+      }
+      catch (Exception ouch)
+      {
+        storage_info = ouch.ToString();
+      }
+      _log.Info("Monitoring storage state: " + storage_info);
+    }
+
+
+    public bool RegisterCounters(Dictionary<string, PerfCounterInfo> counters)
+    {
+      if (counters == null) throw new ArgumentNullException("counters");
+      if (counters.Count == 0) return false;
+
+      foreach (var field in counters.Keys)
+      {
+        fields.Add(field.ToLower(), counters[field].Name);
+        storage.Add(counters[field].Name, new Sample());
+      }
+
+      return true;
+    }
+
+    public bool UpdateCounters(PerfCounterSample sample)
+    {
+      if (sample == null)
+      {
+        _log.Warn("Null counter value");
+        return false;
+      }
+
+      if (!storage.ContainsKey(sample.Name))
+        return false;
+
+      lock (locker) // we don't care about performance
+      {
+        try
+        {
+          storage[sample.Name].Update(sample);
+        }
+        catch (Exception ex)
+        {
+          _log.Error("Cannot update value of " + sample.Name, ex);
+        }
+      }
+
+      return true;
+    }
+
+    private MonitoringInfo ExtractMonitoringInfo()
+    {
+      var info = new MonitoringInfo();
+      PropertyInfo[] properties = typeof(MonitoringInfo).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+      try
+      {
+        foreach (var prop in properties)
+        {
+          if (prop.Name == "Isset") // ignore autogenerated Thrift property;
+            continue;
+
+          if (!fields.ContainsKey(prop.Name.ToLower()))
+          {
+            if (prop.PropertyType == typeof(Int32))
+              prop.SetValue(info, -1, null);
+            _log.DebugFormat("Property {0} don't have an appropriate counter, default value will be set", prop.Name);
+            continue;
+          }
+
+          var sample = storage[fields[prop.Name.ToLower()]]; // nested dictionary lookup rocks!
+
+          if (sample.type != prop.PropertyType)
+          {
+            _log.WarnFormat("Property MonitoringInfo.{0} cannot match storage value type: expected {1} but got {2}",
+                            prop.Name, prop.PropertyType, sample.type);
+            continue;
+          }
+
+          prop.SetValue(info, sample.value, null);
+        }
+      }
+      catch (Exception ex)
+      {
+        _log.Error("Error while extracting monitoring info from storage", ex);
+        properties.Where(p => p.Name != "Isset" && p.PropertyType == typeof (Int32)).ToList()
+          .ForEach(p => p.SetValue(info, -1, null));
+      }
+      return info;
+    }
+
+    internal List<MonitoringResultInfo> ExtractMonitoringStorage()
+    {
+      var result = new List<MonitoringResultInfo>();
+      foreach (var f in fields)
+      {
+        if (!storage.ContainsKey(f.Value))
+          continue;
+
+        var info = new MonitoringResultInfo
+                     {
+                       Property = f.Key,
+                       Counter = f.Value,
+                       Value = (int) storage[f.Value].value,
+                       Timestamp = storage[f.Value].unix_timestamp
+                     };
+        if (info.Value > -1)
+          result.Add(info);
+      }
+      return result;
+    }
+
+    public bool RunStatisticSenderAsync()
+    {
+      _log.Info("Run statistic sender");
+
+      workingThread = new Thread(RunStatisticSender);
+      workingThread.Start();
+
+      return true;
+    }
+
+
+    private void RunStatisticSender()
+    {
+      var watch = Stopwatch.StartNew();
+
+      while (!stopFlag)
+      {
+        if (watch.ElapsedMilliseconds < statPeriod)
+        {
+          Thread.Sleep(100);
+          continue;
+        }
+        watch.Reset();
+        watch.Start();
+
+        List<MonitoringResultInfo> r = ExtractMonitoringStorage();
+        if (r.Count > 0)
+        {
+          _log.Debug("Send monitoring results to statistic service");
+          statProvider.MonitoringResults(r);
+        }
+        else
+          _log.DebugFormat("No results to send to statistic service");
+      }
+    }
+
+    public void StopStatisticSender()
+    {
+      var threadState = workingThread.ThreadState;
+      if (threadState != ThreadState.Running && threadState != ThreadState.WaitSleepJoin)
+      {
+        _log.WarnFormat("Cannot stop statistic sender, thread is in {0} state", threadState);
+        return;
+      }
+
+      stopFlag = true;
+      workingThread.Join();
+      _log.InfoFormat("Stopped statistic sender");
+    }
+
+    #region MonitoringSummary.Iface
+
+    public int GetGameClusterCCU()
+    {
+      return ExtractMonitoringInfo().Game_ccu;
+    }
+
+    public int GetSocialClusterCCU()
+    {
+      return ExtractMonitoringInfo().Socialccu;
+    }
+
+    public int GetNumberOfMatchmakingUsers()
+    {
+      return ExtractMonitoringInfo().Mmakingusers;
+    }
+
+    public int GetMonitoringCounter(string name)
+    {
+      if (String.IsNullOrEmpty(name)) return -1;
+
+      var prop = typeof (MonitoringInfo).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+        .FirstOrDefault(p => String.Compare(p.Name, name, true) == 0);
+      if (prop == null)
+      {
+        _log.DebugFormat("Undefined name = {0}", name);
+        return -1;
+      }
+      try
+      {
+        return (int)prop.GetValue(ExtractMonitoringInfo(), null);
+      }
+      catch (Exception ex)
+      {
+        _log.Error("Failed to get monitoring counter " + name, ex);
+        return -1;
+      }
+    }
+
+    public MonitoringInfo GetFullMonitoringInfo()
+    {
+      return ExtractMonitoringInfo();
+    }
+
+    #endregion
+  }
+}

@@ -1,0 +1,100 @@
+sources = {
+  '' : 
+        [ 
+          'audit.cpp',
+          'audit.h',
+          'audit_wx.cpp',
+          'audit_wx.h',
+          'stdafx.h',
+          'specific.h',
+          'version.h',
+        ] ,
+  'ClientStubs' :
+        [
+          'ClientStubs.h',
+          'SceneStub.cpp',
+          'SceneStub.h',
+        ] ,
+}
+
+components = [
+          'System/Memory',
+          'System/DebugVar',
+          'System/AssertDumper',
+          'System/Timer',
+          'System/SyncProcessorState',
+          'System/FileSystem',
+          'System/FileUtils',
+          'System/Updater',
+          'System/Savers',
+          'System/SystemLog',
+          'System/Commands',
+          'System/Math',
+          'System/Threading',
+          'System/NameMap',
+          'System/Random',
+          'Core',
+          'Net',
+          'Network/Interfaces',
+          'Network/ClientTransportSystem',
+          'Scripts',
+          'libdb/Types',
+          'libdb/Database',
+          'Scene/DB',
+          'Terrain/DB',
+          'Terrain/TerrainManagers',
+          'Sound/DBSound',
+          'Render/DBRender',
+          'UI/DBUI',
+          'PF_Core/Implementation',
+          'PF_Core/Interfaces',
+          'PF_Core/DBEffects',
+          'PF_GameLogic/DB',
+          'PF_GameLogic/AI',
+          'PF_GameLogic/World',
+          'PF_GameLogic/PFWorld',
+          'PF_GameLogic/PFAdvMap',
+          'PF_GameLogic/PFPlayer',
+          'PF_GameLogic/VisibilityMap',
+          'PF_GameLogic/Pickupable',
+          'PF_GameLogic/NatureMap',
+          'PF_GameLogic/Tree',
+          'PF_GameLogic/TileWorld',
+          'PF_GameLogic/PathFinder',
+          'PF_Minigames/DB',
+          'Game/PF/WorldDraw/WorldDraw',
+          'Vendor/wxWidgets/wxwidgets',
+          'RPC',
+          'PF_GameLogic/SignsEventsSystem',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+libs = [
+          'ws2_32.lib', 'rpcrt4.lib', 'shlwapi.lib'
+]
+
+if platform == 'win32':
+  if configuration == 'debug':
+    compilerKeys = ['/RTCc', '/Gy', '/Zi', '/EHsc']
+  else:
+    compilerKeys = [ '/EHsc' ]
+else:    
+  compilerKeys = []
+
+if platform == 'win32':
+  globalCompilerKeys = [
+	  '/D"VISUAL_CUTTED"',
+	  '/D"__WXMSW__"',
+	  '/D"__WXDEBUG__"',
+	  '/D"_WINDOWS"',
+	  '/D"WIN32"',
+	  '/D"NOPCH"',
+  ]
+else:  
+  globalCompilerKeys = [
+	  '/D"VISUAL_CUTTED"',
+	  '/D"__WXMSW__"',
+	  '/D"__WXDEBUG__"',
+	  '/D"NOPCH"',
+  ]

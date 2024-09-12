@@ -1,0 +1,46 @@
+sources = [ 
+    'main.cpp',
+    'main.h',
+]
+
+# Enable CrashRpt
+#settings.enableCrashRpt = True
+
+# Uncomment this to enable Inline Profiler
+#settings.enableProfiler = True
+
+inlined = False
+
+components = [
+    'ServerAppBase/ServerAppBase',
+    'Chat/ChatSvc',
+    'HybridServer/HybridServer',
+    'MemoryLib/NewDelete',
+    'main.ace',
+    'Server/AppFramework/TimeSlicer',
+    'Server/DebugVarUpdate/Request',
+    'Server/DebugVarUpdate/Report',
+    'System/InlineProfilerUI',
+    'ClientControl',
+    'Server/Coordinator/CoordinatorClient',
+    'Relay/RelayBalancerSvc',
+    'Server/GameSession/GameBalancerSvc',
+    'UserManager/UserManagerSvc',
+    'UserManager/UserManagerAgent',
+    'Chat/ChatSvc/RChatManagementIface'
+]
+
+if platform == 'win32':
+  components += [ 'NewLogin' ]
+
+globalCompilerKeys = [
+  "/D VISUAL_CUTTED",
+  "/D SERVER_DB",
+  "/D CHECK_TOWN_CONSISTENCY",
+  "/D LOG_THREAD_EXIT",
+]
+
+if platform == 'win32' :
+  libDependencies = [
+      'rpcrt4.lib' , 'shlwapi.lib'
+  ]

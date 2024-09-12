@@ -1,0 +1,27 @@
+if platform == 'win32':
+  sources = [ 
+      'SymAccess.h',  
+      'SymAccess.cpp'
+  ]
+
+if testRun:
+  compilerKeys = ['/D _TESTRUN']
+else:
+  compilerKeys = []
+
+if platform == 'win32':
+  if configuration == 'debug':
+    compilerKeys.append('/RTCc')
+    compilerKeys.append('/Gy')
+      
+
+if platform == 'win32':
+  libDependencies = [
+      'Dbghelp.lib',
+      'Psapi.lib',
+      'shlwapi.lib'
+  ]
+
+components = [
+    'Vendor/Libc'
+]

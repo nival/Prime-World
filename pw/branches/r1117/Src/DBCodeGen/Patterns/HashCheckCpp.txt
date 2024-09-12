@@ -1,0 +1,31 @@
+﻿#pragma once
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace $(SrcAssembly)
+{
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+struct HashCheck
+{
+	static bool Check()
+	{
+		static const char* hashFileName = "$(HashFileName)";
+		static const unsigned char hash[] = { $(HashArray) };
+		static const int hashLength = sizeof( hash ) / sizeof( hash[0] );
+
+		CObj<Stream> pStream = RootFileSystem::OpenFile( hashFileName, FILEACCESS_READ, FILEOPEN_OPEN_EXISTING );
+		NI_DATA_VERIFY( IsValid( pStream ), NStr::StrFmt( "Cannot open file \"%s\" with database descriptor", hashFileName ), return false );
+		NI_DATA_VERIFY( pStream->GetSize() == hashLength, NStr::StrFmt( "Invalid size (%d, expected %d) of file \"%s\" with database descriptor", pStream->GetSize(), hashLength, hashFileName ), return false );
+		
+		static unsigned char buffer[hashLength];
+		const int readen = pStream->Read( buffer, hashLength );
+		NI_DATA_VERIFY( readen == hashLength, NStr::StrFmt( "Cannot read from file \"%s\" with database descriptor", hashFileName ), return false );
+
+		for( int i = 0; i < hashLength; ++i )
+		{
+			NI_DATA_VERIFY( buffer[i] == hash[i], "Database descriptor in binary file is out of date", return false );
+		}
+
+		return true;
+	}
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}; // namespace $(NameSpace)

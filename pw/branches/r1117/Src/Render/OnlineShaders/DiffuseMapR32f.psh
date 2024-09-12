@@ -1,0 +1,11 @@
+#include "_commonPostProcess.h"
+
+sampler diffuseMap : register(s0);
+float4 scaleOffset : register(PSHADER_LOCALCONST0);
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  float value = tex2D(diffuseMap, Input.Texcoord).r;
+  value = saturate(value * scaleOffset.x + scaleOffset.y);
+  return float4(value, value, value, 1);
+}

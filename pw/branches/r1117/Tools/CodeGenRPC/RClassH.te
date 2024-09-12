@@ -1,0 +1,75 @@
+${rpc_includes}
+
+${rpc_namespaces_start}
+
+class R${rpc_classname} : public ${rpc_interface}, public BaseObjectMT
+{
+  NI_DECLARE_REFCOUNT_CLASS_2(R${rpc_classname}, ${rpc_interface}, BaseObjectMT);
+public:
+  RPC_INFO("${rpc_fullnamespace}::${rpc_classname}", ${rpc_crc32});
+  
+  R${rpc_classname}() : handler(0) {}
+  R${rpc_classname}( rpc::EntityHandler* _handler, rpc::IRemoteEntity* _parent )
+  :  handler(_handler)
+  ,  parent(_parent)
+${rpc_data_constructor}
+  {
+${rpc_data_constructor_body}
+  }
+
+  ~R${rpc_classname}()
+  {
+    if( handler )
+    {
+      handler->OnDestruct(*this);
+      handler = 0;
+    }
+  }
+  virtual rpc::RemoteEntityInfo GetInfo() const { rpc::RemoteEntityInfo info = { handler->GetId(), { R${rpc_classname}::ID(), R${rpc_classname}::CRC32}, handler->GetGUID() }; return info; }
+  inline bool IsUpdated() const { return handler->IsUpdated(); }
+  rpc::EntityHandler* GetHandler() { return handler; }
+
+${rpc_funcs}
+${rpc_datafuncs}
+
+  bool Update(rpc::IUpdateCallback* callback=0)
+  {
+    return handler->Update(this, callback);
+  }
+
+  bool SetUpdateCallback(rpc::IUpdateCallback* callback=0)
+  {
+    return handler->SetUpdateCallback(callback);
+  }
+
+  void ReadOnly( bool val )
+  {
+    handler->ReadOnly( val );
+  }
+
+  void Publish()
+  {
+    handler->Publish();
+  }
+ 
+  StrongMT<rpc::INode> GetNode(int index) { return GetHandler()->GetNode(index); }
+  StrongMT<rpc::INode> GetNode(const char* name) { return GetHandler()->GetNode(name); }
+  virtual rpc::IUpdateCallback* GetUpdateCallback() { StrongMT<rpc::IRemoteEntity> _parent = parent.Lock(); return handler->GetUpdateCallback(_parent); }
+  virtual void SetParent(rpc::IRemoteEntity* _parent) { parent = _parent; }
+  virtual rpc::Status GetStatus() { return handler->GetStatus(); }
+
+  static uint GetClassCrcStatic() { return ${rpc_crc32}; }
+protected:
+  friend class rpc::Gate;
+
+${rpc_rollback_synchronize}
+${rpc_data_rvset}
+
+private:
+  StrongMT<rpc::EntityHandler> handler;
+  WeakMT<rpc::IRemoteEntity> parent;
+
+${rpc_data}
+};
+
+${rpc_namespaces_end}

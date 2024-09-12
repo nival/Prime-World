@@ -1,0 +1,25 @@
+#include "_commonPostProcess.h"
+
+sampler baseTexture : register(s0);
+
+float4 rotationMatrix1  : register(PSHADER_LOCALCONST0);
+float4 rotationMatrix2  : register(PSHADER_LOCALCONST1);
+float4 params1          : register(PSHADER_LOCALCONST2); // layers velocities + time
+float4 params2          : register(PSHADER_LOCALCONST3); // layers amplitudes + height coefficient
+
+float4 PS_main( VS_OUTPUT Input ) : COLOR 
+{
+  float4 rotationMatrices[ 2 ] = { rotationMatrix1, rotationMatrix2 };
+  float totalHeight = params2.x * tex2D( baseTexture, Input.Texcoord + params1.x * params1.w ).r;
+  
+  for ( int i = 0; i != 2; ++i )
+  {
+    float2 transformedUV = float2( dot( Input.Texcoord, rotationMatrices[ i ].xy ), 
+                                   dot( Input.Texcoord, rotationMatrices[ i ].zw ) );
+    transformedUV += rotationMatrices[ i ].xy * params1[ i + 1 ] * params1.w;
+
+    totalHeight += params2[ i + 1 ] * tex2D( baseTexture, transformedUV ).r;
+  }
+
+  return float4( totalHeight * params2.w, 0, 0, 0 );
+}
