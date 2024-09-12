@@ -1,0 +1,619 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack parent="/Creeps/Normals/Normal3/AttackAbility.ATCK">
+	<BackLink DBID="/Creeps/Normals/Normal3/DummyTest_1.CREEP" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_3.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_4.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_Burst744.CREEP" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_DPS744.CREEP" Count="1" />
+	<aoeSize>
+		<compiledString></compiledString>
+	</aoeSize>
+	<applicators>
+		<Item href="/Effects/Shots/HitsApplicators/MeleeRed.APLR" />
+		<Item skip="1" />
+	</applicators>
+	<constants href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="FF28ADE3-294C-40F2-95E0-6E3127B6C3FA">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="4FBA5894-D5DE-45AF-A1F1-3DF8C937E267">
+					<UnitConstant>
+						<name>DamageTaken</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLQgz/0ItNDIsRi00MiwLdXfj/0Nxt+Nld9NlF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>rMaxLife - rLife</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="AB6FEECD-B6B8-4754-AAF9-52BA868D33FB">
+					<UnitConstant>
+						<name>DamageTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="3E3DBFC1-EA4B-4619-A659-C88F2FBB060D">
+					<UnitConstant>
+						<name>EnergyTaken</name>
+						<var>
+							<compiledString>FRcAAAADAAAAJgAAAEAAAABZAAAARGFtYWdlVGFrZW4ARGFtYWdlVGltZQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaAwAAACLVRCLAotNEItQUN1d+P/S3H343A1nAAAA2V302UX0i+VdwwAAAAAAAFlA</compiledString>
+							<returnType>float</returnType>
+							<sString>(cDamageTaken/cDamageTime)*100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="152B762F-7E20-4CD4-8E7D-368C7F43678E">
+					<UnitConstant>
+						<name>Duration</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+	</cooldownTime>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+	</manaCost>
+	<passiveApplicators>
+		<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="68A21208-F4A0-41A4-8CFA-545C7BE61960">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Триггер на получение урона</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="FCBF9551-A056-4B66-A68C-664993D3AE17">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</mul>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="F7185A43-6637-4E27-B4DC-C78277F5046E">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="9F87914A-A53D-4233-889A-1AF36F817F5F">
+										<ProgramApplicator>
+											<applicators>
+												<Item>
+													<applicator href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="86B7A21A-363B-4F32-9D04-BF1E09F865F6">
+														<StatusApplicator>
+															<applicators />
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<behaviorFlags>0</behaviorFlags>
+															<caption>Фейк статус который считает время до иммуна</caption>
+															<customCounter>
+																<compiledString></compiledString>
+																<returnType>int</returnType>
+																<sString>0</sString>
+															</customCounter>
+															<customProgress>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</customProgress>
+															<description textref="" />
+															<dispellPriority>Medium</dispellPriority>
+															<effect>
+																<Item href="" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<flags>0</flags>
+															<formulaName></formulaName>
+															<image href="" />
+															<lifeTime>
+																<compiledString>FQsAAAABAAAAFwAAAERhbWFnZVRpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																<returnType>float</returnType>
+																<sString>cDamageTime</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<name textref="" />
+															<power>0</power>
+															<providerName></providerName>
+															<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+															<stackCount>0</stackCount>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<statusPosition>0</statusPosition>
+															<stopBehaviour>StopByTime</stopBehaviour>
+															<unstackableWith href="" />
+														</StatusApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>2</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="B426BD80-3F19-422E-946A-C1377B4C16EB">
+														<StatusApplicator>
+															<applicators>
+																<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="04AD5AF3-98AB-462E-BBE1-4E3F59A60895">
+																	<FlagsApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>флаги</caption>
+																		<consumables />
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<flag>2097540</flag>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<talents />
+																		<useListAs>ListAsRule</useListAs>
+																	</FlagsApplicator>
+																</Item>
+																<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="0358AAB4-F8DD-41AA-B7E3-716895ACB006">
+																	<TriggerApplicator>
+																		<actionsCount>
+																			<compiledString></compiledString>
+																			<returnType>int</returnType>
+																			<sString>0</sString>
+																		</actionsCount>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>канселять все диспатчи от врагов</caption>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<playAck>false</playAck>
+																		<processor href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="B8F602F4-609A-4071-893D-A48C9359D5E6">
+																			<EventProcessorCancelDispatch>
+																				<applyTarget>ApplicatorTarget</applyTarget>
+																				<checkSender>0</checkSender>
+																				<filter>
+																					<abilitiesList />
+																					<abilityCondition>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</abilityCondition>
+																					<abilityCostMode>Energy</abilityCostMode>
+																					<exceptThis>false</exceptThis>
+																					<flags>1073743103</flags>
+																					<onlySingleTarget>false</onlySingleTarget>
+																				</filter>
+																				<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+																				<spell href="" />
+																			</EventProcessorCancelDispatch>
+																		</processor>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<useAbilityCooldown>false</useAbilityCooldown>
+																		<useAbilityOwnerMana>false</useAbilityOwnerMana>
+																	</TriggerApplicator>
+																</Item>
+																<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="094A0FFE-46CC-42E8-96E6-58D337B0005E">
+																	<StatModApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>Меняем Здоровье</caption>
+																		<constraint>None</constraint>
+																		<dontUpdate>true</dontUpdate>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<modifier>
+																			<addValue>
+																				<compiledString>FQwAAAABAAAAGAAAAERhbWFnZVRha2VuAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>cDamageTaken</sString>
+																			</addValue>
+																			<multValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</multValue>
+																			<stat>Life</stat>
+																			<topModifier>true</topModifier>
+																			<variable></variable>
+																		</modifier>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<statModName></statModName>
+																	</StatModApplicator>
+																</Item>
+																<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="03ECA73C-E785-4E53-8488-10B61AFF43BF">
+																	<StatModApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>Меняем Энергию</caption>
+																		<constraint>None</constraint>
+																		<dontUpdate>true</dontUpdate>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<modifier>
+																			<addValue>
+																				<compiledString>FQwAAAABAAAAGAAAAEVuZXJneVRha2VuAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>cEnergyTaken</sString>
+																			</addValue>
+																			<multValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</multValue>
+																			<stat>Energy</stat>
+																			<topModifier>false</topModifier>
+																			<variable></variable>
+																		</modifier>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<statModName></statModName>
+																	</StatModApplicator>
+																</Item>
+																<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="58CCC298-1FC2-48B4-B1E9-C9542427740A">
+																	<StatModApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>Ослепляем</caption>
+																		<constraint>None</constraint>
+																		<dontUpdate>false</dontUpdate>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<modifier>
+																			<addValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</addValue>
+																			<multValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</multValue>
+																			<stat>VisibilityRange</stat>
+																			<topModifier>false</topModifier>
+																			<variable></variable>
+																		</modifier>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<statModName></statModName>
+																	</StatModApplicator>
+																</Item>
+																<Item href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="7CC2A0CE-133D-4012-8472-815259B0997F">
+																	<StatModApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>Обездвиживаем</caption>
+																		<constraint>None</constraint>
+																		<dontUpdate>false</dontUpdate>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<modifier>
+																			<addValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</addValue>
+																			<multValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</multValue>
+																			<stat>MoveSpeed</stat>
+																			<topModifier>false</topModifier>
+																			<variable></variable>
+																		</modifier>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<statModName></statModName>
+																	</StatModApplicator>
+																</Item>
+															</applicators>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<behaviorFlags>0</behaviorFlags>
+															<caption>Статус на иммун и параметры</caption>
+															<customCounter>
+																<compiledString></compiledString>
+																<returnType>int</returnType>
+																<sString>0</sString>
+															</customCounter>
+															<customProgress>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</customProgress>
+															<description textref="/Creeps/Normals/Normal3/DummiTest.ATCK_b426bd803f19422e946ac1377b4c16eb_description.txt" />
+															<dispellPriority>Medium</dispellPriority>
+															<effect>
+																<Item href="/Effects/Buffs/Invulnerability/_.EFFT" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<flags>0</flags>
+															<formulaName></formulaName>
+															<image href="/UI/Styles/Icons/Artifacts/_Test.ITEX" />
+															<lifeTime>
+																<compiledString>FQkAAAABAAAAFQAAAER1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																<returnType>float</returnType>
+																<sString>cDuration</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<name textref="/Creeps/Normals/Normal3/DummiTest.ATCK_b426bd803f19422e946ac1377b4c16eb_name.txt" />
+															<power>0</power>
+															<providerName></providerName>
+															<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+															<stackCount>0</stackCount>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<statusPosition>0</statusPosition>
+															<stopBehaviour>StopByTime</stopBehaviour>
+															<unstackableWith href="" />
+														</StatusApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>2</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>Проверяем на урон и ставим статус</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+										</ProgramApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Normals/Normal3/DummiTest.ATCK" id="8739211D-730D-40A2-83F0-1BD1D0B90239">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/Immune2Axe.APLR" />
+	</passiveApplicators>
+	<useRange>
+		<compiledString></compiledString>
+	</useRange>
+</BaseAttack>

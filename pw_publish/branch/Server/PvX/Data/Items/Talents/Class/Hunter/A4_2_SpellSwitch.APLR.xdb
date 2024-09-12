@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellSwitchApplicator>
+	<BackLink DBID="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" Count="1" />
+	<activeSpellIndex>
+		<compiledString>FRYAAAACAAAAHQAAADoAAABDb3VudAAAAEE0XzJfTWF4Q291bnQAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoCAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEQXUJx0X0AAAAAOsHx0X0AQAAAItF9IvlXcM=</compiledString>
+		<returnType>int</returnType>
+		<sString>sender.vCount &lt; cA4_2_MaxCount ? 0 : 1</sString>
+	</activeSpellIndex>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption></caption>
+	<dontUseDispatches>true</dontUseDispatches>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spells>
+		<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="4792D141-1532-4F57-AA4F-5E87064396A0">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="16B3ACAE-3EEE-489B-9BBE-3B1210892354">
+						<VariableProxyApplicator>
+							<applicators>
+								<Item>
+									<applicator href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="B0F6B87A-A4F9-470C-846D-0AA1793CAD24">
+										<TargetsCounterApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>поиск самой дальней точки</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName>GroundPointFinder</formulaName>
+											<lifeTime>
+												<compiledString>FQUAAAABAAAAEQAAAFNURVAAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cSTEP</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<targetSelector href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="CD1FB748-B9B4-4DE8-98CF-59723ED6033C">
+												<PointTargetSelector>
+													<checkMinRange>true</checkMinRange>
+													<mode>RangeFromOwner</mode>
+													<offset>
+														<x>0</x>
+														<y>1</y>
+													</offset>
+													<paralleledTarget>false</paralleledTarget>
+													<range>
+														<compiledString>FS4AAAAEAAAAMwAAAEkAAABVAAAAdwAAAEN1cnJlbnRSYW5nZQAAAABDdXJyZW50UmFuZ2UAAAAAQTRfMl9NYXhSYW5nZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B2SAAAA3+D2xEF1GmgQAAAAi00IixGLTQiLgogBAAD/0Nld/Osdi00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ/9DZXfzZRfyL5V3DAAAAAAAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>sender.vCurrentRange &gt; 0 ? sender.vCurrentRange : cA4_2_MaxRange</sString>
+													</range>
+													<targetSelector href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="3F622D21-9F16-45A6-A7F3-8F280CBC4334">
+														<SelectApplicatorTarget>
+															<applicatorIndex>0</applicatorIndex>
+															<applicatorName></applicatorName>
+															<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+															<selectTarget>ApplicatorTarget</selectTarget>
+														</SelectApplicatorTarget>
+													</targetSelector>
+													<traceMode>0</traceMode>
+												</PointTargetSelector>
+											</targetSelector>
+										</TargetsCounterApplicator>
+									</applicator>
+									<variableNames />
+								</Item>
+								<Item>
+									<applicator href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="2CFE58A7-2CA5-41FE-9693-31B7F1AC7A0A">
+										<PermanentStatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>апдейт каунтера</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+													<returnType>float</returnType>
+													<sString>1</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>Count</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</applicator>
+									<variableNames />
+								</Item>
+								<Item>
+									<applicator href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="B18EEBDE-4F82-40A6-AC11-64454A8F76A2">
+										<PermanentStatModApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>апдейтим range в зависимости от наличия точек земли</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FToAAAAGAAEARwAAAF8AAAByAAAAmQAAALEAAADPAAAAKQEAAEdyb3VuZFBvaW50RmluZGVyAAAAdGFyZ2V0c0NvdW50AAAAAEE0XzJfTWF4UmFuZ2UAAABDb3VudABVi+yD7BxqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxoFAAAAItN/IsRi038i0JU/9DcHe8AAADf4PbEQXUJx0X4/////+sHx0X4AQAAANtF+ItNDFGLVQhSaCQAAACLRRCLEItNEItCUN1d8P/Q3E3waDQAAACLTQiLEYtNCIuCiAEAAN1d6P/QUdkcJFHZBesAAADZHCToHAAAAIPECNx96Nld5NlF5IvlXcMAAABAAAAAAAAAAABVi+xR2UUM2RwkUdlFCNkcJOgFAAAAg8QIXcNVi+xR2UUMg+wI3Rwk2UUIg+wI3Rwk6LX+//+DxBDZXfzZRfyL5V3D</compiledString>
+													<returnType>float</returnType>
+													<sString>(sender.FindApplicator("GroundPointFinder", pMisc, UNIT)-&gt;GetVariable("targetsCount") &gt; 0 ? -1 : 1) * cA4_2_MaxRange / pow(2, sender.vCount)</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>CurrentRange</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</applicator>
+									<variableNames />
+								</Item>
+								<Item>
+									<applicator href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" />
+									<variableNames />
+								</Item>
+							</applicators>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption></caption>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+						</VariableProxyApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="A05ECC19-1E9A-4A27-87CF-782393DC8408">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="601C0837-8C9B-4321-920F-45C2466CC357">
+						<SpellApplicator>
+							<applyTarget>AbilityTarget</applyTarget>
+							<caption>выбрать точку на макс расстоянии</caption>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<spell href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="07DD2EC0-7A3A-4FC7-B3B6-71B1BE0C9FBD">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="4E31C053-C23D-4E87-A91B-6D1AD258112D">
+											<WaitForSpellApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>153</behaviorFlags>
+												<behaviour>4</behaviour>
+												<caption>послать стрелу</caption>
+												<dispatchSource href="" />
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<firstTargetToHit href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="D297D184-8BAE-4798-AD46-8215D67A47E0">
+													<ComparingTargetSelector>
+														<referenceValue>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>0.0f</sString>
+														</referenceValue>
+														<targetSelector href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="A7338D00-DD8C-4A8D-8090-3F308E3AE13B">
+															<ConditionTargetSelector>
+																<condition>
+																	<compiledString>FRAAAAACAAAAFQAAACsAAABJZ25vcmFibGVUYXJnZXQAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdTQAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>receiver.vIgnorableTarget == 0</sString>
+																</condition>
+																<flags>0</flags>
+																<mode>Normal</mode>
+																<targetSelector href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="09A1B738-2C7D-494C-8C8F-27C2797BB50A">
+																	<CapsuleTargetSelector>
+																		<cutoffFirstSegment>true</cutoffFirstSegment>
+																		<flags>0</flags>
+																		<mode>Normal</mode>
+																		<range>
+																			<compiledString>FQsAAAACAAAAGAAAACsAAABBNF8yX1dpZHRoAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNOQAAANld/NlF/IvlXcMAAAAAAADgPw==</compiledString>
+																			<returnType>float</returnType>
+																			<sString>cA4_2_Width * 0.5f</sString>
+																		</range>
+																		<rangeFromOwner>
+																			<compiledString>FQ0AAAABAAAAEQAAAEN1cnJlbnRSYW5nZQBVi+xoAAAAAItFCIsQi00Ii4KIAQAA/9Bdww==</compiledString>
+																			<returnType>float</returnType>
+																			<sString>sender.vCurrentRange</sString>
+																		</rangeFromOwner>
+																		<segmentBegin>PreviousPosition</segmentBegin>
+																		<segmentDirectionOffset>0</segmentDirectionOffset>
+																		<segmentEnd>CurrentPosition</segmentEnd>
+																		<segmentEndTargetSelector href="" />
+																		<targetFilter>538705983</targetFilter>
+																	</CapsuleTargetSelector>
+																</targetSelector>
+															</ConditionTargetSelector>
+														</targetSelector>
+														<valueToCompare>
+															<compiledString>FQAAAAAAAAEAugAAAFWL7IPsEI1F+FCLTQyLEYtNDIuCjAEAAP/QUI1N8FGLVQiLAotNCIuQjAEAAP/SUOgHAAAAg8QIi+Vdw1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6B7///+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+															<returnType>float</returnType>
+															<sString>d( sPos, rPos )</sString>
+														</valueToCompare>
+													</ComparingTargetSelector>
+												</firstTargetToHit>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<spell href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="C95C6171-1F36-401F-A9C9-3F35358E1B58">
+													<Spell>
+														<applicators>
+															<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="7A0A03D3-C22F-4B1E-ACCF-8AA075D1A451">
+																<SpellApplicator>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>хит в юнита</caption>
+																	<enabled>
+																		<compiledString>FQAAAAAAAAAAVYvsM8CDfQwAD5XAXcM=</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>pSecond != 0</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<spell href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="BCA6BD0E-1FB3-4AB0-89EC-7FEE832F5314">
+																		<Spell>
+																			<applicators>
+																				<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="72C9EC75-DF0E-4580-812A-559ED79916DA">
+																					<DamageApplicator>
+																						<applyTarget>ApplicatorTarget</applyTarget>
+																						<cancelInvisibility>false</cancelInvisibility>
+																						<caption>урон</caption>
+																						<damage>
+																							<compiledString>FQwAAAABAAAAGAAAAEE0XzJfRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																							<returnType>float</returnType>
+																							<sString>cA4_2_Damage</sString>
+																						</damage>
+																						<damageMode>4</damageMode>
+																						<damageType>Energy</damageType>
+																						<enabled>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</enabled>
+																						<formulaName></formulaName>
+																						<LoggingEvent>-1</LoggingEvent>
+																						<providerName></providerName>
+																						<timeLimiter>-1</timeLimiter>
+																						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+																					</DamageApplicator>
+																				</Item>
+																				<Item href="/Items/Talents/Class/Hunter/add_A0Bleeding.APLR" />
+																				<Item href="/Items/Talents/Class/Hunter/status_A0_bleeding.APLR" />
+																			</applicators>
+																			<dispatch href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="DCE1017E-D167-4389-B55F-8F2D1C31D636">
+																				<DispatchImmediate>
+																					<alwaysApply>false</alwaysApply>
+																					<applyEffect>
+																						<Item href="/Effects/Shots/Spear/_MagicHit.EFFT" />
+																						<Item href="" />
+																					</applyEffect>
+																					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																					<applyEffectOrientation>Default</applyEffectOrientation>
+																					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																					<dieAfterApply>true</dieAfterApply>
+																					<dispatchEffect>
+																						<Item href="" />
+																						<Item href="" />
+																					</dispatchEffect>
+																					<flags>1</flags>
+																					<instantApply>true</instantApply>
+																				</DispatchImmediate>
+																			</dispatch>
+																		</Spell>
+																	</spell>
+																	<spellTarget>ApplicatorTarget</spellTarget>
+																	<targetSelector href="" />
+																</SpellApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="EF5C2DCF-1745-49DC-987E-22C271B39D30">
+															<DispatchLinear>
+																<aiming>Straight</aiming>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="/Effects/Shots/Arrow/_PurpleHit.EFFT" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Motion</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="/Effects/Shots/Arrow/_Purple.EFFT" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<flyMode>Linear</flyMode>
+																<fromLocator>Attack</fromLocator>
+																<height>2</height>
+																<killEffect>true</killEffect>
+																<locatorOrient>true</locatorOrient>
+																<maxDeviation>180</maxDeviation>
+																<maxDistance>-1</maxDistance>
+																<maxRise>0</maxRise>
+																<minRise>0</minRise>
+																<persistentApplicators />
+																<speed>35</speed>
+																<suspendTime>0</suspendTime>
+																<toLocator></toLocator>
+															</DispatchLinear>
+														</dispatch>
+													</Spell>
+												</spell>
+												<spellTarget>ApplicatorTarget</spellTarget>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+											</WaitForSpellApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="904E7734-1991-4754-BCF2-4261AF4B5146">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>true</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+							<spellTarget>ApplicatorTarget</spellTarget>
+							<targetSelector href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="3BFA8984-DD17-4064-924A-EFF1655C797A">
+								<PointTargetSelector>
+									<checkMinRange>true</checkMinRange>
+									<mode>RangeFromOwner</mode>
+									<offset>
+										<x>0</x>
+										<y>1</y>
+									</offset>
+									<paralleledTarget>false</paralleledTarget>
+									<range>
+										<compiledString>FS4AAAAEAAAAMwAAAEkAAABVAAAAdwAAAEN1cnJlbnRSYW5nZQAAAABDdXJyZW50UmFuZ2UAAAAAQTRfMl9NYXhSYW5nZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B2SAAAA3+D2xEF1GmgQAAAAi00IixGLTQiLgogBAAD/0Nld/Osdi00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ/9DZXfzZRfyL5V3DAAAAAAAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>sender.vCurrentRange &gt; 0 ? sender.vCurrentRange : cA4_2_MaxRange</sString>
+									</range>
+									<targetSelector href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="AB2EE065-D039-46ED-ADF6-1A60BA4F094C">
+										<SelectApplicatorTarget>
+											<applicatorIndex>0</applicatorIndex>
+											<applicatorName></applicatorName>
+											<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+											<selectTarget>ApplicatorTarget</selectTarget>
+										</SelectApplicatorTarget>
+									</targetSelector>
+									<traceMode>0</traceMode>
+								</PointTargetSelector>
+							</targetSelector>
+						</SpellApplicator>
+					</Item>
+					<Item href="/Items/Talents/Class/Hunter/A4_2_SpellSwitch.APLR" id="7715E90A-4900-40CE-A34A-DE8E18CED24C">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>обнуляем Count</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+									<returnType>float</returnType>
+									<sString>0</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+									<returnType>float</returnType>
+									<sString>0</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>Count</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+	</spells>
+</SpellSwitchApplicator>

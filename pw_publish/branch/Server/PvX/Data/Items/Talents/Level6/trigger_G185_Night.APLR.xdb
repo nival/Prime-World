@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Level6/G185_Life_ifLifeDown.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level6/trigger_G185_Night.APLR" Count="1" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>триггер на низкое Здоровье кота</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRRCLEItNEItCHP/Q3B01AAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+		<returnType>bool</returnType>
+		<sString>mPreparedness == 1.0f</sString>
+	</enabled>
+	<formulaName>G185_PantherTrigger</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Level6/trigger_G185_Night.APLR" id="BAFDFAB7-F6E8-4F94-8979-A53189EC1803">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQkAAAACAAAANAAAAE0AAABMaWZlRG93bgBVi+yD7BSLRQyLEItNDIsC/9CLTQyLEYtNDItCDN1d+P/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3w/9DcTfDcDXIAAADcXfjf4PbEQXUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcN7FK5H4XqEPw==</compiledString>
+				<returnType>bool</returnType>
+				<sString>rLife &lt; rMaxLife * cLifeDown * 0.01</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Level6/trigger_G185_Night.APLR" id="F85673BD-0296-4EA2-8359-BFB74C3AB2BE">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Level6/trigger_G185_Night.APLR" id="DD27D22F-8084-4584-AB3A-E67C9E15099A">
+							<ProgramApplicator>
+								<applicators>
+									<Item>
+										<applicator href="/Items/Talents/Level6/trigger_G185_Night.APLR" id="C2136061-3E94-44B3-926E-AD5BF90CFDC8">
+											<PermanentStatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<caption>Запоминаем нехватку Здоровья у кошки</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FRcAAAAEAAAAHgAAAEAAAABMAAAAYQAAAFRhcmdldAAAVGFyZ2V0AABUYXJnZXQAVYvsg+wgaAAAAACLRRCLEItNEItCTP/QiUX8i038ixGLTfyLAv/Q3B2rAAAA3+D2xEF1TmgIAAAAi00QixGLTRCLQkz/0IlF+GgQAAAAi00QixGLTRCLQkz/0IlF9ItN9IsRi030iwL/0ItN+IsRi034i0IM3V3s/9DcZezdXeTrBdnu3V3k3UXk2V3g2UXgi+VdwwAAAAAAAAAA</compiledString>
+														<returnType>float</returnType>
+														<sString>appl.oTarget.Life &gt; 0 ? appl.oTarget.MaxLife - appl.oTarget.Life : 0</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>G185_ThisHealPantherLifeLack</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</applicator>
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>1</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level6/trigger_G185_Night.APLR" id="76B8F542-DC90-4C43-8855-C204D427EFE4">
+											<HealApplicator>
+												<amount>
+													<compiledString>FSkAAAACAAAANQAAAEsAAABIZWFsQW1vdW50AABHMTg1X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJGgMAAAAi0UIixCLTQiLgogBAAD/0FHZHCToBQAAAIPECF3DVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>min(sender.vG185_ThisHealPantherLifeLack, cHealAmount)</sString>
+												</amount>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>Есть кошка: хил в саммона</caption>
+												<enabled>
+													<compiledString>FR0AAAACAAAAIgAAADgAAABHMTg1X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHVoAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.vG185_ThisHealPantherLifeLack &gt; 0</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<healTarget>Health</healTarget>
+												<ignoreHealingMods>false</ignoreHealingMods>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+											</HealApplicator>
+										</applicator>
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>1</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level6/trigger_G185_Night.APLR" id="19B9B2AA-B416-4617-8B21-BF5ACA7396D6">
+											<HealApplicator>
+												<amount>
+													<compiledString>FSkAAAACAAAAOAAAAEoAAABIZWFsQW1vdW50AABHMTg1X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SaAwAAACLRQiLEItNCIuCiAEAAN1d+P/Q3G342V302UX0UdkcJFHZ7tkcJOgLAAAAg8QIi+VdwwAAAABVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+													<returnType>float</returnType>
+													<sString>max(0, cHealAmount - sender.vG185_ThisHealPantherLifeLack)</sString>
+												</amount>
+												<applyTarget>AbilityOwner</applyTarget>
+												<caption>Есть кошка: хил в героя</caption>
+												<enabled>
+													<compiledString>FSsAAAACAAAAMgAAAE8AAABHMTg1X1RoaXNIZWFsUGFudGhlckxpZmVMYWNrAAAAAEhlYWxBbW91bnQAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.vG185_ThisHealPantherLifeLack &lt; cHealAmount</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<healTarget>Health</healTarget>
+												<ignoreHealingMods>false</ignoreHealingMods>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+											</HealApplicator>
+										</applicator>
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>1</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level6/status_G185_ifWeCant.APLR" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>2</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level6/trigger_G185_Night.APLR" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>2</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>216</behaviorFlags>
+								<caption>Программа КОТУ с воздействиями, статусом-КД и перенакладыванием триггера</caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+							</ProgramApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Level6/trigger_G185_Night.APLR" id="729BBF63-2822-4534-B95B-D40103E9EC0E">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>true</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Heroes/Marine/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/A3_Heal.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/status_A4_deadlyspin.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Marine/A3_HealSpell.SPLL" id="FE04491D-7179-47A2-A9A9-7AA20C8B9D3E">
+			<HealApplicator parent="/GameLogic/GeneralApplicators/Heal.APLR">
+				<amount>
+					<compiledString>FTgAAAAFAAAAPwAAAFgAAAC1AAAAzgAAAOUAAABBM19IZWFsQW1vdW50AAAATWFyaW5lX0EzdQAATWFyaW5lX0EzdQAAQTN1X0hlYWxQZXJjZW50AFWL7IPsJGgQAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoHAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdEqLVQiLAotNCItQDP/Si0UIixCLTQiLAt1d8P/Q3G3wi00MUYtVCFJoKAAAAItFEIsQi00Qi0JQ3V3o/9DcTejcDQsBAADdXeDrBdnu3V3gi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9DcReDZXdzZRdyL5V3DAAAAAAAAAAAAAABA4XqEPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>cA3_HealAmount + ( tal("Marine_A3u") ? ( ( sMaxLife - sLife ) * cA3u_HealPercent * 0.01f ) : 0.0f )</sString>
+				</amount>
+				<enabled>
+					<compiledString></compiledString>
+				</enabled>
+			</HealApplicator>
+		</Item>
+	</applicators>
+	<dispatch href="/Items/Talents/Class/Marine/A3_HealSpell.SPLL" id="A09A4DD5-515C-47F8-882C-C6FDD7B74AEA">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Buffs/Regen/_TimeShort.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

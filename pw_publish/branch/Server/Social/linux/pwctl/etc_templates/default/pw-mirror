@@ -1,0 +1,13 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/mirror_daemon.py"
+RUNSCRIPT_ARGS="--mirror_mode=read --mirror_read_count=10 --port={{ conf['mirror_port'] }}\
+ --server_id="-31" --log_rotation=external --log_file_prefix={{ conf['logging'] }}mirrorread.log\
+ --tick_period={% if conf['tick_period_mirror'] != "0" %}{{ conf['tick_period_mirror'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+LOGGING=">> {{ conf['logging_run'] }}pw-mirror.log.run 2>&1"
+

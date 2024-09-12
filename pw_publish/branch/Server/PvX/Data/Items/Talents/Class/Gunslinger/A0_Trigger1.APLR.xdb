@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>Триггер "Вне боя"</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRQAAAACAAAAGQAAAC8AAABHdW5zbGluZ2VyX1JhZ2VfSW5jAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHVEAAADf4PbEBXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vGunslinger_Rage_Inc &lt; 1</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Gunslinger/A0_Trigger1.APLR" id="85589D9C-CA7D-48DF-8DBF-EC9211546A57">
+		<EventProcessorCondition>
+			<applyTarget>AbilityOwner</applyTarget>
+			<condition>
+				<compiledString>FR4AAAAEAAAAKwAAAFIAAABmAAAAjQAAAE5vbkNvbWJhdFRpbWUAAABOb25Db21iYXRUaW1lAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0lHZHCSLRQiLEItNCIuCsAEAAP/Q3B2vAAAA3+D2xEF6RItNDFGLVQhSaBAAAACLRRCLEItNEItCUP/QUdkcJItNCIsRi00Ii4KsAQAA/9DcHa8AAADf4PbEQXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+				<returnType>bool</returnType>
+				<sString>sender.GetDamageDealt(cNonCombatTime) &lt;= 0 &amp;&amp; sender.GetDamageTaken(cNonCombatTime) &lt;= 0</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Class/Gunslinger/A0_Trigger1.APLR" id="53AACF0A-3C74-4F8A-BDC9-44E293DF1E74">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Gunslinger/A0_Trigger1.APLR" id="C7A46007-6754-43E3-A7C0-260F9C1C7079">
+							<PermanentStatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Gunslinger_Rage_Inc == 1 //Я в бою</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>1</sString>
+									</addValue>
+									<multValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>Gunslinger_Rage_Inc</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Gunslinger/A0_Trigger1.APLR" id="3316FA91-1534-489A-9FA6-62E9F384C3E4">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

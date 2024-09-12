@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Assassin/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Assassin/Ability_A3_2.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>AbilityTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Запускаем таймер на отключалку</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRUAAAABAAAAHwAAAEFzc2Fzc2luRGVsYXlQcm9ncmFtAFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applAssassinDelayProgram(UNIT) == pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Assassin/A3_LifeTimer.APLR" id="D45542DA-1B38-4FC9-9AA1-E1B5DCFC602E">
+		<EventProcessorCondition>
+			<applyTarget>AbilityTarget</applyTarget>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QD7bA99gbwIPAAV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.IsVisibleForEnemy(sFctn) == false</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Class/Assassin/A3_LifeTimer.APLR" id="EC1D6DF3-F2BC-467A-843C-9EDDE25CAE8D">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Assassin/A3_LifeTimer.APLR" id="EF8708B7-34BC-4573-9552-6CB0498F088B">
+							<ProgramApplicator>
+								<applicators>
+									<Item>
+										<applicator href="" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>0</continueEvents>
+										<delay>
+											<compiledString>FRsAAAABAAAAJwAAAEEzX091dE9mU2lnaHRUaW1lVGhyZXNob2xkAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>cA3_OutOfSightTimeThreshold</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QXcM=</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.IsVisibleForEnemy(sFctn)</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Class/Assassin/StopMark.APLR" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>1</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QXcM=</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.IsVisibleForEnemy(sFctn)</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>0</behaviorFlags>
+								<caption></caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName>AssassinDelayProgram</formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+							</ProgramApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Assassin/A3_LifeTimer.APLR" id="48B43C7D-F36A-4FD1-8961-FAEDDC4B1D12">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>true</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

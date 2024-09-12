@@ -1,0 +1,10 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/services/marketing/"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/services/marketing/main.py"
+RUNSCRIPT_ARGS="--config={{ conf['rundir'] }}/cfg/marketing.cfg --loglevel=info --log={{ conf['logging'] }}marketing.log"
+LOGGING=">> {{ conf['logging_run'] }}pw-ms.log.run 2>&1"

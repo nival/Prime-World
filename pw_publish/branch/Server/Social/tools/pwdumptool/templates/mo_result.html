@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+	<table>
+		<tr>
+			<td>
+			<p>Current operation: </p>
+			</td>
+			<td>
+				<div id="current_op"></div>
+			<td>
+		</tr>
+		<tr>
+			<td>
+			<p>Processed: </p>
+			</td>
+			<td>
+				<div id="percents">0%</div>
+			<td>
+		</tr>		
+		<tr>
+			<td>
+				<form action="{{ url_for('mo_return_without_log') }}" method=post name=mo_return_without_log enctype=multipart/form-data>	
+					<input type="hidden" name="oplog" value="{{ oplog }}"/>
+					<a href="#" onclick="document.mo_return_without_log.submit();">Return to previous page</a>
+				</form>
+			</td>
+				<td>
+				<form action="{{ url_for('mo_return_log') }}" method=post name=mo_return_log enctype=multipart/form-data>
+					<input type="hidden" name="oplog" value="{{ oplog }}"/>
+					<a href="#" onclick="document.mo_return_log.submit();" id=get_log>Cancel</a>	
+				</form>
+			</td>
+		</tr>		
+	</table>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+{% for i in data: %}
+	<script>
+		$("#current_op").text("{{ i[0] }}")
+		$("#percents").text("{{ i[1] }}%")
+		$("#get_log").text("{{ i[2] }}")		
+	</script>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Bomber/status_A3u_Self.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_TechSlow_status.APLR" />
+		<Item href="/Heroes/DefaultStatus/SlowFX.APLR" />
+		<Item href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" id="588CAD76-BEB1-4EB6-83AD-70DD12FC43A8">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>Периодически подгораем</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" id="FEE8E8A8-941A-4939-B421-482BB919F07F">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" id="71951EF3-A0B1-410B-9CAB-FD12B3DEEE7C">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>Физ урон</caption>
+									<damage>
+										<compiledString>FREAAAABAAAAHQAAAEEzdV9EbWdQZXJTZWNvbmQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cA3u_DmgPerSecond</sString>
+									</damage>
+									<damageMode>0</damageMode>
+									<damageType>Material</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" id="32E1FE0B-699D-44BD-9982-D620E4BC5688">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.1f</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" id="E58EC392-E66B-4F33-A8C3-D30CAFDE49F9">
+					<SelectApplicatorTarget>
+						<applicatorIndex>0</applicatorIndex>
+						<applicatorName></applicatorName>
+						<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+						<selectTarget>ApplicatorTarget</selectTarget>
+					</SelectApplicatorTarget>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>146</behaviorFlags>
+	<caption>Статус горения</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FSgAAAADAAAANQAAAFUAAABnAAAAQm9tYmVyQTJ1X1RpbWVyAGR1cmF0aW9uAAAAAEEzX0R1cmF0aW9uAFWL7IPsEGoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/ItNDFGLVQhSaBwAAACLRRCLEItNEItCUP/QaBAAAACLTfyLEYtN/ItCVN1d9P/Q3HX02V3w2UXwi+Vdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>pFirst-&gt;FindApplicator("BomberA2u_Timer", pMisc, ABILITY)-&gt;GetVariable("duration") / cA3_Duration</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRAAAAABAAAAGgAAAEJvbWJlckEydV9UaW1lcgBVi+xqAotFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>pFirst-&gt;FindApplicator("BomberA2u_Timer", pMisc, ABILITY) != pMisc</sString>
+	</enabled>
+	<flags>2</flags>
+	<formulaName>BomberA2u_Enemy</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Bomber/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>PartiallyStackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRAAAAABAAAAGgAAAEJvbWJlckEydV9FbmVteQBVi+xqAotFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>pSecond-&gt;FindApplicator("BomberA2u_Enemy", pMisc, ABILITY) == pMisc</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" id="DB2D72F1-4239-49D1-917A-5BE9AFBDFFE7">
+		<ApplicatorsList>
+			<applicatorLists />
+			<applicators>
+				<Item href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" />
+			</applicators>
+		</ApplicatorsList>
+	</unstackableWith>
+</StatusApplicator>

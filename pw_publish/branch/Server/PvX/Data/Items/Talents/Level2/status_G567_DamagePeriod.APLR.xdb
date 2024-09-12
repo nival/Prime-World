@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.APLR" Count="2" />
+	<applicators>
+		<Item href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="F807FA5D-B401-45F9-B08A-BFA9BC1CADF4">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>G567_SavedDamage</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTcxX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG571_Active &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQUAAAABAAAAGgAAAFNURVAAVYvsi0UQUGgABAAAi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9BR2Rwki00IixGLTQiLgvABAAD/0F3D</compiledString>
+						<returnType>float</returnType>
+						<sString>sender.GetDamageDealtEx(cSTEP, DMG_TALENT_CLASS, pMisc )</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>G567_SavedDamage</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="0B901F5A-69C6-4332-89E0-EDC79E079809">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>Спел с уроном</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FRIAAAABAAAAHgAAAEc1NjdfRGFtYWdlUGVyaW9kAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cG567_DamagePeriod</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="D0F028EF-FF2B-465E-85B2-354F94D014B9">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="6CCD8278-F182-483D-A842-8B50A1B8A84C">
+								<VariableProxyApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="8A40F16C-6546-4DC3-BD37-C7A07D0E178E">
+												<DamageApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<cancelInvisibility>false</cancelInvisibility>
+													<caption>Урон</caption>
+													<damage>
+														<compiledString>FUAAAAAFAAAARwAAAF0AAABxAAAAiQAAAMIAAABHNTY3X0RhbWFnZVBlclRpY2sAAEc1ODFfQWN0aXZlAEc1ODFfQWRkRGFtYWdlAABHNTgxX1NhdmVkQ291bnQAVYvsg+wUaBQAAACLRQiLEItNCIuCiAEAAP/Q3B3kAAAA3+D2xEF1TItNDFGLVQhSaCAAAACLRRCLEItNEItCUP/QUdno2RwkaDAAAACLTQyLEYtNDIuCiAEAAN1d+P/QUdkcJOhDAAAAg8QI3H343V3w6wXZ7t1d8ItNDFGLVQhSaAAAAACLRRCLEItNEItCUP/Q3EXw2V3s2UXsi+VdwwAAgD8AAAAAAAAAAFWL7FHZRQjZRQze2d/g9sQFegjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>cG567_DamagePerTick + (sender.vG581_Active &gt; 0 ? (cG581_AddDamage/max(receiver.vG581_SavedCount,1)) :0)</sString>
+													</damage>
+													<damageMode>4</damageMode>
+													<damageType>Energy</damageType>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName>G567_Damage</formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<timeLimiter>-1</timeLimiter>
+													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+												</DamageApplicator>
+											</applicator>
+											<variableNames>
+												<Item>damageDealed</Item>
+												<Item>isCritical</Item>
+											</variableNames>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="E352AE37-E895-4644-A670-6C447ADDAA99">
+												<DamageApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<cancelInvisibility>false</cancelInvisibility>
+													<caption>Pure Урон</caption>
+													<damage>
+														<compiledString>FRQAAAABAAAAIAAAAEc1NzFfQWRkU2tpbGxEYW1hZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+														<returnType>float</returnType>
+														<sString>cG571_AddSkillDamage</sString>
+													</damage>
+													<damageMode>4</damageMode>
+													<damageType>Pure</damageType>
+													<enabled>
+														<compiledString>FQwAAAACAAAAEQAAACcAAABHNTcxX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+														<returnType>bool</returnType>
+														<sString>sender.vG571_Active &gt; 0 </sString>
+													</enabled>
+													<formulaName>G571_PureDamage</formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<timeLimiter>-1</timeLimiter>
+													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+												</DamageApplicator>
+											</applicator>
+											<variableNames>
+												<Item>damageDealed</Item>
+											</variableNames>
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>урон</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+								</VariableProxyApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="7B5EB456-242E-465D-8E8E-D9F4B5C75EC2">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.1f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level2/status_G567_DamagePeriod.APLR" id="0DD739DB-3753-497C-8838-1173E63DB584">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Вспомогательный апликатор на хил героя</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTcwX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG570_Active &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>G567_Heal</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+		<Item href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>147</behaviorFlags>
+	<caption>Статус Символ леса на врагах</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Level2/status_G567_DamagePeriod.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>G567Status</formulaName>
+	<image href="/UI/Styles/Icons/Talents/_567.ITEX" />
+	<lifeTime>
+		<compiledString>FQ4AAAABAAAAGgAAAEc1NjdfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cG567_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Level2/status_G567_DamagePeriod.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQUAAAACAAAAMwAAAFcAAABXYXJkAFWL7FFWUdno2RwkUdnu2RwkagGLRQyLEItNDItCWP/QD7bIUeiQAAAAg8QM3B2uAAAA3+D2xER7YYtVDIsCi00Mi1BQ/9KD+BF0T2oAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DtFEHUvi00MixGLTQyLgpABAAD/0Ivwi00IixGLTQiLgpABAAD/0DvwdAnHRfwBAAAA6wfHRfwAAAAAikX8XovlXcMAAAAAAAAAAAAAAAAAAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>ut_bldg( false, true ) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc &amp;&amp; rFctn !=sFctn</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

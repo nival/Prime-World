@@ -1,0 +1,43 @@
+# Limit setting
+ulimit -n 128000
+
+# Main setting.
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/chat_service.py"
+
+# Instnace settings.
+# One ellement of massive = one instance
+COORDINATOR="{{ conf['ip'] }}:{{ conf['coordinator_port'] }}"
+# chat1
+INSTANCE_NAME[1]="chat1"
+INSTANCE_PORT[1]="{{ conf['chat1_port'] }}"
+INSTANCE_ID[1]="41"
+# chat2
+INSTANCE_NAME[2]="chat2"
+INSTANCE_PORT[2]="{{ conf['chat2_port'] }}"
+INSTANCE_ID[2]="42"
+
+# chat3
+#INSTANCE_NAME[3]="chat3"
+#INSTANCE_PORT[3]="{{ conf['chat3_port'] }}"
+#INSTANCE_ID[3]="43"
+# chat4
+#INSTANCE_NAME[4]="chat4"
+#INSTANCE_PORT[4]="{{ conf['chat4_port'] }}"
+#INSTANCE_ID[4]="44"
+
+
+# Declare associative arrays.
+declare -A INSTANCE RUNSCRIPT_ARGS LOGGING RUN_MARKER
+
+# Generate settings to instnaces
+{{ noParse("""for i in `seq 1 ${#INSTANCE_NAME[@]}`;""") }}
+do
+	INSTANCE[${INSTANCE_NAME[$i]}]=${INSTANCE_NAME[$i]}
+	RUNSCRIPT_ARGS[${INSTANCE_NAME[$i]}]="--port=${INSTANCE_PORT[$i]} --log_level={{ conf['log_level_chat'] }} --server_name=${INSTANCE_NAME[$i]} --server_id=${INSTANCE_ID[$i]} --log_rotation=external --log_file_prefix={{ conf['logging'] }}wschatservice-${INSTANCE_NAME[$i]}.log --coordinator=$COORDINATOR"
+	LOGGING[${INSTANCE_NAME[$i]}]="> {{ conf['logging_run'] }}pw-chat.${INSTANCE_NAME[$i]}.log.run 2>&1"
+done
+

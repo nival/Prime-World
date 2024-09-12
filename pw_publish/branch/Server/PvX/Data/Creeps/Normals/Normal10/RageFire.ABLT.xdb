@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/Normals/Normal10/PvE_Coop1.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption>бонус от количества атакующих</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Normals/Normal10/RageFire.ABLT" id="38035621-3A05-4663-8AEB-50EC9FE1281C">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="14E6D020-C7A8-43F5-9BAC-EDCE405E560B">
+					<UnitConstant>
+						<name>AttackersCnt</name>
+						<var>
+							<compiledString>FSEAAAAEAAAALgAAAEgAAABQAAAAYwAAAEF0dGFja2Vyc0NvdW50ZXIAAAAAdGFyZ2V0c0NvdW50AFWL7IPsCGoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/FHZBYUAAADZHCRoFAAAAItN/IsRi038i0JU/9DcJX0AAADZXfjZRfhR2Rwk6BMAAACDxAiL5V3DAAAAAAAA8D8AAIBAVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>min(sender.FindApplicator( "AttackersCounter", pMisc,  GLOBAL )-&gt;GetVariable("targetsCount")-1, 4)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="213CB3F0-4B34-4C65-8741-D89521F48758">
+					<UnitConstant>
+						<name>StrengthBonus</name>
+						<var>
+							<compiledString>FQ0AAAACAAAAJQAAADgAAABBdHRhY2tlcnNDbnQAVYvsg+wMi0UIixCLTQiLgrgAAAD/0NwNaQAAAFHZ6NkcJItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/QUdkcJOgcAAAAg8QI3E342V302UX0i+VdwwAAgD8AAAAAAAD4P1WL7FHZRQjZRQze2d/g9sQFegjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>sBaseStrength*1.5 * max(cAttackersCnt,1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="16B9D0E2-9D73-491C-BA33-8BD79DA22573">
+					<UnitConstant>
+						<name>EnergyDecrease</name>
+						<var>
+							<compiledString>FQ0AAAACAAAAIgAAADUAAABBdHRhY2tlcnNDbnQAVYvsg+wIUdno2Rwki0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBV0AAADZXfzZRfxR2Rwk6CEAAACDxAjZ6N7x2eje4dld+NlF+IvlXcMAAAAAAADwPwAAgD9Vi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>1-1/max( cAttackersCnt+1,1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="E7AC3EBE-E60A-4ACE-AC78-9394270FD968">
+					<UnitConstant>
+						<name>MaterialDecrease</name>
+						<var>
+							<compiledString>FQ0AAAACAAAAIgAAADUAAABBdHRhY2tlcnNDbnQAVYvsg+wIUdno2Rwki0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBV0AAADZXfzZRfxR2Rwk6CEAAACDxAjZ6N7x2eje4dld+NlF+IvlXcMAAAAAAADwPwAAgD9Vi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>1-1/max( cAttackersCnt+1,1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="D38B8D85-B027-4D3A-9D5B-DA1A1A56C80C">
+					<UnitConstant>
+						<name>BonusPerAttacker</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="F6C5FFE0-A60E-4F20-877D-4A4EB3F7423D">
+					<UnitConstant>
+						<name>EnergyDecreasePercent</name>
+						<var>
+							<compiledString>FQ8AAAACAAAAHAAAAC8AAABFbmVyZ3lEZWNyZWFzZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDT0AAADZXfzZRfyL5V3DAAAAAAAAWUA=</compiledString>
+							<returnType>float</returnType>
+							<sString>cEnergyDecrease*100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="64053510-05E8-4E87-9C88-67BCE3105CFE">
+					<UnitConstant>
+						<name>MaterialDecreasePercent</name>
+						<var>
+							<compiledString>FREAAAACAAAAHgAAADEAAABNYXRlcmlhbERlY3JlYXNlAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNPwAAANld/NlF/IvlXcMAAAAAAABZQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>cMaterialDecrease*100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="66286735-35D0-4ACC-9F4E-447E7289A0B5">
+			<TargetsCounterApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>считаем количество атакующих</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>AttackersCounter</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targetSelector href="/Creeps/Normals/Normal10/RageFire.ABLT" id="24FA6FF3-41EB-497F-89D2-952D3AB1FC5E">
+					<AttackersTargetSelector>
+						<damageDealTime>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2.0</sString>
+						</damageDealTime>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetFilter>536870915</targetFilter>
+						<targetSelector href="" />
+						<type>DamageDealers</type>
+					</AttackersTargetSelector>
+				</targetSelector>
+			</TargetsCounterApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="40006379-4DE0-4139-90F2-C91D4EE9DD69">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="655E89A1-D9B6-4A11-98ED-8FBDCF5B5F22">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>+сила</caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQ4AAAABAAAAGgAAAFN0cmVuZ3RoQm9udXMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>cStrengthBonus</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1</sString>
+								</multValue>
+								<stat>Strength</stat>
+								<topModifier>false</topModifier>
+								<variable></variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+					<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="4232465D-F2E4-4348-8773-AF47D34CB404">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>energy damage decrease</caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQ8AAAACAAAAHAAAAC8AAABFbmVyZ3lEZWNyZWFzZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDT0AAADZXfzZRfyL5V3DAAAAAAAAWUA=</compiledString>
+									<returnType>float</returnType>
+									<sString>cEnergyDecrease*100</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</multValue>
+								<stat>EnergyDamageDecrease</stat>
+								<topModifier>true</topModifier>
+								<variable></variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+					<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="706BEE3A-C8EE-4437-8357-B0DED8927BF4">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>material damage decrease</caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FREAAAACAAAAHgAAADEAAABNYXRlcmlhbERlY3JlYXNlAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNPwAAANld/NlF/IvlXcMAAAAAAABZQA==</compiledString>
+									<returnType>float</returnType>
+									<sString>cMaterialDecrease*100</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f </sString>
+								</multValue>
+								<stat>MaterialDamageDecrease</stat>
+								<topModifier>true</topModifier>
+								<variable></variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>статус (активный)</caption>
+				<customCounter>
+					<compiledString>FQ0AAAABAAAAGQAAAEF0dGFja2Vyc0NudABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0lHZHCToBQAAAIPEBF3DuAEAAAAPovfCAAAABHQH8w8sRCQEw+kAAAAAVYvsg+wM2UUI2X38D7dF/A0ADAAAiUX42W3421302W38i0X0i+Vdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>f2l(cAttackersCnt)</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Creeps/Normals/Normal10/RageFire.ABLT_400063794de0413990f2c91d4ee9dd69_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQ0AAAACAAAAGgAAAC0AAABBdHRhY2tlcnNDbnQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1PAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAttackersCnt &gt; 0</sString>
+				</enabled>
+				<flags>64</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Statuses/Neutral/beastburning.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Creeps/Normals/Normal10/RageFire.ABLT_400063794de0413990f2c91d4ee9dd69_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="76DA7835-EA09-42B3-8CEA-D2AC808F6EC3">
+			<StatusApplicator>
+				<applicators />
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>статус (пассивный)</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Creeps/Normals/Normal10/RageFire.ABLT_76da7835ea0942b38cead2ac808f6ec3_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQ0AAAACAAAAGgAAAC0AAABBdHRhY2tlcnNDbnQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1PAAAA3+D2xEF6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAttackersCnt &lt;= 0</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Statuses/Neutral/beastburning.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Creeps/Normals/Normal10/RageFire.ABLT_76da7835ea0942b38cead2ac808f6ec3_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="172F7847-EEF7-4BA2-B23E-BB6D6735DC44">
+			<ScaleControlApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>размер крипа</caption>
+				<changeSpeed>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>20.0f</sString>
+				</changeSpeed>
+				<desiredScale>
+					<compiledString>FQ0AAAADAAAAFAAAACQAAABDAAAAQXR0YWNrZXJzQ250AFWL7FFR2QVlAAAA2Rwki0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JR2Rwk6CsAAACDxAjcDV0AAADZ6N7B2V382UX8i+VdwwAAAAAAAPA/AAAAoJmZuT8AAIBAVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f + 0.1f * min( cAttackersCnt, 4 )</sString>
+				</desiredScale>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</ScaleControlApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="A3481FDA-CE56-40D9-848A-C3FF952BE0EF">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>накладываем огненный эффект</caption>
+				<consumables />
+				<effect>
+					<Item href="/Creeps/Normals/Normal10/FXIdle.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQ0AAAACAAAAGgAAAC0AAABBdHRhY2tlcnNDbnQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1PAAAA3+D2xAF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAEEA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAttackersCnt &gt;= 4</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal10/RageFire.ABLT" id="524BC4E1-C6FB-41A1-B316-3E6D395BD7B1">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>+1 range если врагов 3+</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQ0AAAACAAAAGgAAAC0AAABBdHRhY2tlcnNDbnQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1PAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAEA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAttackersCnt &gt; 2</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Range</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+		<Item href="/GameLogic/GeneralApplicators/LikeHero.APLR" />
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_Ready.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>Триггер "Талант НеГотов!" (дать Скорость)</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRwAAAAEAAAAIwAAADwAAAByAAAAiAAAAEc3NjYAAAAARzc2NgAAAABHNzY2X0lzT25DRABVi+yD7AxoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAgAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQraBAAAACLVQiLAotNCIuQiAEAAP/S3B2qAAAA3+D2xER6CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("G766") &amp;&amp; sender.vG766_IsOnCD == 0</sString>
+	</enabled>
+	<formulaName>G769_Trigger_NotReady</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_NotReady.APLR" id="4C48EF1B-E459-4183-A91E-72682AE95409">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQUAAAACAAAADAAAADIAAABHNzY2AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IlF/ItN/IsRi038i0Ic/9DcHVQAAADf4PbEBXoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAADwPw==</compiledString>
+				<returnType>bool</returnType>
+				<sString>pFirst-&gt;GetTalent("G766")-&gt;GetPreparedness() &lt; 1.0f</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_NotReady.APLR" id="187006DA-BB3F-447E-8636-C27CE634A484">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_NotReady.APLR" id="BA595D58-F15B-401B-B384-A0D4505906CA">
+							<PermanentStatModApplicator parent="/Items/Talents/_commonData/parent_MoveChange.APLR">
+								<enabled>
+									<compiledString>FRkAAAACAAAAJgAAADkAAABURUNIX0c3NjlfQ3VycmVudEJvbnVzTVMAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1bAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+									<returnType>bool</returnType>
+									<sString>cTECH_G769_CurrentBonusMS &gt; 0</sString>
+								</enabled>
+								<modifier>
+									<addValue>
+										<compiledString>FRkAAAABAAAAJQAAAFRFQ0hfRzc2OV9DdXJyZW50Qm9udXNNUwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cTECH_G769_CurrentBonusMS</sString>
+									</addValue>
+								</modifier>
+							</PermanentStatModApplicator>
+						</Item>
+						<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_NotReady.APLR" id="2FA6E1C6-2E5D-44F9-AE3C-C04A17F2344A">
+							<PermanentStatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>G766_IsOnCD = 1</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</addValue>
+									<multValue>
+										<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>G766_IsOnCD</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</Item>
+						<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_Ready.APLR" />
+					</applicators>
+					<dispatch href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_NotReady.APLR" id="8C21E66F-D5A6-4DF9-88B5-EB190E8CF77B">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>true</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

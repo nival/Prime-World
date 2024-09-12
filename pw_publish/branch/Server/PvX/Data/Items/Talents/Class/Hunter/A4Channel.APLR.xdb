@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ChannellingApplicator>
+	<BackLink DBID="/Items/Talents/Class/Hunter/A4Channel_upg.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Hunter/Ability4.TALENT" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Hunter/Ability4.TALENT" Count="1" />
+	<applicatorsOnSelf>
+		<Item href="/Items/Talents/Class/Hunter/A4Channel.APLR" id="508533B3-E76E-4C08-A9AD-7E48E93A0431">
+			<StatusApplicator>
+				<applicators />
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>3</behaviorFlags>
+				<caption>Эффект каста</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="/Heroes/Hunter/FXAbility4.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="" />
+				<lifeTime>
+					<compiledString>FQwAAAABAAAAGAAAAENoYW5uZWxUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cChannelTime</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByChild</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+	</applicatorsOnSelf>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<cancelOnDisable>false</cancelOnDisable>
+	<cancelOnInterrupt>false</cancelOnInterrupt>
+	<cancelSpell href="" />
+	<caption>ченнел</caption>
+	<channelingType>Creation</channelingType>
+	<effect>
+		<Item href="/Items/Talents/Class/Hunter/A4Channel.APLR" id="39888FF3-7945-4C3C-871F-BD22B5F96FF2">
+			<PlayAnimationEffect>
+				<animGraphNode>ability4Loop</animGraphNode>
+				<deathType>Manual</deathType>
+				<enableCondition href="" />
+				<goToOtherNodeOnStop>true</goToOtherNodeOnStop>
+				<lifeTime>0</lifeTime>
+				<marker></marker>
+				<markerReachTime>0</markerReachTime>
+				<returnAnimGraphNode>ability4</returnAnimGraphNode>
+			</PlayAnimationEffect>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<interruptEvents>2626015</interruptEvents>
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAENoYW5uZWxUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cChannelTime</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>0</period>
+	<periodicalSpell href="/GameLogic/GeneralApplicators/ChannelingInterruptApplicator.SPLL" />
+	<providerName></providerName>
+	<removeStartSpellEffectOnInterrupt>false</removeStartSpellEffectOnInterrupt>
+	<scaleWhenInterrupted>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>1.0f</sString>
+	</scaleWhenInterrupted>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvsaAAAABCLRQiLEItNCItCaP/QD7bA99gbwIPAAV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>!sFlag(268435456)</sString>
+	</startCondition>
+	<startSpell href="" />
+	<stopSpell href="/Items/Talents/Class/Hunter/A4Channel.APLR" id="81DAB363-5807-4F45-8C2F-1E1404283343">
+		<Spell>
+			<applicators />
+			<dispatch href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" />
+		</Spell>
+	</stopSpell>
+	<targetSelector href="/Items/Talents/Class/Hunter/MaxDistPoint.TGSL" />
+</ChannellingApplicator>

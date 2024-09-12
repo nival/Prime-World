@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/A5_EventKilledByMe.EVNT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" id="6B4BAA75-8C75-4780-B28B-EED6F2CC117F">
+			<GhostMoveApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>ghost move</caption>
+				<collisionFlags>1</collisionFlags>
+				<effect>
+					<Item href="/Heroes/GhostLord/FXAbility4A.EFFT" />
+					<Item href="/Heroes/GhostLord/FXAbility4B.EFFT" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<pushUnits>true</pushUnits>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</GhostMoveApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" id="80A29C62-A19D-47ED-9AD6-08ABF03197C8">
+			<AbilityModApplicator>
+				<addValue>
+					<compiledString>FQYAAAABAAAAEgAAAEEzX0NEAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cA3_CD</sString>
+				</addValue>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>КД A3 = workTime анимации A3</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<mode>cooldown</mode>
+				<multValue>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</multValue>
+				<providerName></providerName>
+				<specificAbility href="" />
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" />
+				</talents>
+				<targetAbilities>128</targetAbilities>
+				<useListAs>ListAsRule</useListAs>
+			</AbilityModApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/Transformed.APLR" />
+		<Item href="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" id="24564974-4FE9-48C6-AB36-A9A2E3D6B30B">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" id="8AC33D42-2544-4F2E-B89E-9EF5278A4683">
+						<StatusApplicator parent="/Heroes/DefaultStatus/_FEAR_status.APLR">
+							<applicators>
+								<Item skip="1" />
+								<Item skip="1" />
+								<Item skip="1" />
+								<Item href="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" id="3BA297A1-87A9-4355-8176-1296ADB79935">
+									<FlagsApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption>FX Ауры</caption>
+										<consumables />
+										<effect>
+											<Item href="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" id="E96DD206-E00A-4CD8-AB32-6118680EB812">
+												<AuraEffect>
+													<deathType>Manual</deathType>
+													<enableCondition href="" />
+													<lifeTime>0</lifeTime>
+													<type>Enemy</type>
+												</AuraEffect>
+											</Item>
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>0</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+							</applicators>
+							<dispellPriority>NonDispellable</dispellPriority>
+						</StatusApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>2</behaviorFlags>
+				<caption>Аура страха</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABHaG9zdExvcmRfQTRfMnUAR2hvc3RMb3JkX0E0XzJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("GhostLord_A4_2u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString>FQsAAAABAAAAFwAAAEZlYXJfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cFear_Range</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>542900287</targets>
+				<targetSelector href="" />
+				<type>Enemy</type>
+			</AuraApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>статус Призрак защиты</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Effects/General/Ghost/_.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>GhostLordA4_DeathSpectre</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/GhostLord/A4.ITEX" />
+	<lifeTime>
+		<compiledString>FQ4AAAABAAAAGgAAAEE0XzJfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_2_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

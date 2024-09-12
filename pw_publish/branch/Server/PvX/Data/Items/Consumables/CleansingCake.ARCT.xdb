@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Consumable>
+	<BackLink DBID="/Items/Talents/Level1/G520_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level6/G543_StrOrInt.TALENT" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Consumables/CleansingCake.ARCT" id="7F38D8E4-40FD-476A-B101-468BD40946FA">
+			<HealApplicator>
+				<amount>
+					<compiledString>FRQAAAABAAAARgAAAEc1MjVfSGVhbHRoSW5jcmVhc2UAVYvsg+wUi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nno3uGLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfD/0NxN8Nld7NlF7IvlXcMAAAAAAADwPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>(1 - rLife/rMaxLife) *cG525_HealthIncrease</sString>
+				</amount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Мгновенный хил за увеличение макс хп</caption>
+				<enabled>
+					<compiledString>FRcAAAADAAAAHAAAADIAAABEAAAARzUyNV9BY3RpdmUARzUyMFN0YXR1cwBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B10AAAA3+D2xEF1KWoAi00QUWgMAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vG525_Active &gt; 0 &amp;&amp; receiver.FindApplicator("G520Status",pMisc,GLOBAL) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<healTarget>Health</healTarget>
+				<ignoreHealingMods>false</ignoreHealingMods>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<uiEvent href="" />
+			</HealApplicator>
+		</Item>
+		<Item href="/Items/Consumables/CleansingCake.ARCT" id="99FEF079-64F8-46C1-8597-438B70C0A353">
+			<HealApplicator>
+				<amount>
+					<compiledString>FQoAAAABAAAAFgAAAEc1MjJfSGVhbABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cG522_Heal</sString>
+				</amount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Мгновенный хил</caption>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTIyX0FjdGl2ZQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vG522_Active &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<healTarget>Health</healTarget>
+				<ignoreHealingMods>false</ignoreHealingMods>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+			</HealApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/DispellWEffects.APLR" />
+		<Item href="/Items/Talents/TalentKits/Redset3_2_IceCream/status_G520.APLR" />
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Consumables/CleansingCake.ARCT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Consumables/CleansingCake.ARCT" id="27EFA5B1-9FF6-47C6-9EAD-AB99A5B1015E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTI1X0FjdGl2ZQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vG525_Active &gt; 0</sString>
+				</condition>
+				<name>G525_Active</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Consumables/CleansingCake.ARCT" id="316DBBF0-1621-4498-83AA-222D9C4A1450">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNTI0X0FjdGl2ZQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vG524_Active &gt; 0</sString>
+				</condition>
+				<name>G524_Active</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Consumables/CleansingCake.ARCT" id="40BBB97D-6B20-43BD-94BA-1F8139DF4E01">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRgAAAAEAAAAHQAAADMAAAA/AAAAVQAAAEc1MjRfQWN0aXZlAEc1MjVfQWN0aXZlAFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHXcAAADf4PbEQXUraAwAAACLTQyLEYtNDIuCiAEAAP/Q3B13AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vG524_Active &gt; 0 &amp;&amp; receiver.vG525_Active &gt; 0</sString>
+				</condition>
+				<name>G524and525Active</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<constants href="/Items/Consumables/CleansingCake.ARCT" id="64160285-CC43-4A9E-89BF-7B1CF0C26B3F">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Consumables/CleansingCake.ARCT" id="82B51D24-387E-4575-B910-DE560C34A904">
+					<UnitConstant>
+						<name>Dispell_Number</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset3_2_IceCream/const_G522_Heal" />
+				<Item href="/Items/Talents/TalentKits/Redset3_2_IceCream/const_G525_Duration" />
+				<Item href="/Items/Talents/TalentKits/Redset3_2_IceCream/const_G525_HealthIncrease" />
+				<Item href="/Items/Talents/TalentKits/Redset3_2_IceCream/const_G524_Deacrease_TimeControl" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>20</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Consumables/CleansingCake.ARCT_description.txt" />
+	<dispatch href="/Items/Consumables/CleansingCake.ARCT" id="57793504-740E-4DA2-B77E-827D9A194ABF">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>18</flags>
+	<gameObject href="" />
+	<image href="/UI/Styles/Icons/Artifacts/CakeCleansing.ITEX" />
+	<imageSecondState href="" />
+	<isPotion>true</isPotion>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<maxQuantity>5</maxQuantity>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>0</naftaCost>
+	<name textref="/Items/Consumables/CleansingCake.ARCT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId></persistentId>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="/Items/Consumables/CleansingCake.ARCT_shortDescription.txt" />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Consumable>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<BackLink DBID="/Dialog/CastleTutorial/Ador/darken/d10_qB" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Dokt/darken/d10_qA" Count="1" />
+	<code>if Lord.TutorialState &gt; 4 then 
+	return 1
+	end 
+return 0</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/d10_0" id="AEA20CCE-DCF2-47C8-B9F4-ABC3DBBFA29D">
+			<OpenWindowCondition>
+				<windowName>CastleMain</windowName>
+			</OpenWindowCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/d10_0" id="20E9150C-49BA-42FC-8489-86015EA3B6A1">
+			<SendRequestCondition>
+				<name>keepalive</name>
+				<phase>ServerAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/d10_0" id="B3DD6313-F280-4B87-B2D9-D723D9DC73A0">
+			<SendRequestCondition>
+				<name>notify_session_ended</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>

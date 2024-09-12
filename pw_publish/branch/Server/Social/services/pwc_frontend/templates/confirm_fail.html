@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" id="primeworld">
+<head>
+    <link rel="icon" type="image/png" href="{{ static_url('images/pw.png') }}"/>
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ static_url('images/pw.ico') }}"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{ _("message_title") }}</title>
+    <noscript>&lt;meta http-equiv="X-Frame-Options" content="deny" /&gt;</noscript>
+
+    <link rel="stylesheet" href="{{ static_url("pwc.css") }}" type="text/css"/>
+    <script type="text/javascript" src="{{ static_url('pwconnect.js') }}"></script>
+</head>
+<body>
+
+<div class="page-content">
+
+<div class="b-header">
+    <h1 class="logo">
+        <a href="{{logo}}" target="_blank">
+        <img src="{{ static_url("images/logo.png") }}" alt="Prime World">
+        </a>
+    </h1> 
+</div>
+
+    <div class="b-section">
+
+        <div class="b-popup">
+            <h4 class="b-popup__title">{{ _("message") }}</h4>
+            <div id="vis_login_form" class="b-form">
+                <div class="t-form" style="margin:0;">
+                    <div style="font-size: 14px;">
+                        {{ _("confirm_fail_message") )}<br/><br/>
+                        {{ _("confirm_fail_solution") )}
+                    </div>
+                </div>  
+            </div>
+            <div onclick="gotoUrl('{{next}}');" style="align:center;">
+                <div class="b-submit" style="text-align:center;">{{ _("back_button") }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-footer">
+    <div class="footer-content">
+        <a href="http://www.nival.com/" target="_blank" style="float:left;margin:14px;display:inline-block;width:81px;height:38px; background: url({{ static_url('images/nival-logo.png') }})"></a>
+        <div style="text-align:left;padding-top:20px;">
+            © 2008 - 2013&nbsp;
+            <a href="http://www.nival.com/" target="_blank">Nival</a>
+            </br>
+            {{ _("copyright") }}
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

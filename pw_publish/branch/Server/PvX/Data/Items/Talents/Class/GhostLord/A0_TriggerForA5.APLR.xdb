@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/GhostLord/A0_MakeGhost.SPLL" Count="2" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>(A5) триггер на убийство</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/GhostLord/A0_TriggerForA5.APLR" id="59E6D75D-747A-4B7F-9058-BD034CBB052E">
+		<EventProcessorUnitDieNearMe>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<killerFlags>1</killerFlags>
+			<range>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</range>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Items/Talents/Class/GhostLord/A0_TriggerForA5.APLR" id="CB406AE4-236C-4FEF-9D1A-47B52E229EFD">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/GhostLord/A0_TriggerForA5.APLR" id="4C4AD290-8457-4A73-8A68-46ACBB9DD152">
+							<AddApplicatorDuration>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/status_A0_summoned.APLR" />
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>увеличить длительность</caption>
+								<durationToAdd>
+									<compiledString>FQ8AAAABAAAAGwAAAEE1X0luY0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cA5_IncDuration</sString>
+								</durationToAdd>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<flags>0</flags>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<nameToCheck></nameToCheck>
+								<providerName></providerName>
+							</AddApplicatorDuration>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/GhostLord/A0_TriggerForA5.APLR" id="007D212D-F144-4CC2-A4B3-690376BE5C9B">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<targets>538705979</targets>
+		</EventProcessorUnitDieNearMe>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FR0AAAACAAAAJAAAAD0AAABHaG9zdExvcmRfQTUAAAAAR2hvc3RMb3JkX0E1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("GhostLord_A5")</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Fairy/Ability_A2.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>период спелл</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FREAAAABAAAAGwAAAEZhaXJ5X0EyX01pc3Npb24AVYvsagKLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applFairy_A2_Mission(ABILITY) != pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Fairy/A2_SpellPeriodically.APLR" id="A11EC8AD-72DA-4671-BE28-8406BC46A219">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Fairy/A2_SpellPeriodically.APLR" id="B89D9D32-6F7C-4FF7-8ADD-A75208F0B8F1">
+					<SpellSwitchApplicator>
+						<activeSpellIndex>
+							<compiledString>FRAAAAABAAAAGgAAAEZhaXJ5X0RlZmVuZGVycwBVi+xqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+VwYvBXcM=</compiledString>
+							<returnType>int</returnType>
+							<sString>receiver.applFairy_Defenders(UNIT) ==pMisc ? 0 : 1</sString>
+						</activeSpellIndex>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Если естьстатус,топродлеваемего</caption>
+						<dontUseDispatches>true</dontUseDispatches>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spells>
+							<Item href="/Items/Talents/Class/Fairy/A2_SpellPeriodically.APLR" id="888AC7AA-1AEB-4530-B72D-CFB22938564A">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Fairy/status_A2_protectingfairys.APLR" />
+										<Item href="/Items/Talents/Class/Fairy/A2_SpellPeriodically.APLR" id="43A9FCB3-3A1D-4452-8CEB-660D963A6D6E">
+											<StatusApplicator parent="/Items/Talents/Class/Fairy/status_A2u_IncReg.APLR">
+												<startCondition>
+													<compiledString>FTUAAAAEAAAAPAAAAFUAAACLAAAApAAAAEZhaXJ5X0EydQAAAEZhaXJ5X0EydQAAAEZhaXJ5X0EyX1NVUAAAAABGYWlyeV9BMl9TVVAAVYvsg+wUaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0WGgYAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoKAAAAItFCIsQi00Ii4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdAnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>tal("Fairy_A2u") &amp;&amp; tal("Fairy_A2_SUP")</sString>
+												</startCondition>
+											</StatusApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+							<Item href="/Items/Talents/Class/Fairy/A2_SpellPeriodically.APLR" id="75219218-255C-403E-80FA-16CAF67A9421">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Fairy/A2_SpellPeriodically.APLR" id="1FC4F6F0-9D4F-428A-98C4-FB5A66DAAF2D">
+											<AddApplicatorDuration>
+												<applicators>
+													<Item href="/Items/Talents/Class/Fairy/status_A2_protectingfairys.APLR" />
+												</applicators>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>Продлитьстутса</caption>
+												<durationToAdd>
+													<compiledString>FRAAAAABAAAAHAAAAEEyX0J1ZmZEdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+													<returnType>float</returnType>
+													<sString>cA2_BuffDuration</sString>
+												</durationToAdd>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<flags>2</flags>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<nameToCheck></nameToCheck>
+												<providerName></providerName>
+											</AddApplicatorDuration>
+										</Item>
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+						</spells>
+					</SpellSwitchApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Fairy/A2_SpellPeriodically.APLR" id="75D90D85-9FD1-4036-8BB0-8F02A93B13A4">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/Fairy/A2_Allies.TGSL" />
+</SpellPeriodicallyApplicator>

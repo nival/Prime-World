@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CloneHeroApplicator>
+	<BackLink DBID="/Items/Talents/Class/FireFox/Ability3.TALENT" Count="2" />
+	<applicators>
+		<Item href="/Items/Talents/Class/FireFox/A3Clone.APLR" id="C567FC8D-6313-4F60-9FBC-8E770BA24236">
+			<TeleportApplicator>
+				<appearEffect href="" />
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>телепорт клона в героя</caption>
+				<disappearEffect href="" />
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<maxDistance>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</maxDistance>
+				<notifyInboundDispatches>true</notifyInboundDispatches>
+				<providerName></providerName>
+				<pushUnits>false</pushUnits>
+				<teleportTarget>AbilityOwner</teleportTarget>
+			</TeleportApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/Isolated.APLR" />
+		<Item href="/GameLogic/GeneralApplicators/SetClone.APLR" />
+		<Item href="/GameLogic/GeneralApplicators/Immune2Control.APLR" />
+		<Item href="/Items/Talents/Class/FireFox/A3Clone.APLR" id="67B75109-79CF-4596-8CB6-233F54C2D5D2">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/FireFox/A3Clone.APLR" id="3CD87131-6350-4CAE-B847-F201F2E264AB">
+							<FlagsApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>152</behaviorFlags>
+								<caption>Включаем анимацию и ждем некоторое время (за вычетом дельты)</caption>
+								<consumables />
+								<effect>
+									<Item href="/Items/Talents/Class/FireFox/A3Clone.APLR" id="B02AA5FE-87F4-4B7E-A532-2C04E9704F17">
+										<PlayAnimationEffect>
+											<animGraphNode>ability3Loop</animGraphNode>
+											<deathType>Manual</deathType>
+											<enableCondition href="" />
+											<goToOtherNodeOnStop>true</goToOtherNodeOnStop>
+											<lifeTime>0</lifeTime>
+											<marker></marker>
+											<markerReachTime>0</markerReachTime>
+											<returnAnimGraphNode>ability3</returnAnimGraphNode>
+										</PlayAnimationEffect>
+									</Item>
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString>FQ8AAAACAAAAFAAAACoAAABGaXJlRm94Q2xvbmVPbgBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+									<returnType>bool</returnType>
+									<sString>sender.vFireFoxCloneOn &gt; 0</sString>
+								</enabled>
+								<flag>0</flag>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString>FSIAAAACAAAAMQAAAEsAAABXYWl0RHVyYXRpb24AAAAAV2FpdER1cmF0aW9uRGVsdGEAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgQAAAAi1UQiwKLTRCLUFDdXfj/0txt+Nld9NlF9IvlXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cWaitDuration-cWaitDurationDelta</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<talents />
+								<useListAs>ListAsRule</useListAs>
+							</FlagsApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/FireFox/A3Clone.APLR" id="A6B404C7-C501-4F79-A499-C0610ED0B356">
+							<FlagsApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>184</behaviorFlags>
+								<caption>Эффект на лисичке и задержка в дельту</caption>
+								<consumables />
+								<effect>
+									<Item href="/Effects/Debuffs/ShockWave/_AirShort.EFFT" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<flag>0</flag>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString>FRIAAAABAAAAHgAAAFdhaXREdXJhdGlvbkRlbHRhAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cWaitDurationDelta</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<talents />
+								<useListAs>ListAsRule</useListAs>
+							</FlagsApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Программа с анимациями</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABGaXJlZm94X0EzX1VwZzEARmlyZWZveF9BM19VcGcxAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Firefox_A3_Upg1")</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>клон лисички</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>1</flags>
+	<followRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</followRange>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString>FREAAAABAAAAHQAAAElsbHVzaW9uRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cIllusionDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<maxCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</maxCount>
+	<providerName></providerName>
+	<spawnStats>
+		<energy>
+			<compiledString>FQAAAAAAAAAAVYvsg+wUi0UIixCLTQiLQgT/0ItNCIsRi00Ii0IQ3V34/9DcffiLTQyLEYtNDItCEN1d8P/Q3E3w2V3s2UXsi+Vdww==</compiledString>
+			<returnType>float</returnType>
+			<sString>sEnergy / sMaxEnergy * rMaxEnergy</sString>
+		</energy>
+		<life>
+			<compiledString>FQAAAAAAAAAAVYvsg+wUi0UIixCLTQiLAv/Qi00IixGLTQiLQgzdXfj/0Nx9+ItNDIsRi00Mi0IM3V3w/9DcTfDZXezZReyL5V3D</compiledString>
+			<returnType>float</returnType>
+			<sString>sLife / sMaxLife * rMaxLife</sString>
+		</life>
+	</spawnStats>
+	<summonGroupName></summonGroupName>
+	<takeModDmg>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>1.0f</sString>
+	</takeModDmg>
+	<takeTypeUnit>10428927</takeTypeUnit>
+	<targetingParams href="" />
+</CloneHeroApplicator>

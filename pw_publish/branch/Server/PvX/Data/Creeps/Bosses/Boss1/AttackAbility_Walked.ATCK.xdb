@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Creeps/Bosses/Boss1/PVP_Walked.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Bosses/Boss1/PVP_Walked_NY.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Creeps/Bosses/Boss1/AttackAbility_Walked.ATCK" id="8BE7D7BA-47E7-4396-AE2E-E62732AF3042">
+			<DamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<cancelInvisibility>false</cancelInvisibility>
+				<caption>урон</caption>
+				<damage>
+					<compiledString>FQkAAAABAAAAFQAAAEZpcmVfRG1nAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cFire_Dmg</sString>
+				</damage>
+				<damageMode>0</damageMode>
+				<damageType>Native</damageType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<timeLimiter>-1</timeLimiter>
+				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+			</DamageApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Bosses/Boss1/AttackAbility_Walked.ATCK" id="ECBE0B43-A184-49D7-AC5D-1BF3E8948BDB">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility_Walked.ATCK" id="B69B2E52-F2DF-48F4-ADD9-152B1A913E28">
+					<UnitConstant>
+						<name>Stun_StartCondition</name>
+						<var>
+							<compiledString>FQkAAAACAAAAJAAAADcAAABTdHVuUHJvYwBVi+yD7AiLRQxQi00IUWoCageLVQxSi0UIUGgAAAAAi00QixGLTRCLQlD/0NwNXwAAANld/NlF/FHZHCSLTRCLEYtNEItCZP/QD7bIiU3420X4i+Vdw3sUrkfheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>smartRoll(cStunProc*0.01 , 7 , 2) </sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility_Walked.ATCK" id="1E4B9720-0687-4329-99EE-9A2F43C9AB36">
+					<UnitConstant>
+						<name>Stun_Duration</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility_Walked.ATCK" id="3052F6FF-1669-41CC-B186-4CC8B9EDAA4F">
+					<UnitConstant>
+						<name>Fire_Dmg</name>
+						<var>
+							<compiledString>FRQAAAABAAAAcAAAAEF0a0RhbWFnZURpc3BfQ3JlZXAAVYvsg+wQi0UIixCLTQiLggQBAAD/0FHZHCToXgAAAIPEBFCLTQiLEYtNCIuCAAEAAP/QUdkcJOhBAAAAg8QEUItNEIsRi00Qi0Jc/9CJRfzbRfyLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfT/0NxN9Nld8NlF8IvlXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>random (f2l(sDamageMin), f2l(sDamageMax)) * cAtkDamageDisp_Creep</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility_Walked.ATCK" id="4E2FCA9B-77B1-4F5A-935F-EB20064D8C6C">
+					<UnitConstant>
+						<name>StunProc</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Bosses/Boss1/AttackAbility_Walked.ATCK" id="8F42E6D1-9747-4952-B581-05441839F630">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/FireBall/_Hit.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Motion</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/FireBall/_.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>2</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>-1</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>20</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>5</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>6029823</targetType>
+	<type>Simple</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

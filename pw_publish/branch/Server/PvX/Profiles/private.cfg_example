@@ -1,0 +1,142 @@
+//============================================================================
+// maps section
+//============================================================================
+
+//setvar map_name = Maps/Multiplayer/PFmap/PF.ADMP.xdb
+//setvar map_name = Maps/Test/Terrain/_.ADMP.xdb
+//setvar map_name = Maps/Test/RiverCross/rc.ADMP.xdb 
+//setvar map_name = Maps/Test/PlaneMap/_.ADMP.xdb
+
+//============================================================================
+// performance section
+//============================================================================
+
+// Switch shadows on/off
+//setvar shadows = 0
+
+// Switch water reflection on/off
+//setvar waterrefl = 0
+
+// Switch world CRC calculation on/off
+//setvar debug_disable_world_crc = 1
+
+// Don't load and put on a map X% of trees
+//setvar no_trees = 0.5
+
+//============================================================================
+// performance section
+//============================================================================
+
+// Switch fullscreen on/off
+//setvar gfx_fullscreen = 0
+
+// Switch vsync on/off
+//setvar gfx_vsync = 1
+
+// Select specific resolution or use desktop
+//setvar gfx_resolution = 1240x800
+//setvar gfx_resolution = full
+
+//============================================================================
+// video recording section
+//============================================================================
+
+// Choose video codec or switch off video recording
+//setvar video_codec_name = "ffdshow Video Codec"
+//setvar video_codec_name = 0
+//setvar video_codec_dialog = 0
+
+//============================================================================
+// sound & music section
+//============================================================================
+
+//setvar music_volume = 0
+//setvar sound = 0
+
+//============================================================================
+// profiling section
+//============================================================================
+
+// Switch on logging of all fopen events
+//setvar winfs_log_fopen = 1
+
+//============================================================================
+// GAME START
+//============================================================================
+
+// Select heros for the bots
+// 0 - Blondie
+// 1 - Brunette
+// 2 - Rockman
+// 3 - Mowgly
+// 4 - Ratcatcher
+// 5 - Thunder God
+//setvar team0_player0_heroid = 2
+//setvar team0_player1_heroid = 2
+//setvar team0_player2_heroid = 2
+//setvar team0_player3_heroid = 2
+//setvar team0_player4_heroid = 2
+//setvar team1_player0_heroid = 2
+//setvar team1_player1_heroid = 2
+//setvar team1_player2_heroid = 2
+//setvar team1_player3_heroid = 2
+//setvar team1_player4_heroid = 2
+
+// x5 FPS (но совершенно не ловятся асинки)
+debug_disable_world_crc 1
+// не спавнить крипов (это флаг, 2 - крипы за людей, 4 - крипы за эльфов)
+spawn_creeps 0
+spawn_neutral_creeps 0
+
+//command_line lobby pw.nivalnetwork.com:35001
+// поднять локальный сервер (в процессе игры)
+lobby local
+// залогиниться на него
+login login password
+// загрузить тестовую карту (можно указать DBID, можно указать название карты, если есть)
+// Text5x5 - маленькая карта, есть главные здания, площадки для миниигр, точки рождения 10 героев (по 5 за каждую сторону), два спавнера крипов (по одному за каждую сторону)
+custom 2 "/Maps/Test/Test5x5/_.ADMP"
+// выбрать человека гору за людей (1 - будет за эльфов). Имена героев смотреть в файле /Data/Heroes/_.HRDB.xdb
+settings thundergod 0
+// нажать кнопку "Я ГОТОВ"
+ready
+
+// запустить скрипт на выполнение
+//run_script Profiles/script.txt
+// дать много много денег (нафты (прайма))
+add_gold 100000000
+
+//============================================================================
+// AT THE GAME BEGINNING
+//============================================================================
+// Wait until 0th step
+waitWorldStep 0
+// Start ai for the bots
+//add_ai2 fight
+
+// Set creep spawn delay
+//creep_force_spawn_delay 10000
+
+// Limit amount of creeps on the map
+//creep_max_total_count 0
+
+// Tweak hero
+//lvl_up 10
+//unit_stat Power 1000
+//unit_stat EnergyDefence 100
+//unit_stat SubstanceDefence 100
+//unit_stat EnergyRegenerationAbsolute 500
+
+// Enable game logic log
+//gl_log_enable 1
+
+
+
+
+
+
+
+
+
+
+

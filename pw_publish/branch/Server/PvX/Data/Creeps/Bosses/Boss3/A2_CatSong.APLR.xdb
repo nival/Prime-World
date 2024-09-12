@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>А2 Кошачья песнь</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="16ADC5B7-4424-481B-9132-742F9DE9A3B9">
+		<Spell>
+			<applicators>
+				<Item href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="BC3AEC34-E1A8-4BE4-BD8D-B2DC194F36E4">
+					<ProgramApplicator>
+						<applicators>
+							<Item>
+								<applicator href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="829E1E9F-01D2-4B24-8568-90D804D2D45C">
+									<StatusApplicator>
+										<applicators>
+											<Item href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="2CA4E3B1-3FBE-45EE-A65F-9CDC8A9F4D0B">
+												<PermanentStatModApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<caption>А2 Кошачья песнь увеличиваем число стаков на 1</caption>
+													<customApplyType>None</customApplyType>
+													<enabled>
+														<compiledString>FS0AAAADAAAANAAAAEkAAABsAAAAQm9zczNfQTJfU3RhY2tzAEJvc3MzX0EyX1Bvd2VyAABBMl9NYXhTdGFja3MAVYvsg+wUaAAAAACLRQyLEItNDIuCiAEAAP/QaBAAAACLTQiLEYtNCIuCiAEAAN1d+P/Q3EX4i00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ3V3w/9DcXfDf4PbEAXUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+														<returnType>bool</returnType>
+														<sString>receiver.vBoss3_A2_Stacks+sender.vBoss3_A2_Power&lt;=cA2_MaxStacks</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<modifier>
+														<addValue>
+															<compiledString>FQ8AAAABAAAAEwAAAEJvc3MzX0EyX1Bvd2VyAFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0F3D</compiledString>
+															<returnType>float</returnType>
+															<sString>sender.vBoss3_A2_Power</sString>
+														</addValue>
+														<multValue>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>1.0f</sString>
+														</multValue>
+														<stat>Life</stat>
+														<topModifier>false</topModifier>
+														<variable>Boss3_A2_Stacks</variable>
+													</modifier>
+													<providerName></providerName>
+												</PermanentStatModApplicator>
+											</Item>
+											<Item href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="DA978786-7272-4EE9-82C8-C54E5CEC2CC2">
+												<DamageApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<cancelInvisibility>false</cancelInvisibility>
+													<caption>А2 Кошачья песнь Урон</caption>
+													<damage>
+														<compiledString>FRAAAAABAAAAHAAAAEEyX0RhbWFnZV9Ub3RhbABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+														<returnType>float</returnType>
+														<sString>cA2_Damage_Total</sString>
+													</damage>
+													<damageMode>4</damageMode>
+													<damageType>Pure</damageType>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<timeLimiter>-1</timeLimiter>
+													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+												</DamageApplicator>
+											</Item>
+										</applicators>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>144</behaviorFlags>
+										<caption>А2 Кошачья песнь статус набора стаков и добавляем стак</caption>
+										<customCounter>
+											<compiledString></compiledString>
+											<returnType>int</returnType>
+											<sString>0</sString>
+										</customCounter>
+										<customProgress>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</customProgress>
+										<description textref="/Creeps/Bosses/Boss3/A2_CatSong.APLR_829e1e9f01d24b24856890d804d2d45c_description.txt" />
+										<dispellPriority>NonDispellable</dispellPriority>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flags>1</flags>
+										<formulaName>Boss3_A2_Inc</formulaName>
+										<image href="" />
+										<lifeTime>
+											<compiledString>FQoAAAACAAAAFwAAACoAAABBMl9QZXJpb2QAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3AU4AAAA2V382UX8i+Vdw5qZmZmZmbk/</compiledString>
+											<returnType>float</returnType>
+											<sString>cA2_Period+0.1</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<name textref="/Creeps/Bosses/Boss3/A2_CatSong.APLR_829e1e9f01d24b24856890d804d2d45c_name.txt" />
+										<power>0</power>
+										<providerName></providerName>
+										<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+										<stackCount>0</stackCount>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<statusPosition>0</statusPosition>
+										<stopBehaviour>StopByTime</stopBehaviour>
+										<unstackableWith href="" />
+									</StatusApplicator>
+								</applicator>
+								<continueCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>1</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+							<Item>
+								<applicator href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="BADD10B5-803E-4C9B-992B-B4C726870DE0">
+									<StatusApplicator>
+										<applicators>
+											<Item href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="7082F19B-0A7F-4292-BDA2-D66DBD144C22">
+												<StatusApplicator>
+													<applicators />
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<behaviorFlags>144</behaviorFlags>
+													<caption>A2 Кошачья песнь FX</caption>
+													<customCounter>
+														<compiledString></compiledString>
+														<returnType>int</returnType>
+														<sString>0</sString>
+													</customCounter>
+													<customProgress>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</customProgress>
+													<description textref="" />
+													<dispellPriority>NonDispellable</dispellPriority>
+													<effect>
+														<Item href="/Effects/General/Aura/_NoteReceiving.EFFT" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<flags>1</flags>
+													<formulaName></formulaName>
+													<image href="" />
+													<lifeTime>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<name textref="" />
+													<power>0</power>
+													<providerName></providerName>
+													<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+													<stackCount>0</stackCount>
+													<startCondition>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</startCondition>
+													<statusPosition>0</statusPosition>
+													<stopBehaviour>StopByTime</stopBehaviour>
+													<unstackableWith href="" />
+												</StatusApplicator>
+											</Item>
+										</applicators>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>144</behaviorFlags>
+										<caption>А2 Кошачья песнь отображение Стаков и FX</caption>
+										<customCounter>
+											<compiledString>FRAAAAABAAAAFAAAAEJvc3MzX0EyX1N0YWNrcwBVi+xoAAAAAItFDIsQi00Mi4KIAQAA/9BR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+											<returnType>int</returnType>
+											<sString>f2l(receiver.vBoss3_A2_Stacks)</sString>
+										</customCounter>
+										<customProgress>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</customProgress>
+										<description textref="/Creeps/Bosses/Boss3/A2_CatSong.APLR_badd10b5803e4c9b992bb4c726870de0_description.txt" />
+										<dispellPriority>NonDispellable</dispellPriority>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString>FRAAAAABAAAAFAAAAEJvc3MzX0EyX1N0YWNrcwBVi+xoAAAAAItFDIsQi00Mi4KIAQAA/9BR2Rwk6A4AAACDxAQzyYXAD5/BisFdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+											<returnType>bool</returnType>
+											<sString>f2l(receiver.vBoss3_A2_Stacks)&gt;0</sString>
+										</enabled>
+										<flags>0</flags>
+										<formulaName></formulaName>
+										<image href="/UI/Styles/Icons/Statuses/Neutral/Boss3_A2.ITEX" />
+										<lifeTime>
+											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+											<returnType>float</returnType>
+											<sString>-1</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<name textref="/Creeps/Bosses/Boss3/A2_CatSong.APLR_badd10b5803e4c9b992bb4c726870de0_name.txt" />
+										<power>0</power>
+										<providerName></providerName>
+										<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+										<stackCount>0</stackCount>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<statusPosition>0</statusPosition>
+										<stopBehaviour>StopByTime</stopBehaviour>
+										<unstackableWith href="" />
+									</StatusApplicator>
+								</applicator>
+								<continueCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>1</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+							<Item>
+								<applicator href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="C00C6BE4-1138-4C5A-85A5-E014E7A0A5CA">
+									<SpellPeriodicallyApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>216</behaviorFlags>
+										<caption>Снижаем стаки</caption>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString>FSAAAAADAAAAKwAAAEUAAABbAAAAQm9zczNfQTJfSW5jAAAAAEJvc3MzX0EyX1N0YWNrcwBVi+xRagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QO0UQdStoEAAAAItNDIsRi00Mi4KIAQAA/9DcHX0AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+											<returnType>bool</returnType>
+											<sString>(receiver.applBoss3_A2_Inc(GLOBAL) == pMisc)&amp;&amp;(receiver.vBoss3_A2_Stacks&gt;0)</sString>
+										</enabled>
+										<formulaName>Boss3_A2_Dec_Spell</formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<period>
+											<compiledString>FQoAAAABAAAAFgAAAEEyX1BlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cA2_Period</sString>
+										</period>
+										<providerName></providerName>
+										<scaleMode>ScaleIsCount</scaleMode>
+										<spell href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="65AFDC70-DE75-4562-9457-F73A5A5C7851">
+											<Spell>
+												<applicators>
+													<Item href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="5EA0A811-5D53-41AC-B161-C1BA4D3154C1">
+														<PermanentStatModApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>Убираем 1 стак</caption>
+															<customApplyType>None</customApplyType>
+															<enabled>
+																<compiledString>FRAAAAACAAAAFQAAACsAAABCb3NzM19BMl9TdGFja3MAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdTQAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+																<returnType>bool</returnType>
+																<sString>receiver.vBoss3_A2_Stacks&gt;0</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0f</sString>
+																</addValue>
+																<multValue>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>1.0f</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>false</topModifier>
+																<variable>Boss3_A2_Stacks</variable>
+															</modifier>
+															<providerName></providerName>
+														</PermanentStatModApplicator>
+													</Item>
+													<Item href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="A1D4748B-C2E9-48AC-918C-F59644CA02E8">
+														<DamageApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<cancelInvisibility>false</cancelInvisibility>
+															<caption>А2 Кошачья песнь Урон</caption>
+															<damage>
+																<compiledString>FRAAAAABAAAAHAAAAEEyX0RhbWFnZV9Ub3RhbABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cA2_Damage_Total</sString>
+															</damage>
+															<damageMode>4</damageMode>
+															<damageType>Pure</damageType>
+															<enabled>
+																<compiledString>FRAAAAACAAAAHQAAADAAAABBMl9EYW1hZ2VfVG90YWwAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1SAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+																<returnType>bool</returnType>
+																<sString>(cA2_Damage_Total&gt;0)</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<timeLimiter>-1</timeLimiter>
+															<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+														</DamageApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="B5F1B3FF-D606-407E-8D09-C26B5219C3C7">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>0</flags>
+														<instantApply>false</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</spell>
+										<startCondition>
+											<compiledString>FRMAAAABAAAAHQAAAEJvc3MzX0EyX0RlY19TcGVsbABVi+xqAItFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.applBoss3_A2_Dec_Spell(GLOBAL) == pMisc</sString>
+										</startCondition>
+										<startOffset>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>0.0f</sString>
+										</startOffset>
+										<targetSelector href="" />
+									</SpellPeriodicallyApplicator>
+								</applicator>
+								<continueCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>1</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+						</applicators>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>Программа песни на врагов</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+					</ProgramApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="74211F65-322E-4700-9989-A147EB53D6C6">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Creeps/Bosses/Boss3/A2_CatSong.APLR" id="CDEBD7FA-D906-4C34-A635-5B6EDB780F6C">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>0</x>
+				<y>0</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>cA2_Range</sString>
+			</range>
+			<targetFilter>536870917</targetFilter>
+			<targetSelector href="" />
+		</AreaTargetSelector>
+	</targetSelector>
+</SpellApplicator>

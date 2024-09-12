@@ -1,0 +1,49 @@
+# Limit setting
+ulimit -n 128000
+
+# Main setting.
+USER="pwcastle"
+RUNDIR="/opt/pwcastle/"
+PYTHON="/usr/bin/python"
+PYTHON_ARGS="-u"
+RUNSCRIPT="/opt/pwcastle/pwserver.py"
+
+# Instnace settings.
+# One ellement of massive = one instance
+COORDINATOR="192.168.50.2:8700"
+
+HOST=`hostname`
+case $HOST in
+v161)
+	# WS one
+	INSTANCE_NAME[1]="one"
+	INSTANCE_PORT[1]="8801"
+	INSTANCE_NAME[2]="two"
+	INSTANCE_PORT[2]="8802"
+	;;
+v162)
+	# WS two
+	INSTANCE_NAME[1]="two"
+	INSTANCE_PORT[1]="8008"
+	;;
+v163)
+	# WS two
+	INSTANCE_NAME[1]="three"
+	INSTANCE_PORT[1]="8008"
+	;;
+esac
+
+
+
+# Declare associative arrays.
+declare -A INSTANCE RUNSCRIPT_ARGS LOGGING RUN_MARKER
+
+# Generate settings to instnaces
+for i in `seq 1 ${#INSTANCE_NAME[@]}`;
+do
+	INSTANCE[${INSTANCE_NAME[$i]}]=${INSTANCE_NAME[$i]}
+	RUNSCRIPT_ARGS[${INSTANCE_NAME[$i]}]="--port=${INSTANCE_PORT[$i]} --server_name=${INSTANCE_NAME[$i]} --log_level=info --log_rotation=external --log_file_prefix=/var/log/pwlobby/pwserver-${INSTANCE_NAME[$i]}.log --strict_login_check=1 --coordinator=$COORDINATOR --xdb_path=/opt/pwcastle/xdb/"
+	LOGGING[${INSTANCE_NAME[$i]}]="> /var/log/pwlobby/pw-ws.${INSTANCE_NAME[$i]}.log.run 2>&1"
+	RUN_MARKER[${INSTANCE_NAME[$i]}]="/opt/pwcastle/logs/ws.running.${INSTANCE_NAME[$i]}"
+done
+

@@ -1,0 +1,266 @@
+>  db.users.count()
+793790
+> db.users.findOne( {_id:6155} )
+{
+        "_id" : 6155,
+        "billing_status" : 1,
+        "dt_last_login" : 1363724512,
+        "dt_last_logout" : 1363724441,
+        "dt_register" : 1327330865,
+        "fame" : "93559",
+        "fb" : {
+                "snuid" : "100000234693443",
+                "name" : "Данила Сергеев",
+                "email" : "225580980@mail.ru",
+                "dt_birthday" : "04/10/1976",
+                "gender" : 1,
+                "sntoken" : "AAACXxaYKnFgBADFRpsuwyMzd5tRRSALa5MuQa8my2ZA8GEky2EqvfVvT1k8vKdIH3KLHFTbXORZAKzaM38L7t18hzZBrppaiZCh5TOT6GQZDZD"
+        },
+        "fraction" : "1",
+        "fsn" : "fb",
+        "locale" : "RU",
+        "nick" : "Алканавтик",
+        "ok" : {
+                "snuid" : "548499409138",
+                "name" : "Данила Воробьев",
+                "photo" : "http://i246.odnoklassniki.ru/res/stub_50x50.gif",
+                "gender" : 1,
+                "dt_birthday" : "1976-05-10",
+                "sntoken" : "2pvqvJMCrs.i-tA6r043xtM8z63km.v5",
+                "snrefresh_token" : "9551kJvBx155kuweT4adEKS_v9c4_MN9q714DJL6u28d8KK7x2249PM9Sc",
+                "dt_request_sntoken" : 1330597545,
+                "dt_request_snrefresh_token" : 1328012005
+        },
+        "ruforumuid" : "213700",
+        "snbonus" : "02"
+}
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+> db.user_properties.count()
+379
+> db.user_properties.findOne()
+{
+        "_id" : "4200_4184_test",
+        "value" : "1",
+        "name" : "test",
+        "auid" : 4200,
+        "e_auid" : 4184
+}
+
+> db.properties.count()
+1
+> db.properties.findOne()
+{ "_id" : "test" }
+
+
+> db.users.findOne( {locale:"EN"} )
+{
+        "_id" : 516962,
+        "billing_status" : 1,
+        "dt_last_login" : 1359465794,
+        "dt_last_logout" : 1359470606,
+        "dt_register" : 1354874059,
+        "fame" : "4550",
+        "fraction" : "1",
+        "fsn" : "pwc",
+        "locale" : "EN",
+        "nick" : "ironfresh",
+        "pwc" : {
+                "email" : "offgrey@aol.com",
+                "birthday" : -1628215200,
+                "gender" : 1,
+                "sntoken" : "b4fedcc92c0f88d5fcf526aaf74d24e4",
+                "snuid" : "2091945425905279"
+        }
+}
+
+> db.users.count( {locale:"EN"} )
+75
+> db.users.count( {locale:"TR"} )
+14105
+> db.users.count( {locale:"RU"} )
+352424
+> db.users.count( {locale:null} )
+426145
+
+> db.seq.find()
+{ "_id" : "users", "seq" : NumberLong(812779) }
+> db.seq.count()
+1
+
+-----------------------------
+
+> db.friends.count()
+5866266
+
+> db.friends.findOne()
+{
+        "_id" : "100001_100108",
+        "auid" : 100001,
+        "friend_auid" : 100108,
+        "snid" : "ok"
+}
+> db.friends.getIndexes()
+[
+        {
+                "v" : 1,
+                "key" : {
+                        "_id" : 1
+                },
+                "ns" : "sa.friends",
+                "name" : "_id_"
+        },
+        {
+                "v" : 1,
+                "key" : {
+                        "auid" : 1
+                },
+                "ns" : "sa.friends",
+                "name" : "auid_1"
+        },
+        {
+                "v" : 1,
+                "key" : {
+                        "friend_auid" : 1
+                },
+                "ns" : "sa.friends",
+                "name" : "friend_auid_1"
+        }
+]
+
+> db.friends.find( {auid:6155} )
+{ "_id" : "6155_379798", "auid" : 6155, "friend_auid" : 379798, "snid" : "pw" }
+{ "_id" : "6155_73473", "auid" : 6155, "friend_auid" : 73473, "snid" : "pw" }
+{ "_id" : "6155_137512", "auid" : 6155, "friend_auid" : 137512, "snid" : "pw" }
+{ "_id" : "6155_17556", "auid" : 6155, "friend_auid" : 17556, "snid" : "pw" }
+{ "_id" : "6155_239856", "auid" : 6155, "friend_auid" : 239856, "snid" : "pw" }
+{ "_id" : "6155_28709", "auid" : 6155, "friend_auid" : 28709, "snid" : "pw" }
+{ "_id" : "6155_30413", "auid" : 6155, "friend_auid" : 30413, "snid" : "fb" }
+{ "_id" : "6155_31004", "auid" : 6155, "friend_auid" : 31004, "snid" : "fb" }
+{ "_id" : "6155_31024", "auid" : 6155, "friend_auid" : 31024, "snid" : "fb" }
+{ "_id" : "6155_32352", "auid" : 6155, "friend_auid" : 32352, "snid" : "pw" }
+{ "_id" : "6155_34236", "auid" : 6155, "friend_auid" : 34236, "snid" : "fb" }
+{ "_id" : "6155_3529", "auid" : 6155, "friend_auid" : 3529, "snid" : "pw" }
+{ "_id" : "6155_37134", "auid" : 6155, "friend_auid" : 37134, "snid" : "pw" }
+{ "_id" : "6155_38228", "auid" : 6155, "friend_auid" : 38228, "snid" : "pw" }
+{ "_id" : "6155_45058", "auid" : 6155, "friend_auid" : 45058, "snid" : "fb" }
+{ "_id" : "6155_6114", "auid" : 6155, "friend_auid" : 6114, "snid" : "fb" }
+{ "_id" : "6155_6117", "auid" : 6155, "friend_auid" : 6117, "snid" : "fb" }
+{ "_id" : "6155_6134", "auid" : 6155, "friend_auid" : 6134, "snid" : "fb" }
+{ "_id" : "6155_6142", "auid" : 6155, "friend_auid" : 6142, "snid" : "fb" }
+{ "_id" : "6155_6145", "auid" : 6155, "friend_auid" : 6145, "snid" : "fb" }
+has more
+
+> db.friends.find( {friend_auid:6155} )
+{ "_id" : "73473_6155", "auid" : 73473, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "239856_6155", "auid" : 239856, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "28709_6155", "auid" : 28709, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "30413_6155", "auid" : 30413, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "31004_6155", "auid" : 31004, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "31024_6155", "auid" : 31024, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "32352_6155", "auid" : 32352, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "34236_6155", "auid" : 34236, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "3529_6155", "auid" : 3529, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "37134_6155", "auid" : 37134, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "38228_6155", "auid" : 38228, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "45058_6155", "auid" : 45058, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "137512_6155", "auid" : 137512, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "17556_6155", "auid" : 17556, "friend_auid" : 6155, "snid" : "pw" }
+{ "_id" : "6114_6155", "auid" : 6114, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "6117_6155", "auid" : 6117, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "6134_6155", "auid" : 6134, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "6142_6155", "auid" : 6142, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "6145_6155", "auid" : 6145, "friend_auid" : 6155, "snid" : "fb" }
+{ "_id" : "6148_6155", "auid" : 6148, "friend_auid" : 6155, "snid" : "fb" }
+has more
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+> db.sn_friends.count()
+22153248
+> db.sn_friends.findOne()
+{
+        "_id" : "fb_100002_100002288538966",
+        "snuid" : "100002288538966",
+        "name" : "Apochai  Jenkins",
+        "used" : 0,
+        "auid" : 100002,
+        "snid" : "fb"
+}
+> db.sn_friends.getIndexes()
+[
+        {
+                "v" : 1,
+                "key" : {
+                        "_id" : 1
+                },
+                "ns" : "sa.sn_friends",
+                "name" : "_id_"
+        },
+        {
+                "v" : 1,
+                "key" : {
+                        "auid" : 1
+                },
+                "ns" : "sa.sn_friends",
+                "name" : "auid_1"
+        },
+        {
+                "v" : 1,
+                "key" : {
+                        "snuid" : 1
+                },
+                "ns" : "sa.sn_friends",
+                "name" : "snuid_1"
+        },
+        {
+                "v" : 1,
+                "key" : {
+                        "snid" : 1
+                },
+                "ns" : "sa.sn_friends",
+                "name" : "snid_1"
+        }
+]
+
+> db.sn_friends.find( {auid:812000} )
+{ "_id" : "fb_812000_100001258241154", "snuid" : "100001258241154", "name" : "Anatoly  Gorchev", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "ok_812000_241678516899", "snuid" : "241678516899", "name" : "Винер Аскаров", "photo" : "http://i502.odnoklassniki.ru/getImage?photoId=467657235502&photoType=4", "used" : 0, "auid" : 812000, "snid" : "ok" }
+{ "_id" : "ok_812000_129062994850", "snuid" : "129062994850", "name" : "Алена Перфильева", "photo" : "http://i502.odnoklassniki.ru/getImage?photoId=355537574703&photoType=4", "used" : 0, "auid" : 812000, "snid" : "ok" }
+{ "_id" : "fb_812000_100001734760904", "snuid" : "100001734760904", "name" : "Максим Воробьёв", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "ok_812000_576506436521", "snuid" : "576506436521", "name" : "Анастасия Иванова", "photo" : "http://i502.odnoklassniki.ru/getImage?photoId=441113815588&photoType=4", "used" : 0, "auid" : 812000, "snid" : "ok" }
+{ "_id" : "fb_812000_100001756010712", "snuid" : "100001756010712", "name" : "Иван Панов", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100000819732499", "snuid" : "100000819732499", "name" : "Vadim Shevchenko", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100001595589261", "snuid" : "100001595589261", "name" : "Evgeny  Fisenko", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "ok_812000_570868205231", "snuid" : "570868205231", "name" : "Виктор Данилов", "photo" : "http://i502.odnoklassniki.ru/getImage?photoId=489747227426&photoType=4", "used" : 0, "auid" : 812000, "snid" : "ok" }
+{ "_id" : "ok_812000_538871957676", "snuid" : "538871957676", "name" : "АнЮтКа КоТоВа", "photo" : "http://i502.odnoklassniki.ru/getImage?photoId=503236872993&photoType=4", "used" : 0, "auid" : 812000, "snid" : "ok" }
+{ "_id" : "fb_812000_100000728464354", "snuid" : "100000728464354", "name" : "Надежда Бухарина", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100001760554724", "snuid" : "100001760554724", "name" : "Александр Коноваленко", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100001809249765", "snuid" : "100001809249765", "name" : "Sergei  Ataew", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100001898105410", "snuid" : "100001898105410", "name" : "Елизавета Жарынина", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100001912924096", "snuid" : "100001912924096", "name" : "дмитрий бойко", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100002000341945", "snuid" : "100002000341945", "name" : "Василий Шевченко", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100002100158313", "snuid" : "100002100158313", "name" : "Evgeniya  Konevina", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100002574778263", "snuid" : "100002574778263", "name" : "Aleksandr  Sipatov", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100002670506908", "snuid" : "100002670506908", "name" : "Nastya  Pumpisheva", "used" : 0, "auid" : 812000, "snid" : "fb" }
+{ "_id" : "fb_812000_100002907094131", "snuid" : "100002907094131", "name" : "Igor  Ratanov", "used" : 0, "auid" : 812000, "snid" : "fb" }
+has more
+
+
+------------------------------------------------------------------
+
+собрать список английских юзеров можно, например, так:
+
+var en = db.users.group( {
+                   key: {},
+                   cond: { locale: "EN" },
+                   reduce: function ( curr, result ) { result.ids.push( curr._id ) },
+                   initial: { ids: [] }
+                } )
+db.en_users.insert( en[0] )
+
+и потом например db.friends.find( {auid:{$in:[1,2,3,4]}} )
+

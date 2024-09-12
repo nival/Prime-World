@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_guild_rating` ADD COLUMN `position_change` INTEGER NOT NULL DEFAULT '0' AFTER `position`;

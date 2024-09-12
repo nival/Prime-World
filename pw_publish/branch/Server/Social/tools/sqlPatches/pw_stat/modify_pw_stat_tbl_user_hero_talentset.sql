@@ -1,0 +1,1 @@
+ALTER TABLE  tbl_user_hero_talentset ENGINE=InnoDB;

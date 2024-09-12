@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_guild_rating` ADD COLUMN `suzerain` BIGINT(20) NOT NULL DEFAULT '0' AFTER `lead_auid`;

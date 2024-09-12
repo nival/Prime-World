@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Items/Talents/Class/Banshee/Ability_A4u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Banshee/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Banshee/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_7_Ultimate/Status_Redset5_7_Cooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Banshee_Alternative.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="5E0D31C2-8548-4A1B-9B5F-091E3C76A4D1">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="F2238565-A419-4D57-A9CA-7D1E22A90A41">
+							<PermanentStatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Обнуляем каунтер героев</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</addValue>
+									<multValue>
+										<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>BansheeA4_HeroCounter</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="839D691A-0AAB-44C5-B8B0-9CD9EC86D4B7">
+							<SpellApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Раздаём урон и считаем героев</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<spell href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="E6FD6484-807A-4EAA-AA98-C231F32EB4D0">
+									<Spell>
+										<applicators>
+											<Item href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="FE945E54-8009-4EDB-BB58-C62EB09126BA">
+												<DamageApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<cancelInvisibility>false</cancelInvisibility>
+													<caption>Урон А4</caption>
+													<damage>
+														<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+														<returnType>float</returnType>
+														<sString>cA4_Damage</sString>
+													</damage>
+													<damageMode>0</damageMode>
+													<damageType>Energy</damageType>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<timeLimiter>-1</timeLimiter>
+													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+												</DamageApplicator>
+											</Item>
+											<Item href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="2623A27F-7A2E-4BF6-BF66-D9F2673F02A5">
+												<PermanentStatModApplicator>
+													<applyTarget>AbilityOwner</applyTarget>
+													<caption>Считаем героев (и подобных)</caption>
+													<customApplyType>None</customApplyType>
+													<enabled>
+														<compiledString>FToAAAAJAAAAQQAAAGsAAACWAAAAvQAAANIAAADoAAAA9AAAAAkBAAAfAQAAVGFyZ2V0AABUYXJnZXQAAFRhcmdldAAAVGFyZ2V0AABJc0Nsb25lAFRhcmdldAAASXNQYW50aGVyAFWL7IPsGGgAAAAAi0UQixCLTRCLQkz/0IlF/ItN/IsRi038i0JQ/9CFwA+EyQAAAGgIAAAAi00QixGLTRCLQkz/0IlF+ItN+IsRi034i0JQ/9CD+BAPhJ4AAABoEAAAAItNEIsRi00Qi0JM/9CJRfSLTfSLEYtN9ItCUP/Qg/gRdHdoGAAAAItNEIsRi00Qi0JM/9CJRfBoIAAAAItN8IsRi03wi4KIAQAA/9DcHUEBAADf4PbEQXRAaCgAAACLTRCLEYtNEItCTP/QiUXsaDAAAACLTeyLEYtN7IuCiAEAAP/Q3B1BAQAA3+D2xEF0CcdF6AAAAADrB8dF6AEAAACKReiL5V3DAAAAAAAAAAA=</compiledString>
+														<returnType>bool</returnType>
+														<sString>appl.oTarget.UnitKind == 0 || appl.oTarget.UnitKind == 16 || appl.oTarget.UnitKind == 17 || appl.oTarget.vIsClone &gt; 0 || appl.oTarget.vIsPanther &gt; 0</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<modifier>
+														<addValue>
+															<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+															<returnType>float</returnType>
+															<sString>1.0f</sString>
+														</addValue>
+														<multValue>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>1.0f</sString>
+														</multValue>
+														<stat>Life</stat>
+														<topModifier>false</topModifier>
+														<variable>BansheeA4_HeroCounter</variable>
+													</modifier>
+													<providerName></providerName>
+												</PermanentStatModApplicator>
+											</Item>
+										</applicators>
+										<dispatch href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="CCC84EE7-0C76-4C37-AA4A-8C51BCF42DB7">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>LogicalDirection</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>1</flags>
+												<instantApply>false</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<spellTarget>ApplicatorTarget</spellTarget>
+								<targetSelector href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="8B0942A8-A3DA-4036-8240-9DFE05F95A20">
+									<AreaTargetSelector>
+										<absolutePosition>
+											<x>0</x>
+											<y>0</y>
+										</absolutePosition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<range>
+											<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>cA4_Range</sString>
+										</range>
+										<targetFilter>672989247</targetFilter>
+										<targetSelector href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="2FF82D1D-017D-49F7-9790-14952C66CA56">
+											<SelectApplicatorTarget>
+												<applicatorIndex>0</applicatorIndex>
+												<applicatorName></applicatorName>
+												<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+												<selectTarget>AbilityOwner</selectTarget>
+											</SelectApplicatorTarget>
+										</targetSelector>
+									</AreaTargetSelector>
+								</targetSelector>
+							</SpellApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="5096FA40-B8D2-4A4D-BF35-86788CB49E62">
+							<FlagsApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>0</behaviorFlags>
+								<caption>(upg) Ждём и не крутим FX</caption>
+								<consumables />
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<flag>0</flag>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString>FQoAAAABAAAAFgAAAEE0dV9EZWxheQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cA4u_Delay</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<talents />
+								<useListAs>ListAsRule</useListAs>
+							</FlagsApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FRgAAAACAAAAHwAAADgAAABCYW5zaGVlX0E0dQBCYW5zaGVlX0E0dQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>!tal("Banshee_A4u")</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="ABC2E5EE-F292-40CD-86D0-BC2FEDE4E266">
+							<SpellApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>(upg) Лечение себе</caption>
+								<enabled>
+									<compiledString>FRYAAAACAAAAGwAAADEAAABCYW5zaGVlQTRfSGVyb0NvdW50ZXIAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUwAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+									<returnType>bool</returnType>
+									<sString>sender.vBansheeA4_HeroCounter &gt; 0</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<spell href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="993B8720-89AC-4269-BD09-27F13E2C22D1">
+									<Spell>
+										<applicators>
+											<Item href="/Items/Talents/Class/Banshee/appl_A4u_Heal.APLR" />
+										</applicators>
+										<dispatch href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="E10EE34F-A968-474A-BE5B-1D07403705BE">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="/Effects/Buffs/Assist/_BansheeA4Heal.EFFT" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>Default</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>0</flags>
+												<instantApply>true</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<spellTarget>AbilityOwner</spellTarget>
+								<targetSelector href="" />
+							</SpellApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="B364162B-35C4-47C3-822A-26778D70DE0E">
+							<SpellApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>(upg) Лечение другим</caption>
+								<enabled>
+									<compiledString>FRYAAAACAAAAGwAAADEAAABCYW5zaGVlQTRfSGVyb0NvdW50ZXIAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUwAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+									<returnType>bool</returnType>
+									<sString>sender.vBansheeA4_HeroCounter &gt; 0</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<spell href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="3CC13C6A-6365-45ED-90C4-11F5FDDF6991">
+									<Spell>
+										<applicators>
+											<Item href="/Items/Talents/Class/Banshee/appl_A4u_Heal.APLR" />
+										</applicators>
+										<dispatch href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="E846D09D-840B-410C-8EC6-274087BB1768">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>LogicalDirection</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>0</flags>
+												<instantApply>true</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<spellTarget>AbilityOwner</spellTarget>
+								<targetSelector href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="5F6A9FB6-2579-4F49-A111-B464D32097FA">
+									<ConditionTargetSelector>
+										<condition>
+											<compiledString>FQoAAAACAAAAIQAAADcAAABJc1BhbnRoZXIAVYvsUYtFDIsQi00Mi0JQ/9CD+AJ1K2gAAAAAi00MixGLTQyLgogBAAD/0NwdWQAAAN/g9sRBdAnHRfwAAAAA6wfHRfwBAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+											<returnType>bool</returnType>
+											<sString>rUnitKind != 2 || receiver.vIsPanther &gt; 0</sString>
+										</condition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<targetSelector href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="A1111704-2C94-4334-A92A-C0A50D8DD3B1">
+											<AreaTargetSelector>
+												<absolutePosition>
+													<x>0</x>
+													<y>0</y>
+												</absolutePosition>
+												<flags>0</flags>
+												<mode>Normal</mode>
+												<range>
+													<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>cA4_Range</sString>
+												</range>
+												<targetFilter>268435461</targetFilter>
+												<targetSelector href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="C55007A8-102C-4A5E-94BD-40E794441C92">
+													<SelectApplicatorTarget>
+														<applicatorIndex>0</applicatorIndex>
+														<applicatorName></applicatorName>
+														<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+														<selectTarget>AbilityOwner</selectTarget>
+													</SelectApplicatorTarget>
+												</targetSelector>
+											</AreaTargetSelector>
+										</targetSelector>
+									</ConditionTargetSelector>
+								</targetSelector>
+							</SpellApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>2</behaviorFlags>
+				<caption>Программа А4</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+	</applicators>
+	<askId>4</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А4. Кража души</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Banshee/Ability_A4.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="B9096F32-CFFF-45F6-9305-71943F8B2FDE">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRgAAAACAAAAHwAAADgAAABCYW5zaGVlX0E0dQBCYW5zaGVlX0E0dQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Banshee_A4u") == false</sString>
+				</condition>
+				<name>Banshee_A4u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/Banshee/Ability_A4_2.TALENT" />
+		<Item href="/Items/Talents/Class/Banshee/Ability_A4_2u.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="B4FE4D75-50C4-4474-B6B8-DDA43E816D9B">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="4625C401-B1DB-4AD0-8226-69498858E979">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="B32E5914-56FF-480F-87ED-603E6D6B5F4F">
+					<UnitConstant>
+						<name>A4_Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="5AED3F19-C257-462A-9D15-DD94345844A5">
+					<UnitConstant>
+						<name>A4_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAADwQgAAYUQ=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale(sIntellect, 120, 900)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Banshee/const_A4u_Delay" />
+				<Item href="/Items/Talents/Class/Banshee/const_A4u_Heal" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC0Qg==</compiledString>
+		<returnType>float</returnType>
+		<sString>90</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Banshee/Ability_A4.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="9C21D135-6B2C-4016-A396-F8F3A90AFD00">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Items/Talents/Class/Banshee/effect_A4_Switcher.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>2</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Banshee/A4.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABwQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>240</sString>
+	</manaCost>
+	<marker>doCast4</marker>
+	<microAI href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="B31C1A83-780C-4ED5-8CFC-1C756FE15707">
+		<MultipleTargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<minTargetCount>1</minTargetCount>
+			<minTargetWeight>0</minTargetWeight>
+			<targetSelector href="/Items/Talents/Class/Banshee/Ability_A4.TALENT" id="D5F20E8D-EE42-4A17-9D5C-124377998CF3">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_Range</sString>
+					</range>
+					<targetFilter>679477249</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+			<unitFilter>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</unitFilter>
+		</MultipleTargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/Banshee/Ability_A4.TALENT_name.txt" />
+	<node>ability4</node>
+	<passiveApplicators />
+	<persistentId>Banshee_A4</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Banshee/Ability_A4.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

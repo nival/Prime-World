@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RefreshCooldownApplicator>
+	<BackLink DBID="/Heroes/Brewer/_.HROB" Count="1" />
+	<allowCdIncrease>false</allowCdIncrease>
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>уменьшить Cd</caption>
+	<enabled>
+		<compiledString>FV0AAAAHAAAAZQAAAH4AAAC4AAAAzgAAAOoAAAAFAQAAIgEAAEJyZXdlcl9BM3UAAEJyZXdlcl9BM3UAAElzQ2xvbmUAQnJld2VyX0hvbmV5U3RhdHVzX0ZyaWVuZGx5AFRhcmdldAAAQnJld2VyX0hvbmV5U3RhdHVzX0VuZW15AFWL7IPsFFZoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyQ+EjAAAAGgYAAAAi1UIiwKLTQiLkIgBAAD/0twdUgEAAN/g9sREemqLRRCLEItNEItCSP/QiUX0aDwAAACLTfSLEYtN9ItCTP/QiUXwagGLTRBRaEQAAACLVfCLAotN8IuQoAEAAP/Si/BqAYtFEFBoIAAAAItNCIsRi00Ii4KgAQAA/9ADxnQJx0XsAQAAAOsHx0XsAAAAAIpF7F6L5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>(tal("Brewer_A3u")) &amp;&amp; (sender.vIsClone == 0) &amp;&amp; ((sender.CountApplicators( "Brewer_HoneyStatus_Friendly", pMisc, UNIT ) + pMisc-&gt;GetObjectParent()-&gt;GetObject("Target")-&gt;CountApplicators( "Brewer_HoneyStatus_Enemy", pMisc, UNIT )) != 0)</sString>
+	</enabled>
+	<flags>128</flags>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<reduceByPercent>false</reduceByPercent>
+	<reductionAmount>
+		<compiledString>FU0AAAAEAAAAZQAAAIAAAACdAAAAwgAAAEEzdV9DRFJlZHVjdGlvbgBCcmV3ZXJfSG9uZXlTdGF0dXNfRnJpZW5kbHkAVGFyZ2V0AABCcmV3ZXJfSG9uZXlTdGF0dXNfRW5lbXkAVYvsg+wYVotFEIsQi00Qi0JI/9CJRfxoLAAAAItN/IsRi038i0JM/9CJRfhqAYtNEFFoNAAAAItV+IsCi034i5CgAQAA/9KL8GoBi0UQUGgQAAAAi00IixGLTQiLgqABAAD/0APGiUX020X0i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3s/9DcTezZXejZRehei+Vdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3u_CDReduction * (sender.CountApplicators( "Brewer_HoneyStatus_Friendly", pMisc, UNIT ) + pMisc-&gt;GetObjectParent()-&gt;GetObject("Target")-&gt;CountApplicators( "Brewer_HoneyStatus_Enemy", pMisc, UNIT ))</sString>
+	</reductionAmount>
+	<refreshThis>false</refreshThis>
+	<talents>
+		<Item href="/Items/Talents/Class/Brewer/Ability_A1.TALENT" />
+		<Item href="/Items/Talents/Class/Brewer/Ability_A2u.TALENT" />
+	</talents>
+	<useListAs>ListAsRule</useListAs>
+</RefreshCooldownApplicator>

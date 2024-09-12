@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<AppConfig>
+  <ApplicationName>PWLauncher</ApplicationName>
+
+  <MainWindow>
+	<Mask>{AppContentUrl}mainwindow/images/main-dialog-mask.png</Mask>
+	<Width>781</Width>
+	<Height>682</Height>
+	<Url>{AppContentUrl}mainwindow/index.html</Url>
+	<Title>Prime World Launcher</Title>
+  </MainWindow>
+
+  <Macros>
+    <LangCode>ru</LangCode>
+    <SkinVersion>xx.0.2.44</SkinVersion>
+  </Macros>
+
+  <GenderConfirmationAuthNetworks></GenderConfirmationAuthNetworks>
+  <Name>Prime World Launcher</Name>
+  <UserDataStorage>{UserDocuments}My Games/Prime World</UserDataStorage>
+  <LocalStorage>{ModulePath}Cache</LocalStorage>
+  <GameConfigPath>{UserDataStorage}/gameoptions.cfg</GameConfigPath>
+  <GameConfigLangPath>{UserDataStorage}/lang.cfg</GameConfigLangPath>
+
+  <LocalizationFile>{AppContentUrl}mainwindow/lang-{Macros.LangCode}.xml</LocalizationFile>
+
+  <AuthMode></AuthMode>
+  <IgnoreSSLErrors>False</IgnoreSSLErrors>
+  <AuthServerOffTimeout>120</AuthServerOffTimeout>
+  <AuthServerCheckInterval>120</AuthServerCheckInterval>
+  <AuthEnableInviteDialog>1</AuthEnableInviteDialog>
+
+  <CheckPingOnLaunchInterval>5</CheckPingOnLaunchInterval>
+
+  <RefInfoFile>ref.txt</RefInfoFile>
+
+  <PwConnectCN>www.nivalnetwork.com</PwConnectCN>
+
+
+  <MaxNumOfSimultaneousDownloads>1</MaxNumOfSimultaneousDownloads>
+  <SpeedUpdateInterval>2</SpeedUpdateInterval>
+  <UpdateRetryInterval>120</UpdateRetryInterval>
+  <CheckUpdateIntervalMinutes>60</CheckUpdateIntervalMinutes>
+  <TargetUrlLauncher></TargetUrlLauncher>
+  <ForceRepairFile>.force_repair</ForceRepairFile>
+  <NoDefendersInstall>1</NoDefendersInstall>
+  <Defenders>
+    <RemoveFolders>
+        <Item>{ModulePath}Defenders</Item>
+        <Item>{ModulePath}Export</Item>
+    </RemoveFolders>
+  </Defenders>
+  <OperatorContentRefresh>120</OperatorContentRefresh>
+  <OperatorContentUpdateMinutes>30</OperatorContentUpdateMinutes>
+  <OperatorContent>
+    <FirstVisit>first_visit.html</FirstVisit>
+    <NotLoggedIn>main_guest.html</NotLoggedIn>
+    <LoggedIn>main_auth.html</LoggedIn>
+    <ServerError>server_error.html</ServerError>
+    <Maintenance>maintenance.html</Maintenance>
+    <NoConnection>no_connection.html</NoConnection>
+  </OperatorContent>
+  <WatchedExecs>
+      <Item>
+	<File>{ModulePath}Castle/castle.exe</File>
+	<Description></Description>
+      </Item>
+      <Item>
+	<File>{ModulePath}PvP/Bin/PW_Game.exe</File>
+	<Description></Description>
+      </Item>
+  </WatchedExecs>
+  <Launch>
+    <Name>Castle</Name>
+    <Application>castle.exe</Application>
+    <Arguments></Arguments>
+    <WorkingDirectory>{ModulePath}Castle</WorkingDirectory>
+  </Launch>
+  <Launch>
+    <Name>PW_Game</Name>
+    <Application>PW_Game.exe</Application>
+    <Arguments>--launchTutorial quitcastle --castleCmdLn Castle.exe</Arguments>
+    <WorkingDirectory>{ModulePath}PvP/Bin</WorkingDirectory>
+  </Launch>
+  <Services2ForceInvitePWC>fb,ok,vk</Services2ForceInvitePWC>
+  <SteamStatusUpdateInterval>100</SteamStatusUpdateInterval>
+  <SteamConnectionTimeout>30000</SteamConnectionTimeout>
+  <ApplyProcessPriority>Idle</ApplyProcessPriority>
+  <DeploymentsManifestURL>http://trunkcdn.nivalnetwork.com/DMF/trunk_deployments_manifest.xml</DeploymentsManifestURL>
+  <UseSubfolderForDeployment>0</UseSubfolderForDeployment>
+  <ServerInstanceSpecifiedActions>l_join</ServerInstanceSpecifiedActions>
+</AppConfig>

@@ -1,0 +1,12 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/services/status/status_service.py"
+RUNSCRIPT_ARGS="--port={{ conf['status_service_port'] }} --log_level={{ conf['log_level_status'] }} --log_rotation=external\
+ --log_file_prefix={{ conf['logging'] }}status_service.log\
+ --tick_period={% if conf['tick_period_status'] != "0" %}{{ conf['tick_period_status'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+LOGGING=">> {{ conf['logging_run'] }}pw-status_service.log.run 2>&1"

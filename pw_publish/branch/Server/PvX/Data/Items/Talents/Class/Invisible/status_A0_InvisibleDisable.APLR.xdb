@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Invisible/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" id="75FD4280-7FCB-4244-8B5B-C0D07529B030">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Триггер при заходе на РЗ</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>TerrainTriggerOn</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" id="0A152A44-011D-498A-B076-1AA108BA41A2">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FRUAAAACAAAAIgAAADUAAABTZW5kZXJfTmF0aXZlVGVycmFpbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVEAAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAA==</compiledString>
+							<returnType>bool</returnType>
+							<sString>cSender_NativeTerrain</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" id="85863EA8-72F6-4039-AD80-FAD3C16A15CD">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" id="1DF3EE0F-49B1-4489-9D76-C74F2E143D00">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Отнимаем время за то, что наступили на РЗ</caption>
+											<durationToAdd>
+												<compiledString>FRAAAAABAAAAHAAAAEEwX1RlcnJyYWluVGltZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tngXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>-cA0_TerrrainTime</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FRMAAAACAAAAGAAAAC4AAABBMF9JbnZpc2libGVUZXJyT24AVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUAAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.vA0_InvisibleTerrOn == 0</sString>
+											</enabled>
+											<flags>1</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck>ImNotInvisible</nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+									<Item href="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" id="549816AC-1F47-45F7-92D5-94586657768B">
+										<StatModApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>1</behaviorFlags>
+											<caption>A0_InvisibleTerrOn</caption>
+											<constraint>None</constraint>
+											<dontUpdate>false</dontUpdate>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+												<returnType>float</returnType>
+												<sString>0.2f</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>A0_InvisibleTerrOn</variable>
+											</modifier>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString>FRMAAAACAAAAGAAAAC4AAABBMF9JbnZpc2libGVUZXJyT24AVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUAAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.vA0_InvisibleTerrOn == 0</sString>
+											</startCondition>
+											<statModName></statModName>
+										</StatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR" id="ADC383A3-EAEB-4F41-BBCF-8EF82C41D377">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FRUAAAACAAAAIgAAADUAAABTZW5kZXJfTmF0aXZlVGVycmFpbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVcAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cSender_NativeTerrain == false</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>статус до невидимости</caption>
+	<customCounter>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ0AAAABAAAAFwAAAEludmlzaWJpbGl0eQBVi+xqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applInvisibility(UNIT) == pMisc</sString>
+	</enabled>
+	<flags>2</flags>
+	<formulaName>ImNotInvisible</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Invisible/A0.ITEX" />
+	<lifeTime>
+		<compiledString>FVUAAAAFAAAAZAAAAHcAAACLAAAApQAAAMoAAABTZW5kZXJfTmF0aXZlVGVycmFpbgAAAABBMF9UaW1lVG9Hb0ludmlzaWJsZQAAAABBMF9UZXJycmFpblRpbWUAQTBfVGltZVRvR29JbnZpc2libGUAVYvsg+wUi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHesAAADf4PbERHs/i0UMUItNCFFoGAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgwAAAAi1UQiwKLTRCLUFDdXfj/0txt+N1d8Osdi0UMUItNCFFoQAAAAItVEIsCi00Qi1BQ/9LdXfDdRfDZXezZReyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>cSender_NativeTerrain ?  (cA0_TimeToGoInvisible - cA0_TerrrainTime) : cA0_TimeToGoInvisible</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Invisible/status_A0_InvisibleDisable.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

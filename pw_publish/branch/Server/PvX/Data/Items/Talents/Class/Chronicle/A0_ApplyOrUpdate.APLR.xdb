@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellSwitchApplicator>
+	<BackLink DBID="/Items/Talents/Class/Chronicle/Ability_A0.TALENT" Count="1" />
+	<activeSpellIndex>
+		<compiledString>FRoAAAABAAAAJAAAAENocm9uaWNsZUEwSGFzdGVDb250YWluZXIAVYvsagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlcGLwV3D</compiledString>
+		<returnType>int</returnType>
+		<sString>receiver.applChronicleA0HasteContainer(UNIT) == pMisc ? 0 : 1</sString>
+	</activeSpellIndex>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>spell swich new/update</caption>
+	<dontUseDispatches>true</dontUseDispatches>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spells>
+		<Item href="/Items/Talents/Class/Chronicle/A0_ApplyOrUpdate.APLR" id="95CB2B7A-7ACE-4636-99A3-6DE40C8A160A">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Chronicle/A0_ApplyOrUpdate.APLR" id="CA0B4EE1-99C2-49AF-91C8-1A9567EEABDA">
+						<ApplicatorNameOverrider>
+							<applicator href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>chronicle haste</caption>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName>ChronicleA0HasteContainer</formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+						</ApplicatorNameOverrider>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Chronicle/A0_ApplyOrUpdate.APLR" id="714C6DBB-1D2C-47CE-8BB2-8A1DCBA989DA">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Chronicle/A0_ApplyOrUpdate.APLR" id="D7AEBE09-D90F-4863-A1A7-996FA810389D">
+						<AddApplicatorDuration>
+							<applicators>
+								<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+							</applicators>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>update lifetime ChronicleA0HasteContainer</caption>
+							<durationToAdd>
+								<compiledString>FQ8AAAABAAAAGwAAAEhhc3RlX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>cHaste_Duration</sString>
+							</durationToAdd>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flags>3</flags>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<nameToCheck>ChronicleA0HasteContainer</nameToCheck>
+							<providerName></providerName>
+						</AddApplicatorDuration>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+	</spells>
+</SpellSwitchApplicator>

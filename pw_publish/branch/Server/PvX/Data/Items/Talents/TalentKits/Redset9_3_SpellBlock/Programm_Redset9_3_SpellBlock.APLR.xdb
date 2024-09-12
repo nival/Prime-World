@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Level2/G706_Str.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G707_Int.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level3/G708_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G709_DexOrAtSpd_Life.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G737_Int.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" id="7656F48F-2678-4F66-9960-F33EBEE5AD09">
+				<PermanentStatModApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>Add_SpellBlock_Redset9_3Counter</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</addValue>
+						<multValue>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>Add_SpellBlock_Redset9_3Counter</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" id="1C689B23-8C6D-4DDF-BBB8-72EA032E159F">
+				<TriggerApplicator>
+					<actionsCount>
+						<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+						<returnType>int</returnType>
+						<sString>0</sString>
+					</actionsCount>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>136</behaviorFlags>
+					<caption>Redset9_3_SpellBlock</caption>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>FSAAAAACAAAAJQAAADsAAABBZGRfU3BlbGxCbG9ja19SZWRzZXQ5XzNDb3VudGVyAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHV0AAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAIQA==</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.vAdd_SpellBlock_Redset9_3Counter == 3</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<playAck>false</playAck>
+					<processor href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" id="28EE6FA5-76D3-4BE9-AE00-4595B9ABD8C7">
+						<EventProcessorDamageTransformer>
+							<abilityFilter>
+								<abilitiesList />
+								<abilityCondition>
+									<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</abilityCondition>
+								<abilityCostMode>Any</abilityCostMode>
+								<exceptThis>false</exceptThis>
+								<flags>1073741952</flags>
+								<onlySingleTarget>false</onlySingleTarget>
+							</abilityFilter>
+							<add>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>0.0f</sString>
+							</add>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<checkSender>0</checkSender>
+							<damageTypeFilter>15</damageTypeFilter>
+							<flags>0</flags>
+							<matchTargetInverted>false</matchTargetInverted>
+							<mul>
+								<compiledString>FTYAAAADAAAAVQAAAGcAAACOAAAAcmF3RGFtYWdlAAAAU3BlbGxCbG9ja19BbW91bnQAAABTcGVsbEJsb2NrX1BlcmNlbnRhZ2UAVYvsg+wYi0UQixCLTRCLQkj/0IlF/ItNDFGLVQhSaAwAAACLRRCLEItNEItCUP/QaAAAAACLTfyLEYtN/ItCVN1d9P/Q3F303+D2xAF1I4tNDFGLVQhSaCAAAACLRRCLEItNEItCUP/Q2ejeyd1d7OsF2ejdXezdRezZXejZReiL5V3DAAAAAAAA8D8=</compiledString>
+								<returnType>float</returnType>
+								<sString>appl.parent.GetVariable("rawDamage") &gt;= cSpellBlock_Amount ? 1 * cSpellBlock_Percentage : 1.0f</sString>
+							</mul>
+							<objectFilter>2040319</objectFilter>
+							<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+							<spell href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" id="54709B20-AAAB-4B27-BF16-F20D849480BA">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Status_Redset9_3_SpellBlock.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" id="BAC0A853-57C8-4AB5-B7B7-05549069572A">
+											<ProgramApplicator>
+												<applicators>
+													<Item>
+														<applicator href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Status_Redset9_3_SpellBlockCoolDown.APLR" />
+														<continueCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</continueCondition>
+														<continueEvents>2</continueEvents>
+														<delay>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</delay>
+														<stopCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</stopCondition>
+														<stopEvents>0</stopEvents>
+													</Item>
+													<Item>
+														<applicator href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" id="07FFC458-6280-4167-A212-0C58D5298735">
+															<FlagsApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<behaviorFlags>32</behaviorFlags>
+																<caption>FX ловца снов</caption>
+																<consumables />
+																<effect>
+																	<Item href="/Effects/Buffs/Rebirth/_Rebirth_Moon.EFFT" />
+																	<Item href="" />
+																</effect>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<flag>0</flag>
+																<formulaName></formulaName>
+																<lifeTime>
+																	<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0f</sString>
+																</lifeTime>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+																<startCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</startCondition>
+																<talents />
+																<useListAs>ListAsRule</useListAs>
+															</FlagsApplicator>
+														</applicator>
+														<continueCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</continueCondition>
+														<continueEvents>2</continueEvents>
+														<delay>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</delay>
+														<stopCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</stopCondition>
+														<stopEvents>0</stopEvents>
+													</Item>
+												</applicators>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>152</behaviorFlags>
+												<caption>Программа со статусом КД и FX</caption>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString>FTIAAAADAAAAPwAAAHEAAACDAAAARzcwNl9EZWJ1ZmZPbmxpbmUAAAByYXdEYW1hZ2UAAABTcGVsbEJsb2NrX0Ftb3VudABVi+yD7BBqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9A7RRB1UotNEIsRi00Qi0JI/9CJRfyLTQxRi1UIUmggAAAAi0UQixCLTRCLQlD/0GgUAAAAi038ixGLTfyLQlTdXfT/0Nxd9N/g9sQBdQnHRfABAAAA6wfHRfAAAAAAikXwi+Vdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.applG706_DebuffOnline(UNIT) == pMisc &amp;&amp; (appl.parent.GetVariable("rawDamage") &gt;= cSpellBlock_Amount)</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString>FRAAAAABAAAAGgAAAEc3MDZfQnVmZk9ubGluZQBVi+xqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.applG706_BuffOnline(UNIT) == pMisc</sString>
+												</startCondition>
+											</ProgramApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" id="C74D0A6E-64D5-4C73-8F8C-9EB007C453CE">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>true</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+							<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+						</EventProcessorDamageTransformer>
+					</processor>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FRAAAAABAAAAGgAAAEc3MDZfQnVmZk9ubGluZQBVi+xqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.applG706_BuffOnline(UNIT) == pMisc</sString>
+					</startCondition>
+					<useAbilityCooldown>false</useAbilityCooldown>
+					<useAbilityOwnerMana>false</useAbilityOwnerMana>
+				</TriggerApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Redset9_3_SpellBlock</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FSAAAAACAAAAJQAAADsAAABBZGRfU3BlbGxCbG9ja19SZWRzZXQ5XzNDb3VudGVyAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHV0AAADf4PbEBXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAIQA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vAdd_SpellBlock_Redset9_3Counter &lt; 3</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

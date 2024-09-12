@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Inventor/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Inventor/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Inventor/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Inventor/Ability_A4.TALENT" Count="1" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>Увеличиваем скорость</caption>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" id="E159B649-30AD-4FBF-82B4-46C67B9BBD46">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" id="54EAF5CB-8DAA-4AE1-B352-6C5212AB52E9">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Сколько отсутствует деталек</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FSgAAAACAAAANwAAAFEAAABBMF9NYXhEZXRhaWxzAAAAQ3VycmVudEludmVudG9yX0RldGFpbHMAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgQAAAAi1UQiwKLTRCLUFDdXfj/0txt+Nld9NlF9IvlXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>cA0_MaxDetails - cCurrentInventor_Details</sString>
+							</addValue>
+							<multValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>DetailsSpend</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" id="6F3EF7C3-E409-4B01-BA7C-5AB72C1220B7">
+					<SpellSwitchApplicator>
+						<activeSpellIndex>
+							<compiledString>FQwAAAABAAAAFgAAAERldGFpbHNCdWZmAFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5XBi8Fdww==</compiledString>
+							<returnType>int</returnType>
+							<sString>receiver.applDetailsBuff(UNIT) ==pMisc ? 0 : 1</sString>
+						</activeSpellIndex>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Накладываем или обновляем статус</caption>
+						<dontUseDispatches>true</dontUseDispatches>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spells>
+							<Item href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" id="CDD5C86B-B303-46A1-93E5-F6B2B8D52459">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Inventor/status_A0_Details.APLR" />
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+							<Item href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" id="E9AB72AC-8CC7-4FF5-9640-D809762DC738">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" id="D8A3AF03-8B7A-4D81-A686-BA53103C40C4">
+											<AddApplicatorDuration>
+												<applicators>
+													<Item href="/Items/Talents/Class/Inventor/status_A0_Details.APLR" />
+												</applicators>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption></caption>
+												<durationToAdd>
+													<compiledString>FQ8AAAABAAAAGwAAAEhhc3RlX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>cHaste_Duration</sString>
+												</durationToAdd>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<flags>2</flags>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<nameToCheck></nameToCheck>
+												<providerName></providerName>
+											</AddApplicatorDuration>
+										</Item>
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+						</spells>
+					</SpellSwitchApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" id="67A99D0A-300B-413F-BE05-AAE64C491FDB">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>AbilityOwner</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

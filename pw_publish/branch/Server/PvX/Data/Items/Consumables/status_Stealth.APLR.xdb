@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Consumables/StealthCloak.ARCT" Count="1" />
+	<applicators>
+		<Item href="/Items/Consumables/status_Stealth.APLR" id="75E4972E-4EDE-4A12-AE72-72D599FA1424">
+			<InvisibilityApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>145</behaviorFlags>
+				<caption>собственно невидимость</caption>
+				<effect>
+					<Item href="/Effects/General/Invisible/_Switcher.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAACAAAABwAAACAAAABVi+xRUdkFSgAAANkcJItFCIsQi00Ii4KsAQAA/9DcHUIAAADf4PbEQXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAM3MTD4=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.GetDamageTaken(0.2) &lt;= 0</sString>
+				</enabled>
+				<fadeIn>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1</sString>
+				</fadeIn>
+				<formulaName>Invisibility</formulaName>
+				<ignoreCancel>false</ignoreCancel>
+				<lifeTime>
+					<compiledString>FSQAAAACAAAAMwAAAE0AAABJbnZpc0R1cmF0aW9uAAAASW52aXNpYmlsaXR5X0ZhZGVJbgBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBAAAACLVRCLAotNEItQUN1d+P/S3EX42V302UX0i+Vdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cInvisDuration+cInvisibility_FadeIn</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<onBecomeInvisible href="/Items/Consumables/status_Stealth.APLR" id="8578FA25-2C9C-462B-B0AF-3B0932B83A9E">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Consumables/status_Stealth.APLR" id="8F5F434F-4B61-43BA-818B-A9993C881FBB">
+								<FlagsApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption></caption>
+									<consumables />
+									<effect>
+										<Item href="/Items/Consumables/status_Stealth.APLR" id="0AD49C78-F85C-420B-B326-49E99F6A7E02">
+											<EffectSwitcher>
+												<deathType>Manual</deathType>
+												<effectOnInvisible href="/Effects/General/Invisible/DistortionEnemy.EFFT" />
+												<effectOnVisible href="" />
+												<enableCondition href="" />
+												<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+												<lifeTime>0</lifeTime>
+												<logic>FactionVisibility</logic>
+											</EffectSwitcher>
+										</Item>
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString>FQ0AAAACAAAAGAAAAEAAAABJbnZpc2liaWxpdHkAVYvsUWoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DtFEHQji00MixGLTQyLQkj/0NwdYgAAAN/g9sQFegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAOA/</compiledString>
+										<returnType>bool</returnType>
+										<sString>(receiver.applInvisibility(GLOBAL) != pMisc) &amp;&amp; (rTimeStanding &lt; 0.5)</sString>
+									</enabled>
+									<flag>0</flag>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<talents />
+									<useListAs>ListAsRule</useListAs>
+								</FlagsApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Consumables/status_Stealth.APLR" id="7B9D4AFA-AF2B-4A8F-B90F-F287B441A89C">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</onBecomeInvisible>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</InvisibilityApplicator>
+		</Item>
+		<Item href="/Items/Consumables/status_Stealth.APLR" id="CA84EF71-27C6-4EFE-B2F1-F6F56FC7688B">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Items/Consumables/status_Stealth.APLR_ca84ef7127c64efeb2f1f6f56fc7688b_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="" />
+				<value>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/InvisFadeInFX.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Статус "Маскировка" (Invisibility_Duration)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Consumables/status_Stealth.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/Manoeuvre/_.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvsaAAAAAiLRQyLEItNDItCaP/QD7bA99gbwIPAAV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>!rFlag(134217728)</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>StatusInvisibility</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Invis.ITEX" />
+	<lifeTime>
+		<compiledString>FSQAAAACAAAAMwAAAE0AAABJbnZpc0R1cmF0aW9uAAAASW52aXNpYmlsaXR5X0ZhZGVJbgBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBAAAACLVRCLAotNEItQUN1d+P/S3EX42V302UX0i+Vdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cInvisDuration+cInvisibility_FadeIn</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Consumables/status_Stealth.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRkAAAACAAAAPwAAAFIAAABJbnZpc2libGVfU3RhcnRDb25kaXRpb24AVYvsUWgAAAAIi0UMixCLTQyLQmj/0A+2yIXJdTCLVQxSi0UIUGgAAAAAi00QixGLTRCLQlD/0NwddAAAAN/g9sREewnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>!rFlag(134217728) &amp;&amp; cInvisible_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByAllChilds</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

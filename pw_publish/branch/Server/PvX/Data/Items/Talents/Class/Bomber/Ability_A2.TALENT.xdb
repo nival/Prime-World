@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Items/Talents/Bomber_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Bomber.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bomber/Ability_A2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Bomber_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Test/Talents/Bomber/Test.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="B20C5AD5-10AA-4651-B936-F60FD1076BBE">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>(upg) Считалка времени для стуна</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName>BomberA2_Timer</formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>10.0f; //beware, used in marker!</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABCb21iZXJfQTJ1AABCb21iZXJfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Bomber_A2u")</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="EA57A15D-4A22-47E0-908C-038918E194CD">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Спелл с ракетой</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="C113BE63-867C-4D51-993B-6AD06E700DE0">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="7C62F25A-37D2-4218-AA69-F3EA73F87C48">
+								<ProgramApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="17D53EC3-C3FA-42A2-9136-6C398CECD04B">
+												<SpellApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<caption>Спелл-обёртка для урона</caption>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<spell href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="189112DC-073F-42D9-9DB1-5A79DAC0597C">
+														<Spell>
+															<applicators>
+																<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="A6B16F03-72CE-4F50-B780-FA6B87107665">
+																	<DamageApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<cancelInvisibility>false</cancelInvisibility>
+																		<caption>Маг урон</caption>
+																		<damage>
+																			<compiledString>FQoAAAABAAAAFgAAAEEyX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																			<returnType>float</returnType>
+																			<sString>cA2_Damage</sString>
+																		</damage>
+																		<damageMode>0</damageMode>
+																		<damageType>Energy</damageType>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<timeLimiter>-1</timeLimiter>
+																		<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+																	</DamageApplicator>
+																</Item>
+																<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+															</applicators>
+															<dispatch href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="5D5851B2-AA0D-47A5-90B2-AED234E8B8C8">
+																<DispatchImmediate>
+																	<alwaysApply>false</alwaysApply>
+																	<applyEffect>
+																		<Item href="" />
+																		<Item href="" />
+																	</applyEffect>
+																	<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																	<applyEffectOrientation>Default</applyEffectOrientation>
+																	<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																	<dieAfterApply>true</dieAfterApply>
+																	<dispatchEffect>
+																		<Item href="" />
+																		<Item href="" />
+																	</dispatchEffect>
+																	<flags>1</flags>
+																	<instantApply>false</instantApply>
+																</DispatchImmediate>
+															</dispatch>
+														</Spell>
+													</spell>
+													<spellTarget>ApplicatorTarget</spellTarget>
+													<targetSelector href="" />
+												</SpellApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>1</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="CE2A5B4A-071C-4FDA-82C7-C3F849EDB9C2">
+												<MarkerApplicator>
+													<addValue>
+														<compiledString>FRkAAAADAAAAJgAAAD4AAABRAAAAQm9tYmVyQTJfVGltZXIAAGR1cmF0aW9uAFWL7IPsCGoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgQAAAAi038ixGLTfyLQlT/0NwtXwAAANld+NlF+IvlXcMAAAAAAAAkQA==</compiledString>
+														<returnType>float</returnType>
+														<sString>10 - pFirst-&gt;FindApplicator("BomberA2_Timer", pMisc, ABILITY)-&gt;GetVariable("duration")</sString>
+													</addValue>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<behaviorFlags>144</behaviorFlags>
+													<caption>(upg) Запоминаем время полёта ракеты</caption>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName>BomberA2_TravelTime</formulaName>
+													<lifeTime>
+														<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+														<returnType>float</returnType>
+														<sString>0.5</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</multValue>
+													<providerName></providerName>
+													<startCondition>
+														<compiledString>FRcAAAACAAAAHgAAADcAAABCb21iZXJfQTJ1AABCb21iZXJfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>tal("Bomber_A2u")</sString>
+													</startCondition>
+												</MarkerApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>2</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>146</behaviorFlags>
+									<caption>Программа обработки времени полёта, затем урона и стуна</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+								</ProgramApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="DEE0A68F-1088-42BA-BBBE-9B8D4CDF4CEF">
+							<DispatchLinear>
+								<aiming>Pursue</aiming>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Debuffs/Explosion/_TechnoHit.EFFT" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Effects/Shots/Rocket/_Bomber.EFFT" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<flyMode>Linear</flyMode>
+								<fromLocator>Attack</fromLocator>
+								<height>0</height>
+								<killEffect>true</killEffect>
+								<locatorOrient>false</locatorOrient>
+								<maxDeviation>180</maxDeviation>
+								<maxDistance>-1</maxDistance>
+								<maxRise>0</maxRise>
+								<minRise>0</minRise>
+								<persistentApplicators>
+									<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="39DC5510-2659-4CC2-A337-4AF891115524">
+										<SpellPeriodicallyApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>Открываем туман</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<period>
+												<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+												<returnType>float</returnType>
+												<sString>0.1f</sString>
+											</period>
+											<providerName></providerName>
+											<scaleMode>ScaleIsTime</scaleMode>
+											<spell href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="AF32127B-8E6B-4292-ACC2-F0C11B3AA476">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="E41ACC7E-A3E7-4F28-B59F-59245CBC5218">
+															<EyeApplicator>
+																<applyTarget>AbilityOwner</applyTarget>
+																<behaviorFlags>0</behaviorFlags>
+																<cancelObstacles>false</cancelObstacles>
+																<caption>открыть туман</caption>
+																<effect>
+																	<Item href="" />
+																	<Item href="" />
+																</effect>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<eyeTarget>ApplicatorTarget</eyeTarget>
+																<flags>8</flags>
+																<formulaName></formulaName>
+																<lifeTime>
+																	<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.5</sString>
+																</lifeTime>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+																<startCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</startCondition>
+																<visRange>
+																	<compiledString>FQ4AAAABAAAAGgAAAFZpc2lvbl9SYWRpdXMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cVision_Radius</sString>
+																</visRange>
+															</EyeApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="115D2CF1-9221-458C-A0C9-B80C98E1BD4F">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>true</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<startOffset>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</startOffset>
+											<targetSelector href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="56FEEA9B-6AE3-45DC-8A6F-236090FF6BB0">
+												<ConvertTargetToLand>
+													<aggregateMode>First</aggregateMode>
+													<targetSelector href="" />
+												</ConvertTargetToLand>
+											</targetSelector>
+										</SpellPeriodicallyApplicator>
+									</Item>
+									<Item href="/Items/Talents/Class/Bomber/status_A2_Enemy.APLR" />
+								</persistentApplicators>
+								<speed>40</speed>
+								<suspendTime>0</suspendTime>
+								<toLocator>Body</toLocator>
+							</DispatchLinear>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>A2. Ракета-ищейка</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Bomber/Ability_A2.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="F1E08656-1D64-41BD-A939-F57E21CDFACD">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABCb21iZXJfQTJ1AABCb21iZXJfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Bomber_A2u")</sString>
+				</condition>
+				<name>Bomber_A2u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="DB72DFF3-0758-4756-B50F-D531ECBF8C43">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="FE934514-42F2-4926-BB5A-B5952D4ED3E3">
+					<UnitConstant>
+						<name>A2_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAADIQgCAO0Q=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 100, 750)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="5E5139FF-A864-4551-9EFF-CF05826933F9">
+					<UnitConstant>
+						<name>Vision_Radius</name>
+						<var>
+							<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX1Nob3J0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Short</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="7762669B-A0C9-40DE-AEC5-94670FA97546">
+					<UnitConstant>
+						<name>Stun_StartCondition</name>
+						<var>
+							<compiledString>FRcAAAACAAAAHgAAADcAAABCb21iZXJfQTJ1AABCb21iZXJfQTJ1AFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4lN9NtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Bomber_A2u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="536DFCE3-457A-45EF-8CBD-2BF77D7DC322">
+					<UnitConstant>
+						<name>Stun_Duration</name>
+						<var>
+							<compiledString>FUoAAAAEAAAAVQAAAHUAAACTAAAAqQAAAEEydV9TdHVuRHVyYXRpb25fTWF4AAAAAEEydV9TdHVuRHVyYXRpb25fTWluAAAAAEJvbWJlckEyX1RyYXZlbFRpbWUAdmFsdWUAVYvsUWoCi0UQUGgwAAAAi00MixGLTQyLgpwBAAD/0IlF/ItNDFGLVQhSaAAAAACLRRCLEItNEItCUP/QUdkcJItNDFGLVQhSaBgAAACLRRCLEItNEItCUP/QUdkcJGhEAAAAi038ixGLTfyLQlT/0FHZHCToOgAAAIPEBNkcJOgHAAAAg8QIi+Vdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>clamp(pSecond-&gt;FindApplicator("BomberA2_TravelTime", pMisc, ABILITY)-&gt;GetVariable("value"), cA2u_StunDuration_Min, cA2u_StunDuration_Max)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bomber/const_A2u_StunDuration_Min" />
+				<Item href="/Items/Talents/Class/Bomber/const_A2u_StunDuration_Max" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAMQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>35</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Bomber/Ability_A2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="6F3BBC40-BCF7-4468-BCEE-E11EE67601EA">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>131</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Bomber/A2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAWQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>150</sString>
+	</manaCost>
+	<marker>doCast4</marker>
+	<microAI href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="0CD29F41-F9B4-4B73-B3CB-1359AEAFFE6C">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="9BC2A0B9-87F5-4DA4-8FAE-2B3AD0EFC442">
+				<ComparingTargetSelector>
+					<referenceValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</referenceValue>
+					<targetSelector href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="D9BBC9E4-14A7-4EC6-B759-388240E079DA">
+						<HeroEnumerator>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetFilter>536870913</targetFilter>
+						</HeroEnumerator>
+					</targetSelector>
+					<valueToCompare>
+						<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLAv/QXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>rLife</sString>
+					</valueToCompare>
+				</ComparingTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Bomber/Ability_A2.TALENT_name.txt" />
+	<node>ability4</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="CA972165-1B01-491D-B06C-1857E8307F99">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>136</behaviorFlags>
+				<caption>FX ракеты</caption>
+				<consumables />
+				<effect>
+					<Item href="/Heroes/Bomber/FX_Ability2.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRRCLEItNEItCHP/Q3B01AAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+					<returnType>bool</returnType>
+					<sString>mPreparedness == 1</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>Bomber_A2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Bomber/Ability_A2.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>536870913</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>
