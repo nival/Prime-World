@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_11.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_8.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_9.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="65017A88-0D3B-49CA-9C3D-608BA9F72E29">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Откл автоатаки</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>4</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQkAAAABAAAAFQAAAFdhaXRUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cWaitTime</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsException</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="A97BFDCD-3A21-4EEB-B199-B2C19C9CA5D8">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Спелл урона</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="38635293-A5D1-4E9C-80C7-C822B59FB01D">
+					<Spell>
+						<applicators>
+							<Item href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="FD5F62E1-37CD-47D1-8C24-6BC23EC8B605">
+								<DamageApplicator>
+									<applyTarget>AbilityTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>урон</caption>
+									<damage>
+										<compiledString>FQwAAAABAAAAGAAAAEJ1cnN0RGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cBurstDamage</sString>
+									</damage>
+									<damageMode>0</damageMode>
+									<damageType>Native</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="4B801BFE-6722-4F92-AA89-A9D8722C0233">
+							<DispatchLinear>
+								<aiming>Straight</aiming>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Shots/FireBall/_Hit.EFFT" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Effects/Shots/FireBall/_.EFFT" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<flyMode>Parabolic</flyMode>
+								<fromLocator>Attack</fromLocator>
+								<height>0</height>
+								<killEffect>true</killEffect>
+								<locatorOrient>false</locatorOrient>
+								<maxDeviation>180</maxDeviation>
+								<maxDistance>-1</maxDistance>
+								<maxRise>0</maxRise>
+								<minRise>0</minRise>
+								<persistentApplicators />
+								<speed>20</speed>
+								<suspendTime>0</suspendTime>
+								<toLocator>Body</toLocator>
+							</DispatchLinear>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="D8ACFA01-1116-4CBC-8E1F-6D40740C57AA">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="79C1ACE5-EAD3-45AF-9358-1DB44FAAB3B5">
+					<UnitConstant>
+						<name>BurstDamage</name>
+						<var>
+							<compiledString>FQAAAAABAAAAdAAAAFWL7IPsEItFCIsQi00Ii4IwAQAA/9CLTQiLEYtNCIuCNAEAAN1d+P/Q3F343+D2xAV6BsZF9wHrBMZF9wCLTQiLEYtNCIuCNAEAAP/QUdkcJItNCIsRi00Ii4IwAQAA/9BR2RwkD7ZN91HoGwAAAIPEDNwNggAAANld8NlF8IvlXcMAAAAAAAAIQFWL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>s(sStrength&gt;sIntellect, sStrength, sIntellect) * 3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="79548333-B8A9-4E16-AAD5-7084E9A950AB">
+					<UnitConstant>
+						<name>WaitTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.8</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>5</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="E1BF85B7-4B13-45C9-8BB5-B3ED45CA9D52">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>523</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="C31E86A9-1B6F-4803-9BD4-9E21633FA3CA">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="5A9C6FE6-4739-4FB1-8407-8E77CFAF4745">
+				<WeightTargetSelector>
+					<targetSelector href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" id="BD58C9E8-614D-4724-B8D4-5CAE195BCD46">
+						<AreaTargetSelector>
+							<absolutePosition>
+								<x>0</x>
+								<y>0</y>
+							</absolutePosition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<range>
+								<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+								<returnType>float</returnType>
+								<sString>cRange_Long</sString>
+							</range>
+							<targetFilter>672989247</targetFilter>
+							<targetSelector href="" />
+						</AreaTargetSelector>
+					</targetSelector>
+				</WeightTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>672989247</targetType>
+	<type>Active</type>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

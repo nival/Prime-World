@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/PlagueDoctor/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PlagueDoctor/Ability_A1.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/PlagueDoctor/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/PlagueDoctor/PlagueDoctorDot.APLR" id="3522A34B-4A10-4C0E-AF42-19F7438C9115">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Периодический спелл с уроном</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/PlagueDoctor/PlagueDoctorDot.APLR" id="A0E4ED54-86B4-4155-8DC4-C23EA448B66E">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/PlagueDoctor/PlagueDoctorDot.APLR" id="78E65B6D-C87B-4E4C-AE12-E4E1FEE34698">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>Урон за тик</caption>
+									<damage>
+										<compiledString>FQoAAAABAAAAFgAAAEEwX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA0_Damage</sString>
+									</damage>
+									<damageMode>0</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/PlagueDoctor/PlagueDoctorDot.APLR" id="F8546B37-4196-4CDC-BF56-5840FBDA198F">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>Дот</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/PlagueDoctor/PlagueDoctorDot.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Creeps/Normals/Normal1/FXPlague.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FR0AAAACAAAAKAAAAEgAAABXYXJkAAAAAFBsYWd1ZURvY3Rvcl9Eb3RBdXJhAFWL7FFqAItFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9A7RRB1KWoBi00QUWgIAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applWard(GLOBAL) == pMisc &amp;&amp; receiver.applPlagueDoctor_DotAura(UNIT) == pMisc</sString>
+	</enabled>
+	<flags>2</flags>
+	<formulaName>PlagueDoctor_Dot</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/PlagueDoctor/A0.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEwX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA0_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/PlagueDoctor/PlagueDoctorDot.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

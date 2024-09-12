@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Fluffy.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Fluffy_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Fluffy/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Fluffy/Ability_A2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Fluffy_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Fluffy/Elite_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Fluffy/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Fluffy/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Fluffy/Epic_Str.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FRIAAAADAAAAFwAAAC0AAABBAAAAQmlnRm9ybQBBMl9SYWRpdXMAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdZwAAAN/g9sRBdR+LTQxRi1UIUmgIAAAAi0UQixCLTRCLQlD/0Nld/OsF2e7ZXfzZRfyL5V3DAAAAAAAAAAAAAAAA</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.vBigForm&gt;0 ? cA2_Radius : 0</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="58633331-BEB3-4802-A269-273A85A7ECB7">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FQgAAAACAAAADQAAACMAAABCaWdGb3JtAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUUAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAItF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>int</returnType>
+					<sString>sender.vBigForm&gt;0 ? 1 : 0</sString>
+				</activeSpellIndex>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Спелсвитч в зависимости от текущей формы</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="071A37C1-2AF1-48FE-BD2A-6E0F96FBAE05">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Fluffy/status_A2_LittleSelf.APLR" />
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="80621226-68BA-4038-8579-10202BBDDFD6">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="5740E3F7-E65A-4E0D-A994-684FF6B0EF0C">
+									<ProgramApplicator>
+										<applicators>
+											<Item>
+												<applicator href="/Items/Talents/Class/Fluffy/statmod_A0_BigFormForbid.APLR" />
+												<continueCondition>
+													<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>0</sString>
+												</continueCondition>
+												<continueEvents>1</continueEvents>
+												<delay>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</delay>
+												<stopCondition>
+													<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>0</sString>
+												</stopCondition>
+												<stopEvents>0</stopEvents>
+											</Item>
+											<Item>
+												<applicator href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="7B0ECC76-3AB0-4837-A4F2-6477F4984960">
+													<SpellApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<caption>АОЕ страх и сайленс</caption>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<spell href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="187848D7-706A-47C7-85C7-FCBD8E0EAAF1">
+															<Spell>
+																<applicators>
+																	<Item href="/Heroes/DefaultStatus/_FEAR_status.APLR" />
+																	<Item href="/Heroes/DefaultStatus/_SILENCE_Status.APLR" />
+																</applicators>
+																<dispatch href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="33CC7C30-8804-4E85-86E3-18183484D087">
+																	<DispatchImmediate>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Default</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>0</flags>
+																		<instantApply>false</instantApply>
+																	</DispatchImmediate>
+																</dispatch>
+															</Spell>
+														</spell>
+														<spellTarget>ApplicatorTarget</spellTarget>
+														<targetSelector href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="0EAC1491-BDC3-474D-847E-7FCEC66A49FB">
+															<AreaTargetSelector>
+																<absolutePosition>
+																	<x>0</x>
+																	<y>0</y>
+																</absolutePosition>
+																<flags>0</flags>
+																<mode>Normal</mode>
+																<range>
+																	<compiledString>FQoAAAABAAAAFgAAAEEyX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cA2_Radius</sString>
+																</range>
+																<targetFilter>538771519</targetFilter>
+																<targetSelector href="" />
+															</AreaTargetSelector>
+														</targetSelector>
+													</SpellApplicator>
+												</applicator>
+												<continueCondition>
+													<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>0</sString>
+												</continueCondition>
+												<continueEvents>2</continueEvents>
+												<delay>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</delay>
+												<stopCondition>
+													<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>0</sString>
+												</stopCondition>
+												<stopEvents>0</stopEvents>
+											</Item>
+											<Item>
+												<applicator href="/GameLogic/GeneralApplicators/EndOfAbility.APLR" />
+												<continueCondition>
+													<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>0</sString>
+												</continueCondition>
+												<continueEvents>1</continueEvents>
+												<delay>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</delay>
+												<stopCondition>
+													<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>0</sString>
+												</stopCondition>
+												<stopEvents>0</stopEvents>
+											</Item>
+										</applicators>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>2</behaviorFlags>
+										<caption>Программа с анимацией А2</caption>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+									</ProgramApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А2. Страшись!</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Fluffy/Ability_A2.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="882050C3-EB30-4834-9CFF-04D3CD86F939">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABGbHVmZnlfQTJ1AABGbHVmZnlfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Fluffy_A2u") == false</sString>
+				</condition>
+				<name>Fluffy_A2u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="53823E7D-3748-4333-ABC1-5E101293D126">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="28D4533E-2854-4EFC-A332-232DB808EB85">
+					<UnitConstant>
+						<name>A2_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2.5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="A7724C24-C27A-4AC5-90ED-68BEF60EC0FE">
+					<UnitConstant>
+						<name>A2Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAABIQgCAu0M=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 50, 375)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="51E02BFD-1F56-4AE6-B9C9-8A54050C37E1">
+					<UnitConstant>
+						<name>A2Range</name>
+						<var>
+							<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX01lbGVlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Melee</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="80E415B0-3AC0-4076-A4AF-CB3823BB039C">
+					<UnitConstant>
+						<name>A2_Radius</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="CDFE713E-2C67-45BA-99D6-6534FB606C07">
+					<UnitConstant>
+						<name>Fear_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="41661C2D-216D-4041-B428-F7CA32F0A1DC">
+					<UnitConstant>
+						<name>Fear_Penalty</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAFHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3D16OIQAAAAEI=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale( sStrength, 4.27, 32, false)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/const_A2u_SilenceDuration" />
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="76042ED6-2896-4485-894F-EFA9CCB558DA">
+					<UnitConstant>
+						<name>Silence_StartCondition</name>
+						<var>
+							<compiledString>FRcAAAACAAAAHgAAADcAAABGbHVmZnlfQTJ1AABGbHVmZnlfQTJ1AFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4lN9NtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Fluffy_A2u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="F62260AB-A513-4DEE-B13D-1FBF18634EEE">
+					<UnitConstant>
+						<name>Haste_Duration</name>
+						<var>
+							<compiledString>FQwAAAABAAAAGAAAAEEyX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_Duration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="D7DB2A7D-C138-499F-B877-9B4E6E66EB40">
+					<UnitConstant>
+						<name>Haste_StartCondition</name>
+						<var>
+							<compiledString>FRcAAAACAAAAHgAAADcAAABGbHVmZnlfQTJ1AABGbHVmZnlfQTJ1AFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4lN9NtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Fluffy_A2u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/const_A2u_HastePercent" />
+				<Item href="/Items/Talents/Class/Fluffy/const_Max_Rage" />
+				<Item href="/Items/Talents/Class/Fluffy/const_RageLogic" />
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="59747734-86A1-41F0-BB82-DD917A0807EE">
+					<UnitConstant>
+						<name>Rage_Per_Damage</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="BDDA543A-4382-4DC1-ABC9-E6BF268041BD">
+					<UnitConstant>
+						<name>BaseCD</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/const_SkillCD" />
+				<Item href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="DEDE73B6-60DC-4BC9-BCE6-0677A964341A">
+					<UnitConstant>
+						<name>SecondaryBaseCD</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Fluffy/const_SecondarySkillCD" />
+				<Item href="/Items/Talents/Class/Fluffy/const_A0_SUP_CDR" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQgAAAABAAAAFAAAAFNraWxsQ0QAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cSkillCD</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString>FREAAAABAAAAHQAAAFNlY29uZGFyeVNraWxsQ0QAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cSecondarySkillCD</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Fluffy/Ability_A2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" id="D284835F-0372-4360-AAC0-360A634F0B9C">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>18</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Fluffy/A2_small.ITEX" />
+	<imageSecondState href="/UI/Styles/Icons/Heroes/Fluffy/A2_big.ITEX" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker>doCast2</marker>
+	<microAI href="" />
+	<minLevel>1</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>390</naftaCost>
+	<name textref="/Items/Talents/Class/Fluffy/Ability_A2.TALENT_name.txt" />
+	<node>ability2</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>Fluffy_A2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Fluffy/Ability_A2.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FRIAAAADAAAAFwAAAC0AAABBAAAAQmlnRm9ybQBBMl9SYWRpdXMAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdZwAAAN/g9sRBdR+LTQxRi1UIUmgIAAAAi0UQixCLTRCLQlD/0Nld/OsF2e7ZXfzZRfyL5V3DAAAAAAAAAAAAAAAA</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.vBigForm&gt;0 ? cA2_Radius : 0</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

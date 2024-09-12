@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/Normals/Normal2/PvE_Coop1_Support.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption>аура защиты от AoE</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="160E03C9-239B-4AA5-BC3E-359634B6F188">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="F51D7CA5-5F0B-47E1-BC08-312D5EF53549">
+					<UnitConstant>
+						<name>Range</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="324511AE-672B-4775-B7E6-B48F5BE30E48">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="B9E5EB70-4F82-4ACE-B9F5-E9A39459FE07">
+						<StatusApplicator>
+							<applicators>
+								<Item href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="6FB034E5-7E43-45FE-908A-F0023081B283">
+									<TriggerApplicator>
+										<actionsCount>
+											<compiledString></compiledString>
+											<returnType>int</returnType>
+											<sString>0</sString>
+										</actionsCount>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption></caption>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<playAck>false</playAck>
+										<processor href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="4326C597-CBE9-493A-BFF3-306A760D446B">
+											<EventProcessorDamageTransformer>
+												<abilityFilter>
+													<abilitiesList />
+													<abilityCondition>
+														<compiledString>FQ4AAAABAAAAEgAAAEluaXRpYWxUYXJnZXQAVYvsaAAAAACLRRCLEItNEItCTP/QM8k7RQwPlcGKwV3D</compiledString>
+														<returnType>bool</returnType>
+														<sString>pMisc-&gt;GetObject("InitialTarget") != pSecond</sString>
+													</abilityCondition>
+													<abilityCostMode>Energy</abilityCostMode>
+													<exceptThis>false</exceptThis>
+													<flags>1073743103</flags>
+													<onlySingleTarget>false</onlySingleTarget>
+												</abilityFilter>
+												<add>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</add>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<checkSender>0</checkSender>
+												<damageTypeFilter>31</damageTypeFilter>
+												<flags>0</flags>
+												<matchTargetInverted>false</matchTargetInverted>
+												<mul>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</mul>
+												<objectFilter>2040319</objectFilter>
+												<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+												<spell href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="2E1505DD-CCF8-4B44-A733-EE68A7B2D19A">
+													<Spell>
+														<applicators />
+														<dispatch href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="12EE6C4B-8A56-4ADF-9941-E6605A516213">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="/Effects/Buffs/Bubble/_.EFFT" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</spell>
+												<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+											</EventProcessorDamageTransformer>
+										</processor>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<useAbilityCooldown>false</useAbilityCooldown>
+										<useAbilityOwnerMana>false</useAbilityOwnerMana>
+									</TriggerApplicator>
+								</Item>
+							</applicators>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>защита от AoE</caption>
+							<customCounter>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</customCounter>
+							<customProgress>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</customProgress>
+							<description textref="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT_b9e5eb704f824aceb9f5e9a39459fe07_description.txt" />
+							<dispellPriority>NonDispellable</dispellPriority>
+							<effect>
+								<Item href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="781D4697-6AA5-46CD-8E8C-90814AFA1274">
+									<ScaleColorEffect>
+										<blendMode>AddColorMulAlpha</blendMode>
+										<colorAdd>
+											<A>0</A>
+											<B>0.05</B>
+											<G>0.05</G>
+											<R>0.05</R>
+										</colorAdd>
+										<colorMul>
+											<A>0.99</A>
+											<B>0.3333333</B>
+											<G>1</G>
+											<R>0.3333333</R>
+										</colorMul>
+										<deathType>Manual</deathType>
+										<enableCondition href="" />
+										<fadeInTime>1</fadeInTime>
+										<fadeOutTime>1</fadeOutTime>
+										<fullRecolor>false</fullRecolor>
+										<lifeTime>0</lifeTime>
+										<scale>1</scale>
+										<scaleIn>1</scaleIn>
+										<scaleOut>1</scaleOut>
+									</ScaleColorEffect>
+								</Item>
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flags>0</flags>
+							<formulaName></formulaName>
+							<image href="/UI/Styles/Icons/Statuses/Neutral/shield_blue.ITEX" />
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<name textref="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT_b9e5eb704f824aceb9f5e9a39459fe07_name.txt" />
+							<power>0</power>
+							<providerName></providerName>
+							<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+							<stackCount>0</stackCount>
+							<startCondition>
+								<compiledString>FQ8AAAACAAAAFAAAACoAAABIYXNBbnRpQW9lQXVyYQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+								<returnType>bool</returnType>
+								<sString>receiver.vHasAntiAoeAura == 0.f</sString>
+							</startCondition>
+							<statusPosition>0</statusPosition>
+							<stopBehaviour>StopByTime</stopBehaviour>
+							<unstackableWith href="" />
+						</StatusApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption></caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cRange</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>403439679</targets>
+				<targetSelector href="" />
+				<type>Ally</type>
+			</AuraApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal2/AntiAoe_Aura.ABLT" id="BA515EF3-1968-4CD7-AED6-BD1855E0D9DA">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption></caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>HasAntiAoeAura</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

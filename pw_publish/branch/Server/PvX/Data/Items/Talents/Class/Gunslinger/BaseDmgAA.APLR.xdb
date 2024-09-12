@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableProxyApplicator>
+	<BackLink DBID="/Heroes/Gunslinger/_.HROB" Count="2" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="20705AA7-516E-43DB-BF83-08202608D997">
+				<DamageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<cancelInvisibility>false</cancelInvisibility>
+					<caption> -- Base Attack Damage (Hero)</caption>
+					<damage>
+						<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4IEAQAA/9BR2Rwk6DgAAACDxARQi00IixGLTQiLggABAAD/0FHZHCToGwAAAIPEBFCLTRCLEYtNEItCXP/QiUX820X8i+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>random ( f2l(sDamageMin), f2l(sDamageMax))</sString>
+					</damage>
+					<damageMode>11</damageMode>
+					<damageType>Native</damageType>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+				<Item>isCritical</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="74A20877-D67E-4D30-A225-B11A16DC1A69">
+				<DamageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<cancelInvisibility>false</cancelInvisibility>
+					<caption>(A0) доп урон</caption>
+					<damage>
+						<compiledString>FR4AAAACAAAALQAAAD8AAABBMF9UZXJyYWluRGFtYWdlAAAAAEhlcm9fUmFnZQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0mgUAAAAi0UIixCLTQiLgogBAADdXfj/0NxN+Nld9NlF9IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA0_TerrainDamage * sender.vHero_Rage</sString>
+					</damage>
+					<damageMode>4</damageMode>
+					<damageType>Energy</damageType>
+					<enabled>
+						<compiledString>FQUAAAABAAAATgAAAFdhcmQAVYvsUVaLRQiLEItNCItCTP/Qi/CLTQiLEYtNCIuCkAEAAP/QO/APlMEPttGF0nQ7i0UMixCLTQyLQlD/0IP4EXQpagCLTRBRaAAAAACLVQyLAotNDIuQnAEAAP/SO0UQdQnHRfwBAAAA6wfHRfwAAAAAikX8XovlXcM=</compiledString>
+						<returnType>bool</returnType>
+						<sString>nt(true, false) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+					</enabled>
+					<formulaName>Gun_A0Damage</formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="CD2FE748-A23F-43BD-8109-28B20E108484">
+				<DamageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<cancelInvisibility>false</cancelInvisibility>
+					<caption>(А2) доп урон</caption>
+					<damage>
+						<compiledString>FRAAAAABAAAAHAAAAEEyX0JvbnVzX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_Bonus_Damage </sString>
+					</damage>
+					<damageMode>4</damageMode>
+					<damageType>Energy</damageType>
+					<enabled>
+						<compiledString>FREAAAACAAAAHAAAAE4AAABBMkFiaWxpdHlPbgBXYXJkAFWL7FFqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9A7RRB0O4tNDIsRi00Mi0JQ/9CD+BF0KWoAi00QUWgMAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcM=</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.applA2AbilityOn(GLOBAL) != pMisc &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+					</enabled>
+					<formulaName>Gun_A2Damage</formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="2FA99BDE-2ADA-4D64-9AFE-AEA5C4D6F9A7">
+				<DamageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<cancelInvisibility>false</cancelInvisibility>
+					<caption>(А4) доп маг урон</caption>
+					<damage>
+						<compiledString>FRAAAAABAAAAHAAAAEE0X0JvbnVzX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_Bonus_Damage</sString>
+					</damage>
+					<damageMode>4</damageMode>
+					<damageType>Energy</damageType>
+					<enabled>
+						<compiledString>FSEAAAAEAAAALAAAAEYAAABcAAAAgAAAAEd1bnNsaW5nZXJfQTQAAABIZXJvX1JhZ2UAAABXYXJkAFWL7FFqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9A7RRB0XWgQAAAAi00IixGLTQiLgogBAAD/0NwdsAAAAN/g9sRBdTuLTQyLEYtNDItCUP/Qg/gRdClqAItNEFFoHAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.applGunslinger_A4(GLOBAL) != pMisc &amp;&amp; sender.vHero_Rage &gt; 0 &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+					</enabled>
+					<formulaName>Gun_A4Damage</formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="CF5C9242-0DBA-4431-A970-E0E1AAB46EB8">
+				<DamageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<cancelInvisibility>false</cancelInvisibility>
+					<caption>(А4_2) доп урон</caption>
+					<damage>
+						<compiledString>FQ8AAAABAAAAGwAAAEE0XzJBdHRhY2tCdWZmAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_2AttackBuff</sString>
+					</damage>
+					<damageMode>4</damageMode>
+					<damageType>Material</damageType>
+					<enabled>
+						<compiledString>FRkAAAACAAAAJAAAAFYAAABHdW5zbGluZ2VyQTRfMkJ1ZmYAAFdhcmQAVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DtFEHQ7i00MixGLTQyLQlD/0IP4EXQpagCLTRBRaBQAAACLVQyLAotNDIuQnAEAAP/SO0UQdQnHRfwBAAAA6wfHRfwAAAAAikX8i+Vdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.applGunslingerA4_2Buff(GLOBAL) != pMisc &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+					</enabled>
+					<formulaName>AttackBuff_A4_2Damage</formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="CF46D6CA-9529-43E2-97F9-647E9312E70C">
+				<UIMessageApplicator parent="/UI/Events/CommonEvents/UI_Message_Damage_Energy.APLR">
+					<enabled>
+						<compiledString>FVIAAAAEAAAAiQAAAJsAAACwAAAAzAAAAEd1bl9BMERhbWFnZTpkYW1hZ2VEZWFsZWQAAABHdW5fQTJEYW1hZ2U6ZGFtYWdlRGVhbGVkAAAAR3VuX0E0RGFtYWdlOmRhbWFnZURlYWxlZABVi+yD7CCLRRCLEItNEItCSP/QiUX8i00QixGLTRCLQkj/0IlF+ItNEIsRi00Qi0JI/9CJRfRoOAAAAItN9IsRi030i0JU/9BoHAAAAItN+IsRi034i0JU3V3s/9BoAAAAAItN/IsRi038i0JU3V3k/9DcReTcRezcHe4AAADf4PbEQXUJx0XgAQAAAOsHx0XgAAAAAIpF4IvlXcMAAAAAAAAAAA==</compiledString>
+						<returnType>bool</returnType>
+						<sString>($ParentApplVariable("Gun_A0Damage:damageDealed")+ $ParentApplVariable("Gun_A2Damage:damageDealed")+ $ParentApplVariable("Gun_A4Damage:damageDealed")) &gt; 0</sString>
+					</enabled>
+					<value>
+						<compiledString>FVIAAAADAAAAiQAAAJsAAACwAAAAR3VuX0EwRGFtYWdlOmRhbWFnZURlYWxlZAAAAEd1bl9BMkRhbWFnZTpkYW1hZ2VEZWFsZWQAAABHdW5fQTREYW1hZ2U6ZGFtYWdlRGVhbGVkAFWL7IPsIItFEIsQi00Qi0JI/9CJRfyLTRCLEYtNEItCSP/QiUX4i00QixGLTRCLQkj/0IlF9Gg4AAAAi030ixGLTfSLQlT/0GgcAAAAi034ixGLTfiLQlTdXez/0GgAAAAAi038ixGLTfyLQlTdXeT/0NxF5NxF7Nld4NlF4IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>$ParentApplVariable("Gun_A0Damage:damageDealed")+ $ParentApplVariable("Gun_A2Damage:damageDealed")+ $ParentApplVariable("Gun_A4Damage:damageDealed")</sString>
+					</value>
+				</UIMessageApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="4D036F18-940E-4916-9298-84DFA0BCE94B">
+				<UIMessageApplicator parent="/UI/Events/CommonEvents/UI_Message_Damage_Material.APLR">
+					<enabled>
+						<compiledString>FT8AAAAFAAAAVgAAAGkAAACVAAAApwAAAMAAAABpc0NyaXRpY2FsAABkYW1hZ2VEZWFsZWQAAAAAQXR0YWNrQnVmZl9BNF8yRGFtYWdlOmRhbWFnZURlYWxlZABVi+yD7BiLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3B3iAAAA3+D2xER6YItNEIsRi00Qi0JI/9CJRfiLTRCLEYtNEItCSP/QiUX0aBwAAACLTfSLEYtN9ItCVP/QaAwAAACLTfiLEYtN+ItCVN1d7P/Q3EXs3B3iAAAA3+D2xEF1CcdF6AEAAADrB8dF6AAAAACKReiL5V3DAAAAAAAAAAA=</compiledString>
+						<returnType>bool</returnType>
+						<sString>$ParentApplVariable("isCritical") == 0 &amp;&amp; ($ParentApplVariable("damageDealed") + $ParentApplVariable("AttackBuff_A4_2Damage:damageDealed") ) &gt; 0</sString>
+					</enabled>
+					<value>
+						<compiledString>FTMAAAACAAAAWgAAAGwAAABkYW1hZ2VEZWFsZWQAAAAAQXR0YWNrQnVmZl9BNF8yRGFtYWdlOmRhbWFnZURlYWxlZABVi+yD7BSLRRCLEItNEItCSP/QiUX8i00QixGLTRCLQkj/0IlF+GgQAAAAi034ixGLTfiLQlT/0GgAAAAAi038ixGLTfyLQlTdXfD/0NxF8Nld7NlF7IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>$ParentApplVariable("damageDealed") + $ParentApplVariable("AttackBuff_A4_2Damage:damageDealed") </sString>
+					</value>
+				</UIMessageApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" id="8A8FACCB-E569-439E-9E61-8D24710E0287">
+				<UIMessageApplicator parent="/UI/Events/CommonEvents/UI_Message_Crit_Material.APLR">
+					<enabled>
+						<compiledString>FT8AAAAFAAAAVgAAAGkAAACVAAAApwAAAMAAAABpc0NyaXRpY2FsAABkYW1hZ2VEZWFsZWQAAAAAQXR0YWNrQnVmZl9BNF8yRGFtYWdlOmRhbWFnZURlYWxlZABVi+yD7BiLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3B3iAAAA3+D2xER7YItNEIsRi00Qi0JI/9CJRfiLTRCLEYtNEItCSP/QiUX0aBwAAACLTfSLEYtN9ItCVP/QaAwAAACLTfiLEYtN+ItCVN1d7P/Q3EXs3B3iAAAA3+D2xEF1CcdF6AEAAADrB8dF6AAAAACKReiL5V3DAAAAAAAAAAA=</compiledString>
+						<returnType>bool</returnType>
+						<sString>$ParentApplVariable("isCritical") != 0 &amp;&amp; ($ParentApplVariable("damageDealed") + $ParentApplVariable("AttackBuff_A4_2Damage:damageDealed") ) &gt; 0</sString>
+					</enabled>
+					<value>
+						<compiledString>FTMAAAACAAAAWgAAAGwAAABkYW1hZ2VEZWFsZWQAAAAAQXR0YWNrQnVmZl9BNF8yRGFtYWdlOmRhbWFnZURlYWxlZABVi+yD7BSLRRCLEItNEItCSP/QiUX8i00QixGLTRCLQkj/0IlF+GgQAAAAi034ixGLTfiLQlT/0GgAAAAAi038ixGLTfyLQlTdXfD/0NxF8Nld7NlF7IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>$ParentApplVariable("damageDealed") + $ParentApplVariable("AttackBuff_A4_2Damage:damageDealed") </sString>
+					</value>
+				</UIMessageApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>уроны</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+</VariableProxyApplicator>

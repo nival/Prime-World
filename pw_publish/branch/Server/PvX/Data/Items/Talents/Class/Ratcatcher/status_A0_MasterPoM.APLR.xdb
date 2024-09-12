@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Ratcatcher/status_A0_PowerOfMany.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Ratcatcher/Ability2.TALENT" Count="3" />
+	<BackLink DBID="/Items/Talents/Class/Ratcatcher/status_A0_HeroPoM.APLR" Count="3" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="A62AC1D9-7CF0-4822-936E-C087219B1574">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - спел (одноразовый) полечить всех друзей в зоне, чтобы они компенсировать специфику адд макс хитов</caption>
+				<enabled>
+					<compiledString>FQkAAAACAAAAIgAAADgAAABMaWtlSGVybwBVi+xRi0UMixCLTQyLQlT/0A+2yIXJdShoAAAAAItVDIsCi00Mi5CIAQAA/9LcHYIAAADf4PbERHsGxkX/AOsExkX/AVHZ6NkcJFHZ7tkcJA+2Rf9Q6CcAAACDxAjZHCToPQAAAIPEBIXAD5XAi+VdwwAAAAAAAIA/AAAAAAAA8D9Vi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>f2l(s( rIsHero ||  receiver.vLikeHero == 1, false, true) )</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="F01D15AB-12CF-4580-9E84-B4241CBE84F3">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="8A885E6B-8345-4736-9E5A-5D0F89A7213C">
+								<HealApplicator>
+									<amount>
+										<compiledString>FSsAAAADAAAAMgAAAEsAAABrAAAAUmF0Y2F0Y2hlcl9BMAAAAFJhdGNhdGNoZXJfQTAAAABCb251c19MaWZlAFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdDdoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTQxRi1UIUmggAAAAi0X8ixCLTfyLQlD/0Nld+OsF2e7ZXfiLTQyLEYtNDIsC/9CLTQyLEYtNDItCDN1d8P/Q3H3w2eje4dhN+Nld7NlF7IvlXcMAAAAAAADwPwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>(1 - rLife/rMaxLife) * talconstNoCheck("Ratcatcher_A0","Bonus_Life")</sString>
+									</amount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption> - Хил</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<healTarget>Health</healTarget>
+									<ignoreHealingMods>false</ignoreHealingMods>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="" />
+								</HealApplicator>
+							</Item>
+							<Item href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="FC72AEC1-5497-4E63-AEB8-3EB481C1F9ED">
+								<HealApplicator>
+									<amount>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0</sString>
+									</amount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption> (ПОКА НЕ РАБОТАЕТ) - Фейковый Fly-off текст с ненастоящим отхилом</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<healTarget>Health</healTarget>
+									<ignoreHealingMods>false</ignoreHealingMods>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+								</HealApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="19676857-AC92-4DE7-BD8A-FE9CD1E721D4">
+							<DispatchByTime>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<cancelOnSenderDeath>true</cancelOnSenderDeath>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<lifeTime>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPg==</compiledString>
+									<returnType>float</returnType>
+									<sString>0.4</sString>
+								</lifeTime>
+								<persistentApplicators />
+							</DispatchByTime>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="05FE97E4-BE2B-445F-8967-C67045B66AF2">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>увеличить жизнь за саммон</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FSsAAAADAAAAMgAAAEsAAABrAAAAUmF0Y2F0Y2hlcl9BMAAAAFJhdGNhdGNoZXJfQTAAAABCb251c19MaWZlAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdDdoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTQxRi1UIUmggAAAAi0X8ixCLTfyLQlD/0Nld+OsF2e7ZXfjZRfiL5V3DAAAAAA==</compiledString>
+						<returnType>float</returnType>
+						<sString>talconstNoCheck("Ratcatcher_A0","Bonus_Life")</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="BA4F99E3-5016-4D79-96B9-39847933ED42">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>-- Даем стамину за суммона</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FS4AAAADAAAANQAAAE4AAABuAAAAUmF0Y2F0Y2hlcl9BMAAAAFJhdGNhdGNoZXJfQTAAAABCb251c19TdGFtaW5hAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdDdoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTQxRi1UIUmggAAAAi0X8ixCLTfyLQlD/0Nld+OsF2e7ZXfjZRfiL5V3DAAAAAA==</compiledString>
+						<returnType>float</returnType>
+						<sString>talconstNoCheck("Ratcatcher_A0","Bonus_Stamina") </sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Stamina</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR" id="562E8E61-CAB1-4039-BF8E-0F7E0A6EBFA9">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> -- PowerOfManyCount setup</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>PowerOfManyCount</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Сила многих, статус через статус суммона</caption>
+	<customCounter>
+		<compiledString>FREAAAABAAAAFQAAAFBvd2VyT2ZNYW55Q291bnQAVYvsaAAAAACLRQyLEItNDIuCiAEAAP/QUdkcJOgFAAAAg8QEXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(receiver.vPowerOfManyCount)</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Ratcatcher/A0.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Ratcatcher/status_A0_MasterPoM.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>19</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

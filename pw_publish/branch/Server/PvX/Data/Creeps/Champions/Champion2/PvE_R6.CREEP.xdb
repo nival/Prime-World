@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvMapCreep parent="/Creeps/Champions/Champion2/_Parent.CREEP">
+	<BackLink DBID="/Maps/PvE/Dungeon/Spawners/Room6.NCSPN" Count="3" />
+	<abilities>
+		<Item skip="1" />
+		<Item href="/Creeps/Abilities/_PvE_Aggro.ABLT" />
+		<Item href="/Creeps/Champions/Champion2/PvE_R6.CREEP" id="48A551DD-367A-4DAC-80F9-53E711E59B46">
+			<Ability parent="/Creeps/Champions/Champion2/Stun_1.ABLT">
+				<applicators>
+					<Item href="/Creeps/Champions/Champion2/PvE_R6.CREEP" id="CFC9B26F-AA13-418E-A8DE-83747F840CCC">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>Запишем что застунили</caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString>FQ4AAAABAAAAGgAAAFN0dW5fRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+								<returnType>float</returnType>
+								<sString>cStun_Duration</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>Stunnned</variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+					<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+				</applicators>
+				<caption>stun</caption>
+				<constants href="/Creeps/Champions/Champion2/PvE_R6.CREEP" id="66E4C673-444B-4076-9B48-6E7CC7D411CA">
+					<UnitConstantsContainer>
+						<vars>
+							<Item href="/Creeps/Champions/Champion2/PvE_R6.CREEP" id="60CFA566-3046-48F7-AEB3-63FCF2D910F0">
+								<UnitConstant>
+									<name>Stun_Duration</name>
+									<var>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+										<returnType>float</returnType>
+										<sString>3</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+						</vars>
+					</UnitConstantsContainer>
+				</constants>
+				<cooldownTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAA0Qg==</compiledString>
+					<returnType>float</returnType>
+					<sString>45</sString>
+				</cooldownTime>
+			</Ability>
+		</Item>
+		<Item skip="1" />
+		<Item skip="1" />
+	</abilities>
+	<attackAbility href="/Creeps/Champions/Champion2/AttackAbility.ATCK" />
+	<stats href="/Creeps/Champions/Champion2/PvE_R6.CREEP" id="E380BFBB-B317-4EA2-AD28-6D230E4B90E6">
+		<StatsContainer parent="/Creeps/DefaultStats/PvE/Champion2.STCN" />
+	</stats>
+</AdvMapCreep>

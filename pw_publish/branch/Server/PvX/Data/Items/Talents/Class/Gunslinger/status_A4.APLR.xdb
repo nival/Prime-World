@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Gunslinger/Ability_A4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="7D7BD8D1-3F25-4451-9848-4271132CB6A0">
+			<SpellApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Снимаем фул столб ярости и хилимся</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="E2654998-934D-4C28-873D-DD0E77143932">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="7756EC60-5C51-4BF3-BC64-8D8DD3390175">
+								<HealApplicator parent="/Items/Talents/Class/Gunslinger/A0_HealByRage.APLR">
+									<amount>
+										<compiledString>FQ0AAAABAAAAGQAAAEE0X0luc3RhSGVhbABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA4_InstaHeal</sString>
+									</amount>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+								</HealApplicator>
+							</Item>
+							<Item href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="E6312D06-4E76-4D2A-9D8D-947DA3494DBC">
+								<PermanentStatModApplicator parent="/Items/Talents/Class/Gunslinger/A0_RageReduce.APLR">
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<modifier>
+										<addValue>
+											<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+											<returnType>float</returnType>
+											<sString>0.0f</sString>
+										</addValue>
+										<multValue>
+											<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+											<returnType>float</returnType>
+											<sString>0.0f</sString>
+										</multValue>
+									</modifier>
+								</PermanentStatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="EC76C76C-4E47-4A35-A0AA-8B5CDAC111DE">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>AbilityOwner</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="8B1654BC-A6EF-4853-A678-CA7B6218B32D">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Каждую сек снимаем ярость</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQoAAAABAAAAFgAAAEE0X1BlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cA4_Period</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="E17DED1E-08F4-4A5B-B40A-18618CB47D6E">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Gunslinger/A0_HealByRage.APLR" />
+							<Item href="/Items/Talents/Class/Gunslinger/A0_RageReduce.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="59CDF724-9426-4B48-8AAF-CB3CBAA50E1D">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="34CB4B1F-E39C-49A3-B088-799549C498A6">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Переменная для того, чтобы не снимать ярость за использование талантов</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>GunslingerA4yup</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FR8AAAACAAAAJgAAAD8AAABHdW5zbGluZ2VyX0E0dQAAR3Vuc2xpbmdlcl9BNHUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Gunslinger_A4u") </sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="F9BA9FF8-F7E9-407D-A94E-D1A3DF830EF2">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>upg Хитрость</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQoAAAABAAAAFgAAAEE0X0FkZERleABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_AddDex</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Dexterity</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FR8AAAACAAAAJgAAAD8AAABHdW5zbGluZ2VyX0E0dQAAR3Vuc2xpbmdlcl9BNHUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Gunslinger_A4u")</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Статус А4</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Gunslinger/status_A4.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A4.APLR" id="24D4058F-B63F-42B1-BF35-C3D16F47BF5B">
+			<EffectList>
+				<deathType>Manual</deathType>
+				<effects>
+					<Item href="/Heroes/Gunslinger/FXAbility4L.EFFT" />
+					<Item href="/Heroes/Gunslinger/FXAbility4R.EFFT" />
+				</effects>
+				<enableCondition href="" />
+				<lifeTime>0</lifeTime>
+			</EffectList>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>Gunslinger_A4</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Gunslinger/A4.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEE0X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Gunslinger/status_A4.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

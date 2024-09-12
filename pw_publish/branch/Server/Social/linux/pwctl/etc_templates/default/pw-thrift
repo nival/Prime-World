@@ -1,0 +1,11 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/thrift_agent.py"
+RUNSCRIPT_ARGS="--port={{ conf['thrift_port'] }} --log_level={{ conf['log_level_thrift'] }} --coordinator={{ conf['ip'] }}:{{ conf['coordinator_port'] }} --log_rotation=external --log_file_prefix={{ conf['logging'] }}thrift.log --tick_period={{ conf['tick_period'] }}"
+LOGGING=">> {{ conf['logging_run'] }}pw-thrift.log.run 2>&1"
+

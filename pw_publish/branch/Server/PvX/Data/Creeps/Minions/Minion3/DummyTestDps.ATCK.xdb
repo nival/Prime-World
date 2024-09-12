@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack parent="/Creeps/Minions/Minion3/AttackAbility.ATCK">
+	<BackLink DBID="/Creeps/Minions/Minion3/ComplexDps.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Minions/Minion3/DummyTestDps.CREEP" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/ComplexDPS200Spawn.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/ComplexDPS744Spawn.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_10.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_11.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_12.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_5.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_7.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_8.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/DummyTest_9.NCSPN" Count="1" />
+	<applicators>
+		<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="4CE6666F-03C7-475B-B4E0-4DB49497B8D0">
+			<DamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<cancelInvisibility>false</cancelInvisibility>
+				<caption>CTFMinion_Dmg</caption>
+				<damage>
+					<compiledString>FQAAAAAAAAAAVYvsg+wIi0UIixCLTQiLQmD/0IXAdBWLTQiLEYtNCIuCNAEAAP/Q2V386xOLTQiLEYtNCIuCMAEAAP/Q2V38i00IixGLTQiLgjwBAAD/0NhN/Nld+NlF+IvlXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>sBaseAttack *( sNativeAttackIndex ? sIntellect : sStrength )</sString>
+				</damage>
+				<damageMode>0</damageMode>
+				<damageType>Native</damageType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<timeLimiter>-1</timeLimiter>
+				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+			</DamageApplicator>
+		</Item>
+		<Item delete="1" />
+	</applicators>
+	<constants href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="7772DFA0-5055-433C-B391-31FDE7CCF2D8">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="1CCB4FA7-C6A7-4B38-A41A-4822FDA59199">
+					<UnitConstant>
+						<name>DamageTaken</name>
+						<var>
+							<compiledString>FQsAAAACAAAAGAAAACsAAABEYW1hZ2VUaW1lAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFTQAAANld/NlF/FHZHCSLRQiLEItNCIuCsAEAAP/Qi+VdwwAAAAAAAABA</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.GetDamageDealt(cDamageTime+2)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="EDFE3120-ABEC-44E3-AD54-B9ACAA9FC4F8">
+					<UnitConstant>
+						<name>DamageTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="05E36CEB-CA89-491D-8B2C-585A2C92811E">
+					<UnitConstant>
+						<name>EnergyTaken</name>
+						<var>
+							<compiledString>FRcAAAADAAAAJgAAAEAAAABZAAAARGFtYWdlVGFrZW4ARGFtYWdlVGltZQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaAwAAACLVRCLAotNEItQUN1d+P/S3H343A1nAAAA2V302UX0i+VdwwAAAAAAAFlA</compiledString>
+							<returnType>float</returnType>
+							<sString>(cDamageTaken/cDamageTime)*100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="54D87225-E6F9-4248-A676-4550985FA1A8">
+					<UnitConstant>
+						<name>Duration</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<dispatch href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="93C89794-F9B4-481A-AB6C-BE0159B6564B">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/FireBall/_Hit.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/FireBall/_.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>2</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>-1</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>20</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<passiveApplicators>
+		<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+		<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="1C08710C-57B6-4747-97F0-F2681A7D0804">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Триггер на получение урона</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="C5CA7116-48BA-422E-8996-A877A8E5CBD5">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</mul>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="101E616C-7C86-4C49-9521-8BA56812AAF0">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="C9B00346-15D4-42D6-9E17-67C09D3AF959">
+										<ProgramApplicator>
+											<applicators>
+												<Item>
+													<applicator href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="CB99EB5C-D464-4179-ABC2-ED655D69C152">
+														<StatusApplicator>
+															<applicators />
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<behaviorFlags>0</behaviorFlags>
+															<caption>Фейк статус который считает время до иммуна</caption>
+															<customCounter>
+																<compiledString></compiledString>
+																<returnType>int</returnType>
+																<sString>0</sString>
+															</customCounter>
+															<customProgress>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</customProgress>
+															<description textref="" />
+															<dispellPriority>NonDispellable</dispellPriority>
+															<effect>
+																<Item href="" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<flags>0</flags>
+															<formulaName></formulaName>
+															<image href="" />
+															<lifeTime>
+																<compiledString>FQsAAAABAAAAFwAAAERhbWFnZVRpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																<returnType>float</returnType>
+																<sString>cDamageTime</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<name textref="" />
+															<power>0</power>
+															<providerName></providerName>
+															<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+															<stackCount>0</stackCount>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<statusPosition>0</statusPosition>
+															<stopBehaviour>StopByTime</stopBehaviour>
+															<unstackableWith href="" />
+														</StatusApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>2</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="71F409C9-A9EA-4C9C-8C36-E20AC469C6BB">
+														<StatusApplicator>
+															<applicators>
+																<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="0F55FEC0-321E-48DD-AC03-737036032053">
+																	<FlagsApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>флаги</caption>
+																		<consumables />
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<flag>2097660</flag>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<talents />
+																		<useListAs>ListAsRule</useListAs>
+																	</FlagsApplicator>
+																</Item>
+																<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="DD187155-4FFC-4FC1-A3F0-8F25AC29816A">
+																	<TriggerApplicator>
+																		<actionsCount>
+																			<compiledString></compiledString>
+																			<returnType>int</returnType>
+																			<sString>0</sString>
+																		</actionsCount>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>канселять все диспатчи от врагов</caption>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<playAck>false</playAck>
+																		<processor href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="BF8CA9BB-4F99-4CB1-9D77-B03C93E7C08C">
+																			<EventProcessorCancelDispatch>
+																				<applyTarget>ApplicatorTarget</applyTarget>
+																				<checkSender>0</checkSender>
+																				<filter>
+																					<abilitiesList />
+																					<abilityCondition>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</abilityCondition>
+																					<abilityCostMode>Energy</abilityCostMode>
+																					<exceptThis>false</exceptThis>
+																					<flags>1073743103</flags>
+																					<onlySingleTarget>false</onlySingleTarget>
+																				</filter>
+																				<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+																				<spell href="" />
+																			</EventProcessorCancelDispatch>
+																		</processor>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<useAbilityCooldown>false</useAbilityCooldown>
+																		<useAbilityOwnerMana>false</useAbilityOwnerMana>
+																	</TriggerApplicator>
+																</Item>
+																<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="C503E0F7-41A9-469E-8635-9B581F2EFE4C">
+																	<StatModApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>Ослепляем</caption>
+																		<constraint>None</constraint>
+																		<dontUpdate>false</dontUpdate>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<modifier>
+																			<addValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</addValue>
+																			<multValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</multValue>
+																			<stat>VisibilityRange</stat>
+																			<topModifier>false</topModifier>
+																			<variable></variable>
+																		</modifier>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<statModName></statModName>
+																	</StatModApplicator>
+																</Item>
+																<Item href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="B0B3B75A-EA89-4061-BBBD-63BFE8F312DC">
+																	<StatModApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>Обездвиживаем</caption>
+																		<constraint>None</constraint>
+																		<dontUpdate>false</dontUpdate>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<modifier>
+																			<addValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</addValue>
+																			<multValue>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>0.0f</sString>
+																			</multValue>
+																			<stat>MoveSpeed</stat>
+																			<topModifier>false</topModifier>
+																			<variable></variable>
+																		</modifier>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<statModName></statModName>
+																	</StatModApplicator>
+																</Item>
+															</applicators>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<behaviorFlags>0</behaviorFlags>
+															<caption>Статус на иммун и параметры</caption>
+															<customCounter>
+																<compiledString></compiledString>
+																<returnType>int</returnType>
+																<sString>0</sString>
+															</customCounter>
+															<customProgress>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</customProgress>
+															<description textref="/Creeps/Minions/Minion3/DummyTestDps.ATCK_71f409c9a9ea4c9c8c36e20ac469c6bb_description.txt" />
+															<dispellPriority>Medium</dispellPriority>
+															<effect>
+																<Item href="/Effects/Buffs/Invulnerability/_.EFFT" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<flags>0</flags>
+															<formulaName></formulaName>
+															<image href="/UI/Styles/Icons/Artifacts/_Test.ITEX" />
+															<lifeTime>
+																<compiledString>FQkAAAABAAAAFQAAAER1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																<returnType>float</returnType>
+																<sString>cDuration</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<name textref="/Creeps/Minions/Minion3/DummyTestDps.ATCK_71f409c9a9ea4c9c8c36e20ac469c6bb_name.txt" />
+															<power>0</power>
+															<providerName></providerName>
+															<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+															<stackCount>0</stackCount>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<statusPosition>0</statusPosition>
+															<stopBehaviour>StopByTime</stopBehaviour>
+															<unstackableWith href="" />
+														</StatusApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>1</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="" />
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>2</continueEvents>
+													<delay>
+														<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+														<returnType>float</returnType>
+														<sString>0.5</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="016649B9-8FDB-495B-8F9E-3121D8A94412">
+														<PermanentStatModApplicator>
+															<applyTarget>AbilityOwner</applyTarget>
+															<caption>Меняем Здоровье</caption>
+															<customApplyType>None</customApplyType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FQwAAAABAAAAGAAAAERhbWFnZVRha2VuAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cDamageTaken</sString>
+																</addValue>
+																<multValue>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.0f</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>true</topModifier>
+																<variable></variable>
+															</modifier>
+															<providerName></providerName>
+														</PermanentStatModApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>1</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="80A80326-4E87-4E9B-B78C-F2C9A80BD196">
+														<PermanentStatModApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>Меняем Энергию</caption>
+															<customApplyType>None</customApplyType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FQwAAAABAAAAGAAAAEVuZXJneVRha2VuAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cEnergyTaken</sString>
+																</addValue>
+																<multValue>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.0f</sString>
+																</multValue>
+																<stat>Energy</stat>
+																<topModifier>false</topModifier>
+																<variable></variable>
+															</modifier>
+															<providerName></providerName>
+														</PermanentStatModApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>2</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>Проверяем на урон и ставим статус</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+										</ProgramApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Minions/Minion3/DummyTestDps.ATCK" id="492611E0-A6E5-4B8F-8F84-650DEB8D8E3E">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>2</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</passiveApplicators>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+</BaseAttack>

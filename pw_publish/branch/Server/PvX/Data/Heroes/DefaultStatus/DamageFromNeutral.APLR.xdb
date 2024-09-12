@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/DamageModFromNeutral.ABLT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/status_A0_summoned.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Ratcatcher/status_A2_Slave_of_flute.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Ratcatcher/status_A4_Ratcatcher_slave.APLR" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Триггер на получение урона</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Heroes/DefaultStatus/DamageFromNeutral.APLR" id="A7E11D28-FC16-405A-8CCD-B1FD42B758C2">
+		<EventProcessorDamageTransformer>
+			<abilityFilter>
+				<abilitiesList />
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Energy</abilityCostMode>
+				<exceptThis>false</exceptThis>
+				<flags>1073743103</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</abilityFilter>
+			<add>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</add>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>2</checkSender>
+			<damageTypeFilter>31</damageTypeFilter>
+			<flags>0</flags>
+			<matchTargetInverted>false</matchTargetInverted>
+			<mul>
+				<compiledString>FRUAAAACAAAAIgAAADUAAABNb2REYW1hZ2VGcm9tTmV1dHJhbABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcNU8AAADZ6N7B2V382UX8i+VdwwAAAAAAAPA/AAAAAAAAWUA=</compiledString>
+				<returnType>float</returnType>
+				<sString>1.0f + cModDamageFromNeutral/100</sString>
+			</mul>
+			<objectFilter>571212256</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="" />
+			<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+		</EventProcessorDamageTransformer>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

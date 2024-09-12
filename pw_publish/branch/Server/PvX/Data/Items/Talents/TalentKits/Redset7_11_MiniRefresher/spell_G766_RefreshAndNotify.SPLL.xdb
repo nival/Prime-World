@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Items/Talents/Class/Angel/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Angel/Summon_Well.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/MagicGirl/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Monster/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PlagueDoctor/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Vampire/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Wendigo/Ability1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_G766_RefreshAndNotify.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_TriggerFlag.APLR" />
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/spell_G766_RefreshAndNotify.SPLL" id="CF459688-D419-44F1-B6DD-CF3E450C4790">
+			<RefreshCooldownApplicator>
+				<allowCdIncrease>false</allowCdIncrease>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>refresh CD</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<reduceByPercent>false</reduceByPercent>
+				<reductionAmount>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0f</sString>
+				</reductionAmount>
+				<refreshThis>true</refreshThis>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</RefreshCooldownApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/spell_G766_RefreshAndNotify.SPLL" id="9B659836-E790-4315-B4D6-3D7541D87F2B">
+			<HealApplicator>
+				<amount>
+					<compiledString>FRgAAAACAAAAHQAAAD0AAABHNzY2AAAAAEc3NjhfSGVhbEFtb3VudABVi+xRaAAAAACLRQiLEItNCIuCqAEAAP/QiUX8i00MUYtVCFJoCAAAAItF/IsQi038i0JQ/9CL5V3D</compiledString>
+					<returnType>float</returnType>
+					<sString>pFirst-&gt;GetTalent("G766")-&gt;GetConstant("G768_HealAmount", pFirst, pSecond)</sString>
+				</amount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>heal if applicable</caption>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNzY4X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG768_Active &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<healTarget>Health</healTarget>
+				<ignoreHealingMods>false</ignoreHealingMods>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+			</HealApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/spell_G766_RefreshAndNotify.SPLL" id="76130EAA-4604-437B-BF5C-07513969B2C1">
+			<HealApplicator>
+				<amount>
+					<compiledString>FR8AAAADAAAAJgAAAEYAAABpAAAARzc2NgAAAABHNzY3X01hbmFSZWZ1bmRQZXJjZW50AFWL7IPsEGgAAAAAi0UIixCLTQiLgqgBAAD/0IlF/ItNDFGLVQhSaAgAAACLRfyLEItN/ItCUP/Qi00QixGLTRCLQhjdXfT/0NwNegAAANxN9Nld8NlF8IvlXcMAAABA4XqEPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>pMisc-&gt;GetManaCost() * 0.01f * pFirst-&gt;GetTalent("G766")-&gt;GetConstant("G767_ManaRefundPercent", pFirst, pSecond)</sString>
+				</amount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>refund mana if applicable</caption>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNzY3X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG767_Active &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<healTarget>Energy</healTarget>
+				<ignoreHealingMods>false</ignoreHealingMods>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventEnergy.UIEV" />
+			</HealApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/spell_G766_RefreshAndNotify.SPLL" id="0FB9D5A9-0DBF-4055-98F6-535528B32437">
+			<VariableProxyApplicator parent="/GameLogic/GeneralApplicators/DispellWEffects.APLR">
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNzcwX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG770_Active &gt; 0</sString>
+				</enabled>
+			</VariableProxyApplicator>
+		</Item>
+	</applicators>
+	<dispatch href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/spell_G766_RefreshAndNotify.SPLL" id="BEC5A08C-8A02-44D0-B265-E8ADA2EA3124">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Buffs/RefreshCD/_.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

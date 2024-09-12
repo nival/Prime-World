@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvMapCreep parent="/Creeps/Minions/Minion3/_Parent.CREEP">
+	<BackLink DBID="/Maps/PvE/Dungeon/Spawners/Room5.NCSPN" Count="7" />
+	<abilities>
+		<Item skip="1" />
+		<Item href="/Creeps/Abilities/_PvE_Aggro.ABLT" />
+		<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="BA6B02EA-14FA-4738-85EF-A58692906F28">
+			<Ability parent="/Creeps/Minions/Minion1/Kamikazi.ABLT">
+				<applicators>
+					<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="F566919B-A70D-4C5B-9DE9-0BE14EC3552D">
+						<ChannellingApplicator>
+							<applicatorsOnSelf>
+								<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="D9DF941D-ED3E-4BC2-B088-C976B1806A31">
+									<FlagsApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption></caption>
+										<consumables />
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>127</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+							</applicatorsOnSelf>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<cancelOnDisable>false</cancelOnDisable>
+							<cancelOnInterrupt>true</cancelOnInterrupt>
+							<cancelSpell href="" />
+							<caption>Ченнелим взрыв</caption>
+							<channelingType>Creation</channelingType>
+							<effect>
+								<Item href="/Effects/Buffs/SpeedingUp/_Attack.EFFT" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<interruptEvents>33153</interruptEvents>
+							<lifeTime>
+								<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+								<returnType>float</returnType>
+								<sString>2</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<period>0</period>
+							<periodicalSpell href="" />
+							<providerName></providerName>
+							<removeStartSpellEffectOnInterrupt>false</removeStartSpellEffectOnInterrupt>
+							<scaleWhenInterrupted>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</scaleWhenInterrupted>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<startSpell href="" />
+							<stopSpell href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="F7864418-3D1A-45F4-8231-557997574003">
+								<Spell>
+									<applicators>
+										<Item href="/Creeps/Minions/Minion1/PvE_R5_AoE.APLR" />
+										<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="A4161C7A-D100-450B-B603-00F0822AF970">
+											<DamageApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<cancelInvisibility>false</cancelInvisibility>
+												<caption>Суицид</caption>
+												<damage>
+													<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAEAcRg==</compiledString>
+													<returnType>float</returnType>
+													<sString>10000</sString>
+												</damage>
+												<damageMode>0</damageMode>
+												<damageType>Material</damageType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<timeLimiter>-1</timeLimiter>
+												<uiEvent href="" />
+											</DamageApplicator>
+										</Item>
+										<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="BCB9017B-5AAF-42B6-82D0-56CF5256392E">
+											<SpellProbabilityApplicator parent="/Creeps/Minions/Minion1/DoT.APLR">
+												<probability>
+													<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+													<returnType>float</returnType>
+													<sString>30</sString>
+												</probability>
+											</SpellProbabilityApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="1EC31A21-69C9-4A56-89D3-9448A8C7E297">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="/Effects/Debuffs/Explosion/_Short.EFFT" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</stopSpell>
+							<targetSelector href="" />
+						</ChannellingApplicator>
+					</Item>
+					<Item delete="1" />
+				</applicators>
+				<manaCost>
+					<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+					<returnType>float</returnType>
+					<sString>0</sString>
+				</manaCost>
+			</Ability>
+		</Item>
+		<Item skip="1" />
+		<Item skip="1" />
+	</abilities>
+	<attackAbility href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="C0D3E374-C0A1-4A65-BD4A-00F3C4D0ADC1">
+		<BaseAttack parent="/Creeps/Minions/Minion3/AttackAbility.ATCK">
+			<applicators>
+				<Item skip="1" />
+				<Item skip="1" />
+				<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="3D66C1C0-9BB2-4DC2-AAFF-2D408CE2DAD3">
+					<SpellProbabilityApplicator parent="/Creeps/Minions/Minion1/DoT.APLR">
+						<probability>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</probability>
+					</SpellProbabilityApplicator>
+				</Item>
+			</applicators>
+			<constants href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="4A757BA1-C939-40F9-8B8E-BE14C65683D1">
+				<UnitConstantsContainer>
+					<vars>
+						<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="16867273-6625-4291-9C97-2603B7E6195F">
+							<UnitConstant>
+								<name>Poison_Prob</name>
+								<var>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+									<returnType>float</returnType>
+									<sString>50</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+						<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="5B8A052C-BF44-4734-A75F-EF1F869226A6">
+							<UnitConstant>
+								<name>DotDamage</name>
+								<var>
+									<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4JgAQAA/9DR4IlF/NtF/IvlXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>sNaftaLevel*2</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+						<Item href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="55A8E0CC-86F4-4805-A995-5B2F81185231">
+							<UnitConstant>
+								<name>Duration</name>
+								<var>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+									<returnType>float</returnType>
+									<sString>4</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+					</vars>
+				</UnitConstantsContainer>
+			</constants>
+			<useRange>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</useRange>
+		</BaseAttack>
+	</attackAbility>
+	<description textref="/Creeps/Minions/Minion3/PvE_R5.CREEP_description.txt" />
+	<stats href="/Creeps/Minions/Minion3/PvE_R5.CREEP" id="59282E1C-98CC-4CFE-8F32-AD353FF641C7">
+		<StatsContainer parent="/Creeps/DefaultStats/PvE/Minion3_Poison.STCN" />
+	</stats>
+</AdvMapCreep>

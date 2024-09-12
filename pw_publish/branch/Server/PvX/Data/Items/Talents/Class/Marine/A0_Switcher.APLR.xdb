@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellSwitchApplicator>
+	<BackLink DBID="/Heroes/Marine/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/A2_Damages.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/A2_Program.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/status_A4_deadlyspin.APLR" Count="1" />
+	<activeSpellIndex>
+		<compiledString>FTYAAAAFAAAAPQAAAFoAAACEAAAAoQAAALcAAABNYXJpbmVBMF9CdWZmcwAAQTBfUGFyaXR5AAAATWFyaW5lQTBfQnVmZnMAAEEwX1Bhcml0eQBVi+yD7BhoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXfj/0N1F+Nrp3+D2xER6CcdF9AAAAADrWGgcAAAAi00IixGLTQiLgogBAAD/0ItNDFGLVQhSaCwAAACLRRCLEItNEItCUN1d7P/Q3CXiAAAA3F3s3+D2xEF1CcdF6AEAAADrB8dF6AIAAACLTeiJTfSLRfSL5V3DAAAAAAAA8D8=</compiledString>
+		<returnType>int</returnType>
+		<sString>sender.vMarineA0_Buffs == cA0_Parity ? 0 : ( ( sender.vMarineA0_Buffs &lt; cA0_Parity - 1 ) ? 1 : 2 )</sString>
+	</activeSpellIndex>
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>(A0) switcher</caption>
+	<dontUseDispatches>false</dontUseDispatches>
+	<enabled>
+		<compiledString>FSYAAAAEAAAAPQAAAFAAAABsAAAAhwAAAGRhbWFnZURlYWxlZAAAAABUYXJnZXQAAFNwZWNpYWxTaGllbGQAVYvsg+wQi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQlT/0NwdtwAAAN/g9sRBdE6LTRCLEYtNEItCSP/QiUX4aBAAAACLTfiLEYtN+ItCTP/QiUX0agCLTRBRaBgAAACLVfSLAotN9IuQnAEAAP/SO0UQdQnHRfAAAAAA6wfHRfABAAAAikXwi+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>($ParentApplVariable("damageDealed") &gt; 0 || appl.parent.oTarget.applSpecialShield(GLOBAL) != pMisc)</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spells>
+		<Item href="/Items/Talents/Class/Marine/A0_Switcher.APLR" id="0DF56AFB-E88F-49E7-8967-8EA2D622FC52">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Marine/A0_Switcher.APLR" id="7AFC1A9D-526A-49CF-9AFE-D6F8AAEEAD54">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>set MarineStopA0</caption>
+							<constraint>None</constraint>
+							<dontUpdate>true</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString>FQUAAAABAAAAEQAAAFNURVAAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+								<returnType>float</returnType>
+								<sString>cSTEP</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>MarineStopA0</variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="/Items/Talents/Class/Marine/A0_Switcher.APLR" id="37A013A7-40C1-4FF0-A26A-94A9175C1EFB">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>false</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Marine/A0_Switcher.APLR" id="4B9C6576-1695-4DCF-A4BA-616C1CB88EF3">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Marine/status_A0_buffup.APLR" />
+				</applicators>
+				<dispatch href="/Items/Talents/Class/Marine/A0_Switcher.APLR" id="597AF4CA-06F9-407A-99A2-CD2CE8679580">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>false</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Marine/A0_Switcher.APLR" id="7AE55E66-FC44-4F40-84BD-F2B44EA9C5A1">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Marine/status_A0_super.APLR" />
+				</applicators>
+				<dispatch href="/Items/Talents/Class/Marine/A0_Switcher.APLR" id="E191BEE0-3B22-49E0-8171-34055E7C5900">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>false</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+			</Spell>
+		</Item>
+	</spells>
+</SpellSwitchApplicator>

@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvMapCreep parent="/Creeps/Normals/Normal2/_Parent.CREEP">
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Spawners/Neutral_3.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Spawners/Neutral_Normal.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/Duel_CSpawn.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/PlaneMap/spawners/Test_Neutral.NCSPN" Count="1" />
+	<abilities>
+		<Item skip="1" />
+		<Item skip="1" />
+		<Item href="/Maps/Multiplayer/MOBA/Spawners/NeutralMark.ABLT" />
+		<Item skip="1" />
+		<Item skip="1" />
+	</abilities>
+	<attackAbility href="/Creeps/Normals/Normal2/PVP.CREEP" id="F6F21BB4-47D6-403E-A9D6-1A7D4001B419">
+		<BaseAttack parent="/Creeps/Normals/Normal2/AttackAbility.ATCK">
+			<applicators>
+				<Item skip="1" />
+				<Item skip="1" />
+				<Item href="/Creeps/Normals/Normal2/PVP.CREEP" id="166FA2E4-4D8F-4CB8-A365-5DB089A27E45">
+					<SpellProbabilityApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>вероятность ослепить</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<probability>
+							<compiledString>FQoAAAABAAAAFgAAAEJ1cm5fUHJvYgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cBurn_Prob</sString>
+						</probability>
+						<providerName></providerName>
+						<spell href="/Creeps/Normals/Normal2/PVP.CREEP" id="0C539059-B19E-41DA-959B-F7A46749DD33">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Normals/Normal2/PVP.CREEP" id="AAC5FF0F-3882-4237-B9E4-B9FA903E86E0">
+										<StatusApplicator parent="/Items/Talents/Class/Mage/status_A1_burn.APLR">
+											<applicators>
+												<Item href="/Creeps/Normals/Normal2/PVP.CREEP" id="9EC2E261-CBEF-46C5-88D0-91545A85221B">
+													<SpellPeriodicallyApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<behaviorFlags>136</behaviorFlags>
+														<caption>Наносим урон периодически</caption>
+														<effect>
+															<Item href="" />
+															<Item href="" />
+														</effect>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<lifeTime>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</lifeTime>
+														<LoggingEvent>-1</LoggingEvent>
+														<period>
+															<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+															<returnType>float</returnType>
+															<sString>1</sString>
+														</period>
+														<providerName></providerName>
+														<scaleMode>ScaleIsCount</scaleMode>
+														<spell href="/Creeps/Normals/Normal2/PVP.CREEP" id="972A5C03-4403-42E5-A43E-44EB466500C1">
+															<Spell>
+																<applicators>
+																	<Item href="/Creeps/Normals/Normal2/PVP.CREEP" id="9511F076-AB92-4B29-BFD3-C7538A95E552">
+																		<DamageApplicator>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<cancelInvisibility>false</cancelInvisibility>
+																			<caption>урон</caption>
+																			<damage>
+																				<compiledString>FSIAAAACAAAAMQAAAEsAAABCdXJuX1RvdGFsRGFtYWdlAAAAAEJ1cm5fRHVyYXRpb24AVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgUAAAAi1UQiwKLTRCLUFDdXfj/0tx9+Nld9NlF9IvlXcM=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>cBurn_TotalDamage/cBurn_Duration</sString>
+																			</damage>
+																			<damageMode>4</damageMode>
+																			<damageType>Material</damageType>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<formulaName></formulaName>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<providerName></providerName>
+																			<timeLimiter>-1</timeLimiter>
+																			<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+																		</DamageApplicator>
+																	</Item>
+																</applicators>
+																<dispatch href="/Creeps/Normals/Normal2/PVP.CREEP" id="32EBC34A-5FBA-499A-AD95-38DA5EE21304">
+																	<DispatchImmediate>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Default</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>0</flags>
+																		<instantApply>false</instantApply>
+																	</DispatchImmediate>
+																</dispatch>
+															</Spell>
+														</spell>
+														<startCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</startCondition>
+														<startOffset>
+															<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+															<returnType>float</returnType>
+															<sString>0.5</sString>
+														</startOffset>
+														<targetSelector href="" />
+													</SpellPeriodicallyApplicator>
+												</Item>
+												<Item skip="1" />
+											</applicators>
+											<image href="/UI/Styles/Icons/Statuses/Neutral/rage.ITEX" />
+											<lifeTime>
+												<compiledString>FQ4AAAABAAAAGgAAAEJ1cm5fRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cBurn_Duration</sString>
+											</lifeTime>
+										</StatusApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Normals/Normal2/PVP.CREEP" id="134A3E93-3B8C-426C-93C7-44CAA54670A1">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellIfFailed href="" />
+					</SpellProbabilityApplicator>
+				</Item>
+			</applicators>
+		</BaseAttack>
+	</attackAbility>
+	<recolor>
+		<A>1</A>
+		<B>0.1882353</B>
+		<G>0.2431373</G>
+		<R>0.4039216</R>
+	</recolor>
+	<size>2</size>
+	<sizeDynamic>1</sizeDynamic>
+	<stats href="/Creeps/Normals/Normal2/PVP.CREEP" id="CBED8BB4-BD5A-4C4A-AC6E-3DD287064F15">
+		<StatsContainer parent="/Creeps/DefaultStats/PvP/Neutral_Caster.STCN">
+			<stats>
+				<Item>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades>
+						<Item>
+							<increment>42</increment>
+							<level>0</level>
+						</Item>
+						<Item>
+							<increment>0</increment>
+							<level>10</level>
+						</Item>
+					</levelUpgrades>
+					<value>
+						<compiledString>FRQAAAACAAAAIQAAADQAAABOZXV0cmFsQ3JlZXBfTW9kX0hQAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNQgAAANld/NlF/IvlXcMAAAAAAEBlQA==</compiledString>
+						<returnType>float</returnType>
+						<sString>170 * cNeutralCreep_Mod_HP</sString>
+					</value>
+				</Item>
+				<Item>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades>
+						<Item>
+							<increment>10</increment>
+							<level>0</level>
+						</Item>
+						<Item>
+							<increment>0</increment>
+							<level>10</level>
+						</Item>
+					</levelUpgrades>
+				</Item>
+				<Item>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<value>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</value>
+				</Item>
+				<Item skip="1" />
+				<Item>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades>
+						<Item>
+							<increment>3</increment>
+							<level>0</level>
+						</Item>
+						<Item>
+							<increment>0</increment>
+							<level>10</level>
+						</Item>
+					</levelUpgrades>
+					<statId>Strength</statId>
+					<value>
+						<compiledString>FRUAAAACAAAAIgAAADUAAABOZXV0cmFsQ3JlZXBfTW9kX0F0awBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDUMAAADZXfzZRfyL5V3DAAAAAAAAKkA=</compiledString>
+						<returnType>float</returnType>
+						<sString>13 * cNeutralCreep_Mod_Atk</sString>
+					</value>
+				</Item>
+				<Item>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>50</sString>
+					</value>
+				</Item>
+				<Item skip="1" />
+				<Item skip="1" />
+				<Item>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>30</sString>
+					</value>
+				</Item>
+				<Item skip="1" />
+				<Item>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades>
+						<Item>
+							<increment>1</increment>
+							<level>0</level>
+						</Item>
+						<Item>
+							<increment>0</increment>
+							<level>10</level>
+						</Item>
+					</levelUpgrades>
+				</Item>
+				<Item>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades>
+						<Item>
+							<increment>2.3</increment>
+							<level>0</level>
+						</Item>
+						<Item>
+							<increment>0</increment>
+							<level>10</level>
+						</Item>
+					</levelUpgrades>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADoQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>29</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades>
+						<Item>
+							<increment>2.3</increment>
+							<level>0</level>
+						</Item>
+						<Item>
+							<increment>0</increment>
+							<level>10</level>
+						</Item>
+					</levelUpgrades>
+					<statId>Will</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADoQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>29</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>TeamNaftaForPresence</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACoQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>21</sString>
+					</value>
+				</Item>
+			</stats>
+		</StatsContainer>
+	</stats>
+</AdvMapCreep>

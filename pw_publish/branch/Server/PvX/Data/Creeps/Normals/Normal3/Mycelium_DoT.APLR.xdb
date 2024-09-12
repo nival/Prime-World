@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Creeps/Normals/Normal3/PvE_Coop1_Poisoner.CREEP" Count="1" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>Отравленная грибница</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Creeps/Normals/Normal3/Mycelium_DoT.APLR" id="45B777A3-CD0B-421C-A1C0-FDA88C927503">
+		<Spell>
+			<applicators />
+			<dispatch href="/Creeps/Normals/Normal3/Mycelium_DoT.APLR" id="EB418A48-850A-4D2D-A930-02B89BE0DBDF">
+				<DispatchByTime>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<cancelOnSenderDeath>false</cancelOnSenderDeath>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="/Effects/Buffs/Mushroom/_DoT.EFFT" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<lifeTime>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+						<returnType>float</returnType>
+						<sString>-1</sString>
+					</lifeTime>
+					<persistentApplicators>
+						<Item href="/Creeps/Normals/Normal3/MyceliumAura.APLR" />
+						<Item href="/Creeps/Normals/Normal3/Mycelium_DoT.APLR" id="927ECB08-430A-4741-8B25-3F352CB61CD4">
+							<SpellPeriodicallyApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>16</behaviorFlags>
+								<caption>Poision Periodical spell</caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString>FQ0AAAACAAAAGgAAAC0AAABNeWNfZHVyYXRpb24AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3CU7AAAA2V382UX8i+VdwwAAAKCZmck/</compiledString>
+									<returnType>float</returnType>
+									<sString>cMyc_duration-0.2f</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<period>
+									<compiledString>FQcAAAABAAAAEwAAAFBlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cPeriod</sString>
+								</period>
+								<providerName></providerName>
+								<scaleMode>ScaleIsCount</scaleMode>
+								<spell href="/Creeps/Normals/Normal3/Mycelium_DoT.APLR" id="CFB67368-4B6F-47B9-B5AB-D5EE0086B321">
+									<Spell>
+										<applicators>
+											<Item href="/Heroes/DefaultStatus/_POISON.APLR" />
+										</applicators>
+										<dispatch href="/Creeps/Normals/Normal3/Mycelium_DoT.APLR" id="274A9ADC-BDC5-4B91-9211-3DF1AFAC63D4">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>Default</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>0</flags>
+												<instantApply>false</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<startOffset>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1</sString>
+								</startOffset>
+								<targetSelector href="/Creeps/Normals/Normal3/Mycelium_DoT.APLR" id="9F0C1018-0AA9-4B61-B00D-8EC697486293">
+									<AreaTargetSelector>
+										<absolutePosition>
+											<x>0</x>
+											<y>0</y>
+										</absolutePosition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<range>
+											<compiledString>FQoAAAABAAAAFgAAAE15Y19yYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cMyc_range</sString>
+										</range>
+										<targetFilter>536870919</targetFilter>
+										<targetSelector href="" />
+									</AreaTargetSelector>
+								</targetSelector>
+							</SpellPeriodicallyApplicator>
+						</Item>
+					</persistentApplicators>
+				</DispatchByTime>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>AbilityOwner</spellTarget>
+	<targetSelector href="/Creeps/Normals/Normal3/Mycelium_DoT.APLR" id="2C6A20C1-F983-4819-A1F9-8E7DF173F156">
+		<ConvertTargetToLand>
+			<aggregateMode>First</aggregateMode>
+			<targetSelector href="" />
+		</ConvertTargetToLand>
+	</targetSelector>
+</SpellApplicator>

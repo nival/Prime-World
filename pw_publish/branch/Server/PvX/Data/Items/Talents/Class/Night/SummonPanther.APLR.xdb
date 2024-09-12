@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SummonApplicator>
+	<BackLink DBID="/Items/Talents/Class/Night/A0Trigger.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Night/Ability0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Night/Ability4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Night/status_techPantersIsAlive.APLR" />
+		<Item href="/Items/Talents/Class/Night/SummonPanther.APLR" id="16E6DAA4-C1C6-4E17-8216-247F1D549298">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>увеличить скорость движения</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FSEAAAACAAAAPQAAAHgAAABQYW50aGVyQm9udXNUb1NwZWVkAE5pZ2h0TW91bnRBNABVi+yD7BSLRQiLEItNCItCGP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcTfiLTQyLEYtNDIuCiAAAAN1d8P/Q3F3w3+D2xAV6KWoAi00QUWgUAAAAi1UIiwKLTQiLkJwBAAD/0jtFEHUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sMoveSpeed * cPantherBonusToSpeed &gt; rBaseMoveSpeed &amp;&amp; sender.applNightMountA4(GLOBAL) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRQAAAABAAAAMAAAAFBhbnRoZXJCb251c1RvU3BlZWQAVYvsg+wUi0UIixCLTQiLQhj/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q3E34i00MixGLTQyLgogAAADdXfD/0Nxt8Nld7NlF7IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>sMoveSpeed * cPantherBonusToSpeed - rBaseMoveSpeed</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Night/SummonPanther.APLR" id="F2987077-4E46-4DEE-ACE7-003AFBF4E0FB">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>(off) (UPG) Увеличить проворство на родной земле</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRUAAAACAAAAQAAAAFkAAABOaWdodF9BMwAAAABOaWdodF9BMwBVi+yD7AxWi0UMixCLTQyLgpABAAD/0Ivwi00MixGLTQyLQkz/0DvwdVhoAAAAAItNCIsRi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQJx0X0AQAAAOsHx0X0AAAAAIpF9F6L5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>rFctn == rTerrainType &amp;&amp; tal("Night_A3")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FTEAAAAEAAAAOAAAAFEAAACHAAAApwAAAE5pZ2h0X0EzAAAAAE5pZ2h0X0EzAAAAAE5pZ2h0X0EzAAAAAEEzX0FkZEF0a1NwZABVi+yD7BBoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aBgAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoJAAAAItV9IsCi030i1BQ/9LZXfDrBdnu2V3w2UXwi+VdwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>talconst("Night_A3","A3_AddAtkSpd")</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>false; //true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Night/SummonPanther.APLR" id="09879689-DEAA-480C-8C71-C4FA9B4CE6D9">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> -- connection to master: Power (включена если не А4)</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FVYAAAAFAAAAXQAAAHYAAACsAAAAzAAAAPAAAABNYXN0ZXJTdGF0Q29ubmVjdGVkX1Bvd2VyAAAATmlnaHRfQTMAAAAATmlnaHRfQTMAAAAATmlnaHRfQTMAAAAAQTNfQWRkUGFudGhlclN0cmVuZ3RoAFWL7IPsFGgcAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoKAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdDdoNAAAAItVCIsCi00Ii5CoAQAA/9KJRfSLRQxQi00IUWhAAAAAi1X0iwKLTfSLUFD/0tld8OsF2e7ZXfCLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0thF8Nld7NlF7IvlXcMAAAAA</compiledString>
+						<returnType>float</returnType>
+						<sString>cMasterStatConnected_Power + talconst("Night_A3","A3_AddPantherStrength"); //s( receiver.FindApplicator("NightHunterA4",pMisc,UNIT) == pMisc, cMasterStatConnected_Power + talconst("Night_A3","A3_AddPantherStrength"), talconst("Night_A4","A4_AddStrength") )</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</multValue>
+					<stat>Strength</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Life.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Energy.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Intellect.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Stamina.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Will.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Level.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Dexterity.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Vamp.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_AttackSpeed.APLR" />
+		<Item href="/Items/Talents/Class/Night/A0Trigger.APLR" />
+		<Item href="/GameLogic/GeneralApplicators/LikeHero.APLR" />
+		<Item href="/Items/Talents/Class/Night/SummonPanther.APLR" id="EE94B697-1985-4F2F-BB99-EF9186B92760">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>(PARENTED) -- Connection to Master: LifeRegeneration</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgqgAAAD/0F3D</compiledString>
+						<returnType>float</returnType>
+						<sString>sBaseLifeRegenerationAbsolute</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</multValue>
+					<stat>LifeRegenerationAbsolute</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Night/SummonPanther.APLR" id="B6A5DE65-434F-4D02-A396-A6AF96FCB164">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>EnergyRegeneration</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCEP/Q3A0hAAAA2V382UX8i+Vdw3sUrkfheoQ/</compiledString>
+						<returnType>float</returnType>
+						<sString>rMaxEnergy * 0.01</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>EnergyRegenerationAbsolute</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>false</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Night/SummonPanther.APLR" id="D88B2E2D-D7B7-409F-B33A-3CCC500F1521">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Вешаем эффект иллюзии, если мы иллюзия</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/General/Illusion/_Switcher.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQgAAAACAAAADQAAACMAAABJc0Nsb25lAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHT8AAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsClone</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Night/SummonPanther.APLR" id="C492E686-5676-42C5-BCF3-0FCA3133D25A">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>setup variable IsClone</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>IsClone</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQgAAAACAAAADQAAACMAAABJc0Nsb25lAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHT8AAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsClone</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviour href="/Items/Talents/Class/Night/PantherBehaviour" />
+	<caption>суммон пантеры, если её нет</caption>
+	<enabled>
+		<compiledString>FRwAAAADAAAAIQAAADcAAABJAAAAUGFudGhlcklzQWxpdmUAAFBhbnRoZXJUaW1lAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHXkAAADf4PbERHopagGLTRBRaBAAAACLVQiLAotNCIuQnAEAAP/SO0UQdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vPantherIsAlive == 0 &amp;&amp; sender.applPantherTime(UNIT) == pMisc</sString>
+	</enabled>
+	<flags>323</flags>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<openWarFog>true</openWarFog>
+	<placeMode>ByTargetSelector</placeMode>
+	<placeSelector href="/Items/Talents/Class/Night/SummonPanther.APLR" id="66701EC9-B1AB-441E-9A10-5B6F6385AA2F">
+		<UnitPlaceCorrector>
+			<checkByRangeToRequester>false</checkByRangeToRequester>
+			<checkLineOfSight>false</checkLineOfSight>
+			<nativeTerrainOnly>false</nativeTerrainOnly>
+			<passabilityCheckMode>0</passabilityCheckMode>
+			<radius>3</radius>
+			<targetSelector href="/Items/Talents/Class/Night/SummonPanther.APLR" id="6CDA3A11-5430-43B1-B7B9-E719F6E369AC">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/Night/SummonPanther.APLR" id="94CFE777-BF77-4301-8354-4FA60ECB7D3F">
+						<HeroEnumerator>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetFilter>1073741824</targetFilter>
+						</HeroEnumerator>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</UnitPlaceCorrector>
+	</placeSelector>
+	<providerName></providerName>
+	<spawnStats>
+		<energy>
+			<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+			<returnType>float</returnType>
+			<sString>-1</sString>
+		</energy>
+		<life>
+			<compiledString>FR0AAAABAAAAKQAAAFBhbnRoZXJIZWFsX3BlcmNlbnRPZk1heExpZmUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+			<returnType>float</returnType>
+			<sString>cPantherHeal_percentOfMaxLife</sString>
+		</life>
+	</spawnStats>
+	<summonedUnitIndex>
+		<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4KUAQAA/9CJRfzbRfxR2Rwk6AoAAACDxASD6AGL5V3DuAEAAAAPovfCAAAABHQH8w8sRCQEw+kAAAAAVYvsg+wM2UUI2X38D7dF/A0ADAAAiUX42W3421302W38i0X0i+Vdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(sOriginalFctn) - 1</sString>
+	</summonedUnitIndex>
+	<summonedUnits>
+		<Item href="/Summons/Panther/_A.SUMMONED" />
+		<Item href="/Summons/Panther/_B.SUMMONED" />
+	</summonedUnits>
+	<summonedUnitsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</summonedUnitsCount>
+	<summonGroupName></summonGroupName>
+	<summonSource>ByApplicator</summonSource>
+	<takeModDmg>
+		<compiledString>FSUAAAACAAAAMAAAAFkAAABBY3RpdmVHMzA1X0Nsb25lAAAAAE1vZERhbWFnZUFiaWxpdHkAVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DtFEHUH2ejZXfzrHYtNDFGLVQhSaBQAAACLRRCLEItNEItCUP/Q2V382UX8i+VdwwAAgD8=</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.applActiveG305_Clone(GLOBAL) == pMisc ? 1 : cModDamageAbility</sString>
+	</takeModDmg>
+	<takeTypeUnit>840901119</takeTypeUnit>
+	<unsummonSortCriterion>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</unsummonSortCriterion>
+</SummonApplicator>

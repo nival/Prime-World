@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/DayNightTrigger.APLR" Count="1" />
+	<BackLink DBID="/Maps/Test/Duel/_.ADMP" Count="2" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Night/Day Trigger</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Maps/Multiplayer/MOBA/Mains/NightDayTrigger.APLR" id="71A834C6-6F09-4FBB-B3FD-723B02552078">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLgpAAAAD/0A+2wPfYG8CDwAFdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>!(mIsNight)</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Maps/Multiplayer/MOBA/Mains/NightDayTrigger.APLR" id="038DB7AC-FA77-43CF-B104-FDC0855F0A03">
+				<Spell>
+					<applicators>
+						<Item href="/Maps/Multiplayer/MOBA/Mains/NightDayTrigger.APLR" id="F9C1CA57-4EB2-455B-9853-2095ACEB9B0A">
+							<PermanentStatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>обнуляем ночь</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</addValue>
+									<multValue>
+										<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>NightDuration</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</Item>
+						<Item href="/Maps/Multiplayer/MOBA/Mains/DayDurationCounter.APLR" />
+						<Item href="/Maps/Multiplayer/MOBA/Mains/DayNightTrigger.APLR" />
+					</applicators>
+					<dispatch href="/Maps/Multiplayer/MOBA/Mains/NightDayTrigger.APLR" id="8EBAA114-07EC-48E8-B20F-12EAB75E3947">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

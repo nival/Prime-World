@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Level6/G675_TriggerShield_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level6/G676_TriggerShield_DexOrAtSpd.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level6/G677_TriggerShield_StaOrWill.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>Триггер, если стат мод с союзного героя</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQnj/0DPJg/gCD53BisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>mActivatedWithinKit &gt;= 2</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/TalentKits/Redset8_4_TriggerShield/trigger_G657_StatModAllies.APLR" id="000EF874-F688-4953-AA6C-DBAABE74E9D1">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQwAAAACAAAAEQAAACcAAABHNjU3X0FsbGllcwBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+				<returnType>bool</returnType>
+				<sString>sender.vG657_Allies &gt; 0</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/TalentKits/Redset8_4_TriggerShield/trigger_G657_StatModAllies.APLR" id="1245E424-601C-4569-9137-C31863EC2B8D">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/TalentKits/Redset8_4_TriggerShield/status_G657_TriggerShield.APLR" />
+					</applicators>
+					<dispatch href="/Items/Talents/TalentKits/Redset8_4_TriggerShield/trigger_G657_StatModAllies.APLR" id="8ECBB4BD-487A-4909-9FA0-777AB3B6ABA9">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

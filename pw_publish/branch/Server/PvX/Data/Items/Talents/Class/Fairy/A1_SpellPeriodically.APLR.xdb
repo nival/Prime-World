@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A1.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>период спелл для врагов в капсуле</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FREAAAABAAAAGwAAAEZhaXJ5X0ExX01pc3Npb24AVYvsagKLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applFairy_A1_Mission(ABILITY) != pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Fairy/A1_SpellPeriodically.APLR" id="E7AB9FAB-724D-4764-AC55-9F12382FD406">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Fairy/A1_SpellPeriodically.APLR" id="723CDD02-C0E1-4ED6-9C81-61CA5D151969">
+					<SpellSwitchApplicator>
+						<activeSpellIndex>
+							<compiledString>FQ8AAAABAAAAGQAAAEZhaXJ5X0ZpZ2h0ZXJzAFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5XBi8Fdww==</compiledString>
+							<returnType>int</returnType>
+							<sString>receiver.applFairy_Fighters(UNIT) ==pMisc ? 0 : 1</sString>
+						</activeSpellIndex>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>статус с дотом или обновляем его время</caption>
+						<dontUseDispatches>true</dontUseDispatches>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spells>
+							<Item href="/Items/Talents/Class/Fairy/A1_SpellPeriodically.APLR" id="C558125B-2EEC-4EAC-8B33-7EFC0613FFB7">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Fairy/status_A1_battlefairys.APLR" />
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+							<Item href="/Items/Talents/Class/Fairy/A1_SpellPeriodically.APLR" id="A9D3506A-F897-464F-842A-42746B247E05">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Fairy/A1_SpellPeriodically.APLR" id="8966FFD3-17C2-45D5-9E72-8052FDE93ED4">
+											<AddApplicatorDuration>
+												<applicators>
+													<Item href="/Items/Talents/Class/Fairy/status_A1_battlefairys.APLR" />
+												</applicators>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>обновляем время у фей-воительниц</caption>
+												<durationToAdd>
+													<compiledString>FQ8AAAABAAAAGwAAAEExX0RvVER1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>cA1_DoTDuration</sString>
+												</durationToAdd>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<flags>2</flags>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<nameToCheck></nameToCheck>
+												<providerName></providerName>
+											</AddApplicatorDuration>
+										</Item>
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+						</spells>
+					</SpellSwitchApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Fairy/A1_SpellPeriodically.APLR" id="9F2FD883-F754-45B4-ABA7-7BF9A9A882C0">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/Fairy/A1_SpellPeriodically.APLR" id="49BBF8F7-E84A-4290-B2DE-F56036B246E5">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<targetSelector href="/Items/Talents/Class/Fairy/A1_Enemies.TGSL" />
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellPeriodicallyApplicator>

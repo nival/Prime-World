@@ -1,0 +1,36 @@
+# Limit setting
+ulimit -n 128000
+
+# Main setting.
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/guild"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/guild/guild_service.py"
+
+# Instnace settings.
+# One ellement of massive = one instance
+COORDINATOR="{{ conf['ip'] }}:{{ conf['coordinator_port'] }}"
+SOURCE_ADDR="{{ conf['ip'] }}"
+
+# guilds1
+INSTANCE_NAME[1]="guilds1"
+INSTANCE_PORT[1]="{{ conf['guilds1_port'] }}"
+INSTANCE_ID[1]="-11"
+# guilds2
+INSTANCE_NAME[2]="guilds2"
+INSTANCE_PORT[2]="{{ conf['guilds2_port'] }}"
+INSTANCE_ID[2]="-12"
+
+
+# Declare associative arrays.
+declare -A INSTANCE RUNSCRIPT_ARGS LOGGING RUN_MARKER
+
+# Generate settings to instnaces
+{{ noParse("""for i in `seq 1 ${#INSTANCE_NAME[@]}`;""") }}
+do
+	INSTANCE[${INSTANCE_NAME[$i]}]=${INSTANCE_NAME[$i]}
+	RUNSCRIPT_ARGS[${INSTANCE_NAME[$i]}]="--port=${INSTANCE_PORT[$i]} --log_level={{ conf['log_level_guild'] }} --server_name=${INSTANCE_NAME[$i]} --server_id=${INSTANCE_ID[$i]} --server_addr=${SOURCE_ADDR}:${INSTANCE_PORT[$i]} --log_rotation=external --log_file_prefix={{ conf['logging'] }}wsguildservice-${INSTANCE_NAME[$i]}.log --coordinator=$COORDINATOR --tick_period={% if conf['tick_period_guild'] != "0" %}{{ conf['tick_period_guild'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+	LOGGING[${INSTANCE_NAME[$i]}]="> {{ conf['logging_run'] }}pw-guild.${INSTANCE_NAME[$i]}.log.run 2>&1"
+done
+

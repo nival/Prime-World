@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Alchemist/status_Slow_Alchemist_A1.APLR" id="E4638713-CC94-40DF-A61B-3A9A5E12173A">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption> -- Уменьшаем Движение</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQ4AAAADAAAAGwAAAC4AAAA0AAAARGVjX01vdmVTcGVlZABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcLUIAAADcNUIAAADZXfzZRfyL5V3DAAAAAAAAWUA=</compiledString>
+						<returnType>float</returnType>
+						<sString>(100 - cDec_MoveSpeed)/100</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Dec_MoveSpeed</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/SlowFX.APLR" />
+		<Item href="/Items/Talents/Class/Alchemist/status_Slow_Alchemist_A1.APLR" id="1D71DF10-364C-42F3-9EE6-8611EA8D9473">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Items/Talents/Class/Alchemist/status_Slow_Alchemist_A1.APLR_1d71df10364c42f39ee68611ea8d9473_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>- статус "Замедление" Alchemist</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Alchemist/status_Slow_Alchemist_A1.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FR0AAAAEAAAAIgAAADgAAABEAAAAWgAAAEltbXVuZTJDb250cm9sAABBbGxvd0NvbnRyb2wAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdhAAAAN/g9sREeytoEAAAAItNDIsRi00Mi4KIAQAA/9DcHXwAAADf4PbERHsJx0X8AAAAAOsHx0X8AQAAAIpF/IvlXcMAAAAAAADwPwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vImmune2Control == 0 || receiver.vAllowControl == 1</sString>
+	</enabled>
+	<flags>8</flags>
+	<formulaName>Status_Slow_Alchemy</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Slow.ITEX" />
+	<lifeTime>
+		<compiledString>FQ4AAAABAAAAGgAAAFNsb3dfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cSlow_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Alchemist/status_Slow_Alchemist_A1.APLR_name.txt" />
+	<power>5</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRkAAAAEAAAAJgAAADkAAABtAAAAkQAAAFNsb3dfU3RhcnRDb25kaXRpb24AV2FyZABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHckAAADf4PbERHtvUdno2RwkUdnu2RwkagGLRQyLEItNDItCWP/QD7bIUehpAAAAg8QM3B3JAAAA3+D2xER7O4tVDIsCi00Mi1BQ/9KD+BF0KWoAi0UQUGgUAAAAi00MixGLTQyLgpwBAAD/0DtFEHUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAACAPwAAAAAAAAAAVYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>cSlow_StartCondition &amp;&amp; ut_bldg( false, true ) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" />
+</StatusApplicator>

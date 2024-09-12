@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AuraApplicator>
+	<BackLink DBID="/Buildings/DefaultStats/_Temple_Default_Attack.ATCK" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Temples/_A.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Temples/_B.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Temples/_A.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Temples/_B.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Temples/_A.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Temples/_B.FNTN" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Buildings/A_Temple.FNTN" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Buildings/B_Temple.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Tutorial/Temples/_A.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Tutorial/Temples/_B.FNTN" Count="1" />
+	<applicators>
+		<Item href="/Buildings/DefaultStats/Regen.APLR" id="245D20EE-88EE-4DF7-8F3A-60B5DC1B3AE1">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>период спелл</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wUi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nxd+N/g9sRBdDCLTQyLEYtNDItCBP/Qi00MixGLTQyLQhDdXfD/0Nxd8N/g9sRBdAnHRewAAAAA6wfHRewBAAAAikXsi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>rLife &lt; rMaxLife || rEnergy &lt; rMaxEnergy</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Buildings/DefaultStats/Regen.APLR" id="F6451417-91E0-43BD-9A94-B69D72E8E475">
+					<Spell>
+						<applicators>
+							<Item href="/Buildings/DefaultStats/Regen.APLR" id="17A897BD-F9B6-468E-B090-280A6B6BD1BC">
+								<HealApplicator>
+									<amount>
+										<compiledString>FQAAAAACAAAAEwAAABkAAABVi+xRi0UMixCLTQyLQgz/0NwNLwAAANwFJwAAANld/NlF/IvlXcMAAAAAAABJQAAAAEDherQ/</compiledString>
+										<returnType>float</returnType>
+										<sString>rMaxLife * 0.08f + 50.0f</sString>
+									</amount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>лечение здоровья</caption>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nxd+N/g9sRBdQnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>rLife &lt; rMaxLife</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<healTarget>Health</healTarget>
+									<ignoreHealingMods>false</ignoreHealingMods>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="" />
+								</HealApplicator>
+							</Item>
+							<Item href="/Buildings/DefaultStats/Regen.APLR" id="5FB4E77F-B64A-4623-B08A-2194568C301D">
+								<HealApplicator>
+									<amount>
+										<compiledString>FQAAAAACAAAAEwAAABkAAABVi+xRi0UMixCLTQyLQhD/0NwNLwAAANwFJwAAANld/NlF/IvlXcMAAAAAAABJQAAAAEDherQ/</compiledString>
+										<returnType>float</returnType>
+										<sString>rMaxEnergy * 0.08f + 50.0f</sString>
+									</amount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>лечение энергии</caption>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLQgT/0ItNDIsRi00Mi0IQ3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+										<returnType>bool</returnType>
+										<sString>rEnergy &lt; rMaxEnergy</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<healTarget>Energy</healTarget>
+									<ignoreHealingMods>false</ignoreHealingMods>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="" />
+								</HealApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Buildings/DefaultStats/Regen.APLR" id="30048AF4-C9FC-490F-9854-EE65BDEA1899">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Buildings/DefaultStats/Regen.APLR" id="038430D8-58D0-492D-B448-7F6AACA76091">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Я в области алтаря</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>TemplesArea</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Regen</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<range>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</range>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<targets>339476527</targets>
+	<targetSelector href="/Buildings/DefaultStats/Regen.APLR" id="EA8AB297-5C6B-42DD-A95F-5105262EB9BB">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>380</x>
+				<y>168</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+				<returnType>float</returnType>
+				<sString>10</sString>
+			</range>
+			<targetFilter>270270975</targetFilter>
+			<targetSelector href="" />
+		</AreaTargetSelector>
+	</targetSelector>
+	<type>None</type>
+</AuraApplicator>

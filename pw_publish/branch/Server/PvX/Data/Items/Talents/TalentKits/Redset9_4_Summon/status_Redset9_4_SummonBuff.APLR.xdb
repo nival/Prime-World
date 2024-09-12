@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Level4/G710_StrOrInt_SummonBuff.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR" id="53440E1F-FB32-40C7-A531-C5B60E3E4CFA">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Снижение входящего урона</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR" id="EF959D87-89D8-4919-93D7-B4049F80964C">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FQ8AAAABAAAAHAAAAERhbWFnZURlY3JlYXNlAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tno3uHZXfzZRfyL5V3DAAAAAAAA8D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1-cDamageDecrease</sString>
+						</mul>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR" id="0F047327-7908-4E67-BDF7-0FEBD0F62996">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Увекличение исходящего урона</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR" id="F91232BC-2DE2-45EF-B0C5-E72E06A4BE54">
+					<EventProcessorOutgoingDamage>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<damageTypeFilter>31</damageTypeFilter>
+						<modifiedDamage>
+							<compiledString>FRcAAAACAAAAHgAAADgAAABEYW1hZ2UAAEluQ3JlYXNlRGFtYWdlAFWL7IPsDGgAAAAAi0UQixCLTRCLQlT/0ItNDFGLVQhSaAgAAACLRRCLEItNEItCUN1d+P/Q2ejewdxN+Nld9NlF9IvlXcMAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>appl.vDamage * (1+cInCreaseDamage)</sString>
+						</modifiedDamage>
+						<spell href="" />
+					</EventProcessorOutgoingDamage>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+		<Item href="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR" id="8F4461CB-8EB0-4E35-8077-69383A9B21D5">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>fx</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR" id="5D953063-65BB-455C-A96B-EDC7CBD30CB5">
+						<ScaleColorEffect>
+							<blendMode>LerpByAlpha</blendMode>
+							<colorAdd>
+								<A>0</A>
+								<B>0</B>
+								<G>0</G>
+								<R>0</R>
+							</colorAdd>
+							<colorMul>
+								<A>1</A>
+								<B>1</B>
+								<G>1</G>
+								<R>1</R>
+							</colorMul>
+							<deathType>Manual</deathType>
+							<enableCondition href="" />
+							<fadeInTime>1</fadeInTime>
+							<fadeOutTime>1</fadeOutTime>
+							<fullRecolor>false</fullRecolor>
+							<lifeTime>0</lifeTime>
+							<scale>1.15</scale>
+							<scaleIn>1</scaleIn>
+							<scaleOut>1</scaleOut>
+						</ScaleColorEffect>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>Статус с баффом суммонов</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/Retaliation/_.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Talents/_710.ITEX" />
+	<lifeTime>
+		<compiledString>FQUAAAABAAAAEQAAAFRpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cTime</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/TalentKits/Redset9_4_Summon/status_Redset9_4_SummonBuff.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/Abilities/Invisible.ABLT" Count="1" />
+	<BackLink DBID="/Glyphs/Invisibler.GLPH" Count="1" />
+	<BackLink DBID="/Glyphs/InvisiblerAfterKill.GLPH" Count="1" />
+	<BackLink DBID="/Glyphs/InvisiblerOld.GLPH" Count="1" />
+	<BackLink DBID="/Items/Consumables/EyeInvisibility.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FireFox/Ability3.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/Fluffy/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rifleman/Summon_Trap.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rifleman/Summon_Trap_SUP.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Vampire/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Wendigo/Ability3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G526_Trigger.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/trigger_G349.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/trigger_G349_Night.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level3/G515_Life_MoveSpeed.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G075_Invisibility.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G658_InvisibilityStrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_7_Glyph/status_Invis.APLR" Count="1" />
+	<BackLink DBID="/Summons/Turret/_.SUMMONED" Count="1" />
+	<applicators>
+		<Item href="/GameLogic/GeneralApplicators/Invisibility.APLR" />
+		<Item href="/Heroes/DefaultStatus/_INVISIBILITY_status.APLR" id="B2FF5179-C5D6-4487-B779-F59FD4C0BA95">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Heroes/DefaultStatus/_INVISIBILITY_status.APLR_b2ff5179c5d64487b779f59fd4c0ba95_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="" />
+				<value>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/InvisFadeInFX.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption> - Стандартный статус "Невидимость" (Invisibility_Duration)</caption>
+	<customCounter>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/_INVISIBILITY_status.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvsaAAAAAiLRQyLEItNDItCaP/QD7bA99gbwIPAAV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>!rFlag(134217728)</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>StatusInvisibility</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Invis.ITEX" />
+	<lifeTime>
+		<compiledString>FRYAAAABAAAAIgAAAEludmlzaWJpbGl0eV9EdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cInvisibility_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/_INVISIBILITY_status.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRkAAAACAAAAPwAAAFIAAABJbnZpc2libGVfU3RhcnRDb25kaXRpb24AVYvsUWgAAAAIi0UMixCLTQyLQmj/0A+2yIXJdTCLVQxSi0UIUGgAAAAAi00QixGLTRCLQlD/0NwddAAAAN/g9sREewnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>!rFlag(134217728) &amp;&amp; cInvisible_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByAllChilds</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

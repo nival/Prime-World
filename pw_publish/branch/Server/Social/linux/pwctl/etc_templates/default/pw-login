@@ -1,0 +1,10 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/services/login/"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/services/login/main.py"
+RUNSCRIPT_ARGS="--config={{ conf['rundir'] }}/cfg/login.cfg --loglevel=info --log={{ conf['logging'] }}login.log"
+LOGGING=">> {{ conf['logging_run'] }}pw-login.log.run 2>&1"

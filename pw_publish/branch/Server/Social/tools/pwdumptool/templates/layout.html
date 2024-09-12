@@ -1,0 +1,26 @@
+<!doctype html>
+<title>PW Dump Tool</title>
+<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+  <h1>Dumptool</h1>
+<h5 align=right>{{ session['user_id'] }} <a href="{{ url_for('logout') }}">Logout</a></h5>
+<table class=table_unbordered> 
+<tr>
+<td valign=top>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	<div class=navigation>
+		<a href="{{ url_for('search_account') }}">User Dump workshop</a>
+		<a href="{{ url_for('broken_account') }}">Broken user workshop</a>	
+		<a href="{{ url_for('mass_operations') }}">Mass operations</a>
+		<a href="{{ url_for('replays') }}">Replays workshop</a>		
+	</div>
+</td>
+<td valign=top>	
+<div class=page>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</div>
+</td>
+</tr>
+</table>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack parent="/Creeps/Minions/Minion1/AttackAbility.ATCK">
+	<BackLink DBID="/Creeps/Minions/Minion1/CTF_S4.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Minions/Minion1/PvE_Coop1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Minions/Minion1/PvE_Ep1.CREEP" Count="1" />
+	<applicators>
+		<Item skip="1" />
+		<Item skip="1" />
+		<Item href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="4A47E8E1-2907-4325-A84E-CBABA06E1296">
+			<SpellProbabilityApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Вероятность</caption>
+				<enabled>
+					<compiledString>FQAAAAABAAAALQAAAFWL7FFR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6EkAAACDxAzcHWEAAADf4PbERHsbi1UMiwKLTQyLUFD/0oP4EXQJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAAAAAAAAAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>ut_bldg(false, true) &amp;&amp; rUnitKind != 17</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<probability>
+					<compiledString>FQ4AAAABAAAAGgAAAEFiaWxpdHlDaGFuY2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cAbilityChance</sString>
+				</probability>
+				<providerName></providerName>
+				<spell href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="4BABB5D9-7158-445C-B11F-95C6AC9405AC">
+					<Spell>
+						<applicators>
+							<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+						</applicators>
+						<dispatch href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="79999731-785A-4940-83DF-F863FFC6B3F7">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellIfFailed href="" />
+			</SpellProbabilityApplicator>
+		</Item>
+	</applicators>
+	<constants href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="1B91BBF7-A7D2-43DC-A1AA-73E0FA419254">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="636E5C5F-DB18-42F1-B764-BE5F53D94DFC">
+					<UnitConstant>
+						<name>Dec_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>40</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="88134727-67FF-45C4-A99B-0A956451DD8A">
+					<UnitConstant>
+						<name>Slow_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="1FB8465D-32ED-4669-99AE-6AA2F3C65F7A">
+					<UnitConstant>
+						<name>Armorcurse</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4JgAQAA/9DR4IlF/NtF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>sNaftaLevel*2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Minions/Minion1/AttackWithSlowProb.ATCK" id="569C510C-1DB8-479B-B75A-2F4AB104397F">
+					<UnitConstant>
+						<name>AbilityChance</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+</BaseAttack>

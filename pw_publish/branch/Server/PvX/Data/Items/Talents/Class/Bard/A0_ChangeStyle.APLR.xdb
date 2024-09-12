@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellSwitchApplicator>
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/A4_ChangeStyleAdvance.APLR" Count="1" />
+	<activeSpellIndex>
+		<compiledString>FWEAAAAKAAAAcAAAAIMAAAC7AAAA0AAAAPUAAAASAQAAKAEAAEQBAABaAQAAeAEAAEEwX01heFJlcGV0aXRpb25zAAAAQTBfTWF4UmVwZXRpdGlvbnMAAABCYXJkQ3VyUmVwAABCYXJkQ3VyU3R5bGUAAAAAQmFyZEN1clN0eWxlAAAAAEJhcmRDdXJTdHlsZQBVi+yD7DCLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twN0QEAANld/NlF/FHZHCToQwEAAIPEBIPoAVBqAItFEIsQi00Qi0Jc/9CJRfjbRfiLTQxRi1UIUmgUAAAAi0UQixCLTRCLQlDdXfD/0GgoAAAAi00IixGLTQiLgogBAADdXej/0Nxt6Nxd8N/g9sRBdR1oNAAAAItNCIsRi00Ii4KIAQAA/9DdXeDpkwAAAGhEAAAAi00IixGLTQiLgogBAAD/0NwdyQEAAN/g9sREegnHRdwBAAAA6wfHRdwAAAAAaFQAAACLTQiLEYtNCIuCiAEAAP/Q3B3BAQAA3+D2xER6CcdF2AEAAADrB8dF2AAAAABR2QW9AQAA2Rwki00QixGLTRCLQiT/0A+2yIlN1NtF1NtF3Nno3sHeydpF2N1d4N1F4Nld0NlF0FHZHCToIwAAAIPEBIvlXcMAAEhCAAAAAAAAAAAAAAAAAADwPwAAAAAAAAhAuAEAAAAPovfCAAAABHQH8w8sRCQEw+kAAAAAVYvsg+wM2UUI2X38D7dF/A0ADAAAiUX42W3421302W38i0X0i+Vdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l( ( random( 0, f2l( cA0_MaxRepetitions * 3 ) - 1 ) &lt; cA0_MaxRepetitions - sender.vBardCurRep ) ? sender.vBardCurStyle : ( pMisc-&gt;Roll(50) * ( 1.0 + (sender.vBardCurStyle == 1.0) ) + (sender.vBardCurStyle == 0.0) ) )</sString>
+	</activeSpellIndex>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>поменять статус</caption>
+	<dontUseDispatches>false</dontUseDispatches>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spells>
+		<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="88E7F0B0-F35E-4A73-AAB0-295F7A52F462">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="DD43D8A0-6A51-4AED-BC01-534D848252FD">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>set BardCurRep</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FQ0AAAACAAAAEgAAACgAAABCYXJkQ3VyU3R5bGUAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdSgAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAA20X8i+VdwwAAAAAAAAAA</compiledString>
+									<returnType>float</returnType>
+									<sString>sender.vBardCurStyle == 0 ? 1 : 0</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>BardCurRep</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+					<Item href="/Items/Talents/Class/Bard/status_A1_Style.APLR" />
+					<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="7FC5E2DB-A75C-45A2-A0B2-63E2EC312B01">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>set BardCurStyle = 0</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>BardCurStyle</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="4BB3ACCA-8A71-4E22-9111-96A89DA25321">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>false</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="833B6C6E-7121-47F4-8C86-E2BEECB0CB60">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="4249E32B-3D02-4839-913B-C6F0A981870D">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>set BardCurRep</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FQ0AAAACAAAAEgAAACgAAABCYXJkQ3VyU3R5bGUAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdSgAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAA20X8i+VdwwAAAAAAAPA/</compiledString>
+									<returnType>float</returnType>
+									<sString>sender.vBardCurStyle == 1 ? 1 : 0</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>BardCurRep</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+					<Item href="/Items/Talents/Class/Bard/status_A2_Style.APLR" />
+					<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="C8866FE6-6014-4401-8449-95427F0467AE">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>set BardCurStyle = 1</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>BardCurStyle</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="B2524054-9E22-4727-813A-ABD0427E3C55">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>false</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="25E266F8-D272-4A70-A4AB-06E839524872">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="50D41419-F35C-4787-8CD5-B3C01F90DDF3">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>set BardCurRep</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FQ0AAAACAAAAEgAAACgAAABCYXJkQ3VyU3R5bGUAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdSgAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAA20X8i+VdwwAAAAAAAABA</compiledString>
+									<returnType>float</returnType>
+									<sString>sender.vBardCurStyle == 2 ? 1 : 0</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>BardCurRep</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+					<Item href="/Items/Talents/Class/Bard/status_A3_Style.APLR" />
+					<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="CD678762-A82C-46CC-BCE0-78E982EC2649">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>set BardCurStyle = 2</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+									<returnType>float</returnType>
+									<sString>2.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>BardCurStyle</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" id="4AE40701-B9C7-49FE-B450-AAED0FDEE61B">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>false</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+			</Spell>
+		</Item>
+	</spells>
+</SpellSwitchApplicator>

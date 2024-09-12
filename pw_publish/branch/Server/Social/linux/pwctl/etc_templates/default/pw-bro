@@ -1,0 +1,12 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="/var/www/SocialServer"
+PYTHON="/usr/bin/python"
+PYTHON_ARGS="-u"
+RUNSCRIPT="/var/www/SocialServer/bro.py"
+RUNSCRIPT_ARGS="--zzima=async --billing=zzima --port=8699 --log_level=info\
+ --log_rotation=external --log_file_prefix=/var/www/SocialServer/logs/bro.log\
+ --tick_period=10.0"
+LOGGING=">> /var/www/SocialServer/logs/pw-bro.log.run 2>&1"

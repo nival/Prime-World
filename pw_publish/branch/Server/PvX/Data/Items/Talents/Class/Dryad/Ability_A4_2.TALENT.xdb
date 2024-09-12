@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Dryad_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/Ability_A4u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/status_A3_Tree.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_7_Ultimate/Status_Redset5_7_Cooldown.APLR" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="6737F014-F220-4C2F-BC1D-11F09611C658">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Раздаем руты всем вокруг</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="284F785D-0E98-49A6-A7CC-BE9552562825">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="6B68E54D-F295-4652-B83B-8790435755FC">
+								<ProgramApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Heroes/DefaultStatus/_ROOT_Status.APLR" />
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>2</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="177D05D0-0F5E-4103-9B0C-D77C89279B2B">
+												<SpellApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<caption>Спелл с уроном с диспатчем для символа леса</caption>
+													<enabled>
+														<compiledString>FRoAAAADAAAAJwAAAD8AAABSAAAARHJ5YWRTcG9yZUNvdW50ZXIAAAB2YWx1ZQBVi+yD7AhqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9CJRfxoFAAAAItN/IsRi038i0JU/9DcHXQAAADf4PbEQXUJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAA==</compiledString>
+														<returnType>bool</returnType>
+														<sString>receiver.FindApplicator("DryadSporeCounter",pMisc,UNIT)-&gt;GetVariable("value") &gt; 0</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<spell href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="9CEA3DB5-B634-4E8B-AA91-AB36FF85738D">
+														<Spell>
+															<applicators>
+																<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="0388AFFF-C2BF-4080-A0DC-D180FFE804AC">
+																	<DamageApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<cancelInvisibility>false</cancelInvisibility>
+																		<caption>Урон, если был стак на цели</caption>
+																		<damage>
+																			<compiledString>FQwAAAABAAAAGAAAAEE0XzJfRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																			<returnType>float</returnType>
+																			<sString>cA4_2_Damage</sString>
+																		</damage>
+																		<damageMode>0</damageMode>
+																		<damageType>Energy</damageType>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<timeLimiter>-1</timeLimiter>
+																		<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+																	</DamageApplicator>
+																</Item>
+															</applicators>
+															<dispatch href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="290EA8EC-0B94-4460-8F3F-FAFB1E4852D3">
+																<DispatchImmediate>
+																	<alwaysApply>false</alwaysApply>
+																	<applyEffect>
+																		<Item href="" />
+																		<Item href="" />
+																	</applyEffect>
+																	<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																	<applyEffectOrientation>Default</applyEffectOrientation>
+																	<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																	<dieAfterApply>true</dieAfterApply>
+																	<dispatchEffect>
+																		<Item href="" />
+																		<Item href="" />
+																	</dispatchEffect>
+																	<flags>1</flags>
+																	<instantApply>false</instantApply>
+																</DispatchImmediate>
+															</dispatch>
+														</Spell>
+													</spell>
+													<spellTarget>ApplicatorTarget</spellTarget>
+													<targetSelector href="" />
+												</SpellApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>1</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>2</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>144</behaviorFlags>
+									<caption>программа с статусами и уроном</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+								</ProgramApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="1BCB51EC-80C7-4E87-9FD0-65899AFC59AE">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="CA8A02E7-5A57-4820-85DD-3A54C4B6B1DF">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQsAAAABAAAAFwAAAEE0XzJfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_2_Range</sString>
+						</range>
+						<targetFilter>538771519</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Dryad/status_A4_2_AttSpdBuff.APLR" />
+		<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="92B15B0D-397C-49BA-A6F5-18889B5399AB">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>FX на земле (base)</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/Debuffs/Sporestorm/_List.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+					<returnType>float</returnType>
+					<sString>3</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQkAAAABAAAADQAAAGRyeWFkX1MxAFWL7GgAAAAAi0UIixCLTQiLgugBAAD/0A+2wPfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>!sender.IsSkinUsed( "dryad_S1" )</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="4537FC7A-94AA-4E57-977B-4AC011D0F6E0">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>FX на земле (S1)</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/Debuffs/Sporestorm/_List_S1.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+					<returnType>float</returnType>
+					<sString>3</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQkAAAABAAAADQAAAGRyeWFkX1MxAFWL7GgAAAAAi0UIixCLTQiLgugBAAD/0F3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.IsSkinUsed( "dryad_S1" )</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="407E36C2-D26A-4B58-86F5-56E9450E0DE1">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Спелл в землю для распыления</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="3029C653-C84B-40F5-866C-5AFFB3F8745F">
+					<Spell>
+						<applicators />
+						<dispatch href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="50F81BCB-C48C-407B-9199-6CDDE15D6A54">
+							<DispatchByTime>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<cancelOnSenderDeath>false</cancelOnSenderDeath>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<lifeTime>
+									<compiledString>FQ4AAAABAAAAGgAAAFJvb3RfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>cRoot_Duration</sString>
+								</lifeTime>
+								<persistentApplicators>
+									<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="B3F0AA2E-2EF2-403C-8756-568017C8196A">
+										<SpellPeriodicallyApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>152</behaviorFlags>
+											<caption>Распыляем споры</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString>FQ4AAAABAAAAGgAAAFJvb3RfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cRoot_Duration</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<period>
+												<compiledString>FQwAAAABAAAAGAAAAEE0XzJfUGVyaW9kAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cA4_2_Period</sString>
+											</period>
+											<providerName></providerName>
+											<scaleMode>ScaleIsCount</scaleMode>
+											<spell href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="5BAA4503-477D-4F20-BAEB-A09DBE87A297">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Dryad/status_A0_Spores.APLR" />
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="67ABF8F4-19D5-4D8E-8C9F-1BCE46ACCBFC">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<startOffset>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</startOffset>
+											<targetSelector href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="48B10290-64CC-449C-8118-E30350B4BEC0">
+												<AreaTargetSelector>
+													<absolutePosition>
+														<x>0</x>
+														<y>0</y>
+													</absolutePosition>
+													<flags>0</flags>
+													<mode>Normal</mode>
+													<range>
+														<compiledString>FQsAAAABAAAAFwAAAEE0XzJfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+														<returnType>float</returnType>
+														<sString>cA4_2_Range</sString>
+													</range>
+													<targetFilter>538771519</targetFilter>
+													<targetSelector href="" />
+												</AreaTargetSelector>
+											</targetSelector>
+										</SpellPeriodicallyApplicator>
+									</Item>
+								</persistentApplicators>
+							</DispatchByTime>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="2828B4C0-213B-4238-856E-AFE747AC9719">
+					<ConvertTargetToLand>
+						<aggregateMode>First</aggregateMode>
+						<targetSelector href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="36767DF8-9E07-4F26-A062-E5A0484984AB">
+							<SelectApplicatorTarget>
+								<applicatorIndex>0</applicatorIndex>
+								<applicatorName></applicatorName>
+								<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+								<selectTarget>ApplicatorTarget</selectTarget>
+							</SelectApplicatorTarget>
+						</targetSelector>
+					</ConvertTargetToLand>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>4</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>A4. Гиблая лоза</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="95EFC702-28F4-41FD-B851-2A75DC69D565">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRgAAAACAAAAHwAAADgAAABEcnlhZF9BNF8ydQBEcnlhZF9BNF8ydQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Dryad_A4_2u") == false</sString>
+				</condition>
+				<name>Dryad_A4_2u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/Dryad/condition_A0_DexDecreaseNT" />
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/Dryad/Ability_A4.TALENT" />
+		<Item href="/Items/Talents/Class/Dryad/Ability_A4u.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="9B6C6EFD-989B-46EF-A137-7A047D60956E">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="CA04B12E-53E2-49E2-AA2F-E65E86D7BA29">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="CAB50457-2B75-4230-B4BD-82759993E7D5">
+					<UnitConstant>
+						<name>Root_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="C3EE90DE-B987-4BFC-833E-6DDDA88A141C">
+					<UnitConstant>
+						<name>A4_2_Damage</name>
+						<var>
+							<compiledString>FSoAAAADAAAANwAAAE8AAABpAAAAQTRfMl9CYXNlRGFtYWdlAERyeWFkU3BvcmVDb3VudGVyAAAAdmFsdWUAVYvsg+wQagGLRRBQaBAAAACLTQyLEYtNDIuCnAEAAP/QiUX8aCQAAACLTfyLEYtN/ItCVP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V30/9DcTfTZXfDZRfCL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_2_BaseDamage * receiver.FindApplicator("DryadSporeCounter",pMisc,UNIT)-&gt;GetVariable("value")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/const_A4_2_Duration" />
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="4BD9E554-98FC-49D9-8BFF-14D3A19315F9">
+					<UnitConstant>
+						<name>Slow_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="5462081F-5414-419C-81D8-91CA05A308C3">
+					<UnitConstant>
+						<name>Slow_StartCondition</name>
+						<var>
+							<compiledString>FRgAAAACAAAAHwAAADgAAABEcnlhZF9BNF8ydQBEcnlhZF9BNF8ydQBVi+yD7AxoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuJTfTbRfSL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Dryad_A4_2u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="9FEE10DC-65AF-4104-8F51-2153D572A709">
+					<UnitConstant>
+						<name>Dec_MoveSpeed</name>
+						<var>
+							<compiledString>FUIAAAAEAAAATwAAAG8AAACBAAAAoQAAAEE0XzJfU3BlZWRSZWR1Y2UAAAAAU3RhbmRhcnRTdGF0dXNfU2xvdwBkdXJhdGlvbgAAAABTbG93X0R1cmF0aW9uAFWL7IPsGGoBi0UQUGgUAAAAi00MixGLTQyLgpwBAAD/0IlF/ItNDFGLVQhSaDQAAACLRRCLEItNEItCUP/QaCgAAACLTfyLEYtN/ItCVN1d9P/Q3HX0i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3s/9DcTezZXejZReiL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_2_SpeedReduce * (receiver.FindApplicator("StandartStatus_Slow",pMisc,UNIT)-&gt;GetVariable("duration")/cSlow_Duration)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="01BBBA35-AD9D-4509-9EA5-29488B746442">
+					<UnitConstant>
+						<name>A4_2_Range</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/const_A4_2_SpeedReduce" />
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="F9FBD34F-A9B4-4EF0-ACDF-3754B8C28067">
+					<UnitConstant>
+						<name>A4_2_BaseDamage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAADoQQAAV0M=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale(sIntellect, 29, 215)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="18FEBE7D-330C-4FD6-A397-759B0BDD1E79">
+					<UnitConstant>
+						<name>A4_2_AspdValue</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3DAAAAQQAAFEI=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale(sIntellect, 8, 37)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="7BF7F598-6AE6-43D8-9B2F-FD9EAD459F9D">
+					<UnitConstant>
+						<name>A4_2_BuffDuration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="C087A855-4BBE-4EC2-B57C-6E278C25E6B4">
+					<UnitConstant>
+						<name>A4_2_Period</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Dryad/const_A0_Duration" />
+				<Item href="/Items/Talents/Class/Dryad/const_A0_DexDec" />
+				<Item href="/Items/Talents/Class/Dryad/const_A0_DamageInc" />
+				<Item href="/Items/Talents/Class/Dryad/const_A0_BaseDamageInc" />
+				<Item href="/Items/Talents/Class/Dryad/const_A0_Count" />
+				<Item href="/Items/Talents/Class/Dryad/const_A0_Range" />
+				<Item href="/Items/Talents/Class/Dryad/const_A0_HealAmount" />
+				<Item href="/Items/Talents/Class/Dryad/const_TT_A0_DexDec" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC0Qg==</compiledString>
+		<returnType>float</returnType>
+		<sString>90</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="6169A4E6-1319-45D3-A113-E9F6133C5D3D">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>2</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Dryad/A4_2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>200</sString>
+	</manaCost>
+	<marker>doCast4</marker>
+	<microAI href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="A6066E48-44A1-41B6-B8DE-69BE1CE0BE6C">
+		<MultipleTargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<minTargetCount>1</minTargetCount>
+			<minTargetWeight>0</minTargetWeight>
+			<targetSelector href="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" id="EE7D4429-00A4-4EDE-B7CE-EC71407A819F">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQsAAAABAAAAFwAAAEE0XzJfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_2_Range</sString>
+					</range>
+					<targetFilter>671088643</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+			<unitFilter>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</unitFilter>
+		</MultipleTargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT_name.txt" />
+	<node>ability4</node>
+	<passiveApplicators />
+	<persistentId>Dryad_A4_2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAEE0XzJfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_2_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

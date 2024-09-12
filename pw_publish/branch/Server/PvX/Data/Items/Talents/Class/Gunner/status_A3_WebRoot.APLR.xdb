@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlAppl.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlStatusesWithoutSlow.APLS" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Gunner/Ability_A3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Gunner/status_A3_WebRoot.APLR" id="110799B2-7468-4DC6-84FF-344986F8D10F">
+			<FlagsApplicator parent="/Heroes/DefaultStatus/_ROOT.APLR">
+				<caption> -- Gunner Root</caption>
+				<effect>
+					<Item href="/Summons/Trap/_Apply_Gunner.EFFT" />
+					<Item skip="1" />
+				</effect>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunner/status_A3_WebRoot.APLR" id="FECCE32E-7EC7-4D04-A20B-55E84CC93DA7">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Items/Talents/Class/Gunner/status_A3_WebRoot.APLR_fecce32e7ec74d04a20b55e84cc93da7_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>PrevApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>статус рута</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Gunner/status_A3_WebRoot.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vImmune2Control == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Gunner/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FQ4AAAABAAAAGgAAAFJvb3RfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRoot_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Gunner/status_A3_WebRoot.APLR_name.txt" />
+	<power>1</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_RootUnstacked.APLS" />
+</StatusApplicator>

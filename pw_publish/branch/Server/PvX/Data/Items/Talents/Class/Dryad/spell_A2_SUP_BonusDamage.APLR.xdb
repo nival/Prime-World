@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Dryad/status_A2_Infest.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/status_A2_InfestSelf.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>Периодично закидываем урон</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQoAAAABAAAAFgAAAEEyX1BlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_Period</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Dryad/spell_A2_SUP_BonusDamage.APLR" id="CC708BEE-2FF4-4FD0-8B35-AE69115B1EA0">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Dryad/spell_A2_SUP_BonusDamage.APLR" id="F1E4BCA2-CEC2-4DB2-BB49-4D133C55A4D8">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>- урон в % (Dryad_A2_SUP)</caption>
+						<damage>
+							<compiledString>FQsAAAACAAAAJwAAAD0AAABEbWdQZXJjZW50AFWL7IPsDItFDIsQi00Mi0IM/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0NwNTgAAANxN+Nld9NlF9IvlXcN7FK5H4XqEPw==</compiledString>
+							<returnType>float</returnType>
+							<sString> rMaxLife * ( cDmgPercent * 0.01)</sString>
+						</damage>
+						<damageMode>4</damageMode>
+						<damageType>Pure</damageType>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Dryad/spell_A2_SUP_BonusDamage.APLR" id="138B6247-3F01-4A31-BD1F-EF6B43273CBD">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>1</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString>FR0AAAACAAAAJAAAAD0AAABEcnlhZF9BMl9TVVAAAAAARHJ5YWRfQTJfU1VQAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Dryad_A2_SUP")</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+		<returnType>float</returnType>
+		<sString>0.5</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/Dryad/spell_A2_SUP_BonusDamage.APLR" id="74E712AD-66C6-4705-BB39-700A0B650340">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<targetSelector href="/Items/Talents/Class/Dryad/spell_A2_SUP_BonusDamage.APLR" id="E731E15A-33B3-44F3-A8C2-187AA546811A">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_Range</sString>
+					</range>
+					<targetFilter>538771519</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellPeriodicallyApplicator>

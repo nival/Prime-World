@@ -1,0 +1,288 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<script type="text/javascript">
+	function OpenNewWindow()
+	{
+		window.open("{{ url_for('hetero_help') }}","","toolbar=no,status=no,menubar=no,location=center,height=700,width=800");
+	}
+</script>
+	  
+  <table class=table_unbordered>
+	<tr valign=top>
+	<form action="{{ url_for('mo_get_list') }}" method=post name=mass_operations id=post name=mass_operations enctype=multipart/form-data>	
+		<td>
+<p><b>Mass operations</b><p>
+
+	<fieldset title="Input pool of auids">
+	<legend>Select list of auids</legend>	
+
+        <p><label>Select from:</label></p>
+        <p><label><input type=radio size=30 name=source checked="checked" value="file" onChange="document.getElementById('id1').style='display:yes';document.getElementById('id2').style='display:none'">A File</label></p>
+		<p><label><input type=radio size=30 name=source  value="copypaste" onChange="document.getElementById('id1').style='display:none';document.getElementById('id2').style='display:yes'">Copy/Paste</label></p>
+		<div id="id1" style="display:yes">
+			<p><input type=file name=file></p>
+		</div>
+		<div id="id2" style="display:none">
+			<p><textarea rows=30 cols=28 name=list></textarea></p>
+		</div>
+	</fieldset>	
+		</td>	
+		<td align=left>
+			<p><b>Select operation</b></p>		
+			<fieldset title="Select operation">
+			<legend>Select operation details</legend>
+				<input type="checkbox" name="heterogeneous" id="heterogeneous" value=1>Heterogeneous operations <input type=button value="?" onClick="OpenNewWindow()">
+				<p id=operation_lbl><label>Operation:</label></p>
+				<p>
+					<select  name=operation id="operation" required>
+						<option value="UnlockFlag" selected>UnlockFlag</option>
+						<option value="LockFlag">LockFlag</option>
+						<option value="AddTalent">AddTalent</option>
+						<option value="AddTalents">AddTalents</option>
+						<option value="PremiumAccount">PremiumAccount</option>	
+						<option value="SendMessageToUser">SendMessageToUser</option>
+						<option value="GiveLamp">GiveLamp</option>
+						<option value="AddSkin">AddSkin</option>
+						<option value="DeleteSkin">DeleteSkin</option>
+						<option value="UnlockHero">UnlockHero</option>
+						<option value="LockHero">LockHero</option>
+						<option value="AddBuilding">AddBuilding</option>
+						<option value="EditAccount">EditAccount</option>
+						<option value="FlushServerId">FlushServerId</option>						
+					</select>
+				<p id=subject_lbl>Subject:</p>	
+				<p><input type=text name=subject id="subject"></p>
+				<p id=subject1_lbl style="display:none"><label>Subject1:</label></p>
+				<p><input type=text name=subject1 id="subject1" style="display:none"></p>
+				<p id=subject2_lbl style="display:none"><label>Subject2:</label></p>
+				<p><input type=text name=subject2 id="subject2" style="display:none"></p>
+				<p id=subject3_lbl style="display:none"><label>Subject3:</label></p>
+				<p><input type=text name=subject3 id="subject3" style="display:none"></p>
+				<p id=subject4_lbl style="display:none"><label>Subject4:</label></p>
+				<p><input type=text name=subject4 id="subject4" style="display:none"></p>
+				<p id=subject5_lbl style="display:none"><label>Subject5:</label></p>
+				<p><input type=text name=subject5 id="subject5" style="display:none"></p>
+				<p id=subject6_lbl style="display:none"><label>Subject6:</label></p>
+				<p><input type=text name=subject6 id="subject6" style="display:none"></p>				
+				</p>
+				<p><input type=submit value=start></p>				
+			</fieldset>		
+		</td>
+	</form>
+	</tr>
+	<tr>
+		<td>
+		</td>
+	</tr>	
+	</table>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>
+	var hetero = function () {
+		if ($("#heterogeneous").is(":checked")) {
+			$('#operation').prop('disabled', 'disabled');
+			$('#operation_lbl').css("color", "gray");
+			$('#subject').prop('disabled', 'disabled');
+			$('#subject_lbl').css("color", "gray");
+			$('#subject1').prop('disabled', 'disabled');
+			$('#subject1_lbl').css("color", "gray");
+			$('#subject2').prop('disabled', 'disabled');
+			$('#subject2_lbl').css("color", "gray");
+			$('#subject3').prop('disabled', 'disabled');
+			$('#subject3_lbl').css("color", "gray");
+			$('#subject4').prop('disabled', 'disabled');
+			$('#subject4_lbl').css("color", "gray");
+			$('#subject5').prop('disabled', 'disabled');
+			$('#subject5_lbl').css("color", "gray");
+			$('#subject6').prop('disabled', 'disabled');
+			$('#subject6_lbl').css("color", "gray");			
+		}
+		else {
+			$('#operation').prop('disabled', false);
+			$('#operation_lbl').css("color", "black");
+			$('#subject').prop('disabled', false);
+			$('#subject_lbl').css("color", "black");
+			$('#subject1').prop('disabled', false);
+			$('#subject1_lbl').css("color", "black");
+			$('#subject2').prop('disabled', false);
+			$('#subject2_lbl').css("color", "black");
+			$('#subject3').prop('disabled', false);
+			$('#subject3_lbl').css("color", "black");
+			$('#subject4').prop('disabled', false);
+			$('#subject4_lbl').css("color", "black");
+			$('#subject5').prop('disabled', false);
+			$('#subject5_lbl').css("color", "black");
+			$('#subject6').prop('disabled', false);
+			$('#subject6_lbl').css("color", "black");			
+		}
+	};
+	$(hetero);
+	$("#heterogeneous").change(hetero);
+  
+	var oper = function () {
+		if ($("#operation").val() == "GiveLamp") {
+			$('#subject').attr("required","required")
+			$('#subject_lbl').text("Bonus")
+			$('#subject').val("");
+			$('#subject').show();			
+			$('#subject1').val("");
+			$('#subject1').show();
+			$('#subject1').attr("required","required")			
+			$('#subject1_lbl').text("Gold bonus")
+			$('#subject1_lbl').show();
+			$('#subject2').val("");
+			$('#subject2').show();
+			$('#subject2').attr("required","required")
+			$('#subject2_lbl').text("Transaction")
+			$('#subject2_lbl').show()
+			$('#subject3').val("");
+			$('#subject3').show();
+			$('#subject3').attr("required","required")
+			$('#subject3_lbl').text("Duration")
+			$('#subject3_lbl').show()
+			$('#subject4').hide();
+			$('#subject4').removeAttr("required")
+			$('#subject4').val("");
+			$('#subject4_lbl').hide()	
+			$('#subject5').hide();
+			$('#subject5').removeAttr("required")
+			$('#subject5').val("");
+			$('#subject5_lbl').hide()	
+			$('#subject6').hide();
+			$('#subject6').removeAttr("required")
+			$('#subject6').val("");
+			$('#subject6_lbl').hide()			
+		}
+		else if ($("#operation").val() == "EditAccount") {
+			$('#subject').removeAttr("required")
+			$('#subject_lbl').text("perl")
+			$('#subject').val("");
+			$('#subject').show();			
+			$('#subject1').val("");
+			$('#subject1').show();
+			$('#subject1').removeAttr("required")			
+			$('#subject1_lbl').text("silver")
+			$('#subject1_lbl').show();
+			$('#subject2').val("");
+			$('#subject2').show();
+			$('#subject2').removeAttr("required")
+			$('#subject2_lbl').text("resource1")
+			$('#subject2_lbl').show()
+			$('#subject3').val("");
+			$('#subject3').show();
+			$('#subject3').removeAttr("required")
+			$('#subject3_lbl').text("resource2")
+			$('#subject3_lbl').show()	
+			$('#subject4').val("");
+			$('#subject4').show();
+			$('#subject4').removeAttr("required")
+			$('#subject4_lbl').text("resource3")
+			$('#subject4_lbl').show()
+			$('#subject5').val("");
+			$('#subject5').show();
+			$('#subject5').removeAttr("required")
+			$('#subject5_lbl').text("fraction")
+			$('#subject5_lbl').show()
+			$('#subject6').val("");
+			$('#subject6').show();
+			$('#subject6').removeAttr("required")
+			$('#subject6_lbl').text("cwplayerpoints")
+			$('#subject6_lbl').show()				
+		}
+		else if ($("#operation").val() == "AddBuilding") {
+			$('#subject').attr("required","required")		
+			$('#subject_lbl').text("Building id")
+			$('#subject').val("");
+			$('#subject').show();			
+			$('#subject1').val("");
+			$('#subject1').show();
+			$('#subject1_lbl').text("Builiding level")
+			$('#subject1_lbl').show();
+			$('#subject2').hide();
+			$('#subject2').removeAttr("required")
+			$('#subject2').val("");
+			$('#subject2_lbl').hide()
+			$('#subject3').hide();
+			$('#subject3').removeAttr("required")
+			$('#subject3').val("");
+			$('#subject3_lbl').hide()
+			$('#subject4').hide();
+			$('#subject4').removeAttr("required")
+			$('#subject4').val("");
+			$('#subject4_lbl').hide()	
+			$('#subject5').hide();
+			$('#subject5').removeAttr("required")
+			$('#subject5').val("");
+			$('#subject5_lbl').hide()
+			$('#subject6').hide();
+			$('#subject6').removeAttr("required")
+			$('#subject6').val("");
+			$('#subject6_lbl').hide()				
+		}
+		else if ($("#operation").val() == "FlushServerId") {
+			$('#subject').hide();		
+			$('#subject').removeAttr("required")		
+			$('#subject_lbl').text("")
+			$('#subject').val("");
+			$('#subject1').hide();
+			$('#subject1').removeAttr("required")
+			$('#subject1').val("");
+			$('#subject1_lbl').hide();
+			$('#subject2').hide();
+			$('#subject2').removeAttr("required")
+			$('#subject2').val("");
+			$('#subject2_lbl').hide()
+			$('#subject3').hide();
+			$('#subject3').removeAttr("required")
+			$('#subject3').val("");
+			$('#subject3_lbl').hide()
+			$('#subject4').hide();
+			$('#subject4').removeAttr("required")
+			$('#subject4').val("");
+			$('#subject4_lbl').hide()	
+			$('#subject5').hide();
+			$('#subject5').removeAttr("required")
+			$('#subject5').val("");
+			$('#subject5_lbl').hide()	
+			$('#subject6').hide();
+			$('#subject6').removeAttr("required")
+			$('#subject6').val("");
+			$('#subject6_lbl').hide()				
+		}		
+		else {
+			$('#subject').attr("required","required")		
+			$('#subject_lbl').text("Subject:")
+			$('#subject').val("");
+			$('#subject').show();			
+			$('#subject1').hide();
+			$('#subject1').removeAttr("required")
+			$('#subject1').val("");
+			$('#subject1_lbl').hide();
+			$('#subject2').hide();
+			$('#subject2').removeAttr("required")
+			$('#subject2').val("");
+			$('#subject2_lbl').hide()
+			$('#subject3').hide();
+			$('#subject3').removeAttr("required")
+			$('#subject3').val("");
+			$('#subject3_lbl').hide()
+			$('#subject4').hide();
+			$('#subject4').removeAttr("required")
+			$('#subject4').val("");
+			$('#subject4_lbl').hide()	
+			$('#subject5').hide();
+			$('#subject5').removeAttr("required")
+			$('#subject5').val("");
+			$('#subject5_lbl').hide()	
+			$('#subject6').hide();
+			$('#subject6').removeAttr("required")
+			$('#subject6').val("");
+			$('#subject6_lbl').hide()			
+		}
+	};
+	$(oper);
+	$("#operation").change(oper);
+</script>	
+	
+{% endblock %}

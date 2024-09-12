@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<BackLink DBID="/Dialog/CastleTutorial/Dokt/darken/d12_qA" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Ador/darken/d12_qB" Count="1" />
+	<code>foreach hero in Heroes do
+  result = 0
+  foreach talent in hero.TalentSets[hero.ActiveTalentSet].Talents do
+	if not hero.IsTalentDefault(talent.PersistentId, result, hero.ActiveTalentSet) then
+		return 1
+    end
+	result += 1
+  end
+end
+return 0
+</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/d12_0" id="F313AE49-9AA4-4CA6-9A2D-FFD08B6D9FA1">
+			<SendRequestCondition>
+				<name>item_move_inv2ts</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/d12_0" id="C0852197-B1C3-487E-A2B6-A24A34806122">
+			<SendRequestCondition>
+				<name>item_move_ts2inv</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/d12_0" id="DEFF8C6A-7AA7-43F9-AB61-FDB13FA4C9F6">
+			<SendRequestCondition>
+				<name>item_move_ts2ts</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>

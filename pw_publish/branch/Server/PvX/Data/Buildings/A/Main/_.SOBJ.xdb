@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DBSceneObject>
+	<BackLink DBID="/Buildings/A/Main/_Parent.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Test/DesignArtTest/Buildings/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Test/Duel/_.ADMP" Count="1" />
+	<BackLink DBID="/Maps/Tutorial/Mains/_A.MBLD" Count="1" />
+	<attached>
+		<Item>
+			<attachFlags>15</attachFlags>
+			<component href="/Buildings/A/Main/_.SOBJ" id="6D337E5F-B6FB-4D3D-925B-26D78FC14E4A">
+				<DBAnimatedSceneComponent>
+					<aabb>
+						<maxX>13.62196</maxX>
+						<maxY>11.63559</maxY>
+						<maxZ>29.36725</maxZ>
+						<minX>-10.72448</minX>
+						<minY>-19.9604</minY>
+						<minZ>0</minZ>
+					</aabb>
+					<additionalGraph href="" />
+					<animations>
+						<Item>
+							<animationFileName>/Buildings/A/Main/idle.anim</animationFileName>
+							<animkeys />
+							<compression>0</compression>
+							<mayaFileName>/Buildings/A/Main/idle.mayaAnim</mayaFileName>
+							<name>idle</name>
+							<srcFileName crc="0">/Buildings/A/Main/idle.ma</srcFileName>
+						</Item>
+						<Item>
+							<animationFileName>/Buildings/A/Main/attackRange.anim</animationFileName>
+							<animkeys />
+							<compression>0</compression>
+							<mayaFileName>/Buildings/A/Main/attackRange.mayaAnim</mayaFileName>
+							<name>attackRange</name>
+							<srcFileName crc="0">/Buildings/A/Main/attackRange.ma</srcFileName>
+						</Item>
+						<Item>
+							<animationFileName>/Buildings/A/Main/attackAOE.anim</animationFileName>
+							<animkeys />
+							<compression>0</compression>
+							<mayaFileName>/Buildings/A/Main/attackAOE.mayaAnim</mayaFileName>
+							<name>attackAOE</name>
+							<srcFileName crc="0">/Buildings/A/Main/attackAOE.ma</srcFileName>
+						</Item>
+					</animations>
+					<animGraph href="/Buildings/A/Main/_.SOBJ" id="F7185A82-5F02-47EE-B183-A3A5F9C68906">
+						<AnimGraphCreator>
+							<defaultNode>idle</defaultNode>
+							<macroNodes>
+								<Item>
+									<markers />
+									<nextNode>idle</nextNode>
+									<nodeName>idle</nodeName>
+									<nodeType>Normal</nodeType>
+									<posX>132</posX>
+									<posY>188</posY>
+									<sequenceName>idle</sequenceName>
+									<simpleTransactions>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0.1</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>0</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>attack</targetNode>
+										</Item>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0.3</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>0</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>attackAOE</targetNode>
+										</Item>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0.3</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>0</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>death</targetNode>
+										</Item>
+									</simpleTransactions>
+									<speed>
+										<coeffs />
+										<value>1</value>
+									</speed>
+									<startPar>
+										<coeffs />
+										<value>0</value>
+									</startPar>
+									<stopPar>
+										<coeffs />
+										<value>1</value>
+									</stopPar>
+									<surfSpeedX>0</surfSpeedX>
+									<surfSpeedY>0</surfSpeedY>
+								</Item>
+								<Item>
+									<markers>
+										<Item>
+											<name>doFire</name>
+											<virtPar>0.3</virtPar>
+										</Item>
+									</markers>
+									<nextNode>idle</nextNode>
+									<nodeName>attack</nodeName>
+									<nodeType>Normal</nodeType>
+									<posX>420</posX>
+									<posY>44</posY>
+									<sequenceName>attackRange</sequenceName>
+									<simpleTransactions>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0.1</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>1</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>idle</targetNode>
+										</Item>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0.5</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>0</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>death</targetNode>
+										</Item>
+									</simpleTransactions>
+									<speed>
+										<coeffs />
+										<value>1</value>
+									</speed>
+									<startPar>
+										<coeffs />
+										<value>0</value>
+									</startPar>
+									<stopPar>
+										<coeffs />
+										<value>1</value>
+									</stopPar>
+									<surfSpeedX>0</surfSpeedX>
+									<surfSpeedY>0</surfSpeedY>
+								</Item>
+								<Item>
+									<markers>
+										<Item>
+											<name>doFireAOE</name>
+											<virtPar>0.5</virtPar>
+										</Item>
+										<Item>
+											<name>workTime</name>
+											<virtPar>1</virtPar>
+										</Item>
+									</markers>
+									<nextNode>idle</nextNode>
+									<nodeName>attackAOE</nodeName>
+									<nodeType>Normal</nodeType>
+									<posX>404</posX>
+									<posY>459</posY>
+									<sequenceName>attackAOE</sequenceName>
+									<simpleTransactions>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0.1</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>1</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>idle</targetNode>
+										</Item>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0.5</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>0</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>death</targetNode>
+										</Item>
+									</simpleTransactions>
+									<speed>
+										<coeffs />
+										<value>0.8</value>
+									</speed>
+									<startPar>
+										<coeffs />
+										<value>0</value>
+									</startPar>
+									<stopPar>
+										<coeffs />
+										<value>1</value>
+									</stopPar>
+									<surfSpeedX>0</surfSpeedX>
+									<surfSpeedY>0</surfSpeedY>
+								</Item>
+								<Item>
+									<markers />
+									<nextNode>dead</nextNode>
+									<nodeName>death</nodeName>
+									<nodeType>Normal</nodeType>
+									<posX>698</posX>
+									<posY>177</posY>
+									<sequenceName>idle</sequenceName>
+									<simpleTransactions>
+										<Item>
+											<parameters>
+												<blending>PoseToAnim</blending>
+												<duration>0</duration>
+												<fromMax>
+													<coeffs />
+													<value>1</value>
+												</fromMax>
+												<fromMin>
+													<coeffs />
+													<value>0.9</value>
+												</fromMin>
+												<kind>Uniform</kind>
+												<markers />
+												<parA>
+													<coeffs />
+													<value>0</value>
+												</parA>
+												<parB>
+													<coeffs />
+													<value>0</value>
+												</parB>
+												<toParam>
+													<coeffs />
+													<value>0</value>
+												</toParam>
+											</parameters>
+											<probability>0</probability>
+											<targetNode>dead</targetNode>
+										</Item>
+									</simpleTransactions>
+									<speed>
+										<coeffs />
+										<value>0.0666</value>
+									</speed>
+									<startPar>
+										<coeffs />
+										<value>0</value>
+									</startPar>
+									<stopPar>
+										<coeffs />
+										<value>0</value>
+									</stopPar>
+									<surfSpeedX>0</surfSpeedX>
+									<surfSpeedY>0</surfSpeedY>
+								</Item>
+								<Item>
+									<markers />
+									<nextNode>dead</nextNode>
+									<nodeName>dead</nodeName>
+									<nodeType>Normal</nodeType>
+									<posX>695</posX>
+									<posY>285</posY>
+									<sequenceName>idle</sequenceName>
+									<simpleTransactions />
+									<speed>
+										<coeffs />
+										<value>1</value>
+									</speed>
+									<startPar>
+										<coeffs />
+										<value>0</value>
+									</startPar>
+									<stopPar>
+										<coeffs />
+										<value>0</value>
+									</stopPar>
+									<surfSpeedX>0</surfSpeedX>
+									<surfSpeedY>0</surfSpeedY>
+								</Item>
+							</macroNodes>
+						</AnimGraphCreator>
+					</animGraph>
+					<anims />
+					<attached>
+						<Item>
+							<attachFlags>15</attachFlags>
+							<component href="/Buildings/A/Main/FXattackAOETRS.PRXY" />
+							<events href="/Buildings/A/Main/_.SOBJ" id="BC0A05BD-7255-4617-991D-DAAC5B2C0E59">
+								<EnableDisableSCEvents>
+									<disableEvents />
+									<enableEvents>
+										<Item href="/Buildings/A/Main/_.SOBJ" id="12B63781-651B-458D-81F4-BC1D198606F1">
+											<AnimationSCEvent>
+												<animParam>0</animParam>
+												<name>attackAOE</name>
+												<probability>100</probability>
+												<type>NodeParam</type>
+											</AnimationSCEvent>
+										</Item>
+									</enableEvents>
+									<order>EnableThenDisable</order>
+									<restartComponent>true</restartComponent>
+								</EnableDisableSCEvents>
+							</events>
+							<id></id>
+							<locatorName></locatorName>
+							<placement>
+								<pos>
+									<x>0</x>
+									<y>0</y>
+									<z>0</z>
+								</pos>
+								<rot>
+									<w>1</w>
+									<x>0</x>
+									<y>0</y>
+									<z>0</z>
+								</rot>
+								<scale>
+									<x>1</x>
+									<y>1</y>
+									<z>1</z>
+								</scale>
+							</placement>
+							<timeController href="" />
+						</Item>
+						<Item>
+							<attachFlags>15</attachFlags>
+							<component href="/Buildings/A/Main/FXattackRange.PRXY" />
+							<events href="/Buildings/A/Main/_.SOBJ" id="5EEB4103-D12D-4DB2-80F2-E6DBC62607B4">
+								<EnableDisableSCEvents>
+									<disableEvents />
+									<enableEvents>
+										<Item href="/Buildings/A/Main/_.SOBJ" id="E6759570-817D-422A-BA2A-59D2B81D1958">
+											<AnimationSCEvent>
+												<animParam>0</animParam>
+												<name>attack</name>
+												<probability>100</probability>
+												<type>NodeParam</type>
+											</AnimationSCEvent>
+										</Item>
+									</enableEvents>
+									<order>EnableThenDisable</order>
+									<restartComponent>true</restartComponent>
+								</EnableDisableSCEvents>
+							</events>
+							<id></id>
+							<locatorName></locatorName>
+							<placement>
+								<pos>
+									<x>0</x>
+									<y>0</y>
+									<z>0</z>
+								</pos>
+								<rot>
+									<w>1</w>
+									<x>0</x>
+									<y>0</y>
+									<z>0</z>
+								</rot>
+								<scale>
+									<x>1</x>
+									<y>1</y>
+									<z>1</z>
+								</scale>
+							</placement>
+							<timeController href="" />
+						</Item>
+						<Item>
+							<attachFlags>15</attachFlags>
+							<component href="/Buildings/A/Main/_.SOBJ" id="D52806B6-3113-42FC-94C3-A1AEC4F22D5C">
+								<DBSoundSceneComponent>
+									<attached />
+									<caption></caption>
+									<desc>
+										<eventName>HumanMainAttack</eventName>
+										<groupName>SFX</groupName>
+										<projectName>PF</projectName>
+									</desc>
+									<groupFlags>0</groupFlags>
+									<locatorList href="" />
+									<orientation>Default</orientation>
+									<timeInterval>0</timeInterval>
+								</DBSoundSceneComponent>
+							</component>
+							<events href="/Buildings/A/Main/_.SOBJ" id="263E6968-AD25-406F-93A8-DBCEC28A3331">
+								<EnableDisableSCEvents>
+									<disableEvents />
+									<enableEvents>
+										<Item href="/Buildings/A/Main/_.SOBJ" id="3C8F53B5-B9EC-443A-8B54-5A9D3B6C8EEE">
+											<AnimationSCEvent>
+												<animParam>0.47</animParam>
+												<name>attackAOE</name>
+												<probability>100</probability>
+												<type>NodeParam</type>
+											</AnimationSCEvent>
+										</Item>
+									</enableEvents>
+									<order>EnableThenDisable</order>
+									<restartComponent>true</restartComponent>
+								</EnableDisableSCEvents>
+							</events>
+							<id></id>
+							<locatorName></locatorName>
+							<placement>
+								<pos>
+									<x>0</x>
+									<y>0</y>
+									<z>0</z>
+								</pos>
+								<rot>
+									<w>1</w>
+									<x>0</x>
+									<y>0</y>
+									<z>0</z>
+								</rot>
+								<scale>
+									<x>1</x>
+									<y>1</y>
+									<z>1</z>
+								</scale>
+							</placement>
+							<timeController href="" />
+						</Item>
+					</attached>
+					<caption>Top</caption>
+					<faceFXAnims />
+					<groupFlags>4</groupFlags>
+					<keys />
+					<locatorList href="/Buildings/A/Main/_.LOLS" />
+					<mayaFileName>/Buildings/A/Main/_root.mayaSkel</mayaFileName>
+					<orientation>Default</orientation>
+					<selection>root</selection>
+					<skeletonFileName>/Buildings/A/Main/_root.skel</skeletonFileName>
+					<skinOn />
+					<skins>
+						<Item>
+							<events href="" />
+							<geometryFileName>/Buildings/A/Main/__.skin</geometryFileName>
+							<jointsCountPerVertex>4</jointsCountPerVertex>
+							<materialsReferences>
+								<Item href="/Buildings/A/Main/_.MTRL" />
+							</materialsReferences>
+							<mayaFileName>/Buildings/A/Main/__.mayaSkin</mayaFileName>
+							<selection>_</selection>
+							<skinPartName>bld03robot</skinPartName>
+							<srcFileName crc="0">/Buildings/A/Main/_.mb</srcFileName>
+							<uvSetCount>1</uvSetCount>
+						</Item>
+					</skins>
+					<splitBoneName></splitBoneName>
+					<srcFileName crc="0">/Buildings/A/Main/_.mb</srcFileName>
+				</DBAnimatedSceneComponent>
+			</component>
+			<events href="" />
+			<id></id>
+			<locatorName></locatorName>
+			<placement>
+				<pos>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</pos>
+				<rot>
+					<w>1</w>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</rot>
+				<scale>
+					<x>0.65</x>
+					<y>0.65</y>
+					<z>0.65</z>
+				</scale>
+			</placement>
+			<timeController href="" />
+		</Item>
+		<Item>
+			<attachFlags>15</attachFlags>
+			<component href="/Effects/Environment/Fire/_BigTRS.PRXY" />
+			<events href="" />
+			<id>fire5</id>
+			<locatorName></locatorName>
+			<placement>
+				<pos>
+					<x>0.9261906</x>
+					<y>3.686926</y>
+					<z>10.89834</z>
+				</pos>
+				<rot>
+					<w>0.5</w>
+					<x>-1.026213E-05</x>
+					<y>2.189872E-07</y>
+					<z>-0.8660254</z>
+				</rot>
+				<scale>
+					<x>0.45</x>
+					<y>0.45</y>
+					<z>0.4</z>
+				</scale>
+			</placement>
+			<timeController href="" />
+		</Item>
+		<Item>
+			<attachFlags>15</attachFlags>
+			<component href="/Effects/Environment/Fire/SmokeStatic.PRXY" />
+			<events href="" />
+			<id>fire1</id>
+			<locatorName></locatorName>
+			<placement>
+				<pos>
+					<x>-0.170525</x>
+					<y>0.5714303</y>
+					<z>4.177026</z>
+				</pos>
+				<rot>
+					<w>0.5</w>
+					<x>-1.026213E-05</x>
+					<y>2.189872E-07</y>
+					<z>-0.8660254</z>
+				</rot>
+				<scale>
+					<x>1.337697</x>
+					<y>0.8169217</y>
+					<z>0.8169217</z>
+				</scale>
+			</placement>
+			<timeController href="" />
+		</Item>
+		<Item>
+			<attachFlags>15</attachFlags>
+			<component href="/Effects/Environment/Fire/_SmallTRS.PRXY" />
+			<events href="" />
+			<id>fire4</id>
+			<locatorName></locatorName>
+			<placement>
+				<pos>
+					<x>-2.14819</x>
+					<y>-1.243328</y>
+					<z>7.631345</z>
+				</pos>
+				<rot>
+					<w>0.5180709</w>
+					<x>-1.257524E-05</x>
+					<y>1.369544E-07</y>
+					<z>-0.8553377</z>
+				</rot>
+				<scale>
+					<x>0.5</x>
+					<y>0.5</y>
+					<z>0.4</z>
+				</scale>
+			</placement>
+			<timeController href="" />
+		</Item>
+		<Item>
+			<attachFlags>15</attachFlags>
+			<component href="/Effects/Environment/Fire/_SmallTRS.PRXY" />
+			<events href="" />
+			<id>fire3</id>
+			<locatorName></locatorName>
+			<placement>
+				<pos>
+					<x>-3.453452</x>
+					<y>5.649984</y>
+					<z>7.468655</z>
+				</pos>
+				<rot>
+					<w>0.499994</w>
+					<x>-0.002524985</x>
+					<y>0.004441021</y>
+					<z>-0.8660138</z>
+				</rot>
+				<scale>
+					<x>0.4</x>
+					<y>0.4</y>
+					<z>0.4</z>
+				</scale>
+			</placement>
+			<timeController href="" />
+		</Item>
+		<Item>
+			<attachFlags>15</attachFlags>
+			<component href="/Effects/Environment/Fire/_SmallTRS.PRXY" />
+			<events href="" />
+			<id>fire2</id>
+			<locatorName></locatorName>
+			<placement>
+				<pos>
+					<x>1.330316</x>
+					<y>-5.957887</y>
+					<z>6.430416</z>
+				</pos>
+				<rot>
+					<w>0.5</w>
+					<x>-1.026213E-05</x>
+					<y>2.189872E-07</y>
+					<z>-0.8660254</z>
+				</rot>
+				<scale>
+					<x>0.45</x>
+					<y>0.45</y>
+					<z>0.4</z>
+				</scale>
+			</placement>
+			<timeController href="" />
+		</Item>
+	</attached>
+	<collisionGeometry href="/Buildings/A/Main/_.SOBJ" id="30F7AE8D-5BDF-4A1B-88DB-2CB712A9D98E">
+		<CollisionGeometry>
+			<fileName>/Buildings/A/Main/_.coll</fileName>
+			<mayaFileName>/Buildings/A/Main/_.mayaColl</mayaFileName>
+			<selection></selection>
+			<srcFileName crc="0">/Buildings/A/Main/_.mb</srcFileName>
+		</CollisionGeometry>
+	</collisionGeometry>
+	<ignoreAttachesToNonDefaultLocators>false</ignoreAttachesToNonDefaultLocators>
+	<tracksList href="" />
+</DBSceneObject>

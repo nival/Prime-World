@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Wendigo/Ability1.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>вешаем кровотечение</caption>
+	<effect>
+		<Item href="/Items/Talents/Class/Wendigo/A2_BleedSpell.APLR" id="9BB6C3E0-138A-4C60-BA2E-8D8931A1AFA9">
+			<PlayAnimationEffect>
+				<animGraphNode>ability1</animGraphNode>
+				<deathType>Manual</deathType>
+				<enableCondition href="" />
+				<goToOtherNodeOnStop>false</goToOtherNodeOnStop>
+				<lifeTime>0</lifeTime>
+				<marker></marker>
+				<markerReachTime>0</markerReachTime>
+				<returnAnimGraphNode></returnAnimGraphNode>
+			</PlayAnimationEffect>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAPw==</compiledString>
+		<returnType>float</returnType>
+		<sString>1.5</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Wendigo/A2_BleedSpell.APLR" id="5656CDBC-A849-40F4-94E4-B748D0E43BAD">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Wendigo/A2_BleedSpell.APLR" id="0752A73F-22C1-470A-BF4B-AE46318AEA54">
+					<ProgramApplicator>
+						<applicators>
+							<Item>
+								<applicator href="/Items/Talents/Class/Wendigo/A2_BleedSpell.APLR" id="87CC0B38-6362-49B7-8A3B-3B5EBC1A2D12">
+									<DamageApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<cancelInvisibility>true</cancelInvisibility>
+										<caption>fake урон для отмены инвиза</caption>
+										<damage>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>0.0</sString>
+										</damage>
+										<damageMode>4</damageMode>
+										<damageType>Pure</damageType>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="" />
+									</DamageApplicator>
+								</applicator>
+								<continueCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>1</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/Wendigo/remove_A2_Bleed.APLR" />
+								<continueCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>2</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/Wendigo/add_A2_Bleed.APLR" />
+								<continueCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>2</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/Wendigo/status_A2_Bleed.APLR" />
+								<continueCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>2</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+						</applicators>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>144</behaviorFlags>
+						<caption>программа кровотечения</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+					</ProgramApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Wendigo/A2_BleedSpell.APLR" id="560BC89A-08DC-4B8D-91E4-2B8C23824D59">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/Wendigo/A2_BleedSpell.APLR" id="8EF95CE0-C530-47E0-B648-711B55776BD9">
+		<CapsuleTargetSelector>
+			<cutoffFirstSegment>false</cutoffFirstSegment>
+			<flags>0</flags>
+			<mode>SendOnce</mode>
+			<range>
+				<compiledString>FQYAAAACAAAAEwAAACYAAABXaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTQAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+				<returnType>float</returnType>
+				<sString>cWidth * 0.5</sString>
+			</range>
+			<rangeFromOwner>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</rangeFromOwner>
+			<segmentBegin>PreviousPosition</segmentBegin>
+			<segmentDirectionOffset>0</segmentDirectionOffset>
+			<segmentEnd>CurrentPosition</segmentEnd>
+			<segmentEndTargetSelector href="" />
+			<targetFilter>538771519</targetFilter>
+		</CapsuleTargetSelector>
+	</targetSelector>
+</SpellPeriodicallyApplicator>

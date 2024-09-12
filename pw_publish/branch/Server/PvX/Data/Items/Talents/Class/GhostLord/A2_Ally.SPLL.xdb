@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/GhostLord/A2_Ally.SPLL" id="D78B806C-3CF3-496B-806A-4432D575267A">
+			<VariableProxyApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/GhostLord/A2_Ally.SPLL" id="6C727AA4-8AA5-40FF-AA31-EBF485EE493E">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+								<applyTarget>AbilityOwner</applyTarget>
+								<damage>
+									<compiledString>FTUAAAAFAAAATQAAAGYAAAB/AAAAkwAAAMoAAABEYW1hZ2VQZW5ldHJhdGlvbk11bHRpcGxpZXJfU3Bpcml0AABBMV9EYW1hZ2VQZXJUaWNrAFWL7IPsHItFDIsQi00Mi4JwAQAA/9DcHQMBAADf4PbEBXpXi00MixGLTQyLAv/Q3CX7AAAAi00MixGLTQyLgnABAADdXfj/0NwN8wAAANno3uHcffiLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfD/0Nx98N1d6OsF2e7dXejdRejZXeTZReRR2Rwki00MUYtVCFJoJAAAAItFEIsQi00Qi0JQ/9BR2Rwk6CcAAACDxAiL5V3DAAAAAAAAAAAAAABA4XqEPwAAAAAAAPA/AAAAAAAAWUBVi+xR2UUI2UUM3tnf4PbEQXUI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+									<returnType>float</returnType>
+									<sString>min( cA1_DamagePerTick, rEnergyDamageDecrease &lt; 100.0f ? (rLife - 1.0f) / (1.0f - rEnergyDamageDecrease * 0.01f) / cDamagePenetrationMultiplier_Spirit : 0)</sString>
+								</damage>
+								<damageMode>4</damageMode>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString>FQAAAAABAAAAEgAAAFWL7FGLRQyLEItNDIsC/9DcHTQAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+									<returnType>bool</returnType>
+									<sString>rLife &gt; 1</sString>
+								</enabled>
+								<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/GhostLord/A2_Ally.SPLL" id="33AAF424-58C3-4CB1-8DDF-2429073C1935">
+							<HealApplicator>
+								<amount>
+									<compiledString>FUYAAAAEAAAATQAAAGYAAACkAAAAyAAAAEExX0hlYWxQZXJUaWNrAABHaG9zdExvcmRfQTF1AAAAR2hvc3RMb3JkX0ExdQAAAEExdV9JbmNIZWFsaW5nUGVyVGljawBVi+yD7BBoEAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaCAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQfi1UMUotFCFBoMAAAAItNEIsRi00Qi0JQ/9DZXfTrBdnu2V30i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9DYRfTZXfDZRfCL5V3DAAAAAA==</compiledString>
+									<returnType>float</returnType>
+									<sString>cA1_HealPerTick + (tal("GhostLord_A1u") ? cA1u_IncHealingPerTick : 0)</sString>
+								</amount>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>лечение</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<healTarget>Health</healTarget>
+								<ignoreHealingMods>false</ignoreHealingMods>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+							</HealApplicator>
+						</applicator>
+						<variableNames />
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/GhostLord/A2_Ally.SPLL" id="EF24BA06-6058-4B4E-A89D-5BE0AD47E928">
+							<PermanentStatModApplicator>
+								<applyTarget>AbilityOwner</applyTarget>
+								<caption>записать урон в GhostLordA1_TotalLife</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString>FQ0AAAABAAAAIgAAAGRhbWFnZURlYWxlZABVi+xRi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQlT/0Nngi+Vdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>-$ParentApplVariable("damageDealed")</sString>
+									</addValue>
+									<multValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>GhostLordA1_TotalLife</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</applicator>
+						<variableNames />
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>урон и лечение</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+			</VariableProxyApplicator>
+		</Item>
+	</applicators>
+	<dispatch href="/Items/Talents/Class/GhostLord/A2_Ally.SPLL" id="212B2EEC-DDCB-468B-99FF-B3B63A0169C9">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Buffs/Regen/_TimeShort.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

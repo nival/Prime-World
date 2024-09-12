@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Class/Plane/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="032E53BC-5A48-402F-B5E1-0B8A36F0E69E">
+				<ProgramApplicator>
+					<applicators>
+						<Item>
+							<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="7D80182D-B284-4FFA-B5C8-32B1A53CD96E">
+								<ProgramApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="973A19A7-7431-4DBC-A865-B8A1291812B1">
+												<PermanentStatModApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<caption>A1_PlaneRocket</caption>
+													<customApplyType>None</customApplyType>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<modifier>
+														<addValue>
+															<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+															<returnType>float</returnType>
+															<sString>1.0f</sString>
+														</addValue>
+														<multValue>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>1.0f</sString>
+														</multValue>
+														<stat>Life</stat>
+														<topModifier>false</topModifier>
+														<variable>A1_PlaneRocket</variable>
+													</modifier>
+													<providerName></providerName>
+												</PermanentStatModApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>1</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="00A2C718-445A-43D0-9F3A-B92C888117E4">
+												<RefreshCooldownApplicator>
+													<allowCdIncrease>false</allowCdIncrease>
+													<applyTarget>AbilityOwner</applyTarget>
+													<caption>обнулить КД</caption>
+													<enabled>
+														<compiledString>FRwAAAACAAAAIwAAAEAAAABBMV9QbGFuZVJvY2tldAAAUm9ja2V0Q291bnQAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEAXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+														<returnType>bool</returnType>
+														<sString>sender.vA1_PlaneRocket &lt;= cRocketCount</sString>
+													</enabled>
+													<flags>128</flags>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<reduceByPercent>false</reduceByPercent>
+													<reductionAmount>
+														<compiledString>FQAAAAABAAAAOAAAAFWL7IPsFItFEIsQi00Qi0I8/9CLTRCLEYtNEItCPN1d+P/Qi00QixGLTRCLQhzdXfD/0NxN8NwFSQAAANxt+Nld7NlF7IvlXcMAAAAAAADgPw==</compiledString>
+														<returnType>float</returnType>
+														<sString>mCooldown-(mCooldown * mPreparedness + 0.5f)</sString>
+													</reductionAmount>
+													<refreshThis>false</refreshThis>
+													<talents>
+														<Item href="/Items/Talents/Class/Plane/Ability_A1.TALENT" />
+													</talents>
+													<useListAs>ListAsRule</useListAs>
+												</RefreshCooldownApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>1</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="72F025C0-0522-42C7-BE77-019BF014EACF">
+												<ProgramApplicator>
+													<applicators>
+														<Item>
+															<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="210C0F4D-2514-43E3-8E6A-F3ADCFA6A1A7">
+																<StatusApplicator>
+																	<applicators />
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<behaviorFlags>1</behaviorFlags>
+																	<caption>Запоминалка количества ракет</caption>
+																	<customCounter>
+																		<compiledString>FRsAAAADAAAAKgAAADwAAABYAAAAUm9ja2V0Q291bnQAQTFfUGxhbmVSb2NrZXQAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JoDAAAAItFCIsQi00Ii4KIAQAA3V34/9DcbfjcBXIAAADZXfTZRfRR2Rwk6A8AAACDxASL5V3DAAAAAAAA8D+4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+																		<returnType>int</returnType>
+																		<sString>f2l(cRocketCount-sender.vA1_PlaneRocket+1)</sString>
+																	</customCounter>
+																	<customProgress>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>-1.0</sString>
+																	</customProgress>
+																	<description textref="/Items/Talents/Class/Plane/A1_program.APLR_210c0f4d251443e38e6af3adcfa6a1a7_description.txt" />
+																	<dispellPriority>NonDispellable</dispellPriority>
+																	<effect>
+																		<Item href="" />
+																		<Item href="" />
+																	</effect>
+																	<enabled>
+																		<compiledString>FRwAAAACAAAAIwAAAEAAAABBMV9QbGFuZVJvY2tldAAAUm9ja2V0Q291bnQAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEAXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>sender.vA1_PlaneRocket &lt;= cRocketCount</sString>
+																	</enabled>
+																	<flags>64</flags>
+																	<formulaName>Plane_A1</formulaName>
+																	<image href="/UI/Styles/Icons/Heroes/Plane/A1.ITEX" />
+																	<lifeTime>
+																		<compiledString>FRAAAAABAAAAHAAAAEExX1dhaXREdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA1_WaitDuration</sString>
+																	</lifeTime>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<name textref="/Items/Talents/Class/Plane/A1_program.APLR_210c0f4d251443e38e6af3adcfa6a1a7_name.txt" />
+																	<power>0</power>
+																	<providerName></providerName>
+																	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+																	<stackCount>0</stackCount>
+																	<startCondition>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</startCondition>
+																	<statusPosition>0</statusPosition>
+																	<stopBehaviour>StopByTime</stopBehaviour>
+																	<unstackableWith href="" />
+																</StatusApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="0429192C-7E93-4B4C-9F80-E6C64AC6C023">
+																<TriggerApplicator>
+																	<actionsCount>
+																		<compiledString></compiledString>
+																		<returnType>int</returnType>
+																		<sString>0</sString>
+																	</actionsCount>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<behaviorFlags>27</behaviorFlags>
+																	<caption>Запускаем принудительно кд</caption>
+																	<effect>
+																		<Item href="" />
+																		<Item href="" />
+																	</effect>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<lifeTime>
+																		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DMzMzPw==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0.7</sString>
+																	</lifeTime>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<playAck>false</playAck>
+																	<processor href="/Items/Talents/Class/Plane/A1_program.APLR" id="CD68BF65-803E-4A84-BC75-A7EF62C93E2E">
+																		<EventProcessorCondition>
+																			<applyTarget>AbilityOwner</applyTarget>
+																			<condition>
+																				<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</condition>
+																			<events>40960</events>
+																			<onlyParent>false</onlyParent>
+																			<spell href="" />
+																		</EventProcessorCondition>
+																	</processor>
+																	<providerName></providerName>
+																	<startCondition>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</startCondition>
+																	<useAbilityCooldown>true</useAbilityCooldown>
+																	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+																</TriggerApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_G766_RefreshAndNotify.APLR" />
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="E89FAA5D-7ACA-4E23-937C-BC7CFEAD8D44">
+																<PermanentStatModApplicator>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<caption>Обнуляем счетчик</caption>
+																	<customApplyType>None</customApplyType>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<modifier>
+																		<addValue>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>0.0f</sString>
+																		</addValue>
+																		<multValue>
+																			<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																			<returnType>float</returnType>
+																			<sString>0.0f</sString>
+																		</multValue>
+																		<stat>Life</stat>
+																		<topModifier>false</topModifier>
+																		<variable>A1_PlaneRocket</variable>
+																	</modifier>
+																	<providerName></providerName>
+																</PermanentStatModApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+													</applicators>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<behaviorFlags>152</behaviorFlags>
+													<caption>Программа нескольких ракет</caption>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<lifeTime>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<startCondition>
+														<compiledString>FQ8AAAACAAAAFAAAACoAAABBMV9QbGFuZVJvY2tldABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+														<returnType>bool</returnType>
+														<sString>sender.vA1_PlaneRocket == 1</sString>
+													</startCondition>
+												</ProgramApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>1</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+									</applicators>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>152</behaviorFlags>
+									<caption>Программа ракет</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString>FRwAAAACAAAAIwAAAEAAAABBMV9QbGFuZVJvY2tldAAAUm9ja2V0Q291bnQAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEAXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+										<returnType>bool</returnType>
+										<sString>sender.vA1_PlaneRocket &lt;= cRocketCount</sString>
+									</startCondition>
+								</ProgramApplicator>
+							</applicator>
+							<continueCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</continueCondition>
+							<continueEvents>1</continueEvents>
+							<delay>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</delay>
+							<stopCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</stopCondition>
+							<stopEvents>0</stopEvents>
+						</Item>
+						<Item>
+							<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="F2DAC9F4-5653-4938-AB89-3C68722C5482">
+								<FlagsApplicator>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>Ожидалка поворота самолетика</caption>
+									<consumables />
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flag>0</flag>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+										<returnType>float</returnType>
+										<sString>0.2</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<talents />
+									<useListAs>ListAsRule</useListAs>
+								</FlagsApplicator>
+							</applicator>
+							<continueCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</continueCondition>
+							<continueEvents>2</continueEvents>
+							<delay>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</delay>
+							<stopCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</stopCondition>
+							<stopEvents>0</stopEvents>
+						</Item>
+						<Item>
+							<applicator href="/Items/Talents/Class/Plane/A1_program.APLR" id="88A0CCDB-70E5-4FBB-9364-04B17397A16D">
+								<SpellSwitchApplicator>
+									<activeSpellIndex>
+										<compiledString>FQ8AAAACAAAAFAAAACoAAABBMV9QbGFuZVJvY2tldABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AAAAADrB8dF/AEAAACLRfyL5V3DAAAAAAAA8D8=</compiledString>
+										<returnType>int</returnType>
+										<sString>sender.vA1_PlaneRocket == 1 ? 0 : 1</sString>
+									</activeSpellIndex>
+									<applyTarget>AbilityTarget</applyTarget>
+									<caption>Выбираем какую ракету отправлять</caption>
+									<dontUseDispatches>false</dontUseDispatches>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spells>
+										<Item href="/Items/Talents/Class/Plane/A1_program.APLR" id="244F9E04-9AD7-4ADE-940F-4EA204BAEE1A">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/Plane/A1_program.APLR" id="7C771183-A401-44D0-A110-09E210962ED1">
+														<SpellApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption></caption>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<spell href="/Items/Talents/Class/Plane/A1_program.APLR" id="EEF6570B-57EE-421E-8E31-C6E89C8659EE">
+																<Spell>
+																	<applicators>
+																		<Item href="/Items/Talents/Class/Plane/A1_program.APLR" id="552A61BD-794B-48E7-9A2C-84C32E177A27">
+																			<DamageApplicator>
+																				<applyTarget>ApplicatorTarget</applyTarget>
+																				<cancelInvisibility>false</cancelInvisibility>
+																				<caption>урон</caption>
+																				<damage>
+																					<compiledString>FQoAAAABAAAAFgAAAEExX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																					<returnType>float</returnType>
+																					<sString>cA1_Damage</sString>
+																				</damage>
+																				<damageMode>0</damageMode>
+																				<damageType>Energy</damageType>
+																				<enabled>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>true</sString>
+																				</enabled>
+																				<formulaName></formulaName>
+																				<LoggingEvent>-1</LoggingEvent>
+																				<providerName></providerName>
+																				<timeLimiter>-1</timeLimiter>
+																				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+																			</DamageApplicator>
+																		</Item>
+																	</applicators>
+																	<dispatch href="/Items/Talents/Class/Plane/A1_program.APLR" id="5F4A1071-2222-492A-BDF6-A3A213A30E10">
+																		<DispatchImmediate>
+																			<alwaysApply>false</alwaysApply>
+																			<applyEffect>
+																				<Item href="" />
+																				<Item href="" />
+																			</applyEffect>
+																			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																			<applyEffectOrientation>Default</applyEffectOrientation>
+																			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																			<dieAfterApply>true</dieAfterApply>
+																			<dispatchEffect>
+																				<Item href="" />
+																				<Item href="" />
+																			</dispatchEffect>
+																			<flags>1</flags>
+																			<instantApply>true</instantApply>
+																		</DispatchImmediate>
+																	</dispatch>
+																</Spell>
+															</spell>
+															<spellTarget>ApplicatorTarget</spellTarget>
+															<targetSelector href="/Items/Talents/Class/Plane/A1_program.APLR" id="59C0748C-7C56-45E2-A889-BAAC50D221F8">
+																<AreaTargetSelector>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<flags>0</flags>
+																	<mode>Normal</mode>
+																	<range>
+																		<compiledString>FQoAAAABAAAAFgAAAEExX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA1_Radius</sString>
+																	</range>
+																	<targetFilter>538705983</targetFilter>
+																	<targetSelector href="/Items/Talents/Class/Plane/A1_program.APLR" id="DA4BB35D-CEB2-4D2F-9668-F8E2A5A1AABB">
+																		<SelectApplicatorTarget>
+																			<applicatorIndex>0</applicatorIndex>
+																			<applicatorName></applicatorName>
+																			<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																			<selectTarget>AbilityTarget</selectTarget>
+																		</SelectApplicatorTarget>
+																	</targetSelector>
+																</AreaTargetSelector>
+															</targetSelector>
+														</SpellApplicator>
+													</Item>
+													<Item href="/Items/Talents/Class/Plane/spell_A1_DoT.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/Plane/Plane_A1_Rocket.DSCH" />
+											</Spell>
+										</Item>
+										<Item href="/Items/Talents/Class/Plane/A1_program.APLR" id="BCB4E8C2-E48E-45FC-8297-7E2D3E65E199">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/Plane/A1_program.APLR" id="08B81473-85C7-4E91-A556-4127F17807F2">
+														<SpellApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption></caption>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<spell href="/Items/Talents/Class/Plane/A1_program.APLR" id="F79EF05E-EC29-41A4-AB0C-F83307050F11">
+																<Spell>
+																	<applicators>
+																		<Item href="/Items/Talents/Class/Plane/A1_program.APLR" id="1927D429-B7EF-4C6C-8E1E-F8D11295E062">
+																			<DamageApplicator>
+																				<applyTarget>ApplicatorTarget</applyTarget>
+																				<cancelInvisibility>false</cancelInvisibility>
+																				<caption>урон</caption>
+																				<damage>
+																					<compiledString>FQoAAAABAAAAFgAAAEExX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																					<returnType>float</returnType>
+																					<sString>cA1_Damage</sString>
+																				</damage>
+																				<damageMode>0</damageMode>
+																				<damageType>Energy</damageType>
+																				<enabled>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>true</sString>
+																				</enabled>
+																				<formulaName></formulaName>
+																				<LoggingEvent>-1</LoggingEvent>
+																				<providerName></providerName>
+																				<timeLimiter>-1</timeLimiter>
+																				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+																			</DamageApplicator>
+																		</Item>
+																	</applicators>
+																	<dispatch href="/Items/Talents/Class/Plane/A1_program.APLR" id="3E1C5ABC-0887-45F1-A924-E65F43DDC057">
+																		<DispatchImmediate>
+																			<alwaysApply>false</alwaysApply>
+																			<applyEffect>
+																				<Item href="" />
+																				<Item href="" />
+																			</applyEffect>
+																			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																			<applyEffectOrientation>Default</applyEffectOrientation>
+																			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																			<dieAfterApply>true</dieAfterApply>
+																			<dispatchEffect>
+																				<Item href="" />
+																				<Item href="" />
+																			</dispatchEffect>
+																			<flags>1</flags>
+																			<instantApply>true</instantApply>
+																		</DispatchImmediate>
+																	</dispatch>
+																</Spell>
+															</spell>
+															<spellTarget>ApplicatorTarget</spellTarget>
+															<targetSelector href="/Items/Talents/Class/Plane/A1_program.APLR" id="CB29EBF8-D35E-45CC-B723-AE2713C4C496">
+																<AreaTargetSelector>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<flags>0</flags>
+																	<mode>Normal</mode>
+																	<range>
+																		<compiledString>FQoAAAABAAAAFgAAAEExX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA1_Radius</sString>
+																	</range>
+																	<targetFilter>538705983</targetFilter>
+																	<targetSelector href="/Items/Talents/Class/Plane/A1_program.APLR" id="4754F00E-C6EE-49FC-A3AD-77FE18AAE67C">
+																		<SelectApplicatorTarget>
+																			<applicatorIndex>0</applicatorIndex>
+																			<applicatorName></applicatorName>
+																			<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																			<selectTarget>AbilityTarget</selectTarget>
+																		</SelectApplicatorTarget>
+																	</targetSelector>
+																</AreaTargetSelector>
+															</targetSelector>
+														</SpellApplicator>
+													</Item>
+													<Item href="/Items/Talents/Class/Plane/spell_A1_DoT.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/Plane/A1_program.APLR" id="29008369-8403-486E-9DD9-CA32AAA19B6C">
+													<DispatchLinear parent="/Items/Talents/Class/Plane/Plane_A1_Rocket.DSCH">
+														<fromLocator>Rocket_R</fromLocator>
+													</DispatchLinear>
+												</dispatch>
+											</Spell>
+										</Item>
+									</spells>
+								</SpellSwitchApplicator>
+							</applicator>
+							<continueCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</continueCondition>
+							<continueEvents>1</continueEvents>
+							<delay>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</delay>
+							<stopCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</stopCondition>
+							<stopEvents>0</stopEvents>
+						</Item>
+					</applicators>
+					<applyTarget>AbilityOwner</applyTarget>
+					<behaviorFlags>154</behaviorFlags>
+					<caption>Program</caption>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</startCondition>
+				</ProgramApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/GameLogic/GeneralApplicators/EndOfAbility.APLR" />
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>outer program</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

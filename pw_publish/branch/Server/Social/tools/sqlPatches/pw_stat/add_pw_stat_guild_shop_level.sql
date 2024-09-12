@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_guild_rating` ADD COLUMN `shop_level` INT(4) NOT NULL DEFAULT '0' AFTER `lead_auid`;

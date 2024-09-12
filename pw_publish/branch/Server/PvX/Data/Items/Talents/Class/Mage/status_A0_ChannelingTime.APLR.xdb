@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Mage/Ability0.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Mage/status_A0_ChannelingTime.APLR" id="3EDEA777-0E99-49C4-A550-FADE3821809F">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Считаем, сколько "стеков" дать</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FSMAAAADAAEAXgAAAHQAAAB8AAAA0wAAAHJhd0RhbWFnZQAAAEEwX0RhbWFnZVRha2VuX1BlcmNlbnQAVYvsg+wci0UQixCLTRCLQkj/0IlF/ItN/IsRi038i0JI/9CJRfiLTQiLEYtNCIsC/9CLTQxRi1UIUmgMAAAAi0UQixCLTRCLQlDdXfD/0Nw1qQAAANxN8GgAAAAAi034ixGLTfiLQlTdXej/0Nx16Nld5NlF5FHZHCToDwAAAIPEBIvlXcMAAAAAAABZQFWL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOgd////g8QI2V382UX8i+Vdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>floor( appl.parent.parent.GetVariable("rawDamage") / (cA0_DamageTaken_Percent/100 * sLife) )</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Mage_A0_DamageCounter</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>Статус про уменьшение времени ченнелингов</caption>
+	<customCounter>
+		<compiledString>FRYAAAABAAAAGgAAAE1hZ2VfQTBfRGFtYWdlQ291bnRlcgBVi+xoAAAAAItFCIsQi00Ii4KIAQAA/9BR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l( sender.vMage_A0_DamageCounter )</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Mage/status_A0_ChannelingTime.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>65</flags>
+	<formulaName>Mage_A0_status</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Mage/A0.ITEX" />
+	<lifeTime>
+		<compiledString>FRgAAAABAAAAJAAAAEEwX0RhbWFnZVRha2VuX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA0_DamageTaken_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Mage/status_A0_ChannelingTime.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>2</stackCount>
+	<startCondition>
+		<compiledString>FSMAAAADAAAATgAAAGQAAABsAAAAcmF3RGFtYWdlAAAAQTBfRGFtYWdlVGFrZW5fUGVyY2VudABVi+yD7BiLRRCLEItNEItCSP/QiUX8i00IixGLTQiLAv/Qi00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ3V30/9DcNaEAAADcTfRoAAAAAItN/IsRi038i0JU3V3s/9DcXezf4PbEAXUJx0XoAQAAAOsHx0XoAAAAAIpF6IvlXcMAAAAAAABZQA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>appl.parent.GetVariable("rawDamage") &gt;= cA0_DamageTaken_Percent/100 * sLife</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

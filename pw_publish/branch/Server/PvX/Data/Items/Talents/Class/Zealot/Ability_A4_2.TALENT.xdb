@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Zealot_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_7_Ultimate/Status_Redset5_7_Cooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/appl_A0_RefreshCD.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Zealot_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A4u.TALENT" Count="1" />
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="263BAF3C-1D70-462D-BCBC-4D85DF171E6C">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="DB79B33F-BAA6-47C7-AB41-F31DCEA8422E">
+							<VariableProxyApplicator>
+								<applicators>
+									<Item>
+										<applicator href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="68241D97-6650-4B97-B0D8-D007318A9A37">
+											<DamageApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<cancelInvisibility>false</cancelInvisibility>
+												<caption>Наносим урон</caption>
+												<damage>
+													<compiledString>FQwAAAABAAAAGAAAAEE0XzJfRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>cA4_2_Damage</sString>
+												</damage>
+												<damageMode>0</damageMode>
+												<damageType>Pure</damageType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<timeLimiter>-1</timeLimiter>
+												<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+											</DamageApplicator>
+										</applicator>
+										<variableNames>
+											<Item>damageDealed</Item>
+										</variableNames>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="0175E781-42D6-49DE-8ECA-518791897084">
+											<PermanentStatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<caption>Сохраняем нанесенный урон</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQ0AAAABAAAAIgAAAGRhbWFnZURlYWxlZABVi+xRi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>appl.parent.GetVariable("damageDealed")</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>A4_2_DmgDealed</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</applicator>
+										<variableNames />
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Наносим и сохраняем урон</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+							</VariableProxyApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Zealot/status_A4_2_EnemyReduceHP.APLR" />
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="F20B5F7B-588F-4CDF-8BD1-2BDF02C259BA">
+							<HealApplicator>
+								<amount>
+									<compiledString>FQ8AAAABAAAAEwAAAEE0XzJfRG1nRGVhbGVkAFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0F3D</compiledString>
+									<returnType>float</returnType>
+									<sString>sender.vA4_2_DmgDealed</sString>
+								</amount>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Теперь лечим</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<healTarget>Health</healTarget>
+								<ignoreHealingMods>false</ignoreHealingMods>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+							</HealApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>154</behaviorFlags>
+				<caption>Программа с уроном и лечением</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+	</applicators>
+	<askId>4</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А4. Испытание болью</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="F80C52F6-04AA-4986-B1F6-29BFA04857E6">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQoAAAABAAAADgAAAFplYWxvdF9BNABVi+xoAAAAAItFCIsQi00Ii4KoAQAA/9D32BvAg8ABXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>!sender.GetTalent( "Zealot_A4")</sString>
+				</condition>
+				<uiEvent href="" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="9514CDB8-2573-4BDD-847E-3205524E915B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR0AAAACAAAAJAAAAD0AAABaZWFsb3RfQTRfMnUAAAAAWmVhbG90X0E0XzJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Zealot_A4_2u") == false</sString>
+				</condition>
+				<name>Zealot_A4_2u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" />
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4u.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="1B328B15-6E6B-424C-8282-04B034BDA0D7">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="DEBF196E-F674-4741-831E-652971A116D5">
+					<UnitConstant>
+						<name>A4_2_Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="31D8BAD4-EC23-4F47-A00E-48CADFE46ADE">
+					<UnitConstant>
+						<name>A4_2_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>7</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="C8C0704D-421E-48AB-92CF-CF5C73A3BBA5">
+					<UnitConstant>
+						<name>A4_2_Damage</name>
+						<var>
+							<compiledString>FSUAAAADAAAANAAAAF4AAAB3AAAAQTRfMl9NYXhEYW1hZ2UAAEE0XzJfUmVkdWNlSHBQZXJjZW50AFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJItFDIsQi00MiwL/0ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3E343A2RAAAA2V302UX0UdkcJOgPAAAAg8QIi+Vdw3sUrkfheoQ/VYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>min(rLife*cA4_2_ReduceHpPercent*0.01, cA4_2_MaxDamage)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="5CA8CA47-884F-43B8-8623-B4766927691E">
+					<UnitConstant>
+						<name>A4_2_AddHP</name>
+						<var>
+							<compiledString>FQ8AAAABAAAAEwAAAEE0XzJfRG1nRGVhbGVkAFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vA4_2_DmgDealed</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="A719FD83-BECD-42A1-9DBE-5F636021370C">
+					<UnitConstant>
+						<name>A4_2_ReduceHpPercent</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>50</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="FEA6FCE9-A952-4BAF-96F7-578C891C1E6B">
+					<UnitConstant>
+						<name>A4_2_MaxDamage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACgQwAAFkU=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale(sStrength, 320, 2400)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="F6EE9063-B827-49AD-8F88-0E799B8B10ED">
+					<UnitConstant>
+						<name>A4_2u_HealAmount</name>
+						<var>
+							<compiledString>FQsAAAABAAAAPQAAAEE0XzJfQWRkSFAAVYvsg+wUi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nno3uGLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfD/0NxN8Nld7NlF7IvlXcMAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>(1 - rLife/rMaxLife) * cA4_2_AddHP</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="CCC0956D-CDEB-4236-9E67-1FF3354CA9E8">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACWQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>75</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="8A34739C-6496-4218-BA6A-3C353F05FF5A">
+		<DispatchLinear>
+			<aiming>Pursue</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/Catarh/_.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>100</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>20</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>3</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Zealot/A4_2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAA0Qw==</compiledString>
+		<returnType>float</returnType>
+		<sString>180</sString>
+	</manaCost>
+	<marker>doCast1</marker>
+	<microAI href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="7D7E20C1-B583-4D24-B873-22A665C4B648">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="D2C12018-1D7E-4C0F-A1EB-CFE07BB315F8">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="5700967D-9059-4AFC-8013-11AD71654F86">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FQAAAAACAAAAJwAAAFMAAABVi+yD7BSLRQyLEItNDIsC/9CLTQyLEYtNDItCDN1d+P/Q3H343B19AAAA3+D2xEF0NYtNCIsRi00IiwL/0ItNCIsRi00Ii0IM3V3w/9DcffDcHXUAAADf4PbEBXsJx0XsAAAAAOsHx0XsAQAAAIpF7IvlXcMAAAAAAADgP5qZmZmZmek/</compiledString>
+								<returnType>bool</returnType>
+								<sString>rLife / rMaxLife &gt; 0.8 || sLife / sMaxLife &lt; 0.5</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelector href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" id="0C49D836-AE4A-46EE-A3B6-48496B474B32">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange_Long</sString>
+									</range>
+									<targetFilter>679477251</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT_name.txt" />
+	<node>ability1</node>
+	<passiveApplicators />
+	<persistentId>Zealot_A4_2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>680263681</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAEE0XzJfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_2_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

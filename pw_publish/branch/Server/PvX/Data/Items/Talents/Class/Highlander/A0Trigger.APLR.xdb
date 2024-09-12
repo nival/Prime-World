@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Highlander/Ability0.TALENT" Count="2" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>триггер на умирание вражеских героев</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Highlander/A0Trigger.APLR" id="05648361-B813-4A5E-8EB1-B57E213CF518">
+		<EventProcessorUnitDieNearMe>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<killerFlags>7</killerFlags>
+			<range>
+				<compiledString>FQkAAAABAAAAFQAAAEEwX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>cA0_Range</sString>
+			</range>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Items/Talents/Class/Highlander/A0Trigger.APLR" id="9BF5E4E5-67CD-4E83-A81F-337A962ED042">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Highlander/A0Trigger.APLR" id="F69101EB-CF54-4808-AC7A-BA0076E43E77">
+							<PermanentStatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>перманентно увеличить здоровье</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString>FQ0AAAABAAAAGQAAAEEwQWRkTWF4TGlmZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA0AddMaxLife</sString>
+									</addValue>
+									<multValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable></variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Highlander/A0Trigger.APLR" id="E1293960-39D0-4E8C-B33A-2E6C4D7CE4FC">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<targets>536870915</targets>
+		</EventProcessorUnitDieNearMe>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

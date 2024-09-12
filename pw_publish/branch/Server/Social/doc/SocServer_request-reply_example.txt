@@ -1,0 +1,31 @@
+ЗАПРОС: (http GET)
+-------------------------------------------------------
+http://localhost:88/two?action=give&uid=3604&key=12345&dest_user=user4
+
+ОТВЕТ: (JSON, для наглядности разбит на строки-отступы)
+-------------------------------------------------------
+{
+"response":
+{
+	"ka":1297338408.8659999,
+	"peer_response":
+	{
+		"ok":1,
+		"uid":4,
+		"server":"one"
+	},
+	"ok":1,
+	"server":"two",
+	"msg":"ok, peer server got dest_user",
+	"sublogin_response":
+	{
+		"_depth":2,
+		"ver":"0.101",
+		"server":"two",
+		"ws":1,
+		"error":"[mc] already logged on different server",
+		"ok":0,
+		"ws_name":"one"
+	}
+}
+}

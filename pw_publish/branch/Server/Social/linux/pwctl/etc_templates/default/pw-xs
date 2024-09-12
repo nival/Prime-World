@@ -1,0 +1,48 @@
+# Limit setting
+ulimit -n 128000
+
+# Main setting.
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/x_server.py"
+
+# Instnace settings.
+# One ellement of massive = one instance
+COORDINATOR="{{ conf['ip'] }}:{{ conf['xcoordinator_port'] }}"
+
+HOST="{{ conf['host_name'] }}"
+case $HOST in
+{{ conf['host_name'] }})
+	# XS ein
+	INSTANCE_NAME[1]="ein"
+	INSTANCE_PORT[1]="{{ conf['xs_ein_port'] }}"
+	INSTANCE_NAME[2]="zwei"
+	INSTANCE_PORT[2]="{{ conf['xs_zwei_port'] }}"
+	;;
+v162)
+	# XS zwei
+	INSTANCE_NAME[1]="zwei"
+	INSTANCE_PORT[1]="8812"
+	;;
+v163)
+	# XS drei
+	INSTANCE_NAME[1]="drei"
+	INSTANCE_PORT[1]="8812"
+	;;
+esac
+
+
+# Declare associative arrays.
+declare -A INSTANCE RUNSCRIPT_ARGS LOGGING RUN_MARKER
+
+# Generate settings to instnaces
+{{ noParse("""for i in `seq 1 ${#INSTANCE_NAME[@]}`;""") }}
+do
+	INSTANCE[${INSTANCE_NAME[$i]}]=${INSTANCE_NAME[$i]}
+	RUNSCRIPT_ARGS[${INSTANCE_NAME[$i]}]="--port=${INSTANCE_PORT[$i]} --server_name=${INSTANCE_NAME[$i]} --log_level={{ conf['log_level_xs'] }} --log_rotation=external --coordinator=$COORDINATOR --log_file_prefix={{ conf['logging'] }}xserver-${INSTANCE_NAME[$i]}.log --tick_period={% if conf['tick_period_xs'] != "0" %}{{ conf['tick_period_xs'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+	LOGGING[${INSTANCE_NAME[$i]}]="> {{ conf['logging_run'] }}pw-xs.${INSTANCE_NAME[$i]}.log.run 2>&1"
+	RUN_MARKER[${INSTANCE_NAME[$i]}]="{{ conf['rundir'] }}/logs/xs.running.${INSTANCE_NAME[$i]}"
+done
+

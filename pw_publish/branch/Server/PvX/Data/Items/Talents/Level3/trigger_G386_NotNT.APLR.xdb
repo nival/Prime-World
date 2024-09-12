@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Level3/G386_EnergyReg_MoveSpeed.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level3/trigger_G386_NT.APLR" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>Триггер "Я не на РЗ!"</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FS4AAAAGAAAAMwAAAEkAAABbAAAAewAAAJUAAACrAAAARzM4Nl9Jc09uAAAAVGhyb3dVcABGbGFnSXNvbGF0ZWQAAAAARzI0N19Jc09uAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHc0AAADf4PbERHpragCLTRBRaAwAAACLVQiLAotNCIuQnAEAAP/SO0UQdUtqAItFEFBoFAAAAItNCIsRi00Ii4KcAQAA/9A7RRB1K2gkAAAAi00IixGLTQiLgogBAAD/0NwdzQAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vG386_IsOn == 0 &amp;&amp; sender.applThrowUp(GLOBAL) == pMisc &amp;&amp; sender.applFlagIsolated(GLOBAL) == pMisc &amp;&amp; sender.vG247_IsOn == 0</sString>
+	</enabled>
+	<formulaName>G386_NotNTTrigger</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Level3/trigger_G386_NotNT.APLR" id="B91CC932-668D-4682-A12C-5BBA2AC9B603">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQoAAAACAAAAOgAAAFAAAABHMjQ3X0lzT24AVYvsUVaLRQiLEItNCItCTP/Qi/CLTQiLEYtNCIuCkAEAAP/QM8k78A+VwYXJdCtoAAAAAItVCIsCi00Ii5CIAQAA/9LcHXMAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/F6L5V3DAAAAAAAAAAA=</compiledString>
+				<returnType>bool</returnType>
+				<sString>nt(0,1)  &amp;&amp; sender.vG247_IsOn == 0</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Level3/trigger_G386_NotNT.APLR" id="09BFDBCF-063E-4469-9A95-91F7F9144755">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Level3/trigger_G386_NotNT.APLR" id="6F0B0E9D-79B8-45CE-9364-CACCF39629FF">
+							<PermanentStatModApplicator parent="/Items/Talents/_commonData/parent_MoveChange.APLR">
+								<enabled>
+									<compiledString>FRUAAAACAAAAIgAAADUAAABURUNIX05vdE5UU3BlZWRCb29zdABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVcAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+									<returnType>bool</returnType>
+									<sString>cTECH_NotNTSpeedBoost &gt; 0</sString>
+								</enabled>
+								<modifier>
+									<addValue>
+										<compiledString>FRUAAAABAAAAIQAAAFRFQ0hfTm90TlRTcGVlZEJvb3N0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cTECH_NotNTSpeedBoost</sString>
+									</addValue>
+								</modifier>
+							</PermanentStatModApplicator>
+						</Item>
+						<Item href="/Items/Talents/Level3/trigger_G386_NotNT.APLR" id="E8A3059D-8AB5-41E1-8903-9E15F112FECD">
+							<PermanentStatModApplicator>
+								<applyTarget>AbilityOwner</applyTarget>
+								<caption>G386_IsOn = 1</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>1</sString>
+									</addValue>
+									<multValue>
+										<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>0</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>G386_IsOn</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</Item>
+						<Item href="/Items/Talents/Level3/trigger_G386_NT.APLR" />
+					</applicators>
+					<dispatch href="/Items/Talents/Level3/trigger_G386_NotNT.APLR" id="B25C3302-8C64-40BE-B0DE-7B9E7E78C79C">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>true</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

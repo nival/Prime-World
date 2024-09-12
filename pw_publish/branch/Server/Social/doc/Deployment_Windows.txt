@@ -1,0 +1,83 @@
+64-битная версия пайтона НЕ СТАБИЛЬНА! Ставьте ТОЛЬКО 32-битную
+
+1. Устанавливаем python 2.7
+	Качаем с официального сайта: http://python.org/download/releases/
+	
+	Убеждаемся что в переменной окружения PATH есть путь до python.exe
+	Т.е. при Пуск - Выполнить - python действительно запускается питон нужной версии.
+
+2. Устанавливаем питоновские либы, если win32 - 2a, если win64 - просто запускаем InstallSSx64.bat и переходим к шагу 6. 
+Если InstallSSx64.bat не сработал, для х64 выполняем 2b, затем 2c и по порядку до шага 6.
+
+2a. Устанавливаем питоновские либы из \vendor\win32\
+	MySQL-python
+	pycurl
+	Thrift
+	и из \vendor\suds сначала устанавливаем setuptools
+
+2b. Устанавливаем питоновские либы из \vendor\x64\
+	MySQL-python
+	pycurl
+	Thrift
+	setuptools
+	
+2c. ВНИМАНИЕ!
+	Нужна 2-я версия PyMongo! (2.4.1 работает). У 3.x сменился интерфейс, потому кластер падает с ошибкой при запуске!
+
+3a. Либа для pymongo пока есть только в виде исходного кода (1.10 beta) \vendor\pymongo-src-1.10\
+	Устанавливаем с помощью команды:
+	python setup.py install
+
+3b. Ставим Base-12.1.1.win-amd64-py2.6
+
+3с. Ставим	\vendor\leporo-tornado-redis-e0fc1f3
+	python setup.py install
+
+4. Устанваливаем ujson-1.33
+
+5. Устанавливаем argparse \vendor\win32\argparse-1.2.1
+	python setup.py install
+
+6. Устанавливаем сервер MySQL
+	Здесь выбираем MSI 32\64: http://dev.mysql.com/downloads/ (Версия MySQL Installer 5.5 http://dev.mysql.com/downloads/installer/5.5.html)
+	(регистрироваться не обязательно, проматываем вниз до строчки "No thanks, just take me to the downloads!", затем выбираем европейское зеркало)
+	Например, 32-битная версия: http://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-5.5.15.0.msi/from/http://mysql.mirrors.ovh.net/ftp.mysql.com/
+	
+	При установке указываем что надо создать пользователя root и запоминаем пароль для него. Чтобы воспользоваться батничком для создания необходимых баз, 
+	выполните установку в C:\Program Files\MySQL\MySQL Server 5.5\ (стандартный установочный путь) и установите пароль vertrigo.
+	Также можно вручную поменять путь и пароль в .bat файле. 
+	
+7. Создаём базы, пользователя и таблицы. Если вы выполнили указания из п.6, достаточно запустить CreateSQLBases.bat. Если что-то пошло не так, устанавливаем в ручном режиме:
+
+	Для этого запускаем mysql.exe, передавая ему на вход файл с sql-командами:
+	<путь к mysql>mysql.exe -u root --password=<пароль root-а> < <путь к SocialServer>/tools/pw_12_full.sql>
+	
+	Например:
+	"C:\Program Files\MySQL\MySQL Server 5.5\bin\mysql.exe" -u root --password=vertrigo < pw_12_full.sql
+	
+	Баз сейчас нужно создавать 4 штуки:
+	- pw_12_full.sql
+	- pw_exchange.sql
+	- pw_stat_full.sql
+	- pw_mirror_full.sql
+	
+8. Проверяем прохождение тестов (Олег К.: это фиаско, некоторые тесты могут не пройти, так что не расстраиваейтесь, если такое произойдёт)
+	Для корректного запуска тестов надо добавить переменную окружения PYTHONDONTWRITEBYTECODE со значением равным 1:
+	Компьютер -> Свойства -> Дополнительные параметры системы -> Переменные среды
+	(эта переменная отключает генерацию .pyc файлов)
+
+	(Запускать из папки /tests)
+	
+	python unit.test.py
+	python party.test.py
+
+	(Запускать из самой папки SocialServer)
+
+	python all_test.py
+	
+
+9. При необходимости правим конфиг nginx.conf (в соц.кластере это единственный порт, открытый наружу; достаточно поменять servername)
+
+10. Можно запускать полный кластер: nginx, координатор, mock_matchmaker, WS
+	/batch/__start_all.bat
+

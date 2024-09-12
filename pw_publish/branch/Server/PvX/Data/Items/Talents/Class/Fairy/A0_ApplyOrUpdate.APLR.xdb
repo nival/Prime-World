@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellSwitchApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fairy/A0Spell.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Fairy/Ability_A3.TALENT" Count="1" />
+	<activeSpellIndex>
+		<compiledString>FRYAAAABAAAAIAAAAEZhaXJ5QTBIYXN0ZUNvbnRhaW5lcgBVi+xqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+VwYvBXcM=</compiledString>
+		<returnType>int</returnType>
+		<sString>receiver.applFairyA0HasteContainer(UNIT) == pMisc ? 0 : 1</sString>
+	</activeSpellIndex>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>выбрать: повесить ускорение или проапдейтить</caption>
+	<dontUseDispatches>true</dontUseDispatches>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spells>
+		<Item href="/Items/Talents/Class/Fairy/A0_ApplyOrUpdate.APLR" id="F763826D-2C46-47DF-9F2C-B8D9FEDB3A12">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Fairy/A0_ApplyOrUpdate.APLR" id="5DF3A599-3574-4163-94EA-7815C82AFAED">
+						<ApplicatorNameOverrider>
+							<applicator href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>ускорение именно от Феи</caption>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName>FairyA0HasteContainer</formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+						</ApplicatorNameOverrider>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Fairy/A0_ApplyOrUpdate.APLR" id="5199F456-9D1F-4B8E-A57A-BDFBF418E2FD">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Fairy/A0_ApplyOrUpdate.APLR" id="484ABE3F-F3F4-4EA1-950E-52725A4E7FD2">
+						<AddApplicatorDuration>
+							<applicators>
+								<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+							</applicators>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>выставить новую длительность FairyA0HasteContainer</caption>
+							<durationToAdd>
+								<compiledString>FQ8AAAABAAAAGwAAAEhhc3RlX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>cHaste_Duration</sString>
+							</durationToAdd>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flags>3</flags>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<nameToCheck>FairyA0HasteContainer</nameToCheck>
+							<providerName></providerName>
+						</AddApplicatorDuration>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+	</spells>
+</SpellSwitchApplicator>

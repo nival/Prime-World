@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Buildings/A/Main/_Parent.MBLD" Count="1" />
+	<BackLink DBID="/Buildings/B/Main/_Parent.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Test/DesignArtTest/Buildings/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Test/DesignArtTest/Buildings/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Test/Duel/_.ADMP" Count="2" />
+	<BackLink DBID="/Maps/Tutorial/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Tutorial/Mains/_B.MBLD" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption> - Аппликатор для АоЕ ГЗ</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Buildings/DefaultStats/_MB_AoE_Applicator.APLR" id="681C7400-32D5-45DC-BC7F-C9309C41ACFE">
+		<Spell>
+			<applicators>
+				<Item href="/Buildings/DefaultStats/_MB_AoE_Applicator.APLR" id="849EB59A-955D-4DBA-8404-70DFC4BF9DF6">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption> - Наносим урон</caption>
+						<damage>
+							<compiledString>FQAAAAABAAAAWwAAAFWL7IPsEItFCIsQi00Ii0Jg/9CFwHQVi00IixGLTQiLgjQBAAD/0Nld/OsTi00IixGLTQiLgjABAAD/0Nld/ItNCIsRi00Ii4I8AQAA/9DYTfxR2ejZHCRR2QWNAAAA2RwkagCLTQyLEYtNDItCWN1d9P/QD7bIUegYAAAAg8QM3E302V3w2UXwi+VdwwAAwD8AAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sBaseAttack *( sNativeAttackIndex ? sIntellect : sStrength ) * ut_hero(1.5f,1)</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Buildings/DefaultStats/_MB_AoE_Applicator.APLR" id="056479F3-F41C-41C5-8308-09C0568180AE">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Buildings/DefaultStats/_MB_AoE_Applicator.APLR" id="F2D2FF21-D701-446D-9259-4FDA9EC97779">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>0</x>
+				<y>0</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX0V4TG9uZwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+				<returnType>float</returnType>
+				<sString>cRange_ExLong</sString>
+			</range>
+			<targetFilter>538780159</targetFilter>
+			<targetSelector href="" />
+		</AreaTargetSelector>
+	</targetSelector>
+</SpellApplicator>

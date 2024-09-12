@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A4_2.TALENT" Count="1" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>сбросить BardCurrentStacks до 1 через степ</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Bard/A4_CurrentStackDrop.APLR" id="CB82B199-6332-4231-84DF-2A62415CDE9D">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Bard/A4_CurrentStackDrop.APLR" id="242D1366-D3BA-47F4-8617-07E86BD3B61A">
+					<PermanentStatModApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>set BardCurrentStacks to 1</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>0.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>BardCurrentStacks</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Bard/A4_CurrentStackDrop.APLR" id="50A4F703-5EEA-4207-A6B9-A17B5392637C">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

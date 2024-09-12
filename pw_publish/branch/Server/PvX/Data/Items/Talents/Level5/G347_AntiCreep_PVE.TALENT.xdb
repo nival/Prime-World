@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Test/Talents/TestSet10.TALENTSET" Count="1" />
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_Rar4" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G347: Инстинкт охотника</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="E25663DD-754D-46A6-8B40-8632398AEDD2">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ8AAAACAAAAFAAAACoAAABHMzQ3X0luY3JlbWVudABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG347_Increment&gt;0</sString>
+				</condition>
+				<name>G347_Inc</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="A9F88512-3010-4755-983E-44128CFFDB3B">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="490FEFFE-909B-4A8E-9446-9A374FC5B4F9">
+					<UnitConstant>
+						<name>TotalDamage</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAr0MAAMhB</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(350, 25)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="4AE71279-3F28-4AA2-99FC-3FEE983A47EC">
+					<UnitConstant>
+						<name>AddDamage</name>
+						<var>
+							<compiledString>FQwAAAADAAAAGQAAACwAAAAyAAAAVG90YWxEYW1hZ2UAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3A1IAAAA3DVAAAAA2V382UX8i+VdwwAAAAAAABRAAAAAAAAA8D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>cTotalDamage*1/5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="11F3E1C0-58E7-432A-A27B-318406A10505">
+					<UnitConstant>
+						<name>MaxDamage</name>
+						<var>
+							<compiledString>FQwAAAADAAAAGQAAACwAAAAyAAAAVG90YWxEYW1hZ2UAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3A1IAAAA3DVAAAAA2V382UX8i+VdwwAAAAAAABRAAAAAAAAAEEA=</compiledString>
+							<returnType>float</returnType>
+							<sString>cTotalDamage*4/5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="7D50F788-CA00-4C16-8402-C9910754F7E0">
+					<UnitConstant>
+						<name>CreepsToKill</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="2D9A364C-B690-4DCC-B6BD-71272FE54642">
+					<UnitConstant>
+						<name>Add_DamageForCreep</name>
+						<var>
+							<compiledString>FRkAAAACAAAAKAAAAEIAAABNYXhEYW1hZ2UAAABDcmVlcHNUb0tpbGwAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgMAAAAi1UQiwKLTRCLUFDdXfj/0tx9+Nld9NlF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cMaxDamage/cCreepsToKill</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="AB924205-3182-4CF6-BDED-E422CCAAFCF8">
+					<UnitConstant>
+						<name>TECH_Add_DamageJustified</name>
+						<var>
+							<compiledString>FS8AAAADAAAAPgAAAFAAAAB9AAAATWF4RGFtYWdlAAAARzM0N19JbmNyZW1lbnQAAEFkZF9EYW1hZ2VGb3JDcmVlcABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0mgMAAAAi0UIixCLTQiLgogBAADdXfj/0Nxt+Nld9NlF9FHZHCSLTQxRi1UIUmgcAAAAi0UQixCLTRCLQlD/0FHZHCToBwAAAIPECIvlXcNVi+xR2UUI2UUM3tnf4PbEQXUI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>min( cAdd_DamageForCreep, cMaxDamage - sender.vG347_Increment )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="8ADBD37D-201E-4B25-BCE2-E21F440CDB48">
+					<UnitConstant>
+						<name>G347_Increment</name>
+						<var>
+							<compiledString>FQ8AAAABAAAAEwAAAEczNDdfSW5jcmVtZW50AFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vG347_Increment</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>2</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="" />
+	<flags>1</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_347.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>4</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="A20B3149-9919-4C6E-BA2F-40ACAA078F10">
+			<AbilityUpgradeApplicator>
+				<applicators>
+					<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="FA0B3107-F247-40E1-9BE6-31FAB96CE2D7">
+						<SpellApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>Урон и выставление переменной для триггера</caption>
+							<enabled>
+								<compiledString>FQsAAAADAAAAIAAAAGIAAAB4AAAASW1tdW5lMkF4ZQBVi+yD7AiLRRCLEItNEItCHP/Q3B24AAAA3+D2xER6d4tNDIsRi00Mi0JQ/9CD+AV0JItNDIsRi00Mi0JQ/9CD+BJ0EotNDIsRi00Mi0JQ/9CD+BN1QWgAAAAAi00MixGLTQyLgogBAAD/0NwdsAAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAg338AXUJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAAAAAAAAAPA/</compiledString>
+								<returnType>bool</returnType>
+								<sString>(mPreparedness == 1.0)&amp;&amp;((rUnitKind == 5)||(rUnitKind ==18)||(rUnitKind == 19))&amp;&amp;(!receiver.vImmune2Axe==1)</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<spell href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="644F509F-0490-447E-8526-0774DD058331">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="A780BA79-6F9A-4B9C-BEBA-29AF7EE314EF">
+											<StatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>153</behaviorFlags>
+												<caption>Выставляем переменную для триггера</caption>
+												<constraint>None</constraint>
+												<dontUpdate>false</dontUpdate>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+													<returnType>float</returnType>
+													<sString>0.2</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>1.0f</sString>
+													</addValue>
+													<multValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>G347_Cooldown</variable>
+												</modifier>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+												<statModName></statModName>
+											</StatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="59E4C70D-A4C6-4492-BB60-9DC184291EA3">
+											<DamageApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<cancelInvisibility>false</cancelInvisibility>
+												<caption>Damage</caption>
+												<damage>
+													<compiledString>FRsAAAACAAAAKgAAADwAAABBZGREYW1hZ2UAAABHMzQ3X0luY3JlbWVudABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0mgMAAAAi0UIixCLTQiLgogBAADdXfj/0NxF+Nld9NlF9IvlXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>cAddDamage+sender.vG347_Increment</sString>
+												</damage>
+												<damageMode>0</damageMode>
+												<damageType>Material</damageType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<timeLimiter>-1</timeLimiter>
+												<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+											</DamageApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="4A159F02-8489-4F5E-AD84-78E04D21CA2C">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="/Effects/Debuffs/BoostAttack/_Gold.EFFT" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+							<spellTarget>ApplicatorTarget</spellTarget>
+							<targetSelector href="" />
+						</SpellApplicator>
+					</Item>
+				</applicators>
+				<applyCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</applyCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Урон по чуди с кулдауном</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<persistentApplicators />
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<targetAbility>BaseAttack</targetAbility>
+				<useListAs>ListAsRule</useListAs>
+			</AbilityUpgradeApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="1F94A5E2-CDD5-4DBC-966B-E8D35E1656E8">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption>Триггер для сброса кулдауна</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="3C43086C-6C7E-4BDD-97BD-FD404837A131">
+					<EventProcessorCondition>
+						<applyTarget>AbilityOwner</applyTarget>
+						<condition>
+							<compiledString>FQ4AAAACAAAAEwAAACkAAABHMzQ3X0Nvb2xkb3duAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUsAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+							<returnType>bool</returnType>
+							<sString>sender.vG347_Cooldown &gt; 0</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="" />
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>true</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="C38B8AB2-08DD-4A02-A478-65DB960C28B7">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>триггер на убийство</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRoAAAACAAAAIQAAAD4AAABHMzQ3X0luY3JlbWVudAAATWF4RGFtYWdlAFWL7IPsDGgAAAAAi0UIixCLTQiLgogBAAD/0ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xEF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG347_Increment &lt; cMaxDamage</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="5D7E1AC5-08B7-4E60-98DC-E24F32B8A06C">
+					<EventProcessorUnitDieNearMe>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<killerFlags>9</killerFlags>
+						<range>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</range>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="087F3209-5474-4442-B070-47B74B1FD6BF">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="BD8A96B7-87B9-4817-A145-26B06455F81E">
+										<PermanentStatModApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>G347_Increment monsters</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString>FRoAAAACAAAAIQAAAD4AAABHMzQ3X0luY3JlbWVudAAATWF4RGFtYWdlAFWL7IPsDGgAAAAAi0UIixCLTQiLgogBAAD/0ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xEF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.vG347_Increment &lt; cMaxDamage</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FRkAAAABAAAAJQAAAFRFQ0hfQWRkX0RhbWFnZUp1c3RpZmllZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+													<returnType>float</returnType>
+													<sString>cTECH_Add_DamageJustified</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>G347_Increment</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Level5/G347_AntiCreep_PVE.TALENT" id="B63134E7-C220-4F1C-9E33-7844E4CA46DC">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<targets>537657379</targets>
+					</EventProcessorUnitDieNearMe>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>G347</persistentId>
+	<prerequisiteTalents />
+	<rarity>magnificent</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

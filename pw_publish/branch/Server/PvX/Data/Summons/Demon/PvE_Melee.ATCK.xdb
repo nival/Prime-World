@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Summons/Demon/TripleBlink.ABLT" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Summons/Demon/PvE_Melee.ATCK" id="84F18C22-13EF-431C-BA3E-8F23C503B848">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>если умрет - увеличить время возрождения</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Summons/Demon/PvE_Melee.ATCK" id="1AE0C486-41A9-451C-AE7B-C4BC968DC25B">
+					<EventProcessorUnitDieNearMe>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>1</checkSender>
+						<killerFlags>1</killerFlags>
+						<range>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</range>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Summons/Demon/PvE_Melee.ATCK" id="32AAAAC6-E081-4EF4-8C2A-21E7E0199E11">
+							<Spell>
+								<applicators>
+									<Item href="/Summons/Demon/PvE_Melee.ATCK" id="59836AB1-73AC-4A6F-A1E5-B7C47EDA8A3F">
+										<StatModApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>216</behaviorFlags>
+											<caption>увеличить время респавна</caption>
+											<constraint>None</constraint>
+											<dontUpdate>false</dontUpdate>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>ReviveTimeScale</variable>
+											</modifier>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<statModName></statModName>
+										</StatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Summons/Demon/PvE_Melee.ATCK" id="40FC411B-070D-4CE8-AA74-5C25240B8A6E">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<targets>538911231</targets>
+					</EventProcessorUnitDieNearMe>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Summons/Demon/PvE_Melee.ATCK" id="BBA6C2FF-D45D-45C2-95B6-F45A8CD80D51">
+			<DamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<cancelInvisibility>true</cancelInvisibility>
+				<caption>урон</caption>
+				<damage>
+					<compiledString>FQwAAAABAAAAGAAAAE1lbGVlRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cMeleeDamage</sString>
+				</damage>
+				<damageMode>3</damageMode>
+				<damageType>Native</damageType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<timeLimiter>-1</timeLimiter>
+				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+			</DamageApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Summons/Demon/PvE_Coop1.UCCN" />
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Summons/Demon/PvE_Melee.ATCK" id="97883725-C39D-4F10-959D-D34406DF476D">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/FireBall/_FireFoxHit.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>5</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136314887</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

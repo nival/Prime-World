@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Creeps/Bosses/Boss1/PvE_Coop1.CREEP" Count="2" />
+	<BackLink DBID="/Creeps/Bosses/Boss1/PvE_Coop1_DoTSummon.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Alchemist.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Alchemist_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Alchemist/_summon_Circle.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A1_SUP.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A1u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/G353_AoE.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Alchemist_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/NewYear/_.ADMP" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Spawners/NeutralBoss.NCSPN" Count="1" />
+	<BackLink DBID="/Test/Talents/Alchemist/Duel_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Alchemist/Duel_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Alchemist/Elite_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Alchemist/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Alchemist/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Alchemist/Epic_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Alchemist/Epic_Str_ult2.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQoAAAABAAAAFgAAAEExX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cA1_Radius</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="8B1B7B4B-1DCD-40A9-B96E-23F03556268C">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Вешаем на героя переменную для проверки куплен ли апргейд таланта</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABBbGNoZW1pc3RfQTF1AAAAQWxjaGVtaXN0X0ExdQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Alchemist_A1u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>AlchemistA1UpgradeUp</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="D493A11A-375E-46A9-BF01-19D853E488CF">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>- внешний Спел, чтобы к цели летел бы диспатч-бутылочка (внутри уже ДиспатчНаВремя)</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="999FF351-24A7-46C1-8C89-E2BDB5A28DF3">
+					<Spell>
+						<applicators />
+						<dispatch href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="F1D75CA4-63F6-4780-BC84-1C26773CCC0D">
+							<DispatchByTime>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<cancelOnSenderDeath>false</cancelOnSenderDeath>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="2C48DBDB-8A1F-4D14-9FBD-35C1A4A5F767">
+										<EffectList>
+											<deathType>Manual</deathType>
+											<effects>
+												<Item href="/Effects/Debuffs/DoT/_Cycle.EFFT" />
+												<Item href="/Effects/Debuffs/DoT/_.EFFT" />
+											</effects>
+											<enableCondition href="" />
+											<lifeTime>0</lifeTime>
+										</EffectList>
+									</Item>
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<lifeTime>
+									<compiledString>FREAAAACAAAAHgAAADEAAABBMV9DbG91ZER1cmF0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFPwAAANld/NlF/IvlXcMAAAAAAAAAQA==</compiledString>
+									<returnType>float</returnType>
+									<sString>cA1_CloudDuration +2</sString>
+								</lifeTime>
+								<persistentApplicators>
+									<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="B2024CBA-0C0E-4B62-B1B8-81B84A3B96D3">
+										<SpellPeriodicallyApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>152</behaviorFlags>
+											<caption>- Переодически вешаем на всех в зоне статус</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString>FREAAAABAAAAHQAAAEExX0Nsb3VkRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cA1_CloudDuration</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<period>
+												<compiledString>FRsAAAABAAAAJwAAAEExX1BlcmlvZF9PZkFwcGx5aW5nUG9pc29uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cA1_Period_OfApplyingPoison</sString>
+											</period>
+											<providerName></providerName>
+											<scaleMode>ScaleIsTime</scaleMode>
+											<spell href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="24C5408E-2315-40AB-97AA-F60006BEAC42">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="51DC8AC1-2E27-425C-8986-2B4084C9B89A">
+															<StatusApplicator>
+																<applicators>
+																	<Item href="/Items/Talents/Class/Alchemist/status_Slow_Alchemist_A1.APLR" />
+																	<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="A53EB427-7004-4C96-8D42-94405BD0E154">
+																		<StatusApplicator parent="/Heroes/DefaultStatus/_ARMORCUT_status.APLR">
+																			<dispellPriority>NonDispellable</dispellPriority>
+																		</StatusApplicator>
+																	</Item>
+																	<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="73666053-0F3D-4E8B-81DE-AA957168B04C">
+																		<StatusApplicator parent="/Heroes/DefaultStatus/_Vulnerability_status.APLR">
+																			<dispellPriority>NonDispellable</dispellPriority>
+																		</StatusApplicator>
+																	</Item>
+																</applicators>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<behaviorFlags>147</behaviorFlags>
+																<caption>Дебаффы</caption>
+																<customCounter>
+																	<compiledString></compiledString>
+																	<returnType>int</returnType>
+																	<sString>0</sString>
+																</customCounter>
+																<customProgress>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</customProgress>
+																<description textref="" />
+																<dispellPriority>NonDispellable</dispellPriority>
+																<effect>
+																	<Item href="" />
+																	<Item href="" />
+																</effect>
+																<enabled>
+																	<compiledString>FTQAAAADAAAAOwAAAFQAAACQAAAAQWxjaGVtaXN0X0ExX1NVUAAAAABBbGNoZW1pc3RfQTFfU1VQAAAAAEFsY2hlbWlzdEExAFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoFAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdClqAYtVEFJoKAAAAItFDIsQi00Mi4KcAQAA/9A7RRB0CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>tal("Alchemist_A1_SUP") &amp;&amp; (receiver.applAlchemistA1(UNIT) != pMisc)</sString>
+																</enabled>
+																<flags>1</flags>
+																<formulaName></formulaName>
+																<image href="" />
+																<lifeTime>
+																	<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1</sString>
+																</lifeTime>
+																<LoggingEvent>-1</LoggingEvent>
+																<name textref="" />
+																<power>0</power>
+																<providerName></providerName>
+																<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+																<stackCount>1</stackCount>
+																<startCondition>
+																	<compiledString>FQwAAAABAAAAFgAAAEFsY2hlbWlzdEExAFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>receiver.applAlchemistA1(UNIT) == pMisc</sString>
+																</startCondition>
+																<statusPosition>0</statusPosition>
+																<stopBehaviour>StopByTime</stopBehaviour>
+																<unstackableWith href="" />
+															</StatusApplicator>
+														</Item>
+														<Item href="/Items/Talents/Class/Alchemist/status_A1Poison.APLR" />
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="855C6EC7-F393-4343-8649-8F90E365ED74">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<startOffset>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</startOffset>
+											<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="DEB8FAB2-0E6B-4325-BBD4-5F35D296866B">
+												<ConditionTargetSelector>
+													<condition>
+														<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+														<returnType>bool</returnType>
+														<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+													</condition>
+													<flags>0</flags>
+													<mode>Normal</mode>
+													<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="0FAFFBB8-E5EE-47AB-AE4D-03AA97560DA5">
+														<AreaTargetSelector>
+															<absolutePosition>
+																<x>0</x>
+																<y>0</y>
+															</absolutePosition>
+															<flags>0</flags>
+															<mode>Normal</mode>
+															<range>
+																<compiledString>FSUAAAACAAAANAAAAF4AAABBMV9SYWRpdXMAAABBMXVfUmFkaXVzX0luY3JlYXNlU3BlZWQAVYvsg+wUi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRRCLEItNEItCEN1d+P/Qi00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ3V3w/9DcTfDcRfjZXezZReyL5V3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cA1_Radius + mScale * cA1u_Radius_IncreaseSpeed</sString>
+															</range>
+															<targetFilter>538771519</targetFilter>
+															<targetSelector href="" />
+														</AreaTargetSelector>
+													</targetSelector>
+												</ConditionTargetSelector>
+											</targetSelector>
+										</SpellPeriodicallyApplicator>
+									</Item>
+									<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="55F04E31-244F-4528-BCFD-F21E965DE988">
+										<SpellPeriodicallyApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>1</behaviorFlags>
+											<caption>- ищем врагов в зоне для А0 (отключаем поиск, если получили один стек)</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString>FRUAAAABAAAAHwAAAEEwX1JlYWdlbnRCYXNlU3RhdHVzAFWL7GoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.applA0_ReagentBaseStatus(ABILITY) == pMisc</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString>FREAAAABAAAAHQAAAEExX0Nsb3VkRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cA1_CloudDuration</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<period>
+												<compiledString>FRsAAAABAAAAJwAAAEExX1BlcmlvZF9PZkFwcGx5aW5nUG9pc29uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cA1_Period_OfApplyingPoison</sString>
+											</period>
+											<providerName></providerName>
+											<scaleMode>ScaleIsCount</scaleMode>
+											<spell href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="901B0F2C-BA1E-40A2-9BBE-F7E0D0012F31">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="E05171FD-D94E-4710-A003-458F1D1293DE">
+															<PermanentStatModApplicator>
+																<applyTarget>AbilityOwner</applyTarget>
+																<caption> - A0_Reagent_Color = 1 , i.e. = Red/Might</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FT8AAAAEAAAARgAAAF8AAACfAAAAuAAAAEFsY2hlbWlzdF9BNAAAAABBbGNoZW1pc3RfQTQAAAAAQWxjaGVtaXN0X0E0XzIAAEFsY2hlbWlzdF9BNF8yAFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCLP/QiUX46wfHRfj/////g334/3QJx0X0AAAAAOtdaCAAAACLTQiLEYtNCIuCqAEAAP/QhcB0KmgwAAAAi00IixGLTQiLgqgBAAD/0IlF8ItN8IsRi03wi0Is/9CJRezrB8dF7P////+LTeyD6f/32RvJg+EAg8EBiU3020X0i+Vdww==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>getTalentRefineRate ("Alchemist_A4", -1) != -1 ? 0 : getTalentRefineRate ("Alchemist_A4_2", -1) != -1 ? 1 : 1</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>A0_Reagent_Color</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+														<Item href="/Items/Talents/Class/Alchemist/status_A0_base.APLR" />
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="2D074C88-A735-4F49-95DE-8A3F3D8C7824">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<startOffset>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</startOffset>
+											<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="BC7C7BBF-EDD6-4E46-BAD8-3763F63968A6">
+												<FirstTargetSelector>
+													<nearestTarget>false</nearestTarget>
+													<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="3D6BADF6-D4B3-421F-9A89-698691C99274">
+														<ConditionTargetSelector>
+															<condition>
+																<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+																<returnType>bool</returnType>
+																<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+															</condition>
+															<flags>0</flags>
+															<mode>Normal</mode>
+															<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="4CBEABE7-8C8A-40D8-BFA8-3E21C61555D6">
+																<AreaTargetSelector>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<flags>0</flags>
+																	<mode>SendOnce</mode>
+																	<range>
+																		<compiledString>FSUAAAACAAAANAAAAF4AAABBMV9SYWRpdXMAAABBMXVfUmFkaXVzX0luY3JlYXNlU3BlZWQAVYvsg+wUi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRRCLEItNEItCEN1d+P/Qi00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ3V3w/9DcTfDcRfjZXezZReyL5V3D</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA1_Radius + mScale * cA1u_Radius_IncreaseSpeed</sString>
+																	</range>
+																	<targetFilter>580649023</targetFilter>
+																	<targetSelector href="" />
+																</AreaTargetSelector>
+															</targetSelector>
+														</ConditionTargetSelector>
+													</targetSelector>
+												</FirstTargetSelector>
+											</targetSelector>
+										</SpellPeriodicallyApplicator>
+									</Item>
+								</persistentApplicators>
+							</DispatchByTime>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>1</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А1. Едкое вещество</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Alchemist/Ability_A1.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="018F71EC-1DE0-46CF-8DE3-7FB90D5D2F3C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABBbGNoZW1pc3RfQTF1AAAAQWxjaGVtaXN0X0ExdQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Alchemist_A1u") == false</sString>
+				</condition>
+				<name>Alchemist_A1u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="C741AD67-141A-479E-B71E-AD4F1CB47245">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSUAAAACAAAALAAAAEUAAABBbGNoZW1pc3RfQTFfU1VQAAAAAEFsY2hlbWlzdF9BMV9TVVAAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgUAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtkX799gbwIPAAYvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Alchemist_A1_SUP") == false</sString>
+				</condition>
+				<name>Alchemist_A1_SUP</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="27C5B3BE-344A-4FE1-9BF2-9484EF13CBCA">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Alchemist/const_A0MaxStack" />
+				<Item href="/Items/Talents/Class/Alchemist/const_A0Duration" />
+				<Item href="/Items/Talents/Class/Alchemist/const_A0Probability" />
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="7B7FDF97-C858-4F28-A759-821D1A410473">
+					<UnitConstant>
+						<name>A1_Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="F2D9E097-FF85-4D67-A490-45D2EA544507">
+					<UnitConstant>
+						<name>A1_Radius</name>
+						<var>
+							<compiledString>FQwAAAACAAAAGQAAACwAAABSYW5nZV9NZWxlZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcJToAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Melee - 0.5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="C3DBA300-7243-4857-A1CE-9AF2F8E7A70E">
+					<UnitConstant>
+						<name>A1_CloudDuration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="F214BC4C-CF0F-4F50-B556-8E5A62B89896">
+					<UnitConstant>
+						<name>A1u_Radius_IncreaseSpeed</name>
+						<var>
+							<compiledString>FRUAAAADAAAAHAAAADIAAAA/AAAAQWxjaGVtaXN0QTFVcGdyYWRlVXAAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1qAAAA3+D2xER6C90FYgAAAN1d+OsF2e7dXfjdRfjZXfTZRfSL5V3DAAAAAAAAAAAAAAAAAAD4PwAAAAAAAPA/</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vAlchemistA1UpgradeUp == 1 ? 1.5 : 0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="55E887D0-4A72-4D15-B861-7135C30B0AD5">
+					<UnitConstant>
+						<name>A1_Poison_DamageTotal</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="CA2D1946-46E7-43B3-8158-1F2392C5F61C">
+					<UnitConstant>
+						<name>A1_Poison_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="9F55C71B-374B-4F27-92ED-7326B7D2A446">
+					<UnitConstant>
+						<name>A1_Poison_Tick</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DZmZmPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.9</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="7D3318C1-BF4A-4FFD-8309-E548DF3C7CD7">
+					<UnitConstant>
+						<name>A1_Poison_DamagePerTick</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAAAAQQAAcEI=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale(  sStrength, 8, 60) ; //cA1_Poison_DamageTotal / ( cA1_Poison_Duration / cA1_Poison_Tick)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="80D66E31-053A-4F25-883F-0003333428F2">
+					<UnitConstant>
+						<name>A1_Poison_DamagePerTickIfMoved</name>
+						<var>
+							<compiledString>FTEAAAACAAAAQAAAAFoAAABBMV9Qb2lzb25fRGFtYWdlUGVyVGljawBBMV9Qb2lzb25fTW92ZU11bHRpcGxpZXIAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgYAAAAi1UQiwKLTRCLUFDdXfj/0txN+Nld9NlF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_Poison_DamagePerTick * cA1_Poison_MoveMultiplier</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="97E397A3-4C79-4191-8FDA-A4A1AB476C0B">
+					<UnitConstant>
+						<name>A1_Period_OfApplyingPoison</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DZmZmPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.9</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="28A3508A-3C16-4957-99B1-BD83F1E69C27">
+					<UnitConstant>
+						<name>A1_Poison_MoveMultiplier</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/const_A1_SUP_DefCut" />
+				<Item href="/Items/Talents/Class/Alchemist/const_A1_SUP_SlowAmount" />
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="32BFFC8E-8CE7-4CD3-AA89-05246B6395A3">
+					<UnitConstant>
+						<name>ArmorCut_Amount</name>
+						<var>
+							<compiledString>FQ4AAAABAAAAGgAAAEExX1NVUF9EZWZDdXQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_SUP_DefCut</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="47A67B66-A4BD-48F0-A69F-CD2050D639A9">
+					<UnitConstant>
+						<name>WillCut_Amount</name>
+						<var>
+							<compiledString>FQ4AAAABAAAAGgAAAEExX1NVUF9EZWZDdXQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_SUP_DefCut</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="6F02DDDF-A039-4783-861D-FC774E3191A0">
+					<UnitConstant>
+						<name>ArmorCut_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="170DBFA5-B65D-40FC-97C5-F4C96C9D940A">
+					<UnitConstant>
+						<name>WillCut_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="BEDD16A6-0F5F-4547-A3EA-D08EABD68BA8">
+					<UnitConstant>
+						<name>Dec_MoveSpeed</name>
+						<var>
+							<compiledString>FRIAAAABAAAAHgAAAEExX1NVUF9TbG93QW1vdW50AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_SUP_SlowAmount</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="9ED955D7-7182-4CBA-9235-90EFEB3DC3F2">
+					<UnitConstant>
+						<name>Slow_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="CCC7F788-25FD-4BC4-A08F-084CC753E9AE">
+					<UnitConstant>
+						<name>ArmorCut_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgsgAAAD/0ItNDIsRi00Mi4LMAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAANtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>rBaseStamina&gt;=rBaseWill</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="F77C6205-9E5E-4C51-8C6F-42C009298558">
+					<UnitConstant>
+						<name>WillCut_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgswAAAD/0ItNDIsRi00Mi4LIAAAA3V34/9DcXfjf4PbEBXoJx0X0AQAAAOsHx0X0AAAAANtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>rBaseWill&gt;rBaseStamina</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>12</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Alchemist/Ability_A1.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="E21BCCD0-9F57-4E0B-808E-5CB98FC21602">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/Bottle/_3.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>-1</maxDistance>
+			<maxRise>6</maxRise>
+			<minRise>3</minRise>
+			<persistentApplicators />
+			<speed>20</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator></toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>3</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Alchemist/A1.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAWQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>150</sString>
+	</manaCost>
+	<marker>doCast1</marker>
+	<microAI href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="502276E6-031F-4BAC-A562-8DE4E46EB41C">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="4165B243-D0B5-47BC-8E8C-9736A0A4265F">
+				<ConvertTargetToLand>
+					<aggregateMode>First</aggregateMode>
+					<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="C6B3266F-3576-4812-8C91-B40BD0954B36">
+						<FirstTargetSelector>
+							<nearestTarget>false</nearestTarget>
+							<targetSelector href="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" id="0467670D-F1D1-414F-9E01-A217CF50EF56">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange_Long</sString>
+									</range>
+									<targetFilter>679477279</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</FirstTargetSelector>
+					</targetSelector>
+				</ConvertTargetToLand>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Alchemist/Ability_A1.TALENT_name.txt" />
+	<node>ability1</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>Alchemist_A1</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Alchemist/Ability_A1.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>16777216</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEExX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA1_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

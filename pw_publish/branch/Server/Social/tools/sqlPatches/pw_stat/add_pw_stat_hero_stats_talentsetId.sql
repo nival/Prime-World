@@ -1,0 +1,2 @@
+ALTER TABLE `pw_stat`.`tbl_user_hero_stats_2` ADD COLUMN `hero_ts_id` int(1) NOT NULL DEFAULT 0 AFTER `hero_id`, ADD INDEX `Index_talentset_id` (`hero_ts_id`);
+ALTER TABLE `pw_stat`.`tbl_user_hero_talentset` ADD INDEX `Index_talentset_id` (`talentset_id`);

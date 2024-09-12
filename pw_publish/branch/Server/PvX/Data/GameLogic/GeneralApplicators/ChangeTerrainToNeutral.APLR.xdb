@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Ratcatcher/Ability1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G024_GetEnergy-FromLand.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G272_GetEnergy-FromLand.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G396_BurnLand.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/G666_EnemyAoeDmg_StrOrInt_Life.TALENT" Count="1" />
+	<BackLink DBID="/Test/Talents/TST_Neutral_Terrain.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>спелл с изменением террейна на нейтральный и эффектом</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/GameLogic/GeneralApplicators/ChangeTerrainToNeutral.APLR" id="A0D63DC3-55F5-46B3-B97B-D684759B1BF2">
+		<Spell>
+			<applicators />
+			<dispatch href="/GameLogic/GeneralApplicators/ChangeTerrainToNeutral.APLR" id="C3A6A295-E955-479D-B0BC-8F07244A1A77">
+				<DispatchByTime>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<cancelOnSenderDeath>false</cancelOnSenderDeath>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<persistentApplicators>
+						<Item href="/GameLogic/GeneralApplicators/ChangeTerrainToNeutral.APLR" id="1D980669-C373-459B-90D6-507A061597AC">
+							<ModifyTerrainApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Изменение террейна</caption>
+								<durationTime>
+									<compiledString>FQ0AAAABAAAAGQAAAFRpbWVfVGVycmFpbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cTime_Terrain</sString>
+								</durationTime>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<faction>
+									<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+									<returnType>int</returnType>
+									<sString>TERR_N</sString>
+								</faction>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifRadius>
+									<compiledString>FQ8AAAABAAAAGwAAAFJhZGl1c19UZXJyYWluAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cRadius_Terrain</sString>
+								</modifRadius>
+								<providerName></providerName>
+							</ModifyTerrainApplicator>
+						</Item>
+					</persistentApplicators>
+				</DispatchByTime>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

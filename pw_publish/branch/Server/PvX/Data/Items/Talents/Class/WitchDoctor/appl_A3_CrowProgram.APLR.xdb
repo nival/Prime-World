@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Class/WitchDoctor/Ability3.TALENT" Count="2" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/WitchDoctor/status_A3_CrowEye.APLR" />
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/WitchDoctor/appl_A3_CrowProgram.APLR" id="116D6D4D-EE8E-4DA1-9425-1DF2F0237B58">
+				<RefreshCooldownApplicator>
+					<allowCdIncrease>false</allowCdIncrease>
+					<applyTarget>AbilityOwner</applyTarget>
+					<caption>Откат КД, если Ворона не закончила своё дело</caption>
+					<enabled>
+						<compiledString>FQkAAAACAAAAIAAAADMAAABkdXJhdGlvbgBVi+yD7AiLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3B1VAAAA3+D2xEF1CcdF+AEAAADrB8dF+AAAAACKRfiL5V3DmpmZmZmZuT8=</compiledString>
+						<returnType>bool</returnType>
+						<sString>pMisc-&gt;GetObjectParent()-&gt;GetVariable("duration") &gt; 0.1</sString>
+					</enabled>
+					<flags>0</flags>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<reduceByPercent>true</reduceByPercent>
+					<reductionAmount>
+						<compiledString>FRgAAAACAAAANwAAAEkAAABkdXJhdGlvbgAAAABBM19EdXJhdGlvbgBVi+yD7BCLRRCLEItNEItCSP/QiUX8i00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ/9BoAAAAAItN/IsRi038i0JU3V30/9DcdfTZXfDZRfCL5V3D</compiledString>
+						<returnType>float</returnType>
+						<sString>pMisc-&gt;GetObjectParent()-&gt;GetVariable("duration") / cA3_Duration</sString>
+					</reductionAmount>
+					<refreshThis>true</refreshThis>
+					<talents />
+					<useListAs>ListAsRule</useListAs>
+				</RefreshCooldownApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>218</behaviorFlags>
+	<caption>Программа для отлова диспела</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

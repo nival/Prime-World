@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Heroes/Werewolf/_.HROB" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Klyk.HROB" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Kogot.HROB" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Episode1/heroes/enemy/A/_.HROB" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Episode1/heroes/enemy/B/_.HROB" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Effects/Shots/HitsApplicators/MeleeHero.APLR" />
+		<Item href="/Heroes/Werewolf/AttackAbility.ATCK" id="661C7BD1-7BC5-4B8A-9745-7271CC0995BB">
+			<VariableProxyApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/GameLogic/GeneralApplicators/BaseAttackDmg_Hero_material.APLR" />
+						<variableNames>
+							<Item>damageDealed</Item>
+							<Item>isCritical</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Heroes/Werewolf/AttackAbility.ATCK" id="F56F4125-892F-46F2-BAAA-8663F5F1E557">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+								<caption>(A0) доп урон</caption>
+								<damage>
+									<compiledString>FUgAAAAGAAAATwAAAGgAAACeAAAAvgAAAO0AAAAGAQAAZGFtYWdlRGVhbGVkAAAAAFdlcmV3b2xmX0EwAFdlcmV3b2xmX0EwAFdlcmV3b2xmX0EwAEEwX011bERhbWFnZVBlcmNlbnQAVYvsg+wgaBAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgcAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0N2goAAAAi1UIiwKLTQiLkKgBAAD/0olF9ItFDFCLTQhRaDQAAACLVfSLAotN9ItQUP/S2V3w6wXZ7tld8ItFEIsQi00Qi0JI/9CJRezZRfBoAAAAAItN7IsRi03si0JU3V3k/9DcTeTcDRQBAADZXeDZReCL5V3DexSuR+F6hD8AAAAA</compiledString>
+									<returnType>float</returnType>
+									<sString>$ParentApplVariable("damageDealed") * talconst("Werewolf_A0","A0_MulDamagePercent") * 0.01</sString>
+								</damage>
+								<damageMode>4</damageMode>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString>FUcAAAAIAAAAdgAAAKIAAADGAAAA5AAAAP0AAAAzAQAAUwEAAI8BAABXYXJkAAAAAEltTWFnaWNHYXRlAFdlcmV3b2xmX0EwAFdlcmV3b2xmX0EwAFdlcmV3b2xmX0EwAEEwX0xpZmVQZXJjZW50AFWL7IPsHFHZ6NkcJFHZ7tkcJGoBi0UMixCLTQyLQlj/0A+2yFHoWwEAAIPEDNwdvAEAAN/g9sRED4shAQAAi1UMiwKLTQyLUFD/0oP4EQ+ECwEAAGoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DtFEA+F5wAAAGoAi00QUWgIAAAAi1UMiwKLTQyLkJwBAAD/0jtFEA+FwwAAAGgUAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoIAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdDdoLAAAAItVCIsCi00Ii5CoAQAA/9KJRfSLRQxQi00IUWg4AAAAi1X0iwKLTfSLUFD/0tld8OsF2e7ZXfCLRQyLEItNDIsC/9CLTQyLEYtNDItCDN1d6P/Q2E3w3A20AQAA3F3o3+D2xEF1CcdF5AEAAADrB8dF5AAAAACKReSL5V3DexSuR+F6hD8AAAAAAAAAAAAAAAAAAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+									<returnType>bool</returnType>
+									<sString>ut_bldg(false, true) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc &amp;&amp; receiver.applImMagicGate(GLOBAL) == pMisc &amp;&amp; rLife &lt; rMaxLife * talconst("Werewolf_A0","A0_LifePercent") * 0.01</sString>
+								</enabled>
+								<formulaName>WW_A0Damage</formulaName>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Heroes/Werewolf/AttackAbility.ATCK" id="3B9F5B55-8366-4F72-BD53-FE5C3178F107">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+								<caption>(A2) доп урон</caption>
+								<damage>
+									<compiledString>FS8AAAAEAAAANgAAAE8AAACFAAAApQAAAFdlcmV3b2xmX0EyAFdlcmV3b2xmX0EyAFdlcmV3b2xmX0EyAEEydV9EYW1hZ2UAVYvsg+wQaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0N2gYAAAAi1UIiwKLTQiLkKgBAAD/0olF9ItFDFCLTQhRaCQAAACLVfSLAotN9ItQUP/S2V3w6wXZ7tld8NlF8IvlXcMAAAAA</compiledString>
+									<returnType>float</returnType>
+									<sString>talconst("Werewolf_A2","A2u_Damage")</sString>
+								</damage>
+								<damageMode>4</damageMode>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString>FTQAAAAFAAAAQQAAAFkAAABsAAAAkAAAALAAAABMb25lQmVhc3RUYXJnZXQAdGFyZ2V0c0NvdW50AAAAAFdhcmQAAAAASW1NYWdpY0dhdGUAVYvsg+wIagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QiUX8aBAAAACLTfyLEYtN/ItCVP/Q3B3gAAAA3+D2xEF1W4tNDIsRi00Mi0JQ/9CD+BF0SWoAi00QUWggAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUpagCLRRBQaCgAAACLTQyLEYtNDIuCnAEAAP/QO0UQdQnHRfgBAAAA6wfHRfgAAAAAikX4i+VdwwAAAAAAAAAA</compiledString>
+									<returnType>bool</returnType>
+									<sString>sender.applLoneBeastTarget(UNIT)-&gt;GetVariable("targetsCount") &gt; 0 &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc &amp;&amp; receiver.applImMagicGate(GLOBAL) == pMisc</sString>
+								</enabled>
+								<formulaName>WW_A2Damage</formulaName>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Heroes/Werewolf/AttackAbility.ATCK" id="92556814-8C51-44E8-B8C2-89AB1FF3CD11">
+							<UIMessageApplicator parent="/UI/Events/CommonEvents/UI_Message_Damage_Energy.APLR">
+								<enabled>
+									<compiledString>FTUAAAADAAAAXAAAAG4AAACHAAAAV1dfQTBEYW1hZ2U6ZGFtYWdlRGVhbGVkAAAAAFdXX0EyRGFtYWdlOmRhbWFnZURlYWxlZABVi+yD7BSLRRCLEItNEItCSP/QiUX8i00QixGLTRCLQkj/0IlF+GgcAAAAi034ixGLTfiLQlT/0GgAAAAAi038ixGLTfyLQlTdXfD/0NxF8NwdqQAAAN/g9sRBdQnHRewBAAAA6wfHRewAAAAAikXsi+VdwwAAAAAAAAAA</compiledString>
+									<returnType>bool</returnType>
+									<sString>($ParentApplVariable("WW_A0Damage:damageDealed") + $ParentApplVariable("WW_A2Damage:damageDealed")) &gt; 0</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<value>
+									<compiledString>FTUAAAACAAAAXAAAAG4AAABXV19BMERhbWFnZTpkYW1hZ2VEZWFsZWQAAAAAV1dfQTJEYW1hZ2U6ZGFtYWdlRGVhbGVkAFWL7IPsFItFEIsQi00Qi0JI/9CJRfyLTRCLEYtNEItCSP/QiUX4aBwAAACLTfiLEYtN+ItCVP/QaAAAAACLTfyLEYtN/ItCVN1d8P/Q3EXw2V3s2UXsi+Vdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>$ParentApplVariable("WW_A0Damage:damageDealed") + $ParentApplVariable("WW_A2Damage:damageDealed")</sString>
+								</value>
+							</UIMessageApplicator>
+						</applicator>
+						<variableNames />
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>уроны</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+			</VariableProxyApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="" />
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Heroes/Werewolf/AttackAbility.ATCK" id="B666D3FD-7A52-4883-A013-D075592868ED">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>7</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>true</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>0</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

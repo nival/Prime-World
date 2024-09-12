@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A4_2.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="56F010D6-656B-4848-819F-5E83AF731753">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Запоминаем cA0_ArsenalStucks на момент каста</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FREAAAABAAAAHQAAAEEwX0Fyc2VuYWxTdHVja3MAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cA0_ArsenalStucks</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>ArsenalStucks</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="3C920502-47E6-4F45-9444-EBAB8467A05D">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Триггер на атаку от героя</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="B56683AE-1E3D-4F1B-A231-5C4570183500">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Any</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1073743103</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>15</damageTypeFilter>
+						<flags>2</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</mul>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="CDD1EB51-981D-4E1B-990B-386E864C54A1">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="0F627E6F-39CE-4B25-BE7B-46367658C4FD">
+										<SpellApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Спелл с уроном</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<spell href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="CC7E602F-2D82-46D4-A832-7DBABD672BD9">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" />
+														<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="05EDFCF4-D367-4EAE-BCA6-E86CDCDA9F70">
+															<DamageApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<cancelInvisibility>false</cancelInvisibility>
+																<caption> - Возвращаем врагу урон</caption>
+																<damage>
+																	<compiledString>FRcAAAABAAAAIwAAAEEyX1RvdGFsX1JlZmxlY3REYW1hZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cA2_Total_ReflectDamage</sString>
+																</damage>
+																<damageMode>0</damageMode>
+																<damageType>Material</damageType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+																<timeLimiter>-1</timeLimiter>
+																<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+															</DamageApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="8B48111D-9CD2-421E-96DC-34F527F49D0E">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<spellTarget>ApplicatorTarget</spellTarget>
+											<targetSelector href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="26C54494-5CAB-4C2F-BF55-6CBC3672A974">
+												<AreaTargetSelector>
+													<absolutePosition>
+														<x>0</x>
+														<y>0</y>
+													</absolutePosition>
+													<flags>0</flags>
+													<mode>Normal</mode>
+													<range>
+														<compiledString>FRAAAAABAAAAHAAAAEEwX1JlZmxlY3RSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+														<returnType>float</returnType>
+														<sString>cA0_ReflectRange</sString>
+													</range>
+													<targetFilter>672923711</targetFilter>
+													<targetSelector href="" />
+												</AreaTargetSelector>
+											</targetSelector>
+										</SpellApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="3B1FD638-98BD-4A23-80E0-F1EF356A34B2">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="/Effects/Buffs/Swords/_ListAoE.EFFT" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Random</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>90</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="D48E6E7E-8F5E-4239-B7AA-D9C27C054978">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - Меняем Energy защиту </caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FREAAAABAAAAHQAAAEEyX1RvdGFsX0RlZmVuY2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_Total_Defence</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>EnergyDamageDecrease</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FT8AAAAEAAAARgAAAF8AAACVAAAArgAAAFdyYWl0aEtpbmdfQTIAAABXcmFpdGhLaW5nX0EyAAAAV3JhaXRoS2luZ19BMnUAAFdyYWl0aEtpbmdfQTJ1AFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdFhoIAAAAItVCIsCi00Ii5CoAQAA/9KFwHQqaDAAAACLRQiLEItNCIuCqAEAAP/QiUX0i030ixGLTfSLQgT/0IhF8+sExkXzAA+2TfOFyXQJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("WraithKing_A2") &amp;&amp; tal("WraithKing_A2u")</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="FD9663AB-BDE8-42DB-8CD7-8C96689898F9">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - Меняем Material защиту </caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FREAAAABAAAAHQAAAEEyX1RvdGFsX0RlZmVuY2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_Total_Defence</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>MaterialDamageDecrease</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FT8AAAAEAAAARgAAAF8AAACVAAAArgAAAFdyYWl0aEtpbmdfQTIAAABXcmFpdGhLaW5nX0EyAAAAV3JhaXRoS2luZ19BMnUAAFdyYWl0aEtpbmdfQTJ1AFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdFhoIAAAAItVCIsCi00Ii5CoAQAA/9KFwHQqaDAAAACLRQiLEItNCIuCqAEAAP/QiUX0i030ixGLTfSLQgT/0IhF8+sExkXzAA+2TfOFyXQJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("WraithKing_A2") &amp;&amp; tal("WraithKing_A2u")</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="16E3AA8A-A3E7-4FC4-BAEC-8AD237ADF170">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Вкл/Выкл нижних мечей</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="3E82177D-F97B-48CA-8A16-4E49984D7C93">
+						<EnableSCEffect>
+							<deathType>Manual</deathType>
+							<enable>true</enable>
+							<enableCondition href="" />
+							<lifeTime>0</lifeTime>
+							<mode>EventName</mode>
+							<nameStart>hideSwords</nameStart>
+							<nameStop>showSwords</nameStop>
+						</EnableSCEffect>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="CDD35DF7-B5DC-4795-B9A4-860CADDC0DE0">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>3</behaviorFlags>
+				<caption>Эффект - КРАСНЫЙ</caption>
+				<consumables />
+				<effect>
+					<Item href="/Heroes/WraithKing/FXAbility2Red.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName>RedSwordsA2</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQcAAAABAAAAEQAAAEF2YXRhcgBVi+xqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.applAvatar(UNIT) != pMisc</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/WraithKing/status_A2.APLR" id="5EC96BB5-BF8F-41BA-95F0-FBA2022817A4">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>3</behaviorFlags>
+				<caption>Эффект - СИНИЙ</caption>
+				<consumables />
+				<effect>
+					<Item href="/Heroes/WraithKing/FXAbility2.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQcAAAABAAAAEQAAAEF2YXRhcgBVi+xqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.applAvatar(UNIT) == pMisc</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>Статус --Рефлект</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/WraithKing/status_A2.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>64</flags>
+	<formulaName>WraithKing_A2_Status</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/WraithKing/A2.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEyX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/WraithKing/status_A2.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-10</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

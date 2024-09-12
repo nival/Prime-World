@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Angel/status_A5_DeathGhost.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Angel/Summon_A3_Pick.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Angel/Summon_Well.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/A4_2_SummonViolin.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/A4_SummonViolin.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Demonolog/SummonTrap.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Healer/status_A4_LifeTriumph.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Highlander/LastHitTrigger.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/IronKnight/Summon_A2u_Axe.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/MagicGirl/status_A3_FlyMode.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Mowgli/Ability4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Night/Ability4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PinkGirl/Summon_A2_Ball.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Plane/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Plane/status_A4_fly.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Trickster/Ability4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Unicorn/status_A4_fly.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A1.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>канселять все диспатчи от врагов</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName>CancelAllDispatches</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Heroes/DefaultStatus/CancelAllEnemyDispatches.APLR" id="BCA432B1-BA66-41E3-A2F0-8859227275A0">
+		<EventProcessorCancelDispatch>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<filter>
+				<abilitiesList>
+					<Item href="/Items/Talents/Level2/G236_A_MagicStick_Life.TALENT" />
+					<Item href="/Items/Talents/Level2/G237_A_MagicStick_Energy.TALENT" />
+				</abilitiesList>
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Energy</abilityCostMode>
+				<exceptThis>true</exceptThis>
+				<flags>1073743103</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</filter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="" />
+		</EventProcessorCancelDispatch>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

@@ -1,0 +1,8 @@
+mongo 192.168.78.8:27017/pwlobby1
+----------------------------------
+
+m = function() { emit(this.key, 1); }
+r = function(k,vals) { var sum=0; for(var i in vals) sum += vals[i]; return sum; }
+db.pers.mapReduce(m, r, { out : "my_dupes_15_03_2013" } );
+
+db.my_dupes_15_03_2013.find( {value:{$gt:1}} )

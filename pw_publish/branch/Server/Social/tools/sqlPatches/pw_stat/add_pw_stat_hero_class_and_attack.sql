@@ -1,0 +1,2 @@
+ALTER TABLE `pw_stat`.`tbl_user_hero_stats_2` ADD COLUMN `hero_class` varchar(15) AFTER `hero_rating`;
+ALTER TABLE `pw_stat`.`tbl_user_hero_stats_2` ADD COLUMN `hero_attack_type` varchar(10) AFTER `hero_will`;

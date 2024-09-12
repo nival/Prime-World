@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/GameLogic/TalentGroup.TGRP" Count="1" />
+	<BackLink DBID="/Test/Talents/TestSet1.TALENTSET" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="2" />
+	<BackLink DBID="/Social/Quests/TalentQuests/_Settings" Count="1" />
+	<BackLink DBID="/Test/Talents/TST_6_6_BlindOscar.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/TST_7_2_Pirates.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="8D01B184-82FA-45ED-9B3C-CB3205927610">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="004B78CA-FA4A-4D73-93AD-2806B6AAD122">
+							<VariableProxyApplicator>
+								<applicators>
+									<Item>
+										<applicator href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="4293D940-E496-4081-BD9D-BDB0378DC776">
+											<DamageApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<cancelInvisibility>false</cancelInvisibility>
+												<caption>Dmg</caption>
+												<damage>
+													<compiledString>FQwAAAACAAAAHgAAADUAAABHNDE1X0RhbWFnZQBVi+xRi0UMixCLTQyLAv/Q3CVWAAAA2V382UX8UdkcJItNDFGLVQhSaAAAAACLRRCLEItNEItCUP/QUdkcJOgPAAAAg8QIi+VdwwAAAAAAAPA/VYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>min(cG415_Damage,rLife-1)</sString>
+												</damage>
+												<damageMode>0</damageMode>
+												<damageType>Pure</damageType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName>G415Dmg</formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<timeLimiter>-1</timeLimiter>
+												<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+											</DamageApplicator>
+										</applicator>
+										<variableNames>
+											<Item>damageDealed</Item>
+										</variableNames>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="7C105CC1-0FFD-4BB4-8D14-0D8822E25D66">
+											<PermanentStatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<caption>Сохраняем нанесенный урон</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FRUAAAABAAAAKgAAAEc0MTVEbWc6ZGFtYWdlRGVhbGVkAFWL7FGLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Qi+Vdww==</compiledString>
+														<returnType>float</returnType>
+														<sString>appl.parent.GetVariable("G415Dmg:damageDealed")</sString>
+													</addValue>
+													<multValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>G415_DmgDealed</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</applicator>
+										<variableNames />
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Наносим и сохраняем урон</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+							</VariableProxyApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Level1/status_G415_A_DmgHealAfter.APLR" />
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="9D3D72CC-BDAF-43D3-9F24-0459D2D9B7CC">
+							<HealApplicator>
+								<amount>
+									<compiledString>FQ8AAAABAAAAEwAAAEc0MTVfRG1nRGVhbGVkAFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0F3D</compiledString>
+									<returnType>float</returnType>
+									<sString>sender.vG415_DmgDealed</sString>
+								</amount>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Теперь лечим</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<healTarget>Health</healTarget>
+								<ignoreHealingMods>false</ignoreHealingMods>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+							</HealApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>147</behaviorFlags>
+				<caption>Программа на цель</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>G415_status</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQwAAAABAAAAFgAAAEc0MTVfc3RhdHVzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.applG415_status(GLOBAL) == pMisc</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+	</applicators>
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G415: Касание смерти</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="66048153-09B9-418F-A5D0-8E17CEBA2661">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQwAAAABAAAAFgAAAEc0MTVfc3RhdHVzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.applG415_status(GLOBAL) == pMisc</sString>
+				</condition>
+				<uiEvent href="/UI/Events/ErrorMessages/CastError_AlreadyHaveStatus.UIEV" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<conflictingTalents />
+	<constants href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="8A62FEB5-90EB-46CF-97C1-D4117F75EA28">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="0A363DDE-9ADD-4E79-83CF-67191D36AE6C">
+					<UnitConstant>
+						<name>G415_TargetsCount</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="3D871482-8445-4867-A57A-570697A274CE">
+					<UnitConstant>
+						<name>G415_Range</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="48C0EE9D-A36C-4435-B241-14E901BBDA84">
+					<UnitConstant>
+						<name>G415_DelayHeal</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="13F73FD0-494E-41FE-88CF-84B2DAD2BCCE">
+					<UnitConstant>
+						<name>G415_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAANEMAACBB</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(180, 10)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC0Qg==</compiledString>
+		<returnType>float</returnType>
+		<sString>90</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT" id="ACE7AC6C-F2E6-46DA-BFE7-701276D29315">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/Paint/_GreenHit.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/Paint/_Green.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<flyMode>Linear</flyMode>
+			<fromLocator>Body</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>-1</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>25</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>3</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_415.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId>G415</persistentId>
+	<prerequisiteTalents />
+	<rarity>magnificent</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Level1/G415_A_DmgHealAfter.TALENT_shortDescription.txt" />
+	<talentRollGroups>0</talentRollGroups>
+	<talentStats />
+	<targetType>681312319</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAEc0MTVfUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cG415_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>
