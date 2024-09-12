@@ -1,0 +1,1 @@
+const vector<VisualObjectState>& GetStates() const { return states; }

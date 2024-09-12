@@ -1,0 +1,295 @@
+//
+//  Nival Interactive Script File
+//
+//  Creation Date:  6 April 2006
+//
+//  Idea:         Andrew Chernyshov AKA Ancher
+//  Design:       Andrew Chernyshov AKA Ancher
+//  Programming:  Andrew Chernyshov AKA Ancher
+//
+//  Description:
+//    This script is a "casual" clips loader.
+//
+//    It queries for clip filename, loads it on selected character or the first
+//    found character in scene, activate it's keys and deletes clip after that.
+//
+//    Script also makes automatic character mapping, so it becomes possible to 
+//    paste animation data by node name despite of any prefixes or namespaces 
+//    used on character in scene and/or on clip data
+//
+//    !!! Script deletes all clips in scene        !!!
+//    !!! ( kind of a forced "clean-up" )          !!!
+//
+//    !!! Animation range for the time slider is   !!!
+//    !!! set according to the clip                !!!
+//
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getCharMapping( string $sClipFilename )
+{
+	// This proc parses clip file to rip out character mapping data
+	//
+	// Actually, it rips it from "createNode clipLibrary" section of a file, 
+	// where character mapping is set via 
+	// `setAttr ".cd[0].cm" -type "characterMapping" ...` command
+	// 
+	// The result returned as a string array
+
+	// String to strore mapping data
+	string $sMap = "";
+
+	// String to detect start of character mapping data
+	string $sStart = "\"characterMapping\"";
+
+	// Open clip
+	int $nFileId = `fopen $sClipFilename "r"`;
+	if( $nFileId == 0 )
+	{
+		return {};
+	}
+
+	// Start parsing
+	string $sLine = `fgetline $nFileId`;
+	while( `size $sLine` > 0 )
+	{
+		// Try to find start of character mapping and skip to next line if failed
+		$sMap = `match ($sStart + ".*") $sLine`;
+		if( `size $sMap` == 0)
+		{
+			$sLine = `fgetline $nFileId`;
+			continue;
+		}
+
+		// Character mapping found!
+
+		// Rip the detection sting off
+		$sMap = `substitute $sStart $sMap ""`;
+
+		// Get mapping data till ";" or EOF occured
+		while( !`gmatch $sMap "*;*"` && `size $sLine` > 0 )
+		{
+			$sLine = `fgetline $nFileId`;
+			$sMap = $sMap + " " + $sLine;
+		}
+		break;
+	}
+
+	fclose $nFileId;
+
+	// Rip off possible tail after ";"
+	$sMap = `match "[^;]*" $sMap`;
+
+	// Build string array, ripping off various delimeters
+	return `stringToStringArray $sMap " \"\t\n"`;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string supposePrefix ( string $list[] )
+{
+	// This proc returns common prefix of items in a list if such exists.
+	// Empty string returned otherwize.
+	// If list consists only of one item this item returned.
+
+	// Rip anything from list items that start with "." and
+	// makes list items unique (attributes case)
+	string $tmp[] = {};
+	for ( $sItem in $list )
+	{
+		$tmp[`size $tmp`] = `match "^[^.]*" $sItem`;
+	}
+	$list = `stringArrayRemoveDuplicates $tmp`;
+
+	// Algorithm is valid for at least 2 unique entries
+	// Supposing the first entry as prefix otherwize
+	if ( `size $list` < 2 )
+	{
+		return $list[0];
+	}
+
+	int $MAX_INTEGER = 2147483647;
+
+	string $sResult = "";
+
+	// Find minimal name size and fill $prefixes with first letters
+	int $nMinNameSize = $MAX_INTEGER;
+	string $prefixes[] = {};
+	int $nPrefixSize = 1;
+	for ( $sItem in $list )
+	{
+		$prefixes[`size $prefixes`] = `startString $sItem $nPrefixSize`;
+
+		int $nSize = `size $sItem`;
+		if ( $nSize < $nMinNameSize )
+		{
+			$nMinNameSize = $nSize;
+		}
+	}
+
+	// Find the prefix by ripping charcters one by one until mismatch
+	$prefixes = `stringArrayRemoveDuplicates $prefixes`;
+	while ( `size $prefixes` == 1 )
+	{
+		$sResult = $prefixes[0];
+
+		$prefixes = {};
+		$nPrefixSize++;
+		for ( $sItem in $list )
+		{
+			$prefixes[`size $prefixes`] = `startString $sItem $nPrefixSize`;
+		}
+
+		$prefixes = `stringArrayRemoveDuplicates $prefixes`;
+	}
+
+	return $sResult;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc matchMapping ( string $sCharacter, string $mapping[] )
+{
+	// This proc finds possible prefixes in $sCharacter members 
+	// and $mapping data and replace mapping prefix with character one
+	// to make mapping compatible with character
+	//
+	// Result is returned via the same $mapping array
+
+	// Get clip attribute list and suppose clip prefix
+	string $clipMembers[] = {};
+	for ( $nI = 1; $nI < (int)$mapping[0]*3+1; $nI += 3)
+	{
+		$clipMembers[`size $clipMembers`] = $mapping[$nI];
+	}
+	string $sClipPrefix = `supposePrefix $clipMembers`;
+
+	// Get character attribute list and suppose character prefix
+	string $charMembers[] = `character -q $sCharacter`;
+	string $sCharPrefix = `supposePrefix $charMembers`;
+
+	// Replacing target prefix
+	for ( $nI = 1; $nI < (int)$mapping[0]*3+1; $nI += 3)
+	{
+		$mapping[$nI] = `substitute ("^"+$sClipPrefix) $mapping[$nI] $sCharPrefix`;
+	}
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc deleteAllClips()
+{
+	// This proc deletes all clips in scene
+
+	string $list[] = `ls -typ animClip`;
+
+	for ( $sClip in $list )
+	{
+		delete $sClip;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc loadClipOnChar( string $sClipFilename, string $sChar )
+{
+	string $list[];
+
+	// Testing wether character has keys and clean them by creating clip
+	// and deleting all clips in scene
+	string $keys[] = `listConnections -t "animCurve" $sChar`;
+	if ( `size $keys` != 0)
+	{
+		int $nStart = `playbackOptions -q -min`;
+		int $nEnd = `playbackOptions -q -max`;
+		clip -name "clip00" -sc 1 -startTime $nStart -endTime $nEnd $sChar;
+	}
+
+	deleteAllClips();
+
+	// Importing clip
+	//file -i $sClipFilename;
+	source doImportClipArgList.mel;
+	clipEditorImportClip( $sClipFilename, "ma" );
+
+	$list = `ls -typ animClip`;
+
+	if ( `size $list` == 0)
+	{
+		warning ( "No animClips in " + $sClipFilename );
+		return;
+	}
+
+	// Since all clips was deleted - assuming the first one
+	string $sClip = $list[0];
+
+	// Get clip's character mapping and match it witn given character
+	string $mapping[] = getCharMapping( $sClipFilename );
+	matchMapping( $sChar, $mapping );
+
+	// Replace mapping 
+	$list = `listConnections -t clipLibrary $sClip`;
+	eval( "setAttr " + ( $list[0] + ".cd[0].cm" ) + " -type characterMapping " + `stringArrayToString $mapping " "`);
+
+	clip -copy $sClip;
+	clip -paste -sc 1 -aa -s 0 -mm "byNodeName" $sChar;
+
+	string $sourceClip[] = `clip -q -n $sChar`;
+
+	clip -e -active $sourceClip[0] $sChar;
+
+	int $nMax = eval("getAttr " + $sClip + ".sourceEnd");
+	int $nMin = eval("getAttr " + $sClip + ".sourceStart");
+
+	playbackOptions -min $nMin;
+	playbackOptions -max $nMax;
+
+	deleteAllClips;
+
+	// Workaround for tangent-reset-bug in maya 6.0
+	if ( getApplicationVersionAsFloat() < 8.5 )
+	{
+		string $list[] = `ls -sl`;
+		select -r `ls -typ animCurve`;
+		keyTangent -edit -weightedTangents false;
+		keyTangent -edit -weightedTangents true;
+		undo;
+		undo;
+		select -r $list;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_clipLoad( string $sClipFilename )
+{
+	if ( $sClipFilename == "" )
+	{
+		// Query for clip filename
+		$sClipFilename = `fileDialog -dm "*.ma"`;
+		if ( $sClipFilename == "" )
+		{
+			return;
+		}
+	}
+
+	// Get the selected character
+	string $list[] = `ls -sl -typ character`;
+	if ( `size $list` != 0)
+	{
+		loadClipOnChar $sClipFilename $list[0];
+		return;
+	}
+
+	// Try to get any character
+	$list = `ls -typ character`;
+	if ( `size $list` == 0)
+	{
+		warning "No characters in scene.";
+		return;
+	}
+
+	loadClipOnChar $sClipFilename $list[0];
+	return;
+}
+
+H6_clipLoad( "" );

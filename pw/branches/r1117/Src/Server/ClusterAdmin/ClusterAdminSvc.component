@@ -1,0 +1,31 @@
+sources = [
+  'ClusterAdminSvc/ClusterAdminSvcIntf.h',
+  'ClusterAdminSvc/ClusterAdminSvc.cpp',
+  'ClusterAdminSvc/ClusterAdminSvc.h',
+  'ClusterAdminSvc/ClusterAdminImpl.cpp', 
+  'ClusterAdminSvc/ClusterAdminImpl.h',
+  'ClusterAdminSvc/ClusterAdminNaming.h',
+  'ClusterAdminSvc/ThriftHandler.cpp',
+  'ClusterAdminSvc/ThriftHandler.h',
+  'ClusterAdminSvc/ThriftModule.cpp',
+  'ClusterAdminSvc/ThriftModule.h',
+  'ClusterAdminSvc/specific.h',
+  'ClusterAdminSvc/stdafx.cpp',
+  'ClusterAdminSvc/stdafx.h',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'RPC/all',
+  'Server/ServerAppBase/NivalService',
+  'Vendor/Thrift',
+]
+
+includePaths = [
+  '.',
+]
+
+builders = [
+  RPCBuilder( 'Local', 'ClusterAdminSvc/ClusterAdminSvcIntf.h', '') ,
+  ThriftBuilder( '../../../Src/Game/PF/Tools/Management/ClusterLib/ClusterManagementAPI.thrift', 'cpp', output ='ClusterAdminSvc'),
+]

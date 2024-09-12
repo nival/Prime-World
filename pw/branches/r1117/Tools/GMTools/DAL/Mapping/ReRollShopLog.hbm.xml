@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="ReRollShopLog">
+
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">rerollshoplog_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="Player" not-null="true" />
+    
+    <property name="ItemId" />
+    <property name="ItemGroup" not-null="true" />
+    <property name="ItemPrice" not-null="true" />
+    <property name="ItemPriceType" not-null="true" />
+    <property name="RerollCount" not-null="true" />
+    <property name="SlotType" not-null="true" />
+    <property name="Timestamp" not-null="true" />
+
+    <sql-insert check="none">
+      INSERT INTO rerollshoplog
+      (player, itemId, itemGroup, itemPrice, itemPriceType, rerollCount, slotType, "timestamp", id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+
+</hibernate-mapping>

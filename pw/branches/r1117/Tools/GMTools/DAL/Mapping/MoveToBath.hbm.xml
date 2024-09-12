@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="MoveToBath">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">movetobath_id_sequence</param>
+      </generator>
+    </id>
+    <property name="Minutes" />
+    <property name="Timestamp" />
+    <many-to-one name="ResourceLog" not-found="ignore" />
+    <many-to-one name="PlayerCharacter" not-null="true" />
+
+    <sql-insert check="none">
+      INSERT INTO movetobath
+      (minutes, "timestamp", resourcelog, playercharacter, id)
+      VALUES (?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

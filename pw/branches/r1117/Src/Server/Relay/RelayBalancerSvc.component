@@ -1,0 +1,53 @@
+sources = [ 
+  'RelayBalancer/RelayBalancerSvc.cpp',
+  'RelayBalancer/RelayBalancerSvc.h',
+  'RelayBalancer/RelayBalancerCfg.cpp',
+  'RelayBalancer/RelayBalancerCfg.h',
+  'RelayBalancer/RelayBalancerIface.h',
+  'RelayBalancer/RelayBalancerClientNotifyIface.h',
+  'RelayBalancer/RelayBalancerImpl.cpp',
+  'RelayBalancer/RelayBalancerImpl.h',
+  'RelayBalancer/RelayAllocationContext.cpp',
+  'RelayBalancer/RelayAllocationContext.h',
+  'RelayBalancer/RelayAllocationContextFactory.cpp',
+  'RelayBalancer/RelayAllocationContextFactory.h',
+  'RelayBalancer/RelayAllocationCompletedNotify.h',
+  'RelayBalancer/IRelayCCUCounter.h',
+  'RelayBalancer/RelayHostContext.cpp',
+  'RelayBalancer/RelayHostContext.h',
+  'RelayBalancer/RelaySvcContext.cpp',
+  'RelayBalancer/RelaySvcContext.h',
+  'RelayBalancer/RelayBalancerUserContext.cpp',
+  'RelayBalancer/RelayBalancerUserContext.h',
+  'RelayBalancer/RelayBalancerNaming.h',
+  'RelayBalancer/RelaySvcContextNotity.h',
+  'RelayBalancer/RelayBalancerSettings.cpp',
+  'RelayBalancer/RelayBalancerSettings.h',
+  'RelayBalancer/RelayUserLimits.h',
+  'RelayBalancer/Types.cpp',
+  'RelayBalancer/Types.h',
+  'RelayBalancer/specific.h',
+  'RelayBalancer/stdafx.cpp',
+  'RelayBalancer/stdafx.h',
+  'RelayBalancer/RelayBalancerGameContext.cpp',
+  'RelayBalancer/RelayBalancerGameContext.h',
+  'RelayBalancer/RelayBalancerGameUserGroup.cpp',
+  'RelayBalancer/RelayBalancerGameUserGroup.h',
+]
+
+builders = [ 
+  RPCBuilder( 'Local', 'RelayBalancer/RelayBalancerClientNotifyIface.h', '' ), 
+  RPCBuilder( 'Remote', 'RelayBalancer/RelayBalancerClientNotifyIface.h', '' ) ,
+]
+
+includePaths = [
+  '.',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'RPC/all',
+  'Server/ServerAppBase/NivalService',
+  'UserManager/UserManagerSvc/RUserManagerIface',
+  'Relay/RelayBalancer/LRelayBalancerIface',
+]

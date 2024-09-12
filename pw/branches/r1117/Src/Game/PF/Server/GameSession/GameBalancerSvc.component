@@ -1,0 +1,35 @@
+sources = [
+  'GameBalancer/GameBalancerCfg.cpp',
+  'GameBalancer/GameBalancerCfg.h',
+  'GameBalancer/GameBalancerIface.h',
+  'GameBalancer/GameBalancerImpl.cpp',
+  'GameBalancer/GameBalancerImpl.h',
+  'GameBalancer/GameBalancerSvc.cpp',
+  'GameBalancer/GameBalancerSvc.h',
+  'GameBalancer/GameBalancerTypes.h',
+  'GameBalancer/specific.h',
+  'GameBalancer/stdafx.cpp',
+  'GameBalancer/stdafx.h',
+  'GameBalancer/SvcAllocContext.cpp',
+  'GameBalancer/SvcAllocContext.h',
+  'GameBalancer/SvcContext.cpp',
+  'GameBalancer/SvcContext.h',
+  'GameBalancer/GameSvcHostContext.cpp',
+  'GameBalancer/GameSvcHostContext.h',
+  'GameBalancer/IGameCCUCounter.h',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'RPC/all',
+  'Server/ServerAppBase/NivalService',
+]
+
+includePaths = [
+    '.',
+]
+
+builders = [
+    RPCBuilder( 'Local', 'GameBalancer/GameBalancerIface.h', '' ) ,
+    RPCBuilder( 'Remote', 'GameBalancer/GameBalancerIface.h', '' ) ,
+]

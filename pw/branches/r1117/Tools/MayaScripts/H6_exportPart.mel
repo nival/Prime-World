@@ -1,0 +1,262 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc setWireframe(){
+// включение во всех панелях wireframe для увеличения скорости работы Maya
+	string $modelPanels[] = `getPanel -typ modelPanel`;
+	if ( `size $modelPanels` == 0 ){
+		return;
+	}
+
+	string $visiblePanels[] = `getPanel -vis`;
+	string $intersector = `stringArrayIntersector`;
+
+	stringArrayIntersector -edit -intersect $modelPanels $intersector;
+	stringArrayIntersector -edit -intersect $visiblePanels $intersector;
+
+	string $panels[] = `stringArrayIntersector -query $intersector`;
+
+	for ( $sPanel in $panels ){
+		modelEditor -e -displayAppearance "wireframe" $sPanel;
+	}
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc natPreAnalizeSceneParticles() {
+	//====================================================================
+	//глобальный преанализ сцены на предмет партиклов . возвращает global string $gAllAloneParticles[]; global string $gParticlesOnlySets[];
+    //====================================================================
+	string $allSceneParticles[] = `ls -et particle`;
+	$allSceneParticles = `listRelatives -p -f $allSceneParticles`;
+	string $allSets[] = `ls -et objectSet` ;
+	string $defaultSets[] = {"defaultLightSet","defaultObjectSet","initialParticleSE","initialShadingGroup"};
+	string $userOnlySets[] = stringArrayRemove ($defaultSets, $allSets);
+
+	global string $gAllAloneParticles[];
+	global string $gParticlesOnlySets[];
+    clear $gAllAloneParticles;
+    clear $gParticlesOnlySets;
+	//====================================================================
+	//проверяем есть в ли юзер сете хоть один партикл обжект, если есть считаем его партикл сетом
+	//====================================================================
+	$j=$k=0;
+	for ($i=0;$i<`size $userOnlySets`;$i++) {
+		string $currentSet[] = `listRelatives -f -typ particle $userOnlySets[$i]`;
+		if (`size $currentSet` != 0) {
+			$gParticlesOnlySets[$j] = $userOnlySets[$i];
+			$j++;
+		}
+	}
+	//====================================================================
+	//вычисляем одинокие партиклы - которые не входят ни в один сет
+	//====================================================================
+	for ($i=0;$i<`size $allSceneParticles`;$i++) {
+		for ($j=0; $j <`size $gParticlesOnlySets`; $j++) {
+			string $setConent[] = `listConnections $gParticlesOnlySets[$j]`;
+            $setConent = `ls -l $setConent`;
+			if (stringArrayContains ($allSceneParticles[$i], $setConent)) {
+				$gAllAloneParticles[$k] = $allSceneParticles[$i];
+				$k++;
+			}
+		}
+	}
+	$gAllAloneParticles = stringArrayRemove ($gAllAloneParticles, $allSceneParticles);
+	//string $allAnalizedParticleObjects[] = stringArrayCatenate($gAllAloneParticles,$gParticlesOnlySets);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc natPutAloneParticlesToSets() {
+	global string $gAllAloneParticles[];
+    natPreAnalizeSceneParticles;
+
+    for ($aloneParticle in $gAllAloneParticles){
+    	$oldName = $aloneParticle;
+        $shortOldName = `ls -sn $oldName`;
+        $newAloneParticleName = `rename $aloneParticle ($shortOldName[0]+"_nowInSet")`;
+        $alonePartSet = `sets -em -name $shortOldName[0]`;
+        sets -e -in $alonePartSet $newAloneParticleName;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc natExtendTimeLineByPart(string $partSet) {
+
+    //$partSet = "Test";
+    global float $gFPS;
+
+    if (`objectType $partSet` != "objectSet") {
+    	error ("Указанный для экспорта " + $partSet + " не является Particle Set");
+        return;
+    }
+
+// список всех партиклов в сете
+	string $currentParticleSet[] = `listRelatives -typ particle $partSet`;
+
+// иницилазация
+	int $nonCycled = 0;
+    float $partLifeRange = 0;
+	$i=0;
+
+    float $partLifeRangeAllParts[];
+    clear $partLifeRangeAllParts;
+
+// текущий timerange
+	$range = (`playbackOptions -q -max` - `playbackOptions -q -min`)+1;
+
+
+//для каждой партикл системы смотрим на атрибут lifespan mode и определяем количество кадров, которое необходимо добавить к таймлайну
+    for ($curPartShape in $currentParticleSet) {
+		//$curPartShape = "GlobalGlow_particleShape1";
+		$curPart = `listRelatives -p $curPartShape`;
+		$curPart = `listConnections -d 1 -s 0 -t "objectSet" $curPart`;
+        // lfm = lifespan mode
+        // 0 == бесконечность
+    	if (`getAttr ($curPartShape+".lfm")` == 0) {
+	        $nonCycled = 1;
+			warning ("Система частиц " + $curPart[0] +  " не может быть зацикленна, так как тип lifespan установлен в constant");
+	    }
+
+		// 1 == const в секундах, переводим в кадры
+        // если время жизни больше, чем таймлайн в сцене, эффект циклический
+	    if (`getAttr ($curPartShape+".lfm")` == 1) {
+        	$partLifeRange = (`getAttr ($curPartShape+".lifespan")`)*$gFPS;
+            if ($partLifeRange > $range) {
+	        	$nonCycled = 1;
+				warning ("Система частиц " + $curPart[0] +  " не может быть зацикленна, так как время lifespan превышает длительность таймлайна");
+	        }
+	    }
+
+		// 2 == random range
+        //надо добавить кадры по максимальному рандом life span
+	    if (`getAttr ($curPartShape+".lfm")` == 2) {
+        	$partLifeRange = ((`getAttr ($curPartShape+".lifespan")`)+ (`getAttr ($curPartShape+".lfr")`))*$gFPS;
+	    	if ( $partLifeRange  > $range) {
+    	    	$nonCycled = 1;
+				warning ("Система частиц " + $curPart[0] +  " не может быть зацикленна, так как время lifespan превышает длительность таймлайна");
+	        }
+	    }
+      	$partLifeRangeAllParts[$i] = $partLifeRange;
+    	$i++;
+    }
+
+//для каждой партикл системы перебираем все эммитеры и выключаем им рейт в определенном кадре
+    if (!$nonCycled) {
+    	for ($curPartShape in $currentParticleSet) {
+        	//print $curPartShape;
+            //$curPartShape = "particleShape1";
+    		$emittersFromShape = `listConnections -t "pointEmitter" $curPartShape`;
+            $emitters = `stringArrayRemoveDuplicates $emittersFromShape`;
+// для всех эмиттеров
+            for ($i=0;$i<`size $emitters`;$i++) {
+//смотрим есть ли коннекшен на рейт, если есть - бейкаем анимацию на эмитере, если нет - ставим два ключа в конце
+                $emitter = $emitters[$i];
+                if (`connectionInfo -id ($emitter+".rate")`){
+                	$emitterControl = `listConnections ($emitter+".rate")`;
+				   	float $sceneFirstFrame = `playbackOptions -q -min `;
+    				float $sceneLastFrame = `playbackOptions -q -max `;
+                    int $firstFrame =`floor $sceneFirstFrame`-1;
+    				int $lastFrame = `ceil $sceneLastFrame`+1;
+                    string $bakeTime = $firstFrame+":"+$lastFrame;
+                    bakeResults -t $bakeTime -sm 0 -sac 0 -at "rate" $emitter;
+                    $emitterControl = `listConnections ($emitter+".rate")`;
+					keyframe -e -a -vc 0 -t $lastFrame $emitterControl[0];
+                    keyframe -e -a -vc 0 -t $firstFrame $emitterControl[0];
+                } else {
+                	$lastFrame = `playbackOptions -q -max`;
+					float $sceneFirstFrame = `playbackOptions -q -min `;
+                    int $firstFrame =`floor $sceneFirstFrame`-1;
+
+                    setKeyframe -at "rate" -t ($lastFrame-1) $emitter;
+                    setKeyframe -at "rate" -t ($firstFrame+1) $emitter;
+
+					setKeyframe -at "rate" -t $lastFrame -v 0 $emitter;
+                    setKeyframe -at "rate" -t $firstFrame -v 0 $emitter;
+
+                }
+            }
+        }
+    }
+
+    $partLifeRangeAllParts = `sort $partLifeRangeAllParts`;
+
+    if (!$nonCycled) {
+    	$lastFrame = `playbackOptions -q -max`;
+        $appendFrames = $partLifeRangeAllParts [(`size $partLifeRangeAllParts ` - 1)];
+        playbackOptions -e -aet ($lastFrame+$appendFrames);
+        playbackOptions -e -max ($lastFrame+$appendFrames);
+    }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_exportPart( string $sScene, string $CRC, string $sDst, string $sSel, float $fTol)
+{
+
+	global string $gCRC;
+	if ( $sScene != `file -q -sceneName` || $CRC != $gCRC){
+		file -o -iv -f $sScene;
+        $gCRC = $CRC;
+        // удаление нод, которые требуют недоступных плагинов
+        $unknownNodes = `ls -type unknown`;
+        if (size ($unknownNodes) > 0){
+            delete $unknownNodes;
+    	}
+	}
+
+	if ( $sSel == "" ){
+		$sSel = "_";
+	}
+
+	if (size(`ls $sSel`) == 0){
+        error ("Указанная для экспорта система частиц " + $sSel + " не найден в сцене " + $sScene);
+    }
+
+    global float $gFPS;
+    $gFPS = 30;
+
+    natPutAloneParticlesToSets;
+$timeMax = `playbackOptions -q -max`;
+$animMax = `playbackOptions -q - aet`;
+
+//$sSel = "Test";
+
+    natExtendTimeLineByPart ($sSel);
+	select -replace -noExpand $sSel;
+
+	print ( "Выполняется экспорт " + $sSel + "\n");
+    //print ( "Performing maya export of particle set \"" + $sSel + "\" from " + $sScene + " to " + $sDst + " with tolerance = " + $fTol + "\n" );
+
+	// Disable warnings
+	cycleCheck -e off;
+
+	// Set wireframe for speed. Catch for possible bugs in maya prompt mode
+	setWireframe;
+
+    //$sSel = "GlobalGlow_particle1";
+
+	// Выставление времени в нулевой кадр
+    //currentTime -e 0;
+    //print ("number of patricles in system " + $sSel  + "in frameLayout " + `currentTime -q `+  " is " + $count +"\n");
+
+	$shape = `listRelatives -s $sSel`;
+    $count = `getAttr ($shape[0] + ".count")`;
+
+    currentTime -e `playbackOptions -q -min`;
+
+    $count = `getAttr ($shape[0] + ".count")`;
+	print ("number of patricles in system " + $sSel  + "in frameLayout " + `currentTime -q `+  " is " + $count +"\n");
+
+	// Export
+	global int $gnSuccess;
+	$gnSuccess = 0;
+
+    h6export -f $sDst -t part -ct $fTol;
+
+playbackOptions -e -max $timeMax;
+playbackOptions -e -aet $animMax;
+
+	$gnSuccess = 1;
+
+	print ( "Export successfull.\n" );
+
+	return;
+}

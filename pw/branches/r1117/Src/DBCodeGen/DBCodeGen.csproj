@@ -1,0 +1,161 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <ProjectGuid>{C07632AB-97D3-4340-BEF8-AF30CB66704C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBCodeGen</RootNamespace>
+    <AssemblyName>DBCodeGen</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\_Release\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Shipping|Win32' ">
+    <OutputPath>..\_Shipping\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ShippingSingleExe|Win32' ">
+    <OutputPath>..\_ShippingSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseSingleExe|Win32' ">
+    <OutputPath>..\_ReleaseSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Engine" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeGeneration\Code.cs" />
+    <Compile Include="CodeGeneration\TypesCrc.cs" />
+    <Compile Include="DBCodeGen.FileProcessSocial.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SocialClientGeneration\AdaptiveItemsInserter.cs" />
+    <Compile Include="SocialClientGeneration\NameMapItemInsterter.cs" />
+    <Compile Include="SocialClientGeneration\TypesReplacement.cs" />
+    <Compile Include="SourceCompiler\SearchFolders.cs" />
+    <Compile Include="SourceCompiler\SourceCompiler.cs" />
+    <Compile Include="Utils\CodeWriter.cs" />
+    <Compile Include="CodeGeneration\CSCode.cs" />
+    <Compile Include="DBCodeGen.Assemblies.cs" />
+    <Compile Include="DBCodeGen.cs" />
+    <Compile Include="DBCodeGen.FileProcess.cs" />
+    <Compile Include="DBCodeGen.Solution.cs" />
+    <Compile Include="DBCodeGen.TypeHelper.cs" />
+    <Compile Include="CodeGeneration\Enum.cs" />
+    <Compile Include="Utils\DebugTraceListener.cs" />
+    <Compile Include="Utils\FormatHelper.cs" />
+    <Compile Include="CodeGeneration\Header.cs" />
+    <Compile Include="MaterialsGeneration\MaterialCompiler.cs" />
+    <Compile Include="MaterialsGeneration\MaterialFunctions.cs" />
+    <Compile Include="MaterialsGeneration\MaterialPinDefenition.cs" />
+    <Compile Include="MaterialsGeneration\MaterialSpec.cs" />
+    <Compile Include="MaterialsGeneration\MaterialCode.cs" />
+    <Content Include="Patterns\HashCheckCs.txt" />
+    <Compile Include="Utils\LinesReader.cs" />
+    <Compile Include="Utils\PatternFormatter.cs" />
+    <Compile Include="Patterns\Patterns.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Patterns.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGeneration\Struct.Cpp.cs" />
+    <Compile Include="Utils\ShortConsoleListener.cs" />
+    <Compile Include="VisualStudioSupport\NullProject.cs" />
+    <Compile Include="VisualStudioSupport\Project.cs" />
+    <Compile Include="VisualStudioSupport\VCProject.cs" />
+    <Compile Include="VisualStudioSupport\Solution.cs" />
+    <Compile Include="CodeGeneration\Struct.cs" />
+    <Compile Include="VisualStudioSupport\CodeFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisualStudioSupport\VCSProject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Patterns\Patterns.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Patterns.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Patterns\HashCheckCpp.txt" />
+    <Content Include="Patterns\MaterialCode.txt" />
+    <Content Include="Patterns\MaterialGroup.txt" />
+    <None Include="Patterns\MaterialSpecHeader.txt" />
+    <None Include="Patterns\MaterialSpecFinalHeader.txt" />
+    <None Include="Patterns\MaterialSpecFinalCode.txt" />
+    <None Include="Patterns\MaterialSpecCode.txt" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libdb.NET\libdb.NET.csproj">
+      <Project>{2369C873-8C70-4197-8CAB-67D34C9D5412}</Project>
+      <Name>libdb.NET</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>$(SolutionDir)..\vendor\BuildUtils\PostRelease.bat $(ConfigurationName) $(TargetPath) $(SolutionDir)..\vendor\BuildUtils\</PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

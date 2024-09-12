@@ -1,0 +1,228 @@
+#include "stdafx.h"
+#include "renderflagsconverter.h"
+#include "VendorFOURCC.h"
+
+namespace Render
+{
+
+D3DFORMAT ConvertRenderFormat(ERenderFormat format)
+{
+	switch (format)
+	{
+		case FORMAT_R32F: return D3DFMT_R32F;
+		case FORMAT_G32R32F: return D3DFMT_G32R32F;
+		case FORMAT_R16F: return D3DFMT_R16F;
+		case FORMAT_A8R8G8B8: return D3DFMT_A8R8G8B8;
+    case FORMAT_X8R8G8B8: return D3DFMT_X8R8G8B8;
+		case FORMAT_A8: return D3DFMT_A8;
+		case FORMAT_L8: return D3DFMT_L8;
+		case FORMAT_A16B16G16R16F: return D3DFMT_A16B16G16R16F;
+		case FORMAT_A32B32G32R32F: return D3DFMT_A32B32G32R32F;
+		case FORMAT_L16: return D3DFMT_L16;
+		case FORMAT_R5G6B5 : return D3DFMT_R5G6B5;
+    case FORMAT_INTZ : return FOURCC_INTZ;
+    case FORMAT_DF24 : return FOURCC_DF24;
+    case FORMAT_RAWZ : return FOURCC_RAWZ;
+    case FORMAT_DF16 : return FOURCC_DF16;
+    case FORMAT_D24S8 : return D3DFMT_D24S8;
+		default: NI_ALWAYS_ASSERT("Неправильный формат render target!"); return D3DFMT_UNKNOWN;
+	}
+}
+
+const char* D3DFormat2Str(DWORD _format)
+{
+  switch (_format)
+  {
+  case D3DFMT_R32F:     return "D3DFMT_R32F";
+  case D3DFMT_G32R32F:  return "D3DFMT_G32R32F";
+  case D3DFMT_R16F:     return "D3DFMT_R16F";
+  case D3DFMT_A8R8G8B8: return "D3DFMT_A8R8G8B8";
+  case D3DFMT_X8R8G8B8: return "D3DFMT_X8R8G8B8";
+  case D3DFMT_A8: return "D3DFMT_A8";
+  case D3DFMT_L8: return "D3DFMT_L8";
+  case D3DFMT_A16B16G16R16F: return "D3DFMT_A16B16G16R16F";
+  case D3DFMT_A32B32G32R32F: return "D3DFMT_A32B32G32R32F";
+  case D3DFMT_L16:    return "D3DFMT_L16";
+  case D3DFMT_R5G6B5: return "D3DFMT_R5G6B5";
+
+  case D3DFMT_D24S8:  return "D3DFMT_D24S8";
+  case D3DFMT_D24X8:  return "D3DFMT_D24X8";
+  case D3DFMT_D16:    return "D3DFMT_D16";
+  case FOURCC_DF24:   return "FOURCC_DF24";
+  case FOURCC_DF16:   return "FOURCC_DF16";
+  case FOURCC_RAWZ:   return "FOURCC_RAWZ";
+  case FOURCC_INTZ:   return "FOURCC_INTZ";
+  default: return "UNKNOWN";
+  }
+}
+
+
+const char* D3DPool2Str(D3DPOOL _pool)
+{
+  switch (_pool)
+  {
+  case D3DPOOL_DEFAULT:   return "POOL_DEFAULT";
+  case D3DPOOL_MANAGED:   return "POOL_MANAGED";
+  case D3DPOOL_SYSTEMMEM: return "POOL_SYSTEMMEM";
+  case D3DPOOL_SCRATCH:   return "POOL_SCRATCH";
+  default: return "POOL UNKNOWN";
+  }
+}
+
+
+/// Конвертирование типа примитивов рендера в d3d9
+D3DPRIMITIVETYPE ConvertPrimitiveType(ERenderPrimitiveType type)
+{
+	switch (type)
+	{
+		case RENDERPRIMITIVE_POINTLIST:		 return D3DPT_POINTLIST;
+		case RENDERPRIMITIVE_LINELIST:			return D3DPT_LINELIST;
+		case RENDERPRIMITIVE_LINESTRIP:		 return D3DPT_LINESTRIP;
+		case RENDERPRIMITIVE_TRIANGLELIST:	return D3DPT_TRIANGLELIST;
+		case RENDERPRIMITIVE_TRIANGLESTRIP: return D3DPT_TRIANGLESTRIP;
+		case RENDERPRIMITIVE_TRIANGLEFAN:	 return D3DPT_TRIANGLEFAN;
+		default: NI_ALWAYS_ASSERT("Invalid render primitive type!"); return D3DPT_TRIANGLELIST;
+	}
+}
+/// Конвертирование типа использования элемента вершины в d3d9
+BYTE ConvertVertexElementUsage(EVertexElementUsage usage)
+{
+	switch (usage)
+	{
+		case VERETEXELEMENTUSAGE_POSITION:		 return D3DDECLUSAGE_POSITION;
+		case VERETEXELEMENTUSAGE_BLENDWEIGHT:	return D3DDECLUSAGE_BLENDWEIGHT;
+		case VERETEXELEMENTUSAGE_BLENDINDICES: return D3DDECLUSAGE_BLENDINDICES;
+		case VERETEXELEMENTUSAGE_NORMAL:			 return D3DDECLUSAGE_NORMAL;
+		case VERETEXELEMENTUSAGE_PSIZE:				return D3DDECLUSAGE_PSIZE;
+		case VERETEXELEMENTUSAGE_TEXCOORD:		 return D3DDECLUSAGE_TEXCOORD;
+		case VERETEXELEMENTUSAGE_TANGENT:			return D3DDECLUSAGE_TANGENT;
+		case VERETEXELEMENTUSAGE_BINORMAL:		 return D3DDECLUSAGE_BINORMAL;
+		case VERETEXELEMENTUSAGE_TESSFACTOR:	 return D3DDECLUSAGE_TESSFACTOR;
+		case VERETEXELEMENTUSAGE_POSITIONT:		return D3DDECLUSAGE_POSITIONT;
+		case VERETEXELEMENTUSAGE_COLOR:				return D3DDECLUSAGE_COLOR;
+		case VERETEXELEMENTUSAGE_FOG:					return D3DDECLUSAGE_FOG;
+		case VERETEXELEMENTUSAGE_DEPTH:				return D3DDECLUSAGE_DEPTH;
+		case VERETEXELEMENTUSAGE_SAMPLE:			 return D3DDECLUSAGE_SAMPLE;
+		default: NI_ALWAYS_ASSERT("Invalid vertex element usage!"); return 0;
+	}
+}
+
+/// Конвертирование типа элемента вершины в его размер
+UINT GetVertexElementSize(EVertexElementType type)
+{
+	switch (type)
+	{
+		case VERTEXELEMENTTYPE_FLOAT1:		return sizeof(float);
+		case VERTEXELEMENTTYPE_FLOAT2:		return sizeof(float) * 2;
+		case VERTEXELEMENTTYPE_FLOAT3:		return sizeof(float) * 3;
+		case VERTEXELEMENTTYPE_FLOAT4:		return sizeof(float) * 4;
+		case VERTEXELEMENTTYPE_D3DCOLOR:	return sizeof(D3DCOLOR);
+		case VERTEXELEMENTTYPE_UBYTE4:		return sizeof(BYTE) * 4;
+		case VERTEXELEMENTTYPE_SHORT2:		return sizeof(short) * 2;
+		case VERTEXELEMENTTYPE_SHORT4:		return sizeof(short) * 4;
+		case VERTEXELEMENTTYPE_UBYTE4N:	  return sizeof(BYTE) * 4;
+		case VERTEXELEMENTTYPE_SHORT2N:	  return sizeof(short) * 2;
+		case VERTEXELEMENTTYPE_SHORT4N:	  return sizeof(short) * 4;
+		case VERTEXELEMENTTYPE_USHORT2N:	return sizeof(short) * 2;
+		case VERTEXELEMENTTYPE_USHORT4N:	return sizeof(short) * 4;
+		case VERTEXELEMENTTYPE_UDEC3:		  return sizeof(float);
+		case VERTEXELEMENTTYPE_DEC3N:		  return sizeof(float);
+		case VERTEXELEMENTTYPE_FLOAT16_2: return sizeof(short) * 2;
+		case VERTEXELEMENTTYPE_FLOAT16_4: return sizeof(short) * 4;
+		case VERTEXELEMENTTYPE_UNUSED:		return 0;
+		default: NI_ALWAYS_ASSERT("Invalid vertex element type!"); return 0;
+	}
+}
+
+/// Конвертирование типа элемента вершины в d3d9
+BYTE ConvertVertexElementType(EVertexElementType type)
+{
+	switch (type)
+	{
+		case VERTEXELEMENTTYPE_FLOAT1:		return D3DDECLTYPE_FLOAT1;
+		case VERTEXELEMENTTYPE_FLOAT2:		return D3DDECLTYPE_FLOAT2;
+		case VERTEXELEMENTTYPE_FLOAT3:		return D3DDECLTYPE_FLOAT3;
+		case VERTEXELEMENTTYPE_FLOAT4:		return D3DDECLTYPE_FLOAT4;
+		case VERTEXELEMENTTYPE_D3DCOLOR:	return D3DDECLTYPE_D3DCOLOR;
+		case VERTEXELEMENTTYPE_UBYTE4:		return D3DDECLTYPE_UBYTE4;
+		case VERTEXELEMENTTYPE_SHORT2:		return D3DDECLTYPE_SHORT2;
+		case VERTEXELEMENTTYPE_SHORT4:		return D3DDECLTYPE_SHORT4;
+		case VERTEXELEMENTTYPE_UBYTE4N:	 return D3DDECLTYPE_UBYTE4N;
+		case VERTEXELEMENTTYPE_SHORT2N:	 return D3DDECLTYPE_SHORT2N;
+		case VERTEXELEMENTTYPE_SHORT4N:	 return D3DDECLTYPE_SHORT4N;
+		case VERTEXELEMENTTYPE_USHORT2N:	return D3DDECLTYPE_USHORT2N;
+		case VERTEXELEMENTTYPE_USHORT4N:	return D3DDECLTYPE_USHORT4N;
+		case VERTEXELEMENTTYPE_UDEC3:		 return D3DDECLTYPE_UDEC3;
+		case VERTEXELEMENTTYPE_DEC3N:		 return D3DDECLTYPE_DEC3N;
+		case VERTEXELEMENTTYPE_FLOAT16_2: return D3DDECLTYPE_FLOAT16_2;
+		case VERTEXELEMENTTYPE_FLOAT16_4: return D3DDECLTYPE_FLOAT16_4;
+		case VERTEXELEMENTTYPE_UNUSED:		return D3DDECLTYPE_UNUSED;
+		default: NI_ALWAYS_ASSERT("Invalid vertex element type!"); return 0;
+	}
+}
+
+///
+DWORD ConvertRenderLockType(ERenderLockType type)
+{
+	switch (type)
+	{
+		case LOCK_DISCARD:		 return D3DLOCK_DISCARD;
+		case LOCK_NOOVERWRITE: return D3DLOCK_NOOVERWRITE;
+		case LOCK_READONLY: return D3DLOCK_READONLY;
+		case LOCK_DEFAULT:		 return 0;
+		default: NI_ALWAYS_ASSERT("Invalid ERenderLockType");
+		return 0;
+	}
+}
+
+/// Конвертирование типа использования элемента вершины из d3d9
+EVertexElementUsage Convert2VertexElementUsage(BYTE usage)
+{
+  switch (usage)
+  {
+    case D3DDECLUSAGE_POSITION:		 return VERETEXELEMENTUSAGE_POSITION;
+    case D3DDECLUSAGE_BLENDWEIGHT:	return VERETEXELEMENTUSAGE_BLENDWEIGHT;
+    case D3DDECLUSAGE_BLENDINDICES: return VERETEXELEMENTUSAGE_BLENDINDICES;
+    case D3DDECLUSAGE_NORMAL:			 return VERETEXELEMENTUSAGE_NORMAL;
+    case D3DDECLUSAGE_PSIZE:				return VERETEXELEMENTUSAGE_PSIZE;
+    case D3DDECLUSAGE_TEXCOORD:		 return VERETEXELEMENTUSAGE_TEXCOORD;
+    case D3DDECLUSAGE_TANGENT:			return VERETEXELEMENTUSAGE_TANGENT;
+    case D3DDECLUSAGE_BINORMAL:		 return VERETEXELEMENTUSAGE_BINORMAL;
+    case D3DDECLUSAGE_TESSFACTOR:	 return VERETEXELEMENTUSAGE_TESSFACTOR;
+    case D3DDECLUSAGE_POSITIONT:		return VERETEXELEMENTUSAGE_POSITIONT;
+    case D3DDECLUSAGE_COLOR:				return VERETEXELEMENTUSAGE_COLOR;
+    case D3DDECLUSAGE_FOG:					return VERETEXELEMENTUSAGE_FOG;
+    case D3DDECLUSAGE_DEPTH:				return VERETEXELEMENTUSAGE_DEPTH;
+    case D3DDECLUSAGE_SAMPLE:			 return VERETEXELEMENTUSAGE_SAMPLE;
+    default: NI_ALWAYS_ASSERT("Invalid vertex element usage!"); return EVertexElementUsage(-1);
+  }
+}
+
+/// Конвертирование типа элемента вершины из d3d9
+EVertexElementType Convert2VertexElementType(BYTE type)
+{
+  switch (type)
+  {
+    case D3DDECLTYPE_FLOAT1:		return VERTEXELEMENTTYPE_FLOAT1;
+    case D3DDECLTYPE_FLOAT2:		return VERTEXELEMENTTYPE_FLOAT2;
+    case D3DDECLTYPE_FLOAT3:		return VERTEXELEMENTTYPE_FLOAT3;
+    case D3DDECLTYPE_FLOAT4:		return VERTEXELEMENTTYPE_FLOAT4;
+    case D3DDECLTYPE_D3DCOLOR:	return VERTEXELEMENTTYPE_D3DCOLOR;
+    case D3DDECLTYPE_UBYTE4:		return VERTEXELEMENTTYPE_UBYTE4;
+    case D3DDECLTYPE_SHORT2:		return VERTEXELEMENTTYPE_SHORT2;
+    case D3DDECLTYPE_SHORT4:		return VERTEXELEMENTTYPE_SHORT4;
+    case D3DDECLTYPE_UBYTE4N:	 return VERTEXELEMENTTYPE_UBYTE4N;
+    case D3DDECLTYPE_SHORT2N:	 return VERTEXELEMENTTYPE_SHORT2N;
+    case D3DDECLTYPE_SHORT4N:	 return VERTEXELEMENTTYPE_SHORT4N;
+    case D3DDECLTYPE_USHORT2N:	return VERTEXELEMENTTYPE_USHORT2N;
+    case D3DDECLTYPE_USHORT4N:	return VERTEXELEMENTTYPE_USHORT4N;
+    case D3DDECLTYPE_UDEC3:		 return VERTEXELEMENTTYPE_UDEC3;
+    case D3DDECLTYPE_DEC3N:		 return VERTEXELEMENTTYPE_DEC3N;
+    case D3DDECLTYPE_FLOAT16_2: return VERTEXELEMENTTYPE_FLOAT16_2;
+    case D3DDECLTYPE_FLOAT16_4: return VERTEXELEMENTTYPE_FLOAT16_4;
+    case D3DDECLTYPE_UNUSED:		return VERTEXELEMENTTYPE_UNUSED;
+    default: NI_ALWAYS_ASSERT("Invalid vertex element type!"); return EVertexElementType(-1);
+  }
+}
+
+} // namespace Render

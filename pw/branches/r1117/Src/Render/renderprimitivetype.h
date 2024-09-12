@@ -1,0 +1,15 @@
+#pragma once
+
+namespace Render
+{
+	/// Типы примитивов рендера
+	enum ERenderPrimitiveType
+	{
+		RENDERPRIMITIVE_POINTLIST,
+		RENDERPRIMITIVE_LINELIST,
+		RENDERPRIMITIVE_LINESTRIP,
+		RENDERPRIMITIVE_TRIANGLELIST,
+		RENDERPRIMITIVE_TRIANGLESTRIP,
+		RENDERPRIMITIVE_TRIANGLEFAN
+	};
+}; // namespace Render

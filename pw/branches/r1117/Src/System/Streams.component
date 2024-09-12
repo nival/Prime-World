@@ -1,0 +1,54 @@
+if platform == 'win32':
+  sources = [
+      'BitStreams.cpp', 
+      'FileSystem/FileStream.h', 
+      'FileSystem/FileStream_win.cpp', 
+      'FixedMemoryStream.h', 
+      'FixedMemoryStream.cpp', 
+      'MemoryStream.cpp', 
+      'MemoryStream.h', 
+      'ProtectedStream.cpp', 
+      'ProtectedStream.h', 
+      'DumpingStream.cpp', 
+      'DumpingStream.h', 
+      'FileSystem/FileWriteStream.cpp',
+      'FileSystem/FileWriteStream.h',
+      'FileSystem/WinFileUnbuffered.cpp',
+      'FileSystem/WinFileUnbuffered.h',
+      'FileSystem/FileStream_stdlib.cpp',
+      'FileSystem/FileStream_stdlib.h',
+      'FileSystem/FileWriteBufferedStream.cpp',
+      'FileSystem/FileWriteBufferedStream.h',
+      'FileSystem/FileWriteAsynchronousStream_win.cpp',
+      'FileSystem/FileWriteAsynchronousStream.h',
+  ]
+else:
+  sources = [
+      'BitStreams.h', 
+      'BitStreams.cpp', 
+      'FileSystem/FileStream.h', 
+      'FileSystem/FileStream_linux.cpp', 
+      'FixedMemoryStream.h', 
+      'FixedMemoryStream.cpp', 
+      'MemoryStream.cpp', 
+      'MemoryStream.h', 
+      'ProtectedStream.cpp', 
+      'ProtectedStream.h', 
+      'FileSystem/FileWriteStream.cpp',
+      'FileSystem/FileWriteStream.h',
+      'FileSystem/FileStream_stdlib.cpp',
+      'FileSystem/FileStream_stdlib.h',
+      'FileSystem/FileWriteBufferedStream_linux.cpp',
+      'FileSystem/FileWriteBufferedStream.h',
+      'FileSystem/FileWriteAsynchronousStream_linux.cpp',
+      'FileSystem/FileWriteAsynchronousStream.h',
+  ]
+ 
+components = [ 
+    'System/Ptr', 
+    'System/Progress',
+    'System/DebugVar',
+    'System/Commands',
+    'System/Stream',
+	  'Vendor/Libc'
+]

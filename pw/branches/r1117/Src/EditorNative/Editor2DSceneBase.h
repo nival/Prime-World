@@ -1,0 +1,25 @@
+#pragma once
+#include "../UI/Window.h"
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace EditorNative
+{
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public ref class Editor2DSceneBase
+{
+private:
+  CPtr<NScene::IScene>* ppScene;
+
+protected:
+  virtual void DrawInternal( System::IntPtr hWnd, int width, int height ) {}
+
+public:
+	Editor2DSceneBase( System::IntPtr hWnd );
+	~Editor2DSceneBase();
+	!Editor2DSceneBase();
+
+	void DrawPoint( int x, int y, int size, System::Drawing::Color color );
+	void DrawLine( int x1, int y1, int x2, int y2, System::Drawing::Color color );
+	void Draw( System::IntPtr hWnd, int width, int height );
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}

@@ -1,0 +1,1 @@
+start GameTestClientApp.exe --l 192.168.2.52:35001 -s prodemu --scenarioduration 900 -m 10 -c 2 --socialmmtype Maps/Test/PlaneMap/Test_PVP_1x1.ADMPDSCR --gatewayurl http://localhost:34000 --partyfreq 0 --liveclientpath E:\svn\pw.trunk\Bin\PW_Game.exe

@@ -1,0 +1,10 @@
+#pragma once
+
+#include "DBClinic.h"
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace PF_Minigames
+{
+  typedef float WishProbabilities[NDb::KnownEnum<NDb::ECreepWish>::sizeOf];
+} // namespace PF_Minigames
+

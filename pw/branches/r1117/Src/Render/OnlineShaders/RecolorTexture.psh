@@ -1,0 +1,39 @@
+#include "_commonPostProcess.h"
+
+#define USE_GAMMA_EXPANSION
+
+sampler baseTex : register(s0);
+sampler maskTex : register(s1);
+float4 color : register(PSHADER_LOCALCONST0);
+
+float luminance(float3 color)
+{
+  // component weights for sRGB model (in contrast to NTSC's (0.3, 0.59, 0.11))
+  static const float3 weights = float3(0.2126, 0.7152, 0.0722);
+
+#ifdef USE_GAMMA_EXPANSION
+  color = pow(color, 2.2f);
+#endif
+
+  float result = dot(color, weights);
+
+#ifdef USE_GAMMA_EXPANSION
+  result = pow(result, 1.0f/2.2f);
+#endif
+
+  return result;
+}
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  float4 base = tex2D(baseTex, Input.Texcoord);
+  float4 mask = tex2D(maskTex, Input.Texcoord);
+
+  float gray = luminance(base.rgb);
+  
+  float4 c;
+  c.rgb = lerp(base.rgb, gray * color, mask.r);
+  c.a = base.a;
+  
+  return c; 
+}

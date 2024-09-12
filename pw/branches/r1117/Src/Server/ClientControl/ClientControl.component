@@ -1,0 +1,25 @@
+sources = [
+  'ClientControlService.h',
+  'ClientControlService.cpp',
+  'ClientControlLog.h',
+  'ClientControlInterface.h',
+  'ClientControlLogic.h',
+  'ClientControlLogic.cpp',
+  'ClientControlUser.h',
+  'ClientControlUser.cpp',
+  'ClientControlLoginSvc.h',
+  'ClientControlLoginSvc.cpp',
+]
+
+components = [
+  'ServerAppBase/NivalService',
+  'ClientControl/ClientControlTypes',
+  'ClientControl/ClientControlConfig',
+  'Network/RSessionKeyRegisterIface',
+  'Network/PacketDispatcher',
+]
+
+builders = [
+  RPCBuilder( 'Local', 'ClientControlInterface.h', '', ['ClientControlTypes.h'] ),
+  RPCBuilder( 'Remote', 'ClientControlRemote.h', '', ['ClientControlTypes.h', 'Network/RSessionKeyRegisterIface.auto.h'] ),
+]

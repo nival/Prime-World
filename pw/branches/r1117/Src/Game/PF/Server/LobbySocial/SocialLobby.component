@@ -1,0 +1,54 @@
+sources = [
+  'ISocialLobby.h',
+  'ISocialLobbyUserCtx.h',
+  'ISocialLobbyPvxAck.h',
+  'SocialLobbyUserContext.h',
+  'SocialLobbyUserContext.cpp',
+  'SocialLobbyGame.h',
+  'SocialLobbyGame.cpp',
+  'SocialLobbyParty.h',
+  'SocialLobbyParty.cpp',
+  'SocialLobbyCtrl.h',
+  'SocialLobby.h',
+  'SocialLobby.cpp',
+  'SocialLobbyStatistics.h',
+  'SocialLobbyConfig.h',
+  'SocialLobbyConfig.cpp',
+  'SocialLobbyLog.h',
+  'SocialLobbyRemoteMm.h',
+  'SocialLobbyRemoteMm.cpp',
+  'SocialLobbyPvxServices.h',
+  'SocialLobbyPvxServices.cpp',
+  'SocialLobbyPinnedLocations.h',
+  'SocialLobbyClientRevisions.h',
+  'SocialLobbyMMStatisticsEx.h',
+  'SocialLobbyMMStatisticsEx.cpp',
+]
+
+
+builders = [
+  RPCBuilder( 'Local', 'ISocialLobby.h', '', ['SocialLobbyTypes.h'] ),
+  RPCBuilder( 'Local', 'ISocialLobbyPvxAck.h', '', ['SocialLobbyTypes.h'] ),
+  RPCBuilder( 'Local', 'ISocialLobbyUserCtx.h', '', ['SocialLobbyTypes.h'] ),
+  RPCBuilder( 'Remote', 'ISocialLobbyNotify.h', '', ['ISocialLobbyNotify.h', 'RISocialLobbyUserCtx.auto.h'] ),
+  RPCBuilder( 'Remote', 'ISocialLobbyPvxSvc.h', '', ['ISocialLobbyPvxSvc.h', 'RISocialLobbyPvxAck.auto.h'] ),
+]
+
+
+
+components = [
+  'ServerAppBase/ServerCfg',
+  'Server/LiveMMaking/Remote',
+  'Server/LiveMMaking/MMakingUtils',
+  'Server/LobbyPvx/CommonTypes',
+  'Server/LobbySocial/SocialLobbyTypes',
+  'Server/LobbySocial/SocialLobbyMaps',
+  'Server/LobbySocial/SocialLobbyGuildFightCalc',
+  'Server/Roll/RatingCalc',
+  'Server/Statistic/StatisticsServerTypes',
+  'System/Timer',
+  'System/Commands',
+  'System/InlineProfiler',
+  'System/Math/MD4',
+  'Server/TourneyCfg',
+]

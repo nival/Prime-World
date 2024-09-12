@@ -1,0 +1,30 @@
+sources = [
+  'dllmain.cpp',
+  'Censor.rc',
+  'resource.h',
+  'stdafx.cpp',
+  'targetver.h',
+  'censordll.h'
+  
+]
+
+components = [
+  'Game/PF/Server/CensorshipCore/Censor',
+#  'System/Pointers',
+  'System/NSTL',
+  'Vendor/Libc', 
+]
+
+type = 'dll'
+
+inlined = False
+
+globalCompilerKeys = [
+    '/D"_UNICODE"',
+    '/D"UNICODE"',
+    '/D"_WINDOWS"',
+    '/D"_CRT_SECURE_NO_WARNINGS"',
+    '/D"CENSORLIB_EXPORT"',
+]
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+

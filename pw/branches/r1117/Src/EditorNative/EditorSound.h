@@ -1,0 +1,17 @@
+#pragma once
+
+#include "../Sound/EventScene.h"
+
+namespace EditorNative
+{
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public ref class EditorSound sealed abstract
+	{
+	public:
+		static void Initialize( HWND hEditorWindow );
+		static void Release();
+		static void Update( float dt );
+    static void SetListener( CVec3 const &position, CVec3 const &forward, CVec3 const &up, CVec3 const &anchor );
+	};
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}

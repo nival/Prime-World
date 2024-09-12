@@ -1,0 +1,116 @@
+; Most general settings
+[general]
+
+; Project root folder
+root: ../..
+
+; FPS to run test applications at
+fps: 50
+
+; Configurations to test
+; The option has the following structure:
+;   it's a ;-separated list of configurations mappings
+;   each test configuration mapping is just a group of configurations. The first configuration is
+;   the one used to build golden images if a test allows it.
+;
+; For example:
+;
+;     configurations = DX8 Release, DX8 Debug, OGL Release, OGL Debug; SW Release, SW Debug
+;
+;   means that results of cross-configuration tests (e.g. simpleTest, animationTest, but not
+;   performanceTest!) are compared with results produced by the first configuration of
+;   the mapping. For example, results of simpleTest for DX8 Release, DX8 Debug, OGL Release and OGL Debug
+;   will be compared against results produced by DX8 Release
+configurations = Debug, Release
+
+; Folder to backup logs (relative to test project)
+backupFolder: backups
+
+; Settings that control notifications
+[notification]
+
+; Subject to send on success
+successSubject = pf: autotest passed
+
+; Subject to send on test failure
+testFailureSubject = pf: autotest failed
+
+; Subject to send on fatal failure
+fatalFailureSubject = pf: autotest fatal failure
+
+; Time format string as for time.strftime function (but use double % to escape ConfigParser problems)
+timeFormatString = %%X, %%x
+
+; Comma separated list of emails to send reports to
+sendTo = user
+
+; Comma separated pair list <cvs user name>, <e-mail name>
+user2mail = user@mail.org
+
+; Settings that control screenshot comparison
+[screenshots]
+
+; Norms to use for comparison
+norms: counting, average
+
+; Counting norm parameters
+; Pixel norm for counting norm
+counting.pixelNorm: maximum
+
+; Threshold for counting norm
+counting.threshold: 13
+
+; Background color for counting norm
+counting.BG: 0, 0, 0
+
+; Error threshold for counting norm
+counting.errorThreshold: .1
+
+; Warning threshold for counting norm
+counting.warningThreshold: .02
+
+; Average norm parameters
+; Pixel norm for average norm
+average.pixelNorm: maximum
+
+; Error threshold for average norm
+average.errorThreshold: 1.5
+
+; Warning threshold for average norm
+average.warningThreshold: .1
+
+; Settings that control performance comparison
+[performance]
+
+; Number of frames to calculate MSPF
+nFrames = 239
+
+; Internal memory usage comparison settings
+; Error threshold for internal memory usage (in percents)
+internalMemoryUsage.errorThreshold = 10
+
+; Warning threshold for internal memory usage (in percents)
+internalMemoryUsage.warningThreshold = 5
+
+; Improvement threshold for internal memory usage (in percents)
+internalMemoryUsage.improvementThreshold = 10
+
+; External memory usage comparison settings
+; Error threshold for external memory usage (in percents)
+externalMemoryUsage.errorThreshold = 10
+
+; Warning threshold for external memory usage (in percents)
+externalMemoryUsage.warningThreshold = 5
+
+; Improvement threshold for external memory usage (in percents)
+externalMemoryUsage.improvementThreshold = 10
+
+; MSPF comparison settings
+; Error threshold for MSPF (in percents)
+mspf.errorThreshold = 20
+
+; Warning threshold for MSPF (in percents)
+mspf.warningThreshold = 10
+
+; Improvement threshold for MSPF (in percents)
+mspf.improvementThreshold = 15

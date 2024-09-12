@@ -1,0 +1,72 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_exportSkel( string $sScene, string $CRC, string $sDst , string $sSel)
+{
+	global string $gCRC;
+	if ( $sScene != `file -q -sceneName` || $CRC != $gCRC){
+		file -o -iv -f $sScene;
+        $gCRC = $CRC;
+        // удаление нод, которые требуют недоступных плагинов
+        $unknownNodes = `ls -type unknown`;
+        if (size ($unknownNodes) > 0){
+            delete $unknownNodes;
+    	}
+	}
+
+	if ( $sSel == "" ){
+		$sSel = "root";
+	}
+
+	if (size(`ls $sSel`) == 0){
+        error ("Указанная для экспорта рутовая кость " + $sSel + " не найдена в сцене " + $sScene);
+    }
+
+	if (size(`ls $sSel`) > 1){
+        error ("Указанная для экспорта рутовая кость " + $sSel + " не является уникальной в сцене");
+    }
+
+	if ( `nodeType $sSel` != "joint" ){
+		error ("Указанная рутовая кость " + $sSel + " не является джоинтом (joint)");
+	}
+
+    print ( "Выполняется экспорт скелета " + $sSel + " из " + $sScene + "\n");
+
+	global int $gnSuccess;
+	$gnSuccess = 0;
+
+ 	currentTime -e `playbackOptions -q -min`;
+	select -r $sSel;
+
+    h6export -f $sDst -t skel -lofik $sSel;
+
+	$gnSuccess = 1;
+
+	print ( "Экспорт завершен\n" );
+	return;
+}
+//
+// Creation Date: : 16.03.01
+// Author: Andrew Chernyshov
+//
+// Description:
+//
+// This script selects all end joints in selected DAG
+//
+
+global proc int selectEndJoints()
+{
+     string $joints[] = `ls -sl -typ joint -dag`;
+     if(size($joints) == 0)
+          error("No joints in selected DAG");
+
+     select -cl;
+
+     for ($joint in $joints)
+     {
+          string $children[] = `listRelatives -ad -typ joint $joint`;
+          if(size($children) == 0)
+               select -add $joint;
+     }
+
+     return 1;
+}
+

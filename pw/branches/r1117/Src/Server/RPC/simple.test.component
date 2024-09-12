@@ -1,0 +1,14 @@
+sources = [
+  'SimpleRPCRabbit.h',
+]  
+ 
+builders = [ 
+    RPCBuilder( 'Local', 'SimpleRPCRabbit.h', '', [] ), 
+    RPCBuilder( 'Remote', 'SimpleRPCRabbitAck.h', '', ['RSimpleRPCRabbitAck.auto.h'] ),
+    RPCBuilder( 'Remote', 'SimpleRPCRabbit.h', '', ['RPCMixin.h', 'SimpleRPCRabbitTypes.h', 'RSimpleRPCRabbitAck.auto.h'] ),
+    RPCBuilder( 'Local', 'SimpleRPCRabbitAck.h', '', [] ), 
+]
+
+components = [
+    'Vendor/Libc',
+]

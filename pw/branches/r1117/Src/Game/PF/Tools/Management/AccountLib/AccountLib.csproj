@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAFB0C07-03D4-412C-8C44-EB3ED2806343}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AccountLib</RootNamespace>
+    <AssemblyName>AccountLib</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Vendor\log4net\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="thrift-csharp-0.9.1, Version=0.9.1.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Vendor\Thrift\thrift-csharp-0.9.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountManagementService.cs" />
+    <Compile Include="EventManagementService.cs" />
+    <Compile Include="gen-csharp\AccountLib\AccountEdit.cs" />
+    <Compile Include="gen-csharp\AccountLib\AccountInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\AccountInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\AccountManagement.cs" />
+    <Compile Include="gen-csharp\AccountLib\AccountShortInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\AddDynamicQuestResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\AdminMessage.cs" />
+    <Compile Include="gen-csharp\AccountLib\AdminMessagesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\AuidsList.cs" />
+    <Compile Include="gen-csharp\AccountLib\AuidsListByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\AuidsListResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\BannedIpFullListInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\BannedIpShortInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\BroadcastCreateResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\BroadcastInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\BroadcastListResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\BroadcastLocalesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\BroadcastMessage.cs" />
+    <Compile Include="gen-csharp\AccountLib\BruteForceAccountShortInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\BuildingInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\BuildingsInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\CommonEventInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\CommonEventsListResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\ConfigEventType.cs" />
+    <Compile Include="gen-csharp\AccountLib\CustomEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\CustomEventByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\CustomEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\CustomMap.cs" />
+    <Compile Include="gen-csharp\AccountLib\CustomMapByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\CustomMapsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\DonateEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\DonateEventByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\DonateEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\DonateRange.cs" />
+    <Compile Include="gen-csharp\AccountLib\DonateReward.cs" />
+    <Compile Include="gen-csharp\AccountLib\DynamicQuestByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\DynamicQuestInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\DynamicQuestInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\DynamicQuestPull.cs" />
+    <Compile Include="gen-csharp\AccountLib\DynamicQuestPullByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\DynamicQuestPullsInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\ETalentRarity.cs" />
+    <Compile Include="gen-csharp\AccountLib\ExperienceRewardRelation.cs" />
+    <Compile Include="gen-csharp\AccountLib\FirstBuyGoldPrice.cs" />
+    <Compile Include="gen-csharp\AccountLib\FirstBuyGoldPriceByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\FirstBuyGoldPriceEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\FirstBuyGoldPricesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\Flag.cs" />
+    <Compile Include="gen-csharp\AccountLib\FlagResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\FriendInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\FriendInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GameSessionShortInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\Gender.cs" />
+    <Compile Include="gen-csharp\AccountLib\GetPaymentBonusActionsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GetPaymentBonusResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GiveTournamentTicketResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildBankTalentsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildEditInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildMemberInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildMemberInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildShortInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\GuildTalentInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\GWEventModel.cs" />
+    <Compile Include="gen-csharp\AccountLib\GWEventsModel.cs" />
+    <Compile Include="gen-csharp\AccountLib\GWEventsModelByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\GWEventsModelResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\HeroesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\HeroInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\HeroPrice.cs" />
+    <Compile Include="gen-csharp\AccountLib\HeroPriceByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\HeroPriceEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\HeroPricesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\LampInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\LampInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\LibraryRecord.cs" />
+    <Compile Include="gen-csharp\AccountLib\LibraryResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\LocaleInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\LocaleInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\MassOperationInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\MassOperationResult.cs" />
+    <Compile Include="gen-csharp\AccountLib\MassOperationsResultResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\MassOperationType.cs" />
+    <Compile Include="gen-csharp\AccountLib\NewsBanner.cs" />
+    <Compile Include="gen-csharp\AccountLib\NewsBannerByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\NewsBannersResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\NickAccountsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\NickSnidListResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\NickSnidResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\PayServiceType.cs" />
+    <Compile Include="gen-csharp\AccountLib\PayTicketType.cs" />
+    <Compile Include="gen-csharp\AccountLib\PriceServiceDataResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\PriceServiceInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestChangeAction.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestEventByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestEventStage.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestEventStageStep.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestEventStageStepVariant.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestForTalentEdit.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestForTalentInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestsForTalentsInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestsInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\QuestStatus.cs" />
+    <Compile Include="gen-csharp\AccountLib\ReforgeTalentPrice.cs" />
+    <Compile Include="gen-csharp\AccountLib\ReforgeTalentPriceByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\ReforgeTalentPriceResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\ReforgeTalentPrices.cs" />
+    <Compile Include="gen-csharp\AccountLib\RegisterPaymentResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RequestResult.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopBanner.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopBannerByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopBannersResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupCurrencies.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupCurrenciesByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupCurrenciesEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupCurrenciesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupPrice.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupPriceByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupPriceEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupPricesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupProbabilitiesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupProbability.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupProbabilityByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupProbabilityEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupSlots.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupSlotsByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupSlotsEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopGroupSlotsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopPremiumNotInactiveByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopPremiumNotInactiveEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopPremiumNotInactiveResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopPrice.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopPriceByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopPricesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotAmount.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotAmountByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotAmountEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotAmountsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotPrice.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotPriceByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotPriceEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotPricesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlots.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotsByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopSlotsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopTooltip.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopTooltipByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RerollShopTooltipsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\ResourceEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\ResourceTableSmall.cs" />
+    <Compile Include="gen-csharp\AccountLib\RollEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\RollEventByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\RollEventItem.cs" />
+    <Compile Include="gen-csharp\AccountLib\RollEventItemType.cs" />
+    <Compile Include="gen-csharp\AccountLib\RollEventRule.cs" />
+    <Compile Include="gen-csharp\AccountLib\RollEventRuleType.cs" />
+    <Compile Include="gen-csharp\AccountLib\RollEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonAwards.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonEventByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonEventShopGroup.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonEventShopItem.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SeasonProgressRewardRelation.cs" />
+    <Compile Include="gen-csharp\AccountLib\ServerActionResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SkinGoldPrice.cs" />
+    <Compile Include="gen-csharp\AccountLib\SkinGoldPriceByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SkinGoldPriceEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\SkinGoldPricesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SkinInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\SkinsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SocialNetworksResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\SocServerVersionResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\StringDataResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentDropRaritiesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentDropRarity.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentDropRarityByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentDropRarityEvent.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentDropRarityResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentSetInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentSetResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentsEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentUpgradeEntitiesResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentUpgradeEntityInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\TalentUpgradeEntityType.cs" />
+    <Compile Include="gen-csharp\AccountLib\TechsInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\TechsInfoByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TechsInfosResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TicketBoughtType.cs" />
+    <Compile Include="gen-csharp\AccountLib\TicketPriseState.cs" />
+    <Compile Include="gen-csharp\AccountLib\TicketState.cs" />
+    <Compile Include="gen-csharp\AccountLib\TournamentGamesInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\TournamentGamesInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TournamentInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\TournamentInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TradeEventByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TradeEventGroupModel.cs" />
+    <Compile Include="gen-csharp\AccountLib\TradeEventModel.cs" />
+    <Compile Include="gen-csharp\AccountLib\TradeEventsResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TradeGroupMemberModel.cs" />
+    <Compile Include="gen-csharp\AccountLib\TransmutationTalentsPerPerl.cs" />
+    <Compile Include="gen-csharp\AccountLib\TransmutationTalentsPerPerlByIdResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\TransmutationTalentsPerPerlResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\UpgradeHeroTalentsInfo.cs" />
+    <Compile Include="gen-csharp\AccountLib\UpgradeHeroTalentsInfoResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\UserDumpsDataResponse.cs" />
+    <Compile Include="gen-csharp\AccountLib\UserOperationType.cs" />
+    <Compile Include="gen-csharp\AccountLib\WorldRatingRewardRelation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AccountManagementAPI.thrift" />
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>if $(ConfigurationName)==Debug $(SolutionDir)..\..\..\..\..\Vendor\Thrift\thrift-0.9.1.exe -gen csharp -o $(ProjectDir) $(ProjectDir)\AccountManagementAPI.thrift</PreBuildEvent>
+  </PropertyGroup>
+</Project>

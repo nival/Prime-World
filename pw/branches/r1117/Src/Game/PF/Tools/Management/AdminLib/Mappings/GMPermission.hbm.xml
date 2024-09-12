@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AdminLib"
+                   namespace="AdminLib.Entities">
+  <class name="GMPermission" table="gm_permissions">
+    <id name="PermissionId">
+      <generator class="sequence">
+        <param name="sequence">gm_permissions_permissionid_sequence</param>
+      </generator>
+    </id>
+    <property name="PermissionName" unique="true" not-null="true" />
+    <property name="Description" />
+  </class>
+</hibernate-mapping>

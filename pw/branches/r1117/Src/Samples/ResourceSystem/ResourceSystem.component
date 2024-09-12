@@ -1,0 +1,15 @@
+sources = getDefaultSources( patterns = [ '*.cs', '*.h', '*.hpp', '*.cpp' ], ignored = [ '*test*' ], recursive = False )
+
+components = [
+  'libdb/Database',
+  'libdb/Types',
+  'System/CrashHandler',
+  'System/Dumpers',
+  'System/FileSystem',
+]
+
+projectType = 'win32'
+builders = [ CodeGen( ['ResourceDesc.cs'], 'cpp' ) ]
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+globalCompilerKeys = ['/D"DO_NOT_USE_NEWDELETE"' ]
+type = 'console'

@@ -1,0 +1,34 @@
+sources = [
+    'ConnectionManager.h',
+    'ConnectionManager.cpp',
+    'ConnectionsContainer.h',
+    'ConnectionsContainer.cpp',
+    'Driver.cpp',
+    'Driver.h',
+    'Connection.h',
+    'Connection.cpp',
+    'Initializer.h',
+    'Initializer.cpp',
+    'Errors.h',
+    'Errors.cpp',
+    'NetworkBuffers.h',
+    'Socket.h',
+    'specific.h',
+    'stdafx.cpp',
+    'stdafx.h',
+]
+
+if platform == 'win32' :
+  libDependencies = [ 'ws2_32.lib' ]
+
+components = [
+    'Vendor/zlib',
+    'Network/SSLEncoder',
+    'Network/Interfaces',
+    'Network/NetworkAddress',
+    'System/Streams',
+    'System/Ptr',
+    'System/DebugVar',
+    'System/Threading',
+    'System/Random',
+]

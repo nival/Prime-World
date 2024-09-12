@@ -1,0 +1,27 @@
+
+global proc natStaticMeshAnimAnalizer (string $staticObject) {
+	int $hasAnim=0;
+	string $parent[];
+    string $object = $staticObject;
+	while ($object != "")
+	{
+		$parent =  `listRelatives -p $object`;
+		if (`connectionInfo -id ($object+".tx")` || `connectionInfo -id ($object+".ty")` || `connectionInfo -id ($object+".tz")` || `connectionInfo -id ($object+".rx")` || `connectionInfo -id ($object+".ry")` || `connectionInfo -id ($object+".rz")` ||  `connectionInfo -id ($object+".sx")` || `connectionInfo -id ($object+".sy")` || `connectionInfo -id ($object+".sz")`)
+			{
+		        $hasAnim=1;
+            }
+		$object = $parent[0];
+	}
+    if ($hasAnim)
+    {
+		currentTime 0 ;
+        delete -c-uac false  -hi none -cp 0 -s 1 $staticObject;
+                if (size (`listRelatives -p $staticObject`) != 0 ) {
+         	parent -w $staticObject;
+        }
+        $translatePivot = `xform -ws -q -rp  $staticObject`;
+        move  -r (-$translatePivot[0]) (-$translatePivot[1])  (-$translatePivot[2])  $staticObject ;
+        rotate -a 0 0 0 $staticObject;
+        scale -a 1 1 1 $staticObject;
+    }
+}

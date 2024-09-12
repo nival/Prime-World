@@ -1,0 +1,191 @@
+/*
+  autotest main stylesheet.
+*/
+
+body {
+  margin: 50px 3em 3em 50px; /* Controls overall margins */
+  background: white;
+  min-height: 480px;
+}
+
+h1, h2, h3, h4, h5 {
+  text-align: left;
+  background: transparent;
+  font-family: Verdana, sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 200%;
+  padding: .5em 0 .5em 5%;
+  color: white;
+  margin: 0;
+}
+
+h1.fatalFailure {
+  background: red
+}
+
+h1.fatalFailure:after {
+  content: ": fatal failure";
+}
+
+h1.testFailure {
+  background: red;
+}
+
+h1.testFailure:after {
+  content: ": test failure";
+}
+
+h1.success {
+  /* background: #1f764c;    /* Olive green */
+  background: rgb(0, 168, 0);
+}
+
+h2 {
+  font-size: 125%;
+}
+
+h3 {
+  font-size: 110%;
+  font-family: sans-serif;
+  background: rgb(0, 78, 152);
+  padding: .5em .5em .5em .5em;
+  color: white;
+}
+
+h3:before {
+  content: "Configuration: "
+}
+
+h4 {
+  font-size: 100%;
+  font-family: sans-serif;
+  padding-left: 15pt;
+}
+
+h5 {
+  padding-left: 30pt;
+}
+
+p {
+  padding-left: 45pt;
+}
+
+p.timestamp {
+  padding: 7pt 0 7pt 0;
+  text-align: right;
+  font-size: 111%;
+}
+
+p.embeddedText {
+  font-family: Courier, sans-serif;
+  text-align: left;
+  margin-left: 0;
+  background: lightgray;
+  border: solid black 1px;
+  white-space: pre;
+}
+
+/*
+  Table styles
+*/
+
+table {
+  margin: 1%;
+
+  /* To center a table */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+thead {
+  font-weight: bold;
+  text-align: center;
+}
+
+/*
+  Short report styles
+*/
+
+table.shortReport {
+  border-collapse: collapse;
+}
+
+thead.shortReport {
+}
+
+th.shortReport {
+  padding-left: 1em;
+  text-align: left;
+  font-weight: bold;
+}
+
+tbody.shortReport {
+  color: white;
+}
+
+td {
+  text-align: center;
+}
+
+td.comparison {
+  width: 401px;
+}
+
+col.shortReport#configuration {
+  width: 150px;
+}
+
+col.shortReport#result {
+  width: 100px;
+}
+
+tr.shortReport {
+  border-bottom: solid white 10px;
+}
+
+tr.shortReport#passed {
+  background: rgb(0, 168, 0);
+}
+
+tr.shortReport#warned {
+  background: rgb(255, 128, 0);
+}
+
+tr.shortReport#failed {
+  background: red;
+}
+
+a.imagelink > img:hover { border: 1px solid #093; } /* IE6 broken */
+a.imagelink > img { border: 1px solid transparent; }
+a.imagelink {
+  /* Don't use text link colors. */
+  background: transparent;
+  color: white;
+}
+
+/* Display for browsers that don't understand stylesheets. */
+.ahem {
+  display: none;
+}
+
+/* Print nicely. */
+@media print {
+  @page             { margin: 10% } /* This _is_ valid CSS2. */
+  h1,h2,h3,h4       { page-break-after: avoid; page-break-inside: avoid }
+  blockquote,pre    { page-break-inside: avoid }
+  ul,ol,dl          { page-break-before: avoid }
+  /* Override existing property settings. */
+  h1,a              { color: black; background: white; }
+  div#content       { margin: 0; border: 0; }
+  div#footer        { display: none; }
+  /* IE5,6 only has the problem displaying, so restore margin for printing */
+  div.image         { margin-left: 0; }
+  p.imagetitle      { page-break-before: avoid; }
+  p.blocktitle, tabletitle { page-break-after: avoid; }
+  /* DEPRECATED: Used by deprecated graphic macro. */
+  div.graphic       { margin-left: 0; }
+  p.graphictitle    { page-break-before: avoid; }
+}

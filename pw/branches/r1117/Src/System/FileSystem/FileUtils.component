@@ -1,0 +1,32 @@
+includePaths = [ 
+    '../', 
+]
+
+if platform == 'win32':
+  sources = [
+      'FilePath.cpp', 
+      'FilePath.h', 
+      'FileUtils.cpp',
+      'FileUtils_win.cpp',
+      'FileUtils.h',
+  ]
+  
+  libDependencies = [
+    'shlwapi.lib'
+  ]
+else :
+  sources = [
+      'FilePath.cpp', 
+      'FilePath.h', 
+      'FileUtils.cpp',
+      'FileUtils_linux.cpp',
+      'FileUtils.h',
+  ]
+
+components = [
+    'System/StrUtils', 
+    'Vendor/Libc',
+]
+
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

@@ -1,0 +1,86 @@
+import os
+
+builders = [ 
+    InstallBuilder( 'TestsData/TimeSlider/A.dds', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/A.part', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/A3.part', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/A.PRSC.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/A.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/A_FadeInOut.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/A_Speed.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/B.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/B_FadeInOut.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/B_Speed.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/C.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/C_Speed.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/CpPlane1.stat', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Test.TXTR.xdb', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Test_00.dds', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Droot.skel', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/DpPlane1.skin', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/idle1.anim', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/idle2.anim', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/DautoClip.anim', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/D.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/D_Short.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/D_Speed.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/D_Random.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/D_Random_Short.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/D_Random_Speed.PRXY.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/D_Effect.PRXY.xdb', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/E.PRSC.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/E.PRXY.xdb', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/atlas_0.TXTR.xdb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/atlas_0.dds', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Default.stat', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/default_shader.hlsl', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/VertexShader.bin', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/AIGeometryMaterialType.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/RoadMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/UIFlashMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/ParticleFXMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/BasicMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/UIBaseMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/WaterMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/HeightfogMaterial.shd', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/WaterDummyMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/TerrainAOEMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/BasicFXMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/DropMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/WaterMapMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/UIFontMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/UIGlassMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/TestTownMaterial.shd', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/TerrainHeightBuilderMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/BasicMaskMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/GrassMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/DebugMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/TerrainElementMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/TerrainElementDebugMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/DecalMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/TerrainMaterial.shd', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/PaintMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/NatureMapMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/UIButtonMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/LightningMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/TraceMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/SilhouetteMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/AOEMaterial.shd', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/ShadowMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/FullScreenMaterial.shd', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/SkyMaterial.shd', '../' ),
+
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/default_shader.vsb', '../' ),
+    InstallBuilder( 'TestsData/TimeSlider/Shaders/default_shader.psb', '../' ),
+    ]

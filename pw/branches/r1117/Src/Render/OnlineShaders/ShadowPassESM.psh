@@ -1,0 +1,36 @@
+#include "_commonPostProcess.h"
+
+sampler depthMap : register(s0);
+sampler shadowMap : register(s1);
+
+float4 uvScaleOffset : register( PSHADER_LOCALCONST0 );
+float4 shadowColor : register( PSHADER_LOCALCONST1 );
+float4 params : register( PSHADER_LOCALCONST2 ); // size, 1/size, isMultiply, --
+float4 range : register( PSHADER_LOCALCONST3 ); // fadeMUL, fadeADD, --, --
+float4x4 ViewToLightSpace : register( PSHADER_LOCALCONST4 ); // ViewInv * LightViewProj
+float4 screenScaleOffset : register( SCREEN_TO_TEXTURE );
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+float4 PS_main(VS_OUTPUT Input, float4 PixelPos : VPOS ) : COLOR
+{
+  // restore position in View Space
+  float z = -0.1+tex2D(depthMap, PixelPos.xy * screenScaleOffset.xy + screenScaleOffset.zw ).r;
+  float2 xy = (Input.Texcoord * uvScaleOffset.xy + uvScaleOffset.zw) * z;
+  float4 PositionVS = float4(xy, z, 1);
+
+  // convert to shadow coordinates
+  float4 PositionLS = mul(PositionVS, ViewToLightSpace);
+  float4 halfScaleOffset = float4(0.5, -0.5, 1.0, 0.0);
+  float3 pixel = (PositionLS.xyz * halfScaleOffset.xyz + halfScaleOffset.xxw) / PositionLS.w;
+
+  float inshadow = exp(-range.w * tex2D(shadowMap, pixel.xy)) * exp(range.w * pixel.z );
+  float alpha = inshadow * shadowColor.a;
+
+  // fade in the distance
+  alpha *= saturate(z * range.x + range.y);
+
+  // select between multiplicative and blended shadows
+  float3 modifier = (float3(1,1,1) - shadowColor.rgb) * (1 - alpha) * params.z;
+  return float4(shadowColor.rgb + modifier, alpha);
+}

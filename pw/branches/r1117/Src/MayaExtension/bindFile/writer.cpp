@@ -1,0 +1,51 @@
+#include "../commandClasses.h"
+#include "BNFL.h"
+
+MStatus bindFile::writer(	MString						filename,
+				MDagPathArray				jointPaths, 
+				MPointArray					vertices, 
+				std::vector<MFloatArray>	weightsVector)
+{
+	FILE* file;
+
+	fopen_s( &file, filename.asChar(), "wb" );
+	if ( file == NULL )
+	{
+		fprintf(stderr, "writer: Cannot open file %s!\n", filename.asChar());
+		return MS::kFailure;
+	}
+
+	unsigned signature = SIGNATURE;
+	fwrite( &signature, sizeof(signature), 1, file );
+	
+	unsigned jointCount = jointPaths.length();
+	fwrite( &jointCount, sizeof(jointCount), 1, file );
+	
+	unsigned vertexCount = vertices.length();
+	fwrite( &vertexCount, sizeof(vertexCount), 1, file );
+
+	unsigned i;
+	for( i = 0; i < jointCount; i++ )
+	{
+		MString path = jointPaths[i].fullPathName();
+		unsigned size = path.length();
+		fwrite( &size, sizeof(size), 1, file );		
+		fwrite( path.asChar(), size, 1, file );
+	}
+
+	for( i = 0; i < vertexCount; i++ )
+	{
+		MPoint vertex = vertices[i];
+		fwrite( &vertex.x, sizeof(vertex.x), 1, file );
+		fwrite( &vertex.y, sizeof(vertex.y), 1, file );
+		fwrite( &vertex.z, sizeof(vertex.z), 1, file );
+	}
+
+	for( i = 0; i < vertexCount; i++ )
+		for( unsigned j = 0; j < jointCount; j++ )
+			fwrite( &weightsVector[i][j], sizeof(weightsVector[i][j]), 1, file );		
+
+	fclose( file );
+	
+	return MS::kSuccess;
+}

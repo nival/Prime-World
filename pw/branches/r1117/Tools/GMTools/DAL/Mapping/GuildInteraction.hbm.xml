@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="GuildInteraction">
+
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">guildinteraction_id_sequence</param>
+      </generator>
+    </id>
+
+    <many-to-one name="Guild" class="Guild" not-null="true" />
+    <many-to-one name="TargetGuild" class="Guild" not-null="true" />
+    <many-to-one name="GuildSiege" class="GuildSiege" />
+
+    <property name="Type" type="NHibernate.Type.EnumStringType`1[[DAL.Entities.GuildInteractionType, DAL]], NHibernate" />
+    <property name="WaitingTime" not-null="true" />
+    <property name="Timestamp" not-null="true" />
+
+    <sql-insert check="none">
+      INSERT INTO guildinteraction
+      (guild, targetguild, guildsiege, type, waitingtime, timestamp, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

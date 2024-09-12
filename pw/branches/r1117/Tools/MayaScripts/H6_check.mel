@@ -1,0 +1,1354 @@
+//
+//  Nival Interactive Script File
+//
+//  Creation Date:  01 September 2007
+//
+//  Idea:         Andrew Chernyshov AKA Ancher
+//  Design:       Andrew Chernyshov AKA Ancher
+//  Programming:  Andrew Chernyshov AKA Ancher
+//
+//  Description:
+//    This script makes checks and nesessary corrections
+//    according to TRC of Nival's H6 project
+//
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_Zup()
+{
+	if ( `upAxis -q -ax` == "z" )
+	{
+		button -e -en 0 H6CH_Zup;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_Zup;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_Centimeters()
+{
+	if ( `currentUnit -q -l` == "cm" )
+	{
+		button -e -en 0 H6CH_Centimeters;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_Centimeters;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_NTSC()
+{
+	if ( `currentUnit -q -t` == "ntsc" )
+	{
+		button -e -en 0 H6CH_NTSC;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_NTSC;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_DoNotSavePanels()
+{
+	global int $gUseSaveScenePanelConfig;
+	if ( $gUseSaveScenePanelConfig == 0 )
+	{
+		button -e -en 0 H6CH_DoNotSavePanels;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_DoNotSavePanels;
+	}
+
+	return;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_Ascii()
+{
+	if ( stringArrayToString( `file -q -typ`, "" ) == "mayaAscii" )
+	{
+		button -e -en 0 H6CH_Ascii;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_Ascii;
+	}
+
+	return;
+}
+*/
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getVisibleModelPanels()
+{
+	// This proc returns an array of visible model panels
+	string $modelPanels[] = `getPanel -typ modelPanel`;
+	string $visiblePanels[] = `getPanel -vis`;
+	string $intersector = `stringArrayIntersector`;
+	
+	stringArrayIntersector -edit -intersect $modelPanels $intersector;
+	stringArrayIntersector -edit -intersect $visiblePanels $intersector;
+
+	return `stringArrayIntersector -query $intersector`;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_Wireframe()
+{
+	int $nTest = 1;
+	for ( $sPanel in `getVisibleModelPanels` )
+	{
+		if ( `modelEditor -q -displayAppearance $sPanel` != "wireframe" )
+		{
+			$nTest = 0;
+			break;
+		}
+	}
+	
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_Wireframe;
+	}
+	else
+	{
+		button -e -en 1 H6CH_Wireframe;
+	}
+
+	return;
+}
+
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_NoLayers()
+{
+	// Remember, that there is defaultLayer
+	if ( size( `ls -typ displayLayer` ) == 1 )
+	{
+		button -e -en 0 H6CH_NoLayers;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_NoLayers;
+	}
+
+	return;
+}
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getVisibleMeshTransforms()
+{
+	// This proc returns all visible mesh transforms in scene
+	string $meshTransforms[] = {};
+
+	for ( $sMesh in `ls -ni -v -l -typ mesh` )
+	{
+		// Instanced shapes can have several parents!
+		for ( $sTransform in `listRelatives -f -ni -ap $sMesh` )
+		{
+			$meshTransforms[`size $meshTransforms`] = $sTransform;
+		}
+	}
+
+	return $meshTransforms;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_Freeze()
+{
+	int $nTest = 1;
+	float $fFloatZero = 1e-10;
+
+	for ( $sTransform in `getVisibleMeshTransforms` )
+	{
+		if (
+			abs( float (`getAttr ( $sTransform + ".tx" )`) ) > $fFloatZero ||
+			abs( float (`getAttr ( $sTransform + ".ty" )`) ) > $fFloatZero ||
+			abs( float (`getAttr ( $sTransform + ".tz" )`) ) > $fFloatZero ||
+			
+			abs( float (`getAttr ( $sTransform + ".rx" )`) ) > $fFloatZero ||
+			abs( float (`getAttr ( $sTransform + ".ry" )`) ) > $fFloatZero ||
+			abs( float (`getAttr ( $sTransform + ".rz" )`) ) > $fFloatZero ||
+			
+			abs( float (`getAttr ( $sTransform + ".sx" )`) - 1 ) > $fFloatZero ||
+			abs( float (`getAttr ( $sTransform + ".sy" )`) - 1 ) > $fFloatZero ||
+			abs( float (`getAttr ( $sTransform + ".sz" )`) - 1 ) > $fFloatZero )
+		{
+			warning ( $sTransform + " needs Freeze Transform" );
+			$nTest = 0;
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_Freeze;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_Freeze;
+	}
+
+	return;
+}
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] replaceByType( string $list[] )
+{
+  string $result[] = {};
+
+	for ( $sItem in $list )
+	{
+		$result[`size $result`] = `objectType $sItem`;
+	}
+
+	return $result;
+}
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_NoHistory()
+{
+	int $nTest = 1;
+
+	for ( $sTransform in `getVisibleMeshTransforms` )
+	{
+		string $history[] = `listHistory -il 1 $sTransform`;
+		string $sSkinCluster = stringArrayToString( `ls -typ skinCluster $history`, "" );
+		string $sHistoryTypes = stringArrayToString( stringArrayRemove( {"displayLayer"}, `replaceByType $history` ), " " );
+
+		if ( $sHistoryTypes == "mesh" )
+		{
+			// Non-skinned mesh. No history. Everybody happy.
+			continue;
+		}
+
+		if ( $sSkinCluster == "" )
+		{
+			// Non-skinned mesh
+			warning ( $sTransform + " has History\n" );
+			$nTest = 0;
+			continue;
+		}
+
+		if ( !startsWith( $sHistoryTypes, "mesh skinCluster tweak mesh joint" ) )
+		{
+			// Skinned mesh
+			warning ( $sTransform + " has extra skinCluster History\n" );
+			$nTest = 0;
+			continue;
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_NoHistory;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_NoHistory;
+	}
+
+	return;
+}
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_UniqueJoints()
+{
+	print "\n// Running UniqueJoints check:\n";
+
+	int $nTest = 1;
+
+	string $joints[] = `ls -typ joint`;
+	if ( `size $joints` == 0 )
+	{
+		// No joints. Skip everything except button disabling.
+		print "No joints found.";
+	}
+
+	for ( $sJoint in $joints )
+	{
+		// Skip end joints
+		if ( size( `listRelatives -c -typ joint $sJoint` ) == 0 )
+		{
+			continue;
+		}
+
+		// Get short name
+		string $sName = `match "[^|]*$" $sJoint`;
+
+		if ( size( `ls $sName` ) != 1 )
+		{
+			print ( $sJoint + " is not unique.\n" );
+			$nTest = 0;
+			continue;
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_UniqueJoints;
+		print "// Check passed.\n";
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_UniqueJoints;
+		warning "Check not passed. See script editor for details.";
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_NoEndJoints()
+{
+	print "\n// Running NoEndJoints check:\n";
+
+	int $nTest = 1;
+
+	string $skinClusters[] = `ls -typ skinCluster`;
+	if ( `size $skinClusters` == 0 )
+	{
+		print "No skinClusters found.";
+	}
+
+	for ( $sMesh in `ls -typ mesh` )
+	{
+		string $history[] = `listHistory -il 1 $sMesh`;
+		string $sSkinCluster = stringArrayToString( `ls -typ skinCluster $history`, "" );
+
+		if ( $sSkinCluster == "" )
+		{
+			// Non-skinned mesh. Skip.
+			continue;
+		}
+
+		string $influences[] = `skinCluster -q -inf $sSkinCluster`;
+
+		for ( $sItem in $influences )
+		{
+			if ( `objectType $sItem` != "joint" )
+			{
+				print ( $sMesh + " is binded to non-joint influence " + $sItem + "\n" );
+				$nTest = 0;
+				continue;
+			}
+
+			if ( size( `listRelatives -c -typ joint $sItem` ) == 0 )
+			{
+				print ( $sMesh + " is binded to end-joint " + $sItem + "\n" );
+				$nTest = 0;
+				continue;
+			}
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_NoEndJoints;
+		print "// Check passed.\n";
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_NoEndJoints;
+		warning "Check not passed. See script editor for details.";
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_BindToAll()
+{
+	print "\n// Running BindToAll check:\n";
+
+	int $nTest = 1;
+
+	for ( $sMesh in `ls -typ mesh` )
+	{
+		string $history[] = `listHistory -il 1 $sMesh`;
+		string $sSkinCluster = stringArrayToString( `ls -typ skinCluster $history`, "" );
+
+		if ( $sSkinCluster == "" )
+		{
+			// Non-skinned mesh. Skip.
+			continue;
+		}
+
+		string $influences[] = sort( `skinCluster -q -inf $sSkinCluster` );
+
+		// Look for root
+		string $sRoot = $influences[0];
+		string $p[] = `listRelatives -f -p $sRoot`;
+		while( `size $p` != 0 )
+		{
+			$sRoot = $p[0];
+			$p = `listRelatives -f -p $sRoot`;
+		}
+
+		// Get all non-end joints in hierarchy
+		string $joints[] = {};
+		for ( $sJoint in sort( `ls -dag -typ joint $sRoot` ) )
+		{
+			if ( size( `listRelatives -c -typ joint $sJoint` ) != 0 )
+			{
+				$joints[`size $joints`] = $sJoint;
+			}
+		}
+
+		// Match influences and joints
+		string $diff[] = `stringArrayRemove $influences $joints`;
+		if ( size( $diff ) != 0 )
+		{
+			print ( $sMesh + " is not binded joints:\n" );
+			print $diff;
+			$nTest = 0;
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_BindToAll;
+		print "// Check passed.\n";
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_BindToAll;
+		warning "Check not passed. See script editor for details.";
+	}
+
+	return;
+}
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_SameSkeleton()
+{
+	int $nTest = 1;
+
+	string $sSameSkeleton = "";
+
+	for ( $sTransform in `getVisibleMeshTransforms` )
+	{
+		string $history[] = `listHistory -il 1 $sTransform`;
+		string $sSkinCluster = stringArrayToString( `ls -typ skinCluster $history`, "" );
+
+		if ( $sSkinCluster == "" )
+		{
+			// Non-skinned mesh. Skip.
+			continue;
+		}
+
+		string $sSkeleton = stringArrayToString( sort( `skinCluster -q -inf $sSkinCluster` ), " " );
+
+		if ( $sSameSkeleton == "" )
+		{
+			// Skip first iteration
+			$sSameSkeleton = $sSkeleton;
+			continue;
+		}
+
+		if ( $sSkeleton != $sSameSkeleton )
+		{
+			warning ( $sTransform + " is binded to differnent skeleton" );
+			$nTest = 0;
+			continue;
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_SameSkeleton;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_SameSkeleton;
+	}
+
+	return;
+}
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_CorrectPaths()
+{
+	int $nTest = 1;
+
+	string $sCorrectPath = tolower( "h:/complete" );
+
+	for ( $sTransform in `getVisibleMeshTransforms` )
+	{
+		// Down to meshes
+		string $tmp[] = `listRelatives -s -f $sTransform`;
+
+		// Down to shading groups
+		$tmp = `listConnections -type shadingEngine $tmp`;
+
+		// Down to materials
+		$tmp = `listConnections -type lambert $tmp`;
+
+		// Down to textures
+		$tmp = stringArrayRemoveDuplicates( `listConnections -type file $tmp` );
+
+		if ( `size $tmp` == 0 )
+		{
+			continue;
+		}
+
+		for ( $sFile in $tmp )
+		{
+			string $sFileName = getAttr( $sFile + ".fileTextureName" );
+			$sFileName = tolower( $sFileName );
+			if ( `startsWith $sFileName $sCorrectPath` == 0 )
+			{
+				warning ( $sFile + " does not take texture from right place ( \"" + $sCorrectPath + "\" )" );
+				$nTest = 0;
+			}
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_CorrectPaths;
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_CorrectPaths;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getNonUnique( string $sSet )
+{
+	// This proc tests the presence of dag path delimeter ("|") in set's members
+	// names and push them in result array if found one.
+
+	string $notUnique[] = {};
+
+	string $list[] = `sets -q $sSet`;
+	for ( $sItem in $list )
+	{
+		if ( `gmatch $sItem "*|*"` )
+		{
+			$notUnique[`size $notUnique`] = `match "[^\.]*" $sItem`;
+		}
+	}
+
+	$notUnique = `stringArrayRemoveDuplicates $notUnique `;
+
+	return $notUnique;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc check_UniqueCharacter()
+{
+	print "\n// Running UniqueChgaracter check:\n";
+
+	int $nTest = 1;
+
+	string $characters[] = `ls -typ character`;
+	if ( `size $characters` == 0 )
+	{
+		// No characters. Skip everything except button disabling.
+		print "No characters found.";
+	}
+
+	string $sCharacter = "";// Explicit declaration to prevent iterator-"undeclared" 
+	                        // error in case $characters is empty.
+
+	for ( $sCharacter in $characters )
+	{
+		print ( "// Checking character " + $sCharacter + ":\n" );
+		// Check the character for unique members
+		string $notUnique[] = `getNonUnique $sCharacter`;
+		if ( `size $notUnique` != 0 )
+		{
+			print "Non-unique members found:\n";
+			print `sort $notUnique`;
+			warning ( "Character " + $sCharacter + " is NOT ok." );
+
+			$nTest = 0;
+			continue;
+		}
+		else
+		{
+			print ( "// Character " + $sCharacter + " is ok.\n" );
+		}
+	}
+
+	if ( $nTest == 1 )
+	{
+		button -e -en 0 H6CH_UniqueCharacter;
+		print "// Check passed.\n";
+	}                 
+	else              
+	{                 
+		button -e -en 1 H6CH_UniqueCharacter;
+		warning "Check not passed. See script editor for details.";
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc updateUI()
+{
+	// This proc performs all checks and updates 
+	// nesessary controls to reflect the results
+
+	// Check the presence of meshes in scene
+	if ( catchQuiet ( `getVisibleMeshTransforms` ))
+	{
+		warning "No meshes found!";
+	}
+	else
+	{
+		// Meshes
+		//check_Freeze();
+		//check_NoHistory();
+		//check_SameSkeleton();
+		//check_CorrectPaths();
+	}
+
+	check_UniqueJoints();
+	check_NoEndJoints();
+	check_BindToAll();
+
+	// Rig
+	check_UniqueCharacter();
+
+	// Maya
+	check_Zup();
+	check_Centimeters();
+	check_NTSC();
+	check_DoNotSavePanels();
+
+	// Scene
+	//check_Ascii();
+	check_Wireframe();
+	//check_NoLayers();
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setZup()
+{
+	if ( `upAxis -q -ax` != "z" )
+	{
+		upAxis -ax z -rv;
+	}
+
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setCentimeters()
+{
+	currentUnit -l "cm";
+
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setNTSC()
+{
+	currentUnit -t "ntsc";
+
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setDoNotSavePanels()
+{
+	global int $gUseSaveScenePanelConfig;
+	$gUseSaveScenePanelConfig = 0;
+	file -uc false;
+
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setAscii()
+{
+	file -rn `file -typ mayaAscii`;
+
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setWireframe()
+{
+	for ( $sPanel in `getVisibleModelPanels` )
+	{
+		modelEditor -e -displayAppearance "wireframe" $sPanel;
+	}
+	
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setNoLayers()
+{
+	for ( $sLayer in `ls -typ displayLayer` )
+	{
+		// Skipping defaultLayer
+		if ( $sLayer != "defaultLayer" )
+		{
+			delete $sLayer;
+		}
+	}
+
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc removeInstance( string $sShape )
+{
+	// This proc replaces instanced shapes with dupes
+	for ( $sTransform in `listRelatives -f -ni -ap $sShape` )
+	{
+		string $tmp1[] = `duplicate $sTransform`;
+		delete $sTransform;
+
+		string $tmp2[] = stringToStringArray( $sTransform, "|" );
+		rename ( $tmp1[0], $tmp2[size($tmp2)-1] );
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setFreeze()
+{
+	for ( $sTransform in `getVisibleMeshTransforms` )
+	{
+		// Check for instances
+		string $sShape = stringArrayToString( `listRelatives -f -ni -s $sTransform`, "" );
+		if ( size( `listRelatives -f -ni -ap $sShape` ) > 1 )
+		{
+			// Instances found!
+			if ( `confirmDialog 
+				-title "Warning!"
+				-message ( $sShape + " is instanced and cannot be freezed!\n\nReplace with duplicates?" )
+				-messageAlign "center"
+				-button "OK" -button "Cancel" -defaultButton "OK"
+				-cancelButton "Cancel" -dismissString "Cancel"` != "OK" )
+			{
+				continue;
+			}
+			removeInstance( $sShape );
+		}
+		makeIdentity -apply true -t 1 -r 1 -s 1 -n 0 $sTransform;
+
+		// Set opposite off - for good!
+		if ( `getAttr ( $sShape + ".opposite" )` )
+		{
+			polyNormal -normalMode 0 -ch 0 $sShape;
+			setAttr ( $sShape + ".opposite" ) 0;
+		}
+	}
+
+	updateUI();
+	return;
+}
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setNoHistory()
+{
+	check_NoHistory;
+	return;
+	
+	string $meshList[] = `getVisibleMeshTransforms`;
+	for ( $sMesh in $meshList )
+	{
+		delete -ch $sMesh;
+	}
+
+	updateUI();
+	return;
+}
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setUniqueJoints()
+{
+	check_UniqueJoints;
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setNoEndJoints()
+{
+	check_NoEndJoints;
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setBindToAll()
+{
+	check_BindToAll;
+	return;
+}
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setSameSkeleton()
+{
+	check_SameSkeleton;
+	return;
+}
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setCorrectPaths()
+{
+	check_CorrectPaths;
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_setUniqueCharacter()
+{
+	check_UniqueCharacter;
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_Refresh()
+{
+	updateUI();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc int copyAttr( string $sSrc, string $sDst )
+{
+	// This proc copies all possible attributes from $sSrc to $sDst
+
+	// Build compatible attributes list
+	string $sIntersector = `stringArrayIntersector`;
+
+	// Take readable, connectable, non-multi from SRC
+	stringArrayIntersector -edit -intersect `listAttr -r $sSrc` $sIntersector;
+	stringArrayIntersector -edit -intersect `listAttr -c $sSrc` $sIntersector;
+	stringArrayIntersector -edit -intersect `attributeInfo -m 0 $sSrc` $sIntersector;
+
+	// Take writable, connectable from DST
+	stringArrayIntersector -edit -intersect `listAttr -w $sDst` $sIntersector;
+	stringArrayIntersector -edit -intersect `listAttr -c $sDst` $sIntersector;
+
+	string $attrList[] = `stringArrayIntersector -query $sIntersector`;
+
+	deleteUI $sIntersector;
+
+	// Connect-disconnect attrs to copy values
+	for ( $sAttr in $attrList )
+	{
+		connectAttr ( $sSrc + "." + $sAttr ) ( $sDst + "." + $sAttr );
+		disconnectAttr ( $sSrc + "." + $sAttr ) ( $sDst + "." + $sAttr );
+	}
+
+	return 1;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string duplicateMesh( string $sSrcTransform )
+{
+	// This proc represents alternate duplication of meshes
+	// because of lack of functionality in standard "duplicate" command:
+	//   - Non-unique name returned
+	//   - Inability to duplicate just one mesh from the middle of DAG
+
+	// Get mesh
+	string $sSrcMesh = stringArrayToString( `listRelatives -f -s -ni $sSrcTransform`, "" );
+
+	// Get transform parent
+	string $sSrcParent = stringArrayToString( `listRelatives -f -p $sSrcTransform`, "" );
+
+	// Create DST transform
+	string $sDstTransform = "";
+	if ( $sSrcParent == "" )
+	{
+		$sDstTransform = `createNode transform`;
+	}
+	else
+	{
+		$sDstTransform = `createNode transform -p $sSrcParent`;
+	}
+
+	// Create DST Mesh
+	string $sDstMesh = `createNode mesh -p $sDstTransform`;
+
+	// Copy Attributes
+	copyAttr( $sSrcTransform, $sDstTransform );
+	copyAttr( $sSrcMesh, $sDstMesh );
+
+	// Copy mesh
+	connectAttr ( $sSrcMesh + ".outMesh" ) ( $sDstMesh + ".inMesh" );
+	disconnectAttr ( $sSrcMesh + ".outMesh" ) ( $sDstMesh + ".inMesh" );
+
+	// Assign default shader
+	sets -e -forceElement initialShadingGroup $sDstMesh;
+
+	return $sDstTransform;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc makeShot( string $sCamera, string $sPath )
+{
+	// This proc makes a shot according to mode, camera, and path provided
+
+	// Shot resolution
+	int $nWidth = 1024;
+	int $nHeight = 1024;
+
+	// Shots background color
+	float $background[] = {1, 1, 1};
+
+	// Remember camera background color
+	float $cameraBackground[] = `getAttr ( $sCamera + ".backgroundColor" )`;
+	
+	// Set camera background color to white
+	setAttr ( $sCamera + ".backgroundColor" )
+		-type double3  $background[0] $background[1] $background[2];
+
+	if ( `checkBox -q -v H6CH_Wireframe` )
+	{
+		// Wireframe render color
+		float $wire[] = {0, 0, 0};
+
+		// Iterate through all visible meshes in scene and make dupes 
+		// for wireframe render
+		string $meshTransforms[] = `getVisibleMeshTransforms`;
+		string $dupesWire[] = {};
+
+		for ( $sTransform in $meshTransforms )
+		{
+			// Make dupes for wireframe render
+			string $sDupeWire = `duplicateMesh $sTransform`;
+
+			// Unparent to avoid instancing via possible upper instanced transforms
+			if ( size( `listRelatives -p $sDupeWire` ) > 0 )
+			{
+				$sDupeWire = stringArrayToString( `parent -w $sDupeWire`, "" );
+			}
+
+			// Workaround for strange possible grouping after unparenting
+			string $strangeParent[] = `listRelatives -p $sDupeWire`;
+			if ( `size $strangeParent` > 0 )
+			{
+				$sDupeWire = stringArrayToString( `parent -w $sDupeWire`, "" );
+				delete $strangeParent;
+			}
+
+
+			// Store dupes for clean up
+			$dupesWire[`size $dupesWire`] = $sDupeWire;
+
+			// Hard edges for wire render
+			polySoftEdge -a 0 -ch 0 $sDupeWire;
+		}
+
+		// Hide originals. 
+		//   - Why not to do this in previous cycle? 
+		//   - Because of instancing issues.
+		for ( $sTransform in $meshTransforms )
+		{
+			setAttr ( $sTransform + ".v" ) 0;
+		}
+
+		// Use this for correct rendering of negative-scaled parts
+		H6CH_setFreeze();
+
+		vectorize 
+			-if jpg
+			-fs None 
+			-es Outline 
+			-ec $wire[0] $wire[1] $wire[2]
+			-oai 1
+			-cf
+			-c $sCamera
+			-w $nWidth
+			-h $nHeight
+			-ff "name"
+			-of $sPath;
+
+		// Restore visibility of originals
+		for ( $sTransform in $meshTransforms )
+		{
+			setAttr ( $sTransform + ".v" ) 1;
+		}
+
+		// Clean up dupes
+		delete $dupesWire;
+	}
+	else
+	{
+		string $sRenderer = stringArrayToString( `renderer -query -globalsNodes "mayaHardware"`, "" ) ;
+		setAttr ( $sRenderer + ".enableHighQualityLighting" ) on;
+		setAttr ( $sRenderer + ".enableAcceleratedMultiSampling" ) on;
+		setAttr ( $sRenderer + ".enableEdgeAntiAliasing" ) on;
+		setAttr ( $sRenderer + ".numberOfSamples" ) 9;
+		setAttr ( $sRenderer + ".colorTextureResolution" ) 512;
+		setAttr ( $sRenderer + ".bumpTextureResolution" )  1024;
+		setAttr ( $sRenderer + ".transparencySorting" )  0;
+
+		setAttr "defaultRenderGlobals.outf" 8;
+		setAttr "defaultRenderGlobals.ofc" 1;
+		setAttr "defaultRenderGlobals.ifp" -type "string" $sPath;
+
+		hwRender
+			-cam $sCamera
+			-w $nWidth
+			-h $nHeight
+			-cf
+			-nrv;
+	}
+
+	// Restore camera background color
+	setAttr ( $sCamera + ".backgroundColor" )
+		-type double3 $cameraBackground[0] $cameraBackground[1] $cameraBackground[2];
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] makeCameras()
+{
+	// This proc creates 4 cameras that fit all visible meshes 
+	// in scene and returns them as string array
+
+	// Field of view for 3/4 perspective views in degrees
+	float $fFOV = 10;
+
+	// View direction for 3/4 front perspective view in XYZ rotation degrees
+	float $perspView[] = {-30, 45, 0};
+
+	// Result cameras
+	string $cameras[] = {};
+
+	//// Get bounding box info 
+
+	// Make a group of dupes to get it's bounding box data
+	string $dupes[] = {};
+	for ( $sTransform in `getVisibleMeshTransforms` )
+	{
+		$dupes[`size $dupes`] = `duplicateMesh $sTransform`;
+	}
+	string $sGroup = `group $dupes`;
+
+	// Get data
+	float $bbMin[] = `getAttr ( $sGroup + ".bbmn" )`;
+	float $bbMax[] = `getAttr ( $sGroup + ".bbmx" )`;
+	float $bbSize[] = `getAttr ( $sGroup + ".bbsi" )`;
+
+	float $bbCenter[] = {
+		($bbMin[0]+$bbMax[0])/2,
+		($bbMin[1]+$bbMax[1])/2,
+		($bbMin[2]+$bbMax[2])/2
+		};
+
+	float $fBBdiameter = `mag <<$bbSize[0], $bbSize[1], $bbSize[2]>>`;
+	float $fBBradius = $fBBdiameter/2;
+
+	// No need of dupes group any more
+	delete $sGroup;
+
+
+	// Temporary storage for cameras
+	string $tmpCamera[] = {};
+
+
+	//// Create orthographic cameras
+
+	// Front
+	$tmpCamera = `camera -o 1 -ow $fBBdiameter -p $bbCenter[0] $bbCenter[1] ($bbCenter[2]+$fBBradius)`;
+	$cameras[0] = $tmpCamera[0];
+
+	// Side
+	$tmpCamera = `camera -o 1 -ow $fBBdiameter -p ($bbCenter[0]+$fBBradius) $bbCenter[1] $bbCenter[2] -rot 0 90 0`;
+	$cameras[1] = $tmpCamera[0];
+
+
+	//// Create perspective cameras
+
+	// Calculate distance to fit with given FOV
+	float $fDistance = $fBBradius / sin( `deg_to_rad ( $fFOV / 2 )` );
+
+	// 3/4 Front
+	$tmpCamera = `camera -hfv $fFOV -coi $fDistance -p $bbCenter[0] $bbCenter[1] ($bbCenter[2]+$fDistance)`;
+	rotate -p $bbCenter[0] $bbCenter[1] $bbCenter[2] -ws $perspView[0] $perspView[1] $perspView[2] $tmpCamera[0];
+	$cameras[2] = $tmpCamera[0];
+
+	// 3/4 Back
+	$tmpCamera = `duplicate $cameras[2]`;
+	rotate -r -p $bbCenter[0] $bbCenter[1] $bbCenter[2] -ws 0 180 0 $tmpCamera[0];
+	$cameras[3] = $tmpCamera[0];
+
+	return $cameras;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_ReviewShots()
+{
+	// Initing progress bar
+	progressWindow
+		-title ( "Making Shots" )
+		-min 0
+		-max 100
+		-status ( "Creating Cameras" )
+		-isInterruptable false;
+
+	// Create cameras
+	string $cameras[] = `makeCameras`;
+
+	// Update progress
+	progressWindow -edit 
+		-progress 100 
+		-status ( "Making shots" );
+
+	string $sFile = `file -q -sn`;
+	string $sPath = `dirname $sFile`;
+	string $sFileName = `basenameEx $sFile`;
+
+	if ( `filetest -d ($sPath+"/Review")` )
+	{
+		$sFile = $sPath + "/Review/" + $sFileName;
+	}
+	else
+	{
+		$sFile = $sPath + "/" + $sFileName;
+	}
+
+	for ( $nI = 0; $nI < 4; $nI++ )
+	{
+		makeShot $cameras[$nI] ( $sFile + "_00" + ( $nI + 1 ) + ".jpg" );
+
+		// Update progress
+		progressWindow -edit 
+		-progress ( ( $nI + 1 ) * 25 );
+	}
+
+	// Clean up
+	delete $cameras;
+
+	// Closing progress bar
+	progressWindow -endProgress;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6CH_Cleanup()
+{
+	// This proc tries to delete all nodes out of main DAG graph
+
+	// Read-only nodes list
+	string $readOnly[] = {
+		"characterPartition",
+		"defaultHardwareRenderGlobals",
+		"defaultLayer",
+		"defaultLightList1",
+		"defaultLightSet",
+		"defaultObjectSet",
+		"defaultRenderGlobals",
+		"defaultRenderLayer",
+		"defaultRenderLayerFilter",
+		"defaultRenderQuality",
+		"defaultRenderUtilityList1",
+		"defaultResolution",
+		"defaultShaderList1",
+		"defaultTextureList1",
+		"dof1",
+		"dynController1",
+		"front",
+		"frontShape",
+		"globalCacheControl",
+		"hardwareRenderGlobals",
+		"hyperGraphInfo",
+		"hyperGraphLayout",
+		"ikSystem",
+		"initialMaterialInfo",
+		"initialParticleSE",
+		"initialShadingGroup",
+		"lambert1",
+		"layerManager",
+		"layersFilter",
+		"lightLinker1",
+		"lightList1",
+		"objectNameFilter4",
+		"objectScriptFilter10",
+		"objectTypeFilter68",
+		"objectTypeFilter69",
+		"objectTypeFilter70",
+		"particleCloud1",
+		"persp",
+		"perspShape",
+		"postProcessList1",
+		"relationshipPanel1LeftAttrFilter",
+		"relationshipPanel1RightAttrFilter",
+		"renderGlobalsList1",
+		"renderLayerFilter",
+		"renderLayerManager",
+		"renderPartition",
+		"renderingSetsFilter",
+		"shaderGlow1",
+		"side",
+		"sideShape",
+		"strokeGlobals",
+		"time1",
+		"top",
+		"topShape"
+	};
+
+	// All deletable nodes list
+	string $all[] = stringArrayRemove( $readOnly, `ls` );
+print $all;
+	//// Build "useful" node list
+
+	// DAG list
+	string $usefull[] = `ls -as -dag`;
+
+	// Find all nodes in DG
+	int $nPreSize = 0;
+	int $nPostSize = 0;
+	do
+	{
+		$nPreSize = `size $usefull`;
+
+		$usefull = stringArrayRemoveDuplicates(
+			stringArrayCatenate(
+				$usefull,
+				`listConnections $usefull`
+			)
+		);
+
+		$nPostSize = `size $usefull`;
+
+	} while ( $nPreSize != $nPostSize );
+print("\n");
+print $usefull;
+	// Delete the difference
+	for ( $sNode in `stringArrayRemove $usefull $all` )
+	{
+		catch ( `delete $sNode` );
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc string H6CH_buildChecklistSection( string $sName, string $sParent )
+{
+	// This proc builds a unified layout section for check controls
+	// It takes $sParent as parent layout and returns the name of created one
+
+	frameLayout
+		-label $sName
+		-parent $sParent
+		-collapse false
+		-collapsable true
+		-borderStyle "in"
+		-marginWidth 10
+		-marginHeight 10;
+
+	string $columnLayout = `columnLayout`;
+	columnLayout
+		-edit
+		-adjustableColumn true 
+		-columnAlign left
+		$columnLayout;
+
+	return $columnLayout;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_check()
+{
+	// This is main proc. It builds interface and calls all checks
+	
+	// Unified button width
+	int $nWidth = 110;
+
+	// Let's build the UI!
+	string $H6_check = "H6_check";
+	if (`window -exists $H6_check`) 
+	{
+		deleteUI -window $H6_check;
+	}
+
+	// This is for correct sizing of an each new instance of a window
+	if (`windowPref -exists $H6_check`) 
+	{
+		windowPref -remove $H6_check;
+	}
+
+	window
+		-title "H6 Checklist"
+		-toolbox true
+		-sizeable false
+		-resizeToFitChildren true
+		$H6_check;
+
+	string $sParent = `columnLayout`;
+
+	// Scene Settings
+	setParent `H6CH_buildChecklistSection "Scene" $sParent`;
+	button -label "Z-up"            -align center -w $nWidth -c ( "H6CH_setZup()" )             H6CH_Zup;
+	button -label "Centimeters"     -align center -w $nWidth -c ( "H6CH_setCentimeters()" )     H6CH_Centimeters;
+	button -label "30 FPS"          -align center -w $nWidth -c ( "H6CH_setNTSC()" )            H6CH_NTSC;
+	button -label "DoNotSavePanels" -align center -w $nWidth -c ( "H6CH_setDoNotSavePanels()" ) H6CH_DoNotSavePanels;
+
+	//button -label "Maya Ascii" -align center -w $nWidth -c ( "H6CH_setAscii()" )     H6CH_Ascii;
+	button -label "Wireframe"  -align center -w $nWidth -c ( "H6CH_setWireframe()" ) H6CH_Wireframe;
+	//button -label "No Layers"  -align center -w $nWidth -c ( "H6CH_setNoLayers()" )  H6CH_NoLayers;
+
+	// Mesh checks
+	setParent `H6CH_buildChecklistSection "Skins" $sParent`;
+	//button -label "Freeze"    -align center -w $nWidth -c ( "H6CH_setFreeze()" )    H6CH_Freeze;
+	//button -label "NoHistory" -align center -w $nWidth -c ( "H6CH_setNoHistory()" ) H6CH_NoHistory;
+	button -label "UniqueJoints" -align center -w $nWidth -c ( "H6CH_setUniqueJoints()" ) H6CH_UniqueJoints;
+	button -label "NoEndJoints" -align center -w $nWidth -c ( "H6CH_setNoEndJoints()" ) H6CH_NoEndJoints;
+	button -label "BindToAll" -align center -w $nWidth -c ( "H6CH_setBindToAll()" ) H6CH_BindToAll;
+	//button -label "SameSkeleton" -align center -w $nWidth -c ( "H6CH_setSameSkeleton()" ) H6CH_SameSkeleton;
+	//button -label "CorrectPaths" -align center -w $nWidth -c ( "H6CH_setCorrectPaths()" ) H6CH_CorrectPaths;
+
+	// Rig checks
+	setParent `H6CH_buildChecklistSection "Rig" $sParent`;
+	button -label "UniqueCharacter"  -align center -w $nWidth -c ( "H6CH_setUniqueCharacter()" ) H6CH_UniqueCharacter;
+
+	// Actions
+	setParent `H6CH_buildChecklistSection "Actions" $sParent`;
+//	checkBox -label "Wireframe" -v 0 H6CH_Wireframe;
+//	button -label "Review Shots" -align center -w $nWidth -c ( "H6CH_ReviewShots()" );
+//	button -label "Clean up"      -align center -w $nWidth -c ( "H6CH_Cleanup()" );
+
+//	if ( `whatIs saveAs` != "Unknown" )
+//	{
+//		button -label "Save As"      -align center -w $nWidth -c ( "saveAs" );
+//	}
+
+	button -label "Refresh"      -align center -w $nWidth -c ( "H6CH_Refresh()" );
+
+	// Show final window
+	updateUI();
+	showWindow $H6_check;
+
+	return;
+}
+
+H6_check();

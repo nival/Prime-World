@@ -1,0 +1,1 @@
+start UniServerApp-monitoring.exe monitoring

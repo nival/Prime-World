@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="SocialSession">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">socialsession_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="Player" not-null="true" />
+    <property name="PlayerIp" />
+    <property name="Server" />
+    <property name="Cluster" />
+    <property name="StartTime" not-null="true" />
+    <property name="EndTime" />
+
+    <sql-insert check="none">
+      INSERT INTO socialsession
+      (player, playerip, server, cluster, starttime, endtime, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+    
+  </class>
+</hibernate-mapping>

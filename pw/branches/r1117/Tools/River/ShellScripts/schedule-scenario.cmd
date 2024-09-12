@@ -1,0 +1,1 @@
+start River.Manager.exe --start gametestclient-login-and-matchmaking-loadtest-infinite.cs --tag t --timestart "2011-03-24 20:00:00" --timestop "2011-03-25 10:00:00" 

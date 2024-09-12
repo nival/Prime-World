@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="ResourceLog">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">resourcelog_id_sequence</param>
+      </generator>
+    </id>
+    <property name="Source" />
+    <property name="BuildingName" />
+    <property name="PersistentId" />
+    <property name="Gain" />
+    <property name="GoldChange" />
+    <property name="SilverChange" />
+    <property name="PerlChange" />
+    <property name="RedPerlChange" />
+    <property name="PopulationChange" />
+    <property name="Resource1Change" />
+    <property name="Resource2Change" />
+    <property name="Resource3Change" />
+    <property name="ShardChange" />
+    <property name="CurrencyChange" />
+    <property name="CurrencyChangeValue" />
+    <property name="GoldTotal" />
+    <property name="SilverTotal" />
+    <property name="PerlTotal" />
+    <property name="RedPerlTotal" />
+    <property name="PopulationTotal" />
+    <property name="Resource1Total" />
+    <property name="Resource2Total" />
+    <property name="Resource3Total" />
+    <property name="ShardTotal" />
+	<property name="CurrencyTotal" />
+    <property name="CurrencyTotalValue" />
+    <property name="Timestamp" />
+    <many-to-one name="Player" />
+
+    <sql-insert check="none">
+      INSERT INTO resourcelog
+      (source, buildingname, persistentid, gain, goldchange, silverchange, perlchange, redperlchange, populationchange,
+      resource1change, resource2change, resource3change, shardchange, currencychange, currencychangevalue, goldtotal, silvertotal, perltotal, redperltotal, populationtotal,
+      resource1total, resource2total, resource3total, shardtotal, currencytotal, currencytotalvalue, timestamp, player, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

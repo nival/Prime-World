@@ -1,0 +1,14 @@
+#include "_commonPostProcess.h"
+
+sampler ZMap : register(s0);
+
+float2 QZnQ : register(PSHADER_LOCALCONST0);
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  float Z = tex2D(ZMap, Input.Texcoord).x;
+  float ZLinear = QZnQ.x / (QZnQ.y - Z);
+  return ZLinear;
+}
+
+

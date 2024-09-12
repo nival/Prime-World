@@ -1,0 +1,48 @@
+#=======================================================
+# Это основные настройки, которые точно придётся менять
+#=======================================================
+
+# режим разработка (dev) или продакшен (prod). В версии разработки письма складываются как файлы, нет LDAP-авторизации)
+mode = dev
+
+# хост, на который ставим CrashReportServer
+host_string = 192.168.1.6
+
+# ssh юзер с доступом к серверу (по паролю или ключу)
+user = user
+password = xxxxxx
+#key_filename = C:\path\to\private\key.pem
+
+# свн юзер для деплоя кода
+svn_user = name.lastname
+svn_password = xxxxxxx
+
+# настройки postgres базы данных
+db_name = crashreport_db
+db_user = crashreport_user
+db_password = crashreport_password
+
+# имя сервера
+server_name = crashreport.SITE.com
+
+admin_username = name.lastname
+admin_email = name.lastname@SITE.com
+
+# user и password можно оставить пустым, если разрешена анонимная отправка писем
+email_host = edge1.SITE.com
+email_host_user =
+email_host_password =
+
+
+#=======================================================
+# А это настройки, которые можно не трогать
+#=======================================================
+email_from = error_reports@SITE.com
+email_to = error_reports@SITE.com
+web_user = www-data
+deploy_code_dir = /var/www/crash_report_server
+manage_dir = /var/www/crash_report_server/CrashReportServer
+svn_url = https://svn.SITE.com/crash_report_server
+jira_url = http://jira.SITE.com/
+callstack_server = http://pw.SITE.com:8080/upload
+ldap_url = ldaps://195.128.95.45:636

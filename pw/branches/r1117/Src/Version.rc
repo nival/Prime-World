@@ -1,0 +1,57 @@
+#include "Version.h"
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define TO_STRING( x ) L###x
+#define COMBINE_AS_STRINGS4( s1, s2, s3, s4 ) TO_STRING( ##s1##.##s2##.##s3##.##s4## )
+#define COMBINE_AS_STRINGS2( s1, s2 ) TO_STRING( ##s1##.##s2## )
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define APSTUDIO_READONLY_SYMBOLS
+#include <winnt.h>
+#include <WinVer.h>
+#undef APSTUDIO_READONLY_SYMBOLS
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1251)
+#endif //_WIN32
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1251)
+#endif //_WIN32
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION_PATCHED
+PRODUCTVERSION VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION_PATCHED
+FILEOS VOS__WINDOWS32
+FILETYPE VFT_APP
+#ifndef _SHIPPING
+FILEFLAGS (VS_FF_DEBUG | VS_FF_SPECIALBUILD)
+#endif
+{
+  BLOCK "StringFileInfo"
+  {
+    BLOCK "040904b0"
+    {
+      VALUE "CompanyName", ENTERPRISE_COMPANY
+      VALUE "FileDescription", PRODUCT_DESCRIPTION
+      VALUE "FileVersion", COMBINE_AS_STRINGS4( VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION_PATCHED )
+      VALUE "InternalName", PRODUCT_EXECUTABLE
+      VALUE "LegalCopyright", ENTERPRISE_COPYRIGHT
+      VALUE "LegalTrademarks", ENTERPRISE_TRADEMARK
+      VALUE "OriginalFilename", PRODUCT_EXECUTABLE
+      VALUE "ProductName", PRODUCT_TITLE
+      VALUE "ProductVersion", COMBINE_AS_STRINGS2( VERSION_MAJOR, VERSION_MINOR )
+#ifndef _SHIPPING
+      VALUE "SpecialBuild", "private"
+#endif
+    }
+  }
+
+  BLOCK "VarFileInfo"
+  {
+    VALUE "Translation", 0x0409 0x0419
+  }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

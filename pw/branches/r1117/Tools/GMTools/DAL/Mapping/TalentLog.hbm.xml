@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="TalentLog">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">talentlog_id_sequence</param>
+      </generator>
+    </id>
+    <property name="Operation" />
+    <property name="Data" />
+    <property name="TalentInstanceId" />
+    <property name="PersistentId" />
+    <property name="Timestamp" />
+    <many-to-one name="Player" />
+    <many-to-one name="Talent" />
+    <many-to-one name="Character" />
+
+    <sql-insert check="none">
+      INSERT INTO talentlog
+      (operation, data, talentinstanceid, persistentid, timestamp, player, talent, character, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

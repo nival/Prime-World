@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<TITLE>Nival Plugin Test</TITLE>
+</HEAD>
+<BODY id="bodyId">
+
+<center>
+<h1>Nival Plug-in Window</h1>
+</center>
+
+<script type="text/javascript" src="browserdetect.js"></script>
+<script type="text/javascript">
+var windowIsOn = false;
+if(BrowserDetect.browser != 'Firefox' || BrowserDetect.version < 3.5 || BrowserDetect.OS != 'Windows')
+  {document.write("<div style=\"display: none;\"><!");document.write("--");}
+else
+  {windowIsOn = true;}
+</script>
+
+<script type="text/javascript" src="autoinstall.js"></script>
+<embed id="embed1" type="application/x-vnd-Nival-NiDl"  PLUGINSPAGE="instrFF.html" pluginurl="Nival3dPlugin_inst_Win.xpi" codebase="Nival3dPlugin_inst_Win.xpi" dllModule="http://www.d-inter.ru/nivaltest/TestRenderer.dll" cmdLine="I do not care" border=0 width=640 height=480>
+</embed>
+<script type="text/javascript">
+if(BrowserDetect.browser != "Firefox" || BrowserDetect.version < 3.5 || BrowserDetect.OS != "Windows")
+  {document.write("--");document.write("></div>");}
+</script>
+
+<script type="text/javascript">
+if(BrowserDetect.browser != "Explorer" || BrowserDetect.version < 6 || BrowserDetect.OS != "Windows")
+  {document.write("<div style=\"display: none;\"><!");document.write("--");}
+else
+  windowIsOn = true;
+</script>
+<script type="text/javascript" src="installcheckIE.js"></script>
+<OBJECT ID="NivalHostCtrl" CLASSID="CLSID:AAA2DE32-61F1-4F7F-BEB8-A37F5BC24EE2" width="500" height="300" codebase="nivalhostctrl.cab#Version=1,0,0,1">
+  <PARAM name="type" value="application/x-vnd-Nival-NiDl"/>
+  <PARAM name="dllModule" value="http://www.d-inter.ru/nivaltest/TestRenderer.dll"/>
+  <PARAM name="cmdLine" value="I do not care"/>
+</OBJECT>
+<script type="text/javascript">
+if(BrowserDetect.browser != "Explorer" || BrowserDetect.version < 6 || BrowserDetect.OS != "Windows")
+  {document.write("--");document.write("></div>");}
+</script>
+
+<script type="text/javascript">
+if(!windowIsOn)
+  document.write("You browser is not supported");
+</script>
+
+<br> 
+
+
+</BODY>
+</HTML>

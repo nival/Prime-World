@@ -1,0 +1,115 @@
+//
+//  Nival Interactive Script File
+//
+//  Creation Date:  4 April 2006
+//
+//  Idea:         Andrew Chernyshov AKA Ancher
+//  Design:       Andrew Chernyshov AKA Ancher
+//  Programming:  Andrew Chernyshov AKA Ancher
+//
+//  Description:
+//    This script is a "casual" clips exporter.
+//
+//    It creates clip from selected character or the first found character in
+//    scene, queries for clip filename, exports it and returns keys back to
+//    character.
+//
+//    !!! Script deletes all clips in scene        !!!
+//    !!! ( kind of a forced "clean-up" )          !!!
+//
+//    !!! Animation range for the clip is taken    !!!
+//    !!! directly from the time slider            !!!
+//
+//    !!! Script prevents creation of clips from   !!!
+//    !!! characters with non-unique  members i.e. !!!
+//    !!! grp1|cube1 and grp2|cube1                !!!
+//
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getNonUnique( string $sSet )
+{
+	// This proc tests the presence of dag path delimeter ("|") in set's members
+	// names and push them in result array if found one.
+
+	string $notUnique[] = {};
+
+	string $list[] = `sets -q $sSet`;
+	for ( $sItem in $list )
+	{
+		if ( `gmatch $sItem "*|*"` )
+		{
+			$notUnique[`size $notUnique`] = `match "[^\.]*" $sItem`;
+		}
+	}
+
+	$notUnique = `stringArrayRemoveDuplicates $notUnique `;
+
+	return $notUnique;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc deleteAllClips()
+{
+	// This proc deletes all clips in scene
+
+	string $list[] = `ls -typ animClip`;
+
+	for ( $sClip in $list )
+	{
+		delete $sClip;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc saveClip(string $sChar)
+{
+  // Check the character for unique members
+	string $notUnique[] = `getNonUnique $sChar`;
+	if ( `size $notUnique` != 0 )
+	{
+		print "Not unique members:\n";
+		print `sort $notUnique`;
+		error ( $sChar + " contains non-unique members. See script editor for details." );
+	}
+
+  // Character is OK. Proceed.
+	deleteAllClips();
+
+	int $nStart = `playbackOptions -q -min`;
+	int $nEnd = `playbackOptions -q -max`;
+
+	string $tmp[] = `clip -name "clip00" -sc 1 -startTime $nStart -endTime $nEnd $sChar`;
+	string $sClip = $tmp[0];
+
+	if ($sClip == "")
+	{
+		error "Cannot create clip!";
+	}
+
+	string $sSourceClip = `clip -q -scn $sClip`;
+
+	select -r $sClip;
+	doExportClipArgList( 1, {""} );
+
+	clip -e -active $sSourceClip $sChar;
+
+	deleteAllClips();
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_clipSave()
+{
+	string $char[] = `ls -sl -typ character`;
+	if ( size( $char ) == 0 )
+	{
+		$char = `ls -typ character`;
+	}
+
+	saveClip $char[0];
+}
+
+H6_clipSave();

@@ -1,0 +1,20 @@
+import os
+
+sources = [
+    'SkeletalAnimationSampler.cpp',
+    'SkeletalAnimationSampler.h',
+    'SkeletonWrapper.cpp',
+    'SkeletonWrapper.h',
+    ]
+builders = [ 
+    InstallBuilder( 'TestsData/LocalAnim.anim', '../' ),
+    InstallBuilder( 'TestsData/Absolute.anim', '../' ),
+    InstallBuilder( 'TestsData/Root.skel', '../' ),
+    ]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+components = [ 
+    'Vendor/Libc', 
+    'libdb/Database',
+]

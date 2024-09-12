@@ -1,0 +1,73 @@
+sources = [
+  'EntityMap.cpp',
+  'CppWrapper.cpp',
+  'CppWrapper.h',
+  'Arguments.cpp',
+  'Arguments.h',
+  'ArgWriter.h',
+  'Base.cpp',
+  'Base.h',
+  'RpcUtils.h',
+  'RpcUtils.cpp',
+  'RpcNode.h',
+  'RpcNode.cpp',
+  'RpcNodes.h',
+  'RpcNodes.cpp',
+  'RpcPipeEntities.h',
+  'RpcPipeEntities.cpp',
+  'RpcGate.h',
+  'RpcGate.cpp',
+  'RpcDataProcessor.h',
+  'RpcDataProcessor.cpp',
+  'RpcThreadPool.cpp',
+  'RpcThreadPool.h',
+  'RpcArgs.h',
+  'RpcArgs.cpp',
+  'RpcEntityHandler.h',
+  'RpcEntityHandler.cpp',
+  'RpcMultiPacketPipe.h',
+  'RpcMultiPacketPipe.cpp',
+  'ClassFactory.h',
+  'ClassFactory.cpp',
+  'Calls.h',
+  'P2PNode.h',
+  'ReplicationTypes.h',
+  'GateKeeper.h',    
+  'GateKeeper.cpp',
+  'Transaction.h',
+  'Transaction.cpp',
+  'EntityMap.h',
+  'PollJob.cpp',
+  'PollJob.h',
+  'IfaceRequester.h',
+  'TransportPipeTrackerFactory.cpp',
+  'TransportPipeTrackerFactory.h',
+  'TransportPipeTrafficTracker.cpp',
+  'TransportPipeTrafficTracker.h',
+]
+
+components = [
+    'Server/RPC/Base',
+    'Server/RPC/Parser',
+    'System/NSTL',
+    'System/Threading',
+    'System/Savers',
+    'System/Crc32Utils',
+    'System/DebugVar',
+    'System/IDGenerator',
+    'Network/TransportInterface',
+    'System/LogFileName',
+    'System/Commands',
+    'System/FileSystem/FileUtils',
+    'System/InlineProfiler',
+    'System/Dumpers',
+]
+
+if platform == 'win32' :
+
+  if configuration == "debug":
+      globalCompilerKeys = [ '/MDd', '/Zi' ]
+  else:
+      globalCompilerKeys = [ '/MD', '/Zi' ]
+
+  compilerKeys = ['/wd4065']

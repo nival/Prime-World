@@ -1,0 +1,102 @@
+global proc dumpAllBones(string $file, float $step, int $worldSpace)
+{
+/*
+string $file = "C:/dumpBones.txt";
+float $step = 1.0 / 30;
+int $worldSpace = 0;
+dumpAllBones($file, $step, $worldSpace);
+*/
+
+//TIME
+float $min = `playbackOptions -q -min`;
+float $max = `playbackOptions -q -max`;
+float $defaultTime = `currentTime -q`;
+currentTime 1sec;
+float $oneSecond = `currentTime -q`;
+$defaultTime /= $oneSecond;
+$min /= $oneSecond;
+$max /= $oneSecond;
+//eval ("currentTime " + $min + "sec");
+
+$objects = `ls -sl`;
+string $textArray[] = {};
+float $currTime = $min;
+eval ("currentTime " + $currTime + "sec");
+for (;;)
+	{
+	string $object;
+	int $objectNum = 0;
+	for ($object in $objects)
+		{
+	//$object = $objects[0];
+	//$object = one(`ls -sl`);
+
+		float $pos[];
+		float $rot[];
+		float $scale[];
+		if ($worldSpace)
+			{
+			$pos = `xform -q -rp -ws $object`;
+			$rot = `xform -q -ro -ws $object`;
+			$scale = `xform -q -s -ws $object`;
+			}
+		else
+			{
+			$pos = `getAttr ($object + ".t")`;
+			$rot = `getAttr ($object + ".r")`;
+			$scale = `getAttr ($object + ".s")`;
+			}
+
+		string $text = "";
+		$text += ($objectNum + 1) + " ";
+		$text += $object + " ";
+		$text += $pos[0] + " ";
+		$text += $pos[1] + " ";
+		$text += $pos[2] + " ";
+		$text += $rot[0] + " ";
+		$text += $rot[1] + " ";
+		$text += $rot[2] + " ";
+		$text += $scale[0] + " ";
+		$text += $scale[1] + " ";
+		$text += $scale[2] + "\n";
+		//print $text
+
+		$textArray[$objectNum] = ($textArray[$objectNum] + $text);
+		$objectNum++;
+		}
+
+	$currTime += $step;
+	if ($currTime > $max)
+		break;
+	eval ("currentTime " + $currTime + "sec");
+	}
+eval ("currentTime " + $defaultTime + "sec");
+string $textToWrite = stringArrayToString($textArray, "");
+fileWrite ($textToWrite, $file);
+print ("File writed in " + $file + ".   " +
+`size $textToWrite` + " symbols.   " +
+(`size $textArray` * (($max - $min) / $step)) + " strokes.   " +
+`size $objects` + " objects.   " +
+($max - $min) + " seconds of animation written in " + (($max - $min) / $step) + " steps.");
+}
+
+global proc string one(string $array[])
+{
+if (`size $array` > 0)
+	return $array[0];
+else
+	return "";
+}
+
+global proc string attributeToNode(string $attr)
+{
+string $array[] = stringToStringArray($attr, ".");
+return $array[0];
+}
+
+global proc fileWrite (string $text, string $path)
+{
+$fileId = `fopen $path "w"`;
+fprint $fileId $text;
+fclose $fileId;
+}

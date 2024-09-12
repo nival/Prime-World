@@ -1,0 +1,22 @@
+if platform == 'win32':
+  sources = [
+      'SyncPrimitives.cpp',
+      'SyncPrimitives.h',
+      'SpinLock.h',
+      'SpinLock.cpp',
+      'MultiReaderLock.h',
+      'MultiReaderLock.cpp',
+      'CustomAtomics.h',
+  ]
+else :
+  sources = [
+      'SyncPrimitives.cpp',
+      'SpinLock.cpp',
+      'MultiReaderLockLinux.cpp',
+  ]
+
+components = [
+    'Vendor/Libc'
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

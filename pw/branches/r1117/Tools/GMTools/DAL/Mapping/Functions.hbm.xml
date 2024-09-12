@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <sql-query name ="DBVersion">
+    <return-scalar column="ver" type="System.Int32"/>
+    <![CDATA[
+        select dbversion() as ver
+      ]]>
+  </sql-query>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+filter = "LocationServer/World"
+
+sources = {
+  '' : 
+        [ 
+          'GameObject.h', 
+          'GameObject.cpp', 
+          'StaticGameObject.h', 
+          'StaticGameObject.cpp', 
+          'World.h', 
+          'World.cpp' 
+        ]
+}
+
+if configuration == 'debug' :
+  compilerKeys = ['/RTCc', '/Gy']
+  
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+components = [
+    'Vendor/Libc',
+    'Samples/SimpleGame/VoxelGrid',  
+]
+
+builders = [ 
+  RPCBuilder( 'Local', 'GameObject.h', '', ['Protocol.h'] ),   
+  RPCBuilder( 'Remote', 'GameObject.h', '', ['Protocol.h'] )
+]

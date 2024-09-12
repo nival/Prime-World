@@ -1,0 +1,118 @@
+#pragma once
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include "../System/Pool.h"
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace NFile
+{
+	class CFilePath;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace NXml
+{
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+struct SXmlValue
+{
+	const char *pszBegin;
+	int nSize;
+
+	SXmlValue() : pszBegin( 0 ), nSize( 0 ) { }
+
+	const string ToString() const { return string( pszBegin, nSize ); }
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+inline bool operator==( const SXmlValue &val, const string &str )
+{
+	return val.nSize == str.size() && strncmp( val.pszBegin, str.c_str(), val.nSize ) == 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+inline bool operator==( const string &str, const SXmlValue &val )
+{
+	return val.nSize == str.size() && strncmp( val.pszBegin, str.c_str(), val.nSize ) == 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+inline bool operator==( const SXmlValue &val, const char *pStr )
+{
+	int i = 0;
+	while ( i < val.nSize && *(pStr + i) != 0 && *(pStr + i ) == *(val.pszBegin + i) )
+		++i;
+
+	return i == val.nSize && *(pStr + i) == 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+inline bool operator==( const char *pStr, const SXmlValue &val )
+{
+	return val == pStr;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+struct SXmlAttribute
+{
+	SXmlValue name;
+	SXmlValue value;
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+struct SPool;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class CXmlNode
+{
+	vector<const SXmlAttribute*> attributes;
+	vector<const CXmlNode*> nodes;
+	SXmlValue name;
+	SXmlValue value;
+	const char *pEnd;
+
+	const SXmlAttribute* pHRefAttr;
+	const SXmlAttribute* pTextRefAttr;
+	const SXmlAttribute* pHDataAttr;
+
+	mutable int nBestNodeToRead;
+	mutable int nBestAttrToRead;
+
+	SPool *pPool;
+
+	const char* ParseNodeInternal( const char *pszBegin );
+	const char* ParseNodeAttributes( const char *pszBegin );
+public:
+	CXmlNode() : pHRefAttr( 0 ), pTextRefAttr( 0 ), pHDataAttr( 0 ), nBestNodeToRead(0), nBestAttrToRead(0), pPool(0) { }
+	
+	const char* Parse( const char *pszBegin, const char *pszEnd, SPool *pPool );
+
+	const SXmlValue& GetValue() const { return value; }
+	const SXmlValue& GetName() const { return name; }
+
+	const vector<const SXmlAttribute*>& GetAttributes() const { return attributes; }
+	const vector<const CXmlNode*>& GetNodes() const { return nodes; }
+
+	const CXmlNode* FindChild( const char *pszChild ) const;
+
+	const SXmlAttribute* GetHRefAttribute() const;
+	const SXmlAttribute* GetTextRefAttribute() const;
+	const SXmlAttribute* GetDataAttribute() const;
+	const SXmlAttribute* GetAttribute( const char *pszAttr ) const;
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+struct SPool
+{
+	CPool<CXmlNode, 32> nodesPool;
+	CPool<SXmlAttribute, 32> attrPool;
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class CXmlReader : public CObjectBase
+{
+	OBJECT_METHODS( 0x1E4A8B4E, CXmlReader )
+
+	CXmlNode rootNode;
+	SPool pool;
+
+	CObj<Stream> pStream;
+	void Start();
+
+private:
+	CXmlReader() {}
+
+public:
+	CXmlReader( Stream *pStream );
+
+	const CXmlNode* GetRootElement() const { return &rootNode; }
+};
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,11 @@
+#include "_commonPostProcess.h"
+
+sampler diffuseMap : register(s0);
+sampler RTMap : register(s1);
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  half3 diffuse = tex2D(diffuseMap, Input.Texcoord);
+  half3 RTColor = tex2D(RTMap, Input.Texcoord);
+  return half4(diffuse + RTColor, 1); 
+}

@@ -1,0 +1,23 @@
+#include "_commonPostProcess.h"
+
+sampler diffuseMap[3] : register(s0);
+sampler blendMask : register(s3);
+sampler fogOfWarMask : register(s4);
+
+float alphaScale : register(PSHADER_LOCALCONST0);
+
+half4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  half4 colorA     = tex2D( diffuseMap[0], Input.Texcoord );
+  half4 colorB     = tex2D( diffuseMap[1], Input.Texcoord );
+  half4 colorN     = tex2D( diffuseMap[2], Input.Texcoord );
+  half4 blendCoeff = tex2D( blendMask    , Input.Texcoord );
+  half4 fogOfWar   = tex2D( fogOfWarMask , -Input.Texcoord.yx );
+  
+  half4 totalColor = colorA * blendCoeff.r + colorB * blendCoeff.b + colorN * blendCoeff.g;
+  
+  // return half4( lerp(totalColor.rgb, fogOfWar.rgb, fogOfWar.a), totalColor.a );
+  
+  half FoWScale = saturate(1.f - fogOfWar.a * alphaScale);
+  return half4( totalColor.rgb * FoWScale, 1.f);
+}

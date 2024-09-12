@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="MMakingPlayer">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">mmakingplayer_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="MMakingSession" not-null="false" />
+    <many-to-one name="PlayerCharacter" not-null="true" />
+    <property name="Sex" />
+    <property name="Faction" />
+    <property name="Rating" />
+    <property name="PlayerRating" />
+    <property name="Force" />
+    <property name="Party" />
+    <property name="WaitInterval" />
+    <property name="LoseStreak" />
+    <property name="FameLevel" />
+    <property name="Basket" />
+    <property name="LobbyReaction" />
+    <property name="LobbyReactionTime" />
+    <property name="Timestamp" />
+
+    <sql-insert check="none">
+      INSERT INTO mmakingplayer
+      (mmakingsession, playercharacter, sex, faction, rating, playerrating, force, party, waitinterval,
+      losestreak, famelevel, basket, lobbyreaction, lobbyreactiontime, "timestamp", id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<TITLE>Test 1 for the plugin</TITLE>
+</HEAD>
+<BODY>
+<P>Test for default plugin.</P>
+
+
+<script type="text/javascript">
+  var isInstalled = true;
+	try {
+		// just attempt to create one
+		var axo = new ActiveXObject("Nival.PluginHostCtrl.1");
+		var version = axo.PluginVersion;
+		document.write("Version detected: " + version);
+	} catch (e) {
+	  isInstalled = false;
+	}
+	if(!isInstalled)
+	{
+	  document.write("<br>Required version of Nival 3d control is not installed. Make sure in Tools ->Internet options->Security->internet->Custom:Initialize and script activeX controls not marked as safe ==>Prompt and Download unsigned activeX control Prompt ==> Prompt<br>");
+	}
+
+</script>
+
+
+<OBJECT ID="NivalHostCtrl" CLASSID="CLSID:AAA2DE32-61F1-4F7F-BEB8-A37F5BC24EE2" width="500" height="300" codebase="nivalhostctrl.cab#Version=1,0,0,1">
+  <PARAM name="type" value="application/x-vnd-Nival-NiDl"/>
+  <PARAM name="dllModule" value="http://www.d-inter.ru/nivaltest/TestRenderer.dll"/>
+  <PARAM name="cmdLine" value="I do not care"/>
+</OBJECT>
+
+
+
+</BODY>
+</HTML>

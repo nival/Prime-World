@@ -1,0 +1,115 @@
+#include "_commonPostProcess.h"
+
+sampler environment : register(s0);
+sampler weights     : register(s1);
+
+float _1_dimension  : register(PSHADER_LOCALCONST0);
+
+
+float4 multiplySquare(float2 texCoord)
+{
+  float2 wBase = texCoord, eBase = float2(texCoord.x * 9, texCoord.y);
+  float wStepX = 1. / 9 * _1_dimension, wStepY = 1. / 6 * _1_dimension;  // todo: 1 / 9
+  float eStepX = _1_dimension, eStepY = 1. / 6 * _1_dimension;
+
+
+//  wStepX = 1. / 576.0;
+//  wStepY = 1. / 384.0;
+  wBase.x += wStepX / 2;
+  wBase.y += wStepY / 2;
+  eBase.x += eStepX / 2;
+  eBase.y += eStepY / 2;
+
+  float coeff = tex2D(weights, wBase).r;
+  float4 env = tex2D(environment, eBase);
+  float4 res = coeff * env;
+//  res.x = coeff;
+ // res.x = tex2D(weights, float2(0.5f, 0.5f));
+
+
+  coeff = tex2D(weights, wBase + float2(wStepX, 0)).r;
+//  coeff = tex2D(weights, wBase + float2(.1, 0));
+  env = tex2D(environment, eBase + float2(eStepX, 0));
+  res += coeff * env;
+//  res.y = coeff;
+//  res.y = tex2D(weights, float2(0.5f, 0.6f));
+
+  coeff = tex2D(weights, wBase + float2(wStepX, wStepY)).r;
+//  coeff = tex2D(weights, wBase + float2(wStepX, wStepY * 5));
+ // coeff = tex2D(weights, wBase + float2(.1, .1));
+  env = tex2D(environment, eBase + float2(eStepX, eStepY));
+  res += coeff * env;
+//  res.z = coeff;
+//  res.z = tex2D(weights, float2(0.5f, 0.7f));
+
+
+  coeff = tex2D(weights, wBase + float2(0, wStepY)).r;
+//  coeff = tex2D(weights, wBase + float2(0, wStepY * 10));
+//  coeff = tex2D(weights, wBase + float2(.0, .1));
+  env = tex2D(environment, eBase + float2(0, eStepY));
+  res += coeff * env;
+//  res.w = coeff;
+//  res.w = tex2D(weights, float2(0.5f, 0.8f));
+
+//  return float4(tex2D(weights, float2(0, 0)).r, tex2D(weights, float2(wStepX, 0)).r, tex2D(weights, float2(wStepX, wStepY)).r, tex2D(weights, float2(0, wStepY)).r);
+
+//  return float4(4, res.xyz);
+//  return float4(res.x, wBase.y * 6 / _1_dimension, (wBase.x + wStepX) * 9 / _1_dimension, (wBase.y + wStepY) * 6 / _1_dimension);
+//  return float4(wBase.x * 9 / _1_dimension, wBase.y * 6 / _1_dimension, (wBase.x + wStepX) * 9 / _1_dimension, (wBase.y + wStepY) * 6 / _1_dimension);
+//  return float4(wBase.x * 9 / _1_dimension, wBase.y * 6 / _1_dimension, res.x, res.y);
+//  return float4(wStepX, wStepY, wBase.x, wBase.y);
+  return res;
+  return float4(res.x, res.x, res.x, res.x);
+  return float4(4, res.xyz);
+  return res;
+}
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+/*
+  float2 wBase = Input.Texcoord * 1, eBase = Input.Texcoord / 1; // todo: 1 / 9
+  float4 coeff = tex2D(weights, wBase);
+  float4 env = tex2D(environment, eBase);
+  float4 res = coeff * env;
+  float wStepX = 1. / 9 * _1_dimension, wStepY = _1_dimension;
+  float eStepX = _1_dimension, eStepY = 1. / 6 * _1_dimension;
+
+//  return float4(1, coeff.x, 0, 1);
+  coeff = tex2D(weights, wBase + float2(wStepX, 0));
+  env = tex2D(environment, eBase + float2(eStepX, 0));
+  res += coeff * env;
+
+  coeff = tex2D(weights, wBase + float2(wStepX, wStepY));
+  env = tex2D(environment, eBase + float2(eStepX, eStepY));
+  res += coeff * env;
+
+  coeff = tex2D(weights, wBase + float2(0, wStepY));
+  env = tex2D(environment, eBase + float2(0, eStepY));
+  res += coeff * env;
+
+  return res;
+  return float4(1, Input.Texcoord.x, Input.Texcoord.y, 1);
+*/  
+  float2 texCoord = float2(Input.Texcoord.x, Input.Texcoord.y * 1 / 6);
+//  return float4(texCoord, Input.Texcoord);
+
+  float4 res = multiplySquare(texCoord);
+//  return res;
+
+  texCoord.y += 1. / 6;
+  res += multiplySquare(texCoord);
+ 
+  texCoord.y += 1. / 6;
+  res += multiplySquare(texCoord);
+
+  texCoord.y += 1. / 6;
+  res += multiplySquare(texCoord);
+
+  texCoord.y += 1. / 6;
+  res += multiplySquare(texCoord);
+ 
+  texCoord.y += 1. / 6;
+  res += multiplySquare(texCoord);
+
+  return res;
+}

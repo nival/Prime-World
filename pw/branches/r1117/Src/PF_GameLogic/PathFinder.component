@@ -1,0 +1,48 @@
+sources = [
+	'ImportedStruct.h',
+	'Path.h',
+	'PathTools.cpp',
+	'PathTools.h',
+	'PFBaseMovingUnit.cpp',
+	'PFBaseMovingUnit.hpp'
+	'PFBaseMovingUnit.h',
+#	'PFBaseUnit.Fake.h',
+#	'PFBaseUnit.Fake.cpp',
+	'PathChecker.h',
+	'StandartPath2.cpp',
+	'StandartPath2.h',
+	'StaticPath.h',
+	'StaticPathInternal.cpp',
+	'StaticPathInternal.h',
+	'PFVoxelMap.cpp',
+	'PFVoxelMap.h',
+        'PathMap.cpp',
+        'PathMap.h',
+	
+	'../PF_Core/World.h',
+#	'../PF_Core/WorldObject.cpp',
+#	'../PF_Core/WorldObject.h',
+	'../PF_Core/ClientObject.h'
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+components = [
+  'PF_GameLogic/CommonPathFinder',
+  'PF_GameLogic/TileMap',
+  'PF_GameLogic/RegionPointChecker',
+  'PF_Core/Base',
+  'Vendor/Libc',
+  'libdb/Types',
+  'System/Ptr',
+  'System/Memory',
+  'System/Math',
+  'System/Asserts',
+  'System/NSTL',
+]    
+
+
+if testRun:
+  compilerKeys = ['/D _TESTRUN']
+else:
+  compilerKeys = []

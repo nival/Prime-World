@@ -1,0 +1,25 @@
+if settings.get( 'enableCrashRpt' ) :
+  sources = [
+    'CrashRptWrapper.cpp',
+    'CrashRptWrapper.h',
+  ]
+
+  components = [
+    'System/CrashHandler',
+    'System/StackWalk',
+    'System/Timer',
+    'Vendor/CrashRpt',
+  ]
+  
+  platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+else:
+  sources = [
+    'CrashRptWrapper.h',
+  ]
+  
+  components = [
+  ]
+  
+  globalCompilerKeys = [ '/D NI_DISABLE_CRASHRPT' ]
+

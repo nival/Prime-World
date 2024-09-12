@@ -1,0 +1,1 @@
+#include "UserManagerAgent/stdafx.h"

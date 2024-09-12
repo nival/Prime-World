@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BC70FF69-E070-4159-8971-B508742F9BE1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZzimaBilling</RootNamespace>
+    <AssemblyName>ZzimaBilling</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="eWorld.UI, Version=2.0.6.2393, Culture=neutral, PublicKeyToken=24d65337282035f2, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Additive\Additive.aspx" />
+    <Content Include="Additive\BanAll.aspx" />
+    <Content Include="Additive\CreateCbtService.aspx" />
+    <Content Include="Additive\MassPWCbtReplenish.aspx" />
+    <Content Include="Additive\MassReplenish.aspx" />
+    <Content Include="Additive\SignUsersPW.aspx" />
+    <Content Include="Additive\SignUsersToService.aspx" />
+    <Content Include="Additive\UnbanUser.aspx" />
+    <Content Include="Additive\ZZGoldConverter.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\ActiveServices.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\TransfersHistory.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Additive\Additive.aspx.cs">
+      <DependentUpon>Additive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\Additive.aspx.designer.cs">
+      <DependentUpon>Additive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\BanAll.aspx.cs">
+      <DependentUpon>BanAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\BanAll.aspx.designer.cs">
+      <DependentUpon>BanAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\CreateCbtService.aspx.cs">
+      <DependentUpon>CreateCbtService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\CreateCbtService.aspx.designer.cs">
+      <DependentUpon>CreateCbtService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\MassPWCbtReplenish.aspx.cs">
+      <DependentUpon>MassPWCbtReplenish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\MassPWCbtReplenish.aspx.designer.cs">
+      <DependentUpon>MassPWCbtReplenish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\MassReplenish.aspx.cs">
+      <DependentUpon>MassReplenish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\MassReplenish.aspx.designer.cs">
+      <DependentUpon>MassReplenish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\SignUsersPW.aspx.cs">
+      <DependentUpon>SignUsersPW.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\SignUsersPW.aspx.designer.cs">
+      <DependentUpon>SignUsersPW.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\SignUsersToService.aspx.cs">
+      <DependentUpon>SignUsersToService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\SignUsersToService.aspx.designer.cs">
+      <DependentUpon>SignUsersToService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\UnbanUser.aspx.cs">
+      <DependentUpon>UnbanUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\UnbanUser.aspx.designer.cs">
+      <DependentUpon>UnbanUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Additive\ZZGoldConverter.aspx.cs">
+      <DependentUpon>ZZGoldConverter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Additive\ZZGoldConverter.aspx.designer.cs">
+      <DependentUpon>ZZGoldConverter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\BLL\AccountDetailBLL.cs" />
+    <Compile Include="AdminUI\BLL\ActualBalanceBLL.cs" />
+    <Compile Include="AdminUI\BLL\BonusHistoryBLL.cs" />
+    <Compile Include="AdminUI\BLL\ExcelExportManager.cs" />
+    <Compile Include="AdminUI\BLL\ExpensesFilterBLL.cs" />
+    <Compile Include="AdminUI\BLL\Export.cs" />
+    <Compile Include="AdminUI\BLL\GlobalMethods.cs" />
+    <Compile Include="AdminUI\BLL\GmaHistoryBLL.cs" />
+    <Compile Include="AdminUI\BLL\LastGameSessionBLL.cs" />
+    <Compile Include="AdminUI\BLL\PaymentDetailBLL.cs" />
+    <Compile Include="AdminUI\BLL\PaymentsFilterBLL.cs" />
+    <Compile Include="AdminUI\BLL\PaymentSystemAccountBLL.cs" />
+    <Compile Include="AdminUI\BLL\PromoCodesBLL.cs" />
+    <Compile Include="AdminUI\BLL\ProtocolSettings.cs" />
+    <Compile Include="AdminUI\BLL\PSystemBLL.cs" />
+    <Compile Include="AdminUI\BLL\ReportParametersBLL.cs" />
+    <Compile Include="AdminUI\BLL\ServiceBLL.cs" />
+    <Compile Include="AdminUI\BLL\TemplateBLL.cs" />
+    <Compile Include="AdminUI\BLL\TemplateXML.cs" />
+    <Compile Include="AdminUI\BLL\UserFilterBLL.cs" />
+    <Compile Include="AdminUI\BLL\UserGeneralInfoBLL.cs" />
+    <Compile Include="AdminUI\DAL\BalanceInfo.cs" />
+    <Compile Include="AdminUI\DAL\BaseChartableRecord.cs" />
+    <Compile Include="AdminUI\DAL\BillingSP.cs">
+      <DependentUpon>BillingSP.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\DAL\BillingSP.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingSP.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\DAL\CbtInfo.cs" />
+    <Compile Include="AdminUI\DAL\ExpensesHistoryRCMRecord.cs" />
+    <Compile Include="AdminUI\DAL\ExpensesHistoryRCTRecord.cs" />
+    <Compile Include="AdminUI\DAL\ExpensesHistoryRecord.cs" />
+    <Compile Include="AdminUI\DAL\ExpensesHistorySCMRecord.cs" />
+    <Compile Include="AdminUI\DAL\ExpensesHistorySCTRecord.cs" />
+    <Compile Include="AdminUI\DAL\Filter.cs" />
+    <Compile Include="AdminUI\DAL\PartnerProgramDAL.cs" />
+    <Compile Include="AdminUI\DAL\PaymentsHistoryCTRecord.cs" />
+    <Compile Include="AdminUI\DAL\PaymentsHistoryCMRecord.cs" />
+    <Compile Include="AdminUI\DAL\PaymentsHistoryRecord.cs" />
+    <Compile Include="AdminUI\DAL\PaymentSystemDAL.cs" />
+    <Compile Include="AdminUI\DAL\PromoCodesDAL.cs" />
+    <Compile Include="AdminUI\DAL\RequestDAL.cs" />
+    <Compile Include="AdminUI\DAL\ServiceDAL.cs" />
+    <Compile Include="AdminUI\DAL\TemplateInfo.cs" />
+    <Compile Include="AdminUI\DAL\TestMethods.cs" />
+    <Compile Include="AdminUI\DAL\UserDAL.cs" />
+    <Compile Include="AdminUI\DAL\UserProfile.cs" />
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\PromoCodes.aspx.cs">
+      <DependentUpon>PromoCodes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\PromoCodes.aspx.designer.cs">
+      <DependentUpon>PromoCodes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\Protocol.aspx.cs">
+      <DependentUpon>Protocol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\Protocol.aspx.designer.cs">
+      <DependentUpon>Protocol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\CheckPaymentSystems.aspx.cs">
+      <DependentUpon>CheckPaymentSystems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\CheckPaymentSystems.aspx.designer.cs">
+      <DependentUpon>CheckPaymentSystems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\ExpensesByMonth.aspx.cs">
+      <DependentUpon>ExpensesByMonth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\ExpensesByMonth.aspx.designer.cs">
+      <DependentUpon>ExpensesByMonth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\ExpensesByGame.aspx.cs">
+      <DependentUpon>ExpensesByGame.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\ExpensesByGame.aspx.designer.cs">
+      <DependentUpon>ExpensesByGame.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\PromoActivation.aspx.cs">
+      <DependentUpon>PromoActivation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\PromoActivation.aspx.designer.cs">
+      <DependentUpon>PromoActivation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\GMTransactions.aspx.cs">
+      <DependentUpon>GMTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\GMTransactions.aspx.designer.cs">
+      <DependentUpon>GMTransactions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\Expenses.aspx.cs">
+      <DependentUpon>Expenses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\Expenses.aspx.designer.cs">
+      <DependentUpon>Expenses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\ReportBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\ReportPage.aspx.cs">
+      <DependentUpon>ReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\ReportPage.aspx.designer.cs">
+      <DependentUpon>ReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\ActiveServices.aspx.cs">
+      <DependentUpon>ActiveServices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\ActiveServices.aspx.designer.cs">
+      <DependentUpon>ActiveServices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\TransfersHistory.aspx.cs">
+      <DependentUpon>TransfersHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\TransfersHistory.aspx.designer.cs">
+      <DependentUpon>TransfersHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\GroupsParamater.ascx.cs">
+      <DependentUpon>GroupsParamater.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\GroupsParamater.ascx.designer.cs">
+      <DependentUpon>GroupsParamater.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\TimePeriodParameter.ascx.cs">
+      <DependentUpon>TimePeriodParameter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\TimePeriodParameter.ascx.designer.cs">
+      <DependentUpon>TimePeriodParameter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaMasterReports.Master.cs">
+      <DependentUpon>ZzimaMasterReports.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaMasterReports.Master.designer.cs">
+      <DependentUpon>ZzimaMasterReports.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\IErrorHandler.cs" />
+    <Compile Include="AdminUI\Forms\Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\GeneralInfo.aspx.cs">
+      <DependentUpon>GeneralInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\GeneralInfo.aspx.designer.cs">
+      <DependentUpon>GeneralInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\Payments.aspx.cs">
+      <DependentUpon>Payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\ReportPages\Payments.aspx.designer.cs">
+      <DependentUpon>Payments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\Template.aspx.cs">
+      <DependentUpon>Template.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\Template.aspx.designer.cs">
+      <DependentUpon>Template.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\Templates.aspx.cs">
+      <DependentUpon>Templates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\AdministratorToolsPages\Templates.aspx.designer.cs">
+      <DependentUpon>Templates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Top.aspx.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Top.aspx.designer.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\AccountCBT.aspx.cs">
+      <DependentUpon>AccountCBT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\AccountCBT.aspx.designer.cs">
+      <DependentUpon>AccountCBT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\ActualBalance.aspx.cs">
+      <DependentUpon>ActualBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\ActualBalance.aspx.designer.cs">
+      <DependentUpon>ActualBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\BonusHistory.aspx.cs">
+      <DependentUpon>BonusHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\BonusHistory.aspx.designer.cs">
+      <DependentUpon>BonusHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\Games.aspx.cs">
+      <DependentUpon>Games.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\Games.aspx.designer.cs">
+      <DependentUpon>Games.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GamesHistory.aspx.cs">
+      <DependentUpon>GamesHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GamesHistory.aspx.designer.cs">
+      <DependentUpon>GamesHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GeneralInfo.aspx.cs">
+      <DependentUpon>GeneralInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GeneralInfo.aspx.designer.cs">
+      <DependentUpon>GeneralInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GmaHistory.aspx.cs">
+      <DependentUpon>GmaHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GmaHistory.aspx.designer.cs">
+      <DependentUpon>GmaHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GmaTool.aspx.cs">
+      <DependentUpon>GmaTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\GmaTool.aspx.designer.cs">
+      <DependentUpon>GmaTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\PaymentsHistory.aspx.cs">
+      <DependentUpon>PaymentsHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\PaymentsHistory.aspx.designer.cs">
+      <DependentUpon>PaymentsHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\SpendHistory.aspx.cs">
+      <DependentUpon>SpendHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\SpendHistory.aspx.designer.cs">
+      <DependentUpon>SpendHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\UserProfileBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\UserProfilePages\UserProfileGridViewPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ServerControls\CustomGridView.cs" />
+    <Compile Include="AdminUI\Templates\WebUserControls\DateTimeParameter.ascx.cs">
+      <DependentUpon>DateTimeParameter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\DateTimeParameter.ascx.designer.cs">
+      <DependentUpon>DateTimeParameter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\DropDownParameter.ascx.cs">
+      <DependentUpon>DropDownParameter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\DropDownParameter.ascx.designer.cs">
+      <DependentUpon>DropDownParameter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\MainMenu.ascx.cs">
+      <DependentUpon>MainMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\MainMenu.ascx.designer.cs">
+      <DependentUpon>MainMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\NumericalControl.ascx.cs">
+      <DependentUpon>NumericalControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\NumericalControl.ascx.designer.cs">
+      <DependentUpon>NumericalControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\TextParameter.ascx.cs">
+      <DependentUpon>TextParameter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\WebUserControls\TextParameter.ascx.designer.cs">
+      <DependentUpon>TextParameter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaDetails.Master.cs">
+      <DependentUpon>ZzimaDetails.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaDetails.Master.designer.cs">
+      <DependentUpon>ZzimaDetails.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaMasterLogin.Master.cs">
+      <DependentUpon>ZzimaMasterLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaMasterLogin.Master.designer.cs">
+      <DependentUpon>ZzimaMasterLogin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaUserProfile.Master.cs">
+      <DependentUpon>ZzimaUserProfile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaUserProfile.Master.designer.cs">
+      <DependentUpon>ZzimaUserProfile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="API\Common\GameleadsHandler.cs" />
+    <Compile Include="API\PL\ByIdGetUserProfile.cs" />
+    <Compile Include="API\PL\ConfirmWriteOff.cs" />
+    <Compile Include="API\PL\GetUserBalanceExceptSys.cs" />
+    <Compile Include="API\PL\WriteOffExceptSys.cs" />
+    <Compile Include="API\PL\FindUserByEmail.cs" />
+    <Compile Include="API\PL\GetAmountPSDetailed.cs" />
+    <Compile Include="API\PL\GetAwardAmount.cs" />
+    <Compile Include="API\PL\GetOperationDetails.cs" />
+    <Compile Include="API\PL\getServiceGuidName.cs" />
+    <Compile Include="API\PL\EnrollAccWithAward.cs" />
+    <Compile Include="API\PL\GetUserBalanceEx.cs" />
+    <Compile Include="API\PL\RemoveAmountWithReal.cs" />
+    <Compile Include="API\PL\ReserveAmount.cs" />
+    <Compile Include="API\PL\SetUserPassword.cs" />
+    <Compile Include="API\PL\WriteOffEx.cs" />
+    <Compile Include="API\PL\ZeroAwardMoney.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="API\DL\apids.cs">
+      <DependentUpon>apids.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SL\ZzimaSiteMapProvider.cs" />
+    <Compile Include="SL\ZzimaRoleProvider.cs" />
+    <Compile Include="API\BL\ExtAuthHelper.cs" />
+    <Compile Include="API\BL\Service.cs" />
+    <Compile Include="API\BL\User.cs" />
+    <Compile Include="API\Common\Exception.cs" />
+    <Compile Include="API\Common\LegacyErrorConverter.cs" />
+    <Compile Include="API\Common\SerializeHelper.cs" />
+    <Compile Include="API\Common\SqlMsgHandler.cs" />
+    <Compile Include="API\DL\apids.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>apids.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="API\Legacy\Command\AccountLogin.cs" />
+    <Compile Include="API\Legacy\Command\AddUserMoney.cs" />
+    <Compile Include="API\Legacy\Command\GetUserMoney.cs" />
+    <Compile Include="API\Legacy\Command\RemoveUserMoney.cs" />
+    <Compile Include="API\Legacy\Command\TransferUserMoney.cs" />
+    <Compile Include="API\Legacy\IISLegacyHandler.cs" />
+    <Compile Include="API\Legacy\Command\ILegacyCommand.cs" />
+    <Compile Include="API\Legacy\Command\LegacyCommandsFactory.cs" />
+    <Compile Include="API\PL\AccountReplenish.cs" />
+    <Compile Include="API\PL\AccountWriteOff.cs" />
+    <Compile Include="API\PL\AuthorizeUser.cs" />
+    <Compile Include="API\PL\BanUser.cs" />
+    <Compile Include="API\PL\BaseObjects.cs" />
+    <Compile Include="API\PL\GetServiceSettings.cs" />
+    <Compile Include="API\PL\GetServicesList.cs" />
+    <Compile Include="API\PL\GetUserBalance.cs" />
+    <Compile Include="API\PL\GetUserExpensesHistory.cs" />
+    <Compile Include="API\PL\GetUserPaymentsHistory.cs" />
+    <Compile Include="API\PL\GetUserProfile.cs" />
+    <Compile Include="API\PL\MoneyTransfer.cs" />
+    <Compile Include="API\PL\PromoActivate.cs" />
+    <Compile Include="API\PL\RegisterUser.cs" />
+    <Compile Include="API\PL\SetServiceSettings.cs" />
+    <Compile Include="API\PL\SetUserProfile.cs" />
+    <Compile Include="API\PL\SubscribeService.cs" />
+    <Compile Include="API\PL\UnbanUser.cs" />
+    <Compile Include="API\PL\UnsubscribeService.cs" />
+    <Compile Include="API\PL\ZZServiceWeb.asmx.cs">
+      <DependentUpon>ZZServiceWeb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AdminUI\BLL\Employer.cs" />
+    <Compile Include="AdminUI\DAL\EmployeeDAL.cs" />
+    <Compile Include="AdminUI\DAL\Billing.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Billing.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Forms\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SL\ZzimaMembershipProvider.cs" />
+    <Compile Include="AdminUI\Templates\ZzimaMaster.Master.cs">
+      <DependentUpon>ZzimaMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUI\Templates\ZzimaMaster.Master.designer.cs">
+      <DependentUpon>ZzimaMaster.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminUI\Forms\Reports.aspx" />
+    <Content Include="AdminUI\Templates\ZzimaMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminUI\Forms\AdministratorToolsPages\PromoCodes.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\GeneralInfo.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\Payments.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\ActualBalance.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\GeneralInfo.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\PaymentsHistory.aspx" />
+    <Content Include="API\PL\ZZServiceWeb.asmx" />
+    <Content Include="Global.asax" />
+    <Content Include="AdminUI\Images\logo.gif" />
+    <Content Include="AdminUI\Images\MainMenuItemBackground.gif" />
+    <Content Include="AdminUI\Images\MainMenuItemBackgroundSelected.gif" />
+    <Content Include="AdminUI\Forms\Login.aspx" />
+    <Content Include="AdminUI\css\Zzima.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdminUI\DAL\Billing.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Billing.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminUI\Templates\ZzimaMasterLogin.Master" />
+    <None Include="AdminUI\DAL\BillingSP.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>BillingSP.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="API\DL\apids.xsc">
+      <DependentUpon>apids.xsd</DependentUpon>
+    </None>
+    <None Include="API\DL\apids.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>apids.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="API\DL\apids.xss">
+      <DependentUpon>apids.xsd</DependentUpon>
+    </None>
+    <None Include="AdminUI\DAL\Billing.dbml.layout">
+      <DependentUpon>Billing.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminUI\css\Users.css" />
+    <Content Include="AdminUI\css\Login.css" />
+    <Content Include="AdminUI\css\Templates.css" />
+    <Content Include="AdminUI\Forms\Main.aspx" />
+    <Content Include="AdminUI\Forms\Top.aspx" />
+    <Content Include="AdminUI\Images\button-cursor.gif" />
+    <Content Include="AdminUI\Images\button-usual.gif" />
+    <Content Include="AdminUI\Images\main-background.GIF" />
+    <Content Include="AdminUI\Images\search.GIF" />
+    <Content Include="AdminUI\Templates\WebUserControls\DropDownParameter.ascx" />
+    <Content Include="AdminUI\Templates\WebUserControls\NumericalControl.ascx" />
+    <Content Include="AdminUI\Templates\WebUserControls\TextParameter.ascx" />
+    <Content Include="App_GlobalResources\AdminUI.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdminUI\DAL\BillingSP.dbml.layout">
+      <DependentUpon>BillingSP.dbml</DependentUpon>
+    </None>
+    <Content Include="AdminUI\css\calendar\calendar.css" />
+    <Content Include="AdminUI\css\GeneralInfo.css" />
+    <Content Include="AdminUI\css\GmaTool.css" />
+    <Content Include="AdminUI\css\Info.css" />
+    <Content Include="AdminUI\css\PromoCodes.css" />
+    <Content Include="AdminUI\Forms\Help.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\CheckPaymentSystems.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\ExpensesByMonth.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\ExpensesByGame.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\PromoActivation.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\GMTransactions.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\Expenses.aspx" />
+    <Content Include="AdminUI\Forms\ReportPages\ReportPage.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\AccountCBT.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\BonusHistory.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\Games.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\GamesHistory.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\GmaHistory.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\GmaTool.aspx" />
+    <Content Include="AdminUI\Forms\UserProfilePages\SpendHistory.aspx" />
+    <Content Include="AdminUI\Images\bottom-pattern.gif" />
+    <Content Include="AdminUI\Images\calendar\cal.gif" />
+    <Content Include="AdminUI\Images\calendar\next_mon.gif" />
+    <Content Include="AdminUI\Images\calendar\next_year.gif" />
+    <Content Include="AdminUI\Images\calendar\no_cal.gif" />
+    <Content Include="AdminUI\Images\calendar\pixel.gif" />
+    <Content Include="AdminUI\Images\calendar\prev_mon.gif" />
+    <Content Include="AdminUI\Images\calendar\prev_year.gif" />
+    <Content Include="AdminUI\Images\calendar\shade_bl.png" />
+    <Content Include="AdminUI\Images\calendar\shade_bm.png" />
+    <Content Include="AdminUI\Images\calendar\shade_br.png" />
+    <Content Include="AdminUI\Images\calendar\shade_mr.png" />
+    <Content Include="AdminUI\Images\calendar\shade_tr.png" />
+    <Content Include="AdminUI\Images\icon-02.gif" />
+    <Content Include="AdminUI\Images\icon-sort1.gif" />
+    <Content Include="AdminUI\Images\icon-sort2.gif" />
+    <Content Include="AdminUI\Images\icon-sort_default.GIF" />
+    <Content Include="AdminUI\Images\left-menu-bullet.gif" />
+    <Content Include="AdminUI\js\calendar\calendar_eu.js" />
+    <Content Include="AdminUI\Templates\WebControls\Charts\System.Web.DataVisualization.Design.dll" />
+    <Content Include="AdminUI\Templates\WebControls\Charts\System.Web.DataVisualization.dll" />
+    <Content Include="AdminUI\Templates\WebControls\DNJ\Org.Eurekaa.DNJ.dll" />
+    <Content Include="AdminUI\Templates\WebControls\DNJ\Org.Eurekaa.DNJ.Ext.dll" />
+    <Content Include="AdminUI\Templates\WebControls\DNJ\Org.Eurekaa.DNJ.UI.dll" />
+    <Content Include="AdminUI\Templates\WebControls\eWorld\eWorld.UI.dll" />
+    <Content Include="AdminUI\Templates\WebUserControls\GroupsParamater.ascx" />
+    <Content Include="AdminUI\Templates\WebUserControls\TimePeriodParameter.ascx" />
+    <Content Include="AdminUI\Templates\WebUserControls\DateTimeParameter.ascx" />
+    <Content Include="AdminUI\Templates\ZzimaUserProfile.Master" />
+    <Content Include="AdminUI\Templates\ZzimaMasterReports.Master" />
+    <Content Include="App_Browsers\safari.browser" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="AdminUI\css\Grid.css" />
+    <Content Include="AdminUI\css\Template.css" />
+    <Content Include="AdminUI\Forms\AdministratorToolsPages\Template.aspx" />
+    <Content Include="AdminUI\Images\field-menu-active.gif" />
+    <Content Include="AdminUI\Images\icon-add.gif" />
+    <Content Include="AdminUI\Images\icon-delete.gif" />
+    <Content Include="AdminUI\Images\icon-edit.gif" />
+    <Content Include="AdminUI\Images\icon-L-arrow.gif" />
+    <Content Include="AdminUI\Images\icon-R-arrow.gif" />
+    <Content Include="AdminUI\Images\icon-save.gif" />
+    <Content Include="AdminUI\Images\icon-search.gif" />
+    <Content Include="AdminUI\Images\icon-xlsx.gif" />
+    <Content Include="AdminUI\Images\punktir-line-v.gif" />
+    <Content Include="Default.aspx" />
+    <Content Include="AdminUI\css\Protocol.css" />
+    <Content Include="AdminUI\Forms\AdministratorToolsPages\Protocol.aspx" />
+    <Content Include="AdminUI\Forms\AdministratorToolsPages\Templates.aspx" />
+    <Content Include="AdminUI\Forms\Users.aspx" />
+    <Content Include="AdminUI\Images\arrow-filtr.gif" />
+    <Content Include="AdminUI\Images\arrow.gif" />
+    <Content Include="AdminUI\Images\button-close.gif" />
+    <Content Include="AdminUI\Images\button-close_big.gif" />
+    <Content Include="AdminUI\Images\button-close_mid.gif" />
+    <Content Include="AdminUI\Images\button-cursor_big.gif" />
+    <Content Include="AdminUI\Images\button-cursor_mid.gif" />
+    <Content Include="AdminUI\Images\button-disable_big.gif" />
+    <Content Include="AdminUI\Images\button-disable_mid.gif" />
+    <Content Include="AdminUI\Images\button-usual_big.gif" />
+    <Content Include="AdminUI\Images\button-usual_mid.gif" />
+    <Content Include="AdminUI\Images\excel_icon.gif" />
+    <Content Include="AdminUI\Images\field-menu-01.gif" />
+    <Content Include="AdminUI\Images\field-menu.gif" />
+    <Content Include="AdminUI\Images\horizontalSeparator.gif" />
+    <Content Include="AdminUI\Images\icon-01.gif" />
+    <Content Include="AdminUI\Images\line.gif" />
+    <Content Include="AdminUI\Images\punktir-line.gif" />
+    <Content Include="AdminUI\Templates\WebUserControls\MainMenu.ascx" />
+    <Content Include="AdminUI\Templates\ZzimaDetails.Master" />
+    <Content Include="AdminUI\css\Top.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AdminUI\App_LocalResources\" />
+    <Folder Include="AdminUI\Forms\UsersPages\" />
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <!--
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>80</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+-->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8080</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://127.0.0.1:85/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://127.0.0.1:85/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://b208.SITE.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

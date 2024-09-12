@@ -1,0 +1,25 @@
+sources = [
+  'LiveMMakingSvcRunner.cpp',
+  'LiveMMakingSvcRunner.h',
+  'LiveMMakingSvc.cpp',
+  'LiveMMakingSvc.h',
+  'ILiveMMaking.h',
+]
+
+
+builders = [
+  RPCBuilder( 'Local', 'ILiveMMaking.h', '', ['RILiveMMaking.auto.h'] ),
+  RPCBuilder( 'Remote', 'ILiveMMakingClient.h', '', ['ILiveMMakingClient.h'] ),
+]
+
+
+
+components = [
+  'Server/ServerAppBase/NivalService',
+  'libdb/Database',
+  'Server/LiveMMaking/SimpleMMaking',
+  'Server/LiveMMaking/RatingSortMmLogic',
+  'Server/LiveMMaking/RankMatchmaking',
+  'Server/LobbySocial/SocialLobbyRemote',
+  'Server/TourneyCfg',
+]

@@ -1,0 +1,40 @@
+#include "stdafx.h"
+#include "WorldCommand.h"
+#include "CommandSerializer.h"
+#include "GameCommand.h"
+
+namespace NCore
+{
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+PackedWorldCommand::PackedWorldCommand( WorldCommand *pCmd, IPointerHolder *pPtr, int cid, DWORD time )
+  : clientId ( cid ), timeSent( time )
+{
+  WriteWorldCommandToStream( pCmd, &serializedCmd, pPtr );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+WorldCommand *PackedWorldCommand::GetWorldCommand( IPointerHolder *pPtr )
+{
+  WorldCommand * pCmd = ReadWorldCommandFromStream( &serializedCmd, pPtr );
+  if (pCmd)
+    pCmd->SetId( clientId );
+  return pCmd;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DWORD PackedWorldCommand::GetCommandId()
+{
+  int id = 0;
+  serializedCmd.Seek( 0, SEEKORIGIN_BEGIN );
+  serializedCmd.Read( &id, 4 );
+  serializedCmd.Seek( 0, SEEKORIGIN_BEGIN );
+  
+  return id;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int PackedWorldCommand::GetCommandSize() const
+{
+  return serializedCmd.GetSize();
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}; // namespace NCore
+
+REGISTER_SAVELOAD_CLASS_NM( PackedWorldCommand, NCore );

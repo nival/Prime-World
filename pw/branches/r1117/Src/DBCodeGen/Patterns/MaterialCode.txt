@@ -1,0 +1,93 @@
+﻿class $(MaterialName) : public $(GroupName)
+{
+private:
+  $(MaterialName)() : $(GroupName)( NDb::$(MaterialName)::priority, NDb::$(MaterialName)::flags, Render::RenderResourceManager::GetShaderIndexByTypeId($(MaterialName)::typeId) )
+  {
+    CheckTypesSizes();
+    InitSamplers();
+  }
+	
+	$(MaterialFields)
+	NDb::Ptr<NDb::$(MaterialName)> pDbMaterial;
+
+	unsigned int GetDynamicShaderIndex() const
+	{
+		return $(DynamicShaderIndexCalculation);
+	}
+
+	void UpdateStaticShaderIndex()
+	{
+		staticShaderIndex = $(StaticShaderIndexCalculation);
+		MarkShadersUpdated();
+	}
+
+	void FillMaterialInternal( const NDb::$(MaterialName)* pDbMaterial, void * texturePoolId )
+	{
+		MarkMaterialUpdated();
+		$(FillMaterialParameters)
+		Render::Material::FillMaterial( pDbMaterial, texturePoolId );
+
+		UpdateStaticShaderIndex();
+		UpdateInternals();
+	}
+
+	unsigned int GetShaderIndex() const { return staticShaderIndex + GetDynamicShaderIndex(); }
+	
+	void CheckTypesSizes() const
+	{
+	  $(CheckTypesSizes)
+	}
+
+  $(SamplersCountArray)
+  
+  void InitSamplers()
+  {
+    $(SetSamplersFunc)
+  }
+
+	$(MaterialInclude)
+protected:
+	$(IsAnimatedFunc)
+	virtual int SignificantPartLength() const { return $(SignificantPartLength); }
+
+public:
+  $(GetAnimLengthFunc)
+	$(BaseMaterialFunctions)
+	virtual void FillMaterial( const NDb::$(BaseMaterialDbName)* _pDbMaterial, void * texturePoolId, bool _savePointer = true )
+	{
+		const NDb::$(MaterialName)* dbMaterial = static_cast<const NDb::$(MaterialName)*>( _pDbMaterial );
+		if ( _savePointer )
+			pDbMaterial = dbMaterial;
+		FillMaterialInternal( dbMaterial, texturePoolId );
+	}
+
+	virtual void FillMaterial()
+	{
+		NDb::$(MaterialName) dbMaterial;
+		FillMaterialInternal( &dbMaterial, 0 );
+	}
+
+	virtual const NDb::Material* GetDBMaterial() const { return pDbMaterial.GetPtr(); }
+
+  virtual void PrepareRenderer()
+	{
+    Render::BindShader( GetResourceManagerShaderIndex(), GetShaderIndex() );
+		OnPrepareRender();
+		if ( !GetDBMaterial() || !GetDBMaterial()->ignoreRenderState )
+		{
+		  $(BindStates)
+		}
+		$(BindSamplers)
+	}
+	
+	static void InitSamplersOffsets()
+  {
+    $(InitSamplersOffsets)
+  }
+	
+	$(UpdateFunc)
+	$(SetStartTimeFunc)
+	enum { typeId = NDb::$(MaterialName)::typeId, };
+	static $(RenderMaterialName)* CreateMaterial() { return new $(MaterialName)(); }
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
