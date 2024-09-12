@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="GuildMembership">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">guildmembership_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="Player" not-null="true" />
+    <many-to-one name="Guild" not-null="true" />
+    <property name="JoinDate" not-null="true" />
+    <property name="LeaveDate" />
+    <property name="Kicked" />
+  </class>
+</hibernate-mapping>

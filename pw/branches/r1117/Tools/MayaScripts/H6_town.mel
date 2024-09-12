@@ -1,0 +1,581 @@
+// Works if building plan scene loaded from it's town folder
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getScenes( string $sFolder )
+{
+	string $rawList[] = `getFileList -fld $sFolder`;
+	string $res[] = {};
+
+	for ( $sItem in $rawList )
+	{
+		string $sDir = $sFolder + $sItem + "/";
+
+		if ( `filetest -d $sDir` != 1 )
+		{
+			continue;
+		}
+
+		string $list[] = `getFileList -fs "*.?.mb" -fld $sDir`;
+		for ( $sFile in $list )
+		{
+			$res[`size $res`] = $sDir + $sFile;
+		}
+	}
+
+	return $res;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getProxies( string $list[], string $sSlot )
+{
+	string $res[] = {};
+	string $sReg = ".*[.]" + $sSlot + "[.]mb";
+	for ( $sItem in $list )
+	{
+		if ( `match $sReg $sItem` != "" )
+		{
+			$res[`size $res`] = $sItem;
+		}
+	}
+	return $res;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getMap()
+{
+	return {
+		"Center:C",
+		"Small:S",
+		"Large:L",
+		"Wall:W",
+		"BigWall:B",
+		"Tower:T",
+		"Graal:G",
+		"Garrison:H",
+		"Gate:E"};
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string getSuffix( string $sType )
+{
+	for ( $sItem in `getMap` )
+	{
+		string $pair[] = stringToStringArray( $sItem, ":" );
+		if ( $sType == $pair[0] )
+		{
+			return $pair[1];
+		}
+	}
+
+	return "";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string getTag( string $sContent, string $sTag )
+{
+	if( `match ( "<"+$sTag+">" ) $sContent` == "" )
+	{
+		return "";
+	}
+	$sContent = `substitute ( ".*<" + $sTag + ">\n*" ) $sContent ""`;
+
+	if( `match ( "</"+$sTag+">" ) $sContent` == "" )
+	{
+		return "";
+	}
+	$sContent = `substitute ( "\n*[\t ]*</" + $sTag + ">.*" ) $sContent ""`;
+
+	return $sContent;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getTags( string $sContent, string $sTag )
+{
+	string $tags[] = stringToStringArray( `substituteAllString $sContent ( "</" + $sTag + ">" ) "|"`, "|" );
+	for ( $nI = 0; $nI < `size $tags`; $nI++ )
+	{
+		$tags[$nI] = `substitute ( ".*<" + $sTag + ">\n" ) $tags[$nI] ""`;
+	}
+	return $tags;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string readFile( string $sFile )
+{
+	int $nFid = `fopen $sFile "r"`;
+	if ( $nFid== 0 )
+	{
+		return "";
+	}
+
+	string $strings[] = {};
+	while ( !`feof $nFid` )
+	{
+		$strings[`size $strings`] = `fgetline $nFid`;
+	}
+	fclose $nFid;
+
+	return `stringArrayToString $strings ""`;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getSlots( string $sPlanFile )
+{
+	// Slot format: <Type>:<Tier>|<x>:<y>:<z>:<angle1>:<angle2>:
+	string $defaultSlots[] = {
+		"Center:None|0:0:0:0:0",
+		"Small:Village|0:0:0:0:0",
+		"Small:Village|0:0:0:0:0",
+		"Small:Village|0:0:0:0:0",
+		"Gate:Village|0:0:0:0:0",
+		"Large:Town|0:0:0:0:0",
+		"Large:Town|0:0:0:0:0",
+		"Large:Town|0:0:0:0:0",
+		"Wall:Town|0:0:0:0:0",
+		"Gate:Town|0:0:0:0:0",
+		"Small:Town|0:0:0:0:0",
+		"BigWall:City|0:0:0:0:0",
+		"Gate:City|0:0:0:0:0",
+		"Garrison:City|0:0:0:0:0",
+		"Tower:City|0:0:0:0:0",
+		"Tower:City|0:0:0:0:0",
+		"Graal:City|0:0:0:0:0",
+		"Large:City|0:0:0:0:0",
+		"Large:City|0:0:0:0:0",
+		"Small:City|0:0:0:0:0",
+		"Small:City|0:0:0:0:0",
+		"Small:City|0:0:0:0:0",
+		"Small:City|0:0:0:0:0",
+		"Small:City|0:0:0:0:0",
+		"Small:City|0:0:0:0:0",
+		"Small:City|0:0:0:0:0"};
+
+	string $sContent = readFile( $sPlanFile );
+
+	string $slots[] = {};
+	string $list[] = getTags( getTag( $sContent, "slots" ), "Item" );
+	if ( `size $list` == 0 )
+	{
+		return $defaultSlots;
+	}
+
+	for ( $sItem in $list )
+	{
+		string $sType = getTag( $sItem, "type" );
+		string $sTier = getTag( $sItem, "prerequisiteOfTier" );
+		string $sX = getTag( $sItem, "x" );
+		string $sY = getTag( $sItem, "y" );
+		string $sZ = getTag( $sItem, "z" );
+		string $sA1 = getTag( $sItem, "angle1" );
+		string $sA2 = getTag( $sItem, "angle2" );
+
+		if(
+			$sType  == "" || 
+			$sTier == "" ||
+			$sX    == "" ||
+			$sY    == "" ||
+			$sZ    == "" ||
+			$sA1   == "" ||
+			$sA2   == "" )
+		{
+			return $defaultSlots;
+		}
+		$slots[`size $slots`] =
+			$sType + ":" +
+			$sTier + "|" +
+			$sX + ":" +
+			$sY + ":" +
+			$sZ + ":" +
+			$sA1 + ":" + 
+			$sA2;
+	}
+
+	return $slots;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string getTiers()
+{
+	return "None:Camp:Village:Town:City:";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc int getTierID( string $sTier )
+{
+	string $tiers[] = stringToStringArray( `getTiers`, ":" );
+	for ( $nI = 0; $nI < `size $tiers`; $nI++ )
+	{
+		if ( $tiers[$nI] == $sTier )
+		{
+			return $nI;
+		}
+	}
+	return -1;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDTN_buildTown()
+{
+	string $sFolder = dirname( `file -q -sn` );
+	string $buildings[] = `getScenes ( $sFolder + "/" )`;
+
+	string $sPlan = `fileDialog -m 0 -dm "*.xdb"`;
+
+	string $slots[] = getSlots( $sPlan );
+
+	file -f -new;
+
+	string $groups[] = {};
+	for ( $sSlot in $slots )
+	{
+		string $tmp[] = stringToStringArray( $sSlot, "|" );
+		string $sXYZ = $tmp[1];
+
+		$tmp = stringToStringArray( $tmp[0], ":" );
+		string $sType = $tmp[0];
+		string $sTier = $tmp[1];
+		string $sSuffix = `getSuffix $tmp[0]`;
+
+		$tmp = stringToStringArray( $sXYZ, ":" );
+		float $fX = $tmp[0];
+		float $fY = $tmp[1];
+		float $fZ = $tmp[2];
+		float $fA1 = $tmp[3];
+		float $fA2 = $tmp[4];
+
+		// Look for unique slot for current plan
+		string $sFile = $sFolder + "/Slot_" + $sType + "/_.mb";
+		if ( !`file -q -ex $sFile` )
+		{
+			// Look for common slot
+			$sFile = substitute( "/[a-zA-Z0-9_]*$", $sFolder, ( "/" + $sType + ".mb" ));
+			if ( !`file -q -ex $sFile` )
+			{
+				error ( $sType + " slot template " + $sFile + " not found." );
+			}
+		}
+
+		// Get proxies
+		string $list[] = `getProxies $buildings $sSuffix`;
+
+		// Make reference for empty slot
+		string $sGroup = `createNode transform -n ( $sType + "Gr0" )`;
+		delete $sGroup;
+
+		string $sNamespace = `createNode transform -n ( $sType + "0" )`;
+		delete $sNamespace;
+
+		$groups[`size $groups`] = $sGroup;
+		string $sRef = `file -r -gr -gn $sGroup -ns $sNamespace -shd "shadingNetworks" -dr 1 $sFile`;
+		string $sNode = `file -q -rfn $sRef`;
+		setAttr ( $sNode + ".proxyTag" ) -type "string" "Empty";
+
+		// Make proxies for all found slot scenes
+		for ( $sScene in $list )
+		{
+			// Get folder name as proxy tag
+			string $tmp[] = `stringToStringArray $sScene "/"`;
+			string $sTag = $tmp[`size $tmp`-2]; 
+			proxyAdd $sNode $sScene $sTag;
+		}
+
+		// Lock unwanted transforms for group
+		setAttr -lock true ( $sGroup + ".rx" );
+		setAttr -lock true ( $sGroup + ".ry" );
+		setAttr -lock true ( $sGroup + ".sx" );
+		setAttr -lock true ( $sGroup + ".sy" );
+		setAttr -lock true ( $sGroup + ".sz" );
+
+		addAttr -ln "tier" -at "enum" -en `getTiers` $sGroup;
+		setAttr -k true ( $sGroup + ".tier" );
+
+		setAttr ( $sGroup + ".tier" ) `getTierID $sTier `;
+
+		setAttr ( $sGroup + ".tx" ) $fX;
+		setAttr ( $sGroup + ".ty" ) $fY;
+		setAttr ( $sGroup + ".tz" ) $fZ;
+		setAttr ( $sGroup + ".rz" ) ( ( $fA1 + $fA2 ) / 2 );
+	}
+
+	EDTN_Refresh();
+
+	// Lock unloaded proxies and then load them
+	for ( $sRef in `ls -typ reference` )
+	{
+		setAttr ( $sRef + ".locked" ) true;
+
+		string $list[] = `listConnections -p 1 -t proxyManager $sRef`;
+		if ( `size $list` == 0 )
+		{
+			file -lr $sRef;
+			continue;
+		}
+
+		if ( `match "\\[[0-9]\\]" $list[0]` == "[0]" )
+		{
+			file -lr $sRef;
+		}
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDTN_saveTown()
+{
+	string $sPlanFile = `fileDialog -m 1 -dm "*.xdb"`;
+	string $sContent = readFile( $sPlanFile );
+	if ( $sContent == "" )
+	{
+		return;
+	}
+
+	select -cl;
+	for ( $sItem in `getMap` )
+	{
+		string $tmp[] = stringToStringArray( $sItem, ":" );
+		select -add `ls ( $tmp[0] + "Gr*" )`;
+	}
+
+	string $sSlots = "\t<slots>\n";
+	string $list[] = `ls -sl`;
+	for ( $sSlot in $list )
+	{
+		$sSlots += "\t\t<Item>\n";
+
+		string $sType = `substitute "Gr[0-9]*$" $sSlot ""`;
+		$sSlots += ( "\t\t\t<type>" + $sType + "</type>\n" );
+
+		string $sTier = `getAttr -as ( $sSlot + ".tier" )`;
+		$sSlots += ( "\t\t\t<prerequisiteOfTier>" + $sTier + "</prerequisiteOfTier>\n" );
+
+		$sSlots += "\t\t\t<prerequisiteOfBuildings />\n";
+		$sSlots += "\t\t\t<offset>\n";
+
+		float $fT[] = `getAttr ( $sSlot + ".t" )`;
+		$sSlots += ( "\t\t\t\t<x>" + $fT[0] + "</x>\n" );
+		$sSlots += ( "\t\t\t\t<y>" + $fT[1] + "</y>\n" );
+		$sSlots += ( "\t\t\t\t<z>" + $fT[2] + "</z>\n" );
+
+		$sSlots += "\t\t\t</offset>\n";
+
+		float $fR = `getAttr ( $sSlot + ".rz" )`;
+		$sSlots += ( "\t\t\t<angle1>" + $fR + "</angle1>\n" );
+		$sSlots += ( "\t\t\t<angle2>" + $fR + "</angle2>\n" );
+
+		$sSlots += "\t\t</Item>\n";
+	}
+	$sSlots += "\t</slots>";
+
+	$sContent = substitute( "\t*<slots>.*</slots>", $sContent, $sSlots );
+
+	int $nFid = `fopen $sPlanFile "w"`;
+	if ( $nFid== 0 )
+	{
+		error ( "Cannot save building plan to: " + $sPlanFile );
+	}
+
+	fprint $nFid $sContent;
+	fclose $nFid;
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDTN_setProxy( string $sPM, string $sMenu )
+{
+	string $list[] = `listConnections -type reference $sPM`;
+
+	int $n = `optionMenu -q -sl $sMenu` - 1;
+
+	proxySwitch $list[$n];
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc int getProxyTags( string $sPM, string $proxyTags[] )
+{
+	string $list[] = `listConnections -type reference $sPM`;
+	$proxyTags = {};
+	for ( $nI = 0; $nI < `size $list`; $nI++ )
+	{
+		$proxyTags[$nI] = `getAttr ( $list[$nI] + ".proxyTag" )`;
+	}
+
+	$list = `listConnections -p 1 ( $sPM + ".activeProxy" )`;
+	int $nSel = substitute( "\\]", substitute( ".*\\[", $list[0], "" ), "" );
+	return  $nSel + 1; // 1-based index in optionMenu
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string buildSlotList()
+{
+	// Builds controls for loading-unloading in list of skins
+ 
+	// Globals for exchange between procedures
+	global string $gsEDTN_Window;
+	global string $gsEDTN_Frame;
+	global string $gsEDTN_Form;
+
+	string $sForm = `formLayout -p $gsEDTN_Frame`;
+
+	string $list[] = `ls -typ proxyManager`;
+	if ( `size $list` == 0 )
+	{
+		string $sText = `text -label "No slots found" -align center`;
+		formLayout
+			-e
+			-af $sText "left" 0
+			-af $sText "top" 0
+			-af $sText "bottom" 0
+			-af $sText "right" 0 
+			$sForm;
+
+			return $sForm;
+	}
+
+	string $sTitle = `text -label "Slots found:" -align left`;
+	string $sSepTop = `separator`;
+	formLayout
+		-e                                           
+		-ap $sTitle "left" 0 10
+		-af $sTitle "top" 10
+
+		-ap $sSepTop "left" 0 10
+		-af $sSepTop "right" 10
+		-ac $sSepTop "top" 5 $sTitle
+		$sForm;
+
+	string $sPrevious = $sSepTop;
+	for ( $sSlot in $list )
+	{
+		string $tags[] = {};
+		int $nSel = getProxyTags( $sSlot, $tags );
+
+		string $sLabel = `text  -label $sSlot`;
+		string $sMenu = `optionMenu -label "" -p $sForm`;
+		for ( $sTag in $tags )
+		{
+			menuItem $sTag;
+		}
+
+		optionMenu -e -sl $nSel -cc ( "EDTN_setProxy( \"" + $sSlot + "\", \"" + $sMenu + "\" )" ) $sMenu;
+
+		formLayout
+			-e
+			-ap $sLabel "right" 0 40
+			-ac $sLabel "top" 5 $sPrevious
+			-ap $sMenu "left" 0 40
+			-ac $sMenu "top" 2 $sPrevious
+			$sForm;
+
+		$sPrevious = $sMenu;
+	}
+
+	string $sSepBottom = `separator`;
+	formLayout
+		-e
+		-ap $sSepBottom "left" 0 10
+		-af $sSepBottom "right" 10
+		-ac $sSepBottom "top" 3 $sPrevious
+		$sForm;
+
+	// Set size to induct inner controls fit
+	int $nW = `window -q -w $gsEDTN_Window`;
+	window -e -w ( $nW - 1 ) $gsEDTN_Window;
+	window -e -w ( $nW ) $gsEDTN_Window;
+
+	return $sForm;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDTN_Refresh()
+{
+	// Globals for exchange between procedures
+	global string $gsEDTN_Form;
+
+	deleteUI  $gsEDTN_Form; 
+	buildSlotList();
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_town()
+{
+	// Globals for exchange between procedures
+	global string $gsEDTN_Window;
+	$gsEDTN_Window = "H6_town";
+
+	global string $gsEDTN_Frame;
+
+	global string $gsEDTN_Form;
+
+	// Let's build the UI!
+	string $gsEDTN_Window = "H6_town";
+	if (`window -exists $gsEDTN_Window`) 
+	{
+		deleteUI -window $gsEDTN_Window;
+	}
+
+	window
+		-title "Edit Town"
+		-toolbox true
+		$gsEDTN_Window;
+
+	string $sMain = `formLayout`;
+
+	string $sScroll = `scrollLayout -cr true`;
+	scrollLayout
+		-e
+		-horizontalScrollBarThickness 0
+		$sScroll;
+
+	$gsEDTN_Frame = `frameLayout`;
+	frameLayout 
+		-edit
+		-mw 10
+		-mh 10
+		-borderVisible false
+		-collapse false 
+		-collapsable false
+		-labelVisible false
+		$gsEDTN_Frame;
+
+	$gsEDTN_Form = `buildSlotList`;
+
+	setParent $sMain;
+
+	$sLoad = `button -label "Load" -c ( "EDTN_buildTown()" )`; 
+	$sSave = `button -label "Save" -c ( "EDTN_saveTown()" )`; 
+
+	// Arrange controls
+	formLayout -e
+		-af $sSave "left" 5
+		-ap $sSave "right" 3 50 
+		-af $sSave "bottom" 5
+		-an $sSave "top"
+
+		-ac $sLoad "left" 2 $sSave
+		-af $sLoad "right" 5
+		-af $sLoad "bottom" 5
+		-an $sLoad "top"
+
+		-af $sScroll "left" 0
+		-af $sScroll "right" 0
+		-ac $sScroll "bottom" 5 $sSave
+		-af $sScroll "top" 0
+		$sMain;
+
+	showWindow $gsEDTN_Window;
+
+	// Set size to induct inner controls fit
+	window   
+		-edit
+		-wh 240 580
+		$gsEDTN_Window;
+
+	return;
+}
+
+H6_town();

@@ -1,0 +1,40 @@
+if platform == 'win32':
+  sources = [
+    'FileSystem.h', 
+    'FileSystem.cpp', 
+    'CombinerFileSystem.h',
+    'CombinerFileSystem.cpp', 
+    'WinFileSystem.h', 
+    'WinFileSystem.cpp', 
+    'WinFileSystemWatcher.h',
+    'WinFileSystemWatcher.cpp',
+  #TODO move to separate component
+    'FileSystemDebugMonitor.h',
+    'FileExtensionStatisticsMonitor.h',
+    'FileExtensionStatisticsMonitor.cpp',
+    'FileActivitySimpleMonitor.h',
+    'FileActivitySimpleMonitor.cpp',
+    'TinyFileWriteStream.cpp',
+    'TinyFileWriteStream.h',
+  ]
+else :
+  sources = [
+    'FileSystem.cpp', 
+    'CombinerFileSystem.cpp', 
+    'WinFileSystem.cpp', 
+    'FileExtensionStatisticsMonitor.cpp',
+    'FileActivitySimpleMonitor.cpp',
+  ]
+
+components = [ 
+  'System/Ptr', 
+  'System/FileSystem/FileUtils',
+  'System/Threading',
+  'System/Commands',
+  'System/FileSystem/FileSystemChangesProcessor',
+  'System/Streams',
+  'System/InlineProfiler',
+  'Vendor/Libc',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

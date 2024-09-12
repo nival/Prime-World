@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="Claim">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">claim_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="FromPlayer" class="Player" not-null="true" />
+    <many-to-one name="ToPlayer" class="Player" not-null="true" />
+    <property name="Source" />
+    <property name="Category" />
+    <property name="Locale" />
+    <property name="Muid" />
+    <property name="Comment" />
+    <property name="ChatLog" />
+    <property name="Timestamp" />
+    <property name="PersistentId" />
+    <property name="Kills" />
+    <property name="Deaths" />
+    <property name="Assists" />
+    <property name="Points" />
+    <property name="Prime" />
+    <property name="Distance" />
+    <property name="Afks" />
+    <property name="ConnStatus" />
+    <many-to-one name="GMUserOperation" />
+
+    <sql-insert check="none">
+      INSERT INTO claim
+      (fromplayer, toplayer, source, category, locale, muid, comment, chatlog,
+      "timestamp", persistentid, kills, deaths, assists, points, prime,
+      distance, afks, connstatus, gmuseroperation, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+    
+  </class>
+</hibernate-mapping>

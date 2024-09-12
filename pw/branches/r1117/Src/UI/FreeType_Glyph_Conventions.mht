@@ -1,0 +1,672 @@
+Content-Type: multipart/related; start=<op.mhtml.1265285381492.029d0a53684947e0@192.168.1.126>; boundary=----------yyebHqOrsvKTkuFAEbSR13
+Content-Location: http://www.freetype.org/freetype2/docs/glyphs/glyphs-3.html
+Subject: =?utf-8?Q?FreeType=20Glyph=20Conventions?=
+MIME-Version: 1.0
+
+------------yyebHqOrsvKTkuFAEbSR13
+Content-Disposition: inline; filename=glyphs-3.html
+Content-Type: text/html; charset=iso-8859-1; name=glyphs-3.html
+Content-ID: <op.mhtml.1265285381492.029d0a53684947e0@192.168.1.126>
+Content-Location: http://www.freetype.org/freetype2/docs/glyphs/glyphs-3.html
+Content-Transfer-Encoding: 8bit
+
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en"
+          "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=iso-8859-1">
+  <meta name="Author"
+        content="David Turner">
+  <title>FreeType Glyph Conventions</title>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<h1 align=center>
+  FreeType Glyph Conventions
+</h1>
+
+<h2 align=center>
+  Version&nbsp;2.1
+</h2>
+
+<h3 align=center>
+  Copyright&nbsp;1998-2000 David Turner (<a
+  href="mailto:david@freetype.org">david@freetype.org</a>)<br>
+  Copyright&nbsp;2000 The FreeType Development Team (<a
+  href="mailto:devel@freetype.org">devel@freetype.org</a>)
+</h3>
+
+<center>
+<table width="65%">
+<tr><td>
+
+  <center>
+  <table width="100%"
+         border=0
+         cellpadding=5>
+  <tr bgcolor="#CCFFCC"
+      valign=center>
+    <td align=center
+        width="30%">
+      <a href="glyphs-2.html">Previous</a>
+    </td>
+    <td align=center
+        width="30%">
+      <a href="index.html">Contents</a>
+    </td>
+    <td align=center
+        width="30%">
+      <a href="glyphs-4.html">Next</a>
+    </td>
+  </tr>
+  </table>
+  </center>
+
+  <p><hr></p>
+
+  <table width="100%">
+  <tr bgcolor="#CCCCFF"
+      valign=center><td>
+    <h2>
+      III. Glyph metrics
+    </h2>
+  </td></tr>
+  </table>
+
+    <a name="section-1">
+    <h3>
+      1. Baseline, pens and layouts
+    </h3>
+
+    <p>The baseline is an imaginary line that is used to "guide" glyphs when
+    rendering text.  It can be horizontal (e.g. Roman, Cyrillic, Arabic,
+    etc.) or vertical (e.g. Chinese, Japanese, Korean, etc).  Moreover, to
+    render text, a virtual point, located on the baseline, called the <em>pen
+    position</em> or <em>origin</em>, is used to locate glyphs.</p>
+
+    <p>Each layout uses a different convention for glyph placement:</p>
+
+    <ul>
+      <li>
+        <p>With horizontal layout, glyphs simply "rest" on the baseline.
+        Text is rendered by incrementing the pen position, either to the
+        right or to the left.</p>
+
+        <p>The distance between two successive pen positions is
+        glyph-specific and is called the <em>advance width</em>.  Note that
+        its value is <em>always</em> positive, even for right-to-left
+        oriented alphabets, like Arabic.  This introduces some differences
+        in the way text is rendered.</p>
+
+        <p><em>The pen position is always placed on the baseline.</em></p>
+
+        <p><center>
+          <img src="Image1.png"
+               height=179 width=458
+               alt="horizontal layout">
+        </center></p>
+      </li>
+      <li>
+        <p>With a vertical layout, glyphs are centered around the
+        baseline:</p>
+
+        <p><center>
+          <img src="Image2.png"
+               height=275 width=162
+               alt="vertical layout">
+        </center></p>
+      </li>
+    </ul>
+
+
+    <a name="section-2">
+    <h3>
+      2. Typographic metrics and bounding boxes
+    </h3>
+
+    <p>A various number of face metrics are defined for all glyphs in a
+    given font.</p>
+
+    <ul>
+      <li>
+        <p><em>Ascent</em></p>
+
+        <p>The distance from the baseline to the highest/upper grid
+        coordinate used to place an outline point.  It is a positive value,
+        due to the grid's orientation with the <i>Y</i>&nbsp;axis
+        upwards.</p>
+      </li>
+
+      <li>
+        <p><em>Descent</em></p>
+
+        <p>The distance from the baseline to the lowest grid coordinate used
+        to place an outline point.  This is a negative value, due to the
+        grid's orientation.</p>
+      </li>
+
+      <li>
+        <p><em>Linegap</em></p>
+
+        <p>The distance that must be placed between two lines of text.  The
+        baseline-to-baseline distance should be computed as:
+
+        <center><p>
+          <tt>ascent - descent + linegap</tt>
+        </p></center>
+
+        <p>if you use the typographic values.</p>
+      </li>
+    </ul>
+
+    <p>Other, simpler metrics are:</p>
+
+    <ul>
+      <li>
+        <p><em>The glyph's bounding box</em>, also called <em>bbox</em></p>
+
+        <p>This is an imaginary box that encloses all glyphs from the font,
+        usually as tightly as possible.  It is represented by four fields,
+        namely <tt>xMin</tt>, <tt>yMin</tt>, <tt>xMax</tt>, and
+        <tt>yMax</tt>, that can be computed for any outline.  Their values
+        can be in font units (if measured in the original outline) or in
+        fractional/integer pixel units (when measured on scaled
+        outlines).</p>
+
+        <p>Note that if it wasn't for grid-fitting, you wouldn't need to
+        know a box's complete values, but only its dimensions to know how
+        big is a glyph outline/bitmap.  However, correct rendering of hinted
+        glyphs needs the preservation of important grid alignment on each
+        glyph translation/placement on the baseline.</p>
+      </li>
+
+      <li>
+        <p><em>Internal leading</em></p>
+
+        <p>This concept comes directly from the world of traditional
+        typography.  It represents the amount of space within the
+        <em>leading</em> which is reserved for glyph features that lay
+        outside of the EM square (like accentuation).  It usually can be
+        computed as:</p>
+
+        <center><p>
+          <tt>internal leading = ascent - descent - EM_size</tt>
+        </p></center>
+      </li>
+
+      <li>
+        <p><em>External leading</em></p>
+
+        <p>This is another name for the line gap.</p>
+      </li>
+    </ul>
+
+
+    <a name="section-3">
+    <h3>
+      3. Bearings and Advances
+    </h3>
+
+    Each glyph has also distances called <em>bearings</em> and
+    <em>advances</em>.  Their definition is constant, but their values
+    depend on the layout, as the same glyph can be used to render text
+    either horizontally or vertically:
+
+    <ul>
+      <li>
+        <p><em>Left side bearing</em> or <em>bearingX</em></p>
+
+        <p>The horizontal distance from the current pen position to the
+        glyph's left bbox edge.  It is positive for horizontal layouts, and
+        in most cases negative for vertical ones.</p>
+      </li>
+
+      <li>
+        <p><em>Top side bearing</em> or <em>bearingY</em></p>
+
+        <p>The vertical distance from the baseline to the top of the glyph's
+        bbox.  It is usually positive for horizontal layouts, and negative
+        for vertical ones.</p>
+      </li>
+
+      <li>
+        <p><em>Advance width</em> or <em>advanceX</em></p>
+
+        <p>The horizontal distance the pen position must be incremented (for
+        left-to-right writing) or decremented (for right-to-left writing) by
+        after each glyph is rendered when processing text.  It is always
+        positive for horizontal layouts, and null for vertical ones.</p>
+      </li>
+
+      <li>
+        <p><em>Advance height</em> <em>advanceY</em></p>
+
+        <p>The vertical distance the pen position must be decremented by
+        after each glyph is rendered.  It is always null for horizontal
+        layouts, and positive for vertical layouts.</p>
+      </li>
+
+      <li>
+        <p><em>Glyph width</em></p>
+
+        <p>The glyph's horizontal extent.  For unscaled font coordinates, it
+        is <tt>bbox.xMax-bbox.xMin</tt>.  For scaled glyphs, its computation
+        requests specific care, described in the grid-fitting chapter
+        below.</p>
+      </li>
+
+      <li>
+        <p><em>Glyph height</em>
+
+        <p>The glyph's vertical extent. For unscaled font coordinates, it is
+        <tt>bbox.yMax-bbox.yMin</tt>.  For scaled glyphs, its computation
+        requests specific care, described in the grid-fitting chapter
+        below.</p>
+      </li>
+
+      <li>
+        <p><em>Right side bearing</em></p>
+
+        <p>Only used for horizontal layouts to describe the distance from
+        the bbox's right edge to the advance width.  It is in most cases a
+        non-negative number:</p>
+
+        <p><center>
+          <tt>advance_width - left_side_bearing - (xMax-xMin)</tt>
+        </center></p>
+      </li>
+    </ul>
+
+    <p>Here is a picture giving all the details for horizontal metrics:
+
+    <center><p>
+      <img src="Image3.png"
+           height=253 width=388
+           alt="horizontal glyph metrics">
+    </p></center>
+
+    <p>And here is another one for the vertical metrics:</p>
+
+    <center><p>
+      <img src="Image4.png"
+           height=278 width=294
+           alt="vertical glyph metrics">
+    </p></center>
+
+
+    <a name="section-4">
+    <h3>
+      4. The effects of grid-fitting
+    </h3>
+
+    <p>Because hinting aligns the glyph's control points to the pixel grid,
+    this process slightly modifies the dimensions of character images in
+    ways that differ from simple scaling.</p>
+
+    <p>For example, the image of the lowercase "m" letter sometimes fits a
+    square in the master grid.  However, to make it readable at small pixel
+    sizes, hinting tends to enlarge its scaled outline in order to keep its
+    three legs distinctly visible, resulting in a larger character
+    bitmap.</p>
+
+    <p>The glyph metrics are also influenced by the grid-fitting process:
+
+    <ul>
+      <li>
+        The image's width and height are altered.  Even if this is only by
+        one pixel, it can make a big difference at small pixel sizes.
+      </li>
+      <li>
+        The image's bounding box is modified, thus modifying the bearings.
+      </li>
+      <li>
+        The advances must be updated.  For example, the advance width must
+        be incremented if the hinted bitmap is larger than the scaled one,
+        to reflect the augmented glyph width.
+      </li>
+    </ul>
+
+    <p>This has some implications:</p>
+
+    <ul>
+      <li>
+        Because of hinting, simply scaling the font ascent or descent might
+        not give correct results.  A possible solution is to keep the ceiling
+        of the scaled ascent, and floor of the scaled descent.
+      </li>
+
+      <li>
+        There is no easy way to get the hinted glyph and advance widths of a
+        range of glyphs, as hinting works differently on each outline.  The
+        only solution is to hint each glyph separately and record the
+        returned values.  Some formats, like TrueType, even include a table
+        of pre-computed values for a small set of common character pixel
+        sizes.
+      </li>
+      <li>
+        Hinting depends on the final character width and height in pixels,
+        which means that it is highly resolution-dependent.  This property
+        makes correct WYSIWYG layouts difficult to implement.
+      </li>
+    </ul>
+
+
+    <em>
+      <p>Performing 2D transformations on glyph outlines is very easy with
+      FreeType.  However, when using translation on a hinted outlines, one
+      should aways take care of <b>exclusively using integer pixel
+      distances</b> (which means that the parameters to the
+      <tt>FT_Outline_Translate()</tt> API should all be multiples
+      of&nbsp;64, as the point coordinates are in 26.6&nbsp;fixed float
+      format).</p>
+
+      <p>Otherwise, the translation will simply <em>ruin the hinter's
+      work</em>, resulting in a very low quality bitmaps!</p>
+    </em>
+
+
+    <a name="section-5">
+    <h3>
+      5. Text widths and bounding box
+    </h3>
+
+    <p>As seen before, the "origin" of a given glyph corresponds to the
+    position of the pen on the baseline.  It is not necessarily located on
+    one of the glyph's bounding box corners, unlike many typical bitmapped
+    font formats.  In some cases, the origin can be out of the bounding box,
+    in others, it can be within it, depending on the shape of the given
+    glyph.</p>
+
+    <p>Likewise, the glyph's "advance width" is the increment to apply to
+    the pen position during layout, and is not related to the glyph's
+    "width", which really is the glyph's bounding width.
+
+    <p>The same conventions apply to strings of text.  This means that:
+
+    <ul>
+      <li>
+        The bounding box of a given string of text doesn't necessarily
+        contain the text cursor, nor is the latter located on one of its
+        corners.
+      </li>
+
+      <li>
+        The string's advance width isn't related to its bounding box
+        dimensions.  Especially if it contains beginning and terminal spaces
+        or tabs.
+      </li>
+      <li>
+        Finally, additional processing like kerning creates strings of text
+        whose dimensions are not directly related to the simple
+        juxtaposition of individual glyph metrics.  For example, the advance
+        width of "VA" isn't the sum of the advances of "V" and "A" taken
+        separately.
+      </li>
+    </ul>
+
+  <p><hr></p>
+
+  <center>
+  <table width="100%"
+         border=0
+         cellpadding=5>
+  <tr bgcolor="#CCFFCC"
+      valign=center>
+    <td align=center
+        width="30%">
+      <a href="glyphs-2.html">Previous</a>
+    </td>
+    <td align=center
+        width="30%">
+      <a href="index.html">Contents</a>
+    </td>
+    <td align=center
+        width="30%">
+      <a href="glyphs-4.html">Next</a>
+    </td>
+  </tr>
+  </table>
+  </center>
+
+</td></tr>
+</table>
+</center>
+
+</body>
+</html>
+
+------------yyebHqOrsvKTkuFAEbSR13
+Content-Disposition: inline; filename=Image1.png
+Content-Type: image/png; name=Image1.png
+Content-Location: http://www.freetype.org/freetype2/docs/glyphs/Image1.png
+Content-Transfer-Encoding: Base64
+
+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
+
+------------yyebHqOrsvKTkuFAEbSR13
+Content-Disposition: inline; filename=Image2.png
+Content-Type: image/png; name=Image2.png
+Content-Location: http://www.freetype.org/freetype2/docs/glyphs/Image2.png
+Content-Transfer-Encoding: Base64
+
+iVBORw0KGgoAAAANSUhEUgAAAKIAAAETAQMAAAH42n+qAAAABlBMVEX1/vQIAArw
+/uYPAAAD40lEQVR42u2YP4/TSBiHx3aII2Q5EVWkiyCHOAko0EQURMdq42URAYH2
+tqRYoXR3DVIkmhSRdooruAbtR6CkRVdciTtaPoIl+ABG16TIxed4nMzP9i/a5c+C
+VncjzcyjJ5OZd8avHe8KsaH8kISilfatblpTaO2ntZHW5yLztWUN8vpbWu/ndaQ/
+E928LouEvltaqCuOLdfSWNZjA6EDOEprAwYFed0HTquHsQR5v/z+6PNiKZV0FltP
+bOulbFHXnaO7H3UXqKxT2Ua6nl5NFrpbuuspLXXXw7jy763KBd21defqzjo+Zvtk
+W2t8chsI59ckiXIufqpD72Stn7U3svZ81j7M2gdZ+4dat9bz9LzqZK2rG1o9522d
+NbpV0IL/me7CLrRe1l6Htp+1naz1s/Y8fLpVmuFk59aB8/mMEpw+jyDbvVXgQR55
+A8Y0hBm85NiwNTPsTAzXDwx7e4bbQ8OXErXm7q7hYCdccxhEmq8LNx7OTQwR5HNg
+2AbeBvY38WPgBHgVT8ah4Z0NjOOHZh5nxuMs8GovNbhGJXYODNfvGnZxDM4zBd4z
+XLsH332U8zlYyyvlSfR18s25b9h6V3zSfpcSnH0eAUu4Xtn9+/SnN0la5jCmDTwG
+Dtj8Ic8BCzkGHsO1BrYnhuvAtalh7wB+nZ4Ybu9xlkPDgwR+5ofKpNWu4QA43DEb
+U4YttZNv7M6S1xszzxw8n3bpfMLjr1cd+CLwE2D/SxjO1l8Aw/k0fwEPZ+XvngYL
+zvcgnkeQMzE7tzsbzvMKcHvztQg/7Z6yPkA8kJ81iNNDvgv7AnZhXTfasEdIKwFr
+Ccj/xh5njMEHbsai+D69eptkvylfeFanzfZjOLd9/pzBZ1Eh/jNd5P/2G1hJ7XbJ
+Tiv3s5Osy+rNThVu4pKVxRkUXU3ReHPbp3ZK7YJZi1rnDbPuQBHrD0JiO4OI2K1b
+zPZvxsSOezNiIzmvWiuUi6p1lDysWlfIQdU200umKrYjZDOs2H5qo4qdCOnGFTsW
+0plVbCSkNS9bZ2lxG8v/uojmLJ0XQ6sdsXyww2KC6dL5+8Xrt/33nVk5zVV17MrK
+k9sps805sxa14hvbwYzZZEHsPx8TYheylOz5apeoLWbJyrqnZXkM3CpmL9IdbxE7
++BgRW36WbMid1u/M6rwuW/sls1ZIcv3Zix7J9S59en4t6yYxsZ0es305JnYiJbFT
+2SL2kMYwiJltJsxaScT2VrovcntzTmwgmR3JKbFjOaE7Zqdz+Gchslr2L1SxW8wo
++zK9Fq+oHdMnIs8Swcb+B953PMnejP0es+5fitjqPV/5A8aUyVl4xf4X3F9DKfZ4
+CIEAAAAASUVORK5CYII=
+
+------------yyebHqOrsvKTkuFAEbSR13
+Content-Disposition: inline; filename=Image3.png
+Content-Type: image/png; name=Image3.png
+Content-Location: http://www.freetype.org/freetype2/docs/glyphs/Image3.png
+Content-Transfer-Encoding: Base64
+
+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
+
+------------yyebHqOrsvKTkuFAEbSR13
+Content-Disposition: inline; filename=Image4.png
+Content-Type: image/png; name=Image4.png
+Content-Location: http://www.freetype.org/freetype2/docs/glyphs/Image4.png
+Content-Transfer-Encoding: Base64
+
+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
+
+------------yyebHqOrsvKTkuFAEbSR13--

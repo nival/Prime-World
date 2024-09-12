@@ -1,0 +1,24 @@
+timelimit 3600.0;
+
+timescale 30.0;
+
+skip 5.0;
+add faction a,
+  member { sex M, hero rockman, h_rating 1350 },
+  member { sex M, hero invisible, h_rating 1350 },
+  member { sex M, hero prince, h_rating 1350 },
+  member { sex M, hero healer, h_rating 1350 };
+
+skip 3.0;
+add faction b,
+  member { sex M, hero rockman, h_rating 1350 },
+  member { sex M, hero thundergod, h_rating 1350 },
+  member { sex M, hero werewolf, h_rating 1350 },
+  member { sex M, hero healer, h_rating 1350 };
+
+skip 3.0;
+add faction a, member { sex M, hero archeress, h_rating 1350 };
+add faction b, member { sex M, hero hunter, h_rating 1350 };
+
+
+expect [10, 30] {1000,1001,1002,1003,1008} {1004,1005,1006,1007,1009};

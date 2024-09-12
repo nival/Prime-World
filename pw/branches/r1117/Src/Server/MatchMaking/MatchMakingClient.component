@@ -1,0 +1,15 @@
+sources = [
+  'MatchMakingClient.cpp',
+  'MatchMakingClient.h',
+  'MatchMakingTypes.h',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'Server\MatchMaking\MatchMakingClientR',
+]
+
+builders = [
+    RPCBuilder( 'Remote', 'MatchMakingManager.h', '', ['RMatchMakingClient.auto.h']),
+    RPCBuilder( 'Remote', 'MatchMakingSessionIface.h ','', ['MatchMakingTypes.h', 'HybridServer/GameServerDispenserIface.h']),
+]

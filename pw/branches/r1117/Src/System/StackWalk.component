@@ -1,0 +1,18 @@
+sources = [
+    'MiniDump.cpp', 
+    'MiniDump.h', 
+    'StackWalk.cpp', 
+    'StackWalk.h', 
+    'StackWalker.cpp', 
+    'StackWalker.h', 
+] 
+
+components = [ 
+    'System/LogFileName',
+    'Vendor/Libc',
+    'System/Compatibility'  
+]
+
+libDependencies = ['dbghelp.lib']
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

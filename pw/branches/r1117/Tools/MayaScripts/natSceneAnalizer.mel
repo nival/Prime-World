@@ -1,0 +1,1511 @@
+    global proc natSceneAnalizer ( string $sceneName, string $descFileName) {
+    //====================================================================
+    //процедура инициализации анализа сцены для фастимпорта. в качестве параметра берет имя сцены, которую надо проанализировать
+    //====================================================================
+    //очищаем все глобальные переменные и массивы
+    //====================================================================
+
+    global string $gOutNames[];
+    clear $gOutNames;
+
+    global int $gOutLevels[];
+    clear $gOutLevels;
+
+    global int $gOutIndex;
+    $gOutIndex=0;
+
+    global string $gAllAloneParticles[];
+    clear $gAllAloneParticles;
+
+    global string $gParticlesOnlySets[];
+    clear $gParticlesOnlySets;
+
+    global int $gParticleTextureNumber;
+
+    global string $gAnimationClips[];
+    clear $gAnimationClips;
+
+    global string $gRootJoints[];
+    clear $gRootJoints;
+
+    global string $gStaticMeshes[];
+    clear $gStaticMeshes;
+
+    global string $gSkinnedMeshes[];
+    clear $gSkinnedMeshes;
+
+    global string $gShakedCameras[];
+    clear $gShakedCameras;
+
+    global string $gOutString;
+    $gOutString="";
+
+    global int $gRootJointHasAnim[];
+    clear $gRootJointHasAnim;
+
+    global float $gAnimCurveSimplifyTolerance;
+
+    global int $gUseDoubleSimplifyaAlgorithm;
+
+    global float $gFPS;
+
+
+    //====================================================================
+    //перменные, контролирующие процесс конвертации аним курв в линейный вид.
+    //====================================================================
+    $gAnimCurveSimplifyTolerance=0.03;
+    $gUseDoubleSimplifyaAlgorithm = 1;
+    $gFPS=30;
+
+    //====================================================================
+    //переменная описывающая имя спец. папки для текстур. в данном случае эта папка GFX_Textures. если текстура лежит там, сохраняется относительный путь с именем этой папки. позже, в редакторе, по этому имени формируется спец тип текстуры
+    //====================================================================
+    global string $gSpecialTexuresFolder;
+     $gSpecialTexuresFolder = "GFX_Textures";
+    //====================================================================
+    //загружаем сцену
+    //====================================================================
+     if ($sceneName != "") file -o -iv -f $sceneName;
+
+    //====================================================================
+    //выгружаем референцы
+    //====================================================================
+    /*
+    string $currentSceneRef[] = `ls -rf`;
+    for ($ref in $currentSceneRef) {
+        if (!catchQuiet (`referenceQuery -rfn $ref`)) {
+            file - ur $ref;
+        } else {
+            print ("warning: something wrong with references in scene. unable to unload some of there.\n");
+        }
+    }
+    */
+    //====================================================================
+    //запускаем процедуру общего пре-анализа сцены
+    //====================================================================
+    cycleCheck -e off;
+    print ("natAnalizer: Начинаем анализ сцены "+$sceneName+ "\n");
+    natPreAnalizeScene;
+    //====================================================================
+    //проходим циклом по рутовым костям, с подциклами на всей дочерней иерархией вплоть до текстур + отдельно аним клипы
+     //====================================================================
+    for ($i=0; $i<`size $gRootJoints`;$i++) {
+        string $meshes[] = `natAnalizeRootJoint ($gRootJoints[$i])`;
+        for ($j=0;$j<`size $meshes`; $j++) {
+            string $shadingGroups[] = natAnalizeMesh ($meshes[$j],1);
+                for ($k=0;$k<`size $shadingGroups`;$k++) {
+                natAnalizeMaterial ($shadingGroups[$k],2);
+                natAnalizeAnimUV ($shadingGroups[$k],3);
+            }
+        }
+
+        //if ($gRootJointHasAnim[$i]==1) {
+
+            for ($l=0;$l<`size $gAnimationClips`;$l++) {
+                natFillOutArrayElement ($gAnimationClips[$l],"anim",1);
+            }
+
+        //}
+    }
+    //====================================================================
+    //проход по статичным мешам со всей дочерней иерархией вплоть до текстур
+    //====================================================================
+    for ($i=0;$i<`size $gStaticMeshes`; $i++) {
+        string $shadingGroups[] = natAnalizeMesh ($gStaticMeshes[$i],0);
+        for ($j=0;$j<`size $shadingGroups`;$j++) {
+            natAnalizeMaterial ($shadingGroups[$j],1);
+            natAnalizeAnimUV ($shadingGroups[$j],2);
+        }
+        natAnalizeStaticMeshAnimations ($gStaticMeshes[$i],1);
+    }
+
+
+    //====================================================================
+    //запускаем процедуру общего пре-анализа сцены на предмет particle systems
+    //====================================================================
+    natPreAnalizeSceneParticles;
+    //====================================================================
+    // проходим по всем одиноким партиклам
+    //====================================================================
+    for ($i=0; $i<`size $gAllAloneParticles`; $i++) {
+        natAnalizeAloneParticle ($gAllAloneParticles[$i],0);
+    }
+    //====================================================================
+    // проходим по всем партикл-сетам
+    //====================================================================
+    for ($i=0; $i<`size $gParticlesOnlySets`; $i++) {
+        natAnalizeSetParticle ($gParticlesOnlySets[$i],0);
+    }
+    //и по всем камерам
+    for ($cam in $gShakedCameras) {
+        natAnalizeCameraShake ($cam, 0);
+    }
+
+
+    //====================================================================
+    //запускаем процедуру формирования выходной строки в python style
+    //====================================================================
+    natPythonStyleOutString;
+    //====================================================================
+    //процедура записи этой строки в файл. имя файла определяется как имя сцены + ".desc"
+    //====================================================================
+    if ($descFileName == "") {
+        $sceneName= `file -q -sn`;
+        $descFileName = basename ($sceneName,"");
+        $descFileName = $sceneName + ".desc";
+    }
+    natWriteOutStringToFile $descFileName;
+    print ("natAnalizer: Анализ сцены " + $sceneName + " завершен. Файл с описанием " + $descFileName+ "\n");
+
+    //====================================================================
+    // загружаем  референцы обратно как было. если эта фича нужна раскоментировать след блок....
+    //====================================================================
+    /*
+    string $currentSceneRef[] = `ls -rf`;
+    for ($ref in $currentSceneRef) {
+        file - lr $ref;
+        }
+    */
+    //file -force -newFile;
+}
+
+global proc natPreAnalizeScene(){
+
+    //====================================================================
+    //глобальный преанализ сцены. пишет в глобальные массивы $gRootJoints[] $gRootJoints[] и тд список рутовых костей, список статик мешей и список анимаций.
+    //====================================================================
+    if (size(`ls -type mesh -ni`) != 0 ) BakeAllNonDefHistory;
+
+    global string $gRootJoints[];
+	global string $gSkinnedMeshes[];
+	global string $gRootJointsMeshes[];
+	string $skinnedMeshesInScene[];
+	global string $gStaticMeshes[];
+	global string $gAnimationClips[];
+    global string $gShakedCameras[];
+
+
+    string $assetBaseName;
+    int $i=0;
+    string $jointsList[];
+
+	string $clustersAll[]=`ls -l -typ skinCluster`;
+//====================================================================
+// единый цикл, в котором определяются скинкластеры, кости, рутовые кости и меши. с учетом хайденности. заполняются массивы.
+//====================================================================
+    for ($cluster in $clustersAll){
+        //$cluster = "skinCluster1";
+        if (`referenceQuery -inr $cluster`) continue;
+//для каждого кластера смотрим меши, если их больше одного
+		$tempMesh = `natFindMeshFromSkinCluster $cluster`;
+		$tempMesh = `natConvertToLongNames $tempMesh`;
+        if (`size $tempMesh` > 0) {
+//cмотрим все рут джойнты
+			$jointsList = `listConnections -t joint $cluster`;
+			$jointsList = `natConvertToLongNames $jointsList`;
+			$tempRoots = `natFindRootJoint $jointsList`;
+			$skinnedMeshesInScene = stringArrayCatenate ($skinnedMeshesInScene,$tempMesh);
+//если их больше одного - это неправильно, надо чинить сцену. если костей ноль, или она захайдена, или захайдены все меши - скипаем весь цикл.
+			if (`size $tempRoots` > 1) error ("Больше одной root кости для объекта(ов) \"" + stringArrayToString ($tempMesh," ") + "\"");
+				else
+			if (/*`natCheckObjHide $tempRoots[0]` == 0 && */`size $tempRoots` == 1) {
+
+//смотрим на захайденность рута или всех его мешей.
+				$hide = 0;
+				$hideOne = 0;
+				for ($tempMeshOne in $tempMesh) {
+					$hideOne = `natCheckObjHide $tempMeshOne`;
+					$hide = $hide + $hideOne;
+					if ($hideOne == 0) {
+						$gSkinnedMeshes[$i] =  $tempMeshOne;
+						$gRootJointsMeshes[$i] = $tempRoots[0];
+						$i++;
+                    }
+	            }
+				if ($hide == 0) $gRootJoints[`size $gRootJoints`] = $tempRoots[0];
+            }
+        }
+    }
+
+    $gRootJoints = `stringArrayRemoveDuplicates ($gRootJoints)`;
+
+
+
+  //====================================================================
+    // ищем все незаскинненые меши, считаем их статик мешами
+    //====================================================================
+
+    $i=0;
+    string $allSceneMeshes[] = `ls -typ "mesh" -ni -l`;
+    for ($tempMeshOne in $allSceneMeshes){
+        if (`referenceQuery -inr $tempMeshOne`) continue;
+        $tempTransform = `listRelatives -p -f $tempMeshOne`;
+        for ($curTransform in $tempTransform) {
+            if (!stringArrayContains($curTransform, $skinnedMeshesInScene) && `natCheckObjHide $curTransform` == 0){
+    			$gStaticMeshes[$i] =  $curTransform;
+    			$i++;
+            }
+        }
+    }
+
+
+    string $charsSets[] = `ls -type "character"`;
+
+    if (`size $charsSets` > 0 && `size $gRootJoints` >  0) {
+            //====================================================================
+            // ищем аним клипы, коими являются все *ma файлы в папке со ценой
+            //====================================================================
+            $sceneName= `file -q -sn`;
+            $sceneBaseName = basename ($sceneName,".mb");
+			//$sceneBaseNameTest = tolower ($sceneBaseName);
+			$sceneBaseNameTest = $sceneBaseName;
+            $size = `size $sceneBaseName`;
+            $scenePath= `dirname $sceneName` + "/";
+            $gAnimationClips= `getFileList -fld $scenePath -fs "*.ma"`;
+            string $result1="";
+            string $result2="";
+// проходим по всем клипам ищем наличие имене файла сцены в имени файла клипа. если оно присутствует в явнном виде или без "_" в начале, клип будет включен в БКК
+            for ($i=0;$i<`size($gAnimationClips)`;$i++){
+                $gAnimationClips[$i] = basename ($gAnimationClips[$i], ".ma");
+				//$gAnimationClipsTest = tolower ($gAnimationClips[$i]);
+				$gAnimationClipsTest = $gAnimationClips[$i];
+                $pattern = "*******";
+                if ($size == 7) $pattern=$pattern+"*";
+                $result1 = $result2 = substituteAllString($gAnimationClipsTest, $sceneBaseNameTest, $pattern);
+                if (`startString $sceneBaseName 1` == "_" && $size > 1) {
+                    $pattern=`endString $pattern(size($pattern)-1)`;
+                    $result2 = substituteAllString($gAnimationClipsTest, `endString $sceneBaseNameTest ($size-1)`, $pattern);
+                }
+                $plusoff = "";
+                if (`size $result1` == `size $gAnimationClipsTest` && `size $result2` == `size $gAnimationClipsTest` && $sceneBaseNameTest!="_") $plusoff = " off";
+                $gAnimationClips[$i] = ($gAnimationClips[$i] + $plusoff);
+            }
+	} else if  (`size $gRootJoints` > 0) {
+// если есть кости, привязанные к мешу, но нет CS
+// предполагается, что анимация в этом случае в сцен все же есть
+// и создается фейковый клип, который необходим для корректного экспорта анимации
+		$assetPath = `file -q -sn`;
+		$assetName = basename ($assetPath,"");
+		$assetLocation = substituteAllString ($assetPath,$assetName,"");
+		$assetBaseName = (basename ($assetPath,".mb")+"_autoClip");
+		$clipTarget = ($assetLocation+$assetBaseName+".ma");
+		select -r top;
+		file -type "mayaAscii" -exportSelected -channels true -constructionHistory true -f $clipTarget;
+		$gAnimationClips[0] = $assetBaseName;
+	}
+
+	$gAnimationClips = `stringArrayRemoveDuplicates $gAnimationClips`;
+
+// ищем камерашейки
+    for ($camshape in `ls -typ camera`) {
+        //$camshape = "cameraShape1";
+        $cam = `listRelatives -p $camshape`;
+        $i=0;
+        if (`attributeQuery -ex -node $cam "shake"`) {
+            if (`getAttr ($cam[0]+".shake")`) {
+                $gShakedCameras[$i] = $cam[0];
+                $i++;
+            }
+        }
+    }
+}
+
+global proc natPreAnalizeSceneParticles() {
+    //====================================================================
+    //глобальный преанализ сцены на предмет партиклов . возвращает global string $gAllAloneParticles[]; global string $gParticlesOnlySets[];
+    //====================================================================
+    string $allSceneParticles[] = `ls -et particle`;
+    $allSceneParticles = `listRelatives -p -f $allSceneParticles`;
+    string $allSets[] = `ls -et objectSet` ;
+    string $defaultSets[] = {"defaultLightSet","defaultObjectSet","initialParticleSE","initialShadingGroup"};
+    string $userOnlySets[] = stringArrayRemove ($defaultSets, $allSets);
+    string $particlesInSets [];
+ 	clear $particlesInSets;
+    global string  $gAllAloneParticles[];
+    global string  $gParticlesOnlySets[];
+
+    clear  $gAllAloneParticles;
+	clear $gParticlesOnlySets;
+    //====================================================================
+    //проверяем есть в ли юзер сете хоть один партикл обжект, если есть считаем его партикл сетом
+    //====================================================================
+
+    $j=$k=0;
+    for ($i=0;$i<`size $userOnlySets`;$i++) {
+        if (`referenceQuery -inr $userOnlySets[$i]` ) continue;
+        string $currentSet[] = `listRelatives -f -typ particle $userOnlySets[$i]`;
+        if (`size $currentSet` != 0 ) {
+
+			$checkHide = 0;
+			for ($tempPart in $currentSet) {
+				$tempPartTrans = `listRelatives -p -f $tempPart`;
+                $particlesInSets = stringArrayCatenate ($particlesInSets, $tempPartTrans);
+				if (`natCheckObjHide  $tempPartTrans[0]`) $checkHide++;
+            }
+
+            if ($checkHide < `size $currentSet `)
+            {
+             	$gParticlesOnlySets[$j] = $userOnlySets[$i];
+            	$j++;
+            }
+
+        }
+    }
+    //====================================================================
+    //вычисляем одинокие партиклы - которые не входят ни в один сет
+    //====================================================================
+    for ($i=0;$i<`size $allSceneParticles`;$i++) {
+        if (`referenceQuery -inr $allSceneParticles[$i]` ||  `natCheckObjHide $allSceneParticles[$i]` ) continue;
+            if (!stringArrayContains ($allSceneParticles[$i], $particlesInSets)) {
+            $gAllAloneParticles[$k] = $allSceneParticles[$i];
+            $k++;
+        }
+    }
+
+	//print  $gAllAloneParticles;print $gParticlesOnlySets;
+}
+
+global proc string[] natAnalizeRootJoint(string $currentRootJoint){
+    //====================================================================
+    //анализирует рутовую кость, пишет ее в gOutNames и gOutLevels, возвращает массив мешей для этого скелетона
+    //====================================================================
+	//$currentRootJoint = "root";
+
+    string $currentSkinMeshes[] ;
+    global string $gRootJointsMeshes[];
+    global string $gSkinnedMeshes[];
+	$i=0;
+    string $ole[]; $ole[0] = $currentRootJoint;
+    $ole = `natConvertToLongNames $ole`;
+
+    for ($i = 0; $i<`size gRootJointsMeshes `; $i++) {
+    	if ( $gRootJointsMeshes[$i] == $currentRootJoint || $gRootJointsMeshes[$i] == $ole[0])  $currentSkinMeshes[`size $currentSkinMeshes`] = $gSkinnedMeshes[$i];
+    }
+
+    $currentSkinMeshes = `stringArrayRemoveDuplicates $currentSkinMeshes`;
+    $currentSkinMeshes = `sort $currentSkinMeshes`;
+
+    natFillOutArrayElement ($currentRootJoint, "skeleton", 0);
+
+    return $currentSkinMeshes;
+}
+
+global proc string[] natAnalizeMesh (string $currentMesh, int $level)
+{
+    //====================================================================
+    //анализирует меш, пишет его в gOutNames и gOutLevels, возвращает массив шейдинг груп для этого меша
+    //====================================================================
+    //$currentMesh = "decal_01";
+    string $colorSets[] = `polyColorSet -q -acs $currentMesh`;
+    string $finalSGs [];
+    string $temp[];
+    $outNameWithPins = $currentMesh;
+
+    //====================================================================
+    //если находим аттрибут декали и он != 0, превращаем объект в декаль, вычисляем радиус и прочее...
+    //====================================================================
+
+    if (`attributeQuery -node $currentMesh -ex "decal"`) {
+
+    	setKeyframe ($currentMesh + ".tx");
+        setKeyframe ($currentMesh + ".ty");
+        setKeyframe ($currentMesh + ".tz");
+
+        setKeyframe ($currentMesh + ".sx");
+        setKeyframe ($currentMesh + ".sy");
+        setKeyframe ($currentMesh + ".sz");
+
+        setKeyframe ($currentMesh + ".rx");
+        setKeyframe ($currentMesh + ".ry");
+        setKeyframe ($currentMesh + ".rz");
+        if (`getAttr ($currentMesh + ".decal")` != 0 && !`attributeQuery -n $currentMesh -ex "radius"`)  {
+            //старая декаль если нет атрибута radius, надо вычислить
+            //$currentMesh = "decal_01";
+            $copy = `duplicate -n "decalTempCopy" $currentMesh`;
+            //print $copy;
+            $parents =  `listRelatives -ap $copy`;
+            if ( `size $parents` != 0)  {
+                parent -w $copy;
+            }
+
+            $temp = `listConnections -type "animCurve" $currentMesh`;
+
+            if (`size $temp` !=0) {
+
+                setAttr ($copy[0] + ".tx") 0;
+                setAttr ($copy[0] + ".ty") 0;
+                setAttr ($copy[0] + ".tz") 0;
+
+                setAttr ($copy[0] + ".sx") 1;
+                setAttr ($copy[0] + ".sy") 1;
+                setAttr ($copy[0] + ".sz") 1;
+
+                setAttr ($copy[0] + ".rx") 0;
+                setAttr ($copy[0] + ".ry") 0;
+                setAttr ($copy[0] + ".rz") 0;
+
+            }
+
+            float $bbox[];
+            $bbox = `xform  -q  -bb $copy[0]`;
+            //$bbox = `xform  -q  -bb polyToSubd1`;
+            delete $copy;
+
+            //print $bbox;
+            float $xSide;
+            float $ySide;
+            float $zSide;
+            $xSide = `abs($bbox[0] - $bbox[3])`;
+            $ySide = `abs($bbox[1] - $bbox[4])`;
+            $zSide = `abs($bbox[2] - $bbox[5])`;
+
+            if ($xSide < 0.1 ) $xSide = 9999999;
+            else
+            	if  ($ySide < 0.1 ) $ySide = 9999999;
+            	else
+                	if  ($zSide < 0.1 ) $zSide = 9999999;
+            		else error ("Декаль " +$currentMesh+ " не плоская!");
+
+            $tempMin1 = `min $xSide $ySide`;
+            $tempMin2 = `min $tempMin1 $zSide`;
+            $bboxMin = ($tempMin2/2);
+
+            $outNameWithPins = $outNameWithPins + " decal " + ($bboxMin);
+        }
+        else
+        if (`getAttr ($currentMesh + ".decal")` != 0 && `attributeQuery -n $currentMesh -ex "radius"`) {
+             	$outNameWithPins = $outNameWithPins + " decal 0.5" ;
+        }
+    }
+
+    if (`size ($colorSets)` != 0) {
+        $outNameWithPins = $outNameWithPins + " vertexColor";
+    }
+
+    natFillOutArrayElement ($outNameWithPins, "mesh", $level);
+
+
+    string $meshMaterials[] = `listRelatives -c -ni -s $currentMesh`;
+    $meshMaterials= `listConnections -t shadingEngine $meshMaterials`;
+    $meshMaterials= `stringArrayRemoveDuplicates $meshMaterials`;
+
+    if (stringArrayContains( "initialShadingGroup", $meshMaterials) && size($meshMaterials)>1){
+        $finalSGs = stringArrayRemove ({"initialShadingGroup"}, $meshMaterials);
+        print ("Warning:  lambert1 material found on "+ $currentMesh+". Use other material, lambert1 will ignored.\n");
+    } else if (stringArrayContains( "initialShadingGroup", $meshMaterials) && size($meshMaterials)==1) {
+        print ("Warning: Only lambert1 material found on "+ $currentMesh+". This is very bad, you must create and use other material! \n");
+        $finalSGs = $meshMaterials;
+    } else $finalSGs = $meshMaterials;
+
+    return $finalSGs;
+}
+
+global proc natAnalizeMaterial(string $currentSG, int $level){
+    //====================================================================
+    //анализирует материал, связанный с шейдинг группой, пишет в gOutNames gOutLevels материал и запускает процедуры анализа текстур. проверка на lambert1
+    //====================================================================
+    //string $currentSG = "lambert2SG";
+	string $nTex[];
+    string $currentMaterial[] = `listConnections -d 1 ($currentSG+".surfaceShader")`;
+    //if ($currentMaterial[0] != "lambert1") {
+        natFillOutArrayElement ($currentMaterial[0], "material", $level);
+        //====================================================================
+        //ищем диффузную текстуру, плаггед к материалу. если она имеется заносим в бранч с уровнем +2.
+        //====================================================================
+        natAnalizeFileTexture ($currentMaterial[0],"color","diffuse",$level+1);
+        //====================================================================
+        //ищем текстуру бампа, плаггед к материалу. текстура может быть подключена через бамп2д или напрямую. если она имеется заносим в бранч с уровнем 3.
+        //====================================================================
+        natAnalizeFileTexture ($currentMaterial[0],"n","normal",$level+1);
+        //====================================================================
+        //если мат не ламберт то ищем спекулярную текстуру, плаггед к материалу. если она имеется заносим в бранч с уровнем 3.
+        //====================================================================
+        if (`objectType $currentMaterial[0]` != "lambert"){
+            natAnalizeFileTexture ($currentMaterial[0],"sc","specular",$level+1);
+        }
+
+        //$currentMaterial[0] = "lambert2";
+        if (`connectionInfo -id ($currentMaterial[0]+".color")`){
+            $tempTex = `listConnections -t "file"($currentMaterial[0]+".color")`;
+            if (`size $tempTex` == 0) {
+                print ("Warning: Unknow connection type on transparency plug "+$currentMaterial[0]+". Opacity chanel is ignored");
+            } else {
+                natAnalizeAlfaGain ($tempTex[0], ($level+1));
+            }
+
+        }
+
+        if (`connectionInfo -id ($currentMaterial[0]+".color")`){
+            $tempTex = `listConnections -t "file"($currentMaterial[0]+".color")`;
+            if (`size $tempTex` == 0) {
+                print ("Warning: Unknow connection type on color plug "+$currentMaterial[0]+". Color gain chanel is ignored");
+            } else {
+                natAnalizeColorGain ($tempTex[0], ($level+1));
+            }
+
+        }
+
+
+}
+
+global proc natAnalizeFileTexture (string $currentMaterial, string $texType, string $outType, int $level) {
+    //====================================================================
+    //анализирует текстуры связанные  с материалом. проверки на file, bump2d, GFX_textures.
+    //====================================================================
+    global string $gSpecialTexuresFolder;
+    if (`connectionInfo -id ($currentMaterial+"."+$texType)`){
+        string $nTex[]=`listConnections -d 1 ($currentMaterial+"."+$texType)`;
+        if (`objectType $nTex[0]`=="bump2d") {
+            $nTex=`listConnections  -d 1 ($nTex[0]+".bv")`;
+        }
+        if  (`objectType $nTex[0]` == "file" ) {
+            string $fileName = `getAttr ($nTex[0]+".ftn")`;
+            string $fullPath[];
+            $numTokens = `tokenize $fileName "/" $fullPath`;
+            if (`stringArrayContains $gSpecialTexuresFolder $fullPath`){
+                natFillOutArrayElement (($gSpecialTexuresFolder+"\\"+$fullPath[$numTokens-1]), $outType, $level);
+            }
+            else {
+                natFillOutArrayElement ($fullPath[$numTokens-1], $outType, $level);
+            }
+        }
+    }
+}
+
+global proc natAnalizeAloneParticle (string $currentParticle, int $level) {
+    //====================================================================
+    //анализирует одинокий партикл обджект
+    //====================================================================
+
+    global float $gFPS;
+    $curParticle = `ls -sn $currentParticle`;
+    $curPartShape = `listRelatives -s $curParticle`;
+    int $nonCycled = 0;
+    $range = (`playbackOptions -q -aet` - `playbackOptions -q -ast`);
+
+    //====================================================================
+    //проверяем установки lifespan и выясняем их влияние на зацикленность
+    //====================================================================
+
+    if (`getAttr ($curPartShape[0]+".lfm")` == 0) {
+        $nonCycled = 1;
+		warning ("Система частиц " +$curParticle[0] +  " не может быть зацикленна, так как тип lifespan установлен в constant");
+    }
+
+    if (`getAttr ($curPartShape[0]+".lfm")` == 1) {
+        if ((`getAttr ($curPartShape[0]+".lifespan")`)*$gFPS > $range) {
+            $nonCycled = 1;
+			warning ("Система частиц " +$curParticle[0] +  " не может быть зацикленна, так как время lifespan превышает длительность таймлайна");
+        }
+
+    }
+
+    if (`getAttr ($curPartShape[0]+".lfm")` == 2) {
+        if (((`getAttr ($curPartShape[0]+".lifespan")`)+ (`getAttr ($curPartShape[0]+".lfr")`))*$gFPS >= $range) {
+            $nonCycled = 1;
+			warning ("Система частиц " +$curParticle[0] +  " не может быть зацикленна, так как время lifespan превышает длительность таймлайна");
+        }
+
+    }
+
+
+    //====================================================================
+    //проверяем префикс lp или loop в имени партикла.
+    //====================================================================
+    string $tokens[];
+    string $forToken = $curParticle[0];
+    $numTokens = tokenize($forToken,"_",$tokens);
+
+    int $makeCycled=0;
+
+    if ($nonCycled !=1 && $numTokens != 0) {
+        if ($tokens[0] == "lp" || $tokens[0] == "loop") {
+            $makeCycled=1;
+        }
+    }
+
+    //====================================================================
+    //выводим в массив с учетом зацикленности
+    //смотрим все партиклы в сете, и, если все они поскейлены по Z в ноль, считаем этот партикл сет с галкой plane
+    //====================================================================
+    //$currentParticle = "particle1";
+    string $pins = " ";
+    if (`getAttr($currentParticle + ".sz")` < 0.0001) $pins = $pins + "Plane ";
+    if ($makeCycled){
+        $pins = $pins + "Cycled ";
+    }
+
+    natFillOutArrayElement (($currentParticle + " " + (($range)/$gFPS) + $pins), "particle", $level);
+
+    global int $gParticleTextureNumber;
+    $gParticleTextureNumber = 0;
+
+    string $currentParticleShape[] = `listRelatives -s $currentParticle`;
+    string $currentParticleSGA[] = `listConnections -t "shadingEngine" $currentParticleShape[0]`;
+    string $currentParticleMaterialA[] = `listConnections -d 1 ($currentParticleSGA[0]+".surfaceShader")`;
+    if (`connectionInfo -id ($currentParticleMaterialA[0]+".color")`) {
+        string $currentParticleTexture[] = `listConnections -d 1 ($currentParticleMaterialA[0]+".color")`;
+        natAnalizeParticleTexture ($currentParticleTexture[0], $level+1);
+    }
+    else {
+        print ("warning: particle system "+$currentParticle+" has no texrure assigned on " +$currentParticleMaterialA[0]+" material\n");
+    }
+
+}
+
+global proc natAnalizeSetParticle (string $currentParticle, int $level) {
+    //====================================================================
+    //анализирует сет партиклов
+    //====================================================================
+    global float $gFPS;
+    global int $gParticleTextureNumber;
+    $gParticleTextureNumber = 0;
+    //$currentParticle = "fire";
+    //====================================================================
+    //определяет, назначен ли сиквенс на партикл обжект из сета, сортирует их так, что сперва идут партиклы без сиквенца, потом с сиквенцом. промежуточная сортировка по алфавиту.
+    //====================================================================
+    string $currentParticleSet[] = `listRelatives -typ particle $currentParticle`;
+    int $nonCycled = 0;
+    $range = (`playbackOptions -q -aet` - `playbackOptions -q -ast`);
+
+	    for ($curPartShape in $currentParticleSet) {
+
+		$curPart = `listRelatives -p $curPartShape`;
+
+        if (`getAttr ($curPartShape+".lfm")` == 0) {
+            $nonCycled = 1;
+			warning ("Система частиц " + $curPart[0] +  " не может быть зацикленна, так как тип lifespan установлен в constant");
+        }
+
+        if (`getAttr ($curPartShape+".lfm")` == 1) {
+            if ((`getAttr ($curPartShape+".lifespan")`)*$gFPS > $range) {
+                $nonCycled = 1;
+				warning ("Система частиц " + $curPart[0] +  " не может быть зацикленна, так как время lifespan превышает длительность таймлайна");
+            }
+        }
+
+        if (`getAttr ($curPartShape+".lfm")` == 2) {
+            if (((`getAttr ($curPartShape+".lifespan")`)+ (`getAttr ($curPartShape+".lfr")`))*$gFPS >= $range) {
+                $nonCycled = 1;
+				warning ("Система частиц " +$curPart[0] +  " не может быть зацикленна, так как время lifespan превышает длительность таймлайна");
+            }
+        }
+
+    }
+
+    //====================================================================
+    //проверяем префикс lp или loop в имени партикла.
+    //====================================================================
+    string $tokens[];
+    string $forToken = $currentParticle;
+    $numTokens = tokenize($forToken,"_",$tokens);
+
+    int $makeCycled=0;
+
+    if ($nonCycled !=1 && $numTokens != 0) {
+        if ($tokens[0] == "lp" || $tokens[0] == "loop") {
+            $makeCycled=1;
+        }
+    }
+
+    //====================================================================
+    //выводим в массив с учетом зацикленности
+    //====================================================================
+
+    //natFillOutArrayElement ($currentParticle, "particle", $level);
+    //natFillOutArrayElement ("", "Cycle "+$makeCycled, ($level+1));
+    //$currentParticle = "particleSet";
+    string $pins = " ";
+
+    //смотрим все партиклы в сете, и, если все они поскейлены по Z в ноль, считаем этот партикл сет с галкой plane
+    $h=0;
+    for ($obj in $currentParticleSet) {
+        $temp = `listRelatives -p $obj`;
+        if (`getAttr($temp[0] + ".sz")` < 0.0001) $h = $h+1;
+    }
+
+    if ($h == `size($currentParticleSet)`)  $pins = $pins + "Plane ";
+
+    if ($makeCycled){
+        $pins = $pins + "Cycled ";
+    }
+
+    natFillOutArrayElement (($currentParticle + " " + (($range)/$gFPS) + $pins), "particle", $level);
+
+
+
+    for ($i=0; $i< `size $currentParticleSet`; $i++) {
+        string $currentParticleSGA[] = `listConnections -t "shadingEngine" $currentParticleSet[$i]`;
+        string $currentParticleMaterialA[] = `listConnections -d 1 ($currentParticleSGA[0]+".surfaceShader")`;
+        string $currentParticleTexture[] = `listConnections -d 1 ($currentParticleMaterialA[0]+".color")`;
+        if (`getAttr ($currentParticleTexture[0] +".uhc")`) {
+            $currentParticleSet[$i] = "1"+ $currentParticleSet[$i];
+        }
+        else {
+            $currentParticleSet[$i] = "0"+ $currentParticleSet[$i];
+        }
+    }
+    $currentParticleSet = `sort $currentParticleSet`;
+    //====================================================================
+    // запускаем процедуру анализа текстуры для каждого партикл обжекта из сортированного сета
+    //====================================================================
+    string $currentParticleMaterialsInSet[];
+    for ($i=0; $i< `size $currentParticleSet`; $i++) {
+        int $lenghtString = `size $currentParticleSet[$i]`;
+        string $currentSortedParticleInSet = endString ($currentParticleSet[$i], $lenghtString-1);
+        string $currentParticleSGA[] = `listConnections -t "shadingEngine" $currentSortedParticleInSet`;
+        string $currentParticleMaterialA[] = `listConnections -d 1 ($currentParticleSGA[0]+".surfaceShader")`;
+        $currentParticleMaterialsInSet[$i] = $currentParticleMaterialA[0];
+    }
+    string $currentParticleMaterialsNonDuplicated[] = `stringArrayRemoveDuplicates $currentParticleMaterialsInSet`;
+    $i=0;
+    for ($particleMat in $currentParticleMaterialsNonDuplicated){
+
+        if (`connectionInfo -id ($currentParticleMaterialsNonDuplicated[$i]+".color")`) {
+            string $currentParticleTexture[] = `listConnections -d 1 ($currentParticleMaterialsNonDuplicated[$i]+".color")`;
+            natAnalizeParticleTexture ($currentParticleTexture[0], $level+1);
+        }
+        else {
+            print ("warning: particle set "+$currentParticle+" has no texrure assigned on " +$particleMat+" material\n");
+        }
+
+        $i++;
+        }
+    }
+
+global proc natAnalizeParticleTexture (string $currentTexture, int $level) {
+    //====================================================================
+    // анализирует партикл текстуру
+    //====================================================================
+    global int $gParticleTextureNumber;
+    string $fileName = `getAttr ($currentTexture + ".ftn")`;
+    string $fileNameExt = basename ($fileName, "");
+    string $filePureName = basenameEx ($fileName);
+    string $extention = substitute ($filePureName,$fileNameExt,"");
+    string $fileBaseName = basenameEx ($filePureName);
+    string $seqDigits = substitute ($fileBaseName,$filePureName,"");
+    int $padZero = `size ($seqDigits)`-1;
+    //====================================================================
+    // смотрим, имеет ли место быть сиквенция.
+    //====================================================================
+    if (`getAttr ($currentTexture +".uhc")`) {
+        for ($i=`getAttr ($currentTexture +".sce")`;$i<=`getAttr ($currentTexture +".ece")`;$i=$i+`getAttr ($currentTexture +".bci")`) {
+            string $numInSeq = natPadZero ($i,$padZero);
+            string $newName = $fileBaseName+"."+$numInSeq+$extention;
+            string $newType = $gParticleTextureNumber;
+            natFillOutArrayElement ($newName,$newType,$level);
+            $gParticleTextureNumber++;
+        }
+    }
+    else {
+        string $outFileName = basename ($fileName,"");
+        natFillOutArrayElement ($outFileName,$gParticleTextureNumber,$level);
+        $gParticleTextureNumber++;
+    }
+}
+
+global proc natFillOutArrayElement (string $name, string $type, int $level) {
+    //====================================================================
+    //процедра записи значений в выходной массив
+    //====================================================================
+    global string $gOutNames[];
+    global int $gOutLevels[];
+    global int $gOutIndex;
+    string $tempTokens[];
+    //====================================================================
+    //по умолчанию процедура пишет полные длинные пути. для того, чтобы писать короткие пути, закоментировать след. строчку и раскоментировать следующие две после нее
+    //====================================================================
+    //$gOutNames[$gOutIndex] = ($type + " " + $name);
+    $numTokens = `tokenize $name "|" $tempTokens`;
+    $gOutNames[$gOutIndex] = ($type + " " + $tempTokens[$numTokens-1]);
+    $gOutLevels[$gOutIndex] = $level;
+    $gOutIndex++;
+}
+
+global proc natPythonStyleOutString (){
+    //====================================================================
+    //процедура форматирования выходного архива в питон стайл. на выходе формирует одну строку $gOutString
+    //====================================================================
+    global string $gOutNames[];
+    global int $gOutLevels[];
+    global string $gOutString;
+    $gOutString="";
+    for ($i=0;$i<`size $gOutNames`;$i++){
+        for ($j=0;$j<$gOutLevels[$i];$j++){
+            $gOutString=$gOutString+"\t";
+        }
+        if ($i<(`size $gOutNames`-1)){
+            $gOutString = $gOutString + $gOutNames[$i]+"\n";
+        }
+        else{
+            $gOutString = $gOutString + $gOutNames[$i];
+        }
+    }
+}
+
+global proc natWriteOutStringToFile (string $outFileName){
+    //====================================================================
+    //процедура записи файла на диск. имя файла = имя текущей сцены + ".desc"
+    //====================================================================
+
+    string $sceneName= `file -q -sn`;
+    string $scenePath= `dirname $sceneName` + "/";
+    string $filesOnPath[] = `getFileList -fld $scenePath -fs "*"`;
+    global string $gOutString;
+    $outFileNameNP = `basename $outFileName ""`;
+    //$outFileName = $descFileName;
+    if  (stringArrayContains($outFileNameNP,$filesOnPath)){
+        sysFile -delete $outFileName;
+    }
+    $fileId = `fopen $outFileName`;
+//    $outLenght = size($gOutString);
+//    string $outString =  substring ($gOutString,1,($outLenght-1));
+//    fwrite $fileId $outString;
+    fprint $fileId $gOutString;
+    fclose $fileId;
+}
+
+global proc string natPadZero (int $number, int $padZero) {
+    //====================================================================
+    //процедура, возвращающая номер в указанной pad разрядности. например padZero=3, number= 5 return 005, number =35 return 035
+    //====================================================================
+    string $numStr =$number;
+    for ($i=size($numStr);$i<$padZero;$i++) {
+        $numStr = "0" + $numStr;
+    }
+    return $numStr;
+}
+
+
+
+global proc natAnalizeStaticMeshAnimations (string $curentMesh, int $level ){
+    //====================================================================
+    // процедура анализирующая трансформ меша на предмет анимаций. смотрит анимацию на каналах .tx .ty .tz .rx .ry .rz .sx .sy .sz и
+    // запускаем процедуру  natAnalizeAnimCurve  котрая упрощает курву до некого количества линейных ключей, а потом сбрасывает значения время и соотв. им значения ключей в out массив
+    //====================================================================
+
+    //$curentMesh = "decal_01";
+
+    if (`connectionInfo -id ($curentMesh+".tx")` || `connectionInfo -id ($curentMesh+".ty")` || `connectionInfo -id ($curentMesh+".tz")` || `connectionInfo -id ($curentMesh+".rx")` || `connectionInfo -id ($curentMesh+".ry")` || `connectionInfo -id ($curentMesh+".rz")` ||  `connectionInfo -id ($curentMesh+".sx")` || `connectionInfo -id ($curentMesh+".sy")` || `connectionInfo -id ($curentMesh+".sz")`)
+    {
+
+/* dv - переехало в natAnalizeAnimCurve
+        $tempLocator = `spaceLocator`;
+        $translateMatrixLocator = `rename $tempLocator ($curentMesh+"TranlateMatrixLocator")`;
+        $pointConstrain = `pointConstraint -w 1   $curentMesh  $translateMatrixLocator`;
+        $rotateConstrain = `orientConstraint -w 1   $curentMesh  $translateMatrixLocator`;
+        $scaleConstrain = `scaleConstraint -w 1   $curentMesh  $translateMatrixLocator`;
+*/
+        string $attrsArray[] = {"tx","ty","tz","rx","ry","rz","sx","sy","sz"};
+        string $typesArray[] = {"translateX","translateY","translateZ","rotateX","rotateY","rotateZ","scaleX","scaleY","scaleZ"};
+
+		for ($i=0;$i<`size ($attrsArray)`;$i++) {
+            natAnalizeAnimCurve ($curentMesh,$attrsArray[$i],$typesArray[$i], $level) ;
+        }
+    }
+}
+
+global proc natAnalizeNoCsSkeleton (string $curentRootJoint ){
+    // проходим по все иерархии костей и смотрим каждую кость на предмет анимаций.
+    //если анимация есть - запускаем natAnalizeJointAnimations ()
+}
+
+global proc natAnalizeJointAnimations (string $curentJoint ){
+    // смотрим анимацию на канале .tx
+    // пишем че-то в массив, что именно надо договорится со стасом
+    // запускаем процедуру  natAnalizeAnimCurve (string $имя анимкурвы, bool $упростить, float $tolerance time, string $outFile), котрая упрощает курву до некого количества линейных ключей, а потом сбрасывает значения время и соотв. им значения ключей в файл в плейн виде
+    // то же самое повторяется для .ty .tz .rx .ry .rz .sx .sy .sz
+}
+
+global proc natAnalizeAnimCurve (string $animObject, string $animAttr, string $animChannelType, int $level) {
+    //====================================================================
+    //анализирует анимейшн курвую. опередляет time range, сверяет с time range майской сцены,  бейкает значение анимации в каждом кадре, затем упрощает получивщуюся анимкурву и делает ее тангенцы линейными. после чего проходит по всем ключам и сохраняет их время и значения в аут-массиве.
+    //дв: у нас 3 ситуации: 1 - есть исходная анимкурва для бейка, 2 - есть что-то на канале бейка, 3 - нет ничего на канале бейка.
+    //есть исключение - если атрибуты ag cg tfu tfv - надо искать аним курву от меша с которм этот атрибут связан
+    //====================================================================
+    //$animObject = "pCylinder5";
+	//$animAttr = "sx";
+    //$animChannelType = "tfv";
+    //$level = 1;
+    global float $gAnimCurveSimplifyTolerance;
+    global int $gUseDoubleSimplifyaAlgorithm;
+    global float $gFPS;
+    global int $gSaveAnimToggle;
+	$gSaveAnimToggle=0;
+	string $translateMatrixLocator;
+	string $pConstrain[];
+	string $rConstrain[];
+	string $sConstrain[];
+	string $sourceAnimCurve;
+	int $hasSourceAnimCurve=0;
+
+    $sceneFirstFrame = `playbackOptions -q -minTime `;
+    $sceneLastFrame = `playbackOptions -q -maxTime `;
+    float $lastFrame = $sceneLastFrame;
+    float $firstFrame = $sceneFirstFrame;
+    $firstFrame = `floor $firstFrame`;
+    $lastFrame = `ceil $lastFrame`;
+    string $temp[];
+
+//dv находим время начала и конца добейканной анимации. если анимация длинее таймалайна или на ней есть инфинити - бейкаем по таймалайну, если короче - бейкаем по курве
+//но для начала надо определить исходную анимКурву и ее наличие
+	if (`connectionInfo  -id ($animObject + "." + $animAttr)`) {
+    	$temp = listConnections ($animObject + "." + $animAttr);
+		if (`objectType $temp[0]` == "animCurveTU" || `objectType $temp[0]` == "animCurveTA" || `objectType $temp[0]` == "animCurveTL" ) {
+//1. все просто - сразу нужная нам анимкурва
+            $sourceAnimCurve = $temp[0];
+            $hasSourceAnimCurve = 1;
+//2. если нет, проверяем на спец атрибуты (ag cg* tf*) и пытаемся найти нужную по связям.
+        } else if ($animAttr == "ag" || $animAttr == "colorGainR" || $animAttr == "colorGainG" || $animAttr == "colorGainB" || $animAttr == "tfu" || $animAttr == "tfv"){
+//если связь на трансформ ноду
+            if (`objectType $temp[0]` == "transform"){
+//смотрим есть ли анимация на этом атрибуте
+                $temp = `listConnections -d 0 -s 1 -p 1 ($animObject + "." + $animAttr)`;
+                if (`connectionInfo -id $temp`) {
+                    $temp = `listConnections -t "animCurve" $temp`;
+//если есть анимация и она нужного типа - считаем ее исходной анимКурвой
+                    if (`objectType $temp[0]` == "animCurveTU" || `objectType $temp[0]` == "animCurveTA" || `objectType $temp[0]` == "animCurveTL" ){
+                        $sourceAnimCurve = $temp[0];
+                        $hasSourceAnimCurve = 1;
+                    }
+                } else $lastFrame = $firstFrame;
+//если нет коннекшена вообще считаем что анимации нет и тупо бейкаем один кадр
+            }
+        }
+//3. если нет коннекшена вообще считаем что анимации нет и тупо бейкаем один кадр
+    } else $lastFrame = $firstFrame;
+
+	string $object = $animObject;
+
+//print $sourceAnimCurve;
+//print $hasSourceAnimCurve;
+//print $firstFrame;
+//print $lastFrame;
+int $keysNumTemp;
+
+//если есть исходная анимкурва - выставляем рэнж бейка по ней
+    if ($hasSourceAnimCurve) {
+        $keysNumTemp = `keyframe -q -kc $sourceAnimCurve`;
+        $keysNumTemp--;
+        float $crStartFrame[];
+        float $crEndFrame[];
+        $crStartFrame = `keyframe -in 0 -q -tc $sourceAnimCurve`;
+        $crEndFrame = `keyframe -in $keysNumTemp -q -tc $sourceAnimCurve`;
+        selectKey -r -k $sourceAnimCurve;
+        $postInfinity =  `setInfinity  -q -poi`;
+        $preInfinity =  `setInfinity -q -pri`;
+        selectKey -cl;
+//бейк по рэнжу анимкурв только в случае если они помещаются в таймлайн и нет инфинити
+        if  ($lastFrame > $crEndFrame[0] && $postInfinity[0] == "constant")  $lastFrame = $crEndFrame[0];
+//      if  ($firstFrame < $crStartFrame[0] && $preInfinity[0] == "constant")  $firstFrame = $crStartFrame[0];
+		if ($keysNumTemp == 0) $lastFrame=$firstFrame=0;
+    }
+	string $parent[];
+    string $object = $animObject;
+//поиск парентов с анимациями искомого атрибута или ненулевыми ротейтами. при наличии таких парентов бейкаем весь канал
+    if (`objectType $animObject` == "transform") {
+    	while ($object != ""){
+			$parent =  `listRelatives -p -f -ni  $object`;
+        	$object = $parent[0];
+			if ($object != "") {
+            	if (`connectionInfo -id ($object+"."+$animAttr)` || `connectionInfo -id ($object+".rx")` || `connectionInfo -id ($object+".ry")` || `connectionInfo -id ($object+".rz")` || `getAttr ($object+".rx")` !=0 || `getAttr ($object+".ry")` !=0 || `getAttr ($object+".rz")` !=0){
+					if ($animAttr != "sx" && $animAttr != "sy" && $animAttr != "sz") {
+            			$lastFrame = $sceneLastFrame;
+            			$lastFrame = `ceil $lastFrame`;
+            		}
+        		}
+            }
+		}
+    }
+
+	string $bakeTime;
+    if ($lastFrame == $firstFrame) $bakeTime= $firstFrame+":"+($firstFrame+0.01); else $bakeTime = $firstFrame+":"+$lastFrame;
+
+	if ($animAttr == "rx" || $animAttr == "ry" || $animAttr == "rz" || $animAttr == "tx" || $animAttr == "ty" || $animAttr == "tz" || $animAttr == "sx" || $animAttr == "sy" || $animAttr == "sz") {
+    	$tempLocator = `spaceLocator`;
+    	$objShortName = `ls $animObject`;
+    	$translateMatrixLocator = `rename $tempLocator ($objShortName[0]+"_"+$animAttr)`;
+    	$pConstrain = `pointConstraint -w 1   $animObject  $translateMatrixLocator`;
+    	$rConstrain = `orientConstraint -w 1   $animObject  $translateMatrixLocator`;
+    	$sConstrain = `scaleConstraint -w 1   $animObject  $translateMatrixLocator`;
+		$animObject = $translateMatrixLocator;
+	}
+
+    $animAttrBake = "-at " + $animAttr;
+//воркэраунд на тему бейка всего ротейта одновременно. иначе, при раздельном бейке, замечены глюки
+    if ($animAttr == "rx" || $animAttr == "ry" || $animAttr == "rz") $animAttrBake = "-at rx -at ry -at rz";
+
+// сохраняем время source ключей
+    if ($hasSourceAnimCurve && $keysNumTemp != 0) {
+		animCurveSaveTimeInMemory($sourceAnimCurve);
+    }
+
+
+    $bakeCommand = "bakeResults -t \"" + $bakeTime + "\" " + $animAttrBake + " -sb 1 -sac 0 \"" + $animObject +"\"";
+    eval ($bakeCommand);
+    $animCurve = `listConnections -d 1 ($animObject+"."+$animAttr)`;
+
+// сохраняем значения source ключей
+    if ($hasSourceAnimCurve && $keysNumTemp != 0) {
+		animCurveSaveValuesInMemory($animCurve[0]);
+    }
+
+
+// simplify x2
+    filterCurve -f "simplify"  -tto $gAnimCurveSimplifyTolerance $animCurve;
+    if ($gUseDoubleSimplifyaAlgorithm !=0) filterCurve -f "simplify"  -tto $gAnimCurveSimplifyTolerance $animCurve;
+
+// переносим значения source ключей на бейканную и упрощенную курву
+    if ($hasSourceAnimCurve && $keysNumTemp != 0) {
+		animCurveLoadFromMemory($animCurve[0]);
+    }
+
+//инвертим значения ключей, если это атрибут tfu
+    if ($animAttr == "tfu") scaleKey -iub 0 -vs -1 -vp 0 $animCurve;
+
+//проходим циклам по всем ключам и скидываем значения в массив
+    keyTangent  -t  $bakeTime -itt "linear" -ott "linear" $animCurve ;
+    int $keysNum = `keyframe -time $bakeTime -q -kc  $animCurve`;
+    string $outTimes="";
+    string $outValues="";
+    for ($i=0;$i<$keysNum;$i++){
+        $currentTime = `keyframe -in $i -q -tc $animCurve`;
+        $currentTime[0] = ($currentTime[0] - $sceneFirstFrame)/$gFPS;
+        //$currentStrTime = strToFloat( $currentTime[0],4);
+        $outTimes = $outTimes +  $currentTime[0] + " ";
+        $currentValue =  `keyframe -in $i -q -vc $animCurve`;
+        //$currentStrValue = strToFloat($currentValue[0],4);
+        $outValues = $outValues +  $currentValue[0] + " ";
+    }
+    natFillOutArrayElement ($animChannelType, "animChannel", $level);
+    natFillOutArrayElement ($outTimes, "time", $level+1);
+    natFillOutArrayElement ($outValues, "value", $level+1);
+
+    if ($animAttr == "rx" || $animAttr == "ry" || $animAttr == "rz" || $animAttr == "tx" || $animAttr == "ty" || $animAttr == "tz" || $animAttr == "sx" || $animAttr == "sy" || $animAttr == "sz") {
+		delete $pConstrain $rConstrain  $sConstrain;
+    	delete $translateMatrixLocator;
+	}
+}
+
+global proc natAnalizeAnimUV (string $shadingGroupName,  int $level){
+    //$shadingGroupName = "lambert3SG";
+    string $currentMaterial[] = `listConnections -d 1 ($shadingGroupName+".surfaceShader")`;
+    $materialName = $currentMaterial[0];
+    string $texDiff[];
+    string $texxPlacement[];
+    float $sceneFirstFrame = `playbackOptions -q -ast `;
+    float $sceneLastFrame = `playbackOptions -q -aet `;
+    int $firstFrame =`floor $sceneFirstFrame`;
+    int $lastFrame = `ceil $sceneLastFrame`;
+    string $bakeTime = $firstFrame+":"+$lastFrame;
+    if (`connectionInfo -id ($materialName+".color")`){
+        $texDiff=`listConnections -d 1 ($materialName+".color")`;
+        if (`objectType $texDiff[0]` == "file" && `connectionInfo -id ($texDiff[0]+".tf")`){
+            $texxPlacement = `listConnections -d 1 ($texDiff[0]+".tf")`;
+            string $attrsArray[] = {"tfu","tfv"};
+            string $typesArray[] = {"offsetU","offsetV"};
+            $i = 0;
+            for ($attr in $attrsArray) {
+                if (`connectionInfo -id ($texxPlacement[0]+"."+$attr)`) {
+
+                    //bakeResults   -t $bakeTime -sb 1 -sac 0 $animCurve;
+
+                    natAnalizeAnimCurve ($texxPlacement[0],$attr,$typesArray[$i],$level) ;
+
+                }
+                $i++;
+            }
+        }
+    }
+}
+
+global proc natAnalizeAlfaGain (string $tex, int $level){
+    //$tex = "file1";
+    if (`connectionInfo -id ($tex+".ag")` ){
+        natAnalizeAnimCurve ($tex,"ag","opacity",$level) ;
+    }
+
+    if (!`connectionInfo -id ($tex+".ag")` && `getAttr ($tex+".ag")` != 1) {
+        setKeyframe ($tex+".ag");
+        natAnalizeAnimCurve ($tex,"ag","opacity",$level) ;
+    }
+}
+
+global proc natAnalizeColorGain (string $tex, int $level){
+    //$tex = "file1";
+    if (`connectionInfo -id ($tex+".colorGainR")`
+    || `connectionInfo -id ($tex+".colorGainG")`
+    || `connectionInfo -id ($tex+".colorGainB")`)
+    {
+        natAnalizeAnimCurve ($tex,"colorGainR","multR",$level) ;
+        natAnalizeAnimCurve ($tex,"colorGainG","multG",$level) ;
+        natAnalizeAnimCurve ($tex,"colorGainB","multB",$level) ;
+    }
+
+    if (!`connectionInfo -id ($tex+".colorGainR")` && `getAttr ($tex+".colorGainR")` != 1) {
+        setKeyframe ($tex+".colorGainR");
+        natAnalizeAnimCurve ($tex,"colorGainR","multR",$level) ;
+    }
+    if (!`connectionInfo -id ($tex+".colorGainG")` && `getAttr ($tex+".colorGainG")` != 1) {
+        setKeyframe ($tex+".colorGainG");
+        natAnalizeAnimCurve ($tex,"colorGainG","multG",$level) ;
+    }
+    if (!`connectionInfo -id ($tex+".colorGainB")` && `getAttr ($tex+".colorGainB")` != 1) {
+        setKeyframe ($tex+".colorGainB");
+        natAnalizeAnimCurve ($tex,"colorGainB","multB",$level) ;
+    }
+}
+
+global proc natAnalizeCameraShake (string $cam, int $level){
+    //$cam = "camera1";
+    natFillOutArrayElement ($cam, "camera", $level);
+    if (`connectionInfo -id ($cam+".tx")`
+    || `connectionInfo -id ($cam+".ty")`
+    || `connectionInfo -id ($cam+".tz")`
+    || `connectionInfo -id ($cam+".rx")`
+    || `connectionInfo -id ($cam+".ry")`
+    || `connectionInfo -id ($cam+".rz")`
+    )
+    {
+        global float $gFPS;
+        $sceneFirstFrame = `playbackOptions -q -ast `;
+        $sceneLastFrame = `playbackOptions -q -aet `;
+        float $lastFrame = $sceneLastFrame;
+        float $firstFrame = $sceneFirstFrame;
+        $firstFrame = `floor $firstFrame`;
+        $lastFrame = `ceil $lastFrame`;
+        string $bakeTime = $firstFrame+":"+$lastFrame;
+        string $animAttrBake = "-at ";
+
+        $dtx = `getAttr ($cam+".tx")`;
+        $dty = `getAttr ($cam+".ty")`;
+        $dtz = `getAttr ($cam+".tz")`;
+
+        $dtrx = `getAttr ($cam+".rx")`;
+        $dtry = `getAttr ($cam+".ry")`;
+        $dtrz = `getAttr ($cam+".rz")`;
+
+        //тут мы смотрим на анимкурвы, если есть хорошо, если нет то бейкаем. это для того, чтобы потом отнять dt и получить "типа" нормализованные курвы
+
+        $curveX = `listConnections -type "animCurve" ($cam + ".tx")`;
+        $curveY = `listConnections -type "animCurve" ($cam + ".ty")`;
+        $curveZ = `listConnections -type "animCurve" ($cam + ".tz")`;
+
+        $curveRX = `listConnections -type "animCurve" ($cam + ".rx")`;
+        $curveRY = `listConnections -type "animCurve" ($cam + ".ry")`;
+        $curveRZ = `listConnections -type "animCurve" ($cam + ".rz")`;
+
+
+        //если хоть на один канал нет анимации - запекаем всю пачку. чтобы было.
+        if (`size $curveX` == 0 || `size $curveY` == 0 || `size $curveZ` == 0)
+        {
+            $animAttrBake = "-at tx -at ty -at tz ";
+            setKeyframe ($cam+".tx");
+            setKeyframe ($cam+".ty");
+            setKeyframe ($cam+".tz");
+            $bakeCommand = "bakeResults -t \"" + $bakeTime + "\" " + $animAttrBake + " -sb 1 -sac 0 \"" + $cam +"\"" ;
+            eval ($bakeCommand);
+            $curveX = `listConnections -type "animCurve" ($cam + ".tx")`;
+            $curveY = `listConnections -type "animCurve" ($cam + ".ty")`;
+            $curveZ = `listConnections -type "animCurve" ($cam + ".tz")`;
+        }
+
+        if (`size $curveRX` == 0 || `size $curveRY` == 0 || `size $curveRZ` == 0)
+        {
+            $animAttrBake = "-at rx -at ry -at rz ";
+            setKeyframe ($cam+".rx");
+            setKeyframe ($cam+".ry");
+            setKeyframe ($cam+".rz");
+            $bakeCommand = "bakeResults -t \"" + $bakeTime + "\" " + $animAttrBake + " -sb 1 -sac 0 \"" + $cam +"\"" ;
+            eval ($bakeCommand);
+            $curveRX = `listConnections -type "animCurve" ($cam + ".rx")`;
+            $curveRY = `listConnections -type "animCurve" ($cam + ".ry")`;
+            $curveRZ = `listConnections -type "animCurve" ($cam + ".rz")`;
+        }
+
+
+        // сдвигаем начальные положения в нули. некий аналог нормализации значений
+        keyframe -e -iub true -r -o over -vc (-$dtx) $curveX[0];
+        keyframe -e -iub true -r -o over -vc (-$dty) $curveY[0];
+        keyframe -e -iub true -r -o over -vc (-$dtz) $curveZ[0];
+
+        keyframe -e -iub true -r -o over -vc (-$dtrx) $curveRX[0];
+        keyframe -e -iub true -r -o over -vc (-$dtry) $curveRY[0];
+        keyframe -e -iub true -r -o over -vc (-$dtrz) $curveRZ[0];
+
+        //анализируем курву.
+        natAnalizeAnimCurve ($cam,"tx","translateX",$level+1) ;
+        natAnalizeAnimCurve ($cam,"ty","translateY",$level+1) ;
+        natAnalizeAnimCurve ($cam,"tz","translateZ",$level+1) ;
+
+        natAnalizeAnimCurve ($cam,"rx","rotateX",$level+1) ;
+        natAnalizeAnimCurve ($cam,"ry","rotateY",$level+1) ;
+        natAnalizeAnimCurve ($cam,"rz","rotateZ",$level+1) ;
+    }
+
+
+}
+
+global proc string strToFloat (float $inputFloat, int $decimalPrecision){
+    int $int = $inputFloat;
+    string $res = $int + ".";
+    $inputFloat = abs($inputFloat-$int);
+    $inputFloat *= `pow 10 $decimalPrecision`;
+    $int = abs($inputFloat);
+    return ($res + $int);
+}
+
+
+
+global proc animCurveSaveTimeInMemory(string $curve)
+{
+//string $curveTime = "pPlane2_uScroll";
+//string $curveValues = "pCube1_translateY";
+//animCurveSaveInMemory $curve;
+	global float $gAnimTimes[];
+	clear $gAnimTimes;
+	$gAnimTimes = `keyframe -q -tc $curve`;
+}
+
+global proc animCurveSaveValuesInMemory(string $curve)
+{
+//string $curveTime = "pCube1_translateY";
+//string $curveValues = "pCube1_translateY";
+//animCurveSaveInMemory $curve;
+
+	global float $gAnimTimes[];
+	global float $gAnimValues[];
+	float $tmp[];
+	clear $gAnimValues;
+	clear $tmp;
+
+	for ($i=0; $i<`size $gAnimTimes`;$i++) {
+		$tmp = `keyframe -time $gAnimTimes[$i] -q -vc $curve`;
+		$gAnimValues[$i] = $tmp[0];
+		clear $tmp;
+    }
+}
+
+
+global proc animCurveLoadFromMemory(string $curve)
+{
+//string $curve = "pCube1TranlateMatrixLocator_translateY";
+//animCurveLoadFromMemory $curve;
+
+	global float $gAnimTimes[];
+	global float $gAnimValues[];
+
+
+	float $times[];
+	float $values[];
+
+
+	$times = $gAnimTimes;
+	$values = $gAnimValues;
+
+
+	for ($count=0; $count < `size $times`; $count++)
+    	setKeyframe -time $times[$count] -v $values[$count] $curve;
+}
+
+global proc string[] natConvertToLongNames (string $objs[]) {
+
+	//$objs = $jointsList;
+	$i=0;
+	string $objsOut[];
+	for ($obj in $objs) {
+		$temp = `ls -l $objs[$i]`;
+		$objsOut[$i] =  $temp[0];
+		$i++;
+    }
+	return $objsOut;
+}
+
+global proc string[] natConvertToShortNames (string $objs[]) {
+
+	//$objs = $jointsList;
+	$i=0;
+	string $objsOut[];
+	for ($obj in $objs) {
+		$temp = `ls -sn $objs[$i]`;
+		$objsOut[$i] =  $temp[0];
+		$i++;
+    }
+	return $objsOut;
+}
+
+global proc int natCheckObjHide  (string $obj) {
+	// $objs = `ls -l vedun_mesh`; $obj = "set1";
+//проверяет хайденность объекта по правилам ПВ, возвращает 1 если объект захайден
+
+    string $nowTransform = $obj;
+	string $tempToken[];
+	string $tempTokenFP[];
+
+
+    $end = 0;
+    $vis = 0;
+	int $checkVis = 0;
+
+	while ($end != 1) {
+		tokenize ($nowTransform,"|", $tempTokenFP);
+
+		if (`size $tempTokenFP` > 1)
+			tokenize ($tempTokenFP[`size $tempTokenFP`-1],"_", $tempToken);
+        else
+			tokenize ($nowTransform,"_", $tempToken);
+
+		//print $tempToken;
+
+		$tempToken[0] = `tolower $tempToken[0]`;
+		$uptransform = `listRelatives -p -f $nowTransform`;
+
+        if (!`attributeQuery -node $nowTransform -ex "visibility"`) $checkVis = 0; else $checkVis = `getAttr ($nowTransform+".visibility")`;
+
+    	if ( $checkVis == 0 || $tempToken[0] == "ne" || $tempToken[0] == "no" || $tempToken[0] == "non" || $tempToken[0] == "|ne" || $tempToken[0] == "|no" || $tempToken[0] == "|non") {
+        	$vis=1;
+            $end=1;
+        }
+
+		if (`size $uptransform` != 0 ) {
+        	$nowTransform = $uptransform[0];
+        } else {
+        	$end=1;
+        }
+	}
+	return $vis;
+}
+
+
+global proc string[] natFindMeshFromSkinCluster (string $skinCluster){
+    string $nextNodeType;
+    string $nextNodes[];
+    string $cNode;
+    string $meshes [];
+
+	//$skinCluster = "skinCluster1";
+
+	$meshes = `listConnections -t mesh -d 1 -s 0 $skinCluster`;
+    $gpNodes = `listConnections -d 1 -s 0 -t groupParts $skinCluster`;
+	$i = `size($meshes)`;
+
+    if (`size $gpNodes` != 0 ) {
+	    //====================================================================
+	    // проходим по всем нодам от груп-партам и ищем трансформ ноду. если встречаем разветвление, то здесь начинается некая эвртистика, которую еще надо тестить
+	    //====================================================================
+	    for ($cNode in $gpNodes){
+	        $nextNodeType = "";
+	        while ($nextNodeType != "transform"){
+	            $nextNodes = `listConnections -d 1 -s 0 -sh 0  $cNode`;
+	            if (`size $nextNodes` >1){
+	                $j = 0;
+	                for ($node in $nextNodes) {
+	                    if (`objectType $node` == "transform") {
+	                        $nextNodeType =  "transform";
+	                        $cNode = $node;
+	                        $j++;
+	                    } else if ($nextNodeType != "transform") {
+    	                    $nextNodeType = `objectType $node`;
+	                        $cNode = $node;
+	                        $j++;
+	                    }
+    	            }
+        	    } else {
+	                $nextNodeType = `objectType $nextNodes`;
+    	            $cNode = $nextNodes[0];
+	            }
+	        }
+    		$meshes [$i] = $cNode;
+			$i++;
+	    }
+    }
+
+	$meshes = `stringArrayRemoveDuplicates  $meshes`;
+    $meshes = `sort  $meshes`;
+
+    return $meshes;
+}
+
+global proc string[] natFindRootJoint (string $joints[]) {
+    //====================================================================
+    //процедура, уверенно возвращающая имя верхней кости в иерархии
+    //====================================================================
+    //$joints = $jointsList;
+
+	string $parentJoint = $joints[0];
+   	string $currentJoint;
+	string $rootsJoints[];
+
+	while (`size $joints` > 0) {
+
+		$parentJoint = $joints[0];
+    	$currentJoint = "";
+
+    	while ($parentJoint != ""){
+        		string $current[] = `ls -l $parentJoint`;
+        		$currentJoint=$current[0];
+        		string $parent[] = `listRelatives -p -f -typ joint $currentJoint`;
+        		$parentJoint = $parent[0];
+    	}
+
+		$rootsJoints[`size $rootsJoints`] = $currentJoint;
+		//$natCheckerControlsErr[`size $natCheckerControlsErr`] = $shortName1;
+
+		$childrens = `listRelatives -ad -f  $currentJoint`;
+		$childrens[`size $childrens`] = $currentJoint;
+		$joints = `stringArrayRemove $childrens $joints`;
+
+    	}
+	return $rootsJoints;
+}
+
+/*
+// процедура фильтрует массив объектов по заданному типу
+global proc string[] natFilterType (string $objs[], string $type) {
+	string $filteredObjs[];
+	for ($obj in $objs) {
+		if (`objectType $obj` == $type || size(`listRelatives -s -typ $type $obj` ) != 0) $filteredObjs[`size $filteredObjs`] = $obj;
+    	}
+	return $filteredObjs;
+}
+/*
+
+
+//====================================================================
+// код для тестирования анализатора. нужно открыть сцену, запусить следующую строку и затем можно принтить содержимое переменных
+//====================================================================
+/*
+natSceneAnalizer "" "";print $gOutString
+natPreAnalizeScene
+print $gOutString
+print $gOutNames
+print $gOutLevels
+print $gOutIndex
+
+    print $gRootJoints;
+	print $gSkinnedMeshes;
+	print $gRootJointsMeshes;
+	print $gStaticMeshes;
+	print $gAnimationClips;
+	print $gShakedCameras;
+
+    print $gAllAloneParticles;
+    print $gParticlesOnlySets;
+
+    print  `size $gRootJoints`;
+	print `size $gSkinnedMeshes`;
+    print `size $gRootJointsMeshes`;
+	print `size $gStaticMeshes`;
+	print `size $gAnimationClips`;
+	print `size $gShakedCameras`;
+
+
+clear $gRootJoints;
+clear $gSkinnedMeshes;
+clear $gRootJointsMeshes;
+clear $gStaticMeshes;
+clear $gAnimationClips;
+clear $gShakedCameras;
+
+
+*/

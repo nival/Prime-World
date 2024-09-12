@@ -1,0 +1,10 @@
+
+
+struct CUSTOMVERTEX
+{
+  D3DXVECTOR3 position; 
+	DWORD color;
+};
+
+
+#define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZ | D3DFVF_DIFFUSE)

@@ -1,0 +1,66 @@
+#pragma once
+
+#include <windows.h>
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace NLogg
+{
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class CLocker
+{
+	LONG nLock;
+public:
+	CLocker() : nLock( -1 ) {}
+
+	void Lock()
+	{
+		for(;;)
+		{
+			while ( nLock >= 0 );
+			if ( Inc() == 0 )
+				return;
+			Dec();
+		}
+	}
+	
+	void Unlock()
+	{
+		Dec();
+	}
+	
+	LONG Inc()
+	{
+		return InterlockedIncrement( &nLock );
+	}
+	
+	LONG Dec()
+	{
+		return InterlockedDecrement( &nLock );
+	}
+	
+	const bool IsLocked() const
+	{
+		return nLock >= 0;
+	}
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class CLockerGuard
+{
+	CLocker &locker;
+
+	CLockerGuard &operator=( const CLockerGuard & ) {}
+public:
+  CLockerGuard( CLocker &_locker ) : locker( _locker ) { locker.Lock(); }
+  ~CLockerGuard() { locker.Unlock(); }
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class CLockerAutoIncDec
+{
+	CLocker &locker;
+
+	CLockerAutoIncDec &operator=( const CLockerAutoIncDec & ) {}
+public:
+  CLockerAutoIncDec( CLocker &_locker ) : locker( _locker ) { locker.Inc(); }
+  ~CLockerAutoIncDec() { locker.Dec(); }
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}

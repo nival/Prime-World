@@ -1,0 +1,683 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string buildTElist()
+{
+	global string $gsEDMP_MapGroup;
+	global string $gsEDMP_TE_Group;
+	global string $gsEDMP_Window;
+	global string $gsEDMP_Frame;
+	global string $gsEDMP_Form;
+
+	string $sForm = `formLayout -p $gsEDMP_Frame`;
+
+	string $TEs[] = `ls -dag -typ mesh $gsEDMP_TE_Group`;
+	if ( `size $TEs` == 0 )
+	{
+		string $sText = `text -label "No terrain elements found" -align center`;
+		formLayout
+			-e
+			-af $sText "left" 0
+			-af $sText "top" 50
+			-af $sText "bottom" 0
+			-af $sText "right" 0 
+			$sForm;
+
+			return $sForm;
+	}
+
+	string $sTitle = `text -label "Click to change selected element" -align left`;
+	string $sSepTop = `separator`;
+	formLayout
+		-e                                           
+		-ap $sTitle "left" 0 10
+		-af $sTitle "top" 10
+
+		-ap $sSepTop "left" 0 10
+		-af $sSepTop "right" 10
+		-ac $sSepTop "top" 5 $sTitle
+		$sForm;
+
+	string $sPrevious = $sSepTop;
+	for ( $sTE in $TEs )
+	{
+		string $sLabel = `substitute ":.*" $sTE ""`;
+		string $sButton = `button -p $sForm -label $sLabel -c ( "EDMP_connectTE(\"" + $sTE + "\")" )`;
+
+		formLayout
+			-e
+			-af $sButton "left" 10
+			-af $sButton "right" 10
+			-ac $sButton "top" 2 $sPrevious
+			$sForm;
+
+		$sPrevious = $sButton;
+	}
+
+	string $sSepBottom = `separator`;
+	formLayout
+		-e
+		-ap $sSepBottom "left" 0 10
+		-af $sSepBottom "right" 10
+		-ac $sSepBottom "top" 3 $sPrevious
+		$sForm;
+
+	// Set size to induct inner controls fit
+	int $nW = `window -q -w $gsEDMP_Window`;
+	window -e -w ( $nW - 1 ) $gsEDMP_Window;
+	window -e -w ( $nW ) $gsEDMP_Window;
+
+	return $sForm;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string readFile( string $sFile )
+{
+	int $nFid = `fopen $sFile "r"`;
+	if ( $nFid== 0 )
+	{
+		return "";
+	}
+
+	string $strings[] = {};
+	while ( !`feof $nFid` )
+	{
+		$strings[`size $strings`] = `fgetline $nFid`;
+	}
+	fclose $nFid;
+
+	return `stringArrayToString $strings ""`;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string[] getTargets()
+{
+	string $targets[] = `ls -sl -dag -typ mesh -io`;
+	if ( `size $targets` == 0 )
+	{
+		warning "Original shape not found";
+	}
+
+	return $targets;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDMP_saveTCVs()
+{
+	string $sTCVfile = `fileDialog -m 1 -dm "*.xdb"`;
+	if ( $sTCVfile == "" )
+	{
+		return;
+	}
+
+	int $nFid = `fopen $sTCVfile "w"`;
+	if ( $nFid== 0 )
+	{
+		error ( "Cannot save TCVs to: " + $sTCVfile );
+	}
+
+	fprint $nFid "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+	fprint $nFid "<TerrainControlVertices>\n";
+	fprint $nFid "\t<origin>\n";
+	fprint $nFid "\t\t<x>0</x>\n";
+	fprint $nFid "\t\t<y>0</y>\n";
+	fprint $nFid "\t\t<z>0</z>\n";
+	fprint $nFid "\t</origin>\n";
+	fprint $nFid "\t<transforms>\n";
+
+	string $sTmp = `createNode transform`;
+	for ( $nY = 0; $nY <= 64; $nY++ )
+	{
+		for ( $nX = 0; $nX <= 64; $nX++ )
+		{
+			float $t[] = { 0, 0, 0 };
+			float $r[] = { 0, 0, 0 };
+			float $s[] = { 1, 1, 1 };
+
+			float $o[] = { $nX * 10.0, $nY * 10.0, 0 };
+
+			string $sT = stringArrayToString( `ls -typ transform ( "TCV_" + $nX + "_" + $nY )`, "" );
+			if ( $sT != "" )
+			{
+				$t = `xform -q -t $sT`;
+				$r = `xform -q -ro $sT`;
+				$s = `xform -q -r -s $sT`;
+
+				$o = `getAttr ( $sT + ".origin" )`;
+			}
+
+			xform -t $t[0] $t[1] $t[2] -ro $r[0] $r[1] $r[2] -s $s[0] $s[1] $s[2] $sTmp;
+
+			float $m[] = `xform -q -m $sTmp`;
+			$m[12] += $o[0];
+			$m[13] += $o[1];
+
+			fprint $nFid "\t\t<Item>\n";
+			fprint $nFid ( "\t\t\t<x1>" + $m[0] + "</x1>\n" );
+			fprint $nFid ( "\t\t\t<y1>" + $m[4] + "</y1>\n" );
+			fprint $nFid ( "\t\t\t<z1>" + $m[8] + "</z1>\n" );
+			fprint $nFid ( "\t\t\t<w1>" + $m[12] + "</w1>\n" );
+			fprint $nFid ( "\t\t\t<x2>" + $m[1] + "</x2>\n" );
+			fprint $nFid ( "\t\t\t<y2>" + $m[5] + "</y2>\n" );
+			fprint $nFid ( "\t\t\t<z2>" + $m[9] + "</z2>\n" );
+			fprint $nFid ( "\t\t\t<w2>" + $m[13] + "</w2>\n" );
+			fprint $nFid ( "\t\t\t<x3>" + $m[2] + "</x3>\n" );
+			fprint $nFid ( "\t\t\t<y3>" + $m[6] + "</y3>\n" );
+			fprint $nFid ( "\t\t\t<z3>" + $m[10] + "</z3>\n" );
+			fprint $nFid ( "\t\t\t<w3>" + $m[14] + "</w3>\n" );
+			fprint $nFid "\t\t</Item>\n";
+		}
+	}
+
+	delete $sTmp;
+	
+	fprint $nFid "\t</transforms>\n";
+	fprint $nFid "</TerrainControlVertices>\n";
+
+	fclose $nFid;
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc int EDMP_checkMap()
+{
+	global string $gsEDMP_MapGroup;
+	global string $gsEDMP_TE_GameFolder;
+	global string $gsH6TR_TE_NameAttr;
+
+	string $replace[] = {
+		"Abyss_S1_B1^Abyss_S1_B",
+		"Abyss_S1_C1^Abyss_S1_C",
+		"Abyss_S1_D1^Abyss_S1_D",
+		"Terrace_S1_B_2^Terrace_S1_B_0",
+		"Terrace_S1_B_3^Terrace_S1_B_1",
+		"Terrace_S1_C_2^Terrace_S1_C_0",
+		"Terrace_S1_D1^Terrace_S1_D"
+		};
+
+	string $notFound[] = {};
+	string $found[] = {};
+
+	print "Running map check...\n";
+
+	string $list[] = `ls -dag -typ mesh -io $gsEDMP_MapGroup`;
+	for ( $sTE in $list )
+	{
+		string $sTEname = `getAttr ( $sTE + "." + $gsH6TR_TE_NameAttr )`;
+		if ( $sTEname == "" || $sTEname == "Empty" )
+		{
+			continue;
+		}
+/* For custom search and replace when needed
+		for ( $sR in $replace )
+		{
+			string $r[] = `stringToStringArray $sR "^"`;
+			if ( $sTEname == $r[0] )
+			{
+				setAttr ( $sTE + "." + $gsH6TR_TE_NameAttr ) -type "string" $r[1];
+			}
+		}
+*/
+		string $sTEfile = $gsEDMP_TE_GameFolder + $sTEname + ".STAT.xdb";
+		if ( !`file -q -ex $sTEfile` )
+		{
+			$notFound[`size $notFound`] = $sTEname;
+		}
+		else
+		{
+			$found[`size $found`] = $sTEname;
+			select -r $sTE;
+			EDMP_connectTE ( $sTEname + ":_Shape" );
+		}
+
+	}
+
+	$notFound = sort( `stringArrayRemoveDuplicates $notFound` );
+	$found = sort( `stringArrayRemoveDuplicates $found` );
+
+	if ( `size $notFound` == 0 )
+	{
+		print "Map is Ok!\n";
+		return 1;
+	}
+	else
+	{
+		print "\n---Found:\n";
+		print $found;
+		print "\n---Not found:\n";
+		print $notFound;
+		return 0;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDMP_saveTEs()
+{
+	global string $gsEDMP_MapGroup;
+	global string $gsEDMP_TE_Group;
+	global string $gsEDMP_TE_LocalFolder;
+	global string $gsH6TR_TE_NameAttr;
+
+	if ( `EDMP_checkMap` == 0 )
+	{
+		warning "Map is incorrect. See script editor for details";
+		return;
+	}
+ 
+	string $sMapFile = `fileDialog -m 1 -dm "*.xdb"`;
+	string $sContent = readFile( $sMapFile );
+	if ( $sContent == "" )
+	{
+		return;
+	}
+
+	string $sTerrainElements = "";
+		$sTerrainElements += "\t\t<terrainElements>\n";
+
+	string $list[] = `ls -dag -typ mesh -io $gsEDMP_MapGroup`;
+	for ( $sTE in $list )
+	{
+		string $sTEname = `getAttr ( $sTE + "." + $gsH6TR_TE_NameAttr )`;
+		if ( $sTEname == "Empty" || $sTEname == "" )
+		{
+			continue;
+		}
+
+		string $sT = stringArrayToString( `listRelatives -p $sTE`, "" );
+
+		$sTerrainElements += "\t\t\t<Item>\n";
+		$sTerrainElements += "\t\t\t\t<position>\n";
+		$sTerrainElements += "\t\t\t\t\t<x>" + `getAttr ( $sT + ".tx" )` + "</x>\n";
+		$sTerrainElements += "\t\t\t\t\t<y>" + `getAttr ( $sT + ".ty" )` + "</y>\n";
+		$sTerrainElements += "\t\t\t\t\t<z>" + `getAttr ( $sT + ".tz" )` + "</z>\n";
+		$sTerrainElements += "\t\t\t\t</position>\n";
+		$sTerrainElements += "\t\t\t\t<angle>" + `getAttr ( $sT + ".rz" )` + "</angle>\n";
+		$sTerrainElements += "\t\t\t\t<scale>\n";
+		$sTerrainElements += "\t\t\t\t\t<x>" + `getAttr ( $sT + ".sx" )` + "</x>\n";
+		$sTerrainElements += "\t\t\t\t\t<y>" + `getAttr ( $sT + ".sy" )` + "</y>\n";
+		$sTerrainElements += "\t\t\t\t\t<z>" + `getAttr ( $sT + ".sz" )` + "</z>\n";
+		$sTerrainElements += "\t\t\t\t</scale>\n";
+		                        
+		$sTerrainElements += "\t\t\t\t<terrainObject href=\"" + $gsEDMP_TE_LocalFolder + $sTEname + ".STAT.xdb\" />\n";
+		$sTerrainElements += "\t\t\t</Item>\n";
+	}                         
+		$sTerrainElements += "\t\t</terrainElements>";
+
+
+	$sContent = substitute( "\t*<terrainElements>.*</terrainElements>", $sContent, $sTerrainElements );
+
+	int $nFid = `fopen $sMapFile "w"`;
+	if ( $nFid== 0 )
+	{
+		error ( "Cannot save map to: " + $sMapFile );
+	}
+
+	fprint $nFid $sContent;
+	fclose $nFid;
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDMP_getElements()
+{
+	global string $gsEDMP_TE_Group;
+	global string $gsEDMP_TE_Folder;
+	global string $gsEDMP_Form;
+
+	// Remove all references
+	if ( size( `ls -typ reference` ) != 0 )
+	{
+		for ( $sRef in `file -q -r` )
+		{
+			file -rr $sRef;
+		}
+	}
+
+	if ( size( `ls $gsEDMP_TE_Group` ) != 0 )
+	{
+		delete $gsEDMP_TE_Group;
+	}
+
+	string $sTE_Group = `createNode transform -n $gsEDMP_TE_Group`;
+	setAttr ( $sTE_Group + ".v" ) 0;
+
+	string $list[] = sort( `getFileList -fs "*.mb" -fld $gsEDMP_TE_Folder` );
+	for ( $sScene in $list )
+	{
+		string $sName = `substitute "[.].*" $sScene ""`;
+		string $sFile = $gsEDMP_TE_Folder + $sScene;
+
+		string $sGroup = `createNode transform -n ( $sName + "_Gr" )`;
+		delete $sGroup;
+
+		string $sNamespace = `createNode transform -n $sName`;
+		delete $sNamespace;
+
+		string $sRef = `file -r -gr -gn $sGroup -ns $sNamespace -shd "shadingNetworks" $sFile`;
+		parent $sGroup $sTE_Group;
+	}
+
+	// Refresh UI
+	deleteUI  $gsEDMP_Form; 
+	buildTElist();
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc float quaterAngle( float $fA )
+{
+	// Round input angle to 0:90:180:270
+
+	float $fCos = cos( `deg_to_rad $fA` );
+	if ( $fCos > 0.707107 )
+	{
+		$fA = 0;
+	}
+	else if ( $fCos < -0.707107 )
+	{
+		$fA = 180;
+	}
+	else
+	{
+		float $fSin = sin( `deg_to_rad $fA` );
+		if ( $fSin > 0.707107 )
+		{
+			$fA = 90;
+		}
+		else if ( $fSin < -0.707107 )
+		{
+			$fA = 270;
+		}
+	}
+
+	return $fA;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDMP_rotateTE( string $sDir )
+{
+  float $fRzNeed = 0;
+	if ( $sDir == "CW" )
+	{
+		$fRzNeed = -90;
+	}
+	else if ( $sDir == "CCW" )
+	{
+		$fRzNeed = 90;
+	}
+
+	for ( $sTarget in `getTargets` )
+	{
+		string $sRzAttr = stringArrayToString( `listRelatives -p $sTarget`, "" ) + ".rz";
+		float $fRz = quaterAngle( `getAttr $sRzAttr` + $fRzNeed );
+		setAttr $sRzAttr $fRz;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDMP_toggleCVs()
+{
+	if ( size( `ls -typ transform "CVs"` ) == 0 )
+	{
+		return;
+	}
+
+	if ( `getAttr CVs.v` == 0 )
+	{
+		setAttr CVs.v 1;
+	}
+	else
+	{
+		setAttr CVs.v 0;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc EDMP_connectTE( string $sTE )
+{
+	global string $gsH6TR_TE_NameAttr;
+
+	for ( $sTarget in `getTargets` )
+	{
+		string $sTo = $sTarget + ".inMesh";
+		string $sFrom = $sTE + ".outMesh";
+  
+		string $tmp[] = `listConnections -p 1 $sTo`;
+		if ( `size $tmp` != 0 )
+		{
+			disconnectAttr $tmp[0] $sTo;
+		}
+  
+		connectAttr $sFrom $sTo;
+
+		$tmp = `listConnections -type shadingEngine $sTE`;
+		sets -e -forceElement $tmp[0] `substitute "Orig" $sTarget ""`;
+
+		setAttr ( $sTarget + "." + $gsH6TR_TE_NameAttr ) -type "string" `substitute ":.*" $sTE ""`;
+	}
+
+	return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc string buildTElist()
+{
+	global string $gsEDMP_MapGroup;
+	global string $gsEDMP_TE_Group;
+	global string $gsEDMP_Window;
+	global string $gsEDMP_Frame;
+	global string $gsEDMP_Form;
+
+	string $sForm = `formLayout -p $gsEDMP_Frame`;
+
+	string $TEs[] = `ls -dag -typ mesh $gsEDMP_TE_Group`;
+	if ( `size $TEs` == 0 )
+	{
+		string $sText = `text -label "No terrain elements found" -align center`;
+		formLayout
+			-e
+			-af $sText "left" 0
+			-af $sText "top" 50
+			-af $sText "bottom" 0
+			-af $sText "right" 0 
+			$sForm;
+
+			return $sForm;
+	}
+
+	string $sTitle = `text -label "Click to change selected element" -align left`;
+	string $sSepTop = `separator`;
+	formLayout
+		-e                                           
+		-ap $sTitle "left" 0 10
+		-af $sTitle "top" 10
+
+		-ap $sSepTop "left" 0 10
+		-af $sSepTop "right" 10
+		-ac $sSepTop "top" 5 $sTitle
+		$sForm;
+
+	string $sPrevious = $sSepTop;
+	for ( $sTE in $TEs )
+	{
+		string $sLabel = `substitute ":.*" $sTE ""`;
+		string $sButton = `button -p $sForm -label $sLabel -c ( "EDMP_connectTE(\"" + $sTE + "\")" )`;
+
+		formLayout
+			-e
+			-af $sButton "left" 10
+			-af $sButton "right" 10
+			-ac $sButton "top" 2 $sPrevious
+			$sForm;
+
+		$sPrevious = $sButton;
+	}
+
+	string $sSepBottom = `separator`;
+	formLayout
+		-e
+		-ap $sSepBottom "left" 0 10
+		-af $sSepBottom "right" 10
+		-ac $sSepBottom "top" 3 $sPrevious
+		$sForm;
+
+	// Set size to induct inner controls fit
+	int $nW = `window -q -w $gsEDMP_Window`;
+	window -e -w ( $nW - 1 ) $gsEDMP_Window;
+	window -e -w ( $nW ) $gsEDMP_Window;
+
+	return $sForm;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_editMap()
+{
+	// Globals for exchange between procedures
+	global string $gsEDMP_MapGroup = "MapGroup";
+	if ( size( `ls $gsEDMP_MapGroup` ) == 0 )
+	{
+		error "This scene is not H6 map.";
+	}
+
+	global string $gsEDMP_TE_Group = "TE_Group";
+	global string $gsEDMP_TE_LocalFolder = "Terrain/Elements/";
+	global string $gsH6TR_TE_NameAttr = "TE_Name";
+
+	global string $gsEDMP_TE_Folder = "";
+	string $sAssets = ( `getenv H6_ASSETS` );
+	if ( !`file -q -ex $sAssets` )
+	{
+		$sAssets = "C:/h6/AssetSrc";
+		warning ( "H6_ASSETS environment variable not found. Using default value of " + $sAssets );
+	}
+
+	$gsEDMP_TE_Folder = $sAssets + "/" + $gsEDMP_TE_LocalFolder;
+	if ( !`file -q -ex $gsEDMP_TE_Folder` )
+	{
+		error ( "Terrain elements folder " + $gsEDMP_TE_Folder + " not found." );
+	}
+
+	global string $gsEDMP_TE_GameFolder = "";
+	string $sData = ( `getenv H6_DATA` );
+	if ( !`file -q -ex $sData` )
+	{
+		$sData = "C:/h6-trunk/Data";
+		warning ( "H6_DATA environment variable not found. Using default value of " + $sData );
+	}
+
+	$gsEDMP_TE_GameFolder = $sData + "/" + $gsEDMP_TE_LocalFolder;
+	if ( !`file -q -ex $gsEDMP_TE_GameFolder` )
+	{
+		error ( "Terrain elements game folder " + $gsEDMP_TE_GameFolder + " not found." );
+	}
+
+	global string $gsEDMP_Window = "H6_map";
+	global string $gsEDMP_Frame;
+	global string $gsEDMP_Form;
+
+	// Let's build the UI!
+	if (`window -exists $gsEDMP_Window`) 
+	{
+		deleteUI -window $gsEDMP_Window;
+	}
+
+	window
+		-title "Edit Map"
+		-toolbox true
+		$gsEDMP_Window;
+
+	string $sMain = `formLayout`;
+
+	string $sScroll = `scrollLayout -cr true`;
+	scrollLayout
+		-e
+		-horizontalScrollBarThickness 0
+		$sScroll;
+
+	$gsEDMP_Frame = `frameLayout`;
+	frameLayout 
+		-edit
+		-mw 10
+		-mh 10
+		-borderVisible false
+		-collapse false 
+		-collapsable false
+		-labelVisible false
+		$gsEDMP_Frame;
+
+	$gsEDMP_Form = `buildTElist`;
+
+	setParent $sMain;
+
+	$sGetElements = `button -label "Reload terrain elements" -c ( "EDMP_getElements()" )`; 
+
+	$sCheckMap = `button -label "Check Map" -c ( "EDMP_checkMap()" )`; 
+
+	$sSaveTCVs = `button -label "Save TCVs" -c ( "EDMP_saveTCVs()" )`; 
+	$sSaveTEs = `button -label "Save Elements" -c ( "EDMP_saveTEs()" )`; 
+
+	$sCW = `button -label "CW" -c ( "EDMP_rotateTE( \"CW\" )" )`; 
+	$sCCW = `button -label "CCW" -c ( "EDMP_rotateTE( \"CCW\" )" )`; 
+
+	$sToggleCVs = `button -label "Toggle CVs" -c ( "EDMP_toggleCVs()" )`; 
+
+	// Arrange controls
+	formLayout -e
+		-af $sGetElements "left" 5
+		-ap $sGetElements "right" 3 60
+		-af $sGetElements "top" 5
+		-an $sGetElements "bottom"
+
+		-ac $sCheckMap "left" 2 $sGetElements
+		-af $sCheckMap "right" 5
+		-af $sCheckMap "top" 5
+		-an $sCheckMap "bottom"
+
+		-af $sSaveTEs "left" 5
+		-ap $sSaveTEs "right" 3 50 
+		-ac $sSaveTEs "top" 3 $sGetElements
+		-an $sSaveTEs "bottom"
+
+		-ac $sSaveTCVs "left" 2 $sSaveTEs
+		-af $sSaveTCVs "right" 5
+		-ac $sSaveTCVs "top" 3 $sGetElements
+		-an $sSaveTCVs "bottom"
+
+		-af $sToggleCVs "left" 5
+		-af $sToggleCVs "right" 5
+		-af $sToggleCVs "bottom" 5
+		-an $sToggleCVs "top"
+
+		-af $sCCW "left" 5
+		-ap $sCCW "right" 3 50 
+		-ac $sCCW "bottom" 3 $sToggleCVs
+		-an $sCCW "top"
+
+		-ac $sCW "left" 2 $sCCW
+		-af $sCW "right" 5
+		-ac $sCW "bottom" 3 $sToggleCVs
+		-an $sCW "top"
+
+		-af $sScroll "left" 0
+		-af $sScroll "right" 0
+		-ac $sScroll "top" 5 $sSaveTEs
+		-ac $sScroll "bottom" 5 $sCCW
+		$sMain;
+
+	showWindow $gsEDMP_Window;
+
+	// Set size to induct inner controls fit
+	window   
+		-edit
+		-wh 240 380
+		$gsEDMP_Window;
+
+	return;
+}
+
+H6_editMap;

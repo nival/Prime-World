@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="RuneRoll">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">runeroll_id_sequence</param>
+      </generator>
+    </id>
+    <property name="PersistentId" />
+    <property name="Timestamp" />
+    <many-to-one name="Player" not-null="true" />
+    <many-to-one name="Rune" not-null="true" />
+    <property name="Runescountold" />
+    <property name="Runescountnew" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,74 @@
+#include "stdafx.h"
+#include "TinyFileWriteStream.h"
+
+TinyFileWriteStream::TinyFileWriteStream( const string & fileName, int flags /*= BINARY*/ )
+{
+  const char *mode;
+  
+  if( flags & BINARY )
+    mode = "wb";
+  else
+    mode = "w";
+
+  if ( fopen_s(&hFile, fileName.c_str(), mode) != 0 )
+  {
+    DebugTrace( "Failed to open file %s", fileName.c_str() );
+    SetBroken( true );
+    return;
+  }
+  
+  SetCanRead( false );
+  SetCanWrite( true );
+  SetCanSeek( false );
+  SetBroken( false );
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int TinyFileWriteStream::GetSize() const
+{
+  return INT_MAX;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int TinyFileWriteStream::GetPosition() const
+{
+  return 0;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const char * TinyFileWriteStream::GetBuffer() const
+{
+  NI_ALWAYS_ASSERT( "Not implemented" );
+  return 0;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void TinyFileWriteStream::Close()
+{
+  fclose(hFile);
+  hFile = 0;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void TinyFileWriteStream::SeekInternal( const int offset )
+{
+  NI_ALWAYS_ASSERT( "Not implemented" );
+}
+
+void TinyFileWriteStream::SetSizeInternal( const int size )
+{
+  NI_ALWAYS_ASSERT( "Not implemented" );
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int TinyFileWriteStream::ReadInternal( void *pData, const int length )
+{
+  NI_ALWAYS_ASSERT( "Not implemented" );
+  return 0;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int TinyFileWriteStream::WriteInternal( const void *pData, const int length )
+{
+  return fwrite( pData, length, 1, hFile );
+}

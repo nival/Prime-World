@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AdminLib"
+                   namespace="AdminLib.Entities">
+  <class name="GMUser" table="gm_users">
+    <id name="UserId">
+      <generator class="sequence">
+        <param name="sequence">gm_user_userid_sequence</param>
+      </generator>
+    </id>
+    <property name="UserName" unique="true" not-null="true" />
+    <property name="FullName" />
+    <property name="Email" />
+    <property name="Superuser" />
+
+    <idbag name="Roles" table="gm_users_in_roles">
+      <collection-id column="id" type="int">
+        <generator class="sequence">
+          <param name="sequence">gm_users_in_roles_id_sequence</param>
+        </generator>
+      </collection-id>
+      <key column="UserId" />
+      <many-to-many column="RoleId" class="GMRole" />
+    </idbag>
+    
+  </class>
+</hibernate-mapping>

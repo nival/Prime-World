@@ -1,0 +1,18 @@
+sources = [
+    'MemInfo.cpp',
+    'MemInfo.h',
+] 
+libDependencies = [
+    'detours.lib', 
+    'detoured.lib', 
+    'dbghelp.lib', 
+    'psapi.lib', 
+    'shlwapi.lib'
+]
+components = [ 
+    'Vendor/Detour',    
+	  'Vendor/Libc',
+	  'System/EventFileLogger',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

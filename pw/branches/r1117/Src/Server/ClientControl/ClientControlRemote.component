@@ -1,0 +1,14 @@
+sources = [
+  'ClientControlRemote.h',
+]
+
+
+builders = [
+  RPCBuilder( 'Remote', 'ClientControlInterface.h', '', ['ClientControlTypes.h', 'ClientControlRemote.h', 'RClientControlRemote.auto.h', 'Network/RSessionKeyRegisterIface.auto.h'] ),
+  RPCBuilder( 'Local', 'ClientControlRemote.h', '', ['ClientControlTypes.h'] ),
+]
+
+
+components = [
+  'Vendor/Libc',
+]

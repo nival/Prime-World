@@ -1,0 +1,21 @@
+sources = [ 
+  'UserManagerAgent/UserManagerAgent.cpp',
+  'UserManagerAgent/UserManagerAgent.h',
+  'UserManagerAgent/IUserManagerAgent.h',
+  'UserManagerAgent/specific.h',
+  'UserManagerAgent/stdafx.cpp',
+  'UserManagerAgent/stdafx.h',
+]
+
+includePaths = [
+  '.',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'RPC/all',
+  'UserManager/UserManagerSvc/RUserNotificationIface',
+  'UserManager/UserManagerSvc/LUserNotificationIface',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'UserManagerAgent\stdafx.h' ) }

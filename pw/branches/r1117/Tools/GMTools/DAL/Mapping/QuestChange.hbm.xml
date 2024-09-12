@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="QuestChange">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">questchange_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="Player" />
+    <many-to-one name="Quest" />
+    <property name="ChangeType" />
+    <property name="Timestamp" />
+
+    <sql-insert check="none">
+      INSERT INTO questchange
+      (player, quest, changetype, "timestamp", id)
+      VALUES (?, ?, ?, ?, ?);
+    </sql-insert>
+    
+  </class>
+</hibernate-mapping>

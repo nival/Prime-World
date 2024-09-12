@@ -1,0 +1,16 @@
+sources = [
+    'main.cpp',
+    'stdafx.h',
+    'stdafx.cpp',
+    'HelloWorld.h',
+]
+components = [
+    'Server/RPC',
+    'Network/Transport',
+    'Network/RealDriver',
+]
+builders = [
+    RPCBuilder( 'Local', 'HelloWorld.h' ),
+    RPCBuilder( 'Remote', 'HelloWorld.h', '', [] ) ,
+]
+globalCompilerKeys = ['/D"DO_NOT_USE_NEWDELETE"' ]

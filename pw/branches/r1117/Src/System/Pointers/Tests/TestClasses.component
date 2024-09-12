@@ -1,0 +1,22 @@
+sources =  [
+  'TestInterface.h',
+  'TestClassA.cpp',
+  'TestClassA.h',
+  'TestClassB.cpp',
+  'TestClassB.h',
+  'TestClassMT.cpp',
+  'TestClassMT.h',
+  'TestFaceMt.h',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'System/Pointers/Pointers',
+]
+
+if not testRun:
+  type = 'dll'
+  inlined = False
+
+if platform == 'win32' :
+  globalCompilerKeys = [ '/vmg' ]

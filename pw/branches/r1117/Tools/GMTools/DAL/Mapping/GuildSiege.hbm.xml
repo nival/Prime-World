@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="GuildSiege">
+    
+    <id name="Id" />
+    
+    <many-to-one name="Guild" class="Guild" not-null="true" />
+    <many-to-one name="TargetGuild" class="Guild" not-null="true" />
+    <many-to-one name="TargetSuzerainGuild" class="Guild" />
+    <many-to-one name="Winner" class="Guild" not-null="true" />
+    <many-to-one name="GuildPointsLog" not-null="true" />
+
+    <property name="Rating" not-null="true" />
+    <property name="TargetRating" not-null="true" />
+    <property name="TargetSuzerainRating" />
+    <property name="StartTime" not-null="true" />
+    <property name="EndTime" not-null="true" />
+
+  </class>
+</hibernate-mapping>

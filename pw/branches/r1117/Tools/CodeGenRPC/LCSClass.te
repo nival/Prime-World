@@ -1,0 +1,106 @@
+${rpc_namespaces_start}
+
+public class L${rpc_classname}
+{
+  public static uint ID = ${rpc_iid};
+  private static uint CRC32 = ${rpc_crc32};
+
+  ${rpc_classname} localObject;
+
+  public L${rpc_classname}()
+  {
+    localObject = new ${rpc_classname}();
+  }
+
+  public L${rpc_classname}( object[] objs )
+  {
+    System.Type[] types = new System.Type[objs.Length];
+    for ( int i = 0; i < objs.Length; i++ )
+    {
+      types[i] = objs[i].GetType();
+    }
+    localObject = ( typeof( ${rpc_classname} ).GetConstructor( types ).Invoke( objs ) ) as ${rpc_classname};
+  }
+
+  public L${rpc_classname}( System.Object obj )
+  {
+    localObject = obj as ${rpc_classname};
+  }
+
+  public System.Object GetLocalObject()
+  {
+    return localObject;
+  }
+
+  public void Call( uint methodId, ManagedRPC.LClassCallInfo call, System.Array pars )
+  {
+    switch ( methodId )
+    {
+${rpc_cs_funcs}
+    default:
+      break;
+    }
+  }
+
+  public System.Array GetMethodParamsTypes( uint methodId )
+  {
+    switch ( methodId )
+    {
+${rpc_cs_param_types}
+    default:
+      break;
+    }
+    return null;
+  }
+  
+  public uint GetID()
+  {
+    return ID;
+  }
+
+  public uint GetCRC32()
+  {
+    return CRC32;
+  }
+
+  public void Destroy()
+  {
+    if ( localObject != null )
+    {
+      System.Reflection.MethodInfo minfo = localObject.GetType().GetMethod("Destroy");
+      if ( minfo != null )
+      {
+        minfo.Invoke( localObject, null );
+      }
+    }
+  }
+
+  public System.Array GetAllData()
+  {
+    object[] objs = new object[${rpc_cs_data_nums}] { ${rpc_cs_data_names} };
+    return objs;
+  }
+
+  public System.Object GetData( int memberId )
+  {
+    switch ( memberId )
+    {
+${rpc_cs_data_lgetdata}
+    default:
+      return null;
+    }
+  }
+
+  public void SetData( int memberId, System.Object obj )
+  {
+    switch ( memberId )
+    {
+${rpc_cs_data_lsetdata}
+      default:
+        break;
+    }
+    return;
+  }
+}
+
+${rpc_namespaces_end}

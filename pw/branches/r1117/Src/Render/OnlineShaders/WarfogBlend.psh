@@ -1,0 +1,11 @@
+#include "_commonPostProcess.h"
+
+sampler diffuseMap[2] : register(s0);
+float blendCoeff : register(PSHADER_LOCALCONST0);
+
+half4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  half4 diffuseA = tex2D(diffuseMap[0], Input.Texcoord);
+  half4 diffuseB = tex2D(diffuseMap[1], Input.Texcoord);
+  return lerp(diffuseA, diffuseB, blendCoeff);
+}

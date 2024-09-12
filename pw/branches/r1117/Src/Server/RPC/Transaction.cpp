@@ -1,0 +1,64 @@
+#include "stdafx.h"
+
+#include "RPC.h"
+#include "Transaction.h"
+
+
+namespace rpc
+{
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Transaction::Transaction():
+args(0),
+rollbackArgs(0),
+isReady(false)
+{
+  reader = new rpc::ArgReader(0, 0, false);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Transaction::~Transaction()
+{
+  delete reader;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+rpc::ArgReader& Transaction::StartRollback()
+{
+  reader->Preallocate(rollbackArgs.GetPreAllocatedSize());
+  return *reader;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ICallRoutine& Transaction::RegisterSynchronousCall(const MethodCallHeader& header)
+{
+  return reader->GetIEntityMap()->RegisterSynchronousCall(header);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Transaction::RegisterAsyncCall(const MethodCallHeader& header, IFunctor* functor, float timeout/*=0.f*/)
+{
+  reader->GetIEntityMap()->RegisterAsyncCall(header, functor, timeout);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Transaction::RegisterAsyncCall(const MethodCallHeader& header, IFunctor* functor, ICallRoutine* routine, float timeout/*=0.f*/)
+{
+  reader->GetIEntityMap()->RegisterAsyncCall(header, functor, routine, timeout);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Transaction::Reset(EntityId entityId, nstl::vector<byte>& _data, IEntityMap* entityMap)
+{
+  info.Reset(entityId, &args, 0);
+  args.SetEntityMap(entityMap);
+  args.Reset(&_data);
+  args.SetPipe(0);
+  params.resize(0);
+  rollbackArgs.SetEntityMap(entityMap);
+  rollbackArgs.Reset(&rollbackData);
+  reader->SetEntityMap(entityMap);
+  isReady = false;
+}
+
+} // namespace rpc

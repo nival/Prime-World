@@ -1,0 +1,14 @@
+DEFINE_RE_FACTORY( ${rpc_fullnamespace}, R${rpc_classname} );
+
+namespace rpc
+{
+
+template<>
+void RegisterRemoteFactory(${rpc_fullnamespace}::R${rpc_classname}* factory)
+{
+  &factory_${rpc_formatnamespace}R${rpc_classname};
+}
+
+} // rpc
+
+NI_DEFINE_REFCOUNT( ${rpc_fullnamespace}::R${rpc_classname} )

@@ -1,0 +1,33 @@
+sources = {
+  'SourceFiles' :
+  [
+    'Profiler3UI.cpp',
+    'Profiler3UI.h',
+    'Profiler3UIWTL.h',
+    'Profiler3UIMainDlg.h',
+    'Profiler3UIMainDlg.cpp',
+    'Profiler3UITimeline.h',
+    'Profiler3UITimeline.cpp',
+    'Profiler3UIData.cpp',
+    'Profiler3UIData.h',
+    'Profiler3UISettings.h',
+  ],
+  'Resources' :
+  [
+    'Profiler3UI.rc',
+    'Profiler3UIResource.h',
+    'Profiler3UI.ico',
+    'Images.bmp',
+  ],
+}
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+libDependencies = [ 'Psapi.lib' ]
+
+components = [
+  'Vendor/WTL',
+  'System/InlineProfiler3/Analyzer',
+  'System/Pointers',
+  'System/RegistryStorage',
+]

@@ -1,0 +1,37 @@
+#pragma warning( push )
+#pragma warning( disable : 4065 )
+
+${rpc_namespaces_start}
+
+${rpc_funcs_typedefs}
+
+    bool L${rpc_classname}::vcall( byte method_id, rpc::MethodCall& call, rpc::MethodCallStack& stack )
+    {
+        bool popResult = true;
+        switch ( method_id )
+        {
+${rpc_funcs}
+        default:
+            popResult = false;
+            break;
+        }
+        return popResult;
+    }
+
+${rpc_namespaces_end}
+
+namespace rpc
+{
+template<>
+rpc::ILocalEntity* CreateLocalEntity(${rpc_fullnamespace}::${rpc_classname}* api, rpc::IEntityMap* entityMap)
+{
+  return new ${rpc_fullnamespace}::L${rpc_classname}(api, entityMap);
+}
+
+} // rpc
+
+#pragma warning( pop )
+
+NI_DEFINE_REFCOUNT( ${rpc_fullnamespace}::L${rpc_classname} )
+
+

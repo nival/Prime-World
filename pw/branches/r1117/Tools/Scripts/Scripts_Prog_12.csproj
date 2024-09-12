@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30332408-1405-4DC9-9C74-98FB32E71783}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Scripts_Prog_12</RootNamespace>
+    <AssemblyName>Scripts_Prog_12</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\EditorLib\EditorLib.csproj">
+      <Project>{aeb9b15a-6c51-4b9b-8838-7254064a4e98}</Project>
+      <Name>EditorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\libdb.NET\libdb.NET.csproj">
+      <Project>{2369c873-8c70-4197-8cab-67d34c9d5412}</Project>
+      <Name>libdb.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\PF_Types.DBTypes\PF_Types.DBTypes.csproj">
+      <Project>{66e75fe1-7475-4096-b532-f8f8c033fe9a}</Project>
+      <Name>PF_Types.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\SocialTypes.DBTypes\SocialTypes.DBTypes.csproj">
+      <Project>{e1b1f76b-5499-4725-ab2c-a2f76356d684}</Project>
+      <Name>SocialTypes.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\Types.DBTypes\Types.DBTypes.csproj">
+      <Project>{cb33bf48-712e-4eab-8436-e64dc30cbcd7}</Project>
+      <Name>Types.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\Win32\Win32.csproj">
+      <Project>{7398874f-aea0-4a0e-8239-e3a6668a3712}</Project>
+      <Name>Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PreExportSocialData.cs" />
+    <Compile Include="SimpleCalc.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

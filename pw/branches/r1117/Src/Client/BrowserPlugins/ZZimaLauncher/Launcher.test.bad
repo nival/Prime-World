@@ -1,0 +1,209 @@
+import SocketServer
+import SimpleHTTPServer
+import threading
+import time
+import os
+import fnmatch
+import zipfile
+
+PORT = 9000
+
+def move():
+    """ sample function to be called via a URL"""
+    return 'hi'
+
+class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+
+    def do_GET(self):
+        #Sample values in self for URL: http://localhost:8080/jsxmlrpc-0.3/
+        #self.path  '/jsxmlrpc-0.3/'
+        #self.raw_requestline   'GET /jsxmlrpc-0.3/ HTTP/1.1rn'
+        #self.client_address    ('127.0.0.1', 3727)
+        if self.path=='/move':
+            #This URL will trigger our sample function and send what it returns back to the browser
+            self.send_response(200)
+            self.send_header('Content-type','text/html')
+            self.end_headers()
+            self.wfile.write(move()) #call sample function here
+            return
+        else:
+            #serve files, and directory listings by following self.path from
+            #current working directory
+            SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+
+class ServerThread:
+
+    def __init__(self, port, start_folder):
+        path = os.getcwd()
+        os.chdir(start_folder)
+        self.httpd = SocketServer.ThreadingTCPServer(('localhost', port), SimpleHTTPServer.SimpleHTTPRequestHandler)
+        os.chdir(path)
+
+    def run(self):
+        self.httpd.serve_forever(0.1)
+        
+    def shutdown(self):
+        self.httpd.shutdown()
+        time.sleep(0.2)
+
+import unittest
+import ctypes
+import win32con
+
+WNDPROC = ctypes.WINFUNCTYPE(ctypes.c_long, ctypes.c_int, ctypes.c_uint, ctypes.c_int, ctypes.c_int)
+
+class WNDCLASS(ctypes.Structure):
+    _fields_ = [('style', ctypes.c_uint),
+                ('lpfnWndProc', WNDPROC),
+                ('cbClsExtra', ctypes.c_int),
+                ('cbWndExtra', ctypes.c_int),
+                ('hInstance', ctypes.c_int),
+                ('hIcon', ctypes.c_int),
+                ('hCursor', ctypes.c_int),
+                ('hbrBackground', ctypes.c_int),
+                ('lpszMenuName', ctypes.c_char_p),
+                ('lpszClassName', ctypes.c_char_p)]
+                
+               
+class Window(object):
+
+    def __init__(self, caption = None, className = "PyTestWindow"):
+        self._pWndProc =  WNDPROC(self.WindowProc)
+
+        # register a class
+        wc = WNDCLASS()
+        wc.lpfnWndProc = self._pWndProc
+        wc.hbrBackground = 2 
+        wc.hIcon = 0
+        wc.hCursor = ctypes.windll.user32.LoadCursorA(0, 32512)       # IDC_ARROW
+        wc.lpszClassName =  className
+        atom = ctypes.windll.user32.RegisterClassA(ctypes.byref(wc))
+        if not atom:
+                raise GuiError("could not register windowclass")
+
+        # create the window
+        x, y, w, h= (0, 0, 800, 600)
+        self.hwnd = ctypes.windll.user32.CreateWindowExA(
+                                0, className, caption,
+                                win32con.WS_SYSMENU | win32con.WS_VISIBLE,
+                                x,y,w,h,0, 0,0,0)
+        if not self.hwnd:
+            raise GuiError("could not create window")
+        ctypes.windll.user32.ShowWindow(self.hwnd, 1)
+
+    def WindowProc(self, hwnd, msg, wp, lp):
+        return ctypes.windll.user32.DefWindowProcA(hwnd, msg, wp, lp)
+                
+class Test_Simple(unittest.TestCase):
+
+    def setUp(self):
+        if True:
+            global PORT
+            PORT += 1
+            self.st = ServerThread(PORT, '.')        
+            self.t = threading.Thread(target=self.st.run)
+            self.t.start()
+            
+        self.clearLogs()            
+            
+        self.folder = os.getcwd()            
+        os.chdir('.auto/Debug')
+        self.cdll = ctypes.CDLL('ZZimaLauncher.dll')
+        os.chdir(self.folder)
+        
+    def clearLogs(self):        
+        for name in os.listdir('.'):
+            if fnmatch.fnmatch(name, 'TestGame_*.txt'):
+                os.remove(name)
+            
+    def tearDown(self):
+        self.st.shutdown()
+        self.clearLogs()            
+        
+    def getLog(self, index):        
+        path = 'TestGame_%d.txt' % index
+        if not os.path.isfile(path):
+            return ''
+        if os.path.getsize(path) == 0:
+            return ''
+        try:            
+            return open(path).read()
+        except:
+            return ''
+        
+    def createInstance(self):
+        return self.cdll.GiveBrowserInterface()
+    
+    def deleteInstance(self, p):
+        return self.cdll.DeleteBrowserInterface(p)
+        
+    def test_Simple(self):
+        w = Window("ZZime Launcher Test") 
+        p = self.createInstance()
+        
+        dllPath = os.path.abspath(r"TestGame\.auto\Debug\main.dll")
+        assert True == bool(self.cdll.testInit(p, dllPath))
+        while 'Init(' not in self.getLog(0): pass
+        
+        assert True == bool(self.cdll.testStart(p, w.hwnd))
+        while 'Start(' not in self.getLog(1): pass
+        
+        for i in range(10):
+            self.cdll.testCallWindowProc(p, w.hwnd, win32con.WM_PAINT, 0, 0)
+            while 'CallWindowProc(' not in self.getLog(2+i): pass
+            time.sleep(0.1)
+            
+        assert True == bool(self.cdll.testStop(p, w.hwnd))
+        while 'Stop(' not in self.getLog(12): pass
+        
+        self.cdll.testRelease(p, w.hwnd)
+        while 'Release(' not in self.getLog(13): pass
+        
+    def test_Download(self):
+        w = Window("ZZime Launcher Test") 
+        p = self.createInstance()
+        dllPath = 'http://localhost:%d/TestGame/.auto/Debug/main.dll' % PORT
+        assert True == bool(self.cdll.testInit(p, dllPath))
+        assert True == bool(self.cdll.testStart(p, w.hwnd))
+        while 'Init(' not in self.getLog(0): pass
+        while 'Start(' not in self.getLog(1): pass
+        
+        # wait here for file
+        assert True == bool(self.cdll.testStop(p, w.hwnd))
+        self.cdll.testRelease(p, w.hwnd)
+        
+    def test_LauncherMissedOnHttp(self):
+        w = Window("ZZime Launcher Test") 
+        p = self.createInstance()
+        dllPath = 'http://localhost:%d/Missed.dll' % PORT
+        assert True == bool(self.cdll.testInit(p, dllPath))
+        assert True == bool(self.cdll.testStart(p, w.hwnd))
+        time.sleep(1)
+        assert False == bool(self.cdll.testStop(p, w.hwnd))
+        self.cdll.testRelease(p, w.hwnd)
+        
+    def createZip(self, folder, output, files):
+        cwd = os.getcwd()
+        os.chdir(folder)        
+        f = zipfile.ZipFile(output, "w")
+        for name in files:
+            f.write(name, name, zipfile.ZIP_DEFLATED)    
+        f.close()
+        os.chdir(cwd)        
+        
+    def test_ZipDownloadAndRun(self):
+        w = Window("ZZime Launcher Test") 
+        p = self.createInstance()
+        
+        self.createZip('TestGame/.auto/Debug', 'main.zip', ['main.dll'])
+        
+        dllPath = 'http://localhost:%d/TestGame/.auto/Debug/main.zip' % PORT
+        assert True == bool(self.cdll.testInit(p, dllPath))
+        assert True == bool(self.cdll.testStart(p, w.hwnd))
+        while 'Init(' not in self.getLog(0): pass
+        while 'Start(' not in self.getLog(1): pass
+        
+        assert True == bool(self.cdll.testStop(p, w.hwnd))
+        self.cdll.testRelease(p, w.hwnd)
+        
+unittest.main()        

@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+  <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+  <asp:ContentPlaceHolder ID="Links" runat="server" />
+</head>
+
+<body>
+  <script type="text/javascript">
+    $(function() {
+      $('.link-delete').click(function() {
+        return confirm('Are you sure ?');
+      });
+    });
+  </script>
+  <div class="page">
+    <div id="header">
+      <div id="title">
+        <h1>Prime World Control Center</h1>
+      </div>
+      <div id="logindisplay">
+        <% Html.RenderPartial("LogOnUserControl"); %>
+      </div>
+      <div id="menucontainer">
+        <ul id="menu">
+          <li><%= Html.ActionLink("Home", "Index", "Home", new { area = "" }, new {}) %></li>
+
+          <%var gmUser = (GMToolsPrincipal) HttpContext.Current.User; %>
+          
+          <%if (gmUser.HasPermission("GM_AccountView") || gmUser.HasPermission("GM_Broadcast")) { %>
+            <li><%= Html.ActionLink("GM", "Index", "Account", new { area = "GM" }, new {}) %></li>
+          <%} %>
+
+          <%if (gmUser.HasPermission("EventTool")) { %>
+            <li><%= Html.ActionLink("Events", "Index", "Events", new { area = "EventTool" }, new {}) %></li>
+            <li><%= Html.ActionLink("GWEvents", "GWEvent", "Events", new { area = "EventTool" }, new {}) %></li>
+          <%} %>
+          
+          <%if (gmUser.HasPermission("GM_MassOperations")) { %>
+            <li><%= Html.ActionLink( "MassOperations", "Index", "MassOperations", new { area = "MassOperations" }, new { } )%></li>
+          <%} %>
+
+          <%if (gmUser.HasPermission("Cluster_ServiceView")) { %>
+            <li><%= Html.ActionLink("Cluster", "Index", "Service", new { area = "Cluster" }, new {}) %></li>
+          <%} %>
+
+          <%if (gmUser.HasPermission("Monitoring_Overview")) { %>
+            <li><%= Html.ActionLink( "Monitoring", "Index", "Monitoring", new { area = "Monitoring" }, new { } )%></li>
+          <%} %>
+
+          <%if (gmUser.HasPermission("Admin")) { %>
+            <li><%= Html.ActionLink("Admin", "Index", "Info", new { area = "Admin" }, new {}) %></li>
+          <%} %>
+        </ul>
+      </div>
+    </div>
+    <div id="main">
+      <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+      <div id="footer">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

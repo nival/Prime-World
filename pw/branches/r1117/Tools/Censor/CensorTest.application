@@ -1,0 +1,33 @@
+sources = [
+  'CensorTest.cpp',
+]
+
+components = [
+  'CensorDll',
+  'Vendor/Libc',
+  'System/NSTL',
+  'MemoryLib/NewDelete'
+]
+
+libDependencies = [
+    'CensorDll.lib',
+]
+
+if configuration == "debug":
+  libPaths = [
+    'CensorTest.auto/Debug',
+  ]
+
+if configuration == "release":    
+  libPaths = [
+    'CensorTest.auto/Release',
+  ]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+globalCompilerKeys = [
+    '/D"_UNICODE"',
+    '/D"UNICODE"',
+    '/D"_WINDOWS"',
+    '/D"_CRT_SECURE_NO_WARNINGS"',
+]

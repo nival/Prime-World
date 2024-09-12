@@ -1,0 +1,36 @@
+#pragma once
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace NHelpers
+{
+////////////////////////////////////////////////////////////////////////////////////////////////////
+struct CSimpleString
+{
+	enum { N_STRING_CHARS = 128 };
+	char szBuffer[ N_STRING_CHARS ];
+	CSimpleString() { szBuffer[0] = 0; }
+	
+	CSimpleString &operator=( const char *pszString ) 
+	{
+		szBuffer[N_STRING_CHARS-1] = 0; 
+		strncpy_s( szBuffer, N_STRING_CHARS, pszString, N_STRING_CHARS -1 );
+		return *this;
+	}
+	bool operator ==( const char *pszString ) const { return strcmp( szBuffer, pszString ) == 0; }
+	
+	void clear() { szBuffer[0] = 0; }
+	const char *c_str() const { return szBuffer; }
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////
+struct SCallStackEntry
+{
+	DWORD dwAddress;
+	CSimpleString szFile, szFunc;
+	int nLine;
+	SCallStackEntry() : dwAddress(0), nLine(-1) {}
+
+	void clear() { szFile.clear(); szFunc.clear(); }
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////
+int CollectCallStack( SCallStackEntry *pRes, int nMaxEntries, const EXCEPTION_POINTERS *pExPtrs );
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}

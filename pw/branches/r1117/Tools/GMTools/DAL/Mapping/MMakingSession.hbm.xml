@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="MMakingSession">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">mmakingsession_id_sequence</param>
+      </generator>
+    </id>
+    <property name="PersistentId" />
+    <property name="Status" />
+    <property name="ManoeuvresFaction" />
+    <property name="Basket" />
+    <property name="Map" />
+    <property name="Timestamp" />
+
+    <sql-insert check="none">
+      INSERT INTO mmakingsession
+      (persistentid, status, manoeuvresfaction, basket, map, "timestamp", id)
+      VALUES (?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+sources = {
+  '' : 
+        [ 
+          'MainClient.cpp', 
+          'DebugDraw.h', 
+          'GameStarter.h', 
+          'GameStarter.cpp', 
+          'ClientWindow.h', 
+          'ClientWindow.cpp',
+          'LocationClientRunner.h',
+          'Protocol.h',
+        ] ,
+}
+
+ 
+components = [
+	'Samples/SimpleGame/LocationClient',
+	#'Samples/SimpleGame/LocationServer',
+	'System/CrashHandler',	
+	'System/Commands',
+	'System/Dumpers',	
+	'Coordinator/CoordinatorLocalClient',
+	'Network/ClientTransportSystem',
+	'Network/FreePortsFinder',
+	'Network/RealDriver',
+] 
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+
+if configuration == 'debug' :
+  compilerKeys = ['/RTCc', '/Gy']
+
+globalCompilerKeys = ['/D"DO_NOT_USE_NEWDELETE"' ]
+
+inlined = False  

@@ -1,0 +1,23 @@
+sources = [
+  'MonitorConsole.cpp',
+  'MonThriftClient.cpp',
+  'MonThriftClient.h',
+  'stdafx.h',
+  'stdafx.cpp',
+  'specific.h',
+]
+
+builders = [
+  ThriftBuilder( '../../../../Tools/GMTools/MonitoringLib/Monitoring.thrift', 'cpp' ),
+]
+
+components = [
+  'Vendor/Thrift',
+  'System/SystemLog',
+  'System/CrashHandler',
+  'System/ServerDumpers',
+  'System/Dumpers',
+  'System/Asserts',
+  'Network/NetworkAddress',
+  'MemoryLib/NewDelete',
+]

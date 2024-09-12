@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AFEC4B6E-C169-412A-89CA-D80B7B5B9FF2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StatisticService</RootNamespace>
+    <AssemblyName>StatisticService</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Src\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Src\_Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\log4net\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+    <Reference Include="thrift-csharp-0.9.1, Version=0.9.1.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\Thrift\thrift-csharp-0.9.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\Src\Game\PF\Server\Statistic\StatisticClusterWriter.cs">
+      <Link>RPC\StatisticClusterWriter.cs</Link>
+    </Compile>
+    <Compile Include="BaseStatService.cs" />
+    <Compile Include="GameStatService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPC\StatisticDebugTypes.cs" />
+    <Compile Include="RPC\StatisticDebugWriter.cs" />
+    <Compile Include="RPC\SessionDamageInfo.cs" />
+    <Compile Include="RPC\SessionEventInfo.cs" />
+    <Compile Include="RPC\SessionEventType.cs" />
+    <Compile Include="RPC\StatisticClusterTypes.cs" />
+    <Compile Include="RPC\StatisticWriter.cs" />
+    <Compile Include="SocialStatService.cs" />
+    <Compile Include="StatisticContext.cs" />
+    <Compile Include="StatisticEvents.cs" />
+    <Compile Include="ThriftImpls\StatisticServiceImplementation.cs" />
+    <Compile Include="ThriftImpls\THttpHandler.cs" />
+    <Compile Include="UnmanagedRPC\ChunklessReader.cs" />
+    <Compile Include="UnmanagedRPC\ChunklessWriter.cs" />
+    <Compile Include="UnmanagedRPC\HttpWorker.cs" />
+    <Compile Include="UnmanagedRPC\IChunklessSerializer.cs" />
+    <Compile Include="UnmanagedRPC\IUnmanagedRPC.cs" />
+    <Compile Include="UnmanagedRPC\UnmanagedRPC.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{404C6432-668E-43E4-A42A-01C3BBBF1793}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{7951773E-1351-440A-81EE-E1A6A5769D26}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLogging\DataLogging.csproj">
+      <Project>{2FAA8FEF-186A-4018-BCD2-4812CDAFAB6F}</Project>
+      <Name>DataLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KontagentLib\KontagentLib.csproj">
+      <Project>{7E1D5B50-3D77-4065-8FA1-0A460724A401}</Project>
+      <Name>KontagentLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatisticCore\StatisticCore.csproj">
+      <Project>{AF4F2F71-C9DE-4226-A235-1865F766198B}</Project>
+      <Name>StatisticCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

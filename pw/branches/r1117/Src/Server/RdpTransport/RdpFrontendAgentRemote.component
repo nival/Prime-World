@@ -1,0 +1,14 @@
+sources = [
+  'RdpFrontendAgentRemote.h',
+]
+
+
+builders = [
+  RPCBuilder( 'Remote', 'RdpFrontendAgentInterface.h', '', ['RdpFrontendAgentRemote.h', 'RRdpFrontendAgentRemote.auto.h', 'Network/TransportTypes.h'] ),
+  RPCBuilder( 'Local', 'RdpFrontendAgentRemote.h', '', [] ),
+]
+
+
+components = [
+  'Vendor/Libc',
+]

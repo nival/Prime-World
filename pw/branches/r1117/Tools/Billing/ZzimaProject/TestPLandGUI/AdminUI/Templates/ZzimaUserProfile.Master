@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/AdminUI/Templates/ZzimaMaster.Master" 
+    AutoEventWireup="true" CodeBehind="ZzimaUserProfile.master.cs" 
+    Inherits="ZzimaBilling.AdminUI.Templates.ZzimaUserProfile" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="BodyPlaceHolder" runat="server" >
+
+    <table width="100%" cellpadding="0" cellspacing="0"  style="height: 100%; height: expression(parentNode.clientHeight -2 +'px');">
+    <tr height="100%" valign="top">    
+        <td style="background-color:#fff;" width="300px">
+            <asp:SiteMapDataSource 
+                 ID="SiteMapDataSource1" 
+                 ShowStartingNode="false"
+                 StartingNodeOffset = "1"
+                 runat="server" />
+                             
+            <asp:Menu ID="MainMenu" runat="server"  
+                    Orientation="Vertical"
+                    DynamicHorizontalOffset="10" 
+                    Target=""
+                    staticdisplaylevels="1" 
+                    MaximumDynamicDisplayLevels="0"
+                    DataSourceID="SiteMapDataSource1" Width="320px">
+                
+                <StaticHoverStyle Width="300px" CssClass="subMenuBtnHover" />
+                <StaticMenuItemStyle Width="300px" CssClass="subMenuBtn"/>
+                <StaticSelectedStyle Width="300px" CssClass="subMenuBtnSelected" />
+            </asp:Menu>
+        </td>
+
+        <td height="100%" valign="top">
+            <asp:Panel Visible="false" CssClass="errorMessageBar" runat="server" id="userPageInfoPanel">
+                <asp:Literal runat="server" id="userPageInfoMessage"/>
+            </asp:Panel>        
+            <asp:ContentPlaceHolder ID="UserPageHolder" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </td>
+    </tr>
+    </table>
+
+ </asp:Content>

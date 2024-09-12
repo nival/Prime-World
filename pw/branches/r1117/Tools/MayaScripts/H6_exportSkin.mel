@@ -1,0 +1,89 @@
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_exportSkin( string $sSkel, string $CRC, string $sDst , string $sSkin, string $sSel, string $sRoot)
+{
+//проверяем открытость сцены
+    global string $gCRC;
+    if ( $sSkel != `file -q -sceneName` || $CRC != $gCRC){
+        file -o -iv -f $sSkel;
+        $gCRC = $CRC;
+        // удаление нод, которые требуют недоступных плагинов
+        $unknownNodes = `ls -type unknown`;
+        if (size ($unknownNodes) > 0){
+            delete $unknownNodes;
+    	}
+    }
+
+//проверяем имя объекта
+    if ( $sSel == "" )
+    {
+        $sSel = "_";
+    }
+
+	if (size(`ls $sSel`) == 0){
+        error ("Указанный для экспорта меш " + $sSel + " не найден в сцене " + $sSkel);
+    }
+
+    select -r $sSel;
+    string $list[] = `ls -sl -ni -dag -typ mesh`;
+//проверяем тип объекта
+    if ( `size $list` != 1 )
+    {
+        error "Имя меша в сцене не уникально";
+    }
+
+    string $sMesh = $list[0];
+    string $roots[] = {};
+//проверяем скинкластеры и находим рутовую кость
+    for ( $sSkinCluster in `ls -typ skinCluster` )
+    {
+// Search for skinCluster connected to $sMesh
+        string $tmp[] = `skinCluster -q -g $sSkinCluster`;
+        if ( $sMesh != $tmp[0] ) continue;
+
+// Get roots of all joints in skinCluster
+        for ( $sJoint in `skinCluster -q -inf $sSkinCluster`)
+        {
+            $roots[`size($roots)`] = `rootOf $sJoint`;
+        }
+    }
+    $roots = `stringArrayRemoveDuplicates $roots`;
+
+    if ( `size $roots` == 0 )
+    {
+        error ( $sMesh + " is not a skin." );
+    }
+
+    if ( `size $roots` > 1 )
+    {
+        error "Меш прискинен к нескольких рутовым костям";
+    }
+
+
+//delete nonDeform history
+    select -r $sMesh;
+    bakePartialHistory -ppt $sMesh;
+
+// Triangulate
+    polyTriangulate -ch 1;
+    select -r $sMesh;
+    global int $gnSuccess;
+    $gnSuccess = 0;
+    currentTime -e `playbackOptions -q -min`;
+
+    if ( $sRoot == "" ){
+      $sRoot = "root";
+    }
+
+	if (size(`ls $sRoot`) == 0){
+        error ("Указанная для экспорта рутовая кость " + $sRoot + " не найдена в сцене " + $sSkel);
+    }
+
+//export
+	print ( "Выполняется экспорт скина " + $sSel + " из " + $sSkin + "\n" );
+    h6export -f $sDst -t skin  -lofik $sRoot;
+
+    $gnSuccess = 1;
+    print ( "Экспорт завершен\n" );
+    return;
+}

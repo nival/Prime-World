@@ -1,0 +1,28 @@
+#define HLSL
+#include "../GlobalMasks.h"
+
+struct VS_OUTPUT
+{
+  float4 Position : POSITION;
+};
+
+sampler shadowMap : register(s0);
+
+float4 screenScaleOffset : register( PSHADER_LOCALCONST0 );
+float4 params : register( PSHADER_LOCALCONST1 ); 
+float4 range : register( PSHADER_LOCALCONST3 ); // fadeMUL, fadeADD, blur radius, esm power
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float4 PS_main(VS_OUTPUT Input, float4 PixelPos : VPOS ) : COLOR
+{
+  float2 uv = PixelPos.xy * screenScaleOffset.xy + screenScaleOffset.zw;
+
+  float Sum = 0;
+
+  Sum += exp( range.w * tex2D(shadowMap, uv + float2( screenScaleOffset.x,  screenScaleOffset.y) ).r );
+  Sum += exp( range.w * tex2D(shadowMap, uv + float2(-screenScaleOffset.x,  screenScaleOffset.y) ).r );
+  Sum += exp( range.w * tex2D(shadowMap, uv + float2( screenScaleOffset.x, -screenScaleOffset.y) ).r );
+  Sum += exp( range.w * tex2D(shadowMap, uv + float2(-screenScaleOffset.x, -screenScaleOffset.y) ).r );
+
+  return float4( Sum / 4.0, 0, 0, 1);
+}

@@ -1,0 +1,20 @@
+#include "stdafx.h"
+#include "CameraPlaneRotatorElement.h"
+
+using namespace EditorNative;
+using namespace EditorNative::Manipulators;
+using namespace EditorNative::Manipulators::Rotation;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+CameraPlaneRotatorElement::CameraPlaneRotatorElement( Manipulator^ tool, System::Drawing::Color color )
+: RotatorElement( tool, color )
+{
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+CQuat CameraPlaneRotatorElement::CalculateRotation( NScene::ICamera& camera )
+{
+	NScene::SCameraPosition position;
+	camera.GetPosition( &position );
+	return ShortestArc( V3_AXIS_Z, position.GetCameraDir() );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

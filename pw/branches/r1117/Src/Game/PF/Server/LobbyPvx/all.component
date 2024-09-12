@@ -1,0 +1,62 @@
+sources = [
+  'LobbyIServerInstance.h',
+  'LobbyIEntrance.h',
+  'LobbyEntrance.cpp',
+  'LobbyEntrance.h',
+  'LobbyServerConnection.cpp',
+  'LobbyServerConnection.h',
+  'LobbyGameSession.cpp',
+  'LobbyGameSession.h',
+  'LobbyCustomGame.cpp',
+  'LobbyCustomGame.h',
+  'LobbySocialProxy.cpp',
+  'LobbySocialProxy.h',
+  'LobbyServerNode.cpp',
+  'LobbyServerNode.h',
+  'LobbySocUserPrepare.h',
+  'LobbySocUserPrepare.cpp',
+  'LobbyServerLoginWrapper.h',
+  'LobbyServerLoginWrapper.cpp',
+  'ISessionHybridLink.h',
+  'SessionHybridLink.cpp',
+  'SessionHybridLink.h',
+  'ILoginSvcWrapper.h',
+  'LobbyLog.h',
+  'LobbyConfig.h',
+  'LobbyConfig.cpp',
+]
+
+
+builders = [
+  RPCBuilder( 'Local', 'LobbyIServerInstance.h', '' ),
+  RPCBuilder( 'Local', 'LobbyIEntrance.h', '', ['RLobbyIServerInstance.auto.h'] ),
+  RPCBuilder( 'Local', 'ISessionHybridLink.h', '' ),
+]
+
+
+
+components = [
+  'Server/ServerAppBase/NivalService',
+  'Server/LobbyPvx/CommonTypes',
+  'Server/LiveMMaking/MMakingUtils',
+  'Server/LobbySocial/SocialLobbyPvxSvcRemote',
+  'System/Timer',
+  'System/Commands',
+  'System/InlineProfiler',
+  'Server/Accounting/Billing',
+  'Client/LobbyPvx/LobbyClientRInterface',
+  'Server/Roll/RollLogic',
+  'Server/Db',
+  'Server/Statistic/GameStatClient',
+  'Server/Statistic/StatClientHttpDispatcher',
+  'Server/Statistic/StatisticsServerTypes',
+  'System/Random',
+  'System/Crc32Utils',
+  'Server/Roll/RollClient',
+  'UserManager/UserManagerAgent',
+  'HybridServer/HybridServer',
+  'Network/RSessionKeyRegisterIface',
+  'Network/LSessionKeyRegistrerIface',
+  'Server/Accounting/BillingImpulsiveBuffsLoader',
+  'Server/GameChatController',
+]

@@ -1,0 +1,37 @@
+#include "LogHelpers.h"
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+namespace NLogg
+{
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const char *MessageLevelToString( const ELevel eLevel )
+{
+	switch ( eLevel )
+	{
+		case LEVEL_MESSAGE:   return "message";
+		case LEVEL_DEBUG:   return "debug";
+		case LEVEL_ASSERT:    return "assert";
+		case LEVEL_CRITICAL:  return "critical";
+		default: return "";
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void GetLoggerFullName( std::string *pResult, const CLogger *pLogger, const char cDelemiter )
+{
+	if ( pResult == 0 )
+		return;
+	
+	pResult->clear();
+	if ( pLogger == 0 )
+		return;
+		
+	*pResult = pLogger->GetName();
+	for ( const CLogger *it =  pLogger->GetParent(); it != 0; it = it->GetParent() )
+	{
+		std::string szTemp = it->GetName();
+		szTemp += cDelemiter;
+		szTemp += *pResult;
+		*pResult = szTemp;
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}

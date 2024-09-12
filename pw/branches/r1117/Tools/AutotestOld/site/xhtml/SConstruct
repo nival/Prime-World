@@ -1,0 +1,11 @@
+cheetahBuilder = Builder(
+  action = 'cheetah $SOURCE',
+  suffix = '.py',
+  src_suffix = '.tmpl',
+)
+
+env = Environment(BUILDERS = dict(Cheetah = cheetahBuilder))
+
+files = ['stdBase', 'stdSuccessReport', 'stdFatalFailureReport', 'stdSuccessReport', 'stdTestFailureReport']
+for f in files:
+  env.Cheetah(f)

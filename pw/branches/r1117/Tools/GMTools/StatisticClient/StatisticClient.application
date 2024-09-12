@@ -1,0 +1,28 @@
+sources = [
+    'main.cpp',
+    '../StatisticService/RPC/Data.h',
+    '../StatisticService/RPC/StatisticDebugTypes.h',
+    'Data.cpp',
+    'StatisticDebugTypes.cpp',
+    'stdafx.h',
+    'stdafx.cpp',
+]
+components = [
+    'Server/RPC',
+    'Network/Transport',
+    'Network/RealDriver',
+    'MemoryLib/NewDelete',
+    'PF_GameLogic/SessionEventType',
+    'Server/DebugVarUpdate/Report',
+    'System/Dumpers',
+    'Server/Statistic/StatisticClusterWriter',
+]
+
+globalCompilerKeys = [
+    '/D"WIN32"',
+]
+
+builders = [
+    RPCBuilder( 'Remote', '../StatisticService/RPC/StatisticWriter.cs', '', ['Data.h']) ,
+    RPCBuilder( 'Remote', '../StatisticService/RPC/StatisticDebugWriter.cs', '', ['StatisticDebugTypes.h'] ),
+]

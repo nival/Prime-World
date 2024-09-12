@@ -1,0 +1,24 @@
+#pragma once 
+
+namespace Render
+{
+	enum ERenderFormat
+	{
+			FORMAT_A8,
+			FORMAT_L8,
+			FORMAT_R32F,
+			FORMAT_G32R32F,
+			FORMAT_A8R8G8B8,
+      FORMAT_X8R8G8B8,
+			FORMAT_A16B16G16R16F,
+			FORMAT_A32B32G32R32F,
+			FORMAT_L16,
+			FORMAT_R16F,
+			FORMAT_R5G6B5,
+      FORMAT_INTZ,
+      FORMAT_DF24,
+      FORMAT_RAWZ,
+      FORMAT_DF16,
+      FORMAT_D24S8,
+	};
+};

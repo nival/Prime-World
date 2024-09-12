@@ -1,0 +1,23 @@
+global proc string H6_exportInit (string $pluginPath){
+
+	//loadPlugin  "C:\\pw_trunk\\Tools\\MayaPlugins\\MayaExtension_2008.mll";
+	//print $pluginPath;
+	global string $mayaVerTokens[];
+	global string $mayaVer;
+	$mayaVer = `about -v`;
+	eval "tokenize($mayaVer,\" \",$mayaVerTokens)";
+
+	if ($mayaVerTokens[0] != "2008" && $mayaVerTokens[0] != "2010" && $mayaVerTokens[0] != "2011") {
+		error ("Неопознанная версия Maya. Поддерживается только Maya2008, Maya2010 и Maya2011\n");
+    }
+	else {
+		print ("Maya " + $mayaVerTokens[0] + " detected\n");
+		loadPlugin ($pluginPath+"MayaExtension_" + $mayaVerTokens[0] +".mll");
+    }
+
+
+	print "NivalMayaStart_InitDone\n";
+
+	pause -sec 1;
+	return "ok\n";
+}

@@ -1,0 +1,26 @@
+sources = {
+  'SourceFiles' :
+  [
+    'RollTestTool.cpp',
+    'RollTestToolStorage.cpp',
+    'RollTestToolStorage.h',
+  ],
+}
+
+components = [
+  'Server/Roll/RollLogic',
+  'Server/Db',
+  'System/Streams',
+  'System/Asserts',
+  'System/ConfigFiles',
+  'System/CmdLineLite',
+  'System/InlineProfilerUI',
+  'System/Dumpers',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+# Enable CrashRpt
+settings.enableCrashRpt = True
+
+settings.enableProfiler = True

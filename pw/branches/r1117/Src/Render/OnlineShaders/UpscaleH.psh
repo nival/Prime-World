@@ -1,0 +1,33 @@
+#include "_commonPostProcess.h"
+
+sampler2D picture : register(s0);
+sampler1D weights : register(s1);
+
+float4 steps : register( PSHADER_LOCALCONST0 ); // -1/tex_size, 0, 1/tex_size, 2/tex_size
+float4 screenScaleOffset : register( SCREEN_TO_TEXTURE );
+
+//#define DEBUG_COORDS
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+half4 PS_main(VS_OUTPUT Input, float2 screenPos : VPOS) : COLOR
+{
+#ifdef DEBUG_COORDS
+  float2 uv = screenPos.xy * screenScaleOffset.xy + screenScaleOffset.zw;
+  float2 uvDiff = abs(uv - Input.Texcoord) / screenScaleOffset.xy;
+  if( (uvDiff.x > 0.001f) || (uvDiff.y > 0.001f) )
+    return half4(uvDiff,0,1);
+#endif
+  float2 texcoord = Input.Texcoord;
+  // get texel coord
+  float x = frac(texcoord.x);
+  half4 coeffs = tex1D(weights, x);
+  texcoord.x = (texcoord.x - x + 0.5) * steps.z;
+  // convolve with near samples
+  half3 res = tex2D(picture, texcoord) * coeffs[2];
+  float4 texcoord2 = texcoord.xyxx + steps;
+  res += tex2D(picture, texcoord2.xy) * coeffs[3];
+  res += tex2D(picture, texcoord2.zy) * coeffs[1];
+  res += tex2D(picture, texcoord2.wy) * coeffs[0];
+  return half4(res, 1);
+}

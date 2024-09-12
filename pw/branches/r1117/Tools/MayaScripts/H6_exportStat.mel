@@ -1,0 +1,123 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_exportStat( string $sScene, string $CRC, string $sDst, string $sSel)
+{
+
+// Проверка сцены и запроса на экспорт
+	global string $gCRC;
+	if ( $sScene != `file -q -sceneName` || $CRC != $gCRC){
+		file -o -iv -f $sScene;
+        $gCRC = $CRC;
+        // удаление нод, которые требуют недоступных плагинов
+        $unknownNodes = `ls -type unknown`;
+        if (size ($unknownNodes) > 0){
+            delete $unknownNodes;
+    	}
+	}
+
+	if ( $sSel == "" ){
+		$sSel = "_";
+	}
+
+	if (size(`ls $sSel`) == 0){
+        error ("Указанный для экспорта меш " + $sSel + " не найден в сцене " + $sScene);
+    }
+
+	if (size(`ls $sSel`) > 1){
+        error ("Указанный для экспорта меш " + $sSel + " не является уникальным в сцене " + $sScene);
+    }
+
+	if (size (`ls -l -ni -dag -typ mesh $sSel`) < 1 ){
+		error ("Указанный для экспорта меш " + $sSel + " не является геометрией в сцене " + $sScene);
+	}
+
+
+/* подготовка к экспорту
+ если меш анимированный, создается его копия с мировым парентом, на который переносится анимация
+ уже без иерархии дополнительных групп, если они были
+ если меш НЕанимированный, ничего не происходит
+
+ дв: сделал так, что процедура meshForExport в любом случае делают копию объекта,
+ которая переносится в мир, если он с анимацией, и на которой экструдится декаль, если надо
+ процедура meshForExport возвращает имя этой копии, и после экспорта она убивается
+*/
+
+	$dup = `meshForExport($sSel)`;
+//$sSel = $dup;
+// Подготовка ШЕЙПА копии меша к экспорту: удаление истории и триангуляция
+	select -r $dup;
+    string $meshShape[] = `ls -l -sl -ni -dag -typ mesh`;
+
+    polyTriangulate -ch 1 $meshShape[0];
+    bakePartialHistory -ppt $meshShape[0];
+
+	select -r $meshShape[0];
+
+// Экспорт через плагин
+    global int $gnSuccess;
+	$gnSuccess = 0;
+
+	print ( "Выполняется экспорт меша " + $sSel + " из " + $sScene + "\n");
+
+    h6export -f $sDst -t stat;
+//убиваем копию
+	delete $dup;
+
+    $gnSuccess = 1;
+
+	print ( "Экспорт завершен\n" );
+}
+
+///////////////////////////////////////////////////////////////////////////
+global proc string meshForExport (string $sSel) {
+
+// поиск анимационных кривых, подключенных к объекту или к его родителям
+// $sSel="decal_03";
+// print $isAnimated
+	int $isAnimated = 0;
+	string $parent[];
+    string $object = $sSel;
+
+    while ($object != ""){
+		$parent =  `listRelatives -p $object`;
+		if (`connectionInfo -id ($object+".tx")` || `connectionInfo -id ($object+".ty")` || `connectionInfo -id ($object+".tz")` || `connectionInfo -id ($object+".rx")` || `connectionInfo -id ($object+".ry")` || `connectionInfo -id ($object+".rz")` ||  `connectionInfo -id ($object+".sx")` || `connectionInfo -id ($object+".sy")` || `connectionInfo -id ($object+".sz")`){
+			$isAnimated = 1;
+        }
+		$object = $parent[0];
+	}
+
+//если объект - декаль, его в любом случае считаем анимированным
+	if (`attributeQuery -node $sSel -ex "decal"`) $isAnimated = 1;
+
+//все дальнейшие манипуляции и экспорт будут с копией объекта
+	currentTime -e `playbackOptions -q -min`;
+    $dup = `duplicate $sSel`;
+    $sSel = $dup[0];
+
+// если объект анимированный, он выносится на уровень мира для "схлопывания" иерархических анимации
+    if ($isAnimated){
+        /*delete -c -uac false  -hi none -cp 0 -s 1 $sSel;
+
+        if (size (`listRelatives -p $sSel`) != 0 ) {
+         	parent -w $sSel;
+        }
+        дв: убрал, потому что лучше сделать копию и сразу же вынести ее в мир т.к. это гаранитированно не сломает сцену*/
+
+        $translatePivot = `xform -ws -q -rp  $sSel`;
+        move  -r (-$translatePivot[0]) (-$translatePivot[1])  (-$translatePivot[2])  $sSel;
+        rotate -a 0 0 0 $sSel;
+        scale -a 1 1 1 $sSel;
+    }
+// если на объекте есть атрибут Decal, происходит Extrude по высоте для создания бокса
+    if (`attributeQuery -node $sSel -ex "decal"`) {
+    	$height = `getAttr ($sSel + ".decal")`;
+        if ($height != 0) {
+        	select $sSel;
+          	ConvertSelectionToFaces;
+    		$faces = `ls -sl`;
+            select -cl;
+    		polyMoveFacet -constructionHistory 0 -random 0 -ltz (-$height/2) $faces;
+			polyExtrudeFacet -kft 1 -ws 1 -ltz $height;
+        }
+    }
+    return $sSel;
+}
