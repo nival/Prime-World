@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mod1/_.DICT" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption>Статус для мод1 на ПвП карте накладываем на ГЗ</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="31D81572-A754-4491-A151-8E87B09A97F1">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgrgAAAD/0ItNDIsRi00Mi4K8AAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rBaseStrength&gt;=rBaseIntellect</sString>
+				</condition>
+				<name>IntOrStr</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<constants href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="CBB31B28-2BC4-4067-94D6-A74A1C94EFD7">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="40A333F4-6D87-4DCB-BBCF-9FA96D464A1D">
+					<UnitConstant>
+						<name>Mul_Power</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="CDDE7897-774F-458D-9092-A3497631DDFA">
+					<UnitConstant>
+						<name>Regen</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="26D058BF-11F0-4BAF-8F18-8FD81B7AFF73">
+					<UnitConstant>
+						<name>Mul_PowerStrenght</name>
+						<var>
+							<compiledString>FQoAAAACAAAAKQAAAEIAAABNdWxfUG93ZXIAVYvsg+wMi0UMixCLTQyLgrgAAAD/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q3E343A1QAAAA2V302UX0i+Vdw3sUrkfheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>rBaseStrength*cMul_Power*0.01</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="56A471A0-9FB5-42A7-A0EC-EA2637F24F5C">
+					<UnitConstant>
+						<name>Mul_PowerIntellect</name>
+						<var>
+							<compiledString>FQoAAAACAAAAKQAAAEIAAABNdWxfUG93ZXIAVYvsg+wMi0UMixCLTQyLgrwAAAD/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q3E343A1QAAAA2V302UX0i+Vdw3sUrkfheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>rBaseIntellect*cMul_Power*0.01</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="967C127C-3D62-4F05-BDF1-F4174DCABD95">
+					<UnitConstant>
+						<name>RegenLife_TT</name>
+						<var>
+							<compiledString>FQYAAAADAAAARAAAAFQAAABtAAAAUmVnZW4AVYvsg+wci0UMixCLTQyLgqgAAAD/0ItNDIsRi00Mi4KkAAAA3V34/9CLTQyLEYtNDItCDN1d8P/Q3E3w3A17AAAA3EX4i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3o/9DcTejcDXsAAADZXeTZReSL5V3DexSuR+F6hD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>(rBaseLifeRegenerationAbsolute+rBaseLifeRegeneration*rMaxLife*0.01)*cRegen*0.01</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="18CC3484-0804-4691-A609-25F5A9B3D0F1">
+					<UnitConstant>
+						<name>RegenEnergy_TT</name>
+						<var>
+							<compiledString>FQYAAAADAAAARAAAAFQAAABtAAAAUmVnZW4AVYvsg+wci0UMixCLTQyLgrAAAAD/0ItNDIsRi00Mi4KsAAAA3V34/9CLTQyLEYtNDItCEN1d8P/Q3E3w3A17AAAA3EX4i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3o/9DcTejcDXsAAADZXeTZReSL5V3DexSuR+F6hD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>(rBaseEnergyRegenerationAbsolute+rBaseEnergyRegeneration*rMaxEnergy*0.01)*cRegen*0.01</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="E3199F46-837D-4331-86A2-2C8CC0AF305B">
+					<UnitConstant>
+						<name>MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="9D3E89EC-0D40-4B74-8EEE-683BB5A5B991">
+					<UnitConstant>
+						<name>Mul_Defence</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>25</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="BE44065B-74F8-401E-A3EB-83DBFFD0A8D0">
+					<UnitConstant>
+						<name>Cooldown_Reduction</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>40</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="7A3FF2FE-4CB0-45DD-B633-801ED501C4FC">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Раздаем всем героям</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="373CC30C-6B07-4E6F-AF74-6D0C54290851">
+					<Spell>
+						<applicators>
+							<Item href="/Maps/Multiplayer/MOBA/Mod1/StatusHeroes.APLR" />
+						</applicators>
+						<dispatch href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="6D108071-6597-410F-92B5-787DDD4E6202">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="1B127621-555B-4134-A41E-A7021318A330">
+					<HeroEnumerator>
+						<flags>2</flags>
+						<mode>SendOnce</mode>
+						<targetFilter>272629763</targetFilter>
+					</HeroEnumerator>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Maps/Multiplayer/MOBA/Mod1/status_Native.APLR" />
+		<Item href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="9A4AA31F-EC24-4DC1-B4CC-5DDBA8C52D86">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>раздать статус флагам</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="AD0B0C98-15A5-4069-A577-55FF60FBE095">
+					<Spell>
+						<applicators>
+							<Item href="/Maps/Multiplayer/MOBA/Mod1/status_Native.APLR" />
+						</applicators>
+						<dispatch href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="17807F29-6BE3-4C86-B930-4B24A7A97637">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Maps/Multiplayer/MOBA/Mod1/AbilityTerrain.ABLT" id="2ACBBF68-ECE8-4E03-AB19-56D1BBACA55E">
+					<UnitEnumerator>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetFilter>838991872</targetFilter>
+					</UnitEnumerator>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>807346687</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/GhostLord.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/GhostLord_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/status_A4u_DeathSpectre.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/GhostLord_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ghostlord/Duel_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ghostlord/Elite_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ghostlord/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ghostlord/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ghostlord/Epic_Int_Ult2.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ghostlord/Epic_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ghostlord/Epic_Str_Ult2.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="9BA136D5-83D2-4869-B143-FD9C4E0F647E">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>послать спелл</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="9B876E8E-87CC-4BEA-B4B0-48B6B1FF4553">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="9D64877B-000A-44A3-916B-6D3A9294720A">
+								<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+									<damage>
+										<compiledString>FVUAAAAFAAAAXAAAAHUAAACxAAAA0wAAAAQBAABBM19EYW1hZ2UAAABHaG9zdExvcmRfQTQAAAAAR2hvc3RMb3JkX0E0AAAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZTEAAABBNF9BZGREYW1hZ2UAVYvsg+wUaAwAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgcAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0TGoAi1UQUmgsAAAAi0UIixCLTQiLgpwBAAD/0DtFEHQfi00MUYtVCFJoSAAAAItFEIsQi00Qi0JQ/9DZXfTrBdnu2V302UX02V3w6wXZ7tld8ItNDFGLVQhSaAAAAACLRRCLEItNEItCUP/Q2EXw2V3s2UXsi+VdwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>cA3_Damage + ( tal("GhostLord_A4") ? (sender.applGhostLordA4_DeathSpectre1(GLOBAL) != pMisc ? cA4_AddDamage : 0) : 0)</sString>
+									</damage>
+									<damageMode>0</damageMode>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+								</DamageApplicator>
+							</Item>
+							<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="0F35A9B0-3A41-4EBD-BE2C-3F2EF5E49290">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>фейк кража Энергии</caption>
+									<damage>
+										<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQjz/0F3D</compiledString>
+										<returnType>float</returnType>
+										<sString>sEnergyDrain</sString>
+									</damage>
+									<damageMode>0</damageMode>
+									<damageType>Mana</damageType>
+									<enabled>
+										<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCBP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+										<returnType>bool</returnType>
+										<sString>rEnergy &gt; 0</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="9D35DA6C-7252-4B92-8F88-71F00720A3C0">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Shots/MeleeHit/_HeroA.EFFT" />
+									<Item href="/Effects/Shots/MeleeHit/_HeroB.EFFT" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="ED2A441B-6384-4E67-9ABD-117ED87DE4C2">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQkAAAABAAAAFQAAAEEzX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA3_Range</sString>
+						</range>
+						<targetFilter>538771519</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="6CEA144D-3D9C-4E58-829A-EFE05E08F16D">
+			<TargetsCounterApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - считаем кол-во целей, чтобы сделать фейковый вампиризм</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>LifeDrainCapTargetsCounter</formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.2</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targetSelector href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="94B38300-C27C-4EE2-B6B1-1D7EF593CEFA">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>CaptureTargets</mode>
+						<range>
+							<compiledString>FQkAAAABAAAAFQAAAEEzX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA3_Range</sString>
+						</range>
+						<targetFilter>538771519</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</TargetsCounterApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/LifeDrainEmulator.APLR" />
+		<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="2E7F42A0-858C-4A94-B734-7B3AB44C3D53">
+			<TargetsCounterApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - считаем кол-во целей, чтобы сделать фейковый вампиризм Энергии</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>EnergyDrainCapTargetsCounter</formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.2</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targetSelector href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="7C7EE37E-703C-41F2-92C9-F245F6D905DE">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCBP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>bool</returnType>
+							<sString>rEnergy &gt; 0</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="26CBCC66-66A5-40BD-B3FA-7D961DF5B376">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>CaptureTargets</mode>
+								<range>
+									<compiledString>FQkAAAABAAAAFQAAAEEzX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cA3_Range</sString>
+								</range>
+								<targetFilter>538771519</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</targetSelector>
+			</TargetsCounterApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="18C89ED1-769C-4813-B430-094767FABFF1">
+			<HealApplicator parent="/GameLogic/GeneralApplicators/LifeDrainEmulator.APLR">
+				<amount>
+					<compiledString>FUEAAAADAAAATgAAAHsAAACUAAAATGlmZURyYWluVGFyZ2V0c0NhcABFbmVyZ3lEcmFpbkNhcFRhcmdldHNDb3VudGVyAAAAAHRhcmdldHNDb3VudABVi+yD7BBqAYtFEFBoFAAAAItNCIsRi00Ii4KcAQAA/9CJRfyLTQiLEYtNCItCPP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V30/9BR2RwkaDQAAACLTfyLEYtN/ItCVP/QUdkcJOgQAAAAg8QI3E302V3w2UXwi+Vdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>min( sender.FindApplicator("EnergyDrainCapTargetsCounter", pMisc, UNIT)-&gt;GetVariable("targetsCount"), cLifeDrainTargetsCap) * sEnergyDrain</sString>
+				</amount>
+				<caption> - Эмулятор вампиризма Энергии (чтоб он работал, в абилку нужно включить каунтер целей с именем "EnergyDrainCapTargetsCounter")</caption>
+				<healTarget>Energy</healTarget>
+			</HealApplicator>
+		</Item>
+	</applicators>
+	<askId>3</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А3. Жатва</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/GhostLord/Ability_A3.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="F7F8BA6B-9473-458D-B925-1F5C070A9B43">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="5D6BCBEC-AB26-4ACC-A853-DD80C9BEE07F">
+					<UnitConstant>
+						<name>A3_Range</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="F6DE44C2-D174-4F25-8867-F4571FC5C8D3">
+					<UnitConstant>
+						<name>A3_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACAQgCA7kM=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sStrength, 64, 477 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="9AA7F501-3110-4354-8BA7-B93135149326">
+					<UnitConstant>
+						<name>LifeDrainTargetsCap</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/const_A4_A3cd" />
+				<Item href="/Items/Talents/Class/GhostLord/const_A4_AxeAddDamage" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>6</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/GhostLord/Ability_A3.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="1E3AB449-29A5-441C-83F3-97616D1A3718">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>3</flags>
+	<forceBonus>9</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/GhostLord/A3.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACCQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>65</sString>
+	</manaCost>
+	<marker>doCast3</marker>
+	<microAI href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="5550FDD7-F229-4C5F-9C43-058639265382">
+		<MultipleTargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<minTargetCount>3</minTargetCount>
+			<minTargetWeight>0</minTargetWeight>
+			<targetSelector href="/Items/Talents/Class/GhostLord/Ability_A3.TALENT" id="B61EEAC7-5478-4669-83A1-F5928541FDB5">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQkAAAABAAAAFQAAAEEzX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA3_Range</sString>
+					</range>
+					<targetFilter>679477279</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+			<unitFilter>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</unitFilter>
+		</MultipleTargetSelectorMicroAI>
+	</microAI>
+	<minLevel>1</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>390</naftaCost>
+	<name textref="/Items/Talents/Class/GhostLord/Ability_A3.TALENT_name.txt" />
+	<node>ability3</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>GhostLord_A3</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/GhostLord/Ability_A3.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEEzX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<BackLink DBID="/Dialog/CastleTutorial/Ador/m3/m32_qB" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Dokt/m3/m32_qA" Count="1" />
+	<code>foreach building in Buildings do
+  if (building.PersistentId == "BuffHouse_1" or building.PersistentId == "BuffHouse_2" or building.PersistentId == "BuffHouse_3" or building.PersistentId == "BuffHouse_4" or building.PersistentId == "BuffHouse_5") then
+    return 1
+  end
+end
+return 0</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/m32_0" id="935CAD12-DC0E-4F83-ACCB-256A5EBC5D8A">
+			<SendRequestCondition>
+				<name>building_place</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/m32_0" id="AB22A61B-490E-4E97-8644-6B308FBED824">
+			<SendRequestCondition>
+				<name>move_from_pocket</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>

@@ -1,0 +1,49 @@
+# Limit setting
+ulimit -n 128000
+
+# Main setting.
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/pwserver.py"
+
+# Instnace settings.
+# One ellement of massive = one instance
+COORDINATOR="{{ conf['ip'] }}:{{ conf['coordinator_port'] }}"
+
+HOST="{{ conf['host_name'] }}"
+case $HOST in
+{{ conf['host_name'] }})
+	# WS one
+	INSTANCE_NAME[1]="one"
+	INSTANCE_PORT[1]="{{ conf['ws_one_port'] }}"
+	INSTANCE_NAME[2]="two"
+	INSTANCE_PORT[2]="{{ conf['ws_two_port'] }}"
+	;;
+v162)
+	# WS two
+	INSTANCE_NAME[1]="two"
+	INSTANCE_PORT[1]="8008"
+	;;
+v163)
+	# WS two
+	INSTANCE_NAME[1]="three"
+	INSTANCE_PORT[1]="8008"
+	;;
+esac
+
+
+
+# Declare associative arrays.
+declare -A INSTANCE RUNSCRIPT_ARGS LOGGING RUN_MARKER
+
+# Generate settings to instnaces
+{{ noParse("""for i in `seq 1 ${#INSTANCE_NAME[@]}`;""") }}
+do
+	INSTANCE[${INSTANCE_NAME[$i]}]=${INSTANCE_NAME[$i]}
+	RUNSCRIPT_ARGS[${INSTANCE_NAME[$i]}]="--port=${INSTANCE_PORT[$i]} --server_name=${INSTANCE_NAME[$i]} --log_level={{ conf['log_level_ws'] }} --log_rotation=external --log_file_prefix={{ conf['logging'] }}pwserver-${INSTANCE_NAME[$i]}.log --strict_login_check=1 --coordinator=$COORDINATOR --xdb_path={{ conf['rundir'] }}/xdb/ --tick_period={% if conf['tick_period_ws'] != "0" %}{{ conf['tick_period_ws'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+	LOGGING[${INSTANCE_NAME[$i]}]="> {{ conf['logging_run'] }}pw-ws.${INSTANCE_NAME[$i]}.log.run 2>&1"
+	RUN_MARKER[${INSTANCE_NAME[$i]}]="{{ conf['rundir'] }}/logs/ws.running.${INSTANCE_NAME[$i]}"
+done
+

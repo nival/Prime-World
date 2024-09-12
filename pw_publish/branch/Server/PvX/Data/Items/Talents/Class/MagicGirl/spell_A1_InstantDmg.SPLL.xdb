@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Items/Talents/Class/MagicGirl/Ability_A1.TALENT" Count="2" />
+	<applicators>
+		<Item href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="C6F42CF1-2B3A-4D9A-8587-CBDD38CE8F04">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>мгновенный урон и замедление</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="7F66BF81-F0F9-4C3E-BFB4-6E5CD3F7010A">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="0F053345-1A71-4C2D-8BEC-8FB831B1D46B">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>true</cancelInvisibility>
+									<caption>урон</caption>
+									<damage>
+										<compiledString>FQoAAAABAAAAFgAAAEExX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA1_Damage</sString>
+									</damage>
+									<damageMode>4</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+							<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="4143FE1F-75E8-4698-BF9A-E8256F6168DC">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Shots/Energy/_PurpleStarHitNew.EFFT" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="9DCA6EC0-1590-4427-A4F7-8F47C6AB30DC">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQwAAAABAAAAGAAAAEExX0FvZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_AoeRange</sString>
+						</range>
+						<targetFilter>538771519</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="42B41B59-BCD3-41F8-85C2-0A3BC71443C6">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>выбираем врагов для рефреша ульты</caption>
+				<enabled>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABNYWdpY0dpcmxfQTF1AAAATWFnaWNHaXJsX0ExdQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("MagicGirl_A1u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="8559BD2C-6898-4C67-8E11-C00334021DA2">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="2DB979FE-7B28-4AF7-8BFE-3EE0A568FCDF">
+								<RefreshCooldownApplicator>
+									<allowCdIncrease>false</allowCdIncrease>
+									<applyTarget>AbilityOwner</applyTarget>
+									<caption>рефреш кд</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flags>128</flags>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<reduceByPercent>false</reduceByPercent>
+									<reductionAmount>
+										<compiledString>FQgAAAABAAAAFAAAAEExdV9DRFIAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cA1u_CDR</sString>
+									</reductionAmount>
+									<refreshThis>false</refreshThis>
+									<talents>
+										<Item href="/Items/Talents/Class/MagicGirl/Ability_A4.TALENT" />
+										<Item href="/Items/Talents/Class/MagicGirl/Ability_A4_2.TALENT" />
+									</talents>
+									<useListAs>ListAsRule</useListAs>
+								</RefreshCooldownApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="9E55C3F4-0702-4903-A1A1-F722CC791AC3">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="0469C1C5-0D46-4BD8-B543-E29BD302FB3F">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQwAAAABAAAAGAAAAEExX0FvZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_AoeRange</sString>
+						</range>
+						<targetFilter>536870915</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<dispatch href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="2551BF76-4E51-4678-94AA-2570DFAAD6BB">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Items/Talents/Class/MagicGirl/spell_A1_InstantDmg.SPLL" id="11D64DC8-2155-42C2-97D8-CEFCDD8F95A7">
+					<EffectSwitcher>
+						<deathType>Manual</deathType>
+						<effectOnInvisible href="/Effects/Shots/FireBall/_BlackHoleHitEnemy.EFFT" />
+						<effectOnVisible href="/Effects/Shots/FireBall/_BlackHoleHit.EFFT" />
+						<enableCondition href="" />
+						<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+						<lifeTime>0</lifeTime>
+						<logic>FactionVisibility</logic>
+					</EffectSwitcher>
+				</Item>
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

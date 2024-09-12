@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Shaman/Ability_A4.TALENT" Count="3" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>Jump1</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Shaman/A4Jump_spellapplicator.APLR" id="4834B634-AF87-49B2-BB18-0F47E0ADAB22">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Shaman/A4Jump_spellapplicator.APLR" id="FE165D53-63C2-4866-BEF9-540359738DC3">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>-- damage</caption>
+						<damage>
+							<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_Damage</sString>
+						</damage>
+						<damageMode>4</damageMode>
+						<damageType>Material</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+					</DamageApplicator>
+				</Item>
+				<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Shaman/A4Jump_spellapplicator.APLR" id="A39D4551-5C85-40D4-B254-D658E7B2F0D1">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>1</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/Shaman/A4Jump_spellapplicator.APLR" id="78E31A37-E409-4ED3-9D2D-B2B846450862">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>0</x>
+				<y>0</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>cA4_Range</sString>
+			</range>
+			<targetFilter>538771519</targetFilter>
+			<targetSelector href="/Items/Talents/Class/Shaman/A4Jump_spellapplicator.APLR" id="735707EA-513E-44C2-86F8-DA4387B81FF7">
+				<SelectApplicatorTarget>
+					<applicatorIndex>0</applicatorIndex>
+					<applicatorName></applicatorName>
+					<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+					<selectTarget>AbilityOwner</selectTarget>
+				</SelectApplicatorTarget>
+			</targetSelector>
+		</AreaTargetSelector>
+	</targetSelector>
+</SpellApplicator>

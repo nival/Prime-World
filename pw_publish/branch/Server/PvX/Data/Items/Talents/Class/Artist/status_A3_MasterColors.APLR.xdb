@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<applicators>
+		<Item href="/Items/Talents/Class/Artist/trigger_scrollRoll.APLR" />
+		<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="05C99115-D634-4033-9589-F07505400D1D">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption> - Триггер на получение конкрентного вида свитка (КЛОН)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="57085A64-0CC0-4AAA-84F6-5C7022EB445C">
+					<EventProcessorOnConsumableObtained>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<consumable href="/Items/Scrolls/SignOfCopy.ARCT" />
+						<origin>6</origin>
+						<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="EF990B5B-97C1-4D03-9421-EDD023CE6DFB">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="D9BA5E69-ECD5-4858-B9FE-BFBB8EA186E4">
+										<SpellProbabilityApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption> - рандомайзером выдаем копию свитка (если не повезло - увеличиваем шанс, что повезет)</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<probability>
+												<compiledString>FToAAAACAAAAQQAAAF4AAABBcnRpc3RBMl9zY3JvbGxHYWluUHJvYmFiaWxpdHlfY3VtdWxhdGl2ZQAAAEEzX1Njcm9sbFByb2MAVYvsg+wMaAAAAACLRQyLEItNDIuCiAEAAP/Qi00MUYtVCFJoLAAAAItFEIsQi00Qi0JQ3V34/9DcRfjZXfTZRfSL5V3D</compiledString>
+												<returnType>float</returnType>
+												<sString>receiver.vArtistA2_scrollGainProbability_cumulative + cA3_ScrollProc</sString>
+											</probability>
+											<providerName></providerName>
+											<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="0536C162-6203-4F30-9B27-E0BB6F798851">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="D26E629D-2FC8-45FC-BCC4-D163C8A776E9">
+															<GiveConsumable>
+																<amount>
+																	<compiledString></compiledString>
+																	<returnType>int</returnType>
+																	<sString>1</sString>
+																</amount>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - даем один свиток</caption>
+																<consumable href="/Items/Scrolls/SignOfCopy.ARCT" />
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+															</GiveConsumable>
+														</Item>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="DE98ED3E-F930-4282-A833-A0BA6EC0FE3F">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - сбрасываем накопление вероятности прока</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="AB633701-C43D-4247-B6FA-F0CBC4FB391A">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<spellIfFailed href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="7E5C16E3-410A-4945-9178-E5DF5369DD60">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="83561329-B3DD-4584-810E-189E33E4074C">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - при неудаче прок накапливается</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQ4AAAABAAAAGgAAAEEzX1Njcm9sbFByb2MAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA3_ScrollProc</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>1.0f</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="B6D0B351-B412-4D04-80F7-2AD90DE8C3F4">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spellIfFailed>
+										</SpellProbabilityApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="42ACF1A0-BE5A-4099-8032-9CBA0A27BA64">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnConsumableObtained>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="5A5D5A66-96E3-49D6-BCF4-FA8DD3F412C5">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption> - Триггер на получение конкрентного вида свитка (СИЯНИЕ)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="7620BEB7-A807-49F6-9A47-0C83E003DEB8">
+					<EventProcessorOnConsumableObtained>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<consumable href="/Items/Scrolls/SignOfNova.ARCT" />
+						<origin>6</origin>
+						<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="80B758FA-C257-434F-8C11-BD77E26DE725">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="EDA68E28-FB5B-4A4F-8B4D-6D3FDF50C951">
+										<SpellProbabilityApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption> - рандомайзером выдаем копию свитка (если не повезло - увеличиваем шанс, что повезет)</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<probability>
+												<compiledString>FToAAAACAAAAQQAAAF4AAABBcnRpc3RBMl9zY3JvbGxHYWluUHJvYmFiaWxpdHlfY3VtdWxhdGl2ZQAAAEEzX1Njcm9sbFByb2MAVYvsg+wMaAAAAACLRQyLEItNDIuCiAEAAP/Qi00MUYtVCFJoLAAAAItFEIsQi00Qi0JQ3V34/9DcRfjZXfTZRfSL5V3D</compiledString>
+												<returnType>float</returnType>
+												<sString>receiver.vArtistA2_scrollGainProbability_cumulative + cA3_ScrollProc</sString>
+											</probability>
+											<providerName></providerName>
+											<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="1E080CF0-B159-4A53-A77F-720C18B9381A">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="5F1A5FE9-04E6-4BD2-AADF-5DE96EC8E965">
+															<GiveConsumable>
+																<amount>
+																	<compiledString></compiledString>
+																	<returnType>int</returnType>
+																	<sString>1</sString>
+																</amount>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - даем один свиток</caption>
+																<consumable href="/Items/Scrolls/SignOfNova.ARCT" />
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+															</GiveConsumable>
+														</Item>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="5242E63A-55E8-47D6-ACA6-DF3FC8684DCA">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - сбрасываем накопление вероятности прока</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="F1619AF4-B276-47B8-BCC6-3307CFE0CAE1">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<spellIfFailed href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="10D30930-B8EA-4826-A181-E7158FBA63B2">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="59D46E08-B729-4EC7-B01D-9D28CA9F9B0E">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - при неудаче прок накапливается</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQ4AAAABAAAAGgAAAEEzX1Njcm9sbFByb2MAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA3_ScrollProc</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>1.0f</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="398D7ECC-2601-43BD-8BBA-88DBE0A7D4E3">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spellIfFailed>
+										</SpellProbabilityApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="4DED84C7-60FF-44E1-B947-7D30578E2E6B">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnConsumableObtained>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="1EBCA4F6-0607-44C8-9162-B1976CD51F60">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption> - Триггер на получение конкрентного вида свитка (ХИЛКА)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="2BF8B0C7-63FB-4D2D-9027-713F56EBC1A9">
+					<EventProcessorOnConsumableObtained>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<consumable href="/Items/Scrolls/SignOfPriestess.ARCT" />
+						<origin>6</origin>
+						<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="A521E72F-1DF8-4A5A-BB7A-277EC9DC52A1">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="32C6D7BE-5782-4F62-BAC8-FD000FBD5F91">
+										<SpellProbabilityApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption> - рандомайзером выдаем копию свитка (если не повезло - увеличиваем шанс, что повезет)</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<probability>
+												<compiledString>FToAAAACAAAAQQAAAF4AAABBcnRpc3RBMl9zY3JvbGxHYWluUHJvYmFiaWxpdHlfY3VtdWxhdGl2ZQAAAEEzX1Njcm9sbFByb2MAVYvsg+wMaAAAAACLRQyLEItNDIuCiAEAAP/Qi00MUYtVCFJoLAAAAItFEIsQi00Qi0JQ3V34/9DcRfjZXfTZRfSL5V3D</compiledString>
+												<returnType>float</returnType>
+												<sString>receiver.vArtistA2_scrollGainProbability_cumulative + cA3_ScrollProc</sString>
+											</probability>
+											<providerName></providerName>
+											<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="5644E494-9E5B-480C-B028-FD2A31F14C4F">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="C60DE5AB-0860-4960-BE98-2BD723551536">
+															<GiveConsumable>
+																<amount>
+																	<compiledString></compiledString>
+																	<returnType>int</returnType>
+																	<sString>1</sString>
+																</amount>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - даем один свиток</caption>
+																<consumable href="/Items/Scrolls/SignOfPriestess.ARCT" />
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+															</GiveConsumable>
+														</Item>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="26A5BBED-5077-4024-99EB-6C8F9390DD65">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - сбрасываем накопление вероятности прока</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="A21BF335-6120-4515-85F1-EEAE35AB32BF">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<spellIfFailed href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="A867ED15-06E5-4D9D-A3D7-96BC115E2825">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="7476DD20-AA3C-4BFF-9B93-40BA91570B55">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - при неудаче прок накапливается</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQ4AAAABAAAAGgAAAEEzX1Njcm9sbFByb2MAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA3_ScrollProc</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>1.0f</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="FEB95611-5B48-4F27-8D42-EB73AAFC5BE6">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spellIfFailed>
+										</SpellProbabilityApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="C0A7B79B-16A9-4FF1-B8F1-1805AF5215A3">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnConsumableObtained>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="CAFF6EA7-B8C7-4097-B693-16D559B5B14C">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption> - Триггер на получение конкрентного вида свитка (ЗВЕЗДОПАД)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="5DDFAAAC-290D-4B29-B478-25428BC3EE80">
+					<EventProcessorOnConsumableObtained>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<consumable href="/Items/Scrolls/SignOfStarfall.ARCT" />
+						<origin>6</origin>
+						<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="FFE7F5A3-8256-4D64-AF86-FF041D4021E4">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="8B9E2C28-5C44-41C2-8191-62B63DC45FF6">
+										<SpellProbabilityApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption> - рандомайзером выдаем копию свитка (если не повезло - увеличиваем шанс, что повезет)</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<probability>
+												<compiledString>FToAAAACAAAAQQAAAF4AAABBcnRpc3RBMl9zY3JvbGxHYWluUHJvYmFiaWxpdHlfY3VtdWxhdGl2ZQAAAEEzX1Njcm9sbFByb2MAVYvsg+wMaAAAAACLRQyLEItNDIuCiAEAAP/Qi00MUYtVCFJoLAAAAItFEIsQi00Qi0JQ3V34/9DcRfjZXfTZRfSL5V3D</compiledString>
+												<returnType>float</returnType>
+												<sString>receiver.vArtistA2_scrollGainProbability_cumulative + cA3_ScrollProc</sString>
+											</probability>
+											<providerName></providerName>
+											<spell href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="8A95225D-D079-4F94-834C-E8511D42EC9B">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="7FEC668A-CDD7-4629-8C7A-6E64557D874C">
+															<GiveConsumable>
+																<amount>
+																	<compiledString></compiledString>
+																	<returnType>int</returnType>
+																	<sString>1</sString>
+																</amount>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - даем один свиток</caption>
+																<consumable href="/Items/Scrolls/SignOfStarfall.ARCT" />
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+															</GiveConsumable>
+														</Item>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="1734F3EC-6CDB-4BB9-825D-2B3185E9A46A">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - сбрасываем накопление вероятности прока</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="42A5AD2F-9369-4E11-A453-692A86207077">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<spellIfFailed href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="35C39F4C-75C6-4A64-AFD0-1B45835FA9F3">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="10543BB1-B7EB-4127-A1A4-57DB9BC07506">
+															<PermanentStatModApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption> - при неудаче прок накапливается</caption>
+																<customApplyType>None</customApplyType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQ4AAAABAAAAGgAAAEEzX1Njcm9sbFByb2MAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA3_ScrollProc</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>1.0f</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>ArtistA2_scrollGainProbability_cumulative</variable>
+																</modifier>
+																<providerName></providerName>
+															</PermanentStatModApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="B9B9FBCB-E61D-4419-A848-D479AA3B26E8">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spellIfFailed>
+										</SpellProbabilityApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR" id="8A9FE0DF-7073-4A4E-9730-C3D87C2EBDC8">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnConsumableObtained>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>статус Краски мастера</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Artist/A3.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Artist/status_A3_MasterColors.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

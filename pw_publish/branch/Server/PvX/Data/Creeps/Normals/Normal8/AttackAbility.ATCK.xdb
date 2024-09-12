@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Creeps/Normals/Normal8/CTF_S8.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQYAAAABAAAAEgAAAFdpZHRoAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cWidth</sString>
+	</aoeSize>
+	<aoeType>CorridorMax</aoeType>
+	<applicators>
+		<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="84A0019E-46DE-410A-8D5B-A26AEEF1DC07">
+			<SpellApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Отправляем снаряд</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="EDB5870B-3EB5-40C1-A3FC-4F1AB505F95D">
+					<Spell>
+						<applicators />
+						<dispatch href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="E00FDE95-F25F-42EF-9A23-8A39647DD0EB">
+							<DispatchLinear>
+								<aiming>Straight</aiming>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Motion</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Effects/Shots/Energy/_.EFFT" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>2</flags>
+								<flyMode>Linear</flyMode>
+								<fromLocator>Attack</fromLocator>
+								<height>0</height>
+								<killEffect>true</killEffect>
+								<locatorOrient>true</locatorOrient>
+								<maxDeviation>180</maxDeviation>
+								<maxDistance>-1</maxDistance>
+								<maxRise>0</maxRise>
+								<minRise>0</minRise>
+								<persistentApplicators>
+									<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="AEF0B383-09BC-4F54-83C1-3CA8BAAA8363">
+										<SpellPeriodicallyApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>Рассылаем уроны врагам</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<period>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</period>
+											<providerName></providerName>
+											<scaleMode>ScaleIsCount</scaleMode>
+											<spell href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="778E9C59-CECD-46E3-99A8-DBC19D707710">
+												<Spell>
+													<applicators>
+														<Item href="/Effects/Shots/HitsApplicators/Energy.APLR" />
+														<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="D21AC088-6946-4D66-A5FE-102F5FA62E56">
+															<DamageApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<cancelInvisibility>false</cancelInvisibility>
+																<caption>урон</caption>
+																<damage>
+																	<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4IEAQAA/9BR2Rwk6DgAAACDxARQi00IixGLTQiLggABAAD/0FHZHCToGwAAAIPEBFCLTRCLEYtNEItCXP/QiUX820X8i+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>(random ( f2l(sDamageMin), f2l(sDamageMax)))</sString>
+																</damage>
+																<damageMode>0</damageMode>
+																<damageType>Native</damageType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+																<timeLimiter>-1</timeLimiter>
+																<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+															</DamageApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="CE5B507A-17EB-41D9-B286-5EE11C9A835E">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>2</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<startOffset>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</startOffset>
+											<targetSelector href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="864FBE3D-C9C7-4E9F-A1FE-EFBF0027FE2E">
+												<CapsuleTargetSelector>
+													<cutoffFirstSegment>true</cutoffFirstSegment>
+													<flags>0</flags>
+													<mode>SendOnce</mode>
+													<range>
+														<compiledString>FQYAAAACAAAAEwAAACYAAABXaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTQAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+														<returnType>float</returnType>
+														<sString>cWidth * 0.5</sString>
+													</range>
+													<rangeFromOwner>
+														<compiledString>FQsAAAACAAAAGAAAACsAAABSYW5nZV9Mb25nAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFOQAAANld/NlF/IvlXcMAAAAAAAAQQA==</compiledString>
+														<returnType>float</returnType>
+														<sString>cRange_Long + 4</sString>
+													</rangeFromOwner>
+													<segmentBegin>PreviousPosition</segmentBegin>
+													<segmentDirectionOffset>0</segmentDirectionOffset>
+													<segmentEnd>CurrentPosition</segmentEnd>
+													<segmentEndTargetSelector href="" />
+													<targetFilter>538771519</targetFilter>
+												</CapsuleTargetSelector>
+											</targetSelector>
+										</SpellPeriodicallyApplicator>
+									</Item>
+								</persistentApplicators>
+								<speed>18</speed>
+								<suspendTime>0</suspendTime>
+								<toLocator></toLocator>
+							</DispatchLinear>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="4F89C155-8DAF-471B-BF38-F8C54474ACC9">
+					<PointTargetSelector>
+						<checkMinRange>true</checkMinRange>
+						<mode>RangeFromOwner</mode>
+						<offset>
+							<x>0</x>
+							<y>1</y>
+						</offset>
+						<paralleledTarget>false</paralleledTarget>
+						<range>
+							<compiledString>FQsAAAACAAAAGAAAACsAAABSYW5nZV9Mb25nAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFOQAAANld/NlF/IvlXcMAAAAAAAAQQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long + 4</sString>
+						</range>
+						<targetSelector href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="FA07F2CF-954E-40CE-BE94-8993D356911D">
+							<SelectApplicatorTarget>
+								<applicatorIndex>0</applicatorIndex>
+								<applicatorName></applicatorName>
+								<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+								<selectTarget>ApplicatorTarget</selectTarget>
+							</SelectApplicatorTarget>
+						</targetSelector>
+						<traceMode>0</traceMode>
+					</PointTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="307726AF-1A37-485C-9D1F-450EAC9A78AC">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="5F6D7CDC-0689-4098-995C-16D1DA6E908E">
+					<UnitConstant>
+						<name>Manaburn</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="26D3444E-A561-4DE2-AD81-843C90A095BB">
+					<UnitConstant>
+						<name>Invisibility_FadeIn</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="9E99EE90-BCF1-424E-933C-00E2993DEAFE">
+					<UnitConstant>
+						<name>Invisibility_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="2D0A9D47-10EE-4097-B01A-A578D8DE870D">
+					<UnitConstant>
+						<name>Liferegen</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="3200D851-04FB-4FDB-B982-6D3A15FB1658">
+					<UnitConstant>
+						<name>Evade_TT</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQjT/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sEvasion</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="53F88A7D-3A5F-4E35-9DB2-3AC5D3199D1C">
+					<UnitConstant>
+						<name>Width</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DmpnZPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>1.7</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Normals/Normal8/AttackAbility.ATCK" id="EA958ED6-95C1-4C8D-857D-8CB71C5BBD10">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>2</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>73</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Creeps/Normals/Normal8/Color.APLR" />
+		<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+		<Item href="/Creeps/Normals/Normal7/StatusGhost.APLR" />
+	</passiveApplicators>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>16777216</targetType>
+	<type>Simple</type>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Glyphs/Refresher.GLPH" Count="1" />
+	<BackLink DBID="/Glyphs/RefresherAfterKill.GLPH" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/status_Refresher.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_7_Glyph/Buff_Switcher.APLR" Count="2" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/status_Refresher.APLR" id="D564BB1E-3DD7-47DC-9322-02C0EEF406E0">
+			<AbilityModApplicator>
+				<addValue>
+					<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</addValue>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Кулдаун уменьш</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FTkAAAAFAAAAQAAAAFYAAABqAAAAhAAAAKkAAABSZWRzZXQ3XzdDb3VudGVyAAAAAER1cmF0aW9uAAAAAEV4dHJhRHVyYXRpb24AAABEdXJhdGlvbgBVi+yD7BRoAAAAAItFDIsQi00Mi4KIAQAA/9DcHcoAAADf4PbEAXU/i00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ/9CLTQxRi1UIUmggAAAAi0UQixCLTRCLQlDdXfj/0NxF+N1d8Osdi00MUYtVCFJoMAAAAItFEIsQi00Qi0JQ/9DdXfDdRfDZXezZReyL5V3DAAAAAAAA8D8=</compiledString>
+					<returnType>float</returnType>
+					<sString>receiver.vRedset7_7Counter &gt;= 1? cDuration + cExtraDuration : cDuration</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<mode>cooldown</mode>
+				<multValue>
+					<compiledString>FQ0AAAABAAAAGQAAAE11bF9Db29sZG93bgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cMul_Cooldown</sString>
+				</multValue>
+				<providerName></providerName>
+				<specificAbility href="" />
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/Brewer/Ability_A0.TALENT" />
+				</talents>
+				<targetAbilities>252</targetAbilities>
+				<useListAs>ListAsException</useListAs>
+			</AbilityModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/status_Refresher.APLR" id="09377F88-B1DC-4994-9738-A90EC656BEC7">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Переменная для псевдокулдаунов внутри способностей</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FREAAAABAAAAHQAAAENvb2xkb3duX1BlcmNlbnQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cCooldown_Percent</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>GlyphRefresher_CDR_Amount</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Статус Глифа Обновления</caption>
+	<customCounter>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/status_Refresher.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/RefreshCD/_Cycle.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>4</flags>
+	<formulaName>StatusRefresherGlyph</formulaName>
+	<image href="/UI/Styles/Icons/Glyphs/glyph_refresh_status.ITEX" />
+	<lifeTime>
+		<compiledString>FTkAAAAFAAAAQAAAAFYAAABqAAAAhAAAAKkAAABSZWRzZXQ3XzdDb3VudGVyAAAAAER1cmF0aW9uAAAAAEV4dHJhRHVyYXRpb24AAABEdXJhdGlvbgBVi+yD7BRoAAAAAItFDIsQi00Mi4KIAQAA/9DcHcoAAADf4PbEAXU/i00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ/9CLTQxRi1UIUmggAAAAi0UQixCLTRCLQlDdXfj/0NxF+N1d8Osdi00MUYtVCFJoMAAAAItFEIsQi00Qi0JQ/9DdXfDdRfDZXezZReyL5V3DAAAAAAAA8D8=</compiledString>
+		<returnType>float</returnType>
+		<sString>receiver.vRedset7_7Counter &gt;= 1? cDuration + cExtraDuration : cDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/status_Refresher.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/status_Refresher.APLR" id="220E12D3-8F05-4D30-9E95-7091BB4146DA">
+		<ApplicatorsList>
+			<applicatorLists />
+			<applicators>
+				<Item href="/Heroes/DefaultStatus/status_Refresher.APLR" />
+			</applicators>
+		</ApplicatorsList>
+	</unstackableWith>
+</StatusApplicator>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Witch/Ability_A1.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>Period_Dmg</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQoAAAABAAAAFAAAAEExX0NhdERvVABVi+xqAItFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applA1_CatDoT(GLOBAL) != pMisc</sString>
+	</enabled>
+	<formulaName>A1_DmgFromCatDoT</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQ0AAAABAAAAGQAAAEExX0RvVFBlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cA1_DoTPeriod</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Witch/PeriodicalDmgA1.APLR" id="765F083C-46B8-4814-9409-C427B9AD1395">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Witch/PeriodicalDmgA1.APLR" id="5C62756C-2687-498B-8535-2131A0C22DB2">
+					<VariableProxyApplicator>
+						<applicators>
+							<Item>
+								<applicator href="/Items/Talents/Class/Witch/PeriodicalDmgA1.APLR" id="DAD09AAB-FB42-4A77-9227-48213183483E">
+									<DamageApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<cancelInvisibility>false</cancelInvisibility>
+										<caption>урон</caption>
+										<damage>
+											<compiledString>FQ8AAAABAAAAGwAAAEExX0RhbWFnZVRvdGFsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>cA1_DamageTotal</sString>
+										</damage>
+										<damageMode>4</damageMode>
+										<damageType>Material</damageType>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+									</DamageApplicator>
+								</applicator>
+								<variableNames>
+									<Item>damageDealed</Item>
+								</variableNames>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/Witch/status_A0_WitchCurse.APLR" />
+								<variableNames />
+							</Item>
+						</applicators>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>урон + A0_Curse</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+					</VariableProxyApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Witch/PeriodicalDmgA1.APLR" id="F6A7AB8E-8A65-4DFD-A423-D19239E181B5">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString>FREAAAABAAAAHAAAAEExX0RtZ0Zyb21DYXREb1QAVYvsUWoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DtFEHUZi00IO00MD5XCD7bChcB0CcdF/AEAAADrB8dF/AAAAACKRfyL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applA1_DmgFromCatDoT(GLOBAL) == pMisc &amp;&amp; (pFirst == pSecond ? false : true)</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString>FQUAAAABAAAAEQAAAFNURVAAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cSTEP</sString>
+	</startOffset>
+	<targetSelector href="" />
+</SpellPeriodicallyApplicator>

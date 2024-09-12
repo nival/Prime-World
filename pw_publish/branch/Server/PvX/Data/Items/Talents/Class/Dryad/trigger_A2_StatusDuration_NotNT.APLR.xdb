@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NT.APLR" Count="1" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>изменить длительность инфеста, если цель снова вернулась в в свою родную землю</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRgAAAABAAAAIgAAAERyeWFkX0EyX3N0YXR1c0R1cmF0aW9uAFWL7GoCi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5XBisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applDryad_A2_statusDuration(ABILITY) != pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NotNT.APLR" id="500E19C0-1340-4755-9693-58734F0674E4">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvsVotFDIsQi00Mi0JM/9CL8ItNCIsRi00Ii4KQAQAA/9AzyTvwD5XBisFeXcM=</compiledString>
+				<returnType>bool</returnType>
+				<sString>rTerrainType != sFctn</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NotNT.APLR" id="963083BB-38F9-4F13-A9C0-E99B6A04A9D5">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NotNT.APLR" id="F8B4F975-B82E-4AD3-ACB5-760B8840D7C8">
+							<AddApplicatorDuration>
+								<applicators>
+									<Item href="/Items/Talents/Class/Dryad/status_A2_Infest.APLR" />
+									<Item href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" />
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>убавляем длительность статусу</caption>
+								<durationToAdd>
+									<compiledString>FUAAAAAEAAAATQAAAG0AAACHAAAAnAAAAERyeWFkX0EyX3N0YXR1c0R1cmF0aW9uAGR1cmF0aW9uAAAAAEEyX0R1cmF0aW9uX05UAABBMl9EdXJhdGlvbgBVi+yD7BhqAotFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9CJRfyLTQxRi1UIUmg0AAAAi0UQixCLTRCLQlD/0ItNDFGLVQhSaCQAAACLRRCLEItNEItCUN1d9P/QaBgAAACLTfyLEYtN/ItCVN1d7P/Q3HXs3E302V3o2UXoi+Vdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>(receiver.FindApplicator("Dryad_A2_statusDuration", pMisc, ABILITY)-&gt;GetVariable("duration")/ cA2_Duration_NT) * cA2_Duration</sString>
+								</durationToAdd>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<flags>2</flags>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<nameToCheck></nameToCheck>
+								<providerName></providerName>
+							</AddApplicatorDuration>
+						</Item>
+						<Item href="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NT.APLR" />
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NotNT.APLR" id="37A1E93A-A36B-48D7-AC63-4E689A9143DA">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>true</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

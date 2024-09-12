@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interaction>
+	<BackLink DBID="/Summons/Portal2/_.SUMMONED" Count="1" />
+	<allowedFactions>8</allowedFactions>
+	<externalAbility href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="320CF767-A117-46F8-90C3-3A00201C7F83">
+		<Ability>
+			<activeCustomTrigger>true</activeCustomTrigger>
+			<allowChase>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</allowChase>
+			<alternativeTargets />
+			<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+			<aoeHeight>0</aoeHeight>
+			<aoeMaterial href="" />
+			<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+			<aoeSize>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</aoeSize>
+			<aoeType>None</aoeType>
+			<applicators>
+				<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="541F2C9E-A5D0-484B-9D08-57997D2CA50B">
+					<FlagsApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>176</behaviorFlags>
+						<caption>FX Blink</caption>
+						<consumables />
+						<effect>
+							<Item href="/Effects/General/Blink/_PurpleDust.EFFT" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<flag>0</flag>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<talents />
+						<useListAs>ListAsRule</useListAs>
+					</FlagsApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="1CC10F15-39D6-416A-B04F-AF4D75F8C4B6">
+					<ProgramApplicator>
+						<applicators>
+							<Item>
+								<applicator href="/GameLogic/GeneralApplicators/SetTossed.APLR" />
+								<continueCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>1</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="00BA6DD9-8DDF-431C-88B1-37D7B64C276D">
+									<ThrowApplicator>
+										<angle Animated="True">
+											<Tracks>
+												<Item>
+													<Item>
+														<Key>0</Key>
+														<Value>0</Value>
+													</Item>
+													<Item>
+														<Key>0.5</Key>
+														<Value>0.001</Value>
+													</Item>
+													<Item>
+														<Key>1</Key>
+														<Value>0</Value>
+													</Item>
+												</Item>
+											</Tracks>
+											<Type>Clamp</Type>
+											<Values>
+												<Item>
+													<Key>0</Key>
+													<Value>0</Value>
+												</Item>
+												<Item>
+													<Key>0.5</Key>
+													<Value>0.001</Value>
+												</Item>
+												<Item>
+													<Key>1</Key>
+													<Value>0</Value>
+												</Item>
+											</Values>
+										</angle>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>153</behaviorFlags>
+										<caption>Target throw</caption>
+										<collisionFlags>7</collisionFlags>
+										<enabled>
+											<compiledString>FScAAAADAAAAQwAAAGgAAACIAAAAVGVsZXBvcnREaXN0YW5jZQAAAABUaHJvdwAAAFRocm93X0p1bXAAVYvsg+wMi0UQixCLTRCLQgz/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xEF1SWoAi00QUWgUAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUpagCLRRBQaBwAAACLTQyLEYtNDIuCnAEAAP/QO0UQdQnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>mDist2Target &lt; cTeleportDistance &amp;&amp; receiver.applThrow(GLOBAL) == pMisc &amp;&amp; receiver.applThrow_Jump(GLOBAL) == pMisc</sString>
+										</enabled>
+										<firstTargetToHit href="" />
+										<flightType>Throw</flightType>
+										<flipTime>
+											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+											<returnType>float</returnType>
+											<sString>1</sString>
+										</flipTime>
+										<flyEffect>
+											<Item href="" />
+											<Item href="" />
+										</flyEffect>
+										<formulaName>Throw</formulaName>
+										<landTime>0</landTime>
+										<lockRotation>false</lockRotation>
+										<LoggingEvent>-1</LoggingEvent>
+										<maxDistance>0</maxDistance>
+										<maxHeight>0</maxHeight>
+										<moveSpeed>
+											<compiledString>FREAAAACAAAAHgAAADEAAABUZWxlcG9ydERpc3RhbmNlAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tw1PwAAANld/NlF/IvlXcMAAACgmZm5Pw==</compiledString>
+											<returnType>float</returnType>
+											<sString>cTeleportDistance/0.1f</sString>
+										</moveSpeed>
+										<providerName></providerName>
+										<startSpell href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="F6DB9968-B1CB-4DDB-BAFC-80A5224FD1A4">
+											<Spell>
+												<applicators>
+													<Item href="/Heroes/DefaultStatus/_INTERRUPT.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="8A0B6419-5F73-4EFD-9970-EC1536F13359">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>0</flags>
+														<instantApply>true</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</startSpell>
+										<stopSpell href="" />
+										<surfaceSpeedFromAG>false</surfaceSpeedFromAG>
+										<takeOffTime>0</takeOffTime>
+										<targetSelector href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="257FAF2F-9D5D-4B7F-97A8-8D7B71F892DA">
+											<UnitPlaceCorrector>
+												<checkByRangeToRequester>true</checkByRangeToRequester>
+												<checkLineOfSight>false</checkLineOfSight>
+												<nativeTerrainOnly>false</nativeTerrainOnly>
+												<passabilityCheckMode>6</passabilityCheckMode>
+												<radius>14</radius>
+												<targetSelector href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="142FE2F2-C012-49E6-ACED-EE06586B8466">
+													<PointTargetSelector>
+														<checkMinRange>true</checkMinRange>
+														<mode>RangeFromOwner</mode>
+														<offset>
+															<x>0</x>
+															<y>1</y>
+														</offset>
+														<paralleledTarget>false</paralleledTarget>
+														<range>
+															<compiledString>FREAAAABAAAAIAAAAFRlbGVwb3J0RGlzdGFuY2UAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRRCLEItNEItCDN1d+P/Q3EX42V302UX0i+Vdww==</compiledString>
+															<returnType>float</returnType>
+															<sString>cTeleportDistance + mDist2Target</sString>
+														</range>
+														<targetSelector href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="5FD38E75-983C-43DC-9679-CAB411FE5F0E">
+															<SelectApplicatorTarget>
+																<applicatorIndex>0</applicatorIndex>
+																<applicatorName></applicatorName>
+																<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																<selectTarget>AbilityTarget</selectTarget>
+															</SelectApplicatorTarget>
+														</targetSelector>
+														<traceMode>0</traceMode>
+													</PointTargetSelector>
+												</targetSelector>
+											</UnitPlaceCorrector>
+										</targetSelector>
+										<trackTargetUnit>false</trackTargetUnit>
+										<trajectory Animated="True">
+											<Tracks>
+												<Item>
+													<Item>
+														<Key>0</Key>
+														<Value>0</Value>
+													</Item>
+													<Item>
+														<Key>0.5</Key>
+														<Value>0.001</Value>
+													</Item>
+													<Item>
+														<Key>1</Key>
+														<Value>0</Value>
+													</Item>
+												</Item>
+											</Tracks>
+											<Type>Clamp</Type>
+											<Values>
+												<Item>
+													<Key>0</Key>
+													<Value>0</Value>
+												</Item>
+												<Item>
+													<Key>0.5</Key>
+													<Value>0.001</Value>
+												</Item>
+												<Item>
+													<Key>1</Key>
+													<Value>0</Value>
+												</Item>
+											</Values>
+										</trajectory>
+									</ThrowApplicator>
+								</applicator>
+								<continueCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</continueCondition>
+								<continueEvents>2</continueEvents>
+								<delay>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</delay>
+								<stopCondition>
+									<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>0</sString>
+								</stopCondition>
+								<stopEvents>0</stopEvents>
+							</Item>
+						</applicators>
+						<applyTarget>AbilityOwner</applyTarget>
+						<behaviorFlags>154</behaviorFlags>
+						<caption>Программа с пробрасыванием</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+					</ProgramApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="4DC7E930-39B5-439D-A765-394D238E6C6E">
+					<SpellApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>Дебафф, что уже проходил через портал</caption>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="BF513B0B-2437-48CE-9988-BA06A785D3D8">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/MagicGirl/status_PortalDebuff.APLR" />
+									<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+								</applicators>
+								<dispatch href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="394D8406-6B5F-4F37-A998-912727784E57">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="" />
+					</SpellApplicator>
+				</Item>
+			</applicators>
+			<autoTargetSelector href="" />
+			<caption>Телепорт дальше</caption>
+			<castAllowRange>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</castAllowRange>
+			<castLimitations>
+				<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="CFE157AF-DD4D-4D53-BE83-BF8308CD5DC5">
+					<ConditionCastLimitation>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvsaAAAAgCLRQiLEItNCItCaP/QD7bA99gbwIPAAV3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>!sFlag(131072)</sString>
+						</condition>
+						<uiEvent href="/UI/Events/ErrorMessages/CastError_NoValidCurrentTarget.UIEV" />
+					</ConditionCastLimitation>
+				</Item>
+				<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="7B19667D-D984-4FF9-8CB8-6B801015BC50">
+					<ConditionCastLimitation>
+						<condition>
+							<compiledString>FSQAAAADAAAALwAAAEkAAABfAAAATWFnaWNHaXJsX0EyRGVidWZmAABNYWdpY0dpcmxBM0Zvcm0AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DtFEHRCaBQAAACLTQiLEYtNCIuCiAEAAP/Q3B2YAAAA3+D2xER6F4tNEIsRi00Qi4KQAAAA/9APtsiFyXUJx0X8AAAAAOsHx0X8AQAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+							<returnType>bool</returnType>
+							<sString>sender.applMagicGirl_A2Debuff(GLOBAL) == pMisc || (sender.vMagicGirlA3Form == 1 &amp;&amp; mIsNight)</sString>
+						</condition>
+						<uiEvent href="/UI/Events/ErrorMessages/CastError_MG2_Cooldown.UIEV" />
+					</ConditionCastLimitation>
+				</Item>
+			</castLimitations>
+			<commonDescription textref="" />
+			<compiledDescriptionA textref="" />
+			<compiledDescriptionB textref="" />
+			<conditionFormulas>
+				<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="2B3ADFC3-DFE8-464E-B9DB-ABBE0825EDE2">
+					<ConditionFormula>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsAAAAD/0ItNCIsRi00Ii4KMAAAA3V34/9DcXfjf4PbEAXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+							<returnType>bool</returnType>
+							<sString>sBaseDexterity &lt;= sBaseAttackSpeed</sString>
+						</condition>
+						<name>MagicGirl_AtkOrDex</name>
+					</ConditionFormula>
+				</Item>
+			</conditionFormulas>
+			<constants href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="1914652D-D264-45BA-879D-0B91372BB895">
+				<UnitConstantsContainer>
+					<vars>
+						<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="3E51CE7A-BA29-4A24-9473-0E33A0074306">
+							<UnitConstant>
+								<name>TeleportDistance</name>
+								<var>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABgQQ==</compiledString>
+									<returnType>float</returnType>
+									<sString>14</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+						<Item href="/Items/Talents/Class/MagicGirl/const_A2_DebuffDuration" />
+						<Item href="/Items/Talents/Class/MagicGirl/const_A2u_BonusMS" />
+						<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="B4272F75-ED6D-406C-8D89-CB47203DEED7">
+							<UnitConstant>
+								<name>Haste_Percent</name>
+								<var>
+									<compiledString>FQsAAAABAAAAFwAAAEEyX0JvbnVzTVMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>cA2_BonusMS</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+						<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="49C98840-35B6-4ADB-B403-523EE8C67366">
+							<UnitConstant>
+								<name>Haste_StartCondition</name>
+								<var>
+									<compiledString>FRsAAAACAAAAIAAAADUAAABBYmlsaXR5VGFyZ2V0AAAAQTJ1X1R1cm5PbgBVi+xRaAAAAACLRRCLEItNEItCTP/QiUX8aBAAAACLTfyLEYtN/IuCiAEAAP/Qi+Vdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>appl.oAbilityTarget.vA2u_TurnOn</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+						<Item href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="77380BB1-F544-4958-A153-7022D881892B">
+							<UnitConstant>
+								<name>Haste_Duration</name>
+								<var>
+									<compiledString>FRIAAAABAAAAHgAAAEEyX0RlYnVmZkR1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cA2_DebuffDuration</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+					</vars>
+				</UnitConstantsContainer>
+			</constants>
+			<cooldownTime>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTime>
+			<cooldownTimeSecondState>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTimeSecondState>
+			<description textref="" />
+			<dispatch href="/Items/Talents/Class/MagicGirl/A2_PortalAbility.IACT" id="F4A93295-EF51-45DF-B982-4FA8A13D5991">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+			<flags>531</flags>
+			<image href="" />
+			<imageSecondState href="" />
+			<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+			<manaCost>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</manaCost>
+			<marker></marker>
+			<microAI href="" />
+			<minUseRangeCorrection>0</minUseRangeCorrection>
+			<name textref="" />
+			<node></node>
+			<passiveApplicators />
+			<requireLineOfSight>true</requireLineOfSight>
+			<shortDescription textref="" />
+			<targetType>4</targetType>
+			<type>Passive</type>
+			<useRange>
+				<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+				<returnType>float</returnType>
+				<sString>1</sString>
+			</useRange>
+			<useRangeMaterial href="" />
+			<warFogRemoveRadius>0</warFogRemoveRadius>
+			<warFogRemoveTime>0</warFogRemoveTime>
+		</Ability>
+	</externalAbility>
+</Interaction>

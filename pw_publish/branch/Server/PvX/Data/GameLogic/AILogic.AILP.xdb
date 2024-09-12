@@ -1,0 +1,4356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AILogicParameters>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/GameLogic/SessionLogic.ROOT" Count="1" />
+	<abilityAndDamageScalingParams>
+		<abilityScaleEnergyLeft>600</abilityScaleEnergyLeft>
+		<abilityScaleEnergyRight>3625</abilityScaleEnergyRight>
+		<abilityScaleLifeLeft>600</abilityScaleLifeLeft>
+		<abilityScaleLifeRight>4212</abilityScaleLifeRight>
+		<abilityScaleStatLeft>50</abilityScaleStatLeft>
+		<abilityScaleStatRight>182</abilityScaleStatRight>
+		<damageScaleEnergyLeft>600</damageScaleEnergyLeft>
+		<damageScaleEnergyRight>5100</damageScaleEnergyRight>
+		<damageScaleLifeLeft>600</damageScaleLifeLeft>
+		<damageScaleLifeRight>6000</damageScaleLifeRight>
+		<damageScaleStatLeft>50</damageScaleStatLeft>
+		<damageScaleStatRight>258</damageScaleStatRight>
+	</abilityAndDamageScalingParams>
+	<assistAccountTime>10</assistAccountTime>
+	<baseEmblemHeroNeeds>3</baseEmblemHeroNeeds>
+	<baseRedeemCost>200</baseRedeemCost>
+	<behaviourTrackerParams href="/GameLogic/AILogic.AILP" id="9AC6E9C6-E449-49F7-BB8C-7CC0657D8DB8">
+		<BehaviourTrackerParams>
+			<autoMuteMessageLength>50</autoMuteMessageLength>
+			<autoMuteMessagePerTime>3</autoMuteMessagePerTime>
+			<autoMuteMinMessage>0</autoMuteMinMessage>
+			<autoMuteTimeLimit>10</autoMuteTimeLimit>
+			<badBehaviourComplaintsThreshold>2</badBehaviourComplaintsThreshold>
+			<feederDeathCount>3</feederDeathCount>
+			<feederDeathTime>240</feederDeathTime>
+			<goodActionTimeout>180</goodActionTimeout>
+			<goodZumaActionTimeout>300</goodZumaActionTimeout>
+			<idleTime>120</idleTime>
+			<insultComplaintsThreshold>2</insultComplaintsThreshold>
+		</BehaviourTrackerParams>
+	</behaviourTrackerParams>
+	<botsSettings href="/GameLogic/BotsSettings.BOTS" />
+	<buildingsAbilityA href="/GameLogic/AILogic.AILP" id="682F4D2D-BBF8-4E0C-8BDC-9854A0A3078A">
+		<Ability>
+			<activeCustomTrigger>true</activeCustomTrigger>
+			<allowChase>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</allowChase>
+			<alternativeTargets />
+			<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+			<aoeHeight>0</aoeHeight>
+			<aoeMaterial href="" />
+			<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+			<aoeSize>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</aoeSize>
+			<aoeType>None</aoeType>
+			<applicators />
+			<autoTargetSelector href="" />
+			<caption></caption>
+			<castAllowRange>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</castAllowRange>
+			<castLimitations />
+			<commonDescription textref="" />
+			<compiledDescriptionA textref="" />
+			<compiledDescriptionB textref="" />
+			<conditionFormulas />
+			<constants href="" />
+			<cooldownTime>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTime>
+			<cooldownTimeSecondState>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTimeSecondState>
+			<description textref="" />
+			<dispatch href="/GameLogic/AILogic.AILP" id="08FAA264-86B4-4B01-B819-F2C78EF8094E">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+			<flags>1</flags>
+			<image href="" />
+			<imageSecondState href="" />
+			<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+			<manaCost>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</manaCost>
+			<marker></marker>
+			<microAI href="" />
+			<minUseRangeCorrection>0</minUseRangeCorrection>
+			<name textref="" />
+			<node></node>
+			<passiveApplicators>
+				<Item href="/GameLogic/AILogic.AILP" id="41CB6C68-115D-429A-8999-E8A53E28F9B0">
+					<SpellPeriodicallyApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>- Урон от вражеской земли (ОТКЛЮЧЕНО, впиши в "enabled" строку "rTerrainType == TERR_B", чтобы включить)</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>false</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<period>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</period>
+						<providerName></providerName>
+						<scaleMode>ScaleIsCount</scaleMode>
+						<spell href="/GameLogic/AILogic.AILP" id="9FF677B4-89A8-4F16-B045-576EB512B68A">
+							<Spell>
+								<applicators>
+									<Item href="/GameLogic/AILogic.AILP" id="74C267C5-686C-476F-9119-670706E89469">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>- урон, наносимый террейном</caption>
+											<damage>
+												<compiledString>FQAAAAACAAAAEwAAABkAAABVi+xRi0UQixCLTRCLQhD/0NwNLwAAANwFJwAAANld/NlF/IvlXcMAAAAAAABJQAAAAAAAABRA</compiledString>
+												<returnType>float</returnType>
+												<sString>50+mScale*5</sString>
+											</damage>
+											<damageMode>0</damageMode>
+											<damageType>Pure</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/GameLogic/AILogic.AILP" id="586006A2-CED4-4362-9776-777F4DCCCD90">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="/Effects/Environment/TerrainDamage/_AFrag.EFFT" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Random</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>10</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<startOffset>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</startOffset>
+						<targetSelector href="" />
+					</SpellPeriodicallyApplicator>
+				</Item>
+			</passiveApplicators>
+			<requireLineOfSight>true</requireLineOfSight>
+			<shortDescription textref="" />
+			<targetType>1835519</targetType>
+			<type>Simple</type>
+			<useRange>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</useRange>
+			<useRangeMaterial href="" />
+			<warFogRemoveRadius>0</warFogRemoveRadius>
+			<warFogRemoveTime>0</warFogRemoveTime>
+		</Ability>
+	</buildingsAbilityA>
+	<buildingsAbilityB href="/GameLogic/AILogic.AILP" id="4D1826A3-A2ED-4028-8880-B8EECEDDE6ED">
+		<Ability>
+			<activeCustomTrigger>true</activeCustomTrigger>
+			<allowChase>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</allowChase>
+			<alternativeTargets />
+			<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+			<aoeHeight>0</aoeHeight>
+			<aoeMaterial href="" />
+			<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+			<aoeSize>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</aoeSize>
+			<aoeType>None</aoeType>
+			<applicators />
+			<autoTargetSelector href="" />
+			<caption></caption>
+			<castAllowRange>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</castAllowRange>
+			<castLimitations />
+			<commonDescription textref="" />
+			<compiledDescriptionA textref="" />
+			<compiledDescriptionB textref="" />
+			<conditionFormulas />
+			<constants href="" />
+			<cooldownTime>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTime>
+			<cooldownTimeSecondState>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTimeSecondState>
+			<description textref="" />
+			<dispatch href="/GameLogic/AILogic.AILP" id="44C324BD-F1A2-41AF-BD35-7D449AE3B961">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+			<flags>1</flags>
+			<image href="" />
+			<imageSecondState href="" />
+			<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+			<manaCost>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</manaCost>
+			<marker></marker>
+			<microAI href="" />
+			<minUseRangeCorrection>0</minUseRangeCorrection>
+			<name textref="" />
+			<node></node>
+			<passiveApplicators>
+				<Item href="/GameLogic/AILogic.AILP" id="AC9C7B54-88B6-4760-A119-6AAD64E57286">
+					<SpellPeriodicallyApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>- Урон от вражеской земли (ОТКЛЮЧЕНО, впиши в "enabled" строку "rTerrainType == TERR_A", чтобы включить)</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>false</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<period>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</period>
+						<providerName></providerName>
+						<scaleMode>ScaleIsCount</scaleMode>
+						<spell href="/GameLogic/AILogic.AILP" id="A3263305-82E8-4A47-9A35-416003089C06">
+							<Spell>
+								<applicators>
+									<Item href="/GameLogic/AILogic.AILP" id="4567E9A3-1B27-4D62-AFD3-2DD55C5B2168">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption></caption>
+											<damage>
+												<compiledString>FQAAAAACAAAAEwAAABkAAABVi+xRi0UQixCLTRCLQhD/0NwNLwAAANwFJwAAANld/NlF/IvlXcMAAAAAAABJQAAAAAAAABRA</compiledString>
+												<returnType>float</returnType>
+												<sString>50+mScale*5</sString>
+											</damage>
+											<damageMode>0</damageMode>
+											<damageType>Pure</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/GameLogic/AILogic.AILP" id="B534781B-C58B-4EBB-B54D-7C22FB9FAFFD">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="/Effects/Environment/TerrainDamage/_BFrag.EFFT" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Random</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>10</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<startOffset>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</startOffset>
+						<targetSelector href="" />
+					</SpellPeriodicallyApplicator>
+				</Item>
+			</passiveApplicators>
+			<requireLineOfSight>true</requireLineOfSight>
+			<shortDescription textref="" />
+			<targetType>1835519</targetType>
+			<type>Simple</type>
+			<useRange>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</useRange>
+			<useRangeMaterial href="" />
+			<warFogRemoveRadius>0</warFogRemoveRadius>
+			<warFogRemoveTime>0</warFogRemoveTime>
+		</Ability>
+	</buildingsAbilityB>
+	<buildingsDenyAbility href="/GameLogic/AILogic.AILP" id="AB368EBC-89FD-4B5C-8E53-320A0439A584">
+		<Ability>
+			<activeCustomTrigger>true</activeCustomTrigger>
+			<allowChase>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</allowChase>
+			<alternativeTargets />
+			<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+			<aoeHeight>0</aoeHeight>
+			<aoeMaterial href="" />
+			<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+			<aoeSize>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</aoeSize>
+			<aoeType>None</aoeType>
+			<applicators>
+				<Item href="/GameLogic/AILogic.AILP" id="2A5BDE9E-AD6F-427E-BB50-CC836F0BB691">
+					<SpellPeriodicallyApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>Deny DoT</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<period>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2</sString>
+						</period>
+						<providerName></providerName>
+						<scaleMode>ScaleIsCount</scaleMode>
+						<spell href="/GameLogic/AILogic.AILP" id="5AC39CA4-1C79-4A74-B7EE-4C295CE6CDC5">
+							<Spell>
+								<applicators>
+									<Item href="/GameLogic/AILogic.AILP" id="44CA92AC-3EBE-4143-AD02-B66C5922C747">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>Damage</caption>
+											<damage>
+												<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCDP/Q3A0hAAAA2V382UX8i+Vdw5qZmZmZmbk/</compiledString>
+												<returnType>float</returnType>
+												<sString>rMaxLife * 0.1</sString>
+											</damage>
+											<damageMode>0</damageMode>
+											<damageType>Material</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/GameLogic/AILogic.AILP" id="08A15051-2034-47A9-B7CF-CF4FC6BAEA29">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<startOffset>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</startOffset>
+						<targetSelector href="" />
+					</SpellPeriodicallyApplicator>
+				</Item>
+			</applicators>
+			<autoTargetSelector href="" />
+			<caption></caption>
+			<castAllowRange>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</castAllowRange>
+			<castLimitations />
+			<commonDescription textref="" />
+			<compiledDescriptionA textref="" />
+			<compiledDescriptionB textref="" />
+			<conditionFormulas />
+			<constants href="" />
+			<cooldownTime>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTime>
+			<cooldownTimeSecondState>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</cooldownTimeSecondState>
+			<description textref="" />
+			<dispatch href="/GameLogic/AILogic.AILP" id="7BB43E2F-4EAF-4AB7-A6BC-1E5B9D5FEEBB">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+			<flags>1</flags>
+			<image href="" />
+			<imageSecondState href="" />
+			<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+			<manaCost>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</manaCost>
+			<marker></marker>
+			<microAI href="" />
+			<minUseRangeCorrection>0</minUseRangeCorrection>
+			<name textref="" />
+			<node></node>
+			<passiveApplicators />
+			<requireLineOfSight>true</requireLineOfSight>
+			<shortDescription textref="" />
+			<targetType>270270975</targetType>
+			<type>Active</type>
+			<useRange>
+				<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+				<returnType>float</returnType>
+				<sString>10</sString>
+			</useRange>
+			<useRangeMaterial href="" />
+			<warFogRemoveRadius>0</warFogRemoveRadius>
+			<warFogRemoveTime>0</warFogRemoveTime>
+		</Ability>
+	</buildingsDenyAbility>
+	<buildingsDenyExperiencePenalty>0.5</buildingsDenyExperiencePenalty>
+	<buildingsDenyMinHealth>0.1</buildingsDenyMinHealth>
+	<buildingsDenyNaftaPenalty>0</buildingsDenyNaftaPenalty>
+	<buildingsDenyNaftaSpecPenalty>0</buildingsDenyNaftaSpecPenalty>
+	<buildingsDenyTeamNaftaPenalty>0.5</buildingsDenyTeamNaftaPenalty>
+	<buildingsFragEffectProbability>0.7</buildingsFragEffectProbability>
+	<buildingsMinHealthExplosionPercent>60</buildingsMinHealthExplosionPercent>
+	<channelingAbilityRangeMultiplier>1.2</channelingAbilityRangeMultiplier>
+	<chestGameObject href="/Tech/Default/Flag.SSO" />
+	<commonSummonParameters>
+		<petEscortDistance>2.5</petEscortDistance>
+		<primarySummonEscortDistance>4.5</primarySummonEscortDistance>
+		<secondarySummonEscortDistance>7</secondarySummonEscortDistance>
+	</commonSummonParameters>
+	<conditionFormulas>
+		<Item href="/GameLogic/AILogic.AILP" id="5863FBD5-FD3B-48B7-8701-ECFBD9514505">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQkz/0PfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>rTerrainType == TERR_N</sString>
+				</condition>
+				<name>terrN</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="AE10E05D-DE1B-4B24-AA0F-9FA86F399D97">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQkz/0IPoAffYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>rTerrainType == TERR_A</sString>
+				</condition>
+				<name>terrA</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="E0E7489B-2503-48E5-82A4-E47CD787A948">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQkz/0DPJg/gCD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>rTerrainType == TERR_B</sString>
+				</condition>
+				<name>terrB</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="AA0389C5-28FD-4F3E-ABD2-26855BFF5E19">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0DPJg/gBD53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank &gt;= 1</sString>
+				</condition>
+				<name>rank_ge1</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="B98712DA-0944-48CA-81F2-37E6D8860CE1">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0DPJg/gCD53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank &gt;= 2</sString>
+				</condition>
+				<name>rank_ge2</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="7C95C7B2-04CB-4F1D-A681-574CD59BDCC8">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0DPJg/gDD53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank &gt;= 3</sString>
+				</condition>
+				<name>rank_ge3</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="7F65C380-61DE-40F8-86B0-E099C08A4C87">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0DPJg/gED53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank &gt;= 4</sString>
+				</condition>
+				<name>rank_ge4</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="9283CEC8-06BF-499A-8AD3-BBA307DFA938">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0IPoAffYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank == 1</sString>
+				</condition>
+				<name>rank_e1</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="99223F75-56FD-433F-BA43-C9AA0B1A9FF4">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0DPJg/gCD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank == 2</sString>
+				</condition>
+				<name>rank_e2</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="1DA06D4B-491F-4786-901C-52C96A0F7E7A">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0DPJg/gDD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank == 3</sString>
+				</condition>
+				<name>rank_e3</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="9D86CA8E-0A3B-4609-A7A3-816C2D71EF67">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0DPJg/gED5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank == 4</sString>
+				</condition>
+				<name>rank_e4</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="C89C5F41-D267-4B34-B39D-1C6312D93E16">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQgj/0PfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRank == 0</sString>
+				</condition>
+				<name>rank_e0</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="2E3C3E5B-B529-4600-AE8A-D7FBF802D719">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRRCLEItNEItCGP/Q3B01AAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>mManaCost == 0</sString>
+				</condition>
+				<name>manaCost_e0</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="C4CDAC25-201A-4C8C-ADE3-4C3B53BC0547">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRRCLEItNEItCHP/Q3B01AAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>mPreparedness == 0</sString>
+				</condition>
+				<name>cooldown_e0</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="BD2A77A5-BD07-4005-8272-6E07123D19CE">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiD/0DPJg/gDD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mAbilityType == ABILITYTYPE_PASSIVE</sString>
+				</condition>
+				<name>abilityIsPassive</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="E9A0752F-2A4C-46EA-BA7A-2992BF0317E5">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgmABAAD/0DPJg/gED57BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sNaftaLevel &lt;= 4</sString>
+				</condition>
+				<name>lvl_le4</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="D4A6F117-E14D-4B1B-BDA4-C45D728139B6">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgmABAAD/0DPJg/gFD5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sNaftaLevel &lt; 5</sString>
+				</condition>
+				<name>lvl_l5</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="0315C475-6509-4F53-A243-F497178549DD">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgmABAAD/0DPJg/gID5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sNaftaLevel &lt; 8</sString>
+				</condition>
+				<name>lvl_l8</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="0B30EF0A-19D2-434A-9375-4DDD5D09048F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgmABAAD/0DPJg/gUD5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sNaftaLevel &lt; 20</sString>
+				</condition>
+				<name>lvl_l20</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="13132ADD-800D-4CC7-9A77-49FFD4D7576F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0PfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sFctn == FCTN_N</sString>
+				</condition>
+				<name>fctnN</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="843AACD5-A189-4768-8697-2054A5E8F3E9">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0IPoAffYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sFctn == FCTN_A</sString>
+				</condition>
+				<name>fctnA</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="61389089-DD44-4750-9AB6-C40CB1791DE6">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0DPJg/gCD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sFctn == FCTN_B</sString>
+				</condition>
+				<name>fctnB</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="29E74685-A180-457F-AE66-0E51D24255CD">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsUVaLRQiLEItNCIuCkAEAAP/Qi/CLTQyLEYtNDIuCkAEAAP/QO/B1HYtNCIsRi00Ii4KQAQAA/9CFwHQJx0X8AQAAAOsHx0X8AAAAAIpF/F6L5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>(sFctn == rFctn) &amp;&amp; (sFctn != FCTN_N) </sString>
+				</condition>
+				<name>fctnFriend</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="9D2E20B9-65EC-4327-B697-5CDBAAFF53C6">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsUVaLRQiLEItNCIuCkAEAAP/Qi/CLTQyLEYtNDIuCkAEAAP/QO/B0HYtNCIsRi00Ii4KQAQAA/9CFwHQJx0X8AQAAAOsHx0X8AAAAAIpF/F6L5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>(sFctn != rFctn) &amp;&amp; (sFctn != FCTN_N)</sString>
+				</condition>
+				<name>fctnEnemy</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="F9D3A147-2245-4A1F-8EDB-BF7B09313852">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpQBAAD/0PfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sOriginalFctn == FCTN_N</sString>
+				</condition>
+				<name>originalFctnN</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="090B69E0-2F67-417D-822E-887191436513">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpQBAAD/0IPoAffYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sOriginalFctn == FCTN_A</sString>
+				</condition>
+				<name>originalFctnA</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="554B7DAA-AF59-45CC-A397-15203BD6CA8B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpQBAAD/0DPJg/gCD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sOriginalFctn == FCTN_B</sString>
+				</condition>
+				<name>originalFctnB</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="048533C1-B315-4B74-9DE0-4155DFABB52D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQmT/0DPJg/gFD5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sDevPoints &lt; 5</sString>
+				</condition>
+				<name>HeroTalentLvl1</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="167D3645-1853-41A7-BEE7-92677D20EEBD">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQmT/0DPJg/gKD5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sDevPoints &lt; 10</sString>
+				</condition>
+				<name>HeroTalentLvl2</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="8C6DB7E4-89FA-4258-8CC6-5BB53DD74F72">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQmT/0DPJg/gPD5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sDevPoints &lt; 15</sString>
+				</condition>
+				<name>HeroTalentLvl3</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="2E093A4F-BCD2-4261-B090-D7F3543C1244">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQmT/0DPJg/gUD5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sDevPoints &lt; 20</sString>
+				</condition>
+				<name>HeroTalentLvl4</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="6663872B-3B14-4F1F-9D62-A4217842ACF0">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQmT/0DPJg/gZD5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sDevPoints &lt; 25</sString>
+				</condition>
+				<name>HeroTalentLvl5</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="DF687057-8593-491D-A84A-AE8E289D5B39">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCOP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sLifeDrain &gt; 0</sString>
+				</condition>
+				<name>hasLDrain</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="9E1B1FFF-0EDE-42B0-A115-1EC6646CFC3E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCPP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sEnergyDrain &gt; 0</sString>
+				</condition>
+				<name>hasEDrain</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="03D4AB42-2A61-4F57-B032-2094DF4306E2">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAABAAAAFgAAAFWL7FGLRQiLEItNCIuCcAEAAP/Q3B04AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sEnergyDamageDecrease &gt; 0</sString>
+				</condition>
+				<name>hasEDef</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="E9B8A1B8-27C9-4367-BFCE-792AEAF4E6BE">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQoAAAACAAAADwAAACUAAABBNFN0YXJ0ZWQAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdRwAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAPA/</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vA4Started == 1</sString>
+				</condition>
+				<name>HighlanderA4Started</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="094F90F2-AF61-4046-8EFC-95B47D4EB92E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiD/0IPoAffYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mAbilityType == ABILITYTYPE_ACTIVE</sString>
+				</condition>
+				<name>TalentActive</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="D24CC4DD-B09D-4F2F-A06F-F8E2528E9AE0">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiD/0DPJg/gFD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mAbilityType == ABILITYTYPE_SWITCHABLE</sString>
+				</condition>
+				<name>TalentToggle</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="9F9E9711-78AE-453F-9D07-2C12685EA282">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiD/0DPJg/gDD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mAbilityType == ABILITYTYPE_PASSIVE</sString>
+				</condition>
+				<name>TalentPassive</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="54A39AF6-3B10-44E2-B973-C8AE9F2B526B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiD/0DPJg/gCD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mAbilityType == ABILITYTYPE_MULTIACTIVE</sString>
+				</condition>
+				<name>TalentMultiActive</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="F9F0BF30-8D93-4637-B9F3-8BF1C1315FD2">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQjT/0DPJg/gBD5/BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mTalentDevPoints &gt; 1</sString>
+				</condition>
+				<name>TalentDevPoints</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="D681ABE6-5D01-40AA-9A90-98E667027B0F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRRCLEItNEItCPP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>mCooldown &gt; 0</sString>
+				</condition>
+				<name>CooldownZero</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="08ED4808-40D0-4E12-8B53-7628F15B97CF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii4JkAQAA/9CL8ItNEIsRi00Qi0I4/9AzyTvwD5zBisFeXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sNafta &lt; mNaftaCost</sString>
+				</condition>
+				<name>LackingNafta</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="FC807F8F-27A4-409F-AC10-AA853BB858BC">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii0Jk/9CL8ItNEIsRi00Qi0Iw/9DB4AIzyTvwD5zBisFeXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sDevPoints &lt; mTalentLevel*4</sString>
+				</condition>
+				<name>LackingRank</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="CF27B9A2-B8E2-460F-AAC2-0F44B9A3CEB7">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAGQAAACwAAABEZXRhaWxzQ29zdABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHU4AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cDetailsCost &gt; 0</sString>
+				</condition>
+				<name>DetailsCost</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="73B19E68-3E0C-4B7E-AEA2-12F2A9923F7B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQjD/0MHgAjPJg/gED5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mTalentLevel*4 == 4</sString>
+				</condition>
+				<name>TalentRank2</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="7E5386CC-2223-414A-BC9D-05F452FEE052">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQjD/0MHgAjPJg/gID5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mTalentLevel*4 == 8</sString>
+				</condition>
+				<name>TalentRank3</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="830FA0A5-D719-47CC-834B-BA878C244F3B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQjD/0MHgAjPJg/gMD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mTalentLevel*4 == 12</sString>
+				</condition>
+				<name>TalentRank4</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="82216A70-17CA-4CFA-AC8E-D7361698C43D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQjD/0MHgAjPJg/gQD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mTalentLevel*4 == 16</sString>
+				</condition>
+				<name>TalentRank5</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="036A2E89-DE0C-4328-8585-8FAF6215E01F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQjD/0MHgAjPJg/gUD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mTalentLevel*4 == 20</sString>
+				</condition>
+				<name>TalentRank6</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="FA4A5BE1-DC64-48A2-AA66-C5AD4B213725">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQjD/0MHgAjPJg/gED5zBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mTalentLevel*4 &lt; 4</sString>
+				</condition>
+				<name>TalentRank1</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="94F193DD-9428-43A8-8079-B93D7EE17B05">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0IPoAffYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 1</sString>
+				</condition>
+				<name>RefineRate1</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="1ABF57DD-A9CD-4117-AC45-500D6BA68CCA">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gCD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 2</sString>
+				</condition>
+				<name>RefineRate2</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="85EE784A-79D2-4B55-AAD7-DB74C50F812C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gDD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 3</sString>
+				</condition>
+				<name>RefineRate3</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="90558D95-D442-4988-93E8-DCDE3656CB30">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gED5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 4</sString>
+				</condition>
+				<name>RefineRate4</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="7E33E51F-B3F1-4931-B8FE-7751CEC55887">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gFD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 5</sString>
+				</condition>
+				<name>RefineRate5</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="6A931C5B-5ADA-4899-A9AF-3A2287AFDB1F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAACAAAAEwAAAC0AAABVi+xRi0UQixCLTRCLQhj/0NwdYAAAAN/g9sRBdDSLTRCLEYtNEItCPP/Q3B1gAAAA3+D2xEF0GotNEIsRi00Qi0Ig/9CFwHUJx0X8AAAAAOsHx0X8AQAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mManaCost &gt; 0 || mCooldown &gt; 0 || mAbilityType != ABILITYTYPE_SIMPLE</sString>
+				</condition>
+				<name>NoTypeTalant</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="0FE8D7C9-DF40-45FC-A798-BFD933773D9E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiD/0DPJg/gGD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mAbilityType == ABILITYTYPE_CHANNELLING</sString>
+				</condition>
+				<name>TalentChannelling</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="896541B7-6E4A-493D-A3FE-4CB7340F7462">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJhcAPn8GKwV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate &gt; 0</sString>
+				</condition>
+				<name>RefineRateMore0</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="2C7D07CC-E975-4D3C-81C1-4D7B6821617C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQlT/0A+2wIPoAffYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sIsHero == true</sString>
+				</condition>
+				<name>UnitIsHero</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="5D999C87-9EF6-429B-9716-E5B26D6BB8BD">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQmD/0PfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sNativeAttackIndex == 0</sString>
+				</condition>
+				<name>DamageType</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="63D011AE-BE7C-47FC-9ADA-336060031B0D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsag+LRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(15)</sString>
+				</condition>
+				<name>RecommendedStrength</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="3EF3F6FD-517C-4B05-98A0-3DBE3B2CBDD9">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsahCLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(16)</sString>
+				</condition>
+				<name>RecommendedIntellect</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="479ADE8C-6959-4FCD-85B2-3CC8E2ADBACA">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsahGLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(17)</sString>
+				</condition>
+				<name>RecommendedDexterity</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="96B2DC91-3C20-485C-963B-F573FDDA91F9">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsagSLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(4)</sString>
+				</condition>
+				<name>RecommendedAttackSpeed</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="DFA86FCB-4955-4EEB-8E0B-46D8256FD6F0">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsahOLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(19)</sString>
+				</condition>
+				<name>RecommendedStamina</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="62F983DA-849E-4A28-86C0-A178CA432BEA">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsahSLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(20)</sString>
+				</condition>
+				<name>RecommendedWill</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="8CC7BB47-BC49-46D4-82CC-0267B488E92D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsagCLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(0)</sString>
+				</condition>
+				<name>RecommendedLife</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="DD23241D-79E5-4881-B714-11ADA10EC34F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsagGLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(1)</sString>
+				</condition>
+				<name>RecommendedEnergy</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="D4AE0D83-C8D1-4CC5-A81F-FED82BB2C2F8">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsagOLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(3)</sString>
+				</condition>
+				<name>RecommendedMoveSpeed</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="90B20FFD-77F5-46FB-964E-2D54310EE67E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQkAAAACAAAAFgAAACkAAABBZGRfTGlmZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHUsAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_Life&gt;0</sString>
+				</condition>
+				<name>TalentAddingLife</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="DACC086C-E62F-4275-A56C-27CDEF12E279">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQsAAAACAAAAGAAAACsAAABBZGRfRW5lcmd5AFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdTQAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_Energy&gt;0</sString>
+				</condition>
+				<name>TalentAddingEnergy</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="8F816F69-ECC7-4ED5-B6E7-97F4A9652808">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FREAAAACAAAAHgAAADEAAABBZGRfRW5lcmd5UmVnQWJzAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUwAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_EnergyRegAbs&gt;0</sString>
+				</condition>
+				<name>TalentAddingEnergyRegAbs</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="5D81D211-4351-4F79-9F1B-0F2BA63755FF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ8AAAACAAAAHAAAAC8AAABBZGRfTGlmZVJlZ0FicwBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVEAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_LifeRegAbs&gt;0</sString>
+				</condition>
+				<name>TalentAddingLifeRegAbs</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="2AECF24D-D85D-4352-9ACA-8326B5DD69A2">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ0AAAACAAAAGgAAAC0AAABBZGRfU3RyZW5ndGgAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1PAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_Strength&gt;0</sString>
+				</condition>
+				<name>TalentAddingStrength</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="35E476C6-FC02-4C1A-B6A0-FF7D5F80B535">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ4AAAACAAAAGwAAAC4AAABBZGRfSW50ZWxsZWN0AFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUAAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_Intellect&gt;0</sString>
+				</condition>
+				<name>TalentAddingIntellect</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="2D889BDD-27C9-4261-871A-E91BE61FE41B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ4AAAACAAAAGwAAAC4AAABBZGRfRGV4dGVyaXR5AFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUAAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_Dexterity&gt;0</sString>
+				</condition>
+				<name>TalentAddingDexterity</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="75CA37F8-6FAE-4D4B-A3BC-60D119A131CD">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAGQAAACwAAABBZGRfU3RhbWluYQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHU4AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_Stamina&gt;0</sString>
+				</condition>
+				<name>TalentAddingStamina</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="548A8117-6370-4404-B8DD-805E0F0A401C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQkAAAACAAAAFgAAACkAAABBZGRfV2lsbABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHUsAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_Will&gt;0</sString>
+				</condition>
+				<name>TalentAddingWill</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="26FC0436-E620-4A2E-8525-984024B15CAC">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ4AAAACAAAAGwAAAC4AAABBZGRfTW92ZVNwZWVkAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUAAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_MoveSpeed&gt;0</sString>
+				</condition>
+				<name>TalentAddingMoveSpeed</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="6EEFEDE1-81F9-4735-9272-CABD757AF2EC">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ4AAAACAAAAGwAAAC4AAABBZGRfTGlmZURyYWluAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUAAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_LifeDrain&gt;0</sString>
+				</condition>
+				<name>TalentAddingLifeDrain</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="13468B17-D875-4E8B-B582-536FC9FE56CA">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRAAAAACAAAAHQAAADAAAABBZGRfRW5lcmd5RHJhaW4AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1SAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_EnergyDrain&gt;0</sString>
+				</condition>
+				<name>TalentAddingEnergyDrain</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="978672A1-B4FA-4EA8-865F-63A1B4E9559E">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRAAAAACAAAAHQAAADAAAABBZGRfQXR0YWNrU3BlZWQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1SAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_AttackSpeed&gt;0</sString>
+				</condition>
+				<name>TalentAddingAttackSpeed</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="058F6F25-02FD-4586-8D65-A0CF339FCE03">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FREAAAACAAAAHgAAADEAAABBZGRfVmlzaWJsZVJhbmdlAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUwAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cAdd_VisibleRange&gt;0</sString>
+				</condition>
+				<name>TalentAddingVisibleRange</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="30CB385A-C6A1-4A9F-A4B0-56109FB0F3E3">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsVotFEIsQi00Qi0J4/9CL8ItNEIsRi00Qi0J8/9AzyTvwD53BisFeXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>mActivatedWithinKit &gt;= mTalentsWithinKit</sString>
+				</condition>
+				<name>kitIsComplete</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="63C5FF9E-8F84-4B42-A0BE-65A6E2D227DF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAGQAAACwAAABTZXQyUmVzQ29zdABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHU4AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cSet2ResCost &gt; 0</sString>
+				</condition>
+				<name>Set2ResCost</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="2B3F94B1-735F-4B17-AD1F-BF6375DF16F8">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRIAAAACAAAAHwAAADIAAABURUNIX0Zvcm1DYXBhY2l0eQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHVQAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>cTECH_FormCapacity&gt;0</sString>
+				</condition>
+				<name>FormHasCapacity</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="D1092627-23EC-4F19-A11C-03F92934F874">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsageLRQiLEItNCIuCLAEAAP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>pFirst-&gt;IsRecommended(7)</sString>
+				</condition>
+				<name>RecommendedLifeDrain</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="C12E6787-BA5B-4314-9145-184A075260C6">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgrgAAAD/0ItNCIsRi00Ii4K8AAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseStrength &gt;= sBaseIntellect</sString>
+				</condition>
+				<name>StrengthGeqIntellect</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="DFD9BC29-1029-47E8-BF9E-8A1C9FD870BF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsgAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseStamina &gt;= sBaseWill</sString>
+				</condition>
+				<name>StaminaGeqWill</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="F2B2C341-C21B-4878-A534-90B1DD38813C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLQhz/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sAttackSpeed &gt;= sBaseDexterity</sString>
+				</condition>
+				<name>AttackSpeedGeqDexterity</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="72DF73AB-FBC3-4D88-87F9-66499D364C2D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsgAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9DcXfjf4PbEAXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseStamina &lt;= sBaseWill</sString>
+				</condition>
+				<name>WillGeqStamina</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="D7D86417-12B2-4D91-BA16-F775849D724B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgrgAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9BR2Rwki00IixGLTQiLgsgAAAD/0FHZHCToQwAAAIPEBNkcJItNCIsRi00Ii4K8AAAA/9BR2Rwk6CQAAACDxAjcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseStrength &gt;= max(sBaseIntellect, max(sBaseStamina, sBaseWill)) </sString>
+				</condition>
+				<name>MaxStrength</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="AD184B40-0A25-4FF0-88F7-5A45B0BC5188">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgrwAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9BR2Rwki00IixGLTQiLgsgAAAD/0FHZHCToQwAAAIPEBNkcJItNCIsRi00Ii4K4AAAA/9BR2Rwk6CQAAACDxAjcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseIntellect &gt;= max(sBaseStrength, max(sBaseStamina, sBaseWill)) </sString>
+				</condition>
+				<name>MaxIntellect</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="C9C0747E-F64A-4720-ACDE-A92E9B6F399C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsgAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9BR2Rwki00IixGLTQiLgrgAAAD/0FHZHCToQwAAAIPEBNkcJItNCIsRi00Ii4K8AAAA/9BR2Rwk6CQAAACDxAjcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseStamina &gt;= max(sBaseIntellect, max(sBaseStrength, sBaseWill)) </sString>
+				</condition>
+				<name>MaxStamina</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="3B6A1592-B7B8-47D3-AE0D-80AE01A0957C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgswAAAD/0ItNCIsRi00Ii4K4AAAA3V34/9BR2Rwki00IixGLTQiLgsgAAAD/0FHZHCToQwAAAIPEBNkcJItNCIsRi00Ii4K8AAAA/9BR2Rwk6CQAAACDxAjcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseWill &gt;= max(sBaseIntellect, max(sBaseStamina, sBaseStrength)) </sString>
+				</condition>
+				<name>MaxWill</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="E967EA3E-1238-419F-8D65-53E976AE179F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FREAAAACAAAAHgAAADEAAABVbHRpbWF0ZUNvbnN0YW50AFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUwAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cUltimateConstant &gt; 0</sString>
+				</condition>
+				<name>Ultimate</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="0276912D-F05B-4132-BF38-9A41F9BBC1EC">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAACAAAAEwAAAC0AAABVi+xRi0UQixCLTRCLQhj/0NwdTwAAAN/g9sRBdCOLTRCLEYtNEItCPP/Q3B1PAAAA3+D2xEF0CcdF/AAAAADrB8dF/AEAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>mManaCost &gt; 0 || mCooldown &gt; 0</sString>
+				</condition>
+				<name>NoTypeTalantCastle</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="8BD98D33-90E5-4E80-A815-A41BC4DDADD6">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQnj/0DPJg/gBD53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mActivatedWithinKit &gt;= 1</sString>
+				</condition>
+				<name>BonusActive1</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="07D91F14-440A-4EE6-A469-665008054753">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQnj/0DPJg/gCD53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mActivatedWithinKit &gt;= 2</sString>
+				</condition>
+				<name>BonusActive2</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="F7C66D5B-44B0-42C9-A0B8-90A81DB13BE5">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQnj/0DPJg/gDD53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mActivatedWithinKit &gt;= 3</sString>
+				</condition>
+				<name>BonusActive3</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="16B25C04-CF4F-45A9-83DB-5835FC49AAB4">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQnj/0DPJg/gED53BisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mActivatedWithinKit &gt;= 4</sString>
+				</condition>
+				<name>BonusActive4</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="AEF61CC3-8569-45AD-BBAF-8C85E3FB9FFF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gGD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 6</sString>
+				</condition>
+				<name>RefineRate6</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="18AE8A34-8001-4485-8DB5-3565EC445585">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gHD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 7</sString>
+				</condition>
+				<name>RefineRate7</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="E2A554F4-2FA0-4D57-98F0-9071C848890D">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gID5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 8</sString>
+				</condition>
+				<name>RefineRate8</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="8149E60E-2B91-4569-9B6D-81C6371E513F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gJD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 9</sString>
+				</condition>
+				<name>RefineRate9</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/GameLogic/AILogic.AILP" id="EDE338DF-1E42-4B27-AA8D-7CDBB6BC9658">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQiz/0DPJg/gKD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>mRefineRate == 10</sString>
+				</condition>
+				<name>RefineRate10</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<consumableGroups href="/GameLogic/ConsumableGroup.CGRP" />
+	<creatureHappyStateParams>
+		<happyCheckTick>1</happyCheckTick>
+		<happyCreaturesPercent>0.5</happyCreaturesPercent>
+		<minRestTime>0.5</minRestTime>
+	</creatureHappyStateParams>
+	<creepLevelCap>30</creepLevelCap>
+	<creepsLevelUpInfo>
+		<increment>1</increment>
+		<interval>45</interval>
+	</creepsLevelUpInfo>
+	<creepsWavesDelay>30</creepsWavesDelay>
+	<defaultTalentsSet href="" />
+	<derivativeStats href="/GameLogic/DerivateStats.DSTCN" />
+	<energyDamageReduction>
+		<compiledString>FTMAAAADAAAAQAAAAHIAAACGAAAAZGFtYWdlRGVhbGVkAAAAAERhbWFnZVBlbmV0cmF0aW9uTXVsdGlwbGllcl9TcGlyaXQAVYvsg+wUUdnu2RwkaAAAAACLRRCLEItNEItCVP/QUdkcJOhhAAAAg8QIi00MixGLTQyLgnABAADdXfj/0NwNrwAAANno3uHcTfiLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXfD/0NxN8Nld7NlF7IvlXcMAAAAAAADwPwAAAEDheoQ/AAAAAFWL7FHZRQjZRQze2d/g9sQFegjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>max( pMisc-&gt;GetVariable("damageDealed"), 0 ) * (1.0f - rEnergyDamageDecrease * 0.01f) * cDamagePenetrationMultiplier_Spirit</sString>
+	</energyDamageReduction>
+	<expandNatureGlyphGameObject href="/GameLogic/AILogic.AILP" id="73B7E684-D3E4-4E76-B510-513F3885F3A2">
+		<SingleStateObject>
+			<collision>
+				<x1>0</x1>
+				<x2>0</x2>
+				<y1>0</y1>
+				<y2>0</y2>
+			</collision>
+			<heightObject>false</heightObject>
+			<lockMask>
+				<mask />
+				<tileSize>0.5</tileSize>
+			</lockMask>
+			<minLockScale>0</minLockScale>
+			<rounded>false</rounded>
+			<sceneObject href="/Tech/Default/FlagBlue.SOBJ" />
+		</SingleStateObject>
+	</expandNatureGlyphGameObject>
+	<expandNatureGlyphsLifeTime>30</expandNatureGlyphsLifeTime>
+	<expandNatureGlyphsVisibilityRadius>10</expandNatureGlyphsVisibilityRadius>
+	<expandNatureSegmentRation>1</expandNatureSegmentRation>
+	<expoModeParams>
+		<damageModifier>
+			<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nld9NlF9IvlXcM=</compiledString>
+			<returnType>float</returnType>
+			<sString>rLife / rMaxLife</sString>
+		</damageModifier>
+		<minHeroLife>1</minHeroLife>
+		<statsEnhancers href="/GameLogic/AILogic.AILP" id="EDBB943C-64B7-4899-8733-02FDA7DB3075">
+			<StatsEnhancersContainer>
+				<statsEnhancers>
+					<Item>
+						<incrementAddModifier>0</incrementAddModifier>
+						<incrementMullModifier>1</incrementMullModifier>
+						<statAddModifier>0</statAddModifier>
+						<statId>Energy</statId>
+						<statMullModifier>2.5</statMullModifier>
+					</Item>
+					<Item>
+						<incrementAddModifier>1</incrementAddModifier>
+						<incrementMullModifier>1</incrementMullModifier>
+						<statAddModifier>0</statAddModifier>
+						<statId>Strength</statId>
+						<statMullModifier>2</statMullModifier>
+					</Item>
+					<Item>
+						<incrementAddModifier>1</incrementAddModifier>
+						<incrementMullModifier>1</incrementMullModifier>
+						<statAddModifier>0</statAddModifier>
+						<statId>Intellect</statId>
+						<statMullModifier>2</statMullModifier>
+					</Item>
+					<Item>
+						<incrementAddModifier>0</incrementAddModifier>
+						<incrementMullModifier>1</incrementMullModifier>
+						<statAddModifier>0</statAddModifier>
+						<statId>Dexterity</statId>
+						<statMullModifier>1.5</statMullModifier>
+					</Item>
+					<Item>
+						<incrementAddModifier>0</incrementAddModifier>
+						<incrementMullModifier>1</incrementMullModifier>
+						<statAddModifier>10</statAddModifier>
+						<statId>LifeRegenerationAbsolute</statId>
+						<statMullModifier>1</statMullModifier>
+					</Item>
+					<Item>
+						<incrementAddModifier>0</incrementAddModifier>
+						<incrementMullModifier>1</incrementMullModifier>
+						<statAddModifier>20</statAddModifier>
+						<statId>EnergyRegenerationAbsolute</statId>
+						<statMullModifier>1</statMullModifier>
+					</Item>
+					<Item>
+						<incrementAddModifier>0</incrementAddModifier>
+						<incrementMullModifier>1</incrementMullModifier>
+						<statAddModifier>2</statAddModifier>
+						<statId>MoveSpeed</statId>
+						<statMullModifier>1</statMullModifier>
+					</Item>
+				</statsEnhancers>
+			</StatsEnhancersContainer>
+		</statsEnhancers>
+	</expoModeParams>
+	<followRange>4</followRange>
+	<forceParameters href="/GameLogic/AILogic.AILP" id="6EBD4EF4-3FEB-431D-B040-45A29D88A088">
+		<ForceParameters>
+			<baseHeroForce>0</baseHeroForce>
+			<classTalentForceBonusPerStar>25</classTalentForceBonusPerStar>
+			<classTalentLevelForceModifiers>
+				<Item>400</Item>
+				<Item>400</Item>
+				<Item>400</Item>
+				<Item>400</Item>
+				<Item>400</Item>
+				<Item>400</Item>
+			</classTalentLevelForceModifiers>
+			<defaultBaseForce>100</defaultBaseForce>
+			<defaultStatBonus>252</defaultStatBonus>
+			<mapHabitantsStatsMultiplier>0.55</mapHabitantsStatsMultiplier>
+			<masteryPointForce>0</masteryPointForce>
+			<maxHeroForce>9999</maxHeroForce>
+			<seriesMapHabitantsStatsMultiplier>0.75</seriesMapHabitantsStatsMultiplier>
+			<statBonusByForce>3</statBonusByForce>
+			<talentForceBonusPerStar>7.5</talentForceBonusPerStar>
+			<talentForceModifier>1.1</talentForceModifier>
+			<talentLevelBonusPercent>
+				<Item>6</Item>
+				<Item>9</Item>
+				<Item>13</Item>
+				<Item>16</Item>
+				<Item>23</Item>
+				<Item>33</Item>
+			</talentLevelBonusPercent>
+			<talentLevelForceModifiers>
+				<Item>6</Item>
+				<Item>57.5</Item>
+				<Item>119.6</Item>
+				<Item>179.3</Item>
+				<Item>305.2</Item>
+				<Item>479.1</Item>
+			</talentLevelForceModifiers>
+			<talentRarityForceModifiers>
+				<Item>188</Item>
+				<Item>120</Item>
+				<Item>132</Item>
+				<Item>150</Item>
+				<Item>180</Item>
+				<Item>196</Item>
+				<Item>221</Item>
+			</talentRarityForceModifiers>
+			<talentRarityForceSummand>
+				<Item>0</Item>
+				<Item>0</Item>
+				<Item>0</Item>
+				<Item>0</Item>
+				<Item>0</Item>
+				<Item>0</Item>
+				<Item>0</Item>
+			</talentRarityForceSummand>
+			<teamForceCalcMethod>Average</teamForceCalcMethod>
+			<trainingBotsStatsMultiplier>0.8</trainingBotsStatsMultiplier>
+		</ForceParameters>
+	</forceParameters>
+	<globalConstants href="/GameLogic/AILogic.AILP" id="D05B858C-9B16-42A5-8BD1-62DB15F7E23E">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/GameLogic/AILogic.AILP" id="875D43F5-FF50-4948-8CCC-D1BBFDDF13DE">
+					<UnitConstant>
+						<name>rank</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUYtFEIsQi00Qi0II/9CJRfzbRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>mRank</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="065DD38A-5C19-4E4D-83D0-00B6888413AC">
+					<UnitConstant>
+						<name>RatDisease_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="E23DBF3C-24B6-4E19-A59D-1067E621144A">
+					<UnitConstant>
+						<name>RatDisease_Movement_Penalty</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="D26DC51B-3808-457A-99F8-A1B971D7C278">
+					<UnitConstant>
+						<name>RatDisease_Power_Penalty</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3DZmamQDMzG0I=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale( sStrength, 5.2, 38.8 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="8BD42D05-20DF-41D8-8A31-47403B73450A">
+					<UnitConstant>
+						<name>AttackDamageDispersion_Siege</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="BDBB282F-4628-4C4B-8626-CFFE61EA854A">
+					<UnitConstant>
+						<name>AttackDamageDispersion_Creep</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="9AEFF0F3-9EF7-4C0D-8C5B-63530C326341">
+					<UnitConstant>
+						<name>AttackDamageDispersion_Hero</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7C26FF97-434B-4EF9-8420-EBDCD57527D0">
+					<UnitConstant>
+						<name>AttackDamageDispersion_Tower</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="F35CB300-45B6-4A1F-A7CA-114ACA8DE35E">
+					<UnitConstant>
+						<name>AtkDamageDisp_Siege</name>
+						<var>
+							<compiledString>FR0AAAAEAAAALAAAAD8AAABiAAAAaAAAAEF0dGFja0RhbWFnZURpc3BlcnNpb25fU2llZ2UAVYvsg+wQi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDY0AAABo6AMAAGoAi0UQixCLTRCLQlzdXfj/0IlF9NtF9NwNhQAAANwlfQAAANxN+Nno3sHZXfDZRfCL5V3DAAAAAAAA8D8AAADgTWJgPwAAAEDheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f + 0.01f * cAttackDamageDispersion_Siege * (0.002f * random( 0, 1000 ) - 1.0f)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="80B9AB16-D5E3-4FF9-A552-D9E591E155BF">
+					<UnitConstant>
+						<name>AtkDamageDisp_Creep</name>
+						<var>
+							<compiledString>FR0AAAAEAAAALAAAAD8AAABiAAAAaAAAAEF0dGFja0RhbWFnZURpc3BlcnNpb25fQ3JlZXAAVYvsg+wQi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDY0AAABo6AMAAGoAi0UQixCLTRCLQlzdXfj/0IlF9NtF9NwNhQAAANwlfQAAANxN+Nno3sHZXfDZRfCL5V3DAAAAAAAA8D8AAADgTWJgPwAAAEDheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f + 0.01f * cAttackDamageDispersion_Creep * (0.002f * random( 0, 1000 ) - 1.0f)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7EA941B2-6D2E-40A0-A03D-4FF21CC83618">
+					<UnitConstant>
+						<name>AtkDamageDisp_Hero</name>
+						<var>
+							<compiledString>FRwAAAAEAAAAKwAAAD4AAABhAAAAZwAAAEF0dGFja0RhbWFnZURpc3BlcnNpb25fSGVybwBVi+yD7BCLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNjAAAAGjoAwAAagCLRRCLEItNEItCXN1d+P/QiUX020X03A2EAAAA3CV8AAAA3E342ejewdld8NlF8IvlXcMAAAAAAADwPwAAAOBNYmA/AAAAQOF6hD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f + 0.01f * cAttackDamageDispersion_Hero * (0.002f * random( 0, 1000 ) - 1.0f)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="72B11814-D670-4317-9325-E8DDA3390A72">
+					<UnitConstant>
+						<name>AtkDamageDisp_Tower</name>
+						<var>
+							<compiledString>FR0AAAAEAAAALAAAAD8AAABiAAAAaAAAAEF0dGFja0RhbWFnZURpc3BlcnNpb25fVG93ZXIAVYvsg+wQi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDY0AAABo6AMAAGoAi0UQixCLTRCLQlzdXfj/0IlF9NtF9NwNhQAAANwlfQAAANxN+Nno3sHZXfDZRfCL5V3DAAAAAAAA8D8AAADgTWJgPwAAAEDheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f + 0.01f * cAttackDamageDispersion_Tower * (0.002f * random( 0, 1000 ) - 1.0f)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="58CE952F-15D0-44C0-BCE4-46D340A4F305">
+					<UnitConstant>
+						<name>AtkDamageCondition</name>
+						<var>
+							<compiledString>FQUAAAACAAAAMgAAAFYAAABXYXJkAFWL7FFR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6GkAAACDxAzcHYYAAADf4PbERHs7i1UMiwKLTQyLUFD/0oP4EXQpagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QO0UQdQnHRfwBAAAA6wfHRfwAAAAA20X8i+VdwwAAAAAAAAAAAAAAAAAAgD9Vi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>ut_bldg( false, true ) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="46B7AF82-8DD0-4855-A09B-7037DEE52B6D">
+					<UnitConstant>
+						<name>CreepBuildingMod</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>1.5f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="1AC5C458-B09F-48D2-BE02-1CF4F6E6A146">
+					<UnitConstant>
+						<name>Range_Melee</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7FD776A8-00C9-4CF7-B468-AB9B23370FB9">
+					<UnitConstant>
+						<name>Range_Short</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>7</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="2B40755A-5B51-436C-84DD-309FE1C246E6">
+					<UnitConstant>
+						<name>Range_Medium</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>11</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="F988A1EF-03F7-4448-A170-6506C75E8491">
+					<UnitConstant>
+						<name>Range_Long</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>14</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="4A6C2CAA-83F8-4B35-BF3C-FA81E33CB9DE">
+					<UnitConstant>
+						<name>Range_ExLong</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC4QQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>23</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="9C1EE046-53A0-42AD-8E55-F36599A826E9">
+					<UnitConstant>
+						<name>Talent_Rank_Bonus</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="E264DDC8-31EF-4B67-9984-3CA079CDA1C6">
+					<UnitConstant>
+						<name>NativeTerrain</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUVaLRQyLEItNDIuCkAEAAP/Qi/CLTQyLEYtNDItCTP/QM8k78A+UwYlN/NtF/F6L5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>rFctn == rTerrainType</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="C034A163-9AD1-4A3C-98E2-64A06BCEF27A">
+					<UnitConstant>
+						<name>Sender_NativeTerrain</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUVaLRQiLEItNCIuCkAEAAP/Qi/CLTQiLEYtNCItCTP/QM8k78A+UwYlN/NtF/F6L5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sFctn == sTerrainType</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="AA24771C-A845-4F49-BF39-CE30A1DFE78A">
+					<UnitConstant>
+						<name>NativeDefence_Bonus</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>25</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="91E39067-225C-4455-9C0A-AED7ACE083A8">
+					<UnitConstant>
+						<name>TalentHeroNaftaLevel</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUYtFEIsQi00Qi0Iw/9DB4AKJRfzbRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>mTalentLevel*4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="05FFCBC9-0732-457D-907D-A310EBB76BEF">
+					<UnitConstant>
+						<name>TERRBONUS</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="97D6D1E2-5DE5-44DA-A655-38855DC6612E">
+					<UnitConstant>
+						<name>STEP</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.1f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="9D937380-91F1-4961-90D2-9B84FE1A0059">
+					<UnitConstant>
+						<name>AwardKillersRange</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>25</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="ACFF5164-8FC2-4B23-94C8-E880EB3EACF5">
+					<UnitConstant>
+						<name>Silence_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="77BEF4F0-769F-41F9-A1AA-D6DFB8AB8CFC">
+					<UnitConstant>
+						<name>Silence_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="090DC722-AEAC-4CCE-B8AD-C39ABE16DEA3">
+					<UnitConstant>
+						<name>Root_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="438A26F8-46FF-43B6-BD53-78235C6099BB">
+					<UnitConstant>
+						<name>Root_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="DB5FA24B-B3BC-42AF-8293-CBACDB5C01A2">
+					<UnitConstant>
+						<name>Stun_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="B14FF58B-8287-43A6-AE56-F1A3DC6D41A0">
+					<UnitConstant>
+						<name>Stun_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7AFAD18C-A46B-486F-800C-57AC99C7843C">
+					<UnitConstant>
+						<name>Panic_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="D0492AA5-165F-48AA-98D6-566AEEF26408">
+					<UnitConstant>
+						<name>Panic_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="C2E1676D-BBA1-4C8F-A3FB-FDE83FE04CD1">
+					<UnitConstant>
+						<name>Slow_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="D1D8992E-9B24-4B98-8723-7B8D19E8B905">
+					<UnitConstant>
+						<name>Slow_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="471CF0B0-BC6A-4B70-B059-15FD541E2E49">
+					<UnitConstant>
+						<name>SlowAll_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="B2DA0F63-7C2A-4475-9901-1ECA6967DAC7">
+					<UnitConstant>
+						<name>Interrupt_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="4334976A-A44A-4752-8F10-83A3E262D570">
+					<UnitConstant>
+						<name>Taunt_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="3CD6DDB4-5507-4277-9865-9865425ED67A">
+					<UnitConstant>
+						<name>ThrowUp_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="79F30B20-0AA5-4C36-B6C0-4661358867CE">
+					<UnitConstant>
+						<name>TechHaste_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="281301F1-A9E5-407B-89E9-CBDD67AEDFAA">
+					<UnitConstant>
+						<name>Haste_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="5BA0B5CA-5130-4AB6-A880-B3D524CECEB7">
+					<UnitConstant>
+						<name>Haste_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="AB3A8E3F-E4E5-4028-909E-D58AD559164B">
+					<UnitConstant>
+						<name>Blind_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="5A48E8EF-CDFC-411B-B212-997E639BFCCC">
+					<UnitConstant>
+						<name>Blind_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="28E846DD-2583-4F30-928F-18AE5E2E040F">
+					<UnitConstant>
+						<name>Blind_VisibilityRange</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="36E9B667-223A-4E11-80D5-52C056C40552">
+					<UnitConstant>
+						<name>Blind_MissChance</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACWQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>75.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="1F110EC9-3343-47F8-B011-BA1FF4960927">
+					<UnitConstant>
+						<name>Invisible_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="E11C38BC-9D5D-44B1-B891-83B9A46169AC">
+					<UnitConstant>
+						<name>WillCut_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="99B3FC9D-0367-4A35-AA89-33B5D8A5290B">
+					<UnitConstant>
+						<name>WillCut_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="46631CBA-E515-4FDF-BFD2-5E886F0243D3">
+					<UnitConstant>
+						<name>ArmorCut_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="5FFD5D2C-0FF6-42B9-B047-34A5E9004C43">
+					<UnitConstant>
+						<name>ArmorCut_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="092AB868-FA58-4A4E-93E9-92ADE8AA636E">
+					<UnitConstant>
+						<name>MortalStrike_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAABAAAALQAAAFWL7FFR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6EkAAACDxAzcHWEAAADf4PbERHsbi1UMiwKLTQyLUFD/0oP4EXQJx0X8AQAAAOsHx0X8AAAAANtF/IvlXcMAAAAAAAAAAAAAAAAAAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>ut_bldg( false, true ) &amp;&amp; rUnitKind != 17</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="539DBE8C-B323-4841-B6AA-06C47BEDE235">
+					<UnitConstant>
+						<name>TelBlock_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="56FED90B-69D4-4059-AE93-3467E87BFA5D">
+					<UnitConstant>
+						<name>TelBlock_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="E8C1F236-86BB-40B6-A86A-39C15A535A64">
+					<UnitConstant>
+						<name>MortalStrike_Amount</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>50</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="76495E7E-7DEE-456B-9600-4F6EFEAFA13F">
+					<UnitConstant>
+						<name>TerrainMoveBonus</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="C2063903-9FA2-4F14-ABE6-416768B1A92D">
+					<UnitConstant>
+						<name>BurnFxDuration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="4A2C8462-8673-4BAE-857A-7B19BC7ED4F2">
+					<UnitConstant>
+						<name>NeutralCreep_Mod_Atk</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="EBEA01A0-098B-49E0-B036-ECD9B0D4D6FF">
+					<UnitConstant>
+						<name>NeutralCreep_Mod_HP</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="B65D9692-4D90-44C7-86B2-25E8B1BF85EF">
+					<UnitConstant>
+						<name>CreepImmune2Control</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4LQAQAA/9APtsiJTfzbRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sIsEvading</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="8685F691-96C4-48C3-B223-ED542FBFCC45">
+					<UnitConstant>
+						<name>NeutralCreep_Mod_Prime</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="6648870B-5201-4BC2-BF73-CAFCA8E2D679">
+					<UnitConstant>
+						<name>StatModifier</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAB6Qw==</compiledString>
+							<returnType>float</returnType>
+							<sString>250.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="88C33FAD-E1C8-48AC-954E-6432EDBCC7C7">
+					<UnitConstant>
+						<name>LifeEnergyMultiplier</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>25.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7F7A4AF0-3B35-4B1C-8A98-BDFCB96C4DCD">
+					<UnitConstant>
+						<name>Add_Life</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="5EFF3725-1231-4131-BB18-00068490DD93">
+					<UnitConstant>
+						<name>Add_Energy</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="CFBC501A-7AC6-416C-9AEB-817F6C965146">
+					<UnitConstant>
+						<name>Add_Strength</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7C75E0BA-A406-426B-8BAE-364E7E89F9AA">
+					<UnitConstant>
+						<name>Add_Intellect</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="EA440D3C-FD90-4ADE-8115-35FFA03B13C3">
+					<UnitConstant>
+						<name>Add_Dexterity</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="072CEE72-22BD-4E87-93B5-FD4630106B58">
+					<UnitConstant>
+						<name>Add_Stamina</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="8C43A1DA-5D03-473F-896B-C9A1AF6FAD28">
+					<UnitConstant>
+						<name>Add_Will</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="45797071-2AAF-4C57-AA93-1806B83C63D5">
+					<UnitConstant>
+						<name>Add_EnergyRegAbs</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="130EE81B-0874-4FED-9E8E-0ACB519E814E">
+					<UnitConstant>
+						<name>Add_LifeRegAbs</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="BD93035D-2967-4A58-B1A7-40BC6218D2B2">
+					<UnitConstant>
+						<name>Add_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="83BAAE3B-7EBE-4019-8904-6F78BDD5F39A">
+					<UnitConstant>
+						<name>Add_LifeDrain</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="D999EA1B-6A02-457D-B8A7-1B6B055ADBE6">
+					<UnitConstant>
+						<name>Add_EnergyDrain</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="4EB56C64-1746-4471-A30B-CA53219555E0">
+					<UnitConstant>
+						<name>Add_AttackSpeed</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="AEF6143C-D59E-4934-A37C-7A3285672F49">
+					<UnitConstant>
+						<name>Add_VisibleRange</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="50E6FADF-0A2F-4B0F-AABB-37F15FCFD999">
+					<UnitConstant>
+						<name>DetailsCost</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="FCE8240A-4C6C-4D13-9014-2F835BF4F0D1">
+					<UnitConstant>
+						<name>ModDamageFromNeutral</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="966479EF-7F05-49DC-A54C-7A05E38B8B4B">
+					<UnitConstant>
+						<name>Dispell_Number</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="5041C4D3-7FD3-4909-B562-5D99B772855C">
+					<UnitConstant>
+						<name>Set2ResCost</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="079A3517-499C-4B44-9AE1-4655AFFF0A87">
+					<UnitConstant>
+						<name>TECH_FormCapacity</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="5D7BE238-8D9F-42C0-80FF-3CF7ECB3B5F8">
+					<UnitConstant>
+						<name>PrimeForVictimPrime</name>
+						<var>
+							<compiledString>FQAAAAACAAAACQAAADMAAABVi+yD7AhR2QVkAAAA2RwkUdnu2Rwki0UMixCLTQyLgmgBAAD/0C0sAQAAiUX820X83A1YAAAA2V342UX4UdkcJOhKAAAAg8QE2Rwk6BcAAACDxAiL5V3D2/l+arx0kz8AAAAAAABwQ1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>clamp((rTotalNaftaEarned - 300) * 0.019, 0, 240)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="315CAEE1-111F-4D13-81D1-2D24BC7D128E">
+					<UnitConstant>
+						<name>PrimeToKiller</name>
+						<var>
+							<compiledString>FRQAAAAEAAAAOQAAAHEAAAB4AAAApQAAAFByaW1lRm9yVmljdGltUHJpbWUAVYvsg+wsi0UMixCLTQyLgkwBAAD/0IlF/NtF/ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d9P/Q3EX0i00MixGLTQyLguABAADdXez/0IPAAYlF6NtF6Nx97NwF4wAAAFHZBd8AAADZHCRR2e7ZHCSLTQyLEYtNDIuCaAEAAN1d4P/QLSwBAACJRdzbRdzcDdMAAADZXdjZRdhR2Rwk6FsAAACDxATZHCToKAAAAIPECNxF4Nld1NlF1IvlXcM5tMh2vp+KPwAAAAAAABxDAAAAAAAAWUBVi+xR2UUI2UUM3tnf4PbEQXUI2UUI2V386wbZRQzZXfzZRfyL5V3DVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>(rNaftaSpecForKill + cPrimeForVictimPrime) / (rSpecCount + 1) + 100 + clamp((rTotalNaftaEarned - 300) * 0.013, 0, 156)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="4A7359AB-496F-4E7D-B88C-CC1DCB607D08">
+					<UnitConstant>
+						<name>HeroPrimeDif</name>
+						<var>
+							<compiledString>FQAAAAADAAAACgAAABQAAABeAAAAVYvsg+wIVlHZBXkAAADZHCRR2QV1AAAA2Rwki0UMixCLTQyLgmgBAAD/0Ivwi00IixGLTQiLgmgBAAD/0CvwiXX820X8UdkcJOgvAAAAg8QE2Rwk6EwAAACDxAjcNW0AAADZXfjZRfhei+VdwwAAAAAAQI9AAAB6RQAAesVVi+xR2UUI2UUM3tnf4PbEQXUI2UUI2V386wbZRQzZXfzZRfyL5V3DVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>max(min((rTotalNaftaEarned - sTotalNaftaEarned), 4000), -4000)/1000</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="71242FF1-6A0C-4F27-B1D5-D6E5A55B2181">
+					<UnitConstant>
+						<name>ModVictimPrimeDifference</name>
+						<var>
+							<compiledString>FR0AAAAFAAAALgAAAE0AAABaAAAAcAAAAHkAAABIZXJvUHJpbWVEaWYAAAAASGVyb1ByaW1lRGlmAFWL7IPsDGoCi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JR2Rwk6FcAAACDxAjcDZcAAACLRQxQi00IUWgQAAAAi1UQiwKLTRCLUFDdXfj/0twNjwAAANxF+NwFhwAAANld9NlF9IvlXcMAAAAAAADwPwAAAKCZmck/AAAA4E1ikD9Vi+yLRQxQUdlFCNkcJOgFAAAAg8QIXcNVi+yD7BSDfQwAfAiLRQyJRfzrCItNDPfZiU382ejZXfjrCdlFCNhNCNldCItV/IPiAXQJ2UX42E0I2V34i0X80eiJRfx1I4N9DAB9DNlF+Nno3vHdXfDrBtlF+N1d8N1F8Nld7NlF7OsC67eL5V3DAACAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.016f * pow(cHeroPrimeDif, 2) + cHeroPrimeDif*0.2f + 1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="777BD785-F2FD-4E88-BA9A-3DBB833C53C7">
+					<UnitConstant>
+						<name>ModVictimDeathStreak</name>
+						<var>
+							<compiledString>FQAAAAABAAAANwAAAFWL7FGLRQyLEItNDIuC2AEAAP/Qg/gBfwfZ6Nld/Ospi00MixGLTQyLgtgBAAD/0IPoAVBR2QVQAAAA2Rwk6BUAAACDxAjZXfzZRfyL5V3DMzMzPwAAgD9Vi+yLRQxQUdlFCNkcJOgFAAAAg8QIXcNVi+yD7BSDfQwAfAiLRQyJRfzrCItNDPfZiU382ejZXfjrCdlFCNhNCNldCItV/IPiAXQJ2UX42E0I2V34i0X80eiJRfx1I4N9DAB9DNlF+Nno3vHdXfDrBtlF+N1d8N1F8Nld7NlF7OsC67eL5V3DAAAAAAAA8D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>rDeathStreak &lt;= 1 ? 1 : pow(0.7f, rDeathStreak-1 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7DCAB87E-6057-4C4A-8858-7DAEF31F78F6">
+					<UnitConstant>
+						<name>DamagePenetrationMultiplier_Body</name>
+						<var>
+							<compiledString>FUAAAAAKAAAAXwAAAJIAAACuAAAAwQAAANQAAADoAAAA+AAAAAIBAAAiAQAAVQEAAFNwZWxsRGVmAAAAAFNwZWxsUGllcmNlAGlzQXV0b0F0dGFjawAAAABTcGVsbERlZgAAAABTcGVsbFBpZXJjZQBVi+yD7ECLRQyLEItNDIuCGAEAAP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcRfiLTQiLEYtNCIuCKAEAAN1d8P/Qi00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ3V3o/9DcRejcbfDcHbEBAADf4PbEQXUH2ejZXeTrNWgYAAAAi00QixGLTRCLQlT/0NwdpQEAAN/g9sREegfZ6Nld4OsJ2QWhAQAA2V3g2UXg2V3kUdkFoQEAANkcJFHZBZ0BAADZHCSLTQyLEYtNDIuCGAEAAP/Qi00MUYtVCFJoKAAAAItFEIsQi00Qi0JQ3V3Y/9DcRdiLTQiLEYtNCIuCKAEAAN1d0P/Qi00MUYtVCFJoNAAAAItFEIsQi00Qi0JQ3V3I/9DcRcjcbdDZXcTZRcRR2Rwk6GMAAACDxATZHCToMAAAAIPECNhN5Nno3uHZXcDZRcCL5V3DAABAvwAAQD8AAAAAAADwPwAAgD8AAAAAAAAAAFWL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f - ((((rBodyDefence + cSpellDef) - (sPenetrationTotal + cSpellPierce)) &gt; 0.0f) ? 1.0f : ((pMisc-&gt;GetVariable("isAutoAttack") == 1.0f) ? 1.0f : 0.75f)) * min(max((rBodyDefence + cSpellDef) - (sPenetrationTotal + cSpellPierce), -0.75f ) , 0.75f)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="EA2870C0-FD9C-4148-948E-6712BB70FD34">
+					<UnitConstant>
+						<name>DamagePenetrationMultiplier_Spirit</name>
+						<var>
+							<compiledString>FUAAAAAKAAAAXwAAAJIAAACuAAAAwQAAANQAAADoAAAA+AAAAAIBAAAiAQAAVQEAAFNwZWxsRGVmAAAAAFNwZWxsUGllcmNlAGlzQXV0b0F0dGFjawAAAABTcGVsbERlZgAAAABTcGVsbFBpZXJjZQBVi+yD7ECLRQyLEItNDIuCHAEAAP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcRfiLTQiLEYtNCIuCKAEAAN1d8P/Qi00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ3V3o/9DcRejcbfDcHbEBAADf4PbEQXUH2ejZXeTrNWgYAAAAi00QixGLTRCLQlT/0NwdpQEAAN/g9sREegfZ6Nld4OsJ2QWhAQAA2V3g2UXg2V3kUdkFoQEAANkcJFHZBZ0BAADZHCSLTQyLEYtNDIuCHAEAAP/Qi00MUYtVCFJoKAAAAItFEIsQi00Qi0JQ3V3Y/9DcRdiLTQiLEYtNCIuCKAEAAN1d0P/Qi00MUYtVCFJoNAAAAItFEIsQi00Qi0JQ3V3I/9DcRcjcbdDZXcTZRcRR2Rwk6GMAAACDxATZHCToMAAAAIPECNhN5Nno3uHZXcDZRcCL5V3DAABAvwAAQD8AAAAAAADwPwAAgD8AAAAAAAAAAFWL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcNVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f - ((((rSpiritDefence + cSpellDef) - (sPenetrationTotal + cSpellPierce)) &gt; 0.0f) ? 1.0f : ((pMisc-&gt;GetVariable("isAutoAttack") == 1.0f) ? 1.0f : 0.75f)) * min(max((rSpiritDefence + cSpellDef) - (sPenetrationTotal + cSpellPierce), -0.75f ) , 0.75f)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="D47FF66A-1052-4850-AC52-C0FD3BA18C15">
+					<UnitConstant>
+						<name>RunForest_DropThreeRange</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="54E7E8CB-1F6D-4334-9E73-FFBD9585DC77">
+					<UnitConstant>
+						<name>RunForest_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="7B07C521-51FB-49B0-B4FD-36AEFAE5B15B">
+					<UnitConstant>
+						<name>RunForest_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="9FA4AA47-3BC3-401B-9504-D0F9BD38A01D">
+					<UnitConstant>
+						<name>NaftaRange</name>
+						<var>
+							<compiledString>FQsAAAACAAAAGAAAACsAAABSYW5nZV9Mb25nAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFOQAAANld/NlF/IvlXcMAAAAAAAAQQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long + 4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="378364CF-E236-4B97-810C-AC29CDDBFD16">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="42DAEB94-6B8A-4132-94A8-5756CE6E5D2B">
+					<UnitConstant>
+						<name>SlowTop_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="05E87345-19AF-425B-A339-4ED3B166227A">
+					<UnitConstant>
+						<name>SlowTop_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="B4A5DC7E-B3F6-428A-B7DD-5A617359DCD9">
+					<UnitConstant>
+						<name>Enabled_Terrain</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="57423501-CA44-4498-B2F4-A3428C4191D0">
+					<UnitConstant>
+						<name>SpellPierce</name>
+						<var>
+							<compiledString>FRwAAAADAAAAIQAAADQAAABHAAAAaXNBdXRvQXR0YWNrAAAAAFNwZWxsUGllcmNlAFWL7FFoAAAAAItFEIsQi00Qi0JU/9DcHWkAAADf4PbERHsH2e7ZXfzrGGgQAAAAi00IixGLTQiLgogBAAD/0Nld/NlF/IvlXcMAAAAAAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>pMisc-&gt;GetVariable("isAutoAttack") ? 0.0f : sender.vSpellPierce</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="E181919D-D7B0-4512-8179-DCE946E6BE16">
+					<UnitConstant>
+						<name>SpellDef</name>
+						<var>
+							<compiledString>FRkAAAADAAAAHgAAADEAAABEAAAAaXNBdXRvQXR0YWNrAAAAAFNwZWxsRGVmAFWL7FFoAAAAAItFEIsQi00Qi0JU/9DcHWYAAADf4PbERHsH2e7ZXfzrGGgQAAAAi00MixGLTQyLgogBAAD/0Nld/NlF/IvlXcMAAAAAAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>pMisc-&gt;GetVariable("isAutoAttack") ? 0.0f : receiver.vSpellDef</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="132B53C0-00EE-4AA3-AB1B-8457D441D85A">
+					<UnitConstant>
+						<name>DecMoveSpeed_WithReduction</name>
+						<var>
+							<compiledString>FR0AAAACAAAALAAAAD4AAABEZWNfTW92ZVNwZWVkAAAARGVjU2xvd1Bvd2VyAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SaBAAAACLRQyLEItNDIuCiAEAAN1d+P/Q2eje4dxN+Nld9NlF9IvlXcMAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>cDec_MoveSpeed*(1 - receiver.vDecSlowPower)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="CF2D057C-1845-439E-8A58-5814D03837AE">
+					<UnitConstant>
+						<name>DecMoveSpeedPercent_WithReduction</name>
+						<var>
+							<compiledString>FSUAAAACAAAANAAAAEYAAABEZWNfTW92ZVNwZWVkX1BlcmNlbnQAAABEZWNTbG93UG93ZXIAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JoGAAAAItFDIsQi00Mi4KIAQAA3V34/9DZ6N7h3E342V302UX0i+VdwwAAAAAAAPA/</compiledString>
+							<returnType>float</returnType>
+							<sString>cDec_MoveSpeed_Percent*(1 - receiver.vDecSlowPower)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="2D6B7283-F32E-4F64-BFA9-306483051C09">
+					<UnitConstant>
+						<name>TechHaste_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="8066371E-5206-4CFE-8123-E09274007D9A">
+					<UnitConstant>
+						<name>Quickness_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="828748C3-5D24-4DB3-B2C2-326A93C7AF6C">
+					<UnitConstant>
+						<name>Quickness_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="3A4546E8-134A-4A2A-9DA4-E2ACDF773AE6">
+					<UnitConstant>
+						<name>Day_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACWQw==</compiledString>
+							<returnType>float</returnType>
+							<sString>300</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="092B58EE-05E1-4495-BF53-15019253E8D0">
+					<UnitConstant>
+						<name>Night_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAA0Qw==</compiledString>
+							<returnType>float</returnType>
+							<sString>180</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="0998859C-C6DF-43D3-A54E-4880721A9BB9">
+					<UnitConstant>
+						<name>LifeBudget</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="ECF148CC-C08B-4207-9E01-1A5F6BA66B04">
+					<UnitConstant>
+						<name>VISIBLE_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="3D25464D-F1E9-40F6-874E-44E1D7399DC8">
+					<UnitConstant>
+						<name>VISIBLE_EnableCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="9D8A9CA7-4D0F-4556-AEA8-171454BAD04C">
+					<UnitConstant>
+						<name>MaxNaftaGain</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAB6RA==</compiledString>
+							<returnType>float</returnType>
+							<sString>1000.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="8D212AF1-FD08-4EDA-86AC-26C6CC893824">
+					<UnitConstant>
+						<name>CurrentNaftaGain</name>
+						<var>
+							<compiledString>FREAAAABAAAAFQAAAEN1cnJlbnROYWZ0YUdhaW4AVYvsaAAAAACLRQyLEItNDIuCiAEAAP/QXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>receiver.vCurrentNaftaGain</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="A788CA10-3622-4EF7-A4FD-FF80268A8311">
+					<UnitConstant>
+						<name>TechSlow_Condition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</globalConstants>
+	<globalCooldownTime>0.2</globalCooldownTime>
+	<glyphSettings>
+		<maxAfterPickupSpawnDelay>240</maxAfterPickupSpawnDelay>
+		<maxInstances>2</maxInstances>
+		<maxNormalSpawnDelay>210</maxNormalSpawnDelay>
+		<minAfterPickupSpawnDelay>40</minAfterPickupSpawnDelay>
+		<minNormalSpawnDelay>110</minNormalSpawnDelay>
+		<spawnAttemptDelayDecrease>50</spawnAttemptDelayDecrease>
+		<spawnMode>RandomWeight</spawnMode>
+	</glyphSettings>
+	<heroAdvanceRespawnTime>1</heroAdvanceRespawnTime>
+	<heroRanks href="/GameLogic/AILogic.AILP" id="389E7FA4-E3A8-42D8-B016-48D2CE432F2E">
+		<HeroRanks>
+			<highLevelsMMRating>3000</highLevelsMMRating>
+			<ranks>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_0a.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_0a.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_0.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_0.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_0_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_0_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_0_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_0_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_0_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_0_rankTooltipB.txt" />
+					<rating>1</rating>
+					<recommendedForce>0</recommendedForce>
+					<rewardTalentsCountForUI>5</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_0_2A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_0_2A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_0_2.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_0_2.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_1_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_1_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_1_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_1_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_1_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_1_rankTooltipB.txt" />
+					<rating>1200</rating>
+					<recommendedForce>0</recommendedForce>
+					<rewardTalentsCountForUI>6</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_1A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_1A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_1.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_1.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_2_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_2_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_2_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_2_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_2_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_2_rankTooltipB.txt" />
+					<rating>1300</rating>
+					<recommendedForce>1200</recommendedForce>
+					<rewardTalentsCountForUI>7</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_2A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_2A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_2.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_2.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_3_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_3_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_3_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_3_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_3_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_3_rankTooltipB.txt" />
+					<rating>1400</rating>
+					<recommendedForce>1200</recommendedForce>
+					<rewardTalentsCountForUI>7</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_3A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_3A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_3.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_3.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_4_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_4_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_4_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_4_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_4_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_4_rankTooltipB.txt" />
+					<rating>1500</rating>
+					<recommendedForce>1300</recommendedForce>
+					<rewardTalentsCountForUI>8</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_4A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_4A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_4.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_4.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_5_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_5_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_5_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_5_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_5_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_5_rankTooltipB.txt" />
+					<rating>1600</rating>
+					<recommendedForce>1400</recommendedForce>
+					<rewardTalentsCountForUI>9</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_5A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_5A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_5.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_5.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_6_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_6_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_6_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_6_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_6_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_6_rankTooltipB.txt" />
+					<rating>1700</rating>
+					<recommendedForce>1500</recommendedForce>
+					<rewardTalentsCountForUI>10</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_6A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_6A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_6.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_6.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_7_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_7_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_7_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_7_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_7_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_7_rankTooltipB.txt" />
+					<rating>1800</rating>
+					<recommendedForce>1600</recommendedForce>
+					<rewardTalentsCountForUI>11</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_7A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_7A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_7.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_7.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_8_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_8_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_8_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_8_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_8_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_8_rankTooltipB.txt" />
+					<rating>1900</rating>
+					<recommendedForce>1600</recommendedForce>
+					<rewardTalentsCountForUI>12</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_8A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_8A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_8.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_8.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_9_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_9_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_9_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_9_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_9_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_9_rankTooltipB.txt" />
+					<rating>2000</rating>
+					<recommendedForce>1700</recommendedForce>
+					<rewardTalentsCountForUI>13</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_9A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_9A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_9.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_9.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_10_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_10_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_10_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_10_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_10_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_10_rankTooltipB.txt" />
+					<rating>2100</rating>
+					<recommendedForce>1800</recommendedForce>
+					<rewardTalentsCountForUI>14</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="/UI/Styles/Icons/HeroRanks/_10A.ITEX" />
+					<bigIconB href="/UI/Styles/Icons/HeroRanks/_10A.ITEX" />
+					<iconA href="/UI/Styles/Icons/HeroRanks/_10.ITEX" />
+					<iconB href="/UI/Styles/Icons/HeroRanks/_10.ITEX" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_11_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_11_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_11_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_11_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_11_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_11_rankTooltipB.txt" />
+					<rating>2200</rating>
+					<recommendedForce>1800</recommendedForce>
+					<rewardTalentsCountForUI>15</rewardTalentsCountForUI>
+				</Item>
+				<Item>
+					<bigIconA href="" />
+					<bigIconB href="" />
+					<iconA href="" />
+					<iconB href="" />
+					<rankGroupNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_12_rankGroupNameA.txt" />
+					<rankGroupNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_12_rankGroupNameB.txt" />
+					<rankNameA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_12_rankNameA.txt" />
+					<rankNameB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_12_rankNameB.txt" />
+					<rankTooltipA textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_12_rankTooltipA.txt" />
+					<rankTooltipB textref="/GameLogic/AILogic.AILP_389e7fa4e3a842d8b01648d2ce432f2e_ranks_12_rankTooltipB.txt" />
+					<rating>100500</rating>
+					<recommendedForce>0</recommendedForce>
+					<rewardTalentsCountForUI>100500</rewardTalentsCountForUI>
+				</Item>
+			</ranks>
+		</HeroRanks>
+	</heroRanks>
+	<heroRespawnParams href="/GameLogic/AILogic.AILP" id="669684CD-D2DD-4BEB-BA17-8C3FD1E409F2">
+		<HeroRespawnParams>
+			<heroBaseRespawnTime>5</heroBaseRespawnTime>
+			<heroMinRespawnTime>5</heroMinRespawnTime>
+			<heroRespawnDelayMultiplier>2</heroRespawnDelayMultiplier>
+			<overtimeRespawnParams>
+				<overtime>25</overtime>
+				<respawnDelayForOvertime>1.5</respawnDelayForOvertime>
+			</overtimeRespawnParams>
+		</HeroRespawnParams>
+	</heroRespawnParams>
+	<heroScreamDelay>3</heroScreamDelay>
+	<heroStatisticsParams>
+		<timeSlicePeriod>60</timeSlicePeriod>
+	</heroStatisticsParams>
+	<killAwardPartyMultiplier>1</killAwardPartyMultiplier>
+	<killTimeIntervals>
+		<buildingKillInterval>2</buildingKillInterval>
+		<creepKillInterval>0.5</creepKillInterval>
+		<heroKillDamageInterval>10</heroKillDamageInterval>
+		<heroKillerDeadInterval>5</heroKillerDeadInterval>
+	</killTimeIntervals>
+	<levelToExperienceTable href="/Social/Lvl2Exp" />
+	<mainBuildingTurretParams>
+		<Item>
+			<turretAngleAcceleration>25</turretAngleAcceleration>
+			<turretAngleSpeed>200</turretAngleSpeed>
+			<turretLastAngleResetDelay>2</turretLastAngleResetDelay>
+			<turretRotaionTolerance>5</turretRotaionTolerance>
+		</Item>
+		<Item>
+			<turretAngleAcceleration>25</turretAngleAcceleration>
+			<turretAngleSpeed>200</turretAngleSpeed>
+			<turretLastAngleResetDelay>2</turretLastAngleResetDelay>
+			<turretRotaionTolerance>5</turretRotaionTolerance>
+		</Item>
+	</mainBuildingTurretParams>
+	<maxCreepsCount>256</maxCreepsCount>
+	<maxTrueSightRange>16</maxTrueSightRange>
+	<movingTimerBlock>3</movingTimerBlock>
+	<pauseSeconds>150</pauseSeconds>
+	<physicalDamageReduction>
+		<compiledString>FTEAAAADAAAAPgAAAHAAAACEAAAAZGFtYWdlRGVhbGVkAAAAAERhbWFnZVBlbmV0cmF0aW9uTXVsdGlwbGllcl9Cb2R5AFWL7IPsFFHZ7tkcJGgAAAAAi0UQixCLTRCLQlT/0FHZHCToYQAAAIPECItNDIsRi00Mi4J0AQAA3V34/9DcDa0AAADZ6N7h3E34i00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ3V3w/9DcTfDZXezZReyL5V3DAAAAAAAA8D8AAABA4XqEPwAAAABVi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+		<returnType>float</returnType>
+		<sString>max( pMisc-&gt;GetVariable("damageDealed"), 0 ) * (1.0f - rMaterialDamageDecrease * 0.01f) * cDamagePenetrationMultiplier_Body</sString>
+	</physicalDamageReduction>
+	<pickupItemRange>2</pickupItemRange>
+	<portal href="/Items/Talents/_commonData/Portal.TALENT" />
+	<quarterDestroyStatsMultipliers>
+		<Item>1.5</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1.15</Item>
+		<Item>1.15</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+	</quarterDestroyStatsMultipliers>
+	<raiseFlagAbility href="/GameLogic/RaiseFlagAbility.ABLT" />
+	<redeemCostPerLevel>50</redeemCostPerLevel>
+	<redeemCostrecalculateTime>3</redeemCostrecalculateTime>
+	<rotationSpeed>1000</rotationSpeed>
+	<rotationSpeedZ>100</rotationSpeedZ>
+	<skeletonLifeTime>10</skeletonLifeTime>
+	<statsBudget href="/GameLogic/Budget.STBUD" />
+	<talentBaseStatBudget>480</talentBaseStatBudget>
+	<talentGroups href="/GameLogic/TalentGroup.TGRP" />
+	<talentKits href="/GameLogic/AILogic.AILP" id="CFB098CE-DB84-4095-8F9B-76287697E4AD">
+		<TalentKitList>
+			<kits>
+				<Item href="/Items/Talents/TalentKits/Vampiric1_Resurrection/V1_Resurrection.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Vampiric2_ArmourPush/V2_ArmourPush.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Vampiric3_StunProc/V3_StunProc.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Vampiric4_ArmourBlink/V4_ArmourBlink.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Vampiric5_CloneWall/V5_CloneWall.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Vampiric6_CasterBoost/V6_CasterBoost.TALKIT" />
+				<Item href="/GameLogic/AILogic.AILP" id="CAAB2104-63BD-46F6-AEDD-80B0CC6DEAE4">
+					<TalentKit>
+						<caption>G349</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_caab210463bd46f6aedd80b0cc6deae4_name.txt" />
+						<special href="/Items/Talents/Level2/G349_SelfHeal.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level2/G349_SelfHeal.TALENT" />
+							<Item href="/Items/Talents/Level2/G354_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G355_Str_Int_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G356_Life_Stamina.TALENT" />
+							<Item href="/Items/Talents/Level5/G357_Life_Will.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="ECF4D157-D54F-4E65-A617-3E7579484584">
+					<TalentKit>
+						<caption>G350</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_ecf4d157d54f4e65a6173e7579484584_name.txt" />
+						<special href="/Items/Talents/Level3/G350_AoE.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level3/G350_AoE.TALENT" />
+							<Item href="/Items/Talents/Level1/G358_Int_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G359_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level4/G360_AttackSpeed_CDR.TALENT" />
+							<Item href="/Items/Talents/Level6/G361_AttackSpeed_Dex_Stamina_Will.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="78E34C20-5B5E-4BA2-B3A7-1CB6AEBCD2D1">
+					<TalentKit>
+						<caption>G351</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_78e34c205b5e4ba2b3a71cb6aebcd2d1_name.txt" />
+						<special href="/Items/Talents/Level4/G351_MoveSpeed_Shield.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G351_MoveSpeed_Shield.TALENT" />
+							<Item href="/Items/Talents/Level2/G362_Str.TALENT" />
+							<Item href="/Items/Talents/Level2/G363_Int.TALENT" />
+							<Item href="/Items/Talents/Level3/G364_Life_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G365_Will_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G366_Stamina_Str_Int.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="A92DDA7C-A889-41C6-B82A-FF0C591FF93C">
+					<TalentKit>
+						<caption>G352</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_a92dda7ca88941c6b82aff0c591ff93c_name.txt" />
+						<special href="/Items/Talents/Level4/G352_Dmg.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" />
+							<Item href="/Items/Talents/Level3/G367_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G368_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G369_Dex_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level6/G370_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level6/G371_Str_Int_Life.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="0C7252A2-6468-4FEB-BE36-FB6B97D88EB2">
+					<TalentKit>
+						<caption>G353</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_0c7252a264684febbe36fb6b97d88eb2_name.txt" />
+						<special href="/Items/Talents/Level5/G353_AoE.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level5/G353_AoE.TALENT" />
+							<Item href="/Items/Talents/Level1/G372_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G373_AttackSpeed_Dex_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level4/G374_AttackSpeed_Dex_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level6/G375_Str_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level6/G376_Int_Stamina_Will.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset1_2_Resurrection/R1_Resurrection.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset1_2_Dot/R2_Dot.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset1_3_Armor/R3_Armor.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset1_4_AOEHealDmg/R4_AOEHealDmg.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset1_5_Nuke/R5_Nuke.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset1_6_Warfog/R6_Warfog.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/RedSet2_1_AoE/RedSet2_1_AoE.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/RedSet2_2_Heal/RedSet2_2_Heal.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/RedSet2_4_Blow/RedSet2_4_Blow.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/RedSet2_3_Denai/RedSet2_3_Denai.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/RedSet2_5_Blink/RedSet2_5_Blink.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/RedSet2_6_AAMod/RedSet2_6_AADmg.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/RedSet2_7_FireWard/RedSet2_7_FireWard.TALKIT" />
+				<Item href="/GameLogic/AILogic.AILP" id="12DB6014-1C1F-474A-8D3F-A4B56885F24C">
+					<TalentKit>
+						<caption>G328</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_12db60141c1f474a8d3fa4b56885f24c_name.txt" />
+						<special href="/Items/Talents/Level3/G328_AoERegEnergy.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level2/G343_EnergyDrain.TALENT" />
+							<Item href="/Items/Talents/Level3/G328_AoERegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" />
+							<Item href="/Items/Talents/Level5/G332_AspdStmn.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="4E62F943-F46A-4DB3-A063-5CD55476BF8B">
+					<TalentKit>
+						<caption>G323</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_4e62f943f46a4db3a0635cd55476bf8b_name.txt" />
+						<special href="/Items/Talents/Level6/G323_IntAspd_Arena.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level6/G323_IntAspd_Arena.TALENT" />
+							<Item href="/Items/Talents/Level5/G335_DexWill.TALENT" />
+							<Item href="/Items/Talents/Level4/G327_StrOrInt.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="94E8AC14-42AF-418D-AE49-FB9880EA1251">
+					<TalentKit>
+						<caption>G330</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_94e8ac1442af418dae49fb9880ea1251_name.txt" />
+						<special href="/Items/Talents/Level5/G330_Dex_WillOrStmn.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level5/G330_Dex_WillOrStmn.TALENT" />
+							<Item href="/Items/Talents/Level1/G344_Life_LifeReg.TALENT" />
+							<Item href="/Items/Talents/Level6/G326_Dex_WillOrStrmn.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="C955A9F9-D1BB-46A7-95AA-D7E8F0DBA3A3">
+					<TalentKit>
+						<caption>G331</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_c955a9f9d1bb46a795aad7e8f0dba3a3_name.txt" />
+						<special href="/Items/Talents/Level5/G331_Aspd_WillOrStmn.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level5/G331_Aspd_WillOrStmn.TALENT" />
+							<Item href="/Items/Talents/Level6/G325_IntAspd.TALENT" />
+							<Item href="/Items/Talents/Level4/G337_IntAspd.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="A8EF2BEF-4E05-41AB-9F2D-4E6FE1FD0AE8">
+					<TalentKit>
+						<caption>G334</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_a8ef2bef4e0541ab9f2d4e6fe1fd0ae8_name.txt" />
+						<special href="/Items/Talents/Level5/G334_DexStm_Root.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level5/G334_DexStm_Root.TALENT" />
+							<Item href="/Items/Talents/Level6/G322_StrDex.TALENT" />
+							<Item href="/Items/Talents/Level4/G338_StrDex.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="0C2DDD02-B93B-4B2A-A35C-2661D3AF5511">
+					<TalentKit>
+						<caption>G339</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_0c2ddd02b93b4b2aa35c2661d3af5511_name.txt" />
+						<special href="/Items/Talents/Level4/G339_IntDex_Slow.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G339_IntDex_Slow.TALENT" />
+							<Item href="/Items/Talents/Level2/G342_Dex.TALENT" />
+							<Item href="/Items/Talents/Level1/G345_RegEnergy.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="8DCFB27A-8379-4A2A-B52C-D20E8D6E6628">
+					<TalentKit>
+						<caption>G336</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_8dcfb27a83794a2ab52cd20e8d6e6628_name.txt" />
+						<special href="/Items/Talents/Level4/G336_StrAspd_TelBlock.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G336_StrAspd_TelBlock.TALENT" />
+							<Item href="/Items/Talents/Level5/G312_LifeDrain_maxStrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G324_StrAspd.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="79B70CFD-41B6-4E43-AFA1-25989C541B8C">
+					<TalentKit>
+						<caption>G341</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_79b70cfd41b64e43afa125989c541b8c_name.txt" />
+						<special href="/Items/Talents/Level2/G341_Aspd_CreateWard.TALENT" />
+						<talents>
+							<Item href="/Items/Talents/Level2/G341_Aspd_CreateWard.TALENT" />
+							<Item href="/Items/Talents/Level5/G333_AspdWill_TowerDestr.TALENT" />
+							<Item href="/Items/Talents/Level3/G340_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G346_EnergyDrain.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset3_1_Boots/Redset3_1_Boots.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset3_2_IceCream/Redset3_2_IceCream.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset3_3_Shield/Redset3_3_Shield.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset3_4_Dot/Redset3_4_Dot.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset3_5_AOE/Redset3_5_AOE.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset4_1_Silence/Redset4_1_Silence.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset4_2_Phantom/Redset4_2_Phantom.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset4_3_Fire/Redset4_3_Fire.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset4_4_Axes/Redset4_4_Axes.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset4_5_CasterDot/Redset4_5_CasterDot.TALKIT" />
+				<Item href="/GameLogic/AILogic.AILP" id="89219C60-7FFA-4E0D-B6A7-62EE98F9631A">
+					<TalentKit>
+						<caption>G582</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_89219c607ffa4e0db6a762ee98f9631a_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G582_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G583_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G584_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level2/G585_Dex.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="342B1DEF-47D6-4704-8921-61088C1A76B6">
+					<TalentKit>
+						<caption>G586</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_342b1def47d64704892161088c1a76b6_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G586_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G587_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G588_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G589_LifeStaOrWill.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="DEB8C0F9-7232-40D7-9A15-A30D38637211">
+					<TalentKit>
+						<caption>G590</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_deb8c0f9723240d79a15a30d38637211_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G590_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G591_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G592_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G593_IntDexOrAtSpd.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="75725B45-47FA-4BF4-B544-4F99D1F1B729">
+					<TalentKit>
+						<caption>G594</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_75725b4547fa4bf4b5444f99d1f1b729_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G594_Str.TALENT" />
+							<Item href="/Items/Talents/Level5/G595_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G596_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G597_StrDexOrAtSpd.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset5_5_Caster/Redset5_5_Caster.TALKIT" />
+				<Item href="/GameLogic/AILogic.AILP" id="5A492FBF-DC69-4E06-96BE-3DA5C919E51D">
+					<TalentKit>
+						<caption>G602</caption>
+						<kitCapacity>3</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_5a492fbfdc694e0696be3da5c919e51d_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G602_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level4/G603_Str.TALENT" />
+							<Item href="/Items/Talents/Level2/G604_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G605_AttackSpeed.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="51D25570-533B-4509-9DDB-99A352FAA9D0">
+					<TalentKit>
+						<caption>G606</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_51d25570533b45099ddb99a352faa9d0_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G610_Sta.TALENT" />
+							<Item href="/Items/Talents/Level1/G611_Will.TALENT" />
+							<Item href="/Items/Talents/Level2/G608_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level2/G609_Dex.TALENT" />
+							<Item href="/Items/Talents/Level2/G612_EndergyRegen.TALENT" />
+							<Item href="/Items/Talents/Level3/G606_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G607_Int.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="54D981FA-59E8-49BA-A951-3558B1912019">
+					<TalentKit>
+						<caption>G613</caption>
+						<kitCapacity>4</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_54d981fa59e849baa9513558b1912019_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G613_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G614_Int_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G615_Str_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G616_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G617_StrOrInt.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="C4D501AF-64E4-4F72-89AF-D8F5EEA91E7C">
+					<TalentKit>
+						<caption>Жуткая пора</caption>
+						<kitCapacity>4</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_c4d501af64e44f7289afd8f5eea91e7c_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level6/G618_Str.TALENT" />
+							<Item href="/Items/Talents/Level6/G620_Int.TALENT" />
+							<Item href="/Items/Talents/Level4/G621_Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G622_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G619_StaOrWill.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="943954F1-F967-4A96-BA6B-2CAFC84BD2A8">
+					<TalentKit>
+						<caption>G623</caption>
+						<kitCapacity>2</kitCapacity>
+						<name textref="/GameLogic/AILogic.AILP_943954f1f9674a96ba6b2cafc84bd2a8_name.txt" />
+						<special href="" />
+						<talents>
+							<Item href="/Items/Talents/Level2/G623_SelfHeal.TALENT" />
+							<Item href="/Items/Talents/Level1/G624_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G627_StrOrInt_Life.TALENT" />
+							<Item href="/Items/Talents/Level3/G625_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G626_Int.TALENT" />
+						</talents>
+					</TalentKit>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset6_1_HealingWard/Redset6_1_HealingWard.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset6_2_CDR/Redset6_2_CDR.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset6_3_ReflectShield/Redset6_3_ReflectShield.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset6_4_AAPercentDmg/Redset6_4_ActiveAAPercent.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset6_5_TowerDisable/Redset6_5_TowerDisable.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_1_Blind/Redset7_1_Blind.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset8_1_Meteor/Redset8_1_Meteor.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset8_2_Forest/Redset8_2_Forest.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset8_3_Flower/Redset8_3_Flower.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset8_4_TriggerShield/Redset8_4_TriggerShield.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset8_5_Warfog/Redset8_5_Warfog.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset8_6_Invisible/Redset8_6_Invisible.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_2_Pirate/Redset7_2_Pirate.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_3_Panopticon/Redset7_3_Panopticon.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_4_NewYear/Redset7_4_NewYear.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset9_1_Crit/Redset9_1_Crit.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset9_2_SpellPierce/Redset9_2_SpelPierce.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Redset9_3_Crit.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset9_4_Summon/Redset9_4_SummonBuff.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset9_5_Anticontrol/Redset9_5_Anticontrol.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset9_6_DeathCompensation/Redset9_6_DeathCompensation.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_5_Alchemy/Redset7_5_Alchemy.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_6_Anticrit/Redset7_6_Anticrit.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Redset7_7_Glyph.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_8_Dejavu/Redset7_8_Dejavu.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_9_AntiMnM/Redset7_9_AnitMnM.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/Redset7_10_Butcher.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/Redset7_11_MiniRefresher.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset7_12_SuperMove/Redset7_12_SuperMove.TALKIT" />
+				<Item href="/Items/Talents/TalentKits/Redset_RessurectTime/Redset_RessurectTime.TALKIT" />
+			</kits>
+		</TalentKitList>
+	</talentKits>
+	<talentNaftaCostByLevel>
+		<Item>350</Item>
+		<Item>500</Item>
+		<Item>675</Item>
+		<Item>825</Item>
+		<Item>1160</Item>
+		<Item>1600</Item>
+	</talentNaftaCostByLevel>
+	<talentPacks href="/GameLogic/AILogic.AILP" id="C8218826-F19A-41B9-A865-53E2F94D1B5E">
+		<TalentPackList>
+			<packs>
+				<Item href="/GameLogic/AILogic.AILP" id="9EC4E100-8930-4D4A-91B9-D142D9735E23">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/Bat.ITEX" />
+						<iconStyle>TT_kit_big</iconStyle>
+						<id>VampirePack</id>
+						<isRedPack>false</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_9ec4e10089304d4a91b9d142d9735e23_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G295_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level2/G296_LifeRegen.TALENT" />
+							<Item href="/Items/Talents/Level2/G297_maxStrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G298_EnergyRegen.TALENT" />
+							<Item href="/Items/Talents/Level3/G299_LifeRegen_Stamina.TALENT" />
+							<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" />
+							<Item href="/Items/Talents/Level3/G301_Life_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level3/G302_Life_Dexterity.TALENT" />
+							<Item href="/Items/Talents/Level4/G303_Str_CDR.TALENT" />
+							<Item href="/Items/Talents/Level4/G304_Int_CDR.TALENT" />
+							<Item href="/Items/Talents/Level4/G305_K_Dex_CDR.TALENT" />
+							<Item href="/Items/Talents/Level4/G306_K_LifeDrain_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level4/G307_Dex_maxStaWill.TALENT" />
+							<Item href="/Items/Talents/Level4/G308_K_Life_Energy.TALENT" />
+							<Item href="/Items/Talents/Level5/G309_AttackSpeed_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G310_Dexterity_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G311_K_Life_Energy.TALENT" />
+							<Item href="/Items/Talents/Level5/G313_K_maxStrInt_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level5/G314_Aura_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level6/G315_Stamina_maxStrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G316_Will_maxStrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G317_K_Life_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level1/G318_Energy.TALENT" />
+							<Item href="/Items/Talents/Level3/G319_MoveSpeed_EnergyRegen.TALENT" />
+							<Item href="/Items/Talents/Level3/G606_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G607_Int.TALENT" />
+							<Item href="/Items/Talents/Level6/G618_Str.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="2BD195A2-0AC1-4CFD-AD6C-7F2627ABEF29">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/Cat.ITEX" />
+						<iconStyle>TTSet2_big</iconStyle>
+						<id>Resource</id>
+						<isRedPack>false</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_2bd195a20ac14cfdad6c7f2627abef29_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G344_Life_LifeReg.TALENT" />
+							<Item href="/Items/Talents/Level1/G345_RegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level1/G346_EnergyDrain.TALENT" />
+							<Item href="/Items/Talents/Level2/G341_Aspd_CreateWard.TALENT" />
+							<Item href="/Items/Talents/Level2/G342_Dex.TALENT" />
+							<Item href="/Items/Talents/Level2/G343_EnergyDrain.TALENT" />
+							<Item href="/Items/Talents/Level3/G328_AoERegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level3/G340_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G327_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G336_StrAspd_TelBlock.TALENT" />
+							<Item href="/Items/Talents/Level4/G337_IntAspd.TALENT" />
+							<Item href="/Items/Talents/Level4/G338_StrDex.TALENT" />
+							<Item href="/Items/Talents/Level4/G339_IntDex_Slow.TALENT" />
+							<Item href="/Items/Talents/Level5/G312_LifeDrain_maxStrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G330_Dex_WillOrStmn.TALENT" />
+							<Item href="/Items/Talents/Level5/G331_Aspd_WillOrStmn.TALENT" />
+							<Item href="/Items/Talents/Level5/G332_AspdStmn.TALENT" />
+							<Item href="/Items/Talents/Level5/G333_AspdWill_TowerDestr.TALENT" />
+							<Item href="/Items/Talents/Level5/G334_DexStm_Root.TALENT" />
+							<Item href="/Items/Talents/Level5/G335_DexWill.TALENT" />
+							<Item href="/Items/Talents/Level6/G322_StrDex.TALENT" />
+							<Item href="/Items/Talents/Level6/G323_IntAspd_Arena.TALENT" />
+							<Item href="/Items/Talents/Level6/G324_StrAspd.TALENT" />
+							<Item href="/Items/Talents/Level6/G325_IntAspd.TALENT" />
+							<Item href="/Items/Talents/Level6/G326_Dex_WillOrStrmn.TALENT" />
+							<Item href="/Items/Talents/Level6/G329_Aspd_WillOrStmn.TALENT" />
+							<Item href="/Items/Talents/Level2/G509_SelfHeal.TALENT" />
+							<Item href="/Items/Talents/Level2/G608_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G620_Int.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="CEFEFB7D-E050-41B5-B2CF-387455B86ACB">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/Hammer.ITEX" />
+						<iconStyle>TTSet3_big</iconStyle>
+						<id>CustomAbility</id>
+						<isRedPack>false</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_cefefb7de05041b5b2cf387455b86acb_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G358_Int_Str.TALENT" />
+							<Item href="/Items/Talents/Level1/G372_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G349_SelfHeal.TALENT" />
+							<Item href="/Items/Talents/Level2/G354_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G362_Str.TALENT" />
+							<Item href="/Items/Talents/Level2/G363_Int.TALENT" />
+							<Item href="/Items/Talents/Level3/G350_AoE.TALENT" />
+							<Item href="/Items/Talents/Level4/G351_MoveSpeed_Shield.TALENT" />
+							<Item href="/Items/Talents/Level3/G359_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level3/G367_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G368_Int.TALENT" />
+							<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" />
+							<Item href="/Items/Talents/Level4/G355_Str_Int_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G360_AttackSpeed_CDR.TALENT" />
+							<Item href="/Items/Talents/Level3/G364_Life_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level4/G373_AttackSpeed_Dex_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level4/G374_AttackSpeed_Dex_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level5/G353_AoE.TALENT" />
+							<Item href="/Items/Talents/Level5/G356_Life_Stamina.TALENT" />
+							<Item href="/Items/Talents/Level5/G357_Life_Will.TALENT" />
+							<Item href="/Items/Talents/Level5/G365_Will_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G366_Stamina_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G369_Dex_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level6/G361_AttackSpeed_Dex_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level6/G370_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level6/G371_Str_Int_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G375_Str_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level6/G376_Int_Stamina_Will.TALENT" />
+							<Item href="/Items/Talents/Level2/G609_Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G622_AtSpd.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="BFF8E4B7-F91F-41C9-B6E8-7DEE0CF95004">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/Lief.ITEX" />
+						<iconStyle>TTSet4_big</iconStyle>
+						<id>NativeTerrain</id>
+						<isRedPack>false</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_bff8e4b7f91f41c9b6e87dee0cf95004_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G397_Life_HoT.TALENT" />
+							<Item href="/Items/Talents/Level1/G398_Energy_HoT.TALENT" />
+							<Item href="/Items/Talents/Level1/G399_AntiCreepProc_NT.TALENT" />
+							<Item href="/Items/Talents/Level1/G400_LifeReg.TALENT" />
+							<Item href="/Items/Talents/Level1/G401_AntiCreepProc_NotNT.TALENT" />
+							<Item href="/Items/Talents/Level2/G394_Str_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level2/G395_Int_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level2/G396_BurnLand.TALENT" />
+							<Item href="/Items/Talents/Level3/G386_EnergyReg_MoveSpeed.TALENT" />
+							<Item href="/Items/Talents/Level3/G387_MyTerrain_Life.TALENT" />
+							<Item href="/Items/Talents/Level3/G392_Dex.TALENT" />
+							<Item href="/Items/Talents/Level3/G393_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level4/G379_MaxStaWill_CDR.TALENT" />
+							<Item href="/Items/Talents/Level4/G383_Life_CDR.TALENT" />
+							<Item href="/Items/Talents/Level4/G389_Str_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G390_Int_Int.TALENT" />
+							<Item href="/Items/Talents/Level4/G391_LifeDrain_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level5/G381_Str_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level5/G382_Int_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level5/G384_Str_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G385_Int_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G377_Stamina_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G378_Will_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G380_Dex_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G388_AttackSpeed_Life.TALENT" />
+							<Item href="/Items/Talents/Level1/G402_Dex_Dex.TALENT" />
+							<Item href="/Items/Talents/Level1/G403_AttackSpd_AttackSpd.TALENT" />
+							<Item href="/Items/Talents/Level2/G404_Int_RegE_RegE.TALENT" />
+							<Item href="/Items/Talents/Level2/G405_Str_RegE_RegE.TALENT" />
+							<Item href="/Items/Talents/Level5/G406_Life_Str_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G407_Life_RegLife_RegLife.TALENT" />
+							<Item href="/Items/Talents/Level5/G408_Life_Int_Int.TALENT" />
+							<Item href="/Items/Talents/Level3/G409_Int_Dex_Dex.TALENT" />
+							<Item href="/Items/Talents/Level3/G410_Str_Dex_Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G411_Str_StaWill_StaWill.TALENT" />
+							<Item href="/Items/Talents/Level4/G412_Int_StaWill_StaWill.TALENT" />
+							<Item href="/Items/Talents/Level6/G413_AttackSpd_Vamp_Vamp.TALENT" />
+							<Item href="/Items/Talents/Level2/G612_EndergyRegen.TALENT" />
+							<Item href="/Items/Talents/Level4/G621_Dex.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="B2025BD9-4A91-4108-B082-1B504D440EBB">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/Flag.ITEX" />
+						<iconStyle>TTSet6_big</iconStyle>
+						<id>Clans</id>
+						<isRedPack>false</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_b2025bd94a914108b0821b504d440ebb_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level6/G291_GuildPortal.TALENT" />
+							<Item href="/Items/Talents/Level6/G292_GuildBuffDex.TALENT" />
+							<Item href="/Items/Talents/Level5/G294_GuildHeroOff.TALENT" />
+							<Item href="/Items/Talents/Level4/G293_GuildAllyDispell.TALENT" />
+							<Item href="/Items/Talents/Level3/G289_GuildLifeReg_MoveSpeed.TALENT" />
+							<Item href="/Items/Talents/Level2/G290_GuildGlyphSave.TALENT" />
+							<Item href="/Items/Talents/Level4/G217-StoneStun.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="B5E415DB-011B-455F-8ABB-7C63B90D3741">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/Orbit.ITEX" />
+						<iconStyle>TTSet5_big</iconStyle>
+						<id>Awakening</id>
+						<isRedPack>false</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_b5e415db011b455f8abb7c63b90d3741_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G421_EnergyRegen_inc.TALENT" />
+							<Item href="/Items/Talents/Level2/G422_Life_inc.TALENT" />
+							<Item href="/Items/Talents/Level1/G423_LifeDrain_inc.TALENT" />
+							<Item href="/Items/Talents/Level1/G424_Str_inc.TALENT" />
+							<Item href="/Items/Talents/Level1/G425_Int_inc.TALENT" />
+							<Item href="/Items/Talents/Level3/G426_Life_afterRess.TALENT" />
+							<Item href="/Items/Talents/Level2/G427_Int_inc.TALENT" />
+							<Item href="/Items/Talents/Level2/G428_Str_inc.TALENT" />
+							<Item href="/Items/Talents/Level2/G429_Heal_perKill.TALENT" />
+							<Item href="/Items/Talents/Level6/G430_Int_inc_Aspd_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G431_Str_inc_Aspd_Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G432_Int_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G433_Str_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G434_Int_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G435_Dex_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G436_Aspd_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level3/G437_Aspd_inc_int.TALENT" />
+							<Item href="/Items/Talents/Level3/G438_Aspd_inc_str.TALENT" />
+							<Item href="/Items/Talents/Level3/G439_Life_inc_int_str.TALENT" />
+							<Item href="/Items/Talents/Level4/G440_Str_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G441_Life_inc_Will_Stamina.TALENT" />
+							<Item href="/Items/Talents/Level5/G442_Stamina_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G443_Will_inc_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G444_Dex_inc_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G445_Aspd_inc_DrainLife.TALENT" />
+							<Item href="/Items/Talents/Level1/G610_Sta.TALENT" />
+							<Item href="/Items/Talents/Level1/G611_Will.TALENT" />
+							<Item href="/Items/Talents/Level5/G619_StaOrWill.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="2041810B-CCC3-4E74-A2F9-E12DDB187AD4">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedSun.ITEX" />
+						<iconStyle>TTRedSet1_big</iconStyle>
+						<id>LegendarySet</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_2041810bccc34e74a2f9e12ddb187ad4_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G456_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G461_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G469_RegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level4/G474_Dex.TALENT" />
+							<Item href="/Items/Talents/Level2/G451_Str_int_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G457_AtSpdOrDex.TALENT" />
+							<Item href="/Items/Talents/Level2/G462_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G465_RegLife.TALENT" />
+							<Item href="/Items/Talents/Level2/G470_Str_Int.TALENT" />
+							<Item href="/Items/Talents/Level3/G458_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G471_Dex.TALENT" />
+							<Item href="/Items/Talents/Level3/G475_MoveSpeed_RegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level3/G476_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G452_AttackSpeed_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G459_MoveSpeed_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G464_Life_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level4/G466_CDR_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G472_Dex_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G473_Life_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G453_Dex_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G460_Life_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G463_Life_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G467_Life_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level6/G454_AttackSpeed_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G455_Life_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G468_Dex_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G572_SlowProc-Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G573_CDRforKill.TALENT" />
+							<Item href="/Items/Talents/Level6/G574_StatViaHighestStat.TALENT" />
+							<Item href="/Items/Talents/Level3/G575_EnergyReg_MoveSpeed.TALENT" />
+							<Item href="/Items/Talents/Level1/G576_HealForHeroKill.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="E488C7EC-C843-4BB7-AD78-476F7B4BED73">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/Anvil.ITEX" />
+						<iconStyle>TTRedSet2_big</iconStyle>
+						<id>LegendarySet2</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_e488c7ecc8434bb7ad78476f7b4bed73_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level3/G477_AOE_DMG.TALENT" />
+							<Item href="/Items/Talents/Level4/G478_Str.TALENT" />
+							<Item href="/Items/Talents/Level5/G479_StrOrInt_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level6/G481_AttackSpeed_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level1/G482_SelfHeal.TALENT" />
+							<Item href="/Items/Talents/Level1/G483_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G484_EnergyRegen.TALENT" />
+							<Item href="/Items/Talents/Level4/G485_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G486_Stamina_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G487_MarkAOEDMG.TALENT" />
+							<Item href="/Items/Talents/Level3/G488_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level3/G489_Life_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G490_Will_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G491_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G492_DMG.TALENT" />
+							<Item href="/Items/Talents/Level1/G493_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G494_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level4/G495_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G496_StrOrInt_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G497_Life_Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G498_Blink.TALENT" />
+							<Item href="/Items/Talents/Level3/G499_Int_Dex.TALENT" />
+							<Item href="/Items/Talents/Level3/G500_Str_Dex.TALENT" />
+							<Item href="/Items/Talents/Level5/G501_StaOrWill_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G502_Life_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level2/G503_AA_DMG.TALENT" />
+							<Item href="/Items/Talents/Level1/G504_LifeRegen.TALENT" />
+							<Item href="/Items/Talents/Level4/G505_AttackSpeed_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G506_AttackSpeed_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G507_Dex_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G508_AttackSpeed_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level1/G511_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G510_FireWard.TALENT" />
+							<Item href="/Items/Talents/Level3/G512_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G513_Str_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G514_Int_Life.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="EAAC5F38-9B45-465A-8DA9-0D19D891943C">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedTrilist.ITEX" />
+						<iconStyle>TTRedSet3_big</iconStyle>
+						<id>LegendarySet3</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_eaac5f389b45465a8da90d19d891943c_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G516_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level1/G520_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G521_EnergyRegen.TALENT" />
+							<Item href="/Items/Talents/Level1/G527_Life.TALENT" />
+							<Item href="/Items/Talents/Level1/G528_Dex.TALENT" />
+							<Item href="/Items/Talents/Level1/G537_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G522_Life_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G526_Shield.TALENT" />
+							<Item href="/Items/Talents/Level2/G532_Dex.TALENT" />
+							<Item href="/Items/Talents/Level3/G515_Life_MoveSpeed.TALENT" />
+							<Item href="/Items/Talents/Level3/G517_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level3/G531_Dot_Root.TALENT" />
+							<Item href="/Items/Talents/Level4/G518_AttackSpeed_VampLife.TALENT" />
+							<Item href="/Items/Talents/Level4/G523_MoveSpeed.TALENT" />
+							<Item href="/Items/Talents/Level4/G529_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G533_Dex_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level4/G536_AOE_maxLife.TALENT" />
+							<Item href="/Items/Talents/Level5/G524_Sta_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G525_Will_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G534_Dex_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G538_Aura_Sta.TALENT" />
+							<Item href="/Items/Talents/Level5/G539_Aura_Will.TALENT" />
+							<Item href="/Items/Talents/Level6/G519_Dex_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level6/G530_Life_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G535_Dex_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level6/G540_Aura_Str.TALENT" />
+							<Item href="/Items/Talents/Level6/G541_Aura_Int.TALENT" />
+							<Item href="/Items/Talents/Level4/G542_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level6/G543_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G544_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G545_AttackSpeed_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G546_Life_StaOrWill.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="E0D0C748-CD90-40D7-8400-1AD4B7AB272B">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedFire.ITEX" />
+						<iconStyle>TTRedSet4_big</iconStyle>
+						<id>LegendarySet4</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_e0d0c748cd9040d784001ad4b7ab272b_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G562_AxesBase.TALENT" />
+							<Item href="/Items/Talents/Level2/G563_AxesEngReg.TALENT" />
+							<Item href="/Items/Talents/Level3/G564_AxesInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G565_AxesStr.TALENT" />
+							<Item href="/Items/Talents/Level3/G566_AxesStrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G580_AxesLifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level2/G567_CasterBase.TALENT" />
+							<Item href="/Items/Talents/Level4/G568_CasterDamagePlus.TALENT" />
+							<Item href="/Items/Talents/Level5/G569_CasterDex_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G570_CasterDexWill.TALENT" />
+							<Item href="/Items/Talents/Level6/G571_CasterDexStaWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G581_CasterStrOrIntDex.TALENT" />
+							<Item href="/Items/Talents/Level3/G547_SilenceDamageBase.TALENT" />
+							<Item href="/Items/Talents/Level4/G548_CasterDex.TALENT" />
+							<Item href="/Items/Talents/Level4/G549_CasterAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G550_CasterStrIntAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G551_SilenceStrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G577_CasterDexAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level3/G552_PhantomBase.TALENT" />
+							<Item href="/Items/Talents/Level2/G553_PhantomInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G554_PhantomStr.TALENT" />
+							<Item href="/Items/Talents/Level4/G555_PhantomDex.TALENT" />
+							<Item href="/Items/Talents/Level6/G556_PhantomDexLife.TALENT" />
+							<Item href="/Items/Talents/Level4/G578_PhantomAttSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G557_EnemyAoeDmg.TALENT" />
+							<Item href="/Items/Talents/Level4/G558_EnemyAoeDmgInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G559_EnemyAoeDmgDexWil.TALENT" />
+							<Item href="/Items/Talents/Level5/G560_EnemyAoeDmgDexStr.TALENT" />
+							<Item href="/Items/Talents/Level6/G561_EnemyAoeDmgStrIntDex.TALENT" />
+							<Item href="/Items/Talents/Level6/G579_EnemyAoeDmgIntDex.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="EC9799D2-D99D-4378-842E-76482A05BB36">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedPrize.ITEX" />
+						<iconStyle>TTRedSet5_big</iconStyle>
+						<id>LegendarySet5</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_ec9799d2d99d4378842e76482a05bb36_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G582_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G583_Life.TALENT" />
+							<Item href="/Items/Talents/Level2/G584_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level2/G585_Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G586_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G587_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G588_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G589_LifeStaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level4/G590_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G591_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G592_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G593_IntDexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G594_Str.TALENT" />
+							<Item href="/Items/Talents/Level5/G595_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G596_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G597_StrDexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level1/G598_RegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level4/G599_Dex.TALENT" />
+							<Item href="/Items/Talents/Level2/G600_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G601_DexStrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G602_LifeDrain.TALENT" />
+							<Item href="/Items/Talents/Level4/G603_Str.TALENT" />
+							<Item href="/Items/Talents/Level2/G604_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G605_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level1/G613_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G614_Int_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G615_Str_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G616_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G617_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G623_SelfHeal.TALENT" />
+							<Item href="/Items/Talents/Level1/G624_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G627_StrOrInt_Life.TALENT" />
+							<Item href="/Items/Talents/Level3/G625_Str.TALENT" />
+							<Item href="/Items/Talents/Level3/G626_Int.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="3BF5BF09-58CA-43C5-BF46-8A4947E47A35">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedTower.ITEX" />
+						<iconStyle>TTRedSet6_big</iconStyle>
+						<id>LegendarySet6</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_3bf5bf0958ca43c5bf468a4947e47a35_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level2/G628_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G629_StrOrInt_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G630_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G631_Int.TALENT" />
+							<Item href="/Items/Talents/Level4/G632_Dex.TALENT" />
+							<Item href="/Items/Talents/Level5/G633_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G634_Str_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G635_Int_Dex.TALENT" />
+							<Item href="/Items/Talents/Level4/G636_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G637_StrOrInt_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G638_Stamina_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G639_Will_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G640_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level5/G641_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G642_Int_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G643_Str_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level3/G644_StrOrInt_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G645_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G646_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G647_SpdOrDex_Life.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="10D798B9-4F84-4A1C-A00C-F641765C746F">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedFlag.ITEX" />
+						<iconStyle>TTRedClanSet_big</iconStyle>
+						<id>RedClans</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_10d798b94f844a1ca00cf641765c746f_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level5/G656_ShieldAOE_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G657_TeleportCDR_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G658_InvisibilityStrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G659_StoneStun_Red.TALENT" />
+							<Item href="/Items/Talents/Level4/G660_GuildAllyDispell_Red.TALENT" />
+							<Item href="/Items/Talents/Level5/G661_GuildHeroOff_Red.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="19C5E752-9D2C-4550-91C2-EDA8A1048E3C">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedMoon.ITEX" />
+						<iconStyle>TTRedSet8_big</iconStyle>
+						<id>LegendarySet8</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_19c5e7529d2c455091c2eda8a1048e3c_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level3/G663_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G664_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level4/G665_Dex.TALENT" />
+							<Item href="/Items/Talents/Level5/G666_EnemyAoeDmg_StrOrInt_Life.TALENT" />
+							<Item href="/Items/Talents/Level3/G667_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G668_Sta.TALENT" />
+							<Item href="/Items/Talents/Level4/G669_Will.TALENT" />
+							<Item href="/Items/Talents/Level5/G670_Life_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level3/G671_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G672_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G673_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G674_Life_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level6/G675_TriggerShield_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G676_TriggerShield_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G677_TriggerShield_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level3/G678_StrOrInt_EReg.TALENT" />
+							<Item href="/Items/Talents/Level4/G679_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G680_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G681_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G682_MoveSpeed_Night.TALENT" />
+							<Item href="/Items/Talents/Level4/G683_AttackSpeed.TALENT" />
+							<Item href="/Items/Talents/Level4/G684_Dex.TALENT" />
+							<Item href="/Items/Talents/Level5/G685_InvisibilityStrOrInt.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="B839FC6A-3D20-4537-86BC-B1E3A347B27A">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedLightning.ITEX" />
+						<iconStyle>TTRedSet9_big</iconStyle>
+						<id>LegendarySet9</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_b839fc6a3d20453786bcb1e3a347b27a_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G698_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G699_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G700_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G701_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G702_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G703_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G704_Str_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G705_Int_Dex.TALENT" />
+							<Item href="/Items/Talents/Level2/G706_Str.TALENT" />
+							<Item href="/Items/Talents/Level2/G707_Int.TALENT" />
+							<Item href="/Items/Talents/Level3/G708_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G709_DexOrAtSpd_Life.TALENT" />
+							<Item href="/Items/Talents/Level4/G710_StrOrInt_SummonBuff.TALENT" />
+							<Item href="/Items/Talents/Level5/G711_SpdOrDex_SummonBuff.TALENT" />
+							<Item href="/Items/Talents/Level6/G712_Str_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G713_Int_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level3/G714_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G715_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G716_Dex.TALENT" />
+							<Item href="/Items/Talents/Level5/G717_WillOrStamina.TALENT" />
+							<Item href="/Items/Talents/Level1/G718_Str.TALENT" />
+							<Item href="/Items/Talents/Level1/G719_Int.TALENT" />
+							<Item href="/Items/Talents/Level2/G720_MoveSpeed_Life.TALENT" />
+							<Item href="/Items/Talents/Level3/G721_StrOrInt.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="D9A02D49-2BA5-47C9-8005-93B50C8A8816">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedBell.ITEX" />
+						<iconStyle>TTRedSet10_big</iconStyle>
+						<id>LegendarySet10</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_d9a02d492ba547c9800593b50c8a8816_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level4/G649_BlindStrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G650_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G651_Str.TALENT" />
+							<Item href="/Items/Talents/Level6/G652_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G653_Dex.TALENT" />
+							<Item href="/Items/Talents/Level6/G654_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level3/G686_Int.TALENT" />
+							<Item href="/Items/Talents/Level3/G687_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G688_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G689_Dex.TALENT" />
+							<Item href="/Items/Talents/Level5/G690_Stamina.TALENT" />
+							<Item href="/Items/Talents/Level5/G691_Will.TALENT" />
+							<Item href="/Items/Talents/Level3/G692_Int.TALENT" />
+							<Item href="/Items/Talents/Level3/G693_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G694_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level4/G695_Dex.TALENT" />
+							<Item href="/Items/Talents/Level5/G696_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level6/G697_WillOrStamina.TALENT" />
+							<Item href="/Items/Talents/Level1/G722_RegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level1/G723_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level2/G724_AtSpdOrDex.TALENT" />
+							<Item href="/Items/Talents/Level2/G725_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G726_Life_StaOrWill.TALENT" />
+							<Item href="/Items/Talents/Level5/G727_SpdOrDex.TALENT" />
+							<Item href="/Items/Talents/Level6/G728_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G729_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G730_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G731_Dex_AtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G732_Life.TALENT" />
+							<Item href="/Items/Talents/Level6/G733_Stamina.TALENT" />
+							<Item href="/Items/Talents/Level6/G734_Will.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+				<Item href="/GameLogic/AILogic.AILP" id="DF4B6AFE-3681-4F2A-8C0F-D37E6B19B7F2">
+					<TalentPack>
+						<icon href="/UI/Styles/Icons/TalentSets/RedRune.ITEX" />
+						<iconStyle>TTRedSet11_big</iconStyle>
+						<id>LegendarySet11</id>
+						<isRedPack>true</isRedPack>
+						<name textref="/GameLogic/AILogic.AILP_df4b6afe36814f2a8c0fd37e6b19b7f2_name.txt" />
+						<talents>
+							<Item href="/Items/Talents/Level1/G736_Str.TALENT" />
+							<Item href="/Items/Talents/Level1/G737_Int.TALENT" />
+							<Item href="/Items/Talents/Level2/G738_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G739_CDR_Health.TALENT" />
+							<Item href="/Items/Talents/Level5/G740_WillOrStamina.TALENT" />
+							<Item href="/Items/Talents/Level6/G741_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level2/G742_MoveSpeed_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level3/G743_EnergyRegen.TALENT" />
+							<Item href="/Items/Talents/Level4/G744_Dex_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G745_AtSpd_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G746_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G747_Energy.TALENT" />
+							<Item href="/Items/Talents/Level6/G748_Str_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level6/G749_Int_DexOrAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level2/G751_AtSpdOrDex.TALENT" />
+							<Item href="/Items/Talents/Level4/G752_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level5/G753_StrOrIntAtSpd.TALENT" />
+							<Item href="/Items/Talents/Level5/G754_StrOrIntDex.TALENT" />
+							<Item href="/Items/Talents/Level6/G755_StaminaLife.TALENT" />
+							<Item href="/Items/Talents/Level6/G756_WillLife.TALENT" />
+							<Item href="/Items/Talents/Level3/G758_SrtOrInt.TALENT" />
+							<Item href="/Items/Talents/Level1/G759_Str.TALENT" />
+							<Item href="/Items/Talents/Level1/G760_Int.TALENT" />
+							<Item href="/Items/Talents/Level4/G761_AA_Str.TALENT" />
+							<Item href="/Items/Talents/Level4/G762_AA_Int.TALENT" />
+							<Item href="/Items/Talents/Level5/G763_Life_AttackSpeedOrDex.TALENT" />
+							<Item href="/Items/Talents/Level6/G764_WillOrSta.TALENT" />
+							<Item href="/Items/Talents/Level3/G766_MiniRefresher.TALENT" />
+							<Item href="/Items/Talents/Level1/G767_RegEnergy.TALENT" />
+							<Item href="/Items/Talents/Level2/G768_StrOrInt.TALENT" />
+							<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" />
+							<Item href="/Items/Talents/Level4/G770_Life.TALENT" />
+							<Item href="/Items/Talents/Level5/G771_Str_CDR.TALENT" />
+							<Item href="/Items/Talents/Level5/G772_Int_CDR.TALENT" />
+							<Item href="/Items/Talents/Level6/G773_StrOrInt_Dex.TALENT" />
+						</talents>
+					</TalentPack>
+				</Item>
+			</packs>
+		</TalentPackList>
+	</talentPacks>
+	<talentsBuyRange>0</talentsBuyRange>
+	<talentVendorCostByRarity>
+		<Item>0</Item>
+		<Item>240</Item>
+		<Item>300</Item>
+		<Item>360</Item>
+		<Item>432</Item>
+		<Item>444</Item>
+		<Item>0</Item>
+	</talentVendorCostByRarity>
+	<teamsNames>
+		<Item textref="/GameLogic/AILogic.AILP_teamsNames_0.txt" />
+		<Item textref="/GameLogic/AILogic.AILP_teamsNames_1.txt" />
+		<Item textref="/GameLogic/AILogic.AILP_teamsNames_2.txt" />
+	</teamsNames>
+	<towerTurretParams>
+		<turretAngleAcceleration>600</turretAngleAcceleration>
+		<turretAngleSpeed>1100</turretAngleSpeed>
+		<turretLastAngleResetDelay>2</turretLastAngleResetDelay>
+		<turretRotaionTolerance>20</turretRotaionTolerance>
+	</towerTurretParams>
+	<warFogRemoveRadius>4</warFogRemoveRadius>
+	<warFogRemoveTime>0.8</warFogRemoveTime>
+</AILogicParameters>

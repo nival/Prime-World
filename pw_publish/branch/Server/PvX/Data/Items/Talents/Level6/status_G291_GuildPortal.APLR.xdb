@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Level6/G291_GuildPortal.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="B92C56AD-AF3E-4000-BF4D-F4CFB66694AD">
+			<SpellApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Ищем союзников, чтобы создать рядом с ними портал</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="D68CF580-EE49-4BF7-80B6-C49B5DA62256">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="2E11B6E2-5046-48C1-B144-9415DCA6898A">
+								<SummonApplicator>
+									<applicators>
+										<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="15A2023C-D239-4954-A64A-8DEA1567DE4A">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>PortalLife</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQsAAAACAAAAGAAAACsAAABQb3J0YWxMaWZlAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twlOQAAANld/NlF/IvlXcMAAAAAgIQuQQ==</compiledString>
+														<returnType>float</returnType>
+														<sString>cPortalLife - 1000000 </sString>
+													</addValue>
+													<multValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable></variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="5F6E3ABF-C7B1-40B2-BD17-6E44703BCCC1">
+											<ProgramApplicator>
+												<applicators>
+													<Item>
+														<applicator href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="DFBECC66-C3CC-481B-BCB4-8F353B1BBF3A">
+															<StatusApplicator>
+																<applicators>
+																	<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="4F1C505D-F693-463A-8B1E-706A1E40B6BA">
+																		<FlagsApplicator>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<behaviorFlags>0</behaviorFlags>
+																			<caption>Запрещаем автоатаковать меня</caption>
+																			<consumables />
+																			<effect>
+																				<Item href="" />
+																				<Item href="" />
+																			</effect>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<flag>67240199</flag>
+																			<formulaName>NotAuraTarget</formulaName>
+																			<lifeTime>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>-1.0</sString>
+																			</lifeTime>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<providerName></providerName>
+																			<startCondition>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</startCondition>
+																			<talents />
+																			<useListAs>ListAsRule</useListAs>
+																		</FlagsApplicator>
+																	</Item>
+																	<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="806D406F-C9FF-4E8C-B501-CE055A138A5C">
+																		<GhostMoveApplicator>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<behaviorFlags>0</behaviorFlags>
+																			<caption>ghost mode</caption>
+																			<collisionFlags>1</collisionFlags>
+																			<effect>
+																				<Item href="" />
+																				<Item href="" />
+																			</effect>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<formulaName></formulaName>
+																			<lifeTime>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>-1.0</sString>
+																			</lifeTime>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<providerName></providerName>
+																			<pushUnits>false</pushUnits>
+																			<startCondition>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</startCondition>
+																		</GhostMoveApplicator>
+																	</Item>
+																	<Item href="/GameLogic/GeneralApplicators/Uncontrollable.APLR" />
+																	<Item href="/GameLogic/GeneralApplicators/Immune2Control.APLR" />
+																	<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="1BA957C5-F35E-43F2-B17E-FCFD282C39EA">
+																		<TriggerApplicator>
+																			<actionsCount>
+																				<compiledString></compiledString>
+																				<returnType>int</returnType>
+																				<sString>0</sString>
+																			</actionsCount>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<behaviorFlags>152</behaviorFlags>
+																			<caption>- канселяем все статусы (от кого угодно)</caption>
+																			<effect>
+																				<Item href="" />
+																				<Item href="" />
+																			</effect>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<formulaName></formulaName>
+																			<lifeTime>
+																				<compiledString></compiledString>
+																				<returnType>float</returnType>
+																				<sString>-1.0</sString>
+																			</lifeTime>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<playAck>false</playAck>
+																			<processor href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="F3FA9635-2D0C-46DD-AE01-405A6517FF32">
+																				<EventProcessorApplicatorApplied>
+																					<applicatorsList href="" />
+																					<applicatorTypesList href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="5CF6219B-CADD-49AC-98C5-DFAD1FBBB49D">
+																						<ApplicatorsList>
+																							<applicatorLists />
+																							<applicators>
+																								<Item href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="8C9D01CA-83D0-41DC-B45C-728251AA9994">
+																									<StatusApplicator>
+																										<applicators />
+																										<applyTarget>ApplicatorTarget</applyTarget>
+																										<behaviorFlags>0</behaviorFlags>
+																										<caption></caption>
+																										<customCounter>
+																											<compiledString></compiledString>
+																											<returnType>int</returnType>
+																											<sString>0</sString>
+																										</customCounter>
+																										<customProgress>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>-1.0</sString>
+																										</customProgress>
+																										<description textref="" />
+																										<dispellPriority>Medium</dispellPriority>
+																										<effect>
+																											<Item href="" />
+																											<Item href="" />
+																										</effect>
+																										<enabled>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</enabled>
+																										<flags>0</flags>
+																										<formulaName></formulaName>
+																										<image href="" />
+																										<lifeTime>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>-1.0</sString>
+																										</lifeTime>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<name textref="" />
+																										<power>0</power>
+																										<providerName></providerName>
+																										<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+																										<stackCount>0</stackCount>
+																										<startCondition>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</startCondition>
+																										<statusPosition>0</statusPosition>
+																										<stopBehaviour>StopByTime</stopBehaviour>
+																										<unstackableWith href="" />
+																									</StatusApplicator>
+																								</Item>
+																							</applicators>
+																						</ApplicatorsList>
+																					</applicatorTypesList>
+																					<applyTarget>ApplicatorTarget</applyTarget>
+																					<checkSender>0</checkSender>
+																					<filter>1879049471</filter>
+																					<mode>Cancel</mode>
+																					<newLifetime>
+																						<compiledString></compiledString>
+																						<returnType>float</returnType>
+																						<sString>-1.0</sString>
+																					</newLifetime>
+																					<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+																					<spell href="" />
+																				</EventProcessorApplicatorApplied>
+																			</processor>
+																			<providerName></providerName>
+																			<startCondition>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</startCondition>
+																			<useAbilityCooldown>false</useAbilityCooldown>
+																			<useAbilityOwnerMana>false</useAbilityOwnerMana>
+																		</TriggerApplicator>
+																	</Item>
+																</applicators>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<behaviorFlags>1</behaviorFlags>
+																<caption>выдаем статус порталу</caption>
+																<customCounter>
+																	<compiledString></compiledString>
+																	<returnType>int</returnType>
+																	<sString>0</sString>
+																</customCounter>
+																<customProgress>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</customProgress>
+																<description textref="/Items/Talents/Level6/status_G291_GuildPortal.APLR_dfbecc66c3cc481bbcb48f353b1bbf3a_description.txt" />
+																<dispellPriority>NonDispellable</dispellPriority>
+																<effect>
+																	<Item href="/Effects/General/Portal/_.EFFT" />
+																	<Item href="" />
+																</effect>
+																<enabled>
+																	<compiledString>FRAAAAABAAAAGgAAAEcyOTFfQ2hhbm5lbGluZwBVi+xqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>sender.applG291_Channeling(UNIT) != pMisc</sString>
+																</enabled>
+																<flags>0</flags>
+																<formulaName></formulaName>
+																<image href="/UI/Styles/Icons/Talents/_291.ITEX" />
+																<lifeTime>
+																	<compiledString>FREAAAABAAAAHQAAAENoYW5uZWxsaW5nX1RpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cChannelling_Time</sString>
+																</lifeTime>
+																<LoggingEvent>-1</LoggingEvent>
+																<name textref="/Items/Talents/Level6/status_G291_GuildPortal.APLR_dfbecc66c3cc481bbcb48f353b1bbf3a_name.txt" />
+																<power>0</power>
+																<providerName></providerName>
+																<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+																<stackCount>0</stackCount>
+																<startCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</startCondition>
+																<statusPosition>0</statusPosition>
+																<stopBehaviour>StopByTime</stopBehaviour>
+																<unstackableWith href="" />
+															</StatusApplicator>
+														</applicator>
+														<continueCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</continueCondition>
+														<continueEvents>2</continueEvents>
+														<delay>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</delay>
+														<stopCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</stopCondition>
+														<stopEvents>0</stopEvents>
+													</Item>
+													<Item>
+														<applicator href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="BF0B9EA7-9CCC-44E5-9B9C-8FD8949A62B2">
+															<KillApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<caption>ансумоним портал если нет ченелинга от призывателя</caption>
+																<dontGiveRewards>true</dontGiveRewards>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<flag>Unsummon</flag>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+															</KillApplicator>
+														</applicator>
+														<continueCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</continueCondition>
+														<continueEvents>1</continueEvents>
+														<delay>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</delay>
+														<stopCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>0</sString>
+														</stopCondition>
+														<stopEvents>0</stopEvents>
+													</Item>
+												</applicators>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<behaviorFlags>0</behaviorFlags>
+												<caption>Программа жизни портала</caption>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+											</ProgramApplicator>
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviour href="" />
+									<caption>Саммоним портал</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flags>0</flags>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FREAAAABAAAAHQAAAENoYW5uZWxsaW5nX1RpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cChannelling_Time</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<openWarFog>true</openWarFog>
+									<placeMode>ByTargetSelector</placeMode>
+									<placeSelector href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="082A6FF7-C0C7-4022-AF06-1BE9B3601A42">
+										<UnitPlaceCorrector>
+											<checkByRangeToRequester>true</checkByRangeToRequester>
+											<checkLineOfSight>false</checkLineOfSight>
+											<nativeTerrainOnly>false</nativeTerrainOnly>
+											<passabilityCheckMode>7</passabilityCheckMode>
+											<radius>4</radius>
+											<targetSelector href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="4C2A62B6-61A5-4EB1-A1E7-F6F431CF324E">
+												<PointTargetSelector>
+													<checkMinRange>true</checkMinRange>
+													<mode>RangeFromOwner</mode>
+													<offset>
+														<x>0</x>
+														<y>1</y>
+													</offset>
+													<paralleledTarget>false</paralleledTarget>
+													<range>
+														<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADgQA==</compiledString>
+														<returnType>float</returnType>
+														<sString>7</sString>
+													</range>
+													<targetSelector href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="E337C6DC-ACE7-4C0D-AAF2-F6E324F3BB5F">
+														<SelectApplicatorTarget>
+															<applicatorIndex>0</applicatorIndex>
+															<applicatorName></applicatorName>
+															<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+															<selectTarget>ApplicatorTarget</selectTarget>
+														</SelectApplicatorTarget>
+													</targetSelector>
+													<traceMode>0</traceMode>
+												</PointTargetSelector>
+											</targetSelector>
+										</UnitPlaceCorrector>
+									</placeSelector>
+									<providerName></providerName>
+									<spawnStats>
+										<energy>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</energy>
+										<life>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</life>
+									</spawnStats>
+									<summonedUnitIndex>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>0</sString>
+									</summonedUnitIndex>
+									<summonedUnits>
+										<Item href="/Summons/Portal/_.SUMMONED" />
+									</summonedUnits>
+									<summonedUnitsCount>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>1</sString>
+									</summonedUnitsCount>
+									<summonGroupName></summonGroupName>
+									<summonSource>ByApplicator</summonSource>
+									<takeModDmg>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</takeModDmg>
+									<takeTypeUnit>0</takeTypeUnit>
+									<unsummonSortCriterion>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</unsummonSortCriterion>
+								</SummonApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="E598F9CD-DE34-4507-A899-4E2871F94D83">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="B5099CA6-3A3E-4E92-828E-FBCE4E418247">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvsaAAAABCLRQyLEItNDItCaP/QD7bA99gbwIPAAV3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>!rFlag(268435456)</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Items/Talents/Level6/status_G291_GuildPortal.APLR" id="2DA09554-D0A6-48FC-9241-6A69A40D763E">
+							<HeroEnumerator>
+								<flags>1</flags>
+								<mode>Normal</mode>
+								<targetFilter>268435459</targetFilter>
+							</HeroEnumerator>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>Статус</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Level6/status_G291_GuildPortal.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Effects/General/Portal/_Cast.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>G291_Channeling</formulaName>
+	<image href="/UI/Styles/Icons/Talents/_291.ITEX" />
+	<lifeTime>
+		<compiledString>FREAAAABAAAAHQAAAENoYW5uZWxsaW5nX1RpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cChannelling_Time</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Level6/status_G291_GuildPortal.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

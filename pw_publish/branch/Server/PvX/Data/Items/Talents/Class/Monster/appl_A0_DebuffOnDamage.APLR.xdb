@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableProxyApplicator>
+	<BackLink DBID="/Heroes/Monster/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Monster/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Monster/appl_AA_Spell.APLR" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Monster/status_A0_Explosion.APLR" />
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Monster/appl_A0_DebuffOnDamage.APLR" id="9BFCE2B9-0F9C-4A19-BA3E-94A37724B23D">
+				<DamageApplicator parent="/GameLogic/GeneralApplicators/BaseAttackDmg_Hero.APLR">
+					<damage>
+						<compiledString>FSEAAAADAAAALgAAAFAAAABjAAAATW9uc3Rlcl9BM0J1ZmYAAEEzX0F0dGFja3NEbWdNb2QAVYvsg+wQagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QO0UQdCWLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlD/0NwN0wAAAN1d+OsF2ejdXfiLTQiLEYtNCIuCBAEAAP/QUdkcJOhRAAAAg8QEUItNCIsRi00Ii4IAAQAA/9BR2Rwk6DQAAACDxARQi00QixGLTRCLQlz/0IlF9NtF9NxN+Nld8NlF8IvlXcMAAAAAAADwP3sUrkfheoQ/uAEAAAAPovfCAAAABHQH8w8sRCQEw+kAAAAAVYvsg+wM2UUI2X38D7dF/A0ADAAAiUX42W3421302W38i0X0i+Vdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>random ( f2l(sDamageMin), f2l(sDamageMax)) * (sender.applMonster_A3Buff(UNIT) != pMisc ? cA3_AttacksDmgMod*0.01 : 1 )</sString>
+					</damage>
+					<damageType>Material</damageType>
+					<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Обёртка "А0 + урон"</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+</VariableProxyApplicator>

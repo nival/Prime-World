@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Fairy/Ability_A1.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>триггер на юзание А4</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FREAAAABAAAAGwAAAEZhaXJ5X0ExX01pc3Npb24AVYvsagKLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applFairy_A1_Mission(ABILITY) != pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="207FD22D-0A04-425A-98BB-AF1796B5E8A9">
+		<EventProcessorAbilityManacostTransformer>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<filter>
+				<abilitiesList>
+					<Item href="/Items/Talents/Class/Fairy/Ability_A4.TALENT" />
+				</abilitiesList>
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Energy</abilityCostMode>
+				<exceptThis>false</exceptThis>
+				<flags>805306368</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</filter>
+			<spell href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="12710A95-1C49-43B3-BB28-E4552F97C44F">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="550EF296-5D97-4A3D-B54F-A61E909672D9">
+							<SpellApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption></caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<spell href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="D02D4759-17EF-4410-BA7A-18FF3B3E3FFB">
+									<Spell>
+										<applicators>
+											<Item href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="FAC1AE54-5BBB-4971-83C4-7110DB36E659">
+												<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+													<damage>
+														<compiledString>FQ4AAAABAAAAGgAAAEE0X1BoeXNEYW1hZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+														<returnType>float</returnType>
+														<sString>cA4_PhysDamage</sString>
+													</damage>
+													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+												</DamageApplicator>
+											</Item>
+											<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+										</applicators>
+										<dispatch href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="7DCBAD28-D9CD-44CA-8959-D79BB5CCACBC">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>Default</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>1</flags>
+												<instantApply>false</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<spellTarget>ApplicatorTarget</spellTarget>
+								<targetSelector href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="A8B9BA71-169F-49BE-A4C3-0A34DF9DD108">
+									<AreaTargetSelector>
+										<absolutePosition>
+											<x>0</x>
+											<y>0</y>
+										</absolutePosition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<range>
+											<compiledString>FQkAAAABAAAAFQAAAEExX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>cA1_Range</sString>
+										</range>
+										<targetFilter>538771519</targetFilter>
+										<targetSelector href="" />
+									</AreaTargetSelector>
+								</targetSelector>
+							</SpellApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="F930A4F6-B693-4D8F-9161-D7EFCA9C093B">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="/Items/Talents/Class/Fairy/A1_Strike.APLR" id="55879D00-5FE3-4C81-9D22-27E202720CB2">
+									<EffectSwitcher>
+										<deathType>Manual</deathType>
+										<effectOnInvisible href="/Effects/Buffs/Fairies/_FlashRed.EFFT" />
+										<effectOnVisible href="/Effects/Buffs/Fairies/_FlashGold.EFFT" />
+										<enableCondition href="" />
+										<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+										<lifeTime>0</lifeTime>
+										<logic>FactionVisibility</logic>
+									</EffectSwitcher>
+								</Item>
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorAbilityManacostTransformer>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

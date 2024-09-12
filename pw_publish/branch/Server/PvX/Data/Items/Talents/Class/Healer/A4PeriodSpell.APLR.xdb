@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Healer/status_A4_LifeTriumph.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>периодический спелл</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString>FQsAAAABAAAAFwAAAEE0RHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQkAAAABAAAAFQAAAEE0UGVyaW9kAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4Period</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Healer/A4PeriodSpell.APLR" id="ED13CB3F-218D-4D43-B136-AB184EC667FD">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Healer/A4PeriodSpell.APLR" id="13B78E44-51D1-4727-81DB-31DF9D336A30">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>спелл для героев и крипов</caption>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/Healer/A4HealSpell.SPLL" />
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/Healer/A4PeriodSpell.APLR" id="35929468-90C5-43BD-877A-0BB500A79D42">
+							<CountingTargetSelector>
+								<enableSorting>false</enableSorting>
+								<flags>0</flags>
+								<heroesFirst>true</heroesFirst>
+								<mode>Normal</mode>
+								<order>Decreasing</order>
+								<sortingValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1</sString>
+								</sortingValue>
+								<targetSelector href="/Items/Talents/Class/Healer/A4PeriodSpell.APLR" id="93038DD2-81A9-4F69-85F9-AA54347D81AC">
+									<ConditionTargetSelector>
+										<condition>
+											<compiledString>FRsAAAAEAAAAIAAAADYAAABCAAAAWAAAAEE0U3RhcnRlZAAAAFZhbXBSZXNTdGFydGVkAFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHXoAAADf4PbERHoraAwAAACLTQyLEYtNDIuCiAEAAP/Q3B16AAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.vA4Started == 0 &amp;&amp;  receiver.vVampResStarted == 0</sString>
+										</condition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<targetSelector href="/Items/Talents/Class/Healer/A4PeriodSpell.APLR" id="86F115B5-7D05-45E9-869B-3261717F8C51">
+											<AreaTargetSelector>
+												<absolutePosition>
+													<x>0</x>
+													<y>0</y>
+												</absolutePosition>
+												<flags>0</flags>
+												<mode>Normal</mode>
+												<range>
+													<compiledString>FQgAAAABAAAAFAAAAEE0UmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>cA4Range</sString>
+												</range>
+												<targetFilter>268435487</targetFilter>
+												<targetSelector href="" />
+											</AreaTargetSelector>
+										</targetSelector>
+									</ConditionTargetSelector>
+								</targetSelector>
+								<targetsNumber>
+									<compiledString>FQ4AAAABAAAAGgAAAEE0SGVhbHNOdW1iZXIAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+									<returnType>int</returnType>
+									<sString>f2l(cA4HealsNumber)</sString>
+								</targetsNumber>
+							</CountingTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Healer/A4PeriodSpell.APLR" id="F848B0E9-DB5A-4A2A-9643-E5732A354A84">
+					<HealApplicator parent="/Items/Talents/Class/Healer/A1HealSelf.APLR">
+						<amount>
+							<compiledString>FTYAAAAEAAAAPQAAAFYAAACMAAAArAAAAEhlYWxlcl9BMQAAAEhlYWxlcl9BMQAAAEhlYWxlcl9BMQAAAEExSGVhbFNlbGZBbW91bnQyAFWL7IPsEGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdDdoGAAAAItVCIsCi00Ii5CoAQAA/9KJRfSLRQxQi00IUWgkAAAAi1X0iwKLTfSLUFD/0tld8OsF2e7ZXfDZRfCL5V3DAAAAAA==</compiledString>
+							<returnType>float</returnType>
+							<sString>talconst("Healer_A1","A1HealSelfAmount2")</sString>
+						</amount>
+					</HealApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Healer/A4PeriodSpell.APLR" id="F88097F4-CF97-40CE-97FE-2BB09F949F6C">
+				<DispatchImmediate>
+					<alwaysApply>true</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.1f</sString>
+	</startOffset>
+	<targetSelector href="" />
+</SpellPeriodicallyApplicator>

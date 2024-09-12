@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/GameLogic/AILogic.AILP" Count="3" />
+	<BackLink DBID="/GameLogic/TalentGroup.TGRP" Count="1" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_Rar5_Set3" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/ThunderGod_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="2" />
+	<BackLink DBID="/Social/Lootboxes/LB_G352" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_OrangeSet3.ROLLCONT" Count="1" />
+	<BackLink DBID="/Test/Talents/OrangeSet3.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Cone.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FRcAAAACAAAAJAAAADcAAABSZWJvdW5kX1N0YXJ0Q29uZGl0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdWQAAAN/g9sREewnHRfwZAAAA6wfHRfwAAAAA20X8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>float</returnType>
+		<sString>cRebound_StartCondition ? 25 : 0</sString>
+	</aoeSize>
+	<aoeType>UnattachedSector</aoeType>
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+		<Item href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+		<Item href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="0B0CA1F9-C8EE-433B-BC2C-6FF9FAA401E1">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>рикошет</caption>
+				<enabled>
+					<compiledString>FRcAAAACAAAAJAAAADcAAABSZWJvdW5kX1N0YXJ0Q29uZGl0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUwAAAN/g9sREewbGRf8B6wTGRf8AikX/i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cRebound_StartCondition</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Level4/G352_Dmg.TALENT" id="998E4F62-BA28-495B-AFEC-C15DD3298B90">
+					<Spell>
+						<applicators>
+							<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+							<Item href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+							<Item href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+							<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="82B5B900-66A4-4AE6-A7B4-099520E20202">
+								<SpellSwitchApplicator>
+									<activeSpellIndex>
+										<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgjABAAD/0ItNCIsRi00Ii4I0AQAA3V34/9DcXfjf4PbEQXoJx0X0AAAAAOsHx0X0AQAAAItF9IvlXcM=</compiledString>
+										<returnType>int</returnType>
+										<sString>sStrength &gt;= sIntellect? 0 : 1</sString>
+									</activeSpellIndex>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>Спелл где выбирает тип урона</caption>
+									<dontUseDispatches>true</dontUseDispatches>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spells>
+										<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="3358F17A-00E5-43CD-8504-E8C64D8991EF">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="C9017206-C527-4A4A-A261-D275ED5F6CFC">
+														<DamageApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<cancelInvisibility>false</cancelInvisibility>
+															<caption>- наносим Физ урон</caption>
+															<damage>
+																<compiledString>FQcAAAABAAAAEwAAAERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cDamage</sString>
+															</damage>
+															<damageMode>0</damageMode>
+															<damageType>Material</damageType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<timeLimiter>-1</timeLimiter>
+															<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+														</DamageApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="" />
+											</Spell>
+										</Item>
+										<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="68E17D1F-A177-4EEC-A342-4881FC5BEDA0">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="24921B23-317B-47AC-A066-EDEC8A855505">
+														<DamageApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<cancelInvisibility>false</cancelInvisibility>
+															<caption>- наносим Маг урон</caption>
+															<damage>
+																<compiledString>FQcAAAABAAAAEwAAAERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cDamage</sString>
+															</damage>
+															<damageMode>0</damageMode>
+															<damageType>Energy</damageType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<timeLimiter>-1</timeLimiter>
+															<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+														</DamageApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="" />
+											</Spell>
+										</Item>
+									</spells>
+								</SpellSwitchApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/TalentSet3/dispatch_G352.DSCH" />
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Level4/G352_Dmg.TALENT" id="E84F09FA-2D02-4358-8A9D-939097A71001">
+					<CountingTargetSelector>
+						<enableSorting>true</enableSorting>
+						<flags>0</flags>
+						<heroesFirst>false</heroesFirst>
+						<mode>Normal</mode>
+						<order>Increasing</order>
+						<sortingValue>
+							<compiledString>FQcAAAABAAEADgAAAAIBAABUYXJnZXQAVYvsg+wkaAAAAACLRRCLEItNEItCTP/QiUXsi00MixGLTQyLQlT/0A+2yPfZG8mD4ZyDwWSJTejbReiNVfhSi0XsixCLTeyLgowBAADdXeD/0FCNTfBRi1UMiwKLTQyLkIwBAAD/0lDoEAAAAIPECNxF4Nld3NlF3IvlXcNVi+yD7BSLRQjZQASLTQzYYQTZXfTZRfRR2Rwki1UI2QKLRQzYINld8NlF8FHZHCSNTfjoVwAAANlF+NhN+NlF/NhN/N7B2V3s2UXsUdkcJOgHAAAAg8QEi+Vdw1WL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOjW/v//g8QI2V382UX8i+Vdw1WL7FGJTfyLRfzZRQjZGItN/NlFDNlZBItF/IvlXcIIAA==</compiledString>
+							<returnType>float</returnType>
+							<sString>d( rPos, appl.oTarget.Pos ) + (rIsHero ? 0 : 100)</sString>
+						</sortingValue>
+						<targetSelector href="/Items/Talents/Level4/G352_Dmg.TALENT" id="868F8B31-EA0A-4A16-9293-5787286404DA">
+							<SectorTargetSelector>
+								<angle>40</angle>
+								<centerIsSegmentEnd>true</centerIsSegmentEnd>
+								<flags>1</flags>
+								<mode>SendOnce</mode>
+								<range>
+									<compiledString>FQ0AAAACAAAAGgAAAC0AAABSYW5nZV9NZWRpdW0AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3AU7AAAA2V382UX8i+VdwwAAAAAAAPA/</compiledString>
+									<returnType>float</returnType>
+									<sString>cRange_Medium+1</sString>
+								</range>
+								<segmentBegin>AbilityOwner</segmentBegin>
+								<segmentDirectionOffset>0</segmentDirectionOffset>
+								<segmentEnd>CurrentPosition</segmentEnd>
+								<targetFilter>713818175</targetFilter>
+							</SectorTargetSelector>
+						</targetSelector>
+						<targetsNumber>
+							<compiledString></compiledString>
+							<returnType>int</returnType>
+							<sString>1</sString>
+						</targetsNumber>
+					</CountingTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="5EB0B72E-4A83-403A-8B07-26AB25B407AC">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgjABAAD/0ItNCIsRi00Ii4I0AQAA3V34/9DcXfjf4PbEQXoJx0X0AAAAAOsHx0X0AQAAAItF9IvlXcM=</compiledString>
+					<returnType>int</returnType>
+					<sString>sStrength &gt;= sIntellect? 0 : 1</sString>
+				</activeSpellIndex>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Спелл где выбирает тип урона</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="6FCB94A9-5205-40CF-9481-93C6893BAA5E">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="1E4B7391-F61D-4D95-A054-775FD415850E">
+									<DamageApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<cancelInvisibility>false</cancelInvisibility>
+										<caption>- наносим Физ урон</caption>
+										<damage>
+											<compiledString>FQcAAAABAAAAEwAAAERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cDamage</sString>
+										</damage>
+										<damageMode>0</damageMode>
+										<damageType>Material</damageType>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+									</DamageApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="1E34FB71-CC02-4D29-BAAA-561DFB7C2917">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="E098D603-98CD-4AA9-922C-354AD5C6D0F6">
+									<DamageApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<cancelInvisibility>false</cancelInvisibility>
+										<caption>- наносим Маг урон</caption>
+										<damage>
+											<compiledString>FQcAAAABAAAAEwAAAERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cDamage</sString>
+										</damage>
+										<damageMode>0</damageMode>
+										<damageType>Energy</damageType>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+									</DamageApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+	</applicators>
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G352: Путь карателя</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Level4/G352_Dmg.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/TalentSet3/conditionFormula_G352_1" />
+		<Item href="/Items/Talents/TalentSet3/conditionFormula_G352_2" />
+		<Item href="/Items/Talents/TalentSet3/conditionFormula_G352_3" />
+		<Item href="/Items/Talents/TalentSet3/conditionFormula_G352_4" />
+		<Item href="/Items/Talents/TalentSet3/conditionFormula_G352_5" />
+		<Item href="/Items/Talents/TalentSet3/conditionFormula_G352_1or2" />
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="B3E51718-0560-4457-A458-71C4FCDA24D4">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FS8AAAAEAAAAPAAAAE8AAABjAAAAdgAAAEFybW9yQ3V0X1N0YXJ0Q29uZGl0aW9uAFdpbGxDdXRfU3RhcnRDb25kaXRpb24AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B2YAAAA3+D2xER7MItFDFCLTQhRaBgAAACLVRCLAotNEItQUP/S3B2YAAAA3+D2xER7CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cArmorCut_StartCondition&amp;&amp;cWillCut_StartCondition</sString>
+				</condition>
+				<name>FirstAndSecondDispatch</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="FDAC30E4-5F76-4793-81FC-B0AD8CEB1BF6">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSEAAAAEAAAAMAAAAEMAAABPAAAAaAAAAEczNTJfa2l0Q291bnRlcl9UVAAARzM1MgAAAABHMzUyAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B20AAAA3+D2xEF1WGgUAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoHAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdAnHRfQAAAAA6wfHRfQBAAAAikX0i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>!(cG352_kitCounter_TT&gt;0&amp;&amp;(tal("G352")))</sString>
+				</condition>
+				<name>FormNotActiveSession</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="640030C0-D3D2-4F6E-8444-89E25EBEA8BF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSEAAAACAAAAMAAAAEoAAABHMzUyX2tpdENvdW50ZXJfVFQAAEczNTJfTWF4Rm9ybQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBQAAACLVRCLAotNEItQUN1d+P/S3F343+D2xAV6CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>cG352_kitCounter_TT&gt;cG352_MaxForm</sString>
+				</condition>
+				<name>FormOverChargedSession</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="4B3FFECB-2468-4116-BFE1-AC6943AFE0E5">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSkAAAAEAAAAOAAAAEsAAABXAAAAcAAAAEczNTJfa2l0Q291bnRlcl9UVF9DYXN0bGUAAABHMzUyAAAAAEczNTIAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHbwAAADf4PbEQXVYaBwAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgkAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0CcdF9AAAAADrB8dF9AEAAACKRfSL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>!(cG352_kitCounter_TT_Castle&gt;0&amp;&amp;(tal("G352")))</sString>
+				</condition>
+				<name>FormNotActiveCastle</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="91D044A8-3E5C-444A-9E17-1F053F2A5595">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRoAAAACAAAAJwAAADoAAABHMzUyX2tpdENvdW50ZXJfVFRfQ2FzdGxlAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdXAAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAhA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cG352_kitCounter_TT_Castle&gt;3</sString>
+				</condition>
+				<name>FormOverChargedCastle</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="F83CA763-9F37-4CF8-B2BB-4DEDA182B91C">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FVYAAAAGAAAAZQAAAHgAAACMAAAAnwAAALMAAADNAAAAQXJtb3JDdXRfU3RhcnRDb25kaXRpb24AV2lsbEN1dF9TdGFydENvbmRpdGlvbgAAQXJtb3JDdXRfQW1vdW50X1RUAABXaWxsQ3V0X0Ftb3VudF9UVABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdBAEAAN/g9sREe3OLRQxQi00IUWgYAAAAi1UQiwKLTRCLUFD/0twdBAEAAN/g9sREe0yLRQxQi00IUWgwAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaEQAAACLVRCLAotNEItQUN1d+P/S3UX42unf4PbERHoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>(cArmorCut_StartCondition&amp;&amp;cWillCut_StartCondition)&amp;&amp;(cArmorCut_Amount_TT==cWillCut_Amount_TT)</sString>
+				</condition>
+				<name>FirstAndSecondDispatchEqu</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Level4/G352_Dmg.TALENT" id="24A3008F-098A-4F54-BCE7-E7CAF2258FBD">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="69C1A958-3739-4D08-8CF5-BF7EFB0E1FD9">
+					<UnitConstant>
+						<name>Damage</name>
+						<var>
+							<compiledString>FTIAAAAEAAAAOgAAAE8AAABsAAAAhgAAAFJlYm91bmRfQW1vdW50AABUYXJnZXQAAEFiaWxpdHlUYXJnZXQAAABEYW1hZ2VfVFQAVYvsg+wUVmgQAAAAi0UQixCLTRCLQkz/0IlF/GgYAAAAi00QixGLTRCLQkz/0IlF+ItNDFGLVQhSaCgAAACLRRCLEItNEItCUP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3w/9BR2RwkUdno2Rwki034ixGLTfiLgpgBAAD/0Ivwi038ixGLTfyLgpgBAAD/0DvGD5TBD7bRUugVAAAAg8QM3E3w2V3s2UXsXovlXcMAAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>s(appl.oTarget.WOID == appl.oAbilityTarget.WOID, 1, cRebound_Amount)*cDamage_TT</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="0CEB6913-C5F7-4EA0-854E-5274286DBE06">
+					<UnitConstant>
+						<name>Stun_StartCondition</name>
+						<var>
+							<compiledString>FQwAAAACAAAAEQAAACcAAABHMzY5X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vG369_Active &gt; 0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentSet3/const_G352_Stun_Duration" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_ArmorCut_Duration" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_ArmorCut_Amount" />
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="49E6342E-9FA0-4B87-A0CD-084188705139">
+					<UnitConstant>
+						<name>ArmorCut_StartCondition</name>
+						<var>
+							<compiledString>FQwAAAACAAAAEQAAACcAAABHMzY3X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vG367_Active &gt; 0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="F2244601-C783-4710-9F16-EFD3706AD9DF">
+					<UnitConstant>
+						<name>Rebound_StartCondition</name>
+						<var>
+							<compiledString>FQwAAAACAAAAEQAAACcAAABHMzcxX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vG371_Active &gt; 0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="C69F9DF3-8A4B-46F5-8C12-BADD9EA535CC">
+					<UnitConstant>
+						<name>WillCut_StartCondition</name>
+						<var>
+							<compiledString>FQwAAAACAAAAEQAAACcAAABHMzY4X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vG368_Active &gt; 0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="1767E9D3-5D3C-4659-8238-F6334F367781">
+					<UnitConstant>
+						<name>WillCut_Duration</name>
+						<var>
+							<compiledString>FRIAAAABAAAAHgAAAEFybW9yQ3V0X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cArmorCut_Duration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="1C925E7B-1D3B-4586-A12D-50B859DA5C40">
+					<UnitConstant>
+						<name>G352_kitCounter_TT</name>
+						<var>
+							<compiledString>FQ0AAAACAAAAFAAAAC0AAABHMzUyAAAAAEczNTIAVYvsg+wYaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCLTRCLEYtNEItCeP/QiUX020X0Udnu2RwkUdno2RwkD7ZN+1HdXezoGAAAAIPEDNxt7Nld6NlF6IvlXcMAAIA/AAAAAFWL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>mActivatedWithinKit - s(tal("G352"), 1 , 0)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="9A966726-DF90-44A4-9E0D-07463AE7E428">
+					<UnitConstant>
+						<name>G352_kitCounter_TT_Castle</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUVHZ7tkcJItFEIsQi00Qi0J4/9CD6AGJRfzbRfxR2Rwk6AsAAACDxAiL5V3DAAAAAFWL7FHZRQjZRQze2d/g9sQFegjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>max(mActivatedWithinKit - 1, 0)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentSet3/const_G352_AddDamage" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_MaxForm" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_Rebound_Amount" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_Rebound_Amount_TT" />
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="D7B02A63-EA58-472F-9057-1B9D2173EC80">
+					<UnitConstant>
+						<name>BaseDamage</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAm0MAAMhB</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(310, 25)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="5E14353B-A3DF-41E8-981B-20E4E1C6A1C7">
+					<UnitConstant>
+						<name>Damage_TT</name>
+						<var>
+							<compiledString>FSQAAAAEAAAAKwAAAEEAAABfAAAAfwAAAEJhc2VEYW1hZ2UAAEFkZERhbWFnZQAAAEczNzBfQWN0aXZlAFWL7IPsEGgYAAAAi0UIixCLTQiLgogBAAD/0NwdtQAAAN/g9sRBdQbGRf8B6wTGRf8Ai00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9BR2e7ZHCSLTQxRi1UIUmgMAAAAi0UQixCLTRCLQlDdXfT/0FHZHCQPtk3/UegcAAAAg8QM3EX02V3w2UXwi+VdwwAAAAAAAAAAAAAAAFWL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cBaseDamage + s(sender.vG370_Active&gt;0,cAddDamage,0)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentSet3/const_G352_Stun_Duration_TT" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_ArmorCut_Amount_TT" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_WillCut_Amount" />
+				<Item href="/Items/Talents/TalentSet3/const_G352_WillCut_Amount_TT" />
+				<Item href="/Items/Talents/Level4/G352_Dmg.TALENT" id="D6A282F3-568D-4B86-ADBE-78C8D902491B">
+					<UnitConstant>
+						<name>TECH_FormCapacity</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAEczNTJfTWF4Rm9ybQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cG352_MaxForm</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>120</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level4/G352_Dmg.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/TalentSet3/dispatch_G352.DSCH" />
+	<flags>3</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_352.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>3</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level4/G352_Dmg.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId>G352</persistentId>
+	<prerequisiteTalents />
+	<rarity>exclusive</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Level4/G352_Dmg.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>672923711</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

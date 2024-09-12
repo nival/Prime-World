@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+	<h2>Select collection</h2>
+	<form action="{{ url_for('show') }}" method=post>
+		<select name=Date size=30 required>
+			{% for table in tables %}
+				<option value={{ table }}>{{ table }}</option>
+			{% endfor %}
+		</select>
+	<p><input type="submit" value="Select"></p>	
+	</form>
+{% endblock %}

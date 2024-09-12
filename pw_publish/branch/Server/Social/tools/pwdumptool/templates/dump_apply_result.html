@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block body %}
+	<p><b>{{ result }}</b></p>
+	<form action="{{ url_for('show_account') }}" method=post name=return>
+		<input type="hidden" name="auid" value={{ auid }}>
+		<a href="#" onclick="document.forms['return'].submit(); return false;">return to user details (auid={{ auid }})</a>
+	</form>
+{% endblock %}

@@ -1,0 +1,47 @@
+------------------------------------------------------------------------------------------
+.Anton Prokofiev:
+при изменениях AccountManagementAPI.thrift
+ломается проект Src\Game\PF\Tools\Management\AccountLib\AccountLib.csproj
+который ломает сборку ControlCenter (это наш веб интерфейс GM тулзы)
+
+при изменениях StatisticCore.thrift
+ломается проект Tools\GMTools\StatisticCore\StatisticCore.csproj
+который ломает сборку ToolsServer (это сервис статистики)
+
+и обе сборки за собой ломают билд pvx сервера
+------------------------------------------------------------------------------------------
+
+
+struct BroadcastMessage {
+    1: i32 MesId,
+    2: string MessageTitle,
+    3: string MessageText,
+    4: i64 TimeStart,
+    5: i64 TimeFinish,
+    6: i32 Interval,
+    7: bool EnabledNow,
+}
+
+//broadcast
+    i32 CreateBroadcastMessage(1: BroadcastMessage createMessage),
+    i32 EditBroadcastMessage(1: BroadcastMessage editMessage),
+    i32 DeleteBroadcastMessage(1: i32 mesId),
+    list<BroadcastMessage> GetBroadcastList(1: i32 skipLines, i32 takeLines),
+
+    i32 StartMessageRotation(1: i32 mesId),
+    i32 StopMessageRotation(1: i32 mesId),
+    
+    
+-----------
+
+1) + нужно куда-то персистить список бродкастов (mysql[0]?)
+2) + у chat_server: метод broadcast, вызываем у любого чат-сервера (все они законнекчены к общей IRC-морде)
+    + видимо, можно вызывать через балансер, "localhost:88/chat?action=broadcast&.."
+    
+3) + такое ощущение, что WS нам не особо нужен 
+    + можно прокинуть thrift на координатор, он так и так умеет общаться с mysql
+    //// можно прямо с thrift_agent лезть в mysql и чат-сервера (только добавить туда соотв. интерфейсы)
+    
+4) + прикрутить механизм "периодической рассылки" as intended
+    + после каждой рассылки проставлять LastSent timestamp
+    

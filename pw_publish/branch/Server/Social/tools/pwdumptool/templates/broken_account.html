@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <table class=table_unbordered>
+	<tr valign=top>
+	<form action="{{ url_for('get_broken_dump') }}" method=post name=broken_account>	
+		<td>
+<p><b>Get dump for broken account</b><p>
+
+	<fieldset title="nickname">
+	<legend>By NickName</legend>	
+
+        <p><label for=auid>NickName:</label></p>
+        <p><input type=text size=30 name=nickname onkeypress="document.forms.broken_account.elements[4].value='';document.forms.broken_account.elements[5].value='';document.forms.pwc_activate.elements[1].value='';"></p>
+	</fieldset>	
+	
+	<fieldset title="snid">
+	<legend>By SN ID</legend>	
+
+        <p><label for=auid>Social network id:</label></p>
+        <p><input type=text size=3 name=snid></p>
+		<p><label for=auid>User id in the social network:</label></p>
+        <p><input type=text size=30 name=snuid  onkeypress="document.forms.broken_account.elements[1].value='';document.forms.pwc_activate.elements[1].value='';"></p>
+	</fieldset>		
+
+		</td>	
+		<td align=left>
+			<p><b>Select date for user dump</b><p>		
+			<fieldset title="Select date for user dump">
+			<legend>Date of dump</legend>			
+				<select name=Date required>
+				<option selected disabled></option>
+				{% for table in tables %}
+					<option value={{ table }}>{{ table }}</option>
+				{% endfor %}
+				</select>
+				<p><input type=submit value=Download></p>				
+			</fieldset>		
+		</td>
+	</form>		
+	</tr>
+	<tr>
+		<td>
+		<form action="{{ url_for('pwc_activate') }}" method=post name=pwc_activate>
+			<p><b>Activate pwc account by email</b><p>
+			<fieldset title="pwc_email">
+			<legend>Enter email</legend>
+			<p><label for=email>Email:</label></p>
+			<p><input type=text size=30 name=email required onkeypress="document.forms.broken_account.elements[1].value='';document.forms.broken_account.elements[4].value='';document.forms.broken_account.elements[5].value='';"></p>
+			<p><input type=submit value=Activate></p>
+			</fieldset>
+		</form>	
+		</td>
+	</tr>	
+	</table>
+    
+{% endblock %}

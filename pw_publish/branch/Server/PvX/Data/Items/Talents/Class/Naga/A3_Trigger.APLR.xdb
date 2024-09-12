@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption> -- А3 многорукий воин (Damage Transformer)</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Naga/A3_Trigger.APLR" id="CD258987-3C9F-44FD-AB64-C288A81BDA48">
+		<EventProcessorDamageTransformer>
+			<abilityFilter>
+				<abilitiesList />
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Energy</abilityCostMode>
+				<exceptThis>false</exceptThis>
+				<flags>1073741825</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</abilityFilter>
+			<add>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</add>
+			<applyTarget>AbilityOwner</applyTarget>
+			<checkSender>0</checkSender>
+			<damageTypeFilter>31</damageTypeFilter>
+			<flags>0</flags>
+			<matchTargetInverted>false</matchTargetInverted>
+			<mul>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>1.0f</sString>
+			</mul>
+			<objectFilter>538705983</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Items/Talents/Class/Naga/A3_Trigger.APLR" id="2BD24E41-0FF3-473D-8266-B993CE904E87">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Naga/A3_Trigger.APLR" id="580EE506-C48E-4F47-9804-F64D9F6B46A2">
+							<SpellApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Шанс на срабатывание</caption>
+								<enabled>
+									<compiledString>FQgAAAACAAAAFQAAACgAAABBM19Qcm9jAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdRAAAAN/g9sREewbGRf8B6wTGRf8AikX/i+VdwwAAAAAAAAAA</compiledString>
+									<returnType>bool</returnType>
+									<sString>cA3_Proc</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<spell href="/Items/Talents/Class/Naga/A3_Trigger.APLR" id="32710290-8F1E-49C0-9B5A-0A476C51076B">
+									<Spell>
+										<applicators>
+											<Item href="/Items/Talents/Class/Naga/A3_Trigger.APLR" id="FD9DBEE2-DD85-4FD7-933D-4A02BB33E093">
+												<ProgramApplicator>
+													<applicators>
+														<Item>
+															<applicator href="" />
+															<continueCondition>
+																<compiledString>FQAAAAABAAAAKgAAAFWL7IPsCGr/i0UIixCLTQiLgqQBAAD/0IlF/ItN/IsRi038i0Ic/9DcHUwAAADf4PbEQXUJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcOamZmZmZnJPw==</compiledString>
+																<returnType>bool</returnType>
+																<sString>pFirst-&gt;GetAblt(BASE_ATTACK)-&gt;GetPreparedness() &gt; 0.2</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="" />
+															<continueCondition>
+																<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+													</applicators>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<behaviorFlags>0</behaviorFlags>
+													<caption>подождать пока не выйдем из текущей атаки</caption>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<lifeTime>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<startCondition>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</startCondition>
+												</ProgramApplicator>
+											</Item>
+											<Item href="/Items/Talents/Class/Naga/status_A3u.APLR" />
+										</applicators>
+										<dispatch href="/Items/Talents/Class/Naga/A3_Trigger.APLR" id="5FE931A5-C7CB-495F-BE4E-A0ACB765CEAA">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>Default</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>0</flags>
+												<instantApply>false</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<spellTarget>ApplicatorTarget</spellTarget>
+								<targetSelector href="" />
+							</SpellApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Naga/A3_Trigger.APLR" id="98101AB8-C314-4D08-BEBD-C2E212237BE3">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+		</EventProcessorDamageTransformer>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if account[0]=='exception' %}
+<p><b>{{ account[1] }}</b><p>
+{% else %}
+<p><b>Account Details</b><p>
+<p>auid : {{ account[0]['auid'] }}, snid : {{ account[33]['snid'] }}, snuid : {{ account[34]['snuid'] }}</p>
+  {% if account[32]['online']==False %}
+	<h2 style="color:red">OFFLINE</h2>
+  {% else %}
+	<h2 style="color:green">ONLINE</h2>
+  {% endif %}
+  <table class=table_unbordered>
+	<tr valign=top>
+		<td>
+			<table class=table_bordered>
+				{% for field in account %}
+				<tr width=80%><td style="color:gray">{{ field.keys()[0] }}</td><td>{{ field.values()[0] }}</td></tr>
+				{% else %}
+				<p>Unbelievable.  No entries here so far</p>
+				{% endfor %}
+			</table>
+		</td>
+		<td align=left style="padding: 2em">
+			<p><b>Select date for user dump</b></p>
+			<form action="{{ url_for('show') }}" method=post>
+				<select name=Date required>
+				<option selected disabled></option>
+				{% for table in tables %}
+					<option value={{ table }}>{{ table }}</option>
+				{% endfor %}
+				</select>
+				<input type="hidden" name="type" value=get>
+				<input type="hidden" name="login" value={{ account[1]['login'] }}>
+				<input type="hidden" name="auid" value={{ account[0]['auid'] }}>
+				<input type="submit" name="submit" value="Download dump"> or <input type="submit"  name="submit"  value="Apply dump">
+			</form>
+			<p><b>Select prepared dump for apply</b></p>
+			<form action="{{ url_for('show') }}" method=post enctype=multipart/form-data>
+				<input type="file" name="file"> and
+				<input type="hidden" name="type" value=send>
+				<input type="hidden" name="login" value={{ account[1]['login'] }}>
+				<input type="hidden" name="auid" value={{ account[0]['auid'] }}>
+				<input type="submit" name="submit" value="Apply dump">
+			</form>
+			<p><b>Change user FSN</b></p>
+			<form action="{{ url_for('show') }}" method=post enctype=multipart/form-data>
+				{% if account[3].get('joinedSnids') is none %}
+				 <p>'joinedSnids' is None </p>
+				{% else %}
+					<select name=fsn required>
+					<option selected disabled></option>
+					{% for snid in account[3].get('joinedSnids', []) %}
+						<option value={{ snid }}>{{ snid }}</option>
+					{% endfor %}
+				{% endif %}
+				</select>
+				<input type="hidden" name="type" value=fsn>
+				<input type="hidden" name="login" value={{ account[1]['login'] }}>
+				<input type="hidden" name="auid" value={{ account[0]['auid'] }}>
+				<input type="submit" name="submit" value="Change fsn">
+			</form>
+		</td>
+	</tr>
+	</table>
+
+
+{% endif %}
+{% endblock %}

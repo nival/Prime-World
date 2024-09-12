@@ -1,0 +1,10 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/services/dummy_ps"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/services/dummy_ps/main.py"
+RUNSCRIPT_ARGS="--loglevel={{ conf['log_level_dummy_ps'] }} --logrotate=60 --log={{ conf['logging'] }}DummyPs.log --config={{ conf['rundir'] }}/cfg/dummy_ps.cfg"
+LOGGING=">> {{ conf['logging_run'] }}pw-cf.log.run 2>&1"

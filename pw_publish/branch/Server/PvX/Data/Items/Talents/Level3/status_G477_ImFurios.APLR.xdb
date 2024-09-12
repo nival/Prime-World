@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<applicators>
+		<Item href="/Items/Talents/Level3/status_G477_ImFurios.APLR" id="468D6468-AE46-4F10-9D71-E16492AAAD8B">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>период урон всем врагам</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQcAAAABAAAAEwAAAFBlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cPeriod</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Level3/status_G477_ImFurios.APLR" id="4A2608C5-31F8-4F8B-8B47-279A30A1B2BB">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Level3/status_G477_ImFurios.APLR" id="8DC0C05A-0820-436A-A429-311027D667BD">
+								<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+									<damage>
+										<compiledString>FQcAAAABAAAAEwAAAERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cDamage</sString>
+									</damage>
+									<damageType>Material</damageType>
+									<enabled>
+										<compiledString>FQkAAAACAAAADgAAACQAAABHNDc3X0RNRwBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1GAAAA3+D2xAV6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.vG477_DMG &lt; 1</sString>
+									</enabled>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+								</DamageApplicator>
+							</Item>
+							<Item href="/Items/Talents/Level3/status_G477_ImFurios.APLR" id="79FA594C-21EB-4560-AB3F-712DE3B133E4">
+								<StatModApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>128</behaviorFlags>
+									<caption>Запоминалка, что мы нанесли урон</caption>
+									<constraint>None</constraint>
+									<dontUpdate>false</dontUpdate>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQ0AAAACAAAAHAAAADYAAABQZXJpb2QAAFNURVAAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgIAAAAi1UQiwKLTRCLUFDdXfj/0txt+Nld9NlF9IvlXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cPeriod - cSTEP</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>G477_DMG</variable>
+									</modifier>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString>FQkAAAACAAAADgAAACQAAABHNDc3X0RNRwBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1GAAAA3+D2xAV6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.vG477_DMG &lt; 1</sString>
+									</startCondition>
+									<statModName></statModName>
+								</StatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Level3/status_G477_ImFurios.APLR" id="260FE009-B719-43A8-8021-9BAA991DB01F">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Level3/TargetSelector_G477_AoE.TGSL" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level3/status_G477_ImFurios.APLR" id="033FA473-DD36-440F-A180-ACB5AD6F30D1">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Items/Talents/Level3/status_targetG477.APLR" />
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Раздаем всем врагам статус</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cRange</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>10428927</targets>
+				<targetSelector href="/Items/Talents/Level3/TargetSelector_G477_AoE.TGSL" />
+				<type>None</type>
+			</AuraApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>статус Упоение битвой</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Level3/status_G477_ImFurios.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAAFAAAACoAAABWYW1wUmVzU3RhcnRlZABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vVampResStarted == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Artifacts/_Test.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Level3/status_G477_ImFurios.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

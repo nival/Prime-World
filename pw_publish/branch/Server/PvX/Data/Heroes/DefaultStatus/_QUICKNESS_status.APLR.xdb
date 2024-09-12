@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/List_HasteUnstacked.APLS" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Hunter/A3SpellSwitch.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Prince/Ability2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Warlord/Ability2.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/Werewolf/Ability3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_QUICKNESS_status.APLR" id="11310200-40E7-48FA-9257-60F28EF1CF6E">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>увеличить движение</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="/Effects/Buffs/SpeedingUp/_MoveAndAttack.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FREAAAACAAAAHgAAADEAAABIYXN0ZV9Nb3ZlQW1vdW50AFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNSwAAANno3sHZXfzZRfyL5V3DAAAAAAAA8D97FK5H4XqEPw==</compiledString>
+						<returnType>float</returnType>
+						<sString>1 + cHaste_MoveAmount * 0.01</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Haste_MoveAmount</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_QUICKNESS_status.APLR" id="1CDB1054-A359-4496-9F11-EF2BF55B71E2">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>увеличить скорость атак</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRMAAAABAAAAHwAAAEhhc3RlX0F0a1NwZEFtb3VudABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cHaste_AtkSpdAmount</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Haste_AtkSpdAmount</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/QuicknessFlyoff.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>Статус Ускорение (Haste_Duration, Haste_AtkSpdAmount, Haste_MoveAmount)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/_QUICKNESS_status.APLR_description.txt" />
+	<dispellPriority>Low</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/SpeedingUp/_Move.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRQAAAACAAAAIQAAADQAAABRdWlja25lc3NfQ29uZGl0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUAAAAN/g9sREewbGRf8B6wTGRf8AikX/i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>cQuickness_Condition</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>HasteStatus</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Haste.ITEX" />
+	<lifeTime>
+		<compiledString>FQ8AAAABAAAAGwAAAEhhc3RlX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cHaste_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/_QUICKNESS_status.APLR_name.txt" />
+	<power>25</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRkAAAACAAAAJgAAADkAAABRdWlja25lc3NfU3RhcnRDb25kaXRpb24AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1VAAAA3+D2xER7BsZF/wHrBMZF/wCKRf+L5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>cQuickness_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_HasteUnstacked.APLS" />
+</StatusApplicator>

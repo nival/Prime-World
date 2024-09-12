@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/Champions/Champion2/PVE_Ep1_NoControl.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Creeps/Champions/Champion2/status_A1_Heal.APLR" />
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption>Лечение</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="BC8148E3-6ADB-4661-ADEA-EB276DE2474D">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="8968112A-1D4E-48BD-9B7A-7735BDD42820">
+					<UnitConstant>
+						<name>Heal_Total</name>
+						<var>
+							<compiledString>FQAAAAABAAAAFgAAAFWL7FGLRQiLEItNCIuCNAEAAP/Q3A0kAAAA2V382UX8i+VdwwAAAAAAABxA</compiledString>
+							<returnType>float</returnType>
+							<sString>sIntellect*7</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="46F2F482-F334-468B-8B3F-59717CF42E8E">
+					<UnitConstant>
+						<name>Heal_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="C8F6D465-07E0-4F2B-B81D-A96651EDB4CD">
+					<UnitConstant>
+						<name>Heal_CD</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQgAAAABAAAAFAAAAEhlYWxfQ0QAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cHeal_CD</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="229C1103-464F-4203-8505-A47F1427EF36">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>30</sString>
+	</manaCost>
+	<marker>doCast2</marker>
+	<microAI href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="29609B4D-F5E6-4E70-8E82-016582FFFDD4">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCSP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DMzMzMzMz0z8=</compiledString>
+				<returnType>bool</returnType>
+				<sString>sTimeStanding &gt; 0.3</sString>
+			</condition>
+			<targetSelector href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="78ED7E00-7F8A-46D7-AB35-A637B09B7C60">
+				<ComparingTargetSelector>
+					<referenceValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</referenceValue>
+					<targetSelector href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="04C45A53-D208-42C7-9822-79D846C93AEB">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nxd+N/g9sRBdQnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+								<returnType>bool</returnType>
+								<sString>rLife &lt; rMaxLife</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelector href="/Creeps/Champions/Champion2/A1_Heal_PVE.ABLT" id="4461FDB7-FFCA-425E-9128-3D84E0A7A016">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange_Medium</sString>
+									</range>
+									<targetFilter>270270527</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+					<valueToCompare>
+						<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nld9NlF9IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>rLife / rMaxLife</sString>
+					</valueToCompare>
+				</ComparingTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node>ability2</node>
+	<passiveApplicators />
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>270270527</targetType>
+	<type>Active</type>
+	<useRange>
+		<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Medium</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

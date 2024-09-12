@@ -1,0 +1,1 @@
+..\..\tools\thrift\thrift-0.9.1.exe -gen py:new_style serverinfo.thrift

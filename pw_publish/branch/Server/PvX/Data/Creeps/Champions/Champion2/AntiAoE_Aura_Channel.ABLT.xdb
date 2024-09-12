@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/Champions/Champion2/PvE_Coop1_AntiAoE.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="E17B6836-87C8-45C2-990C-B5B4716D652C">
+			<TargetsCounterApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>следим, есть ли близко герои</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>EnemyHeroesNear</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targetSelector href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="73003C33-7547-4CDE-BDFF-7D8F805A7224">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQYAAAACAAAAEwAAACYAAABSYW5nZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBTQAAADZXfzZRfyL5V3DAAAAAAAAJEA=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange + 10</sString>
+						</range>
+						<targetFilter>671088643</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</TargetsCounterApplicator>
+		</Item>
+		<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="79A188B9-E731-4891-A217-51BB96442F19">
+			<TargetsCounterApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>следим, есть у нас кто-то под защитой</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>AlliesToProtectNear</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targetSelector href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="A6F4AF75-3D00-474C-ACB7-5D8FD4A9F0BA">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FQ8AAAACAAAAFAAAACoAAABIYXNBbnRpQW9lQXVyYQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.vHasAntiAoeAura == 0.f</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="6DE7F26A-8340-4A07-AD5F-4FBCC5A1B9B7">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cRange</sString>
+								</range>
+								<targetFilter>403439648</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</targetSelector>
+			</TargetsCounterApplicator>
+		</Item>
+		<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="30D3BD96-BFB9-4E85-BDA1-1FAC5F5D324C">
+			<ChannellingApplicator>
+				<applicatorsOnSelf />
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>3</behaviorFlags>
+				<cancelOnDisable>false</cancelOnDisable>
+				<cancelOnInterrupt>false</cancelOnInterrupt>
+				<cancelSpell href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="CFD8820A-001A-4F80-94DB-A4763A7A4633">
+					<Spell>
+						<applicators>
+							<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="96979F10-1387-4F1F-A076-8382190BCCA9">
+								<RefreshCooldownApplicator>
+									<allowCdIncrease>false</allowCdIncrease>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption></caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flags>0</flags>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<reduceByPercent>false</reduceByPercent>
+									<reductionAmount>
+										<compiledString>FQAAAAABAAAALAAAAFWL7IPsDItFEIsQi00Qi0I8/9CLTRCLEYtNEItCHN1d+P/Q2eje4dxN+NwlOgAAANld9NlF9IvlXcMAAAAAAAAQQAAAAAAAAPA/</compiledString>
+										<returnType>float</returnType>
+										<sString>mCooldown * ( 1.f - mPreparedness ) - 4 </sString>
+									</reductionAmount>
+									<refreshThis>true</refreshThis>
+									<talents />
+									<useListAs>ListAsRule</useListAs>
+								</RefreshCooldownApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="55DBC6A2-C160-4DE4-B720-894E751A9B16">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</cancelSpell>
+				<caption>ченнел</caption>
+				<channelingType>Streaming</channelingType>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FUEAAAAGAAAATgAAAGYAAAB5AAAAiwAAAKMAAAC2AAAARW5lbXlIZXJvZXNOZWFyAHRhcmdldHNDb3VudAAAAABBbGxpZXNUb1Byb3RlY3ROZWFyAHRhcmdldHNDb3VudABVi+yD7AxqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxoEAAAAItN/IsRi038i0JU/9DcHeAAAADf4PbEQXVGagCLTRBRaCAAAACLVQiLAotNCIuQnAEAAP/SiUX4aDQAAACLRfiLEItN+ItCVP/Q3B3YAAAA3+D2xEF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAAAAA8D8AAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.FindApplicator("EnemyHeroesNear",pMisc, GLOBAL)-&gt;GetVariable("targetsCount") &gt; 0 &amp;&amp; sender.FindApplicator("AlliesToProtectNear",pMisc, GLOBAL)-&gt;GetVariable("targetsCount") &gt; 1 
+
+
+
+</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<interruptEvents>33153</interruptEvents>
+				<lifeTime>
+					<compiledString>FQwAAAABAAAAGAAAAENoYW5uZWxUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cChannelTime</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>0</period>
+				<periodicalSpell href="" />
+				<providerName></providerName>
+				<removeStartSpellEffectOnInterrupt>true</removeStartSpellEffectOnInterrupt>
+				<scaleWhenInterrupted>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f</sString>
+				</scaleWhenInterrupted>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startSpell href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="7F5E509B-83E0-48DB-8FBB-FA34F7F84118">
+					<Spell>
+						<applicators>
+							<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="A31637F5-92E8-4D75-B6DE-86F1E8A74FAB">
+								<AuraApplicator>
+									<applicators>
+										<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="C404B28D-EED1-44D6-A4D9-B20E5A9B0CB2">
+											<StatusApplicator>
+												<applicators>
+													<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="44B8F599-DE1D-48D9-B6B5-0EAB0F33642C">
+														<TriggerApplicator>
+															<actionsCount>
+																<compiledString></compiledString>
+																<returnType>int</returnType>
+																<sString>0</sString>
+															</actionsCount>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<behaviorFlags>0</behaviorFlags>
+															<caption></caption>
+															<effect>
+																<Item href="" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<lifeTime>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<playAck>false</playAck>
+															<processor href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="1EB6E92D-1453-43A1-8D3A-9AB2C64F172A">
+																<EventProcessorDamageTransformer>
+																	<abilityFilter>
+																		<abilitiesList />
+																		<abilityCondition>
+																			<compiledString>FQ4AAAABAAAAEgAAAEluaXRpYWxUYXJnZXQAVYvsaAAAAACLRRCLEItNEItCTP/QM8k7RQwPlcGKwV3D</compiledString>
+																			<returnType>bool</returnType>
+																			<sString>pMisc-&gt;GetObject("InitialTarget") != pSecond</sString>
+																		</abilityCondition>
+																		<abilityCostMode>Energy</abilityCostMode>
+																		<exceptThis>false</exceptThis>
+																		<flags>1073743103</flags>
+																		<onlySingleTarget>false</onlySingleTarget>
+																	</abilityFilter>
+																	<add>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>0.0f</sString>
+																	</add>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<checkSender>0</checkSender>
+																	<damageTypeFilter>31</damageTypeFilter>
+																	<flags>0</flags>
+																	<matchTargetInverted>false</matchTargetInverted>
+																	<mul>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>0.0f</sString>
+																	</mul>
+																	<objectFilter>2040319</objectFilter>
+																	<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+																	<spell href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="7D33C4B9-A15E-4C38-BEE0-312144750D08">
+																		<Spell>
+																			<applicators />
+																			<dispatch href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="57724AEE-C476-416D-BD4F-74FA2F5316D0">
+																				<DispatchImmediate>
+																					<alwaysApply>false</alwaysApply>
+																					<applyEffect>
+																						<Item href="/Effects/Buffs/Bubble/_.EFFT" />
+																						<Item href="" />
+																					</applyEffect>
+																					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																					<applyEffectOrientation>Default</applyEffectOrientation>
+																					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																					<dieAfterApply>true</dieAfterApply>
+																					<dispatchEffect>
+																						<Item href="" />
+																						<Item href="" />
+																					</dispatchEffect>
+																					<flags>0</flags>
+																					<instantApply>false</instantApply>
+																				</DispatchImmediate>
+																			</dispatch>
+																		</Spell>
+																	</spell>
+																	<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+																</EventProcessorDamageTransformer>
+															</processor>
+															<providerName></providerName>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<useAbilityCooldown>false</useAbilityCooldown>
+															<useAbilityOwnerMana>false</useAbilityOwnerMana>
+														</TriggerApplicator>
+													</Item>
+												</applicators>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<behaviorFlags>0</behaviorFlags>
+												<caption>защита от AoE</caption>
+												<customCounter>
+													<compiledString></compiledString>
+													<returnType>int</returnType>
+													<sString>0</sString>
+												</customCounter>
+												<customProgress>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0</sString>
+												</customProgress>
+												<description textref="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT_c404b28deed144d6a4d9b20e5a9b0cb2_description.txt" />
+												<dispellPriority>NonDispellable</dispellPriority>
+												<effect>
+													<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="B852FE05-AC11-420F-A94A-F78A82A8EBDF">
+														<ScaleColorEffect>
+															<blendMode>AddColorMulAlpha</blendMode>
+															<colorAdd>
+																<A>0</A>
+																<B>0.05</B>
+																<G>0.05</G>
+																<R>0.05</R>
+															</colorAdd>
+															<colorMul>
+																<A>0.99</A>
+																<B>0.3333333</B>
+																<G>1</G>
+																<R>0.3333333</R>
+															</colorMul>
+															<deathType>Manual</deathType>
+															<enableCondition href="" />
+															<fadeInTime>1</fadeInTime>
+															<fadeOutTime>1</fadeOutTime>
+															<fullRecolor>false</fullRecolor>
+															<lifeTime>0</lifeTime>
+															<scale>1</scale>
+															<scaleIn>1</scaleIn>
+															<scaleOut>1</scaleOut>
+														</ScaleColorEffect>
+													</Item>
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<flags>0</flags>
+												<formulaName></formulaName>
+												<image href="/UI/Styles/Icons/Statuses/Neutral/shield_blue.ITEX" />
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<name textref="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT_c404b28deed144d6a4d9b20e5a9b0cb2_name.txt" />
+												<power>0</power>
+												<providerName></providerName>
+												<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+												<stackCount>0</stackCount>
+												<startCondition>
+													<compiledString>FQ8AAAACAAAAFAAAACoAAABIYXNBbnRpQW9lQXVyYQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+													<returnType>bool</returnType>
+													<sString>receiver.vHasAntiAoeAura == 0.f</sString>
+												</startCondition>
+												<statusPosition>0</statusPosition>
+												<stopBehaviour>StopByTime</stopBehaviour>
+												<unstackableWith href="" />
+											</StatusApplicator>
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>2</behaviorFlags>
+									<caption>аура против AOE </caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQwAAAABAAAAGAAAAENoYW5uZWxUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cChannelTime</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<range>
+										<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange</sString>
+									</range>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<targets>403439679</targets>
+									<targetSelector href="" />
+									<type>Ally</type>
+								</AuraApplicator>
+							</Item>
+							<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="2A66B2AC-0F02-4F89-904D-F5F0DAADA3D7">
+								<FlagsApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>стоять на месте</caption>
+									<consumables />
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flag>1405</flag>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQwAAAABAAAAGAAAAENoYW5uZWxUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cChannelTime</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<talents />
+									<useListAs>ListAsRule</useListAs>
+								</FlagsApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="75AA4074-2382-47C4-866A-51E614B00835">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</startSpell>
+				<stopSpell href="" />
+				<targetSelector href="" />
+			</ChannellingApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption>ченнелим защиту от AoE </caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="C91934DD-2F04-42DD-B97E-7B22E224E11A">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="EE0A99A4-DD02-4169-ABF4-70118C078A5B">
+					<UnitConstant>
+						<name>Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="AAE9EDFB-B9B8-435E-8AEE-E2939812A34E">
+					<UnitConstant>
+						<name>Cooldown</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>14</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="FEED5130-6F38-4132-B95E-E394585C972A">
+					<UnitConstant>
+						<name>ChannelTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQkAAAABAAAAFQAAAENvb2xkb3duAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cCooldown</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="ED239E2E-057B-4228-ADF8-B1BE22594681">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>100</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="D299DD54-D769-44AA-B0DB-5EE74F894F7B">
+		<MultipleTargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<minTargetCount>2</minTargetCount>
+			<minTargetWeight>0</minTargetWeight>
+			<targetSelector href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="D6055A40-EA0B-406D-B6AF-BE884D827CC8">
+				<ListOfTargetSelectors>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<targetSelectors>
+						<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="E8372F18-AF36-4DDF-AFC7-CC229950AC43">
+							<ConditionTargetSelector>
+								<condition>
+									<compiledString>FQ8AAAAEAAAAFgAAAC8AAAA7AAAAUQAAAEhhc0FudGlBb2VBdXJhAFWL7FFR2QV7AAAA2Rwki0UMixCLTQyLgqwBAAD/0NwdcwAAAN/g9sRBdStoAAAAAItNDIsRi00Mi4KIAQAA/9DcHXMAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAAAAAEA=</compiledString>
+									<returnType>bool</returnType>
+									<sString>receiver.GetDamageTaken(2.0f) &gt; 0 &amp;&amp; receiver.vHasAntiAoeAura == 0.f</sString>
+								</condition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<targetSelector href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="7CEC48D0-9110-4507-AA37-14484E7A74D0">
+									<AreaTargetSelector>
+										<absolutePosition>
+											<x>0</x>
+											<y>0</y>
+										</absolutePosition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<range>
+											<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>cRange</sString>
+										</range>
+										<targetFilter>403439648</targetFilter>
+										<targetSelector href="" />
+									</AreaTargetSelector>
+								</targetSelector>
+							</ConditionTargetSelector>
+						</Item>
+						<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="AE1C39A7-694A-4E36-AD1D-4047CE009430">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQYAAAACAAAAEwAAACYAAABSYW5nZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBTQAAADZXfzZRfyL5V3DAAAAAAAAFEA=</compiledString>
+									<returnType>float</returnType>
+									<sString>cRange + 5</sString>
+								</range>
+								<targetFilter>671088643</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</Item>
+						<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="18CBFC50-8A03-468B-B6D7-7CC2A79E8B85">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQYAAAACAAAAEwAAACYAAABSYW5nZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBTQAAADZXfzZRfyL5V3DAAAAAAAAFEA=</compiledString>
+									<returnType>float</returnType>
+									<sString>cRange + 5</sString>
+								</range>
+								<targetFilter>671088643</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</Item>
+					</targetSelectors>
+				</ListOfTargetSelectors>
+			</targetSelector>
+			<unitFilter>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</unitFilter>
+		</MultipleTargetSelectorMicroAI>
+	</microAI>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Creeps/Champions/Champion2/AntiAoE_Aura_Channel.ABLT" id="4F39536F-B461-4578-BBF6-0DC48FFDADED">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>помечаем себя, чтобы не класть ауру </caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>HasAntiAoeAura</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>1073741824</targetType>
+	<type>Channelling</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

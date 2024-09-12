@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Bard.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Bard_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A3u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Bard_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Duel_Dex.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Duel_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Elite_Dex.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Elite_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Epic_Int.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="4E21C546-58CD-4750-A881-CE7D486A4582">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>A3_A4_2</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQwAAAACAAAAEQAAACcAAABBNF8yX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAA8D8=</compiledString>
+						<returnType>float</returnType>
+						<sString>(sender.vA4_2_Active == 1) ? 1 : 0</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>A3_A4_2</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/A0_CurrentStacks.APLR" />
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="DDE309D3-3473-4429-AF61-DF88A41F4720">
+			<SpellApplicator parent="/Items/Talents/Class/Bard/A0_Style.APLR">
+				<enabled>
+					<compiledString>FRAAAAABAAAAGgAAAEJhcmRfVGhpcmRTdHlsZQBVi+xqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applBard_ThirdStyle(UNIT) != pMisc</sString>
+				</enabled>
+				<spell href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="2F2F9DC0-A5C3-422A-BCF1-93DF56B22B2E">
+					<Spell parent="/Items/Talents/Class/Bard/A0_Spell.SPLL">
+						<dispatch href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="C0CED91D-5EC6-4C4E-A555-FBB9B057DA61">
+							<DispatchImmediate parent="/Items/Talents/Class/Bard/A0_Dispatch.DSCH">
+								<applyEffect>
+									<Item href="/Effects/Buffs/Inspiration/_FadeInGreen.EFFT" />
+									<Item skip="1" />
+								</applyEffect>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="5366F18C-9C80-4F5C-9DE1-3ECE791358C6">
+			<FlagsApplicator parent="/Items/Talents/Class/Bard/A0_MissedStyleFX.APLR">
+				<effect>
+					<Item href="/Effects/Buffs/Inspiration/_SFX3.EFFT" />
+					<Item skip="1" />
+				</effect>
+				<enabled>
+					<compiledString>FRAAAAABAAAAGgAAAEJhcmRfVGhpcmRTdHlsZQBVi+xqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applBard_ThirdStyle(UNIT) == pMisc</sString>
+				</enabled>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/A0_ChangeStyle.APLR" />
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="5F6302AE-B818-4B34-888D-9C00ED0042C0">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>запустить в друзей</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Bard/A3_BuffsSpell.SPLL" />
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Bard/A3_TargetSelector.TGSL" />
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="7455FBEF-52A4-45C0-90D5-14232029CC9C">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>спелл от скрипки</caption>
+				<enabled>
+					<compiledString>FSUAAAAEAAAALAAAAEUAAAB7AAAAlAAAAEJhcmRfQTQAQmFyZF9BNABCYXJkX0E0dQAAAABCYXJkX0E0dQBVi+yD7BRoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAgAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXRYaBAAAACLVQiLAotNCIuQqAEAAP/ShcB0KmgcAAAAi0UIixCLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0CcdF7AEAAADrB8dF7AAAAACKReyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Bard_A4") &amp;&amp; tal("Bard_A4u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="90323CC8-256E-4ACD-B203-9D552AC9CFF5">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="24EF3045-9B22-4FB3-92EC-AEB15136AB03">
+								<SpellApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>запустить в друзей от А4</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spell href="/Items/Talents/Class/Bard/A3_BuffsSpell.SPLL" />
+									<spellTarget>ApplicatorTarget</spellTarget>
+									<targetSelector href="/Items/Talents/Class/Bard/A3_TargetSelector.TGSL" />
+								</SpellApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="DD01ABB8-C7D0-4882-A2C1-4DD5C36D678B">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Bard/Violin.TGSL" />
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="1E780975-6193-4B0D-9F1C-94B48C90FF13">
+			<HealApplicator>
+				<amount>
+					<compiledString>FQ4AAAABAAAAGgAAAEEzX0hlYWxBbW91bnQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cA3_HealAmount</sString>
+				</amount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>(Ter) Лечение</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii0JM/9CL8ItNCIsRi00Ii4KQAQAA/9A78A+UwF5dww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>nt( true, false )</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<healTarget>Health</healTarget>
+				<ignoreHealingMods>false</ignoreHealingMods>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+			</HealApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="FA0A02D6-98D2-4A1D-9FB0-443CA5C7F841">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="" />
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString>FREAAAACAAAAIAAAADoAAABBM19EdXJhdGlvbgBTVEVQAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/Si0UMUItNCFFoDAAAAItVEIsCi00Qi1BQ3V34/9LcbfjZXfTZRfSL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA3_Duration - cSTEP</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="AAA65F38-20C3-4240-BF5B-5C272E7C0779">
+							<TargetsCounterApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>0</behaviorFlags>
+								<caption>посчитать щиты</caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName>Bard_ShieldsCounter</formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<targetSelector href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="F20E1CD8-802A-4CA0-AFE6-55B2C9B137D7">
+									<ListOfTargetSelectors>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<targetSelectors>
+											<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="FA1BB667-24BC-4E76-ACC2-40C3AF560891">
+												<ApplicatorRecipientsTargetSelector>
+													<applicator href="/Items/Talents/Class/Bard/status_A3_Shield.APLR" />
+													<flags>0</flags>
+													<mode>Normal</mode>
+												</ApplicatorRecipientsTargetSelector>
+											</Item>
+											<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="DF8E1766-07FC-46F6-B393-4ABED991DB4A">
+												<ApplicatorRecipientsTargetSelector>
+													<applicator href="/Items/Talents/Class/Bard/status_A3ShieldSelf.APLR" />
+													<flags>0</flags>
+													<mode>Normal</mode>
+												</ApplicatorRecipientsTargetSelector>
+											</Item>
+										</targetSelectors>
+									</ListOfTargetSelectors>
+								</targetSelector>
+							</TargetsCounterApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="99F0EAD9-90C4-445C-8A60-60D119D1E7D0">
+							<HealApplicator>
+								<amount>
+									<compiledString>FVAAAAAEAAAAXQAAAH0AAACXAAAAsAAAAEEzdV9SZXBsZW5pc2hTaGllbGRDYXAAAEJhcmRfU2hpZWxkc0NvdW50ZXIAdGFyZ2V0c0NvdW50AAAAAEEzdV9SZXBsZW5pc2hFbmVyZ3kAVYvsg+wQagGLRRBQaBgAAACLTQiLEYtNCIuCnAEAAP/QiUX8i00MUYtVCFJoPAAAAItFEIsQi00Qi0JQ/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfT/0FHZHCRoLAAAAItN/IsRi038i0JU/9BR2Rwk6BAAAACDxAjcTfTZXfDZRfCL5V3DVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>min(sender.applBard_ShieldsCounter(UNIT).GetVariable("targetsCount"), cA3u_ReplenishShieldCap) * cA3u_ReplenishEnergy</sString>
+								</amount>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>лечить</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<healTarget>Energy</healTarget>
+								<ignoreHealingMods>false</ignoreHealingMods>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<uiEvent href="/UI/Events/CommonEvents/EventEnergy.UIEV" />
+							</HealApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>программа с восстановлением энергии при окончании длительности щитов</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FRUAAAACAAAAHAAAADUAAABCYXJkX0EzdQAAAABCYXJkX0EzdQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Bard_A3u")</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+	</applicators>
+	<askId>3</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А3. Защищающий мотив</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Bard/Ability_A3.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="8922E550-E0F4-409A-AAEA-C0D0B5200216">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRUAAAACAAAAHAAAADUAAABCYXJkX0EzdQAAAABCYXJkX0EzdQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Bard_A3u") == false</sString>
+				</condition>
+				<name>Bard_A3u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="EB91B66A-46D4-4916-94A5-93B8905DE949">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Bard/const_A0_MaxStacks" />
+				<Item href="/Items/Talents/Class/Bard/const_A0_PrimeBonus" />
+				<Item href="/Items/Talents/Class/Bard/const_Range" />
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="BF2515CF-5590-49CF-BEC7-EBBD0755F07F">
+					<UnitConstant>
+						<name>A3_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="0DD9F2D2-7C18-4D6F-8738-62F5CBD96980">
+					<UnitConstant>
+						<name>A3_ShieldAmount</name>
+						<var>
+							<compiledString>FRcAAAAHAAAAHgAAADQAAABIAAAAWwAAAGEAAAB0AAAAfgAAAEE0XzJfQWN0aXZlAEE0XzJfUG93ZXIAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Q3B3HAAAA3+D2xER6K4tNDFGLVQhSaAwAAACLRRCLEItNEItCUP/Q3DW/AAAA3AXHAAAA3V346wXZ6N1d+GoBUdkFuwAAANkcJFHZBbcAAADZHCRqAItNCIsRi00Ii4I4AQAA/9BR2RwkagGLTRCLEYtNEItCYP/Q3E342V302UX0i+VdwwAAyEIAgDtEAAAAAAAAWUAAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sDexterity, 100, 750 ) * (sender.vA4_2_Active == 1 ? cA4_2_Power/100 + 1 : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="2B602783-ECA1-463C-93FB-A9A3150AAC01">
+					<UnitConstant>
+						<name>A3_ShieldAmount_TT</name>
+						<var>
+							<compiledString>FRcAAAAHAAAAHgAAADQAAABIAAAAWwAAAGEAAAB0AAAAfgAAAEE0XzJfQWN0aXZlAEE0XzJfUG93ZXIAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Q3B3HAAAA3+D2xER6K4tNDFGLVQhSaAwAAACLRRCLEItNEItCUP/Q3DW/AAAA3AXHAAAA3V346wXZ6N1d+GoBUdkFuwAAANkcJFHZBbcAAADZHCRqAItNCIsRi00Ii4I4AQAA/9BR2RwkagGLTRCLEYtNEItCYP/Q3E342V302UX0i+VdwwAAyEIAgDtEAAAAAAAAWUAAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sDexterity, 100, 750 ) * (sender.vA4_2_Active == 1 ? cA4_2_Power/100 + 1 : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="F4110DBF-E355-49C4-88F3-49C085042AFC">
+					<UnitConstant>
+						<name>A3_ShieldAmount_TT_Castle</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCOAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAADIQgCAO0Q=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sDexterity, 100, 750 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="869A8A8A-83F6-4338-A2DD-BC5D89C82977">
+					<UnitConstant>
+						<name>A3_HealAmount</name>
+						<var>
+							<compiledString>FRMAAAAHAAAAGgAAADAAAABEAAAAVwAAAF0AAABwAAAAegAAAEEzX0E0XzIAQTRfMl9Qb3dlcgBVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9DcHcMAAADf4PbERHori00MUYtVCFJoCAAAAItFEIsQi00Qi0JQ/9DcNbsAAADcBcMAAADdXfjrBdno3V34agFR2QW3AAAA2RwkUdkFswAAANkcJGoAi00IixGLTQiLgjQBAAD/0FHZHCRqAYtNEIsRi00Qi0Jg/9DcTfjZXfTZRfSL5V3DAABAQgAAtEMAAAAAAABZQAAAAAAAAPA/</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 48, 360 ) * (sender.vA3_A4_2 == 1 ? cA4_2_Power/100 + 1 : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="CAD5EAFC-A166-404F-AEEF-D75E67E50841">
+					<UnitConstant>
+						<name>A3_HealAmount_TT</name>
+						<var>
+							<compiledString>FRcAAAAHAAAAHgAAADQAAABIAAAAWwAAAGEAAAB0AAAAfgAAAEE0XzJfQWN0aXZlAEE0XzJfUG93ZXIAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Q3B3HAAAA3+D2xER6K4tNDFGLVQhSaAwAAACLRRCLEItNEItCUP/Q3DW/AAAA3AXHAAAA3V346wXZ6N1d+GoBUdkFuwAAANkcJFHZBbcAAADZHCRqAItNCIsRi00Ii4I0AQAA/9BR2RwkagGLTRCLEYtNEItCYP/Q3E342V302UX0i+VdwwAAQEIAALRDAAAAAAAAWUAAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 48, 360 ) * (sender.vA4_2_Active == 1 ? cA4_2_Power/100 + 1 : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="EA75511F-6F10-4624-8790-099B50190F75">
+					<UnitConstant>
+						<name>A3_HealAmount_TT_Castle</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAABAQgAAtEM=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 48, 360 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/const_A0_MaxRepetitions" />
+				<Item href="/Items/Talents/Class/Bard/const_A3u_ReplenishEnergy" />
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="72475C02-660C-4444-A70B-865334EE4E5E">
+					<UnitConstant>
+						<name>A3u_ReplenishEnergy_TT</name>
+						<var>
+							<compiledString>FRcAAAAHAAAAHgAAADQAAABIAAAAWwAAAGEAAAB0AAAAfgAAAEE0XzJfQWN0aXZlAEE0XzJfUG93ZXIAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Q3B3mAAAA3+D2xER6K4tNDFGLVQhSaAwAAACLRRCLEItNEItCUP/Q3DXeAAAA3AXmAAAA3V346wXZ6N1d+GoBUdkF2gAAANkcJFHZBdYAAADZHCRqAItNCIsRi00Ii4I0AQAA/9BR2Rwki00IixGLTQiLgjgBAAD/0FHZHCToOgAAAIPEBNkcJGoBi00QixGLTRCLQmD/0NxN+Nld9NlF9IvlXcMAABBCAABmQwAAAAAAAFlAAAAAAAAA8D9Vi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( max(sDexterity, sIntellect), 36, 230 ) * (sender.vA4_2_Active == 1 ? cA4_2_Power/100 + 1 : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="68738831-3766-45A2-AC38-A7DEA58BF230">
+					<UnitConstant>
+						<name>A3u_ReplenishEnergy_TT_Castle</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBWMAAADZHCRR2QVfAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJItNCIsRi00Ii4I4AQAA/9BR2Rwk6B8AAACDxATZHCRqAYtNEIsRi00Qi0Jg/9BdwwAAEEIAAGZDVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( max(sDexterity, sIntellect), 36, 230 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/const_A3u_Cap" />
+				<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="525AD497-05EF-460D-A7FB-0981D6B45958">
+					<UnitConstant>
+						<name>TT_A3_DamageCapacityCurrent</name>
+						<var>
+							<compiledString>FScAAAADAAAANAAAAFQAAABsAAAAQ2FudERlYXRoAAAAQ2FudERlYXRoAAAAZGFtYWdlVG9BYnNvcmIAVYvsg+wIagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QO0UQdDVqAYtNEFFoDAAAAItVDIsCi00Mi5CcAQAA/9KJRfxoGAAAAItF/IsQi038i0JU/9DZXfjrBdnu2V342UX4i+VdwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>receiver.applCantDeath(UNIT) != pMisc ? receiver.applCantDeath(UNIT)-&gt;GetVariable("damageToAbsorb") : 0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/const_A4_2_Power" />
+				<Item href="/Items/Talents/Class/Bard/const_A5_SUP_Bonus" />
+				<Item href="/Items/Talents/Class/Bard/const_A0_Haste_Percent" />
+				<Item href="/Items/Talents/Class/Bard/const_A0_HastePerInspiration" />
+				<Item href="/Items/Talents/Class/Bard/const_A0_Haste_Duration" />
+				<Item href="/Items/Talents/Class/Bard/const_A0_SUP_Bonus" />
+				<Item href="/Items/Talents/Class/Bard/const_HastePerInspiration_Base" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>8</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Bard/Ability_A3.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="055D41E6-8A1C-4467-9824-87044AEB05F1">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>2</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Bard/A3.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>80</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="F26CC652-47AC-4912-94FF-BFBF94F4FE47">
+		<MultipleTargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAABAAAAJwAAAFWL7IPsDItFCIsQi00IiwL/0ItNCIsRi00Ii0IM3V34/9DcffjcHUkAAADf4PbEBXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcOamZmZmZnpPw==</compiledString>
+				<returnType>bool</returnType>
+				<sString>sLife / sMaxLife &lt; 0.8</sString>
+			</condition>
+			<minTargetCount>3</minTargetCount>
+			<minTargetWeight>0</minTargetWeight>
+			<targetSelector href="/Items/Talents/Class/Bard/Ability_A3.TALENT" id="6942F756-A275-4AAF-9D85-D5BF1ADDDAB9">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cRange</sString>
+					</range>
+					<targetFilter>268435519</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+			<unitFilter>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</unitFilter>
+		</MultipleTargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Bard/Ability_A3.TALENT_name.txt" />
+	<node>ability3</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>Bard_A3</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Bard/Ability_A3.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

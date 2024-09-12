@@ -1,0 +1,15 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/pwconnect.py"
+RUNSCRIPT_ARGS="--port={{ conf['pw_connect_port'] }} --smtp=async --smtp_host=mail.playpw.com\
+ --smtp_port=25 --smtp_ssl=0 --smtp_fromaddr=noreply@playpw.com\
+ --smtp_username=noreply@playpw.com --smtp_pwd=Ou4Eeta9oo\
+ --log_level={{ conf['log_level_connect'] }} --log_rotation=external --log_file_prefix={{ conf['logging'] }}wspwconnect.log\
+ --tick_period={% if conf['tick_period_connect'] != "0" %}{{ conf['tick_period_connect'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+LOGGING=">> {{ conf['logging_run'] }}pw-connect.log.run 2>&1"
+

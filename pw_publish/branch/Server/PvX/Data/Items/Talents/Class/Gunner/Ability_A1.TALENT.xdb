@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Gunner.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Gunner_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Gunner/Ability_A1_SUP.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Gunner/Ability_A1u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Gunner_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Gunner1_Mighty.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Cone.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABcQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>55</sString>
+	</aoeSize>
+	<aoeType>AttachedSector</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="FD67A97F-0608-4DB6-A32B-73B45AD8A14B">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>FX сектор</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/Debuffs/Shrapnel/_.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="1F81A90C-1222-43D2-8DF3-1EA4A1BD7AED">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>спелл в секторе откат А1у</caption>
+				<enabled>
+					<compiledString>FTYAAAAEAAAAPQAAAFYAAACMAAAApQAAAEd1bm5lcl9BMV9TVVAAAABHdW5uZXJfQTFfU1VQAAAAR3VubmVyX0EyAAAAR3VubmVyX0EyAFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdFhoIAAAAItVCIsCi00Ii5CoAQAA/9KFwHQqaCwAAACLRQiLEItNCIuCqAEAAP/QiUX0i030ixGLTfSLQgT/0IhF8+sExkXzAA+2TfOFyXQJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Gunner_A1_SUP") &amp;&amp; tal("Gunner_A2")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="7D5ECB6F-ECCB-422F-8842-9393FACB85AD">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="0BBB0F22-85A1-4A33-8143-E380AE00F672">
+								<RefreshCooldownApplicator>
+									<allowCdIncrease>false</allowCdIncrease>
+									<applyTarget>AbilityOwner</applyTarget>
+									<caption>сбросить кулдаун А2</caption>
+									<enabled>
+										<compiledString>FQoAAAACAAAAEQAAADcAAABHdW5uZXJfQTIAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QiUX8i038ixGLTfyLQhz/0NwdWQAAAN/g9sQFegnHRfgBAAAA6wfHRfgAAAAAikX4i+VdwwAAAAAAAPA/</compiledString>
+										<returnType>bool</returnType>
+										<sString>pFirst-&gt;GetTalent("Gunner_A2")-&gt;GetPreparedness() &lt;1.0</sString>
+									</enabled>
+									<flags>128</flags>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<reduceByPercent>false</reduceByPercent>
+									<reductionAmount>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</reductionAmount>
+									<refreshThis>true</refreshThis>
+									<talents>
+										<Item href="/Items/Talents/Class/Gunner/Ability_A2.TALENT" />
+									</talents>
+									<useListAs>ListAsRule</useListAs>
+								</RefreshCooldownApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="EAEED74A-CED7-4252-8B10-2D40C921B95A">
+							<DispatchImmediate>
+								<alwaysApply>true</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="D1A71B0A-5526-4503-8A37-BB50DD98953B">
+					<SectorTargetSelector>
+						<angle>55</angle>
+						<centerIsSegmentEnd>false</centerIsSegmentEnd>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange</sString>
+						</range>
+						<segmentBegin>AbilityOwner</segmentBegin>
+						<segmentDirectionOffset>0</segmentDirectionOffset>
+						<segmentEnd>CurrentPosition</segmentEnd>
+						<targetFilter>538771459</targetFilter>
+					</SectorTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="DE811264-6AE2-40B2-A212-6CC948ABE2C2">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>спелл в секторе урон</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="9B5D146C-72D1-49C2-89FD-38BDAFE9065C">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="5196A2CC-ABB7-4C4B-955E-4E9C684D875B">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>true</cancelInvisibility>
+									<caption>урон</caption>
+									<damage>
+										<compiledString>FWAAAAALAAAAkgAAAKsAAAANAQAAJgEAAGQBAAB+AQAAlAEAAK0BAADHAQAA3QEAAPwBAABHdW5uZXJfQTF1AABHdW5uZXJfQTF1AABEYW1hZ2UAAEd1bm5lcl9BMXUAAEd1bm5lcl9BMXUAAERhbWFnZQAAQTF1X0RhbWFnZQAARGFtYWdlAABBMXVfRGFtYWdlMgBVi+yD7DSLRQyLEItNDItCUP/QhcAPhHgBAACLTQyLEYtNDItCUP/Qg/gBD4RiAQAAaAAAAACLTQiLEYtNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hckPhA8BAACLVQyLAotNDItQUP/Sg/gDdBaLRQyLEItNDItCUP/Qg/gCD4WYAAAAaCAAAACLTQiLEYtNCIuCqAEAAP/QhcB0KmgsAAAAi00IixGLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0SYtVDFKLRQhQaDgAAACLTRCLEYtNEItCUP/Qi00MUYtVCFJoQAAAAItFEIsQi00Qi0JQ3V3o/9DcNSUCAADZ6N7B3E3o3V3g60eLTQxRi1UIUmhMAAAAi0UQixCLTRCLQlD/0ItNDFGLVQhSaFQAAACLRRCLEItNEItCUN1d2P/Q3DUlAgAA2ejewdxN2N1d4N1F4N1d0Osdi00MUYtVCFJoGAAAAItFEIsQi00Qi0JQ/9DdXdDdRdDZXczZRcyL5V3DAAAAAAAA8D8AAAAAAABZQA==</compiledString>
+										<returnType>float</returnType>
+										<sString>(rUnitKind ==0 || rUnitKind ==1 || !tal("Gunner_A1u")) ? cDamage : ((rUnitKind ==3 || rUnitKind ==2) &amp;&amp; tal("Gunner_A1u")) ? (cDamage * (1 + cA1u_Damage/100)) : (cDamage * (1 + cA1u_Damage2/100))</sString>
+									</damage>
+									<damageMode>4</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName>FireFox_A1</formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="29C50761-F013-400A-9525-9FE512563782">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="9DD9DF8B-797B-4659-A4C8-1B2B5EDE725E">
+					<SectorTargetSelector>
+						<angle>55</angle>
+						<centerIsSegmentEnd>false</centerIsSegmentEnd>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange</sString>
+						</range>
+						<segmentBegin>AbilityOwner</segmentBegin>
+						<segmentDirectionOffset>0</segmentDirectionOffset>
+						<segmentEnd>CurrentPosition</segmentEnd>
+						<targetFilter>538771519</targetFilter>
+					</SectorTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="7AF83B69-6FB3-4ED7-BBC8-C638A4DAE1E4">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>FX на дробовике</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="270ACB73-A261-42D0-844C-4F8A6EC583E8">
+						<EffectList>
+							<deathType>Manual</deathType>
+							<effects>
+								<Item href="/Heroes/Gunner/FXAttackL.EFFT" />
+								<Item href="/Heroes/Gunner/FXAttackR.EFFT" />
+							</effects>
+							<enableCondition href="" />
+							<lifeTime>0</lifeTime>
+						</EffectList>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPg==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.4</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<askId>1</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А1. Взрывной подход!</caption>
+	<castAllowRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Gunner/Ability_A1.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="82C28250-DE26-4066-BAAC-49A21D1727FA">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABHdW5uZXJfQTF1AABHdW5uZXJfQTF1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Gunner_A1u") == false</sString>
+				</condition>
+				<name>Gunner_A1u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="F7D7AE95-9313-448A-872D-43A7624EA44F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABHdW5uZXJfQTFfU1VQAAAAR3VubmVyX0ExX1NVUABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Gunner_A1_SUP") == false</sString>
+				</condition>
+				<name>Gunner_A1_SUP</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="1419E621-4956-43A6-974C-1A767ABEE9D4">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="B2A66594-7A31-418E-9156-7AC7B7165E26">
+					<UnitConstant>
+						<name>Damage</name>
+						<var>
+							<compiledString>FR4AAAAGAAAAJQAAAD4AAAB4AAAAggAAALgAAADCAAAAR3VubmVyX0ExX1NVUAAAAEd1bm5lcl9BMV9TVVAAVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0QGoBUdkFBAEAANkcJFHZBQABAADZHCRqAItVCIsCi00Ii5A0AQAA/9JR2RwkagGLRRCLEItNEItCYP/Q2V306z5qAVHZBfwAAADZHCRR2QX4AAAA2RwkagCLTQiLEYtNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0Nld9NlF9IvlXcMAAJZCAMAMRAAApkIAABtE</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Gunner_A1_SUP") ? damageScale( sIntellect,83, 620 ) : damageScale( sIntellect,75, 563 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="B31C3060-9F44-41BD-AA5F-12DC93957A94">
+					<UnitConstant>
+						<name>Range</name>
+						<var>
+							<compiledString>FQ0AAAACAAAAGgAAAC0AAABSYW5nZV9NZWRpdW0AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3AU7AAAA2V382UX8i+VdwwAAAAAAAPA/</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium + 1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Gunner/const_A1u_Damage" />
+				<Item href="/Items/Talents/Class/Gunner/const_A1_SUP_Damage" />
+				<Item href="/Items/Talents/Class/Gunner/const_A1u_Damage2" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>8</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Gunner/Ability_A1.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="1D9F3B09-4485-42D8-BCD4-88A97EA48C27">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>67</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Gunner/A1.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker>doCast1</marker>
+	<microAI href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="BA773AE4-19A8-418E-9D84-3E75DFBAFCDC">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="461E41E7-8167-44D5-A3B2-A445AD785E74">
+				<ConvertTargetToLand>
+					<aggregateMode>First</aggregateMode>
+					<targetSelector href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="53F8C700-687B-4524-8D97-8E1621607E07">
+						<FirstTargetSelector>
+							<nearestTarget>false</nearestTarget>
+							<targetSelector href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="627BF17C-14EA-4BF9-9F05-B8CA2A24E181">
+								<CountingTargetSelector>
+									<enableSorting>false</enableSorting>
+									<flags>0</flags>
+									<heroesFirst>true</heroesFirst>
+									<mode>Normal</mode>
+									<order>Decreasing</order>
+									<sortingValue>
+										<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>1</sString>
+									</sortingValue>
+									<targetSelector href="/Items/Talents/Class/Gunner/Ability_A1.TALENT" id="B4122083-C2BD-4C02-95A7-5F166AF8932F">
+										<AreaTargetSelector>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<flags>0</flags>
+											<mode>Normal</mode>
+											<range>
+												<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cRange</sString>
+											</range>
+											<targetFilter>681312319</targetFilter>
+											<targetSelector href="" />
+										</AreaTargetSelector>
+									</targetSelector>
+									<targetsNumber>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>1</sString>
+									</targetsNumber>
+								</CountingTargetSelector>
+							</targetSelector>
+						</FirstTargetSelector>
+					</targetSelector>
+				</ConvertTargetToLand>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Gunner/Ability_A1.TALENT_name.txt" />
+	<node>ability1</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>Gunner_A1</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Gunner/Ability_A1.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>16777216</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQYAAAACAAAAEwAAACgAAABSYW5nZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcwNw1NgAAANld/NlF/IvlXcMAAAAAAAAIQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange*2.0/3.0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

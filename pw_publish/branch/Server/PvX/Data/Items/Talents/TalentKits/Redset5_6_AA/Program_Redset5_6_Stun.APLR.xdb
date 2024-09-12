@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Level1/G602_LifeDrain.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G603_Str.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G604_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level3/G605_AttackSpeed.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset5_6_AA/Program_Redset5_6_Stun.APLR" id="71FECAB0-B530-45C8-91B6-C38637AD8C76">
+				<PermanentStatModApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>Stun_Redset5_6Counter</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</addValue>
+						<multValue>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>Stun_Redset5_6Counter</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset5_6_AA/Program_Redset5_6_Stun.APLR" id="7817285F-C710-4BB5-810A-70810832EA88">
+				<AbilityUpgradeApplicator>
+					<applicators>
+						<Item href="/Items/Talents/TalentKits/Redset5_6_AA/Program_Redset5_6_Stun.APLR" id="0DC6F847-11EF-4A40-A024-A00661CA546A">
+							<SpellApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Прок апликатор со стуном</caption>
+								<enabled>
+									<compiledString>FScAAAAEAAAANAAAAEcAAABTAAAAaQAAAFRFQ0hfQWJpbGl0eVByb2MAAAAAVmFtcGlyZTNTdHVuUHJvY0NEAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdiwAAAN/g9sREeytoFAAAAItFCIsQi00Ii4KIAQAA/9DcHYsAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+									<returnType>bool</returnType>
+									<sString>cTECH_AbilityProc &amp;&amp; sender.vVampire3StunProcCD == 0</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<spell href="/Items/Talents/TalentKits/Redset5_6_AA/Program_Redset5_6_Stun.APLR" id="448768B1-2F29-4589-BF72-C98B2C2FA007">
+									<Spell>
+										<applicators>
+											<Item href="/Items/Talents/TalentKits/Redset5_6_AA/Program_Redset5_6_Stun.APLR" id="3F56E81F-A3FA-4771-AD58-B42D462333DC">
+												<StatModApplicator>
+													<applyTarget>AbilityOwner</applyTarget>
+													<behaviorFlags>153</behaviorFlags>
+													<caption>Запоминаем, что стан прошел</caption>
+													<constraint>None</constraint>
+													<dontUpdate>false</dontUpdate>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<lifeTime>
+														<compiledString>FRcAAAABAAAAIwAAAFJlZHNldDVfNl9TdHVuQ29vbGRvd24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+														<returnType>float</returnType>
+														<sString>cRedset5_6_StunCooldown</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<modifier>
+														<addValue>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>1.0f</sString>
+														</addValue>
+														<multValue>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>0.0f</sString>
+														</multValue>
+														<stat>Life</stat>
+														<topModifier>false</topModifier>
+														<variable>Vampire3StunProcCD</variable>
+													</modifier>
+													<providerName></providerName>
+													<startCondition>
+														<compiledString>FTMAAAAHAAAAewAAAI8AAACiAAAArgAAAMQAAADYAAAA6wAAAFN0dW5fU3RhcnRDb25kaXRpb24ASW1tdW5lMkNvbnRyb2wAAFN0dW5fQ29uZGl0aW9uAFWL7IPsCItFDIsQi00Mi0JQ/9AzyYP4EQ+VwYlN/NtF/FHZHCRR2e7ZHCRqAYtVDIsCi00Mi1BY/9IPtsBQ6KMAAACDxAzcHQ0BAADf4PbERHt5i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9DcHQ0BAADf4PbERHtSaBQAAACLTQyLEYtNDIuCiAEAAP/Q3B0NAQAA3+D2xER6MItNDFGLVQhSaCQAAACLRRCLEItNEItCUP/Q3B0NAQAA3+D2xER7CcdF+AEAAADrB8dF+AAAAACKRfiL5V3DAAAAAAAAAAAAAAAAVYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+														<returnType>bool</returnType>
+														<sString>ut_bldg( false, rUnitKind != 17 ) &amp;&amp; cStun_StartCondition &amp;&amp; receiver.vImmune2Control == 0 &amp;&amp; cStun_Condition</sString>
+													</startCondition>
+													<statModName></statModName>
+												</StatModApplicator>
+											</Item>
+											<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+										</applicators>
+										<dispatch href="/Items/Talents/TalentKits/Redset5_6_AA/Program_Redset5_6_Stun.APLR" id="81C0F201-4C02-4756-8C3E-F24F4CB689E9">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>Default</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>0</flags>
+												<instantApply>false</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<spellTarget>ApplicatorTarget</spellTarget>
+								<targetSelector href="" />
+							</SpellApplicator>
+						</Item>
+					</applicators>
+					<applyCount>
+						<compiledString></compiledString>
+						<returnType>int</returnType>
+						<sString>0</sString>
+					</applyCount>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>152</behaviorFlags>
+					<caption>вероятностный спелл на стан</caption>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>Fb0AAAAYAAAA2gAAAPMAAAAtAQAARgEAAHwBAACVAQAAzwEAAOgBAAAiAgAAOwIAAHECAACKAgAAxAIAAN0CAAAXAwAAMAMAAGYDAAB/AwAAuQMAANIDAAAMBAAAJQQAAFsEAAB0BAAARzYwMgAAAABHNjAyAAAAAEc2MDMAAAAARzYwMwAAAABHNjA0AAAAAEc2MDQAAAAARzYwMgAAAABHNjAyAAAAAEc2MDMAAAAARzYwMwAAAABHNjA1AAAAAEc2MDUAAAAARzYwMgAAAABHNjAyAAAAAEc2MDQAAAAARzYwNAAAAABHNjA1AAAAAEc2MDUAAAAARzYwMwAAAABHNjAzAAAAAEc2MDQAAAAARzYwNAAAAABHNjA1AAAAAEc2MDUAVYvsg+xki0UMixCLTQyLQlD/0IP4EQ+E2QMAAGgAAAAAi00IixGLTQiLgqgBAAD/0IXAdCpoCAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJD4SiAAAAaBAAAACLVQiLAotNCIuQqAEAAP/ShcB0KmgYAAAAi0UIixCLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0U2ggAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoKAAAAItFCIsQi00Ii4KoAQAA/9CJReyLTeyLEYtN7ItCBP/QiEXr6wTGResAD7ZN64XJD4XbAgAAaDAAAACLVQiLAotNCIuQqAEAAP/ShcB0Kmg4AAAAi0UIixCLTQiLgqgBAAD/0IlF5ItN5IsRi03ki0IE/9CIRePrBMZF4wAPtk3jhckPhKIAAABoQAAAAItVCIsCi00Ii5CoAQAA/9KFwHQqaEgAAACLRQiLEItNCIuCqAEAAP/QiUXci03cixGLTdyLQgT/0IhF2+sExkXbAA+2TduFyXRTaFAAAACLVQiLAotNCIuQqAEAAP/ShcB0KmhYAAAAi0UIixCLTQiLgqgBAAD/0IlF1ItN1IsRi03Ui0IE/9CIRdPrBMZF0wAPtk3ThckPheYBAABoYAAAAItVCIsCi00Ii5CoAQAA/9KFwHQqaGgAAACLRQiLEItNCIuCqAEAAP/QiUXMi03MixGLTcyLQgT/0IhFy+sExkXLAA+2TcuFyQ+EogAAAGhwAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoeAAAAItFCIsQi00Ii4KoAQAA/9CJRcSLTcSLEYtNxItCBP/QiEXD6wTGRcMAD7ZNw4XJdFNogAAAAItVCIsCi00Ii5CoAQAA/9KFwHQqaIgAAACLRQiLEItNCIuCqAEAAP/QiUW8i028ixGLTbyLQgT/0IhFu+sExkW7AA+2TbuFyQ+F8QAAAGiQAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpomAAAAItFCIsQi00Ii4KoAQAA/9CJRbSLTbSLEYtNtItCBP/QiEWz6wTGRbMAD7ZNs4XJD4SnAAAAaKAAAACLVQiLAotNCIuQqAEAAP/ShcB0KmioAAAAi0UIixCLTQiLgqgBAAD/0IlFrItNrIsRi02si0IE/9CIRavrBMZFqwAPtk2rhcl0WGiwAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpouAAAAItFCIsQi00Ii4KoAQAA/9CJRaSLTaSLEYtNpItCBP/QiEWj6wTGRaMAD7ZNo4XJdAnHRZwBAAAA6wfHRZwAAAAAikWci+Vdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>rUnitKind != 17 &amp;&amp; (tal("G602") &amp;&amp; tal("G603") &amp;&amp; tal("G604") || tal("G602") &amp;&amp; tal("G603") &amp;&amp; tal("G605") || tal("G602") &amp;&amp; tal("G604") &amp;&amp; tal("G605") || tal("G603") &amp;&amp; tal("G604") &amp;&amp; tal("G605") )</sString>
+					</enabled>
+					<flags>0</flags>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<persistentApplicators />
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FRYAAAACAAAAGwAAADEAAABTdHVuX1JlZHNldDVfNkNvdW50ZXIAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUwAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAhA</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.vStun_Redset5_6Counter == 3</sString>
+					</startCondition>
+					<talents />
+					<targetAbility>BaseAttack</targetAbility>
+					<useListAs>ListAsRule</useListAs>
+				</AbilityUpgradeApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Оглушение с вероятностью</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

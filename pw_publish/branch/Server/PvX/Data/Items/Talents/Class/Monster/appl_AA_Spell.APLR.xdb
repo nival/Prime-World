@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Heroes/Monster/_.HROB" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Спелл с автоатакой Твари</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Monster/appl_AA_Spell.APLR" id="7D37837A-AFED-43C8-8824-56F1A6ACE8CF">
+		<Spell>
+			<applicators>
+				<Item href="/Effects/Shots/HitsApplicators/MeleeHero.APLR" />
+				<Item href="/Items/Talents/Class/Monster/appl_AA_Spell.APLR" id="92B057B5-0825-4DA1-8F37-F8ED5B8825BE">
+					<VariableProxyApplicator parent="/Items/Talents/Class/Monster/appl_A0_DebuffOnDamage.APLR">
+						<applicators>
+							<Item skip="1" />
+							<Item skip="1" />
+							<Item>
+								<applicator href="/Items/Talents/Class/Monster/status_A3uDebuff.APLR" />
+								<variableNames />
+							</Item>
+						</applicators>
+						<caption>Обёртка "А0 + урон + А3у"</caption>
+					</VariableProxyApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Monster/appl_AA_Spell.APLR" id="831793F0-8DEF-4323-93AD-9807C800C2EB">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>7</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>AbilityTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Trickster/Ability4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Trickster/status_A4.APLR" id="386C9E34-A048-4588-9BF8-A9BFA6A48EF0">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>outgoing damage reduction</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Trickster/status_A4.APLR" id="F0D225C8-5B3A-450F-9F25-813ABC356AE6">
+					<EventProcessorOutgoingDamage>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<damageTypeFilter>15</damageTypeFilter>
+						<modifiedDamage>
+							<compiledString>FRsAAAADAAAAIgAAADwAAABSAAAARGFtYWdlAABBNF9EYW1hZ2VSZWR1Y3Rpb24AVYvsg+wMaAAAAACLRRCLEItNEItCVP/Qi00MUYtVCFJoCAAAAItFEIsQi00Qi0JQ3V34/9DcNW8AAADZ6N7h3E342V302UX0i+VdwwAAAAAAAPA/AAAAAAAAWUA=</compiledString>
+							<returnType>float</returnType>
+							<sString>appl.vDamage *(1 - cA4_DamageReduction/100)</sString>
+						</modifiedDamage>
+						<spell href="" />
+					</EventProcessorOutgoingDamage>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Trickster/status_A4.APLR" id="1417A097-A4D3-47BB-96E9-D6C62073B83B">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>+ Attack Speed</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRcAAAABAAAAIwAAAEE0X0F0dGFja1NwZWVkX0Zvcm11bGEAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_AttackSpeed_Formula</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>ExplicitAttacksPerSecond</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Trickster/status_A4.APLR" id="F0D29171-7292-4914-AD46-34C036CE9CE5">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>+ Crit</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQ4AAAABAAAAGgAAAEE0X1RvdGFsX0NyaXQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_Total_Crit</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>CritChanceBonus</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABUcmlja3N0ZXJfQTR1AAAAVHJpY2tzdGVyX0E0dQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Trickster_A4u")</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>A4_Status</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Trickster/status_A4.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Items/Talents/Class/Trickster/status_A4.APLR" id="DF272E99-38A0-4BBE-8FD0-217A11E2F4ED">
+			<EffectList>
+				<deathType>Manual</deathType>
+				<effects>
+					<Item href="/Heroes/Trickster/FXAbility4HL.EFFT" />
+					<Item href="/Heroes/Trickster/FXAbility4HR.EFFT" />
+					<Item href="/Heroes/Trickster/FXAbility4L.EFFT" />
+					<Item href="/Heroes/Trickster/FXAbility4R.EFFT" />
+				</effects>
+				<enableCondition href="" />
+				<lifeTime>0</lifeTime>
+			</EffectList>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>Trickster_A4_Status</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Trickster/A4.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEE0X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Trickster/status_A4.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

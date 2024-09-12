@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Bomber/Ability_A3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Bomber/status_A3u_Self.APLR" id="36FF4DC0-E656-4C4B-8279-2B3BB871E2D2">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Периодически льём АоЕ</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCSP/Q3B01AAAA3+D2xAV6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DmpmZmZmZ2T8=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sTimeStanding &lt; 0.4</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPg==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.4f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Bomber/status_A3u_Self.APLR" id="0D6A024B-CBB7-4C1F-A56A-2A21D67CB1AF">
+					<Spell>
+						<applicators />
+						<dispatch href="/Items/Talents/Class/Bomber/status_A3u_Self.APLR" id="68146671-3131-42AE-BB00-8183DBD9856F">
+							<DispatchByTime>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<cancelOnSenderDeath>false</cancelOnSenderDeath>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Effects/Debuffs/Burn/_TrailBomber.EFFT" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<lifeTime>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+									<returnType>float</returnType>
+									<sString>-1</sString>
+								</lifeTime>
+								<persistentApplicators>
+									<Item href="/Items/Talents/Class/Bomber/status_A3u_Self.APLR" id="A47B924C-3306-4B56-96B2-3CC134486255">
+										<AuraApplicator>
+											<applicators>
+												<Item href="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>147</behaviorFlags>
+											<caption>Аура замедления и урона</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString>FRAAAAABAAAAGgAAAEJvbWJlckEydV9UaW1lcgBVi+xqAotFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+												<returnType>bool</returnType>
+												<sString>pFirst-&gt;FindApplicator("BomberA2u_Timer", pMisc, ABILITY) != pMisc</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<range>
+												<compiledString>FQ8AAAABAAAAGwAAAEEzdV90cmFpbFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cA3u_trailRange</sString>
+											</range>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<targets>547160127</targets>
+											<targetSelector href="" />
+											<type>None</type>
+										</AuraApplicator>
+									</Item>
+								</persistentApplicators>
+							</DispatchByTime>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.1f</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Class/Bomber/status_A3u_Self.APLR" id="4730CBCB-5A29-4A6A-8A21-18BA3B5ABE1F">
+					<ConvertTargetToLand>
+						<aggregateMode>First</aggregateMode>
+						<targetSelector href="/Items/Talents/Class/Bomber/status_A3u_Self.APLR" id="2CAC477D-D013-45BF-8BFA-A7ABA8A5F772">
+							<SelectApplicatorTarget>
+								<applicatorIndex>0</applicatorIndex>
+								<applicatorName></applicatorName>
+								<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+								<selectTarget>AbilityTarget</selectTarget>
+							</SelectApplicatorTarget>
+						</targetSelector>
+					</ConvertTargetToLand>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>(upg) Статус с разливом АоЕ</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Bomber/status_A3u_Self.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>68</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Bomber/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Bomber/status_A3u_Self.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRcAAAACAAAAHgAAADcAAABCb21iZXJfQTN1AABCb21iZXJfQTN1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Bomber_A3u")</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

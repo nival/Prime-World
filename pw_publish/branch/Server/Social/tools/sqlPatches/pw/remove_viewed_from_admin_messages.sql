@@ -1,0 +1,1 @@
+ALTER TABLE `tbl_admin_messages` DROP COLUMN `viewed`;

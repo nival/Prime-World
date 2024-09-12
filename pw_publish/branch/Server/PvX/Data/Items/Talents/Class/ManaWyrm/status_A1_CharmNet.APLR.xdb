@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR" id="9F2A5924-9E18-444D-B48E-90BD52B337E7">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>урон при потере Энергии; instantApply = FALSE, это важно!</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQYAAAABAAAAEAAAAEJvc3MzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR" id="E1F7C933-D717-4D8E-974E-79CDE7DD7E26">
+					<EventProcessorAbilityManacostTransformer>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<filter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Any</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>536871040</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</filter>
+						<spell href="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR" id="97BC5729-00C1-4904-B239-0B21977667A4">
+							<Spell>
+								<applicators>
+									<Item href="/Heroes/DefaultStatus/_SLOW_ALL_status.APLR" />
+									<Item href="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR" id="F545A8D2-38A4-498D-8983-82C00D422F1A">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>Выдаем урон</caption>
+											<damage>
+												<compiledString>FRAAAAABAAAAHAAAAEExX1N0YXR1c0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cA1_StatusDamage</sString>
+											</damage>
+											<damageMode>4</damageMode>
+											<damageType>Energy</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR" id="D9314C18-A205-4BB6-822C-A8BE96B0267F">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="/Effects/Debuffs/Web/_End.EFFT" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>1</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorAbilityManacostTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>статус Сеть чар</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Effects/Debuffs/Web/_.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FSAAAAACAAAAJwAAAEAAAABNYW5hV3lybV9BMV9VcGcATWFuYVd5cm1fQTFfVXBnAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal ("ManaWyrm_A1_Upg")</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>ManawyrmA1uStatus</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/ManaWyrm/A1.ITEX" />
+	<lifeTime>
+		<compiledString>FQgAAAABAAAAFAAAAEExRGVsYXkAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cA1Delay</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

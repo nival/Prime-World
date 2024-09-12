@@ -1,0 +1,2081 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/IronKnight.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/IronKnight_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/IronKnight/Ability_A2_SUP.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/IronKnight/Ability_A2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/IronKnight_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/IronKnight/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/IronKnight/Epic_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/IronKnight/Epic_StrLife.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Corridor.MTRL" />
+	<aoePassabilityCheckMode>4</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQkAAAACAAAAFgAAACkAAABBMl9XaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTcAAADZXfzZRfyL5V3DAAAAAAAA+D8=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_Width * 1.5</sString>
+	</aoeSize>
+	<aoeType>Corridor</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="DB67CF8A-ED45-417D-9DC3-96F7D0D34EB1">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption></caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="606688FA-A5F3-404E-BF97-A5570DA6D998">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="AA8753FE-2462-43EA-ACB5-7D1DCA2714B9">
+								<ProgramApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="5803C8FF-DC33-4B10-A29C-87644365BF89">
+												<ProgramApplicator>
+													<applicators>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="E64C6DED-CF40-4106-9CD6-AE0DAB93BC65">
+																<AbilityEndApplicator>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<cancelApplicators>false</cancelApplicators>
+																	<caption>Завершить А2, если нет А2у</caption>
+																	<enabled>
+																		<compiledString>FR8AAAACAAAAJgAAAD8AAABJcm9uS25pZ2h0X0EydQAASXJvbktuaWdodF9BMnUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtkX799gbwIPAAYvlXcM=</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>tal("IronKnight_A2u") == false</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																</AbilityEndApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="9679ADD9-3775-4834-AA9A-7CB5BE24BC5D">
+																<StatModApplicator>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<behaviorFlags>0</behaviorFlags>
+																	<caption>ForbidUseA2 = 1 чтобы случайно не сбросил</caption>
+																	<constraint>None</constraint>
+																	<dontUpdate>false</dontUpdate>
+																	<effect>
+																		<Item href="" />
+																		<Item href="" />
+																	</effect>
+																	<enabled>
+																		<compiledString>FR8AAAACAAAAJgAAAD8AAABJcm9uS25pZ2h0X0EydQAASXJvbktuaWdodF9BMnUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>tal("IronKnight_A2u")</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<lifeTime>
+																		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DmpmZPg==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0.3f</sString>
+																	</lifeTime>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<modifier>
+																		<addValue>
+																			<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																			<returnType>float</returnType>
+																			<sString>1.0f</sString>
+																		</addValue>
+																		<multValue>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>1.0f</sString>
+																		</multValue>
+																		<stat>Life</stat>
+																		<topModifier>false</topModifier>
+																		<variable>ForbidUseA2</variable>
+																	</modifier>
+																	<providerName></providerName>
+																	<startCondition>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</startCondition>
+																	<statModName></statModName>
+																</StatModApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="2DD8DBC7-A11F-4547-9A28-A775E502AA09">
+																<WaitForSpellApplicator>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<behaviorFlags>0</behaviorFlags>
+																	<behaviour>1</behaviour>
+																	<caption>Бросаем топоры</caption>
+																	<dispatchSource href="" />
+																	<effect>
+																		<Item href="" />
+																		<Item href="" />
+																	</effect>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<firstTargetToHit href="" />
+																	<formulaName>A2_AbilityWait</formulaName>
+																	<lifeTime>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>-1.0</sString>
+																	</lifeTime>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="92ED8242-7AA4-4073-9FA4-46AEA0E73978">
+																		<Spell>
+																			<applicators />
+																			<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="FFEEB34C-47E9-484A-BCC0-2E95A75EE926">
+																				<DispatchLinearWithLink>
+																					<aiming>Straight</aiming>
+																					<alwaysApply>false</alwaysApply>
+																					<applyEffect>
+																						<Item href="/Effects/Shots/Axe/_Explosion.EFFT" />
+																						<Item href="" />
+																					</applyEffect>
+																					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																					<applyEffectOrientation>Default</applyEffectOrientation>
+																					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																					<dieAfterApply>true</dieAfterApply>
+																					<dispatchEffect>
+																						<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="4D891A82-B101-48E0-B17B-7CA87ADFDA8B">
+																							<EffectList>
+																								<deathType>Manual</deathType>
+																								<effects>
+																									<Item href="/Effects/Shots/Axe/_Up.EFFT" />
+																									<Item href="/Effects/Shots/Axe/_UpNofade.EFFT" />
+																								</effects>
+																								<enableCondition href="" />
+																								<lifeTime>0</lifeTime>
+																							</EffectList>
+																						</Item>
+																						<Item href="" />
+																					</dispatchEffect>
+																					<flags>0</flags>
+																					<flyMode>Parabolic</flyMode>
+																					<fromLocator>Attack</fromLocator>
+																					<height>0</height>
+																					<killEffect>false</killEffect>
+																					<links>
+																						<Item>
+																							<effect>
+																								<Item href="/Heroes/IronKnight/AbilityLink01.EFFT" />
+																								<Item href="" />
+																							</effect>
+																						</Item>
+																						<Item>
+																							<effect>
+																								<Item href="/Heroes/IronKnight/AbilityLink02.EFFT" />
+																								<Item href="" />
+																							</effect>
+																						</Item>
+																					</links>
+																					<locatorOrient>true</locatorOrient>
+																					<maxDeviation>180</maxDeviation>
+																					<maxDistance>32</maxDistance>
+																					<maxRise>0</maxRise>
+																					<minRise>0</minRise>
+																					<persistentApplicators>
+																						<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="73BD7CA1-42F3-4A16-9DB3-B47C07124354">
+																							<SpellPeriodicallyApplicator>
+																								<applyTarget>ApplicatorTarget</applyTarget>
+																								<behaviorFlags>0</behaviorFlags>
+																								<caption>Топоры раздают урон всем пока летят</caption>
+																								<effect>
+																									<Item href="" />
+																									<Item href="" />
+																								</effect>
+																								<enabled>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>true</sString>
+																								</enabled>
+																								<formulaName></formulaName>
+																								<lifeTime>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</lifeTime>
+																								<LoggingEvent>-1</LoggingEvent>
+																								<period>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>0.0f</sString>
+																								</period>
+																								<providerName></providerName>
+																								<scaleMode>ScaleIsCount</scaleMode>
+																								<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="E8CC9AB0-0A63-4B4C-9F5E-358A3E50DCBE">
+																									<Spell>
+																										<applicators>
+																											<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="9950C77F-ED90-4375-B4C5-4ECD0AAD7ABC">
+																												<FlagsApplicator parent="/Items/Talents/Class/IronKnight/IronKnightHIT.APLR">
+																													<effect>
+																														<Item href="/Effects/Shots/MeleeHit/_HeroB.EFFT" />
+																														<Item skip="1" />
+																													</effect>
+																												</FlagsApplicator>
+																											</Item>
+																											<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="EF391C67-5084-4A70-BF0B-DDEB61F72270">
+																												<DamageApplicator>
+																													<applyTarget>ApplicatorTarget</applyTarget>
+																													<cancelInvisibility>false</cancelInvisibility>
+																													<caption>Damage A2</caption>
+																													<damage>
+																														<compiledString>FQoAAAABAAAAFgAAAEEyX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																														<returnType>float</returnType>
+																														<sString>cA2_Damage</sString>
+																													</damage>
+																													<damageMode>5</damageMode>
+																													<damageType>Material</damageType>
+																													<enabled>
+																														<compiledString></compiledString>
+																														<returnType>bool</returnType>
+																														<sString>true</sString>
+																													</enabled>
+																													<formulaName></formulaName>
+																													<LoggingEvent>-1</LoggingEvent>
+																													<providerName></providerName>
+																													<timeLimiter>-1</timeLimiter>
+																													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+																												</DamageApplicator>
+																											</Item>
+																											<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+																										</applicators>
+																										<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="22B8155E-5881-4B87-8161-DB0C047CDC0D">
+																											<DispatchImmediate>
+																												<alwaysApply>false</alwaysApply>
+																												<applyEffect>
+																													<Item href="" />
+																													<Item href="" />
+																												</applyEffect>
+																												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																												<applyEffectOrientation>Default</applyEffectOrientation>
+																												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																												<dieAfterApply>true</dieAfterApply>
+																												<dispatchEffect>
+																													<Item href="" />
+																													<Item href="" />
+																												</dispatchEffect>
+																												<flags>1</flags>
+																												<instantApply>false</instantApply>
+																											</DispatchImmediate>
+																										</dispatch>
+																									</Spell>
+																								</spell>
+																								<startCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>true</sString>
+																								</startCondition>
+																								<startOffset>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>0.0f</sString>
+																								</startOffset>
+																								<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="955FD527-4E85-46A4-A836-3B0C9616D1A9">
+																									<CapsuleTargetSelector>
+																										<cutoffFirstSegment>true</cutoffFirstSegment>
+																										<flags>0</flags>
+																										<mode>SendOnce</mode>
+																										<range>
+																											<compiledString>FQkAAAACAAAAFgAAACkAAABBMl9XaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTcAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+																											<returnType>float</returnType>
+																											<sString>cA2_Width * 0.5</sString>
+																										</range>
+																										<rangeFromOwner>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>0.0f</sString>
+																										</rangeFromOwner>
+																										<segmentBegin>PreviousPosition</segmentBegin>
+																										<segmentDirectionOffset>0</segmentDirectionOffset>
+																										<segmentEnd>CurrentPosition</segmentEnd>
+																										<segmentEndTargetSelector href="" />
+																										<targetFilter>538771519</targetFilter>
+																									</CapsuleTargetSelector>
+																								</targetSelector>
+																							</SpellPeriodicallyApplicator>
+																						</Item>
+																						<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="FC360D1E-7DAE-496D-BBCF-38AE6B4E45A6">
+																							<SpellPeriodicallyApplicator>
+																								<applyTarget>ApplicatorTarget</applyTarget>
+																								<behaviorFlags>0</behaviorFlags>
+																								<caption>Топоры рубят деревья</caption>
+																								<effect>
+																									<Item href="" />
+																									<Item href="" />
+																								</effect>
+																								<enabled>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>true</sString>
+																								</enabled>
+																								<formulaName></formulaName>
+																								<lifeTime>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</lifeTime>
+																								<LoggingEvent>-1</LoggingEvent>
+																								<period>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>0.0f</sString>
+																								</period>
+																								<providerName></providerName>
+																								<scaleMode>ScaleIsCount</scaleMode>
+																								<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="86FAD248-7ECF-4211-9427-1A9F08E343E6">
+																									<Spell>
+																										<applicators>
+																											<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0C9E481C-B4B4-4019-BCAC-7F279413C69A">
+																												<DropTreeApplicator>
+																													<applyTarget>ApplicatorTarget</applyTarget>
+																													<caption>Роняем деревья</caption>
+																													<enabled>
+																														<compiledString></compiledString>
+																														<returnType>bool</returnType>
+																														<sString>true</sString>
+																													</enabled>
+																													<formulaName></formulaName>
+																													<LoggingEvent>-1</LoggingEvent>
+																													<providerName></providerName>
+																												</DropTreeApplicator>
+																											</Item>
+																										</applicators>
+																										<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="44511078-7AA3-4C13-82FA-C09062910389">
+																											<DispatchImmediate>
+																												<alwaysApply>false</alwaysApply>
+																												<applyEffect>
+																													<Item href="" />
+																													<Item href="" />
+																												</applyEffect>
+																												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																												<applyEffectOrientation>Default</applyEffectOrientation>
+																												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																												<dieAfterApply>true</dieAfterApply>
+																												<dispatchEffect>
+																													<Item href="" />
+																													<Item href="" />
+																												</dispatchEffect>
+																												<flags>0</flags>
+																												<instantApply>false</instantApply>
+																											</DispatchImmediate>
+																										</dispatch>
+																									</Spell>
+																								</spell>
+																								<startCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>true</sString>
+																								</startCondition>
+																								<startOffset>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>0.0f</sString>
+																								</startOffset>
+																								<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="EA51F173-0D93-4EA6-BCE9-238AABE1AD41">
+																									<CapsuleTargetSelector>
+																										<cutoffFirstSegment>true</cutoffFirstSegment>
+																										<flags>0</flags>
+																										<mode>SendOnce</mode>
+																										<range>
+																											<compiledString>FQ0AAAACAAAAGgAAAC0AAABBMl9XaWR0aFRyZWUAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3A07AAAA2V382UX8i+VdwwAAAAAAAOA/</compiledString>
+																											<returnType>float</returnType>
+																											<sString>cA2_WidthTree * 0.5</sString>
+																										</range>
+																										<rangeFromOwner>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>0.0f</sString>
+																										</rangeFromOwner>
+																										<segmentBegin>PreviousPosition</segmentBegin>
+																										<segmentDirectionOffset>0</segmentDirectionOffset>
+																										<segmentEnd>CurrentPosition</segmentEnd>
+																										<segmentEndTargetSelector href="" />
+																										<targetFilter>536871936</targetFilter>
+																									</CapsuleTargetSelector>
+																								</targetSelector>
+																							</SpellPeriodicallyApplicator>
+																						</Item>
+																					</persistentApplicators>
+																					<speed>70</speed>
+																					<suspendTime>0</suspendTime>
+																					<toLocator></toLocator>
+																				</DispatchLinearWithLink>
+																			</dispatch>
+																		</Spell>
+																	</spell>
+																	<spellTarget>Hier2UpApplicatorTarget</spellTarget>
+																	<startCondition>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</startCondition>
+																</WaitForSpellApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>6</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="34D886E2-6D39-40D7-817A-7706C98445A3">
+																<SpellApplicator>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Саммон топоров</caption>
+																	<enabled>
+																		<compiledString>FR8AAAACAAAAJgAAAD8AAABJcm9uS25pZ2h0X0EydQAASXJvbktuaWdodF9BMnUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>tal("IronKnight_A2u")</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="A4D12ED0-DF89-4D49-A293-243B966A3D72">
+																		<Spell>
+																			<applicators>
+																				<Item href="/Items/Talents/Class/IronKnight/Summon_A2u_Axe.APLR" />
+																			</applicators>
+																			<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0877525A-9F0B-43B1-A028-63EB89E49126">
+																				<DispatchImmediate>
+																					<alwaysApply>false</alwaysApply>
+																					<applyEffect>
+																						<Item href="" />
+																						<Item href="" />
+																					</applyEffect>
+																					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																					<applyEffectOrientation>Default</applyEffectOrientation>
+																					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																					<dieAfterApply>true</dieAfterApply>
+																					<dispatchEffect>
+																						<Item href="" />
+																						<Item href="" />
+																					</dispatchEffect>
+																					<flags>0</flags>
+																					<instantApply>false</instantApply>
+																				</DispatchImmediate>
+																			</dispatch>
+																		</Spell>
+																	</spell>
+																	<spellTarget>ApplicatorTarget</spellTarget>
+																	<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="A661B0D3-D2E6-41A2-8738-8F427F15ECC2">
+																		<UnitPlaceCorrector>
+																			<checkByRangeToRequester>false</checkByRangeToRequester>
+																			<checkLineOfSight>false</checkLineOfSight>
+																			<nativeTerrainOnly>false</nativeTerrainOnly>
+																			<passabilityCheckMode>7</passabilityCheckMode>
+																			<radius>7</radius>
+																			<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="35DAE769-88B1-4867-8F7D-63E8EF7AADDC">
+																				<SelectApplicatorTarget>
+																					<applicatorIndex>0</applicatorIndex>
+																					<applicatorName></applicatorName>
+																					<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																					<selectTarget>Hier2UpApplicatorTarget</selectTarget>
+																				</SelectApplicatorTarget>
+																			</targetSelector>
+																		</UnitPlaceCorrector>
+																	</targetSelector>
+																</SpellApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/status_A2u_JumpWaitDuration.APLR" />
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="5CC67138-B58E-4E9B-AC25-50820462B7FD">
+																<SpellApplicator>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<caption>Выбрать точку рядом с место падения</caption>
+																	<enabled>
+																		<compiledString>FR8AAAACAAAAJgAAAD8AAABJcm9uS25pZ2h0X0EydQAASXJvbktuaWdodF9BMnUAVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0HItVEIsCi00QixD/0g+2wIXAdQnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>tal("IronKnight_A2u") &amp;&amp; mIsAbilityOn == false</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="217D63DD-295C-4BC8-AF7C-4312624117C0">
+																		<Spell>
+																			<applicators>
+																				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="B473904B-B1A8-40DA-B072-2E92518C9425">
+																					<ProgramApplicator>
+																						<applicators>
+																							<Item>
+																								<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="87B73D82-681D-42A4-95B7-E17684819ACA">
+																									<SpellPeriodicallyApplicator>
+																										<applyTarget>AbilityOwner</applyTarget>
+																										<behaviorFlags>152</behaviorFlags>
+																										<caption>Рубим деревья пока летим</caption>
+																										<effect>
+																											<Item href="" />
+																											<Item href="" />
+																										</effect>
+																										<enabled>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</enabled>
+																										<formulaName></formulaName>
+																										<lifeTime>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>-1.0</sString>
+																										</lifeTime>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<period>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>0.0f</sString>
+																										</period>
+																										<providerName></providerName>
+																										<scaleMode>ScaleIsCount</scaleMode>
+																										<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="057F30B0-E697-4DEB-995A-A7C8D4DB4094">
+																											<Spell>
+																												<applicators>
+																													<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0B3B0F87-8F74-4A85-B761-A1DC97A17830">
+																														<DropTreeApplicator>
+																															<applyTarget>ApplicatorTarget</applyTarget>
+																															<caption>Роняем деревья</caption>
+																															<enabled>
+																																<compiledString></compiledString>
+																																<returnType>bool</returnType>
+																																<sString>true</sString>
+																															</enabled>
+																															<formulaName></formulaName>
+																															<LoggingEvent>-1</LoggingEvent>
+																															<providerName></providerName>
+																														</DropTreeApplicator>
+																													</Item>
+																												</applicators>
+																												<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="F283DD37-9FB8-43C4-9B37-D51803D77E2D">
+																													<DispatchImmediate>
+																														<alwaysApply>false</alwaysApply>
+																														<applyEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</applyEffect>
+																														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																														<applyEffectOrientation>Default</applyEffectOrientation>
+																														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																														<dieAfterApply>true</dieAfterApply>
+																														<dispatchEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</dispatchEffect>
+																														<flags>0</flags>
+																														<instantApply>false</instantApply>
+																													</DispatchImmediate>
+																												</dispatch>
+																											</Spell>
+																										</spell>
+																										<startCondition>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</startCondition>
+																										<startOffset>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>0.0f</sString>
+																										</startOffset>
+																										<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="DDE68FDD-A8F2-44AF-B131-2A74B938C006">
+																											<CapsuleTargetSelector>
+																												<cutoffFirstSegment>false</cutoffFirstSegment>
+																												<flags>0</flags>
+																												<mode>SendOnce</mode>
+																												<range>
+																													<compiledString>FQ0AAAACAAAAGgAAAC0AAABBMl9XaWR0aFRyZWUAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3A07AAAA2V382UX8i+VdwwAAAAAAAOA/</compiledString>
+																													<returnType>float</returnType>
+																													<sString>cA2_WidthTree * 0.5</sString>
+																												</range>
+																												<rangeFromOwner>
+																													<compiledString></compiledString>
+																													<returnType>float</returnType>
+																													<sString>0.0f</sString>
+																												</rangeFromOwner>
+																												<segmentBegin>PreviousPosition</segmentBegin>
+																												<segmentDirectionOffset>0</segmentDirectionOffset>
+																												<segmentEnd>CurrentPosition</segmentEnd>
+																												<segmentEndTargetSelector href="" />
+																												<targetFilter>536871936</targetFilter>
+																											</CapsuleTargetSelector>
+																										</targetSelector>
+																									</SpellPeriodicallyApplicator>
+																								</applicator>
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>1</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="E4469B25-48B3-417E-8A96-C3FAB3BBF96F">
+																									<SpellPeriodicallyApplicator>
+																										<applyTarget>AbilityOwner</applyTarget>
+																										<behaviorFlags>152</behaviorFlags>
+																										<caption>Урон пока летим</caption>
+																										<effect>
+																											<Item href="" />
+																											<Item href="" />
+																										</effect>
+																										<enabled>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</enabled>
+																										<formulaName></formulaName>
+																										<lifeTime>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>-1.0</sString>
+																										</lifeTime>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<period>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>0.0f</sString>
+																										</period>
+																										<providerName></providerName>
+																										<scaleMode>ScaleIsCount</scaleMode>
+																										<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="3E4FB74F-BC2A-4F5A-B0DA-4BB073FCAA6A">
+																											<Spell>
+																												<applicators>
+																													<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="E91FBC2C-48AF-4939-B137-C964247FC862">
+																														<DamageApplicator>
+																															<applyTarget>ApplicatorTarget</applyTarget>
+																															<cancelInvisibility>false</cancelInvisibility>
+																															<caption>урон</caption>
+																															<damage>
+																																<compiledString>FQsAAAABAAAAFwAAAEEydV9EYW1hZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																																<returnType>float</returnType>
+																																<sString>cA2u_Damage</sString>
+																															</damage>
+																															<damageMode>0</damageMode>
+																															<damageType>Material</damageType>
+																															<enabled>
+																																<compiledString></compiledString>
+																																<returnType>bool</returnType>
+																																<sString>true</sString>
+																															</enabled>
+																															<formulaName></formulaName>
+																															<LoggingEvent>-1</LoggingEvent>
+																															<providerName></providerName>
+																															<timeLimiter>-1</timeLimiter>
+																															<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+																														</DamageApplicator>
+																													</Item>
+																												</applicators>
+																												<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="F2C50D4B-8ACF-4434-B822-5BBE0D7CB25C">
+																													<DispatchImmediate>
+																														<alwaysApply>false</alwaysApply>
+																														<applyEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</applyEffect>
+																														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																														<applyEffectOrientation>Default</applyEffectOrientation>
+																														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																														<dieAfterApply>true</dieAfterApply>
+																														<dispatchEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</dispatchEffect>
+																														<flags>1</flags>
+																														<instantApply>false</instantApply>
+																													</DispatchImmediate>
+																												</dispatch>
+																											</Spell>
+																										</spell>
+																										<startCondition>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</startCondition>
+																										<startOffset>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>0.0f</sString>
+																										</startOffset>
+																										<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0EA61BFA-1D3A-44D1-8F3A-061D6BAFCB52">
+																											<CapsuleTargetSelector>
+																												<cutoffFirstSegment>false</cutoffFirstSegment>
+																												<flags>0</flags>
+																												<mode>SendOnce</mode>
+																												<range>
+																													<compiledString>FQkAAAACAAAAFgAAACkAAABBMl9XaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTcAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+																													<returnType>float</returnType>
+																													<sString>cA2_Width * 0.5</sString>
+																												</range>
+																												<rangeFromOwner>
+																													<compiledString></compiledString>
+																													<returnType>float</returnType>
+																													<sString>0.0f</sString>
+																												</rangeFromOwner>
+																												<segmentBegin>PreviousPosition</segmentBegin>
+																												<segmentDirectionOffset>0</segmentDirectionOffset>
+																												<segmentEnd>CurrentPosition</segmentEnd>
+																												<segmentEndTargetSelector href="" />
+																												<targetFilter>538771519</targetFilter>
+																											</CapsuleTargetSelector>
+																										</targetSelector>
+																									</SpellPeriodicallyApplicator>
+																								</applicator>
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>1</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/GameLogic/GeneralApplicators/IsolatedWDamage.APLR" />
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>1</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/GameLogic/GeneralApplicators/SetTossed.APLR" />
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>1</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="95753876-46AC-4BE7-9E84-00ED743538CE">
+																									<FlagsApplicator>
+																										<applyTarget>AbilityOwner</applyTarget>
+																										<behaviorFlags>0</behaviorFlags>
+																										<caption>Эффект на герое</caption>
+																										<consumables />
+																										<effect>
+																											<Item href="/Effects/Buffs/SpeedingUp/_MoveOrange.EFFT" />
+																											<Item href="" />
+																										</effect>
+																										<enabled>
+																											<compiledString>FQwAAAABAAAAFgAAAENyYWNrZWZmZWN0AFWL7GoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+																											<returnType>bool</returnType>
+																											<sString>sender.applCrackeffect(UNIT) == pMisc</sString>
+																										</enabled>
+																										<flag>0</flag>
+																										<formulaName></formulaName>
+																										<lifeTime>
+																											<compiledString></compiledString>
+																											<returnType>float</returnType>
+																											<sString>-1.0</sString>
+																										</lifeTime>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<providerName></providerName>
+																										<startCondition>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</startCondition>
+																										<talents />
+																										<useListAs>ListAsRule</useListAs>
+																									</FlagsApplicator>
+																								</applicator>
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>1</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="3FB1019B-509E-47C3-94A4-2C0B6B3F820B">
+																									<ThrowApplicator>
+																										<angle Animated="True">
+																											<Tracks>
+																												<Item>
+																													<Item>
+																														<Key>0</Key>
+																														<Value>-0.00089553</Value>
+																													</Item>
+																													<Item>
+																														<Key>1</Key>
+																														<Value>0</Value>
+																													</Item>
+																												</Item>
+																											</Tracks>
+																											<Type>Clamp</Type>
+																											<Values>
+																												<Item>
+																													<Key>0</Key>
+																													<Value>-0.00089553</Value>
+																												</Item>
+																												<Item>
+																													<Key>1</Key>
+																													<Value>0</Value>
+																												</Item>
+																											</Values>
+																										</angle>
+																										<applyTarget>AbilityOwner</applyTarget>
+																										<behaviorFlags>1</behaviorFlags>
+																										<caption>Прыжок + анимация</caption>
+																										<collisionFlags>7</collisionFlags>
+																										<enabled>
+																											<compiledString>FRMAAAACAAAAHgAAAD4AAABUaHJvdwAAAFRocm93X0p1bXAAVYvsUWoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DtFEHUpagCLTRBRaAgAAACLVQyLAotNDIuQnAEAAP/SO0UQdQnHRfwBAAAA6wfHRfwAAAAAikX8i+Vdww==</compiledString>
+																											<returnType>bool</returnType>
+																											<sString>receiver.applThrow(GLOBAL) == pMisc &amp;&amp; receiver.applThrow_Jump(GLOBAL) == pMisc</sString>
+																										</enabled>
+																										<firstTargetToHit href="" />
+																										<flightType>Jump</flightType>
+																										<flipTime>
+																											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																											<returnType>float</returnType>
+																											<sString>1.0</sString>
+																										</flipTime>
+																										<flyEffect>
+																											<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="C4087184-DDEA-48B3-95EA-F4AE9B421A1E">
+																												<PlayAnimationEffect>
+																													<animGraphNode>ability2Fly</animGraphNode>
+																													<deathType>Manual</deathType>
+																													<enableCondition href="" />
+																													<goToOtherNodeOnStop>true</goToOtherNodeOnStop>
+																													<lifeTime>0</lifeTime>
+																													<marker></marker>
+																													<markerReachTime>0</markerReachTime>
+																													<returnAnimGraphNode>ability2</returnAnimGraphNode>
+																												</PlayAnimationEffect>
+																											</Item>
+																											<Item href="" />
+																										</flyEffect>
+																										<formulaName>Throw_Jump</formulaName>
+																										<landTime>0</landTime>
+																										<lockRotation>false</lockRotation>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<maxDistance>0</maxDistance>
+																										<maxHeight>0</maxHeight>
+																										<moveSpeed>
+																											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQg==</compiledString>
+																											<returnType>float</returnType>
+																											<sString>40</sString>
+																										</moveSpeed>
+																										<providerName></providerName>
+																										<startSpell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="787AAA92-DF62-4590-A2A6-5CAFC754EC3A">
+																											<Spell>
+																												<applicators>
+																													<Item href="/Items/Talents/Class/IronKnight/spell_ThrowA2fromA4.APLR" />
+																												</applicators>
+																												<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="7879B7B9-12F4-4492-BD79-2D27067C2821">
+																													<DispatchImmediate>
+																														<alwaysApply>false</alwaysApply>
+																														<applyEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</applyEffect>
+																														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																														<applyEffectOrientation>Default</applyEffectOrientation>
+																														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																														<dieAfterApply>true</dieAfterApply>
+																														<dispatchEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</dispatchEffect>
+																														<flags>0</flags>
+																														<instantApply>false</instantApply>
+																													</DispatchImmediate>
+																												</dispatch>
+																											</Spell>
+																										</startSpell>
+																										<stopSpell href="" />
+																										<surfaceSpeedFromAG>false</surfaceSpeedFromAG>
+																										<takeOffTime>0</takeOffTime>
+																										<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="4329C968-6F94-45C8-9B20-1CB7E765C18D">
+																											<SelectApplicatorTarget>
+																												<applicatorIndex>0</applicatorIndex>
+																												<applicatorName></applicatorName>
+																												<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																												<selectTarget>Hier1UpApplicatorTarget</selectTarget>
+																											</SelectApplicatorTarget>
+																										</targetSelector>
+																										<trackTargetUnit>false</trackTargetUnit>
+																										<trajectory Animated="True">
+																											<Tracks>
+																												<Item>
+																													<Item>
+																														<Key>0</Key>
+																														<Value>0</Value>
+																													</Item>
+																													<Item>
+																														<Key>1</Key>
+																														<Value>0</Value>
+																													</Item>
+																												</Item>
+																											</Tracks>
+																											<Type>Clamp</Type>
+																											<Values>
+																												<Item>
+																													<Key>0</Key>
+																													<Value>0</Value>
+																												</Item>
+																												<Item>
+																													<Key>1</Key>
+																													<Value>0</Value>
+																												</Item>
+																											</Values>
+																										</trajectory>
+																									</ThrowApplicator>
+																								</applicator>
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>2</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="C2753D95-4327-418C-8A4A-9F4A5048971E">
+																									<StatModApplicator>
+																										<applyTarget>AbilityOwner</applyTarget>
+																										<behaviorFlags>0</behaviorFlags>
+																										<caption>IronKnight_A2u_Stop = 1</caption>
+																										<constraint>None</constraint>
+																										<dontUpdate>false</dontUpdate>
+																										<effect>
+																											<Item href="" />
+																											<Item href="" />
+																										</effect>
+																										<enabled>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</enabled>
+																										<formulaName></formulaName>
+																										<lifeTime>
+																											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DJzEIPg==</compiledString>
+																											<returnType>float</returnType>
+																											<sString>0.133f</sString>
+																										</lifeTime>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<modifier>
+																											<addValue>
+																												<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																												<returnType>float</returnType>
+																												<sString>1.0f</sString>
+																											</addValue>
+																											<multValue>
+																												<compiledString></compiledString>
+																												<returnType>float</returnType>
+																												<sString>1.0f</sString>
+																											</multValue>
+																											<stat>Life</stat>
+																											<topModifier>false</topModifier>
+																											<variable>IronKnight_A2u_Stop</variable>
+																										</modifier>
+																										<providerName></providerName>
+																										<startCondition>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</startCondition>
+																										<statModName></statModName>
+																									</StatModApplicator>
+																								</applicator>
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>6</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="CC288642-163E-4A04-9DB3-DD19B4D4E567">
+																									<SpellApplicator>
+																										<applyTarget>ApplicatorTarget</applyTarget>
+																										<caption>Спелл с А2_SUP</caption>
+																										<enabled>
+																											<compiledString>FSYAAAACAAAALQAAAEYAAABJcm9uS25pZ2h0X0EyX1NVUAAAAElyb25LbmlnaHRfQTJfU1VQAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoFAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+																											<returnType>bool</returnType>
+																											<sString>tal("IronKnight_A2_SUP")</sString>
+																										</enabled>
+																										<formulaName></formulaName>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<providerName></providerName>
+																										<spell href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="6B989540-043B-484B-9D88-7CE030D8D05F">
+																											<Spell>
+																												<applicators>
+																													<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="F28085A2-9630-4FD6-A962-11E704FD8B08">
+																														<DamageApplicator>
+																															<applyTarget>ApplicatorTarget</applyTarget>
+																															<cancelInvisibility>false</cancelInvisibility>
+																															<caption>Урон A2_SUP</caption>
+																															<damage>
+																																<compiledString>FQ4AAAABAAAAGgAAAEEyX1NVUF9EYW1hZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																																<returnType>float</returnType>
+																																<sString>cA2_SUP_Damage</sString>
+																															</damage>
+																															<damageMode>0</damageMode>
+																															<damageType>Material</damageType>
+																															<enabled>
+																																<compiledString></compiledString>
+																																<returnType>bool</returnType>
+																																<sString>true</sString>
+																															</enabled>
+																															<formulaName></formulaName>
+																															<LoggingEvent>-1</LoggingEvent>
+																															<providerName></providerName>
+																															<timeLimiter>-1</timeLimiter>
+																															<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+																														</DamageApplicator>
+																													</Item>
+																												</applicators>
+																												<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="E8DD091F-62B8-449C-8276-D5ED3D28C10E">
+																													<DispatchImmediate>
+																														<alwaysApply>false</alwaysApply>
+																														<applyEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</applyEffect>
+																														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																														<applyEffectOrientation>Default</applyEffectOrientation>
+																														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																														<dieAfterApply>true</dieAfterApply>
+																														<dispatchEffect>
+																															<Item href="" />
+																															<Item href="" />
+																														</dispatchEffect>
+																														<flags>0</flags>
+																														<instantApply>false</instantApply>
+																													</DispatchImmediate>
+																												</dispatch>
+																											</Spell>
+																										</spell>
+																										<spellTarget>ApplicatorTarget</spellTarget>
+																										<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="88EB773A-99E8-4294-889B-88700617DF21">
+																											<AreaTargetSelector>
+																												<absolutePosition>
+																													<x>0</x>
+																													<y>0</y>
+																												</absolutePosition>
+																												<flags>0</flags>
+																												<mode>Normal</mode>
+																												<range>
+																													<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX1Nob3J0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																													<returnType>float</returnType>
+																													<sString>cRange_Short</sString>
+																												</range>
+																												<targetFilter>672923711</targetFilter>
+																												<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="2D12BF77-2DF5-4FF8-92F7-618D7C62BCA4">
+																													<SelectApplicatorTarget>
+																														<applicatorIndex>0</applicatorIndex>
+																														<applicatorName></applicatorName>
+																														<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																														<selectTarget>ApplicatorTarget</selectTarget>
+																													</SelectApplicatorTarget>
+																												</targetSelector>
+																											</AreaTargetSelector>
+																										</targetSelector>
+																									</SpellApplicator>
+																								</applicator>
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>1</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="DBE1AAC9-BECE-4358-A3CD-B00A153CA752">
+																									<FlagsApplicator>
+																										<applyTarget>ApplicatorTarget</applyTarget>
+																										<behaviorFlags>0</behaviorFlags>
+																										<caption>Эффект</caption>
+																										<consumables />
+																										<effect>
+																											<Item href="/Effects/Debuffs/Cracks/_Decal.EFFT" />
+																											<Item href="" />
+																										</effect>
+																										<enabled>
+																											<compiledString>FSYAAAACAAAALQAAAEYAAABJcm9uS25pZ2h0X0EyX1NVUAAAAElyb25LbmlnaHRfQTJfU1VQAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoFAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+																											<returnType>bool</returnType>
+																											<sString>tal("IronKnight_A2_SUP")</sString>
+																										</enabled>
+																										<flag>0</flag>
+																										<formulaName>Crackeffect</formulaName>
+																										<lifeTime>
+																											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																											<returnType>float</returnType>
+																											<sString>1</sString>
+																										</lifeTime>
+																										<LoggingEvent>-1</LoggingEvent>
+																										<providerName></providerName>
+																										<startCondition>
+																											<compiledString></compiledString>
+																											<returnType>bool</returnType>
+																											<sString>true</sString>
+																										</startCondition>
+																										<talents />
+																										<useListAs>ListAsRule</useListAs>
+																									</FlagsApplicator>
+																								</applicator>
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>2</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																							<Item>
+																								<applicator href="/GameLogic/GeneralApplicators/EndOfAbility.APLR" />
+																								<continueCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</continueCondition>
+																								<continueEvents>1</continueEvents>
+																								<delay>
+																									<compiledString></compiledString>
+																									<returnType>float</returnType>
+																									<sString>-1.0</sString>
+																								</delay>
+																								<stopCondition>
+																									<compiledString></compiledString>
+																									<returnType>bool</returnType>
+																									<sString>0</sString>
+																								</stopCondition>
+																								<stopEvents>0</stopEvents>
+																							</Item>
+																						</applicators>
+																						<applyTarget>AbilityOwner</applyTarget>
+																						<behaviorFlags>2</behaviorFlags>
+																						<caption>Throw program</caption>
+																						<effect>
+																							<Item href="" />
+																							<Item href="" />
+																						</effect>
+																						<enabled>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</enabled>
+																						<formulaName></formulaName>
+																						<lifeTime>
+																							<compiledString></compiledString>
+																							<returnType>float</returnType>
+																							<sString>-1.0</sString>
+																						</lifeTime>
+																						<LoggingEvent>-1</LoggingEvent>
+																						<providerName></providerName>
+																						<startCondition>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</startCondition>
+																					</ProgramApplicator>
+																				</Item>
+																			</applicators>
+																			<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="00F64D59-884B-46BE-A6F1-EF04D69A55BD">
+																				<DispatchImmediate>
+																					<alwaysApply>false</alwaysApply>
+																					<applyEffect>
+																						<Item href="" />
+																						<Item href="" />
+																					</applyEffect>
+																					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																					<applyEffectOrientation>Default</applyEffectOrientation>
+																					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																					<dieAfterApply>true</dieAfterApply>
+																					<dispatchEffect>
+																						<Item href="" />
+																						<Item href="" />
+																					</dispatchEffect>
+																					<flags>0</flags>
+																					<instantApply>false</instantApply>
+																				</DispatchImmediate>
+																			</dispatch>
+																		</Spell>
+																	</spell>
+																	<spellTarget>ApplicatorTarget</spellTarget>
+																	<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="21EC07E0-8857-42CF-B2E2-A5650C089E37">
+																		<PointTargetSelector>
+																			<checkMinRange>true</checkMinRange>
+																			<mode>OffsetFromTarget</mode>
+																			<offset>
+																				<x>0</x>
+																				<y>1</y>
+																			</offset>
+																			<paralleledTarget>false</paralleledTarget>
+																			<range>
+																				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>0</sString>
+																			</range>
+																			<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="F7B65A3C-EF3C-41A7-A873-2048E70A51A4">
+																				<SelectApplicatorTarget>
+																					<applicatorIndex>0</applicatorIndex>
+																					<applicatorName></applicatorName>
+																					<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																					<selectTarget>Hier2UpApplicatorTarget</selectTarget>
+																				</SelectApplicatorTarget>
+																			</targetSelector>
+																			<traceMode>6</traceMode>
+																		</PointTargetSelector>
+																	</targetSelector>
+																</SpellApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="D302E55E-BE4B-450F-BD87-31A11ED9B0B1">
+																<StatModApplicator>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<behaviorFlags>0</behaviorFlags>
+																	<caption>IronKnight_A2u_Stop = 1</caption>
+																	<constraint>None</constraint>
+																	<dontUpdate>false</dontUpdate>
+																	<effect>
+																		<Item href="" />
+																		<Item href="" />
+																	</effect>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<lifeTime>
+																		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DJzEIPg==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>0.133f</sString>
+																	</lifeTime>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<modifier>
+																		<addValue>
+																			<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																			<returnType>float</returnType>
+																			<sString>1.0f</sString>
+																		</addValue>
+																		<multValue>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>1.0f</sString>
+																		</multValue>
+																		<stat>Life</stat>
+																		<topModifier>false</topModifier>
+																		<variable>IronKnight_A2u_Stop</variable>
+																	</modifier>
+																	<providerName></providerName>
+																	<startCondition>
+																		<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLAv/QXcM=</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>mIsAbilityOn</sString>
+																	</startCondition>
+																	<statModName></statModName>
+																</StatModApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_G766_RefreshAndNotify.APLR" />
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="C3B7BA8E-701A-4D7F-B996-38A7CA7F1EEE">
+																<AbilityEndApplicator>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<cancelApplicators>true</cancelApplicators>
+																	<caption>End Of Ability</caption>
+																	<enabled>
+																		<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLAv/QXcM=</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>mIsAbilityOn</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																</AbilityEndApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+													</applicators>
+													<applyTarget>AbilityOwner</applyTarget>
+													<behaviorFlags>155</behaviorFlags>
+													<caption>Program</caption>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<lifeTime>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<startCondition>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</startCondition>
+												</ProgramApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>2</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/GameLogic/GeneralApplicators/EndOfAbility.APLR" />
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>1</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+									</applicators>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>152</behaviorFlags>
+									<caption>outer program</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+								</ProgramApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="387F9AE6-C8E2-4C2D-A110-9A8D7A22E531">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="028DE904-8827-4D48-AB07-FC8740A84635">
+					<PointTargetSelector>
+						<checkMinRange>true</checkMinRange>
+						<mode>RangeFromOwner</mode>
+						<offset>
+							<x>0</x>
+							<y>1</y>
+						</offset>
+						<paralleledTarget>false</paralleledTarget>
+						<range>
+							<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJItFEIsQi00Qi0IM/9BR2Rwk6AUAAACDxAhdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>min( mDist2Target, cA2_Range )</sString>
+						</range>
+						<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="6EC39905-10BA-4B1C-8F95-B65A4030CD56">
+							<SelectApplicatorTarget>
+								<applicatorIndex>0</applicatorIndex>
+								<applicatorName></applicatorName>
+								<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+								<selectTarget>AbilityTarget</selectTarget>
+							</SelectApplicatorTarget>
+						</targetSelector>
+						<traceMode>4</traceMode>
+					</PointTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="7787C4A5-F4C7-4DB8-BA9E-136AD312067B">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Отключаем временно эффект топоров на А1</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQUAAAABAAAAEQAAAFNURVAAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cSTEP</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Ability_A1_EffectOff</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABJcm9uS25pZ2h0X0ExAAAASXJvbktuaWdodF9BMQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("IronKnight_A1")</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А2. Сотрясающий выпад</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="E725B086-9D5E-4ABA-B9F7-203AA6594EAF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR8AAAACAAAAJgAAAD8AAABJcm9uS25pZ2h0X0EydQAASXJvbktuaWdodF9BMnUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtkX799gbwIPAAYvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("IronKnight_A2u") == false</sString>
+				</condition>
+				<name>IronKnight_A2u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0E3B5877-59A2-4D6F-82CA-FD0A52719E34">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSYAAAACAAAALQAAAEYAAABJcm9uS25pZ2h0X0EyX1NVUAAAAElyb25LbmlnaHRfQTJfU1VQAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoFAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("IronKnight_A2_SUP") == false</sString>
+				</condition>
+				<name>IronKnight_A2_SUP</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="F61513A4-6116-4B8D-8AE7-99E189F4A307">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="166E9652-48B1-486C-BFFF-FCADC3CE3553">
+					<UnitConstant>
+						<name>A2_Range</name>
+						<var>
+							<compiledString>FQsAAAACAAAAGAAAACsAAABSYW5nZV9Mb25nAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFOQAAANld/NlF/IvlXcMAAAAAAAAQQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long+4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="05F19396-CE75-44AE-AF52-61DC258034F6">
+					<UnitConstant>
+						<name>A2_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACSQgCACUQ=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale (sStrength, 73, 550)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0F49F000-E676-43A9-AE09-FC920CE2EC21">
+					<UnitConstant>
+						<name>A2_SlowEffect</name>
+						<var>
+							<compiledString>FTQAAAAFAAAAOwAAAFQAAACSAAAApQAAALAAAABJcm9uS25pZ2h0X0EyX1NVUAAAAElyb25LbmlnaHRfQTJfU1VQAAAAQTJfU1VQX1Nsb3cAVYvsg+wUaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgUAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0JYtVDFKLRQhQaCgAAACLTRCLEYtNEItCUP/Q3AXEAAAA3V3w6wndBcQAAADdXfDdRfDZXezZReyL5V3DAAAAAACAQUA=</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("IronKnight_A2_SUP")? cA2_SUP_Slow + 35 : 35</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="4FA25EA3-AB54-40D6-9C8C-B839D0E653BE">
+					<UnitConstant>
+						<name>A2_SlowDuration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/const_A2u_Damage" />
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="B46DE8B2-E5E2-467E-9411-83DBD8176CFA">
+					<UnitConstant>
+						<name>A2u_RepeatTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="1AB05B41-64BF-45FC-A651-7DD135702564">
+					<UnitConstant>
+						<name>A2u_MaxJumpRange</name>
+						<var>
+							<compiledString>FRgAAAACAAAAJwAAAEEAAABBMl9SYW5nZQAAAABSYW5nZV9TaG9ydABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaAwAAACLVRCLAotNEItQUN1d+P/S3EX42V302UX0i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_Range+cRange_Short</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="C4F49416-47D2-4B4C-B911-DEA16C94113B">
+					<UnitConstant>
+						<name>Slow_Duration</name>
+						<var>
+							<compiledString>FRAAAAABAAAAHAAAAEEyX1Nsb3dEdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_SlowDuration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0816A452-B3EC-417F-AD70-C40202D7EA4A">
+					<UnitConstant>
+						<name>Dec_MoveSpeed</name>
+						<var>
+							<compiledString>FQ4AAAABAAAAGgAAAEEyX1Nsb3dFZmZlY3QAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_SlowEffect</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="DC1DD51F-8B96-4C72-9E9C-29F153657517">
+					<UnitConstant>
+						<name>A2_Width</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="D2B1EBD9-BAE7-4BEE-A736-4E3692C9DB5C">
+					<UnitConstant>
+						<name>A2_WidthTree</name>
+						<var>
+							<compiledString>FQkAAAACAAAAFgAAACkAAABBMl9XaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTcAAADZXfzZRfyL5V3DAAAAQDMz8z8=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_Width*1.2f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="833A95D1-1A12-440B-9544-DA2B798A47F8">
+					<UnitConstant>
+						<name>A2_SummonLife</name>
+						<var>
+							<compiledString>FS8AAAAEAAAANgAAAE8AAACNAAAAoAAAAElyb25LbmlnaHRfQTJ1AABJcm9uS25pZ2h0X0EydQAAQTJ1X1JlcGVhdFRpbWUAVYvsg+wUaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0JYtVDFKLRQhQaCAAAACLTRCLEYtNEItCUP/Q3AXDAAAA3V3w6wXZ7t1d8N1F8Nld7NlF7IvlXcMAAAAAAAAAAAAAAAAAAPA/</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("IronKnight_A2u") ? cA2u_RepeatTime+1 : 0 </sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/IronKnight/const_A2_SUP_Damage" />
+				<Item href="/Items/Talents/Class/IronKnight/const_A2_SUP_Slow" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>20</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/IronKnight/Ability_A2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="9B9E8160-D852-4AD5-94D8-2F86D594FB5B">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>579</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/IronKnight/A2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAWQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>150</sString>
+	</manaCost>
+	<marker>doCast2</marker>
+	<microAI href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="0A42279E-F6AA-4130-A505-C29BA0438004">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAABAAAAWgAAAFWL7IPsGFaLRQiLEItNCIsC/9CLTQiLEYtNCItCDN1d+P/Q3H34i00IixGLTQiLQkzdXfD/0Ivwi00IixGLTQiLgpABAAD/0DPJO/APlcGDwQGJTezbRezcDYAAAADcXfDf4PbEBXoJx0XoAQAAAOsHx0XoAAAAAIpF6F6L5V3DmpmZmZmZuT8=</compiledString>
+				<returnType>bool</returnType>
+				<sString>sLife / sMaxLife &gt; 0.1 * nt(1, 2)</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="EDAF45F2-C605-46D2-99FB-A64AC3B04639">
+				<PointTargetSelector>
+					<checkMinRange>true</checkMinRange>
+					<mode>ToTarget</mode>
+					<offset>
+						<x>0</x>
+						<y>1</y>
+					</offset>
+					<paralleledTarget>false</paralleledTarget>
+					<range>
+						<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_Range</sString>
+					</range>
+					<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="274FFCF3-19A1-48C3-986D-AFF7EE2BE50B">
+						<ComparingTargetSelector>
+							<referenceValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>0.0f</sString>
+							</referenceValue>
+							<targetSelector href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="E334F47A-AF9D-49F4-A65A-D5231AD7F7C3">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cA2_Range</sString>
+									</range>
+									<targetFilter>679477251</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+							<valueToCompare>
+								<compiledString>FQAAAAABAAAAJwAAAFWL7IPsDItFDIsQi00MiwL/0ItNDIsRi00Mi0IM3V34/9DcffjcHUkAAADf4PbEBXoJx0X0AQAAAOsHx0X0AAAAANtF9IvlXcOamZmZmZnJPw==</compiledString>
+								<returnType>float</returnType>
+								<sString>rLife / rMaxLife &lt; 0.2</sString>
+							</valueToCompare>
+						</ComparingTargetSelector>
+					</targetSelector>
+					<traceMode>0</traceMode>
+				</PointTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>4</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/IronKnight/Ability_A2.TALENT_name.txt" />
+	<node>ability2Throw</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" id="48FAD4F3-3C6B-4193-B45E-BB50CA60F1E0">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>автозапрет таланта при ForbidMoveSpeical</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQwAAAACAAAAKgAAAEAAAABGb3JiaWRVc2VBMgBVi+xRaAAAAgCLRQyLEItNDItCaP/QD7bIhcl1K2gAAAAAi1UIiwKLTQiLkIgBAAD/0twdYgAAAN/g9sRBdAnHRfwAAAAA6wfHRfwBAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>rFlag(131072)  || sender.vForbidUseA2 &gt; 0</sString>
+				</enabled>
+				<flag>1024</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/IronKnight/Ability_A2.TALENT" />
+				</talents>
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>IronKnight_A2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>16777216</targetType>
+	<type>MultiActive</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

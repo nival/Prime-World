@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Crusader/A1_A_SummonGrenade.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Спелл с взрывом бомбы</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Crusader/A1_A_Spell.APLR" id="BFC6CCE0-EA0A-4083-90CA-FB9609D049DB">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Crusader/A1_A_Spell.APLR" id="D4594A72-D166-435E-9620-1418CC76527C">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>урон</caption>
+						<damage>
+							<compiledString>FQoAAAABAAAAFgAAAEExX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_Damage</sString>
+						</damage>
+						<damageMode>4</damageMode>
+						<damageType>Material</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+					</DamageApplicator>
+				</Item>
+				<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+				<Item href="/Items/Talents/Class/Crusader/status_A1_A_DoT.APLR" />
+				<Item href="/Items/Talents/Class/Crusader/A1_A_Spell.APLR" id="6251BB5C-7946-474D-AF16-7487D2218DCE">
+					<PermanentStatModApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>Набираем счётчик целей</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+								<returnType>float</returnType>
+								<sString>1</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Crusader_A1Targets</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/var_A0_AddStack.APLR" />
+				<Item href="/Items/Talents/Class/Crusader/fx_A0_AddStack.APLR" />
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Crusader/A1_A_Spell.APLR" id="7E725006-B177-4F96-9D47-A8DB9365C686">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>1</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/Crusader/A1_A_Spell.APLR" id="9FB39A96-8BAF-4C06-BEEF-25FF3407FA75">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>0</x>
+				<y>0</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQwAAAABAAAAGAAAAEExX0FvZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>cA1_AoeRange</sString>
+			</range>
+			<targetFilter>538771519</targetFilter>
+			<targetSelector href="" />
+		</AreaTargetSelector>
+	</targetSelector>
+</SpellApplicator>

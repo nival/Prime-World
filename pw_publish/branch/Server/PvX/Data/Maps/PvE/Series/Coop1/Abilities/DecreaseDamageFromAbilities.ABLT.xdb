@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Summons/Whisper/PvE_Coop1.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Maps/PvE/Series/Coop1/Abilities/DecreaseDamageFromAbilities.ABLT" id="5B62798C-E5CC-44A9-AF33-01BDD912482D">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/PvE/Series/Coop1/Abilities/DecreaseDamageFromAbilities.ABLT" id="A6BBF628-7FC1-4393-AD79-D7C99F27C7C2">
+					<UnitConstant>
+						<name>Ability_Def</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>50</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Maps/PvE/Series/Coop1/Abilities/DecreaseDamageFromAbilities.ABLT" id="32529587-E073-4EC9-A851-85DF07B0AC31">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Maps/PvE/Series/Coop1/Abilities/DecreaseDamageFromAbilities.ABLT" id="B74DF15C-477D-4DF6-A707-0D41C6696F4B">
+						<TriggerApplicator>
+							<actionsCount>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</actionsCount>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>Защита от заклинаний</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<playAck>false</playAck>
+							<processor href="/Maps/PvE/Series/Coop1/Abilities/DecreaseDamageFromAbilities.ABLT" id="680013BA-DEC8-4F51-91C0-8EA15DC16D7C">
+								<EventProcessorDamageTransformer>
+									<abilityFilter>
+										<abilitiesList />
+										<abilityCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</abilityCondition>
+										<abilityCostMode>Energy</abilityCostMode>
+										<exceptThis>false</exceptThis>
+										<flags>1610614014</flags>
+										<onlySingleTarget>false</onlySingleTarget>
+									</abilityFilter>
+									<add>
+										<compiledString>FRYAAAADAAAAJQAAADoAAAA/AAAAQWJpbGl0eV9EZWYAcmF3RGFtYWdlAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S2eDcDWAAAABoDAAAAItFEIsQi00Qi0JU3V34/9DcTfjZXfTZRfSL5V3DexSuR+F6hD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>-cAbility_Def*0.01*appl.GetVariable("rawDamage")</sString>
+									</add>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<checkSender>0</checkSender>
+									<damageTypeFilter>31</damageTypeFilter>
+									<flags>0</flags>
+									<matchTargetInverted>false</matchTargetInverted>
+									<mul>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</mul>
+									<objectFilter>572325951</objectFilter>
+									<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+									<spell href="" />
+									<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+								</EventProcessorDamageTransformer>
+							</processor>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<useAbilityCooldown>false</useAbilityCooldown>
+							<useAbilityOwnerMana>false</useAbilityOwnerMana>
+						</TriggerApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption></caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Maps/PvE/Series/Coop1/Abilities/DecreaseDamageFromAbilities.ABLT_32529587e0734ec9a85185df07b0ac31_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Statuses/Neutral/shield_violet.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Maps/PvE/Series/Coop1/Abilities/DecreaseDamageFromAbilities.ABLT_32529587e0734ec9a85185df07b0ac31_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

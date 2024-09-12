@@ -1,0 +1,12 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/x_coordinator.py"
+RUNSCRIPT_ARGS="--port={{ conf['xcoordinator_port'] }} --log_level={{ conf['log_level_xcoordinator'] }}\
+ --log_rotation=external --log_file_prefix={{ conf['logging'] }}xscoord.log\
+ --tick_period={% if conf['tick_period_xcoordinator'] != "0" %}{{ conf['tick_period_xcoordinator'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+LOGGING=">> {{ conf['logging_run'] }}pw-xcoordinator.log.run 2>&1"

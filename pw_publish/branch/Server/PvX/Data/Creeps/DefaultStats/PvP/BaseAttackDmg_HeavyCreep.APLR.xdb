@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DamageApplicator>
+	<BackLink DBID="/Creeps/A/Heavy/AttackAbility.ATCK" Count="2" />
+	<BackLink DBID="/Creeps/B/Heavy/AttackAbility.ATCK" Count="2" />
+	<BackLink DBID="/Creeps/B/Heavy/PVE1.CREEP" Count="2" />
+	<BackLink DBID="/Creeps/B/Heavy/PvE5_R8.CREEP" Count="2" />
+	<BackLink DBID="/Creeps/B/Heavy/PVP.CREEP" Count="2" />
+	<BackLink DBID="/Maps/PvE/Dungeon2/Spawners/room8.NCSPN" Count="16" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<cancelInvisibility>false</cancelInvisibility>
+	<caption>damage</caption>
+	<damage>
+		<compiledString>FRQAAAADAAAANQAAALoAAADsAAAAQXRrRGFtYWdlRGlzcF9TaWVnZQBVi+yD7CCLRQiLEItNCItCUP/Qg/gEdTBR2ejZHCRR2QUnAQAA2RwkagGLTQyLEYtNDItCWP/QD7bIUegDAQAAg8QM2V386wXZ6Nld/ItVCIsCi00Ii5AEAQAA/9JR2Rwk6P4AAACDxARQi0UIixCLTQiLggABAAD/0FHZHCTo4QAAAIPEBFCLTRCLEYtNEItCXP/QiUX420X42E38i00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3w/9DcTfBR2e7ZHCSLTQiLEYtNCIuCEAEAAN1d6P/Q3A0bAQAA2V3k2UXkUdkcJOgwAAAAg8QI2ejewdxN6Nld4NlF4IvlXcMAAAAAAADwPwAAAEDheoQ/AAAAAAAAQEAAAIA/VYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdw1WL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>(sUnitKind == 4 ? ut_bldg(3, 1) : 1) * random (f2l(sDamageMin), f2l(sDamageMax)) * cAtkDamageDisp_Siege  * (1 + max(sCritChance*0.01f, 0))</sString>
+	</damage>
+	<damageMode>0</damageMode>
+	<damageType>Material</damageType>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<timeLimiter>-1</timeLimiter>
+	<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+</DamageApplicator>

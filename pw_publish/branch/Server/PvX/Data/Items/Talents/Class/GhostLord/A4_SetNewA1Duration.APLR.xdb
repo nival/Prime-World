@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A4_2.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>на целях А1 выставляем новую длительность</caption>
+	<enabled>
+		<compiledString>FTYAAAACAAAAQQAAAGEAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUAAAAAR2hvc3RMb3JkQTRfRGVhdGhTcGVjdHJlMQBVi+xRagCLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QO0UQdSlqAItNEFFoHAAAAItVCIsCi00Ii5CcAQAA/9I7RRB1CcdF/AAAAADrB8dF/AEAAACKRfyL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applGhostLordA4_DeathSpectre(GLOBAL) != pMisc || sender.applGhostLordA4_DeathSpectre1(GLOBAL) != pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="E4FDF0DC-C52E-415D-BFB4-7A7304E7E43B">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="636AABD9-2294-4529-87FB-DC83BE5DFC89">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashAlly</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="C6C0FA52-5E6C-4440-ACCD-131056BB3CEB">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="1A18CCF7-42AE-4009-B491-2104D3D056CA">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAlly.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUAAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVEAAAAEAAAAXgAAAHwAAACUAAAApgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZQAAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hBbGx5AAAAAGR1cmF0aW9uAFWL7IPsFGoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GoAi00QUWgoAAAAi1UMiwKLTQyLkJwBAAD/0olF+GhIAAAAi0X4ixCLTfiLQlT/0GgcAAAAi038ixGLTfyLQlTdXfD/0Nxd8N/g9sRBdQnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashAlly", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="DA3DD89B-1E9B-4C2D-ADA0-192EF9BADB5F">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="B1B562FB-2549-4920-8A34-E6D90B68B257">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAlly.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="8C009626-4C17-42A5-B2FF-4BA912F4E098">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashEnemySelf</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="ED90A57A-40EA-4C82-852A-9D7E2FD08F9C">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="9EF9F2F1-830C-4058-B07C-C0D87DE250EA">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemySelf.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUAAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVUAAAAEAAAAYgAAAIAAAACYAAAAqgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZQAAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hFbmVteVNlbGYAAABkdXJhdGlvbgBVi+yD7BRqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxqAItNEFFoKAAAAItVDIsCi00Mi5CcAQAA/9KJRfhoTAAAAItF+IsQi034i0JU/9BoHAAAAItN/IsRi038i0JU3V3w/9DcXfDf4PbEQXUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashEnemySelf", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="07C0D362-41AA-4B0A-BE96-EBDA96226E7F">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="527ECDFB-205D-4615-8E63-EF3ADA6B0397">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemySelf.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="89070C64-9D2A-4BB4-94AF-4418F658ECCA">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashEnemy</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="7E4BEF14-490B-4509-8CBE-BE1625867284">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="F5E12AFE-902D-4D03-91CF-AADA45638AF4">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemy.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUAAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVEAAAAEAAAAXgAAAHwAAACUAAAApgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZQAAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hFbmVteQAAAGR1cmF0aW9uAFWL7IPsFGoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GoAi00QUWgoAAAAi1UMiwKLTQyLkJwBAAD/0olF+GhIAAAAi0X4ixCLTfiLQlT/0GgcAAAAi038ixGLTfyLQlTdXfD/0Nxd8N/g9sRBdQnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashEnemy", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="24300F63-B670-43A7-B888-47B6032BFF5F">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="70693066-6B27-49D3-AF54-984A49B3C113">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemy.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="8002B9AC-FAE8-40BB-9BAA-38DB935A4EA1">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashAllySelf</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="DC69E6F0-B4DB-4A0A-B252-75715D09DB41">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="EEBBAE2C-B415-4399-AE3F-5D765EEFE0C5">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAllySelf.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUAAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVUAAAAEAAAAYgAAAIAAAACYAAAAqgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZQAAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hBbGx5U2VsZgAAAABkdXJhdGlvbgBVi+yD7BRqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxqAItNEFFoKAAAAItVDIsCi00Mi5CcAQAA/9KJRfhoTAAAAItF+IsQi034i0JU/9BoHAAAAItN/IsRi038i0JU3V3w/9DcXfDf4PbEQXUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashAllySelf", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="94F154B3-8AB0-4FD6-B4C1-55D999F5B619">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="4739BBEC-60CA-4566-91BB-4E258A11795C">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAllySelf.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="95185CE6-D2A6-4CCA-B15F-D7207A84127D">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashAlly</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="2890DDD3-14C7-4A72-804D-D18BE82D7702">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="B1DE4403-691D-4E60-A752-320A40CBFB24">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAlly.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUxAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVEAAAAEAAAAXgAAAHwAAACUAAAApgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZTEAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hBbGx5AAAAAGR1cmF0aW9uAFWL7IPsFGoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GoAi00QUWgoAAAAi1UMiwKLTQyLkJwBAAD/0olF+GhIAAAAi0X4ixCLTfiLQlT/0GgcAAAAi038ixGLTfyLQlTdXfD/0Nxd8N/g9sRBdQnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashAlly", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="8170FD60-7C8B-4CCD-811D-0C718BB9F077">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="7B4BCCEC-CC86-44B8-8DFD-9327E51E65E1">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAlly.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="DBBFA5E8-E4F9-46D5-8B37-7AE57177803E">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashEnemySelf</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="877A960E-AB95-4FB1-AD3E-1B7BEBE751BA">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="05A43509-332B-434F-A1E4-01225103AAF2">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemySelf.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUxAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVUAAAAEAAAAYgAAAIAAAACYAAAAqgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZTEAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hFbmVteVNlbGYAAABkdXJhdGlvbgBVi+yD7BRqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxqAItNEFFoKAAAAItVDIsCi00Mi5CcAQAA/9KJRfhoTAAAAItF+IsQi034i0JU/9BoHAAAAItN/IsRi038i0JU3V3w/9DcXfDf4PbEQXUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashEnemySelf", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="71677521-F59C-42B1-965C-D34936D25815">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="3221B9E6-27E8-47BF-89FE-8D075FD43DA8">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemySelf.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="1519137B-47E1-47CA-9430-29F3F6AFD79B">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashEnemy</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="31DDDB67-8C2B-4051-8FF7-A32F28EBDDB1">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="5BAC4AED-BCD2-47DC-93E6-B675DB4C35FD">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemy.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUxAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVEAAAAEAAAAXgAAAHwAAACUAAAApgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZTEAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hFbmVteQAAAGR1cmF0aW9uAFWL7IPsFGoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GoAi00QUWgoAAAAi1UMiwKLTQyLkJwBAAD/0olF+GhIAAAAi0X4ixCLTfiLQlT/0GgcAAAAi038ixGLTfyLQlTdXfD/0Nxd8N/g9sRBdQnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashEnemy", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="FADEF6C7-580C-40DB-864C-31B565E4B05E">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="ED5967DC-32E0-454B-9AD2-DF79A03F6868">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemy.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="E9EDD5F4-B5BE-4575-B9F8-F084F234235E">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Выбираем цели SpectralLashAllySelf</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="C1A008AB-89A0-4802-B1BF-32CE18479303">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="4C479457-B54B-4DF4-BCDD-47B2439DB4E4">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAllySelf.APLR" />
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Увеличиваем длительность</caption>
+											<durationToAdd>
+												<compiledString>FSUAAAACAAAAMAAAAEgAAABHaG9zdExvcmRBNF9EZWF0aFNwZWN0cmUxAAAAZHVyYXRpb24AVYvsUWoAi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString>FVUAAAAEAAAAYgAAAIAAAACYAAAAqgAAAEdob3N0TG9yZEE0X0RlYXRoU3BlY3RyZTEAAABkdXJhdGlvbgAAAABHaG9zdExvcmRBMV9TcGVjdHJhbExhc2hBbGx5U2VsZgAAAABkdXJhdGlvbgBVi+yD7BRqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxqAItNEFFoKAAAAItVDIsCi00Mi5CcAQAA/9KJRfhoTAAAAItF+IsQi034i0JU/9BoHAAAAItN/IsRi038i0JU3V3w/9DcXfDf4PbEQXUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcM=</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.FindApplicator("GhostLordA4_DeathSpectre1", pMisc, GLOBAL)-&gt;GetVariable("duration") &gt; receiver.FindApplicator("GhostLordA1_SpectralLashAllySelf", pMisc, GLOBAL)-&gt;GetVariable("duration")</sString>
+											</enabled>
+											<flags>2</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="7218692B-69FD-475C-B8E7-3F5AFD99BD16">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="3E8DE697-7C34-4A04-8973-5E1EEA3070AC">
+							<ApplicatorRecipientsTargetSelector>
+								<applicator href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAllySelf.APLR" />
+								<flags>0</flags>
+								<mode>Normal</mode>
+							</ApplicatorRecipientsTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" id="F1A92651-DC7A-4F13-9795-18C5496C4B7D">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

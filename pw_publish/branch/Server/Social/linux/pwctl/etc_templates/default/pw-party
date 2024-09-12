@@ -1,0 +1,34 @@
+# Limit setting
+ulimit -n 128000
+
+# Main setting.
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/party_service.py"
+
+# Instnace settings.
+# One ellement of massive = one instance
+COORDINATOR="{{ conf['ip'] }}:{{ conf['coordinator_port'] }}"
+# party1
+INSTANCE_NAME[1]="party1"
+INSTANCE_PORT[1]="{{ conf['party1_port'] }}"
+INSTANCE_ID[1]="-23"
+# party2
+INSTANCE_NAME[2]="party2"
+INSTANCE_PORT[2]="{{ conf['party2_port'] }}"
+INSTANCE_ID[2]="-24"
+
+
+# Declare associative arrays.
+declare -A INSTANCE RUNSCRIPT_ARGS LOGGING RUN_MARKER
+
+# Generate settings to instnaces
+{{ noParse("""for i in `seq 1 ${#INSTANCE_NAME[@]}`;""") }}
+do
+	INSTANCE[${INSTANCE_NAME[$i]}]=${INSTANCE_NAME[$i]}
+	RUNSCRIPT_ARGS[${INSTANCE_NAME[$i]}]="--port=${INSTANCE_PORT[$i]} --log_level={{ conf['log_level_party'] }} --server_name=${INSTANCE_NAME[$i]} --server_id=${INSTANCE_ID[$i]} --log_rotation=external --log_file_prefix={{ conf['logging'] }}wspartyservice-${INSTANCE_NAME[$i]}.log --coordinator=$COORDINATOR --tick_period={% if conf['tick_period_party'] != "0" %}{{ conf['tick_period_party'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+	LOGGING[${INSTANCE_NAME[$i]}]="> {{ conf['logging_run'] }}pw-party.${INSTANCE_NAME[$i]}.log.run 2>&1"
+done
+

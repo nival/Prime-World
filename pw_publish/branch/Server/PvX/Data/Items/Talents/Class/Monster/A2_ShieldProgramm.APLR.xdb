@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Class/Monster/Ability_A2.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Monster/status_A2_Shield.APLR" />
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FUAAAAAEAAAARwAAAF0AAABxAAAAiwAAAEEyX0RhbWFnZVRyaWdnZXJlZAAAQTJfU2hpZWxkQ3VycmVudENhcGFjaXR5AAAAAEEyX1NoaWVsZEFtb3VudABVi+yD7BBoAAAAAItFCIsQi00Ii4KIAQAA/9DcHc8AAADf4PbEQXpZi00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ/9CLTQxRi1UIUmgwAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sRBdQnHRfQBAAAA6wfHRfQAAAAAi030iU3w6wfHRfAAAAAAikXwi+VdwwAAAAAAAAAA</compiledString>
+				<returnType>bool</returnType>
+				<sString>sender.vA2_DamageTriggered &lt;= 0 ? cA2_ShieldCurrentCapacity &lt; cA2_ShieldAmount : 0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" id="6EFC24BF-FD6F-4F58-B8FE-9CDCA463A135">
+				<PermanentStatModApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>Ресетим кап щита</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</addValue>
+						<multValue>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>MonsterA2_ShieldCap</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" id="00C88A01-5139-40A9-8076-91DB3FBF2BB0">
+				<FlagsApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>184</behaviorFlags>
+					<caption>FX разлетающегося щита</caption>
+					<consumables />
+					<effect>
+						<Item href="/Heroes/Monster/FXAbility2End.EFFT" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<flag>0</flag>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+						<returnType>float</returnType>
+						<sString>0.2</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FRMAAAACAAAAGAAAAC4AAABBMl9EYW1hZ2VUcmlnZ2VyZWQAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUAAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.vA2_DamageTriggered &gt; 0</sString>
+					</startCondition>
+					<talents />
+					<useListAs>ListAsRule</useListAs>
+				</FlagsApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" id="3C732704-7700-447D-849D-8ED3925FBB4C">
+				<SpellApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>Spell с ускорением</caption>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<spell href="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" id="F8A9F144-BB35-429D-A6CE-C5632FDDDB57">
+						<Spell>
+							<applicators>
+								<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+								<Item href="/Heroes/DefaultStatus/_QUICKNESS_status.APLR" />
+								<Item href="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" id="D5BE2ED1-A2B5-4025-AE9B-B4280B13A375">
+									<StatusApplicator parent="/Heroes/DefaultStatus/_INVISIBILITY_status.APLR">
+										<enabled>
+											<compiledString>FRQAAAACAAAAOgAAAE0AAABJbnZpc2libGVfQ29uZGl0aW9uAFWL7FFoAAAACItFDIsQi00Mi0Jo/9APtsiFyXUwi1UMUotFCFBoAAAAAItNEIsRi00Qi0JQ/9DcHW8AAADf4PbERHsJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+											<returnType>bool</returnType>
+											<sString>!rFlag(134217728) &amp;&amp; cInvisible_Condition</sString>
+										</enabled>
+									</StatusApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Monster/A2_ShieldProgramm.APLR" id="BCCB0530-57BD-4467-B9BE-0983B808A991">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>0</flags>
+									<instantApply>true</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</spell>
+					<spellTarget>ApplicatorTarget</spellTarget>
+					<targetSelector href="" />
+				</SpellApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/GameLogic/GeneralApplicators/EndOfAbility.APLR" />
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Программа "щит+FX"</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName>A2_ShieldProgramm</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FQ0AAAACAAAAEgAAACgAAABBMl9UcmlnZ2VyZWQAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdSgAAAN/g9sRBegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAPA/</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vA2_Triggered &lt;= 1</sString>
+	</startCondition>
+</ProgramApplicator>

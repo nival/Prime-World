@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellProbabilityApplicator>
+	<BackLink DBID="/Items/Talents/Class/Healer/A4HealSpell.SPLL" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Healer/Ability1.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>положить Силу</caption>
+	<enabled>
+		<compiledString>FRYAAAACAAAAHQAAADYAAABIZWFsZXJfQTMAAABIZWFsZXJfQTMAVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0EYtVCDtVDHQJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Healer_A3") &amp;&amp; pFirst != pSecond</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<probability>
+		<compiledString>FTEAAAAEAAAAOAAAAFEAAACHAAAApwAAAEhlYWxlcl9BMwAAAEhlYWxlcl9BMwAAAEhlYWxlcl9BMwAAAEEzUHJvY090aGVycwBVi+yD7BBoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aBgAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoJAAAAItV9IsCi030i1BQ/9LZXfDrBdnu2V3w2UXwi+VdwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>talconst("Healer_A3","A3ProcOthers")</sString>
+	</probability>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Healer/CharityPowerSpell.APLR" id="218923F2-EDF5-4425-8A8A-340FCCE19FA4">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Healer/status_A3_CharityPower.APLR" />
+				<Item href="/Items/Talents/Class/Healer/CharityPowerSpell.APLR" id="9708AA33-C403-4E04-B042-5637A2B2681E">
+					<FlagsApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>повесить Healer_A3_DisableBuff</caption>
+						<consumables />
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<flag>0</flag>
+						<formulaName>Healer_A3_DisableBuff</formulaName>
+						<lifeTime>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.2f</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<talents />
+						<useListAs>ListAsRule</useListAs>
+					</FlagsApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Healer/CharityPowerSpell.APLR" id="C8639F98-1533-4EBC-9E77-ADEB6A8B62E0">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellIfFailed href="/Items/Talents/Class/Healer/CharityPowerSpell.APLR" id="ED3163D8-3B1F-4482-B060-4B980444B930">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Healer/MarkerStatus_Pow.APLR" />
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Healer/CharityPowerSpell.APLR" id="7EF8D7D1-B564-4166-94E1-E79B43EB8FB0">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spellIfFailed>
+</SpellProbabilityApplicator>

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>- Спелл "Казнь" при достаточных увечьях</caption>
+	<enabled>
+		<compiledString>FRcAAAACAAAAJAAAADcAAABFeGVjdXRlX1N0YXJ0Q29uZGl0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUwAAAN/g9sREewbGRf8B6wTGRf8AikX/i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>cExecute_StartCondition</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="17EB8F61-4297-4294-BF0F-62BA09BEBD50">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="E681EFBD-E16E-45A0-A91D-D726646D11C4">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Уменьшаем увечья</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FRYAAAACAAAAIwAAADYAAABIYW5kaWN1cF9TdGFydEV4ZWN1dGUAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3A1EAAAA2V382UX8i+VdwwAAAAAAAPC/</compiledString>
+								<returnType>float</returnType>
+								<sString>cHandicup_StartExecute * -1</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Stacks</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeHasteBuff_G761.APLR" />
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeHasteBuff_G762.APLR" />
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="3D58F179-0C55-4CC0-A612-B254DB338150">
+					<ApplicatorNameOverrider>
+						<applicator href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>(Upg) Уменьшаем Стойкость</caption>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+					</ApplicatorNameOverrider>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="A5F2E05F-D952-49F3-B5D1-DA14258A0DB6">
+					<ApplicatorNameOverrider>
+						<applicator href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>(Upg) Уменьшаем Волю</caption>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+					</ApplicatorNameOverrider>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="27F146D8-48E0-4ACE-B47F-E4441B1AD307">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>- Обнуляем переменную, если у сендера был выкачан G761</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</addValue>
+							<multValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Haste_G761</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="32939BB5-F441-4C8D-AB4D-C7CA5540062C">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>- Обнуляем переменную, если у сендера был выкачан G762</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</addValue>
+							<multValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Haste_G762</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="D6621667-FB9D-4A5C-A5D3-68B9F0553319">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>- Обнуляем переменную, если у сендера был выкачан G759</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</addValue>
+							<multValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Haste_G759</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="A907F899-714F-4CD1-B06D-F42AFFAA53FE">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>- Обнуляем переменную, если у сендера был выкачан G760</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</addValue>
+							<multValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Haste_G760</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="76C83B30-7B24-437C-99D0-96D16FC6FC42">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>Наносим чистый урон</caption>
+						<damage>
+							<compiledString>FRgAAAABAAAAJAAAAEV4ZWN1dGVfRGFtYWdlX0Z1bmN0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cExecute_Damage_Function</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Pure</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="BF7B2B91-3992-4BD3-AD6A-315BA9A1360E">
+							<UIEvent>
+								<signRecipients>EVENT_PARTICIPANTS</signRecipients>
+								<UISigns>
+									<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="473CEC92-40EE-463D-A3AA-16B8FD5B6B01">
+										<UISignFlyOffText>
+											<signRecipients>USE_FROM_PARENT</signRecipients>
+											<text>
+												<acceleration>
+													<x>0</x>
+													<y>0</y>
+												</acceleration>
+												<align>Center</align>
+												<endOpacity>0</endOpacity>
+												<layout>fly_damage_dealed</layout>
+												<lifeTime>4</lifeTime>
+												<offset>
+													<x>0</x>
+													<y>-80</y>
+												</offset>
+												<startOpacity>1</startOpacity>
+												<velocity>
+													<x>0</x>
+													<y>-45</y>
+												</velocity>
+											</text>
+										</UISignFlyOffText>
+									</Item>
+								</UISigns>
+							</UIEvent>
+						</uiEvent>
+					</DamageApplicator>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="3D1DE5CF-36ED-4F4B-B524-BD9392F95C1E">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>- Обнуляем переменную, если у сендера был выкачан G764</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</addValue>
+							<multValue>
+								<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+								<returnType>float</returnType>
+								<sString>0</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Haste_G764</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" id="13DAC7AD-8D84-48C4-BFDB-9608507EF0BE">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="/Effects/Buffs/EnergyBurst/_1.EFFT" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

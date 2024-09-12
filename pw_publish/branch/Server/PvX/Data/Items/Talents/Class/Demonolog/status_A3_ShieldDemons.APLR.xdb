@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Demonolog/Ability3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="B107F707-CB72-4AB4-B704-E74F6D36FA01">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Раздаём статусы демонам</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="F18D1A6F-4335-4DEC-B8E2-BA420A2FAEB5">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Demonolog/status_A3_OnDemons.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="C2D5F7EE-8A52-4725-9920-7D5221A5A218">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="142BBD29-E007-4918-9080-B2CEC80E3C33">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FREAAAACAAAAFgAAACwAAABEZW1vbm9sb2dzRGVtb25zAFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHU4AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.vDemonologsDemons &gt; 0</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="6C4759BF-EB0A-464C-803B-BB2699FEB9C4">
+							<SummonEnumerator>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<summonTypes>1</summonTypes>
+							</SummonEnumerator>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="82B54E85-D238-426C-AD29-7EC17EBB0E59">
+			<DelegateDamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Делегируем урон демонам</caption>
+				<damageToApply>
+					<compiledString>FRoAAAACAAAAIQAAADsAAABEYW1hZ2UAAEEzX0RhbWFnZURlbGVnYXRlAFWL7IPsDGgAAAAAi0UQixCLTRCLQlT/0ItNDFGLVQhSaAgAAACLRRCLEItNEItCUN1d+P/Q2eje4dxN+Nld9NlF9IvlXcMAAAAAAADwPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>appl.vDamage * (1-cA3_DamageDelegate)</sString>
+				</damageToApply>
+				<damageToDelegate>
+					<compiledString>FRoAAAACAAAAIQAAADsAAABEYW1hZ2UAAEEzX0RhbWFnZURlbGVnYXRlAFWL7IPsDGgAAAAAi0UQixCLTRCLQlT/0ItNDFGLVQhSaAgAAACLRRCLEItNEItCUN1d+P/Q3E342V302UX0i+Vdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>appl.vDamage * cA3_DamageDelegate</sString>
+				</damageToDelegate>
+				<delegateTargets href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="C10D1C51-028A-409D-B0DF-D762114DA957">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FREAAAACAAAAFgAAACwAAABEZW1vbm9sb2dzRGVtb25zAFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHU4AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.vDemonologsDemons &gt; 0</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR" id="1DA19CF6-B5AE-4121-A142-C7D1286BD747">
+							<SummonEnumerator>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<summonTypes>1</summonTypes>
+							</SummonEnumerator>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</delegateTargets>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>1</flags>
+				<forceDontAttackBack>true</forceDontAttackBack>
+				<formulaName></formulaName>
+				<ignoreDefences>true</ignoreDefences>
+				<infiniteTotalDamage>true</infiniteTotalDamage>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<stopCondition>
+					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>0</sString>
+				</stopCondition>
+				<totalDamage>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</totalDamage>
+			</DelegateDamageApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Щит на себя</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/Bubble/_.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FR4AAAAEAAAAIwAAADkAAABFAAAAWwAAAERlbW9uc0lzQWxpdmUAAABEZW1vbnNBNFN0YXJ0AFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHX0AAADf4PbEQXQraBAAAACLTQiLEYtNCIuCiAEAAP/Q3B19AAAA3+D2xEF0CcdF/AAAAADrB8dF/AEAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vDemonsIsAlive &gt; 0 || sender.vDemonsA4Start &gt; 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Demonolog/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FRIAAAABAAAAHgAAAEEzX1NoaWVsZER1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_ShieldDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Demonolog/status_A3_ShieldDemons.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

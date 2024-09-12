@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UIMessageApplicator>
+	<BackLink DBID="/Heroes/IronKnight/_.HROB" Count="1" />
+	<BackLink DBID="/Heroes/Plane/appl_MaterialDamage.APLR" Count="1" />
+	<BackLink DBID="/Heroes/Reaper/appl_DamageMaterial.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Gunslinger/BaseDmgAA.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/IronKnight/status_A3_AoEDmg.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>вывести суммарный урон (Material)</caption>
+	<enabled>
+		<compiledString>FQsAAAACAAAAIgAAADUAAABpc0NyaXRpY2FsAFWL7IPsCItFEIsQi00Qi0JI/9CJRfxoAAAAAItN/IsRi038i0JU/9DcHVcAAADf4PbERHoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>$ParentApplVariable("isCritical") == 0</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<message textref="/UI/Events/CommonEvents/UI_Message_Damage_Material.APLR_message.txt" />
+	<providerName></providerName>
+	<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff_EP_Material.UIEV" />
+	<value>
+		<compiledString>FTEAAAACAAAAWAAAAGoAAABkYW1hZ2VEZWFsZWQAAAAASXJvbktuaWdodF9BMURhbWFnZTpkYW1hZ2VEZWFsZWQAVYvsg+wUi0UQixCLTRCLQkj/0IlF/ItNEIsRi00Qi0JI/9CJRfhoEAAAAItN+IsRi034i0JU/9BoAAAAAItN/IsRi038i0JU3V3w/9DcRfDZXezZReyL5V3D</compiledString>
+		<returnType>float</returnType>
+		<sString>$ParentApplVariable("damageDealed") + $ParentApplVariable("IronKnight_A1Damage:damageDealed")</sString>
+	</value>
+</UIMessageApplicator>

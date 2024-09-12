@@ -1,0 +1,10 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/services/pwc_frontend"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/services/pwc_frontend/main.py"
+RUNSCRIPT_ARGS="--loglevel={{ conf['log_level_cf'] }} --log={{ conf['logging'] }}pwconnect_frontend.log --config={{ conf['rundir'] }}/cfg/pwc_frontend.cfg"
+LOGGING=">> {{ conf['logging_run'] }}pw-cf.log.run 2>&1"

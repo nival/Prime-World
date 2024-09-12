@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Spawners/Neutral_Elite_1.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Spawners/Neutral_Elite_2.NCSPN" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="" />
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>5</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="D6177609-C49B-4A35-AC9E-2653D25913D8">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Триггер на смерть со спауном рандомного глифа</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQYAAAACAAAACwAAACEAAABJc1BldABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1DAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsPet == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Glyphs/GlyphSpawnerAbility.ABLT" id="EC8C8A67-9AFF-4459-B8C1-3385716FEEF4">
+					<EventProcessorOnDeath>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<castSpellDelay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</castSpellDelay>
+						<checkSender>0</checkSender>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Glyphs/GlyphSpawnerAbility.ABLT" id="3E435860-A6DA-4177-A3C7-B53E84AA1453">
+							<Spell>
+								<applicators>
+									<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="4AD52791-CAB1-4FDF-AC5E-147DD059B5E9">
+										<SpellSwitchApplicator>
+											<activeSpellIndex>
+												<compiledString>FQAAAAAAAAAAVYvsagNqAItFEIsQi00Qi0Jc/9Bdww==</compiledString>
+												<returnType>int</returnType>
+												<sString>random(0,3)</sString>
+											</activeSpellIndex>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Спелсвитчер с рандомным выбором глифа</caption>
+											<dontUseDispatches>false</dontUseDispatches>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<spells>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="4AF74AF6-35C6-4CF7-8FCC-391F33FD6833">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="97F97D9A-FCC9-41F6-B00A-11B01D449D3C">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф стремительности</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/Booster.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="F861338B-F4BA-45A9-8784-07ADB909EDBE">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="50CAB50E-685B-46CC-AFD6-0E3874425183">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="477A38AF-0F68-4D17-AB55-B1645B9035C4">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф мощи</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/DoubleDamager.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="EDB64168-B290-4A08-A392-89B09C1E700E">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="309F8F7A-B83B-41D3-B9CF-BC42F053365E">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="8D00C11E-8027-4BF0-B40F-A1256748C7E2">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф невидимости</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/Invisibler.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="BC0BEDF2-AA26-4A4C-8839-707BD6B82C04">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="8771E081-4323-4AB6-A5E4-504458E24506">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="209DFFAD-4F4C-4EDB-BC15-1EF0F5BBDA5F">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф обновления</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/Refresher.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="02F416FF-21A9-4C70-BA6D-8EC167CEFFD5">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+											</spells>
+										</SpellSwitchApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="74ECAD8D-B1CE-4429-B787-443C4D301F38">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnDeath>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="D370008B-C695-4624-8C31-E044706EE86B">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Триггер на смерть со спауном рандомного глифа</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQYAAAACAAAACwAAACEAAABJc1BldABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1DAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsPet == 1</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Glyphs/GlyphSpawnerAbility.ABLT" id="0771373B-7F71-460A-BDCB-F1E95E0529F1">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Glyphs/GlyphSpawnerAbility.ABLT" id="F908B146-CF77-47E0-8254-82161CF9FE12">
+							<Spell>
+								<applicators>
+									<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="D668AF13-40E2-409F-8B03-2081DC2DBB71">
+										<SpellSwitchApplicator>
+											<activeSpellIndex>
+												<compiledString>FQAAAAAAAAAAVYvsagNqAItFEIsQi00Qi0Jc/9Bdww==</compiledString>
+												<returnType>int</returnType>
+												<sString>random(0,3)</sString>
+											</activeSpellIndex>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Спелсвитчер с рандомным выбором глифа</caption>
+											<dontUseDispatches>false</dontUseDispatches>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<spells>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="BA1227F6-BB28-4FE2-9AC6-3D82439083D3">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="A2BD6F32-4E41-4B8C-B469-2215B558C372">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф стремительности</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/Booster.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="5A410F26-C3CC-4333-9735-3A11316669B7">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="4FECCE35-B35E-401C-BB84-580490B31581">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="8595D326-A0BB-4FEE-B524-2952043076B1">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф мощи</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/DoubleDamager.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="A5F0E9D2-86FE-4D46-89F1-9CC2A18EA2D4">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="0B0E12E8-F897-4D31-8476-9270EE44CA04">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="95C79577-F338-441C-B4D2-665FC789ECF9">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф невидимости</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/Invisibler.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="D2CD9D84-EDD5-42EE-9FF3-FD894495CDB8">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+												<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="C60557FE-1FB9-49D2-AD36-5E052E250A90">
+													<Spell>
+														<applicators>
+															<Item href="/Glyphs/GlyphSpawnerAbility.ABLT" id="37625455-4ED2-4BCA-BE72-86A49E8254F0">
+																<CreateGlyphApplicator>
+																	<absolutePosition>
+																		<x>0</x>
+																		<y>0</y>
+																	</absolutePosition>
+																	<angle>45</angle>
+																	<angleIsRelative>false</angleIsRelative>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<caption>Спавним глиф обновления</caption>
+																	<distance>3</distance>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<glyph href="/Glyphs/Refresher.GLPH" />
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<radius>10</radius>
+																	<scriptName></scriptName>
+																</CreateGlyphApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="E8B93E31-810F-4BE6-8C6A-FADABD370530">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</Item>
+											</spells>
+										</SpellSwitchApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Glyphs/GlyphSpawnerAbility.ABLT" id="4E0591FF-D0CE-432A-ADDD-376DF3BF372D">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

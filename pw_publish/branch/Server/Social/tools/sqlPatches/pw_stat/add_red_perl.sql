@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_user_profile` ADD COLUMN `red_perl` INTEGER NOT NULL DEFAULT 0 AFTER `perl`;

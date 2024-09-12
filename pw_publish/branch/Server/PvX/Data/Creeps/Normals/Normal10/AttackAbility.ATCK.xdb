@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Creeps/Normals/Normal10/PvP_A.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal10/PvP_B.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Effects/Shots/HitsApplicators/Melee.APLR" />
+		<Item href="/Creeps/DefaultStats/PvP/BaseAttackDmg_Creep.APLR" />
+		<Item href="/Creeps/Normals/Normal10/AttackAbility.ATCK" id="A4335EA4-2EC8-4977-BA63-E1DA10702001">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>увеличить длительность</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsUYtFDIsQi00Mi0JQ/9CD+Ah0P4tNDIsRi00Mi0JQ/9CD+Ad0LYtNDIsRi00Mi0JQ/9CD+AZ0G4tNDIsRi00Mi0JQ/9CD+BF0CcdF/AEAAADrB8dF/AAAAACKRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>rUnitKind != 8 &amp;&amp; rUnitKind != 7 &amp;&amp; rUnitKind != 6 &amp;&amp; rUnitKind != 17</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Creeps/Normals/Normal10/AttackAbility.ATCK" id="6CC0F6A4-22F6-465A-A6A0-892EA9F69A65">
+					<Spell>
+						<applicators>
+							<Item href="/Creeps/Normals/Normal10/AttackAbility.ATCK" id="CC114AA8-A10A-46D9-8ED1-6FCB3D2EC75C">
+								<AddApplicatorDuration>
+									<applicators>
+										<Item href="/Creeps/Normals/Normal10/status_BeastLife.APLR" />
+									</applicators>
+									<applyTarget>AbilityOwner</applyTarget>
+									<caption>увеличить длительность</caption>
+									<durationToAdd>
+										<compiledString>FRYAAAABAAAAIgAAAEFkZENvcnJ1cHRpb25EdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cAddCorruptionDuration</sString>
+									</durationToAdd>
+									<enabled>
+										<compiledString>FTMAAAADAAAAQAAAAGAAAAByAAAAQmVhc3RTdGF0dXNMaWZlRHVyYXRpb24AZHVyYXRpb24AAAAAQmVhc3RfRHVyYXRpb24AVYvsg+wQagCLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QiUX8i00MUYtVCFJoJAAAAItFEIsQi00Qi0JQ/9BoGAAAAItN/IsRi038i0JU3V30/9DcXfTf4PbEBXoJx0XwAQAAAOsHx0XwAAAAAIpF8IvlXcM=</compiledString>
+										<returnType>bool</returnType>
+										<sString>sender.applBeastStatusLifeDuration(GLOBAL).GetVariable("duration") &lt; cBeast_Duration</sString>
+									</enabled>
+									<flags>0</flags>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<nameToCheck></nameToCheck>
+									<providerName></providerName>
+								</AddApplicatorDuration>
+							</Item>
+						</applicators>
+						<dispatch href="/Creeps/Normals/Normal10/AttackAbility.ATCK" id="D7707BED-021D-4692-B735-9CFAC9FBBBF9">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Normals/Normal10/AttackAbility.ATCK" id="353D4DBE-5E61-44F7-9B1E-67D3D14A1D6C">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal11/const_AddCorruptionDuration" />
+				<Item href="/Creeps/Normals/Normal10/const_HeroZombie" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Normals/Normal10/AttackAbility.ATCK" id="5289B376-7EFE-43D8-8C8F-BEFB5C1C5769">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+		<Item href="/Creeps/Normals/Normal10/AttackAbility.ATCK" id="EEFEAF99-68A3-40B8-A7AB-CCF6D2764E25">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Idle Эффект</caption>
+				<consumables />
+				<effect>
+					<Item href="/Creeps/Normals/Normal10/FXIdle.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>1835519</targetType>
+	<type>Simple</type>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

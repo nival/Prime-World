@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR" id="B78934EC-67EA-40A5-B214-606153C86BCB">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>Триггер если атакуют героя</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR" id="8B121F87-64D2-4E4D-9DFF-25389FF5785F">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Any</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1073743103</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorSelectedTarget</applyTarget>
+						<checkSender>2</checkSender>
+						<damageTypeFilter>15</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</mul>
+						<objectFilter>538771519</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR" id="BBA4D93B-8ED9-4936-8AA5-445CD0DE3A47">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR" id="77E2CEB5-E74D-436E-9F28-79817BF5E5B7">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption> - Возвращаем врагу урон</caption>
+											<damage>
+												<compiledString>FRMAAAABAAAAHwAAAEE0X1JlZmxlY3RlZERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cA4_ReflectedDamage</sString>
+											</damage>
+											<damageMode>0</damageMode>
+											<damageType>Pure</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR" id="2F31B279-8DB5-4070-8BB6-804156E2BB62">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>147</behaviorFlags>
+	<caption>Статус на цель</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="/Effects/Debuffs/Catarh/_Triple.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FTkAAAAEAAAARgAAAGYAAAB4AAAAlQAAAER1cmF0aW9uAAAAAEE0X1N0YXR1c0R1cmF0aW9uAAAAZHVyYXRpb24AAAAAQTRfTWF4RGFtYWdlAFWL7IPsHGoCi0UQUGgMAAAAi00IixGLTQiLgpwBAAD/0IlF/ItNDFGLVQhSaCwAAACLRRCLEItNEItCUP/QaCAAAACLTfyLEYtN/ItCVN1d9P/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3s/9DcZezZXejZRehR2Rwki00IixGLTQiLgqwBAAD/0Nxd9N/g9sQFegnHReQBAAAA6wfHReQAAAAAikXki+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.GetDamageTaken(cDuration - (sender.FindApplicator("A4_StatusDuration", pMisc, ABILITY)-&gt;GetVariable("duration"))) &lt; cA4_MaxDamage</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>A4_StatusDuration</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Zealot/A4.ITEX" />
+	<lifeTime>
+		<compiledString>FQkAAAABAAAAFQAAAER1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

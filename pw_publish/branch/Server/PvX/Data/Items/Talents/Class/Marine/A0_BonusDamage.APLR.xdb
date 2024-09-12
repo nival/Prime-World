@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+	<BackLink DBID="/Heroes/Marine/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/A2_Damages.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/A2_Program.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/status_A4_deadlyspin.APLR" Count="1" />
+	<caption>(A0) урон</caption>
+	<damage>
+		<compiledString>FSYAAAADAAAARQAAAFcAAABwAAAAZGFtYWdlRGVhbGVkAAAAAEEwX0JvbnVzRGFtYWdlUGVyY2VudABVi+yD7BCLRRCLEItNEItCSP/QiUX8i00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ/9BoAAAAAItN/IsRi038i0JU3V30/9DcTfTcDX4AAADZXfDZRfCL5V3DAAAAQOF6hD8=</compiledString>
+		<returnType>float</returnType>
+		<sString>$ParentApplVariable("damageDealed") * cA0_BonusDamagePercent * 0.01f</sString>
+	</damage>
+	<damageMode>4</damageMode>
+	<damageType>Pure</damageType>
+	<enabled>
+		<compiledString>FTEAAAAFAAAAVAAAAG4AAACLAAAAvAAAAM8AAABXYXJkAAAAAE1hcmluZUEwX0J1ZmZzAABBMF9QYXJpdHkAAABkYW1hZ2VEZWFsZWQAVYvsg+wQi0UMixCLTQyLQlD/0IP4EQ+ElgAAAGoAi00QUWgAAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHV2aAgAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoGAAAAItFEIsQi00Qi0JQ3V34/9DdRfja6d/g9sREejiLTRCLEYtNEItCSP/QiUX0aCQAAACLTfSLEYtN9ItCVP/Q3B3xAAAA3+D2xEF1CcdF8AEAAADrB8dF8AAAAACKRfCL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc &amp;&amp; sender.vMarineA0_Buffs == cA0_Parity &amp;&amp; $ParentApplVariable("damageDealed") &gt; 0</sString>
+	</enabled>
+	<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+</DamageApplicator>

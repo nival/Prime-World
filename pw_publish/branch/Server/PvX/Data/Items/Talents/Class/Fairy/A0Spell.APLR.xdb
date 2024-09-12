@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Fairy/Ability_A3.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>на симбиота</caption>
+	<enabled>
+		<compiledString>FRYAAAABAAAAIAAAAEZhaXJ5QTBIYXN0ZUNvbnRhaW5lcgBVi+xqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applFairyA0HasteContainer(UNIT) != pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Fairy/A0Spell.APLR" id="047580DD-568E-4A44-8D6B-DD74B3527DF6">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Fairy/A0_ApplyOrUpdate.APLR" />
+				<Item href="/Items/Talents/Class/Fairy/A0Spell.APLR" id="CBA3838F-B9F0-4E10-9FE9-F05CBAF6D19B">
+					<SpellSwitchApplicator>
+						<activeSpellIndex>
+							<compiledString>FRcAAAABAAAAIQAAAEZhaXJ5QTBBM1Nsb3dDb250YWluZXIAVYvsagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlcGLwV3D</compiledString>
+							<returnType>int</returnType>
+							<sString>receiver.applFairyA0A3SlowContainer(UNIT) == pMisc ? 0 : 1</sString>
+						</activeSpellIndex>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>выбрать: повесить земедление или проапдейтить</caption>
+						<dontUseDispatches>true</dontUseDispatches>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spells>
+							<Item href="/Items/Talents/Class/Fairy/A0Spell.APLR" id="A15921AB-7703-43FD-914D-53D11588D05E">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Fairy/A0Spell.APLR" id="F14A0776-7A5C-431C-8D4F-55FB16CFB140">
+											<ApplicatorNameOverrider>
+												<applicator href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>замедление от феи</caption>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName>FairyA0A3SlowContainer</formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+											</ApplicatorNameOverrider>
+										</Item>
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+							<Item href="/Items/Talents/Class/Fairy/A0Spell.APLR" id="68B79EDF-3D4E-4BEC-A6F9-7575015D8819">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Fairy/A0Spell.APLR" id="D5653483-402D-44D2-B17C-DCCAD6D7513E">
+											<AddApplicatorDuration>
+												<applicators>
+													<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+												</applicators>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>проапдейтить замедление FairyA0A3SlowContainer</caption>
+												<durationToAdd>
+													<compiledString>FQ4AAAABAAAAGgAAAFNsb3dfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>cSlow_Duration</sString>
+												</durationToAdd>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<flags>3</flags>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<nameToCheck>FairyA0A3SlowContainer</nameToCheck>
+												<providerName></providerName>
+											</AddApplicatorDuration>
+										</Item>
+									</applicators>
+									<dispatch href="" />
+								</Spell>
+							</Item>
+						</spells>
+					</SpellSwitchApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Fairy/A0Spell.APLR" id="4F9CB6AE-01DE-401F-A994-9DEE5D9CFEF9">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/Fairy/A3Target.TGSL" />
+</SpellApplicator>

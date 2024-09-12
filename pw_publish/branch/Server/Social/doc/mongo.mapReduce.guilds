@@ -1,0 +1,5 @@
+m = function() { emit(this.FullName, 1); }
+r = function(k,vals) { var sum=0; for(var i in vals) sum += vals[i]; return sum; }
+db.guilds.mapReduce(m, r, { out : "guilds_fullname" } );
+
+db.guilds_fullname.find( {value:{$gt:1}} )

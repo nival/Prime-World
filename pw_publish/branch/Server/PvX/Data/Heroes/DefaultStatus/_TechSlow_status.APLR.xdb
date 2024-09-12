@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlAppl.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bomber/status_A3u_Enemy.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bomber/status_A4_2_Debuff.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Brewer/status_Honey_0E.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Brewer/status_Honey_1E.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Brewer/status_Honey_2E.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_TechSlow_status.APLR" id="3F680231-2242-4595-92A6-8E12322B8D93">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption> - MoveSpeed</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQ4AAAACAAAAGwAAAC4AAABEZWNfTW92ZVNwZWVkAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tw1SAAAANno3uHZXfzZRfyL5V3DAAAAAAAA8D8AAAAAAABZQA==</compiledString>
+						<returnType>float</returnType>
+						<sString>1 - cDec_MoveSpeed/100</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Dec_MoveSpeed</statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>Технический статус для замедления (Tech.MoveSpeed)</caption>
+	<customCounter>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FR0AAAAEAAAAIgAAADgAAABEAAAAWgAAAEltbXVuZTJDb250cm9sAABBbGxvd0NvbnRyb2wAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdhAAAAN/g9sREeytoEAAAAItNDIsRi00Mi4KIAQAA/9DcHXwAAADf4PbERHsJx0X8AAAAAOsHx0X8AQAAAIpF/IvlXcMAAAAAAADwPwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vImmune2Control == 0 || receiver.vAllowControl == 1</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>TechSlow</formulaName>
+	<image href="" />
+	<lifeTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="" />
+	<power>10</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRMAAAACAAAAIAAAADMAAABUZWNoU2xvd19Db25kaXRpb24AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1PAAAA3+D2xER7BsZF/wHrBMZF/wCKRf+L5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>cTechSlow_Condition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" />
+</StatusApplicator>

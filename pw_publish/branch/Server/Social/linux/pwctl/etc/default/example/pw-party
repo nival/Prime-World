@@ -1,0 +1,34 @@
+# Limit setting
+ulimit -n 128000
+
+# Main setting.
+USER="pwcastle"
+RUNDIR="/opt/pwcastle/"
+PYTHON="/usr/bin/python"
+PYTHON_ARGS="-u"
+RUNSCRIPT="/opt/pwcastle/party_service.py"
+
+# Instnace settings.
+# One ellement of massive = one instance
+COORDINATOR="192.168.50.2:8700"
+# party1
+INSTANCE_NAME[1]="party1"
+INSTANCE_PORT[1]="8716"
+INSTANCE_ID[1]="-23"
+# party2
+INSTANCE_NAME[2]="party2"
+INSTANCE_PORT[2]="8717"
+INSTANCE_ID[2]="-24"
+
+
+# Declare associative arrays.
+declare -A INSTANCE RUNSCRIPT_ARGS LOGGING RUN_MARKER
+
+# Generate settings to instnaces
+for i in `seq 1 ${#INSTANCE_NAME[@]}`;
+do
+	INSTANCE[${INSTANCE_NAME[$i]}]=${INSTANCE_NAME[$i]}
+	RUNSCRIPT_ARGS[${INSTANCE_NAME[$i]}]="--port=${INSTANCE_PORT[$i]} --log_level=warning --server_name=${INSTANCE_NAME[$i]} --server_id=${INSTANCE_ID[$i]} --log_rotation=external --log_file_prefix=/var/log/pwlobby/wspartyservice-${INSTANCE_NAME[$i]}.log --coordinator=$COORDINATOR"
+	LOGGING[${INSTANCE_NAME[$i]}]="> /var/log/pwlobby/pw-party.${INSTANCE_NAME[$i]}.log.run 2>&1"
+done
+

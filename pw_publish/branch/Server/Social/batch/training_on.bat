@@ -1,0 +1,2 @@
+python get.py "http://127.0.0.1:8801/x?action=change_const&pretty=1&module=MM&var=GAME_TYPES&value=[\"train\",\"pvp\",\"pvp1x1\",\"pvp2x2\",\"pvb\"]"
+python get.py "http://127.0.0.1:8802/x?action=change_const&pretty=1&module=MM&var=GAME_TYPES&value=[\"train\",\"pvp\",\"pvp1x1\",\"pvp2x2\",\"pvb\"]"

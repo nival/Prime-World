@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" Count="2" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Спелл с уроном</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Gunslinger/spell_A3_MarkDamage.APLR" id="EE64FC72-291C-4B29-BAF0-34EAC5F2E401">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Gunslinger/spell_A3_MarkDamage.APLR" id="687C0215-AE6F-4513-A637-C6F1850E4054">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>Наносим урон, если цель ушла в варфог</caption>
+						<damage>
+							<compiledString>FQ8AAAABAAAAGwAAAEEzX01hcmtfRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA3_Mark_Damage</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Gunslinger/spell_A3_MarkDamage.APLR" id="31644317-A69B-4F47-B8DF-187EA5FAFB8B">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>1</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>
