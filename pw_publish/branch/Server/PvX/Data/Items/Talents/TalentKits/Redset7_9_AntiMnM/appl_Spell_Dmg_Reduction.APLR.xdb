@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Level4/G752_StrOrInt.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>2 pieces: Spell DmgReduction</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FSYAAAAEAAAAKwAAAEEAAABNAAAAYwAAAEc3NTJfU3RhdGVBbnRpU3BlbGwAUmVkc2V0N185X0NvdW50ZXIAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdjQAAAN/g9sREeytoFAAAAItNCIsRi00Ii4KIAQAA/9DcHYUAAADf4PbEAXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAQAAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vG752_StateAntiSpell &amp;&amp; sender.vRedset7_9_Counter &gt;= 2</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/TalentKits/Redset7_9_AntiMnM/appl_Spell_Dmg_Reduction.APLR" id="EE3AC3A9-4702-41E7-B59C-A7F8F50EFE05">
+		<EventProcessorDamageTransformer>
+			<abilityFilter>
+				<abilitiesList />
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Any</abilityCostMode>
+				<exceptThis>false</exceptThis>
+				<flags>1073741952</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</abilityFilter>
+			<add>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</add>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<damageTypeFilter>31</damageTypeFilter>
+			<flags>0</flags>
+			<matchTargetInverted>false</matchTargetInverted>
+			<mul>
+				<compiledString>FRoAAAACAAAAJwAAADoAAABSZWRzZXQ3XzlfRGFtYWdlUmVkdWN0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tw1VAAAANno3uHZXfzZRfyL5V3DAAAAAAAA8D8AAAAAAABZQA==</compiledString>
+				<returnType>float</returnType>
+				<sString>1 - (cRedset7_9_DamageReduction/100)</sString>
+			</mul>
+			<objectFilter>1900607</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="" />
+			<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+		</EventProcessorDamageTransformer>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

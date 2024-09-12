@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/A/SuperHeavy/MidOnly.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/B/SuperHeavy/MidOnly.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption> -- Всякие хитрые статусы, которые вешает на себя СуперСидж.</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="6DCD194C-CFC2-4850-8E41-EA4FA833640B">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="071544FB-D777-43BC-93E8-B06ED969768B">
+					<UnitConstant>
+						<name>RangeToAllyHero</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="24692A4E-9D4F-4425-A64F-A22DA805EC79">
+					<UnitConstant>
+						<name>RangeToEnemyHero</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="0C003DE7-4AC1-49A0-8B81-928D1530DD98">
+					<UnitConstant>
+						<name>CapAllies</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="6C5CF049-C33F-4410-B6B0-C83C2A2A8ED6">
+					<UnitConstant>
+						<name>CapAlliesToStrengthBonus</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="668A12C3-3D30-4DFA-BDED-07BBE3214EF7">
+					<UnitConstant>
+						<name>BaseAllyDefence</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="FF68966E-867C-4AE2-AD80-A547A975B03B">
+					<UnitConstant>
+						<name>StrBonus_perAlly</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>40</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="0188CC85-8825-4B84-94E8-CB4F16C211FB">
+					<UnitConstant>
+						<name>RangeToAllyToDie</name>
+						<var>
+							<compiledString>FQwAAAACAAAAGQAAACwAAABSYW5nZVRvQWxseQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBToAAADZXfzZRfyL5V3DAAAAAAAACEA=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRangeToAlly + 3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="105CB68F-9396-4A36-AE08-B26CF5F400F7">
+					<UnitConstant>
+						<name>AddEnergy</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQgz/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sMaxLife</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="2DCD0A8F-A8F7-48ED-91B4-90DC6B9EA28B">
+					<UnitConstant>
+						<name>EnergyRegenPercent_perAlly</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="2895882C-43A9-409B-AC2A-66C0414BB59D">
+					<UnitConstant>
+						<name>EnergyRegenPercent_perEnemy</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAwA==</compiledString>
+							<returnType>float</returnType>
+							<sString>-6</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="E283EF97-84FC-4DE9-BD27-6C046D287060">
+					<UnitConstant>
+						<name>ManaShield_FractionPercent</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="AA97057F-EB19-4B12-9072-16B96102DDE1">
+					<UnitConstant>
+						<name>ManaShield_ManaPerDamage</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="8F968415-2043-462A-A262-52F9FA805289">
+					<UnitConstant>
+						<name>RangeToEnemy</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="F9186107-7419-455E-A579-370A16581BC8">
+					<UnitConstant>
+						<name>SetMoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="D4A92598-0E42-481D-97BB-AC9D872C7756">
+					<UnitConstant>
+						<name>TerrainBonus_Percent</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>50</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_description.txt" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="0C30BCF8-D813-49FB-AFA2-29B96D9AFEC9">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="E084C326-A8D2-40A6-9430-3EDEDBBC749A">
+						<TargetsCounterApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption> - Считаем союзных героев вокруг</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName>SuperSiegeAlliesCounter</formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<targetSelector href="/Creeps/DefaultStats/MidOnly/selector_nearbyAllyHero.TGSL" />
+						</TargetsCounterApplicator>
+					</Item>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="3635952C-4F9B-4E64-BC76-4F0E2857CAE3">
+						<AuraApplicator>
+							<applicators>
+								<Item href="/Creeps/DefaultStats/MidOnly/status_ImNearSiege.APLR" />
+							</applicators>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption> - Аура, которая вешает статус на всех союзников вокруг о том, что они рядом</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<range>
+								<compiledString>FRAAAAABAAAAHAAAAFJhbmdlVG9BbGx5SGVybwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+								<returnType>float</returnType>
+								<sString>cRangeToAllyHero</sString>
+							</range>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<targets>10428927</targets>
+							<targetSelector href="/Creeps/DefaultStats/MidOnly/selector_nearbyAllyHero.TGSL" />
+							<type>None</type>
+						</AuraApplicator>
+					</Item>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="C62498D4-40A0-49A4-A85B-58FA679ADCAE">
+						<TargetsCounterApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption> - Считаем вражеских героев вокруг</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName>SuperSiegeEnemyCounter</formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<targetSelector href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="96BB0EB0-62AD-42DC-9D34-3A44D51C8552">
+								<ConditionTargetSelector>
+									<condition>
+										<compiledString>FREAAAACAAAAFgAAACwAAABIZXJvQWxyZWFkeUNvdW50AFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHU4AAADf4PbERHsJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.vHeroAlreadyCount != 1</sString>
+									</condition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<targetSelector href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="D6A14D4B-1A19-4A7A-89E4-83C7B57CCAA9">
+										<AreaTargetSelector>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<flags>0</flags>
+											<mode>Normal</mode>
+											<range>
+												<compiledString>FREAAAABAAAAHQAAAFJhbmdlVG9FbmVteUhlcm8AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cRangeToEnemyHero</sString>
+											</range>
+											<targetFilter>545259523</targetFilter>
+											<targetSelector href="" />
+										</AreaTargetSelector>
+									</targetSelector>
+								</ConditionTargetSelector>
+							</targetSelector>
+						</TargetsCounterApplicator>
+					</Item>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="3000BF4E-5BAD-4D62-9A5E-0224DD1C1F02">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption> - Меняем РегенЭнергии если рядом есть союзные и/или вражеские герои</caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString>FU0AAAAGAAAAWgAAAHIAAACFAAAAlwAAAK8AAADCAAAAU3VwZXJTaWVnZUFsbGllc0NvdW50ZXIAdGFyZ2V0c0NvdW50AAAAAFN1cGVyU2llZ2VFbmVteUNvdW50ZXIAAHRhcmdldHNDb3VudABVi+yD7AxqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxoGAAAAItN/IsRi038i0JU/9DcHeQAAADf4PbEQXRGagGLTRBRaCgAAACLVQiLAotNCIuQnAEAAP/SiUX4aEAAAACLRfiLEItN+ItCVP/Q3B3kAAAA3+D2xEF0CcdF9AAAAADrB8dF9AEAAACKRfSL5V3DAAAAAAAAAAA=</compiledString>
+								<returnType>bool</returnType>
+								<sString>(sender.applSuperSiegeAlliesCounter(UNIT)-&gt;GetVariable("targetsCount") &gt; 0) || (sender.applSuperSiegeEnemyCounter(UNIT)-&gt;GetVariable("targetsCount") &gt; 0)</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FYUAAAAHAAAAkgAAALAAAADIAAAA4gAAAPoAAAAXAQAAQwEAAEVuZXJneVJlZ2VuUGVyY2VudF9wZXJBbGx5AABTdXBlclNpZWdlQWxsaWVzQ291bnRlcgB0YXJnZXRzQ291bnQAAAAARW5lcmd5UmVnZW5QZXJjZW50X3BlckVuZW15AFN1cGVyU2llZ2VFbmVteUNvdW50ZXIAAHRhcmdldHNDb3VudABVi+yD7CxqAYtFEFBoHAAAAItNCIsRi00Ii4KcAQAA/9CJRfxqAYtNEFFoYAAAAItVCIsCi00Ii5CcAQAA/9KJRfhoeAAAAItF+IsQi034i0JU/9CLTQxRi1UIUmhEAAAAi0UQixCLTRCLQlDdXfD/0NxN8Gg0AAAAi038ixGLTfyLQlTdXej/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d4P/Q3E3gi00MixGLTQyLgqwAAADdXdj/0NwNVwEAANxF2NxF6Nld1NlF1IvlXcMAAAAAAADwvw==</compiledString>
+									<returnType>float</returnType>
+									<sString>(rBaseEnergyRegeneration *-1) + cEnergyRegenPercent_perAlly*sender.applSuperSiegeAlliesCounter(UNIT)-&gt;GetVariable("targetsCount") + cEnergyRegenPercent_perEnemy*sender.applSuperSiegeEnemyCounter(UNIT)-&gt;GetVariable("targetsCount")</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1</sString>
+								</multValue>
+								<stat>EnergyRegeneration</stat>
+								<topModifier>false</topModifier>
+								<variable></variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="0B71CFDC-AC1E-441B-9D18-6C032DE21D93">
+						<FlagsApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption> - разные флаги</caption>
+							<consumables />
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>134365184</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+					<Item href="/GameLogic/GeneralApplicators/Uncontrollable.APLR" />
+					<Item href="/GameLogic/GeneralApplicators/Immune2Control.APLR" />
+					<Item href="/Creeps/DefaultStats/MidOnly/ManaShield.APLR" />
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="66E0C159-F4AA-4F42-8A59-CB79EF7ACA6D">
+						<TriggerApplicator>
+							<actionsCount>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</actionsCount>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>(OFF) - отменяем все дружественные диспатчи, которые в нас приходят</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>false</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<playAck>false</playAck>
+							<processor href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="9E712725-9D77-4B3B-A5D6-E59D7AC03EB3">
+								<EventProcessorCancelDispatch>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<checkSender>0</checkSender>
+									<filter>
+										<abilitiesList />
+										<abilityCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</abilityCondition>
+										<abilityCostMode>Energy</abilityCostMode>
+										<exceptThis>false</exceptThis>
+										<flags>536872129</flags>
+										<onlySingleTarget>false</onlySingleTarget>
+									</filter>
+									<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+									<spell href="" />
+								</EventProcessorCancelDispatch>
+							</processor>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<useAbilityCooldown>false</useAbilityCooldown>
+							<useAbilityOwnerMana>false</useAbilityOwnerMana>
+						</TriggerApplicator>
+					</Item>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="406A1C8D-7068-4DB1-901E-13408AB0B67F">
+						<FlagsApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>(пустой аппликатор) - Чтобы знать, что урон сиджам при смерти героев наносят сами герои в абилке, которую вешает на них ГЗ</caption>
+							<consumables />
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>0</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="4066CA1C-3A54-4781-BE02-6A4D41C5D3DC">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>записывалка Immune2Lycanthropy</caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>Immune2Lycanthropy</variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - статус "Осадная праймашина"</caption>
+				<customCounter>
+					<compiledString>FSEAAAACAAAALAAAAEQAAABTaWVnZUFsbGllc0NvdW50ZXIAAHRhcmdldHNDb3VudABVi+xRagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QiUX8aBQAAACLTfyLEYtN/ItCVP/QUdkcJOgHAAAAg8QEi+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+					<returnType>int</returnType>
+					<sString>f2l(sender.applSiegeAlliesCounter(UNIT)-&gt;GetVariable("targetsCount"))</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_0c30bcf8d81349fbafa229b96d9afec9_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Impulses/Isto4nik.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_0c30bcf8d81349fbafa229b96d9afec9_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>3</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+		<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="375835BA-C9F1-4585-A13B-D9C42DE13930">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - Анонсмент о том, что крипы появились</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_375835bac9f14585a13bd9c42de13930_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="B789FCF6-A488-46CD-8109-5923EBC2283B">
+					<UIEvent>
+						<signRecipients>EVENT_MAKER_TEAM</signRecipients>
+						<UISigns>
+							<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="F102762B-2604-402D-98E1-0BB981A8357D">
+								<UISignAnnouncement>
+									<announcementSound>
+										<eventName>minimap_alert</eventName>
+										<groupName>UI</groupName>
+										<projectName>PF</projectName>
+									</announcementSound>
+									<announcementSoundCooldown>0</announcementSoundCooldown>
+									<announcementType>SuperSiegeSpawned</announcementType>
+									<imageBurn href="/UI/Styles/Icons/Creeps/Factional/SuperHeavyB.ITEX" />
+									<imageFreeze href="/UI/Styles/Icons/Creeps/Factional/SuperHeavyA.ITEX" />
+									<lifeTime>3</lifeTime>
+									<priority>100</priority>
+									<signRecipients>USE_FROM_PARENT</signRecipients>
+									<txt textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_f102762b2604402d98e10bb981a8357d_txt.txt" />
+									<UseInTutorial>true</UseInTutorial>
+								</UISignAnnouncement>
+							</Item>
+						</UISigns>
+					</UIEvent>
+				</uiEvent>
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+		<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="5558A0FC-7138-4BE9-9271-52F4B5E8F10F">
+			<TargetsCounterApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - Счётчик любых врагов (для замедления)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>SiegeEnemyCounter</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targetSelector href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="FD7CB878-94D9-4DD7-B088-5C6C2C28F511">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlVG9FbmVteQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRangeToEnemy</sString>
+						</range>
+						<targetFilter>545259535</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</TargetsCounterApplicator>
+		</Item>
+		<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="DB219A4C-0535-436A-906F-2155BDA1DF7C">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Если рядом есть враги - мы замедляемся.</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="/Effects/Debuffs/Slow/_.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FSEAAAADAAAALgAAAEYAAABZAAAAU2llZ2VFbmVteUNvdW50ZXIAAAB0YXJnZXRzQ291bnQAVYvsg+wIagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QiUX8aBQAAACLTfyLEYtN/ItCVP/Q3B17AAAA3+D2xEF1CcdF+AEAAADrB8dF+AAAAACKRfiL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applSiegeEnemyCounter(UNIT)-&gt;GetVariable("targetsCount") &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQ0AAAABAAAAGQAAAFNldE1vdmVTcGVlZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cSetMoveSpeed</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="764E84F4-A4D4-4663-8010-4291E3EF7C81">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="273B4641-AC92-4DD2-B25B-87E3D1B52534">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption></caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString>FRUAAAACAAAAIgAAADUAAABUZXJyYWluQm9udXNfUGVyY2VudABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDU8AAADZ6N7B2V382UX8i+VdwwAAAAAAAPA/exSuR+F6hD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1 + ( cTerrainBonus_Percent * 0.01)</sString>
+								</multValue>
+								<stat>Strength</stat>
+								<topModifier>true</topModifier>
+								<variable></variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - (TER) Усиливаемся на родной земле</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_764e84f4a4d4466380104291e3ef7c81_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii0JM/9CL8ItNCIsRi00Ii4KQAQAA/9A78A+UwF5dww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>nt( true, false )</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Statuses/Standard/native_terrain.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT_764e84f4a4d4466380104291e3ef7c81_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+		<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="1D21087B-8952-4DA3-B6D7-127894EAD2D0">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" id="63C616E2-7757-4F90-A4D5-1874A2C18DE8">
+						<FlagsApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>Защита от А0Маски, когда у нас есть энергия</caption>
+							<consumables />
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>0</flag>
+							<formulaName>CantDeath</formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Защита от А0Маски, когда у нас есть энергия</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="" />
+				<dispellPriority>Medium</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCBP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAWUA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rEnergy &gt; 100</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>135209471</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

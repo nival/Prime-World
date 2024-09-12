@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Heroes/WraithKing/_.HROB" Count="2" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>спелл с аое уроном</caption>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Heroes/WraithKing/appl_SpellA3Damage.APLR" id="FF12FF2D-C41D-478D-8677-E0112BD6F496">
+		<Spell>
+			<applicators>
+				<Item href="/Heroes/WraithKing/appl_SpellA3Damage.APLR" id="C6BEADD3-FD43-4B02-BC2E-7AA0B7EBAE63">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>урон</caption>
+						<damage>
+							<compiledString>FQoAAAABAAAAFgAAAEEzX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA3_Damage</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" />
+				<Item href="/Heroes/WraithKing/appl_SpellA3Damage.APLR" id="3ECC31E4-686B-4A54-9D4B-0B8EC34D936F">
+					<FlagsApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>AoE HitEffects, КРАСНЫЙ</caption>
+						<consumables />
+						<effect>
+							<Item href="/Effects/Shots/Swords/_HitRed.EFFT" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<flag>0</flag>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<talents />
+						<useListAs>ListAsRule</useListAs>
+					</FlagsApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Heroes/WraithKing/appl_SpellA3Damage.APLR" id="135C22AC-B849-4ECB-94AD-4EF6008F3194">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Heroes/WraithKing/appl_SpellA3Damage.APLR" id="38B242B1-0042-4197-8B15-A1E20A737969">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<targetSelector href="/Heroes/WraithKing/appl_SpellA3Damage.APLR" id="84B44141-0AD4-4A00-8FD9-6B92C439CBD9">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQoAAAABAAAAFgAAAEFvRV9SYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cAoE_Range</sString>
+					</range>
+					<targetFilter>538705983</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellApplicator>

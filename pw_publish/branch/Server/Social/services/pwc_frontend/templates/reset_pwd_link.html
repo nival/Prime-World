@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru" id="primeworld">
+<head>
+<link rel="icon" type="image/png" href="{{ static_url('images/pw.png') }}"/>
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ static_url('images/pw.ico') }}"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{ _("reset_password_title") }}</title>
+    <noscript>&lt;meta http-equiv="X-Frame-Options" content="deny" /&gt;</noscript>
+
+    <link rel="stylesheet" href="{{ static_url("pwc.css") }}" type="text/css"/>
+    <script type="text/javascript" src="{{ static_url("pwconnect.js") }}"></script>
+    <script type="text/javascript">
+        function sendForm()
+        {
+            var noErrors = checkEmail("vis_email", "emailHint", "tdEmail", true);
+
+            if(noErrors)
+            {
+                var visFrm = document.getElementById("vis_reset_link");
+                var frm = document.getElementById("reset_link");
+
+                document.getElementById("reg_email__").value = document.getElementById("vis_email").value;
+
+                frm.submit();
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+
+<div class="page-content">
+<div class="b-header">
+    <h1 class="logo">
+        <a href="{{logo}}" target="_blank">
+        <img src="{{ static_url("images/logo.png") }}" alt="Prime World">
+        </a>
+    </h1>
+</div>
+    <div class="b-section">
+
+        <div class="b-popup">
+            <h4 class="b-popup__title">{{ _("reset_password_label" ) }}</h4>
+            <form id="vis_reset_link" class="b-form" onsubmit="return sendForm();">
+                <div style="margin-right: 40px">
+                    <table class="t-form" style="margin:0;">
+                        <tr><td class="b-form-item"><label style="font-weight:700;">{{ _("email_address_label") }}</label></td></tr>
+                        <tr>
+                            <td id="tdEmail">
+                                <input id="vis_email" type="text" class="b-input" value="{{email}}" onblur="checkEmail('vis_email', 'emailHint', 'tdEmail');" onfocus="hideErrorHint('emailHint', 'tdEmail');">
+                                <div class="b-hint" id="emailHint">
+                                    <p id="errorHint" style="display:none;"></p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="b-form-item">
+                    <input type="submit" value="{{ _("reset_and_send_password") }}" class="b-submit" style="margin-right: 38px;">
+                </div>
+                <div class="b-form-item">
+                    <a href="{{next}}?locale={{locale}}" class="b-submit" style="text-align:center;margin-right:38px;">{{ _("back_button") }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <form method="post" id="reset_link" name="reset_link_" action="{{pwcf_prefix}}/do/resetpwdlink">
+        <input type="hidden" class="inputtext" id="reg_email__" name="reg_email__" autocomplete="off">
+        <input type="hidden" autocomplete="off" id="next" name="next" value="{{next}}">
+        <input type="hidden" autocomplete="off" id="locale" name="locale" value="{{locale}}">
+    </form>
+</div>
+<div class="page-footer">
+    <div class="footer-content">
+        <a href="http://www.nival.com/" target="_blank" style="float:left;margin:14px;display:inline-block;width:81px;height:38px; background: url({{ static_url('images/nival-logo.png') }})"></a>
+        <div style="text-align:left;padding-top:20px;">
+            © 2008 - 2013&nbsp;
+            <a href="http://www.nival.com/" target="_blank">Nival</a>
+            </br>
+            {{ _("copyright") }}
+        </div>
+    </div>
+</div>
+
+<div id="loc_values" style="display:none">
+    <div id="loc_err_email">{{ _("err_email") }}</div>
+    <div id="loc_err_email_req">{{ _("err_email_req") }}</div>
+    <div id="loc_err_password_req">{{ _("err_password_req") }}</div>
+    <div id="loc_err_password_to_short">{{ _("err_password_to_short") }}</div>
+    <div id="loc_err_password_to_long">{{ _("err_password_to_long") }}</div>
+    <div id="loc_err_password_wrong_symbols">{{ _("err_password_wrong_symbols") }}</div>
+    <div id="loc_err_password_contains_email">{{ _("err_password_contains_email") }}</div>
+    <div id="loc_err_birth_day_not_set">{{ _("err_birth_day_not_set") }}</div>
+    <div id="loc_err_birth_month_not_set">{{ _("err_birth_month_not_set") }}</div>
+    <div id="loc_err_birth_year_not_set">{{ _("err_birth_year_not_set") }}</div>
+    <div id="loc_err_wrong_date">{{ _("err_wrong_date") }}</div>
+    <div id="loc_err_gender_not_set">{{ _("err_gender_not_set") }}</div>
+    <div id="loc_err_need_accept_eula">{{ _("err_need_accept_eula") }}</div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Crusader/A4_Dispatch.DSCH" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>Отбрасываем врагов</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="3249CA32-1CF6-4F7F-B191-0E5DC4809B5F">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="545AD10A-4571-4148-A88A-861DCB655305">
+					<PermanentStatModApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>Набираем счётчик отброшенных</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>CrusaderTossed</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="B8222458-0EC9-437A-9773-595FA7D732EB">
+					<ThrowApplicator>
+						<angle Animated="True">
+							<Tracks>
+								<Item>
+									<Item>
+										<Key>0</Key>
+										<Value>0</Value>
+									</Item>
+									<Item>
+										<Key>0.5</Key>
+										<Value>0</Value>
+									</Item>
+									<Item>
+										<Key>1</Key>
+										<Value>0</Value>
+									</Item>
+								</Item>
+							</Tracks>
+							<Type>Clamp</Type>
+							<Values>
+								<Item>
+									<Key>0</Key>
+									<Value>0</Value>
+								</Item>
+								<Item>
+									<Key>0.5</Key>
+									<Value>0</Value>
+								</Item>
+								<Item>
+									<Key>1</Key>
+									<Value>0</Value>
+								</Item>
+							</Values>
+						</angle>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>152</behaviorFlags>
+						<caption>Enemy throw</caption>
+						<collisionFlags>1</collisionFlags>
+						<enabled>
+							<compiledString>FU8AAAAHAAAAawAAAI4AAACrAAAAygAAAOAAAADyAAAAEgEAAFB1c2hEaXN0YW5jZQAAAABDcnVzYWRlclRvc3NlZAAATWF4VG9zc2VkAAAASW1tdW5lMkNvbnRyb2wAAFRocm93AAAAVGhyb3dfSnVtcABVi+yD7BSLRRCLEItNEItCDP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEQQ+FpwAAAGgQAAAAi00IixGLTQiLgogBAAD/0ItNDFGLVQhSaCAAAACLRRCLEItNEItCUN1d8P/Q3F3w3+D2xAF1a2gsAAAAi00MixGLTQyLgogBAAD/0NwdQgEAAN/g9sREeklqAItNEFFoPAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1KWoAi0UQUGhEAAAAi00MixGLTQyLgpwBAAD/0DtFEHUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcMAAAAAAAAAAA==</compiledString>
+							<returnType>bool</returnType>
+							<sString>mDist2Target &lt; cPushDistance &amp;&amp; sender.vCrusaderTossed &lt;= cMaxTossed &amp;&amp; receiver.vImmune2Control == 0 &amp;&amp; receiver.applThrow(GLOBAL) == pMisc &amp;&amp; receiver.applThrow_Jump(GLOBAL) == pMisc</sString>
+						</enabled>
+						<firstTargetToHit href="" />
+						<flightType>Throw</flightType>
+						<flipTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</flipTime>
+						<flyEffect>
+							<Item href="/Effects/Buffs/Bless/_Gold.EFFT" />
+							<Item href="" />
+						</flyEffect>
+						<formulaName>Throw</formulaName>
+						<landTime>0</landTime>
+						<lockRotation>false</lockRotation>
+						<LoggingEvent>-1</LoggingEvent>
+						<maxDistance>0</maxDistance>
+						<maxHeight>0</maxHeight>
+						<moveSpeed>
+							<compiledString>FRoAAAACAAAAKQAAAEMAAABQdXNoRGlzdGFuY2UAAAAAUHVzaFNwZWVkAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/Si0UMUItNCFFoEAAAAItVEIsCi00Qi1BQ3V34/9LcffjZXfTZRfSL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cPushDistance/cPushSpeed</sString>
+						</moveSpeed>
+						<providerName></providerName>
+						<startSpell href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="1769C0EA-F35B-416E-9EF9-EC2E0DEDAECF">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="839F9A1E-6936-4FE4-9DAC-8C4DF71EBEEC">
+										<StatModApplicator parent="/GameLogic/GeneralApplicators/SetTossed.APLR">
+											<lifeTime>
+												<compiledString>FQoAAAABAAAAFgAAAFB1c2hTcGVlZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cPushSpeed</sString>
+											</lifeTime>
+										</StatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="28864632-6D2E-4B57-B07B-9C867C999536">
+									<DispatchImmediate>
+										<alwaysApply>true</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</startSpell>
+						<stopSpell href="" />
+						<surfaceSpeedFromAG>false</surfaceSpeedFromAG>
+						<takeOffTime>0</takeOffTime>
+						<targetSelector href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="EF92A0C3-C8B9-4D3C-BC1A-011C3DE37C3E">
+							<PointTargetSelector parent="/Items/Talents/Class/Crusader/A4_TargetSelector.TGSL">
+								<paralleledTarget>true</paralleledTarget>
+								<range>
+									<compiledString>FQ0AAAABAAAAHAAAAFB1c2hEaXN0YW5jZQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFEIsQi00Qi0IM3V34/9DcbfjZXfTZRfSL5V3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cPushDistance - mDist2Target</sString>
+								</range>
+								<targetSelector href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="ABEE1B24-111D-4627-BAF2-B2A7633B6B3F">
+									<SelectApplicatorTarget>
+										<applicatorIndex>0</applicatorIndex>
+										<applicatorName></applicatorName>
+										<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+										<selectTarget>Hier3UpApplicatorTarget</selectTarget>
+									</SelectApplicatorTarget>
+								</targetSelector>
+								<traceMode>6</traceMode>
+							</PointTargetSelector>
+						</targetSelector>
+						<trackTargetUnit>false</trackTargetUnit>
+						<trajectory Animated="True">
+							<Tracks>
+								<Item>
+									<Item>
+										<Key>0</Key>
+										<Value>0</Value>
+									</Item>
+									<Item>
+										<Key>1</Key>
+										<Value>0</Value>
+									</Item>
+								</Item>
+							</Tracks>
+							<Type>Clamp</Type>
+							<Values>
+								<Item>
+									<Key>0</Key>
+									<Value>0</Value>
+								</Item>
+								<Item>
+									<Key>1</Key>
+									<Value>0</Value>
+								</Item>
+							</Values>
+						</trajectory>
+					</ThrowApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="E153FD8A-A1B4-4BAB-9067-9DF1277A3592">
+				<DispatchImmediate>
+					<alwaysApply>true</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="66C97652-DB35-401D-B414-21DF82710CC8">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FUsAAAAIAAAAZAAAAHoAAACQAAAAtAAAAM4AAADrAAAACgEAACABAABMaWtlSGVybwAAAABUaHJvdwAAAFRocm93X0p1bXAAAENydXNhZGVyVG9zc2VkAABNYXhUb3NzZWQAAABJbW11bmUyQ29udHJvbABVi+yD7AyLRQyLEItNDItCUP/Qg/gCdSZoAAAAAItNDIsRi00Mi4KIAQAA/9DcHUoBAADf4PbERA+KqwAAAGoBi00QUWgMAAAAi1UMiwKLTQyLkJwBAAD/0jtFEA+FhwAAAGoBi0UQUGgUAAAAi00MixGLTQyLgpwBAAD/0DtFEHVnaCAAAACLTQiLEYtNCIuCiAEAAP/Qi00MUYtVCFJoMAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEQXUraDwAAACLTQyLEYtNDIuCiAEAAP/Q3B1CAQAA3+D2xER6CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAAAAAAAAAAAAAAADwPw==</compiledString>
+				<returnType>bool</returnType>
+				<sString>(rUnitKind != 2 || receiver.vLikeHero == 1) &amp;&amp; receiver.applThrow(UNIT) == pMisc &amp;&amp; receiver.applThrow_Jump(UNIT) == pMisc &amp;&amp; sender.vCrusaderTossed &lt; cMaxTossed &amp;&amp; receiver.vImmune2Control == 0</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>SendOnce</mode>
+			<targetSelector href="/Items/Talents/Class/Crusader/A4_EnemyThrow.APLR" id="56B41BA4-A630-4571-B028-13A9511B1957">
+				<CapsuleTargetSelector>
+					<cutoffFirstSegment>true</cutoffFirstSegment>
+					<flags>0</flags>
+					<mode>SendOnce</mode>
+					<range>
+						<compiledString>FQYAAAACAAAAEwAAACYAAABXaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTQAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+						<returnType>float</returnType>
+						<sString>cWidth * 0.5</sString>
+					</range>
+					<rangeFromOwner>
+						<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA4_Range</sString>
+					</rangeFromOwner>
+					<segmentBegin>PreviousPosition</segmentBegin>
+					<segmentDirectionOffset>0</segmentDirectionOffset>
+					<segmentEnd>CurrentPosition</segmentEnd>
+					<segmentEndTargetSelector href="" />
+					<targetFilter>537657351</targetFilter>
+				</CapsuleTargetSelector>
+			</targetSelector>
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellPeriodicallyApplicator>

@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Zealot.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A4u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/appl_A0_RefreshCD.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_7_Ultimate/Status_Redset5_7_Cooldown.APLR" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Zealot/status_A4_DamageReflected.APLR" />
+	</applicators>
+	<askId>4</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А4. Священное возмездие</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="FF033AEC-A19C-410E-82A5-68845E4C2189">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQwAAAABAAAAEAAAAFplYWxvdF9BNF8yAFWL7GgAAAAAi0UIixCLTQiLgqgBAAD/0PfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>!sender.GetTalent( "Zealot_A4_2")</sString>
+				</condition>
+				<uiEvent href="" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="/Items/Talents/Class/Zealot/Ability_A4.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="AEE8C719-CF83-40BC-939C-5A1BA5BC34A1">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABaZWFsb3RfQTR1AABaZWFsb3RfQTR1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Zealot_A4u") == false</sString>
+				</condition>
+				<name>Zealot_A4u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4_2.TALENT" />
+		<Item href="/Items/Talents/Class/Zealot/Ability_A4_2u.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="3D3158C7-E34B-426C-9713-ED1E8C60F4D0">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="0C7BFD78-50B5-4BE9-893E-2D1DD2B9B825">
+					<UnitConstant>
+						<name>Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="35D80ED3-93AF-4EEF-944A-3268D526E38A">
+					<UnitConstant>
+						<name>Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="FE126E2D-1F2C-4527-8258-65F90E58F7DE">
+					<UnitConstant>
+						<name>A4_ReflectedDamage</name>
+						<var>
+							<compiledString>FSYAAAADAAAARQAAAFgAAABdAAAAcmF3RGFtYWdlAAAAQTRfUmVmbGVjdGVkRGFtYWdlUGVyY2VudABVi+yD7BCLRRCLEItNEItCSP/QiUX8i00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ/9DcDX4AAABoAAAAAItN/IsRi038i0JU3V30/9DcTfTZXfDZRfCL5V3DexSuR+F6hD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>appl.parent.GetVariable("rawDamage") * (cA4_ReflectedDamagePercent*0.01)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="F6080CC0-7495-41D9-9F59-62471D66DE32">
+					<UnitConstant>
+						<name>A4_ReflectedDamagePercent</name>
+						<var>
+							<compiledString>FUEAAAAFAAAASAAAAGEAAACXAAAAtwAAANcAAABaZWFsb3RfQTR1AABaZWFsb3RfQTR1AABaZWFsb3RfQTR1AABBNF8yX1JlZmxlY3RlZERhbWVnZU11bHRpcGxlAFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdDdoGAAAAItVCIsCi00Ii5CoAQAA/9KJRfSLRQxQi00IUWgkAAAAi1X0iwKLTfSLUFD/0tld8OsF2ejZXfDZRfDcDeUAAADZXezZReyL5V3DAAAAAADAUkAAAIA/</compiledString>
+							<returnType>float</returnType>
+							<sString>75 * stalconst("Zealot_A4u", "A4_2_ReflectedDamegeMultiple", 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="E080FC14-14A2-42CA-9CAF-7FBC5C3218FB">
+					<UnitConstant>
+						<name>A4_MaxDamage</name>
+						<var>
+							<compiledString>FUEAAAAGAAAASAAAAGEAAACXAAAAtwAAANcAAADhAAAAWmVhbG90X0E0dQAAWmVhbG90X0E0dQAAWmVhbG90X0E0dQAAQTRfMl9SZWZsZWN0ZWREYW1lZ2VNdWx0aXBsZQBVi+yD7BRoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aBgAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoJAAAAItV9IsCi030i1BQ/9LZXfDrBdno2V3wagFR2QUeAQAA2RwkUdkFGgEAANkcJGoAi0UIixCLTQiLgjQBAAD/0FHZHCRqAYtNEIsRi00Qi0Jg/9DYTfDZXezZReyL5V3DAACgQwAAFkUAAIA/</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale(sIntellect, 320, 2400) * stalconst("Zealot_A4u", "A4_2_ReflectedDamegeMultiple", 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="816110D2-366E-407D-B028-009F3934AD7E">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC0Qg==</compiledString>
+		<returnType>float</returnType>
+		<sString>90</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Zealot/Ability_A4.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="BD61E6EE-5B1E-4F0F-8236-B23CDA067ACE">
+		<DispatchImmediate>
+			<alwaysApply>true</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>32787</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Zealot/A4.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>120</sString>
+	</manaCost>
+	<marker>doCast4</marker>
+	<microAI href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="B43A907F-C2D0-4B2A-A308-68F9C5A508DB">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="B5C268DF-706C-4B05-B0DF-27BB2465FED1">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="CB1C7E8B-6C88-40E6-A6C1-00DEBCFDC6DC">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FRUAAAAEAAAAJAAAAFoAAABxAAAApwAAAER1cmF0aW9uAAAAAER1cmF0aW9uAFWL7IPsFItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJItFDIsQi00Mi4KsAQAA/9CLTQyLEYtNDIsC3V34/9DcDcwAAADcXfjf4PbEBXtWi00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ/9BR2Rwki00IixGLTQiLgqwBAAD/0ItNDIsRi00MiwLdXfD/0NwNzAAAANxd8N/g9sQFewnHRewAAAAA6wfHRewBAAAAikXsi+Vdw5qZmZmZmbk/</compiledString>
+								<returnType>bool</returnType>
+								<sString>receiver.GetDamageTaken(cDuration) &gt; rLife*0.1 || sender.GetDamageTaken(cDuration) &gt; rLife*0.1</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelector href="/Items/Talents/Class/Zealot/Ability_A4.TALENT" id="AD0ED7DA-366F-4468-9AF2-872DFA0D4D8C">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange</sString>
+									</range>
+									<targetFilter>1484783619</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/Zealot/Ability_A4.TALENT_name.txt" />
+	<node>ability4</node>
+	<passiveApplicators />
+	<persistentId>Zealot_A4</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Zealot/Ability_A4.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>1350565889</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

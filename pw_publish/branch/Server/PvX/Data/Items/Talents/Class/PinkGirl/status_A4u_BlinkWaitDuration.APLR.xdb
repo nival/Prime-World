@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/PinkGirl/Ability_A4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="1D3225A2-7DCC-47B1-9B25-3746DB113B8D">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Триггер на уход из видимости для отключения абилки</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRUAAAABAAAAHwAAAFBpbmtHaXJsRGVsYXlQcm9ncmFtAFWL7GoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applPinkGirlDelayProgram(UNIT) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQ8AAAABAAAAGwAAAEE0dV9SZXBlYXRUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cA4u_RepeatTime</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="3BE8C6DD-3A15-431B-A88B-B352C3BE238F">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QD7bA99gbwIPAAV3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.IsVisibleForEnemy(sFctn) == false</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="78B936B5-2062-4DF9-962E-EB76A542D6E5">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="898B2A33-0FBD-40AC-8C5B-7EF2CB8A674B">
+										<ProgramApplicator>
+											<applicators>
+												<Item>
+													<applicator href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="F3CCC96D-E1CD-44C3-8A9E-2DBC2F7870D2">
+														<StatModApplicator>
+															<applyTarget>AbilityOwner</applyTarget>
+															<behaviorFlags>1</behaviorFlags>
+															<caption>ForbidUseA4 = 1</caption>
+															<constraint>None</constraint>
+															<dontUpdate>false</dontUpdate>
+															<effect>
+																<Item href="" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<lifeTime>
+																<compiledString>FRwAAAABAAAAKAAAAEE0dV9PdXRPZlNpZ2h0VGltZVRocmVzaG9sZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cA4u_OutOfSightTimeThreshold</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>1.0f</sString>
+																</addValue>
+																<multValue>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>1.0f</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>false</topModifier>
+																<variable>ForbidUseA4</variable>
+															</modifier>
+															<providerName></providerName>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<statModName></statModName>
+														</StatModApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>2</continueEvents>
+													<delay>
+														<compiledString>FRwAAAACAAAAKQAAADwAAABBNHVfT3V0T2ZTaWdodFRpbWVUaHJlc2hvbGQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3CVKAAAA2V382UX8i+Vdw5qZmZmZmbk/</compiledString>
+														<returnType>float</returnType>
+														<sString>cA4u_OutOfSightTimeThreshold - 0.1</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QD7bAg+gB99gbwIPAAV3D</compiledString>
+														<returnType>bool</returnType>
+														<sString>receiver.IsVisibleForEnemy(sFctn) == true</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Items/Talents/Class/PinkGirl/A4_AbilityEnd.APLR" />
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>1</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="FE70B51A-0F33-4429-BF94-12CD8ADF6E2C">
+														<StatModApplicator>
+															<applyTarget>AbilityOwner</applyTarget>
+															<behaviorFlags>0</behaviorFlags>
+															<caption>Запоминаем, что прерываем А4</caption>
+															<constraint>None</constraint>
+															<dontUpdate>false</dontUpdate>
+															<effect>
+																<Item href="" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<lifeTime>
+																<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+																<returnType>float</returnType>
+																<sString>0.2f</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>1.0f</sString>
+																</addValue>
+																<multValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.0f</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>false</topModifier>
+																<variable>A4_Terminating</variable>
+															</modifier>
+															<providerName></providerName>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<statModName></statModName>
+														</StatModApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>1</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+											</applicators>
+											<applyTarget>AbilityOwner</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>Таймер на отключение абилки</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString>FQ8AAAACAAAAFAAAACoAAABBNF9UZXJtaW5hdGluZwBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.vA4_Terminating == 0</sString>
+											</enabled>
+											<formulaName>PinkGirlDelayProgram</formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString>FRUAAAABAAAAHwAAAFBpbmtHaXJsRGVsYXlQcm9ncmFtAFWL7GoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.applPinkGirlDelayProgram(UNIT) == pMisc</sString>
+											</startCondition>
+										</ProgramApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="EDA37616-E208-4F1C-8289-E3A0F7A81729">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="03DACCF7-5D0E-45B6-8892-F836862FAD77">
+			<SpellApplicator>
+				<applyTarget>AbilityTarget</applyTarget>
+				<caption>ForbidUseA4 = 1 for distance</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="0730B798-E623-4589-B845-7CF27B9F642C">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="ECB02E84-5486-446B-83B4-45F6210B85CC">
+								<StatModApplicator>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>ForbidUseA4 = 1 Запрет абилки, если превышение расстояния</caption>
+									<constraint>None</constraint>
+									<dontUpdate>false</dontUpdate>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString>FRIAAAABAAAALgAAAEE0dV9NYXhCbGlua1JhbmdlAFWL7IPsDItFEIsQi00Qi0IM/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sQFehyLTRCLEYtNEIsC/9APtsiFyXQJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+										<returnType>bool</returnType>
+										<sString>appl.Dist2Target &gt; cA4u_MaxBlinkRange &amp;&amp; mIsAbilityOn</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQ8AAAABAAAAGwAAAEE0dV9SZXBlYXRUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cA4u_RepeatTime</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>ForbidUseA4</variable>
+									</modifier>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<statModName></statModName>
+								</StatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR" id="CCB34E0E-B415-47F1-A7EF-FA7F99E3A648">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Статус с ожиданием блинка</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAAJwAAAD0AAABBNF9UZXJtaW5hdGluZwBVi+xRi0UQixCLTRCLAv/QD7bIhcl0K2gAAAAAi1UIiwKLTQiLkIgBAAD/0twdXwAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>mIsAbilityOn &amp;&amp; sender.vA4_Terminating == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>PinkGirlA4u_Wait</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/PinkGirl/A4_1.ITEX" />
+	<lifeTime>
+		<compiledString>FQ8AAAABAAAAGwAAAEE0dV9SZXBlYXRUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4u_RepeatTime</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/PinkGirl/status_A4u_BlinkWaitDuration.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FR0AAAACAAAAJAAAAD0AAABQaW5rR2lybF9BNHUAAAAAUGlua0dpcmxfQTR1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("PinkGirl_A4u")</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

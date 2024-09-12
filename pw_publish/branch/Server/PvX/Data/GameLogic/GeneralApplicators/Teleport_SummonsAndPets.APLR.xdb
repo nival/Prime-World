@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/GameLogic/GeneralApplicators/TeleportStopSpell.SPLL" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Angel/A4_TeleportChanneling.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Wendigo/Ability5.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level6/G291_TeleportBackToCaster.ABLT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>teleport pets</caption>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/GameLogic/GeneralApplicators/Teleport_SummonsAndPets.APLR" id="29ED51BB-2E05-4520-AB2B-D3F731867CAD">
+		<Spell>
+			<applicators>
+				<Item href="/GameLogic/GeneralApplicators/Teleport_SummonsAndPets.APLR" id="6EA6CDF4-79E2-4556-BFD0-966D8BA725CD">
+					<TeleportApplicator parent="/GameLogic/GeneralApplicators/Teleport.APLR">
+						<enabled>
+							<compiledString>FTIAAAAHAAEAOQAAAE8AAABbAAAAcQAAALsAAADaAAAA8AAAAKABAABJc1BldAAAAElzQXZhdGFyAAAAAFJhbmdlX0V4TG9uZwAAAABBZHZTdW1tb25Nb2RlAFWL7IPsHGgAAAAAi0UMixCLTQyLgogBAAD/0NwdGgEAAN/g9sREeyZoCAAAAItNDIsRi00Mi4KIAQAA/9DcHRoBAADf4PbERA+KhAAAAI1N+FGLVQyLAotNDIuQjAEAAP/SUI1F8FCLTQiLEYtNCIuCjAEAAP/QUOhzAAAAg8QIi00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ3V3o/9DcXejf4PbEBXoraCQAAACLTQyLEYtNDIuCiAEAAP/Q3B0SAQAA3+D2xAV6CcdF5AEAAADrB8dF5AAAAACKReSL5V3DAAAAAAAAAEAAAAAAAADwP1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6Dj+//+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+							<returnType>bool</returnType>
+							<sString>(receiver.vIsPet == 1.0f || receiver.vIsAvatar == 1.0f) &amp;&amp; d( sPos, rPos ) &gt; cRange_ExLong &amp;&amp; receiver.vAdvSummonMode &lt; 2</sString>
+						</enabled>
+						<maxDistance>
+							<compiledString></compiledString>
+						</maxDistance>
+						<teleportTarget>Hier3UpApplicatorTarget</teleportTarget>
+					</TeleportApplicator>
+				</Item>
+				<Item href="/GameLogic/GeneralApplicators/SetTeleported.APLR" />
+			</applicators>
+			<dispatch href="/GameLogic/GeneralApplicators/Teleport_SummonsAndPets.APLR" id="226EB452-54BF-4E02-8B4A-2042AC097E9A">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/GameLogic/GeneralApplicators/Teleport_SummonsAndPets.APLR" id="B2C72C47-6AF7-432D-96F2-40F73177374B">
+		<SummonEnumerator>
+			<flags>1</flags>
+			<mode>Normal</mode>
+			<summonTypes>13</summonTypes>
+		</SummonEnumerator>
+	</targetSelector>
+</SpellApplicator>

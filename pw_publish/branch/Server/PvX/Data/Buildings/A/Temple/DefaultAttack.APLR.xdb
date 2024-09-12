@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Maps/Multiplayer/CTE/Temples/_A.FNTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Temples/_A.FNTN" Count="1" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption></caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Buildings/A/Temple/DefaultAttack.APLR" id="61B546A3-FD90-4277-B3B8-8A932A0A8E1F">
+		<Spell>
+			<applicators>
+				<Item href="/Buildings/A/Temple/DefaultAttack.APLR" id="49CFD860-034D-46A9-923B-DEBEDE7D87C7">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>Damage</caption>
+						<damage>
+							<compiledString>FQAAAAADAAAAFQAAAC0AAABDAAAAVYvsg+wIi0UMixCLTQyLQgz/0NwdbgAAAN/g9sQFegbGRf8B6wTGRf8AUdkFagAAANkcJItNDIsRi00Mi0IM/9DcNWIAAADZXfjZRfhR2RwkD7ZN/1HoGwAAAIPEDIvlXcMAAAAAAAAYQAAA+kQAAAAAAHDHQFWL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>s(rMaxLife&lt;12000, rMaxLife/6,2000)</sString>
+						</damage>
+						<damageMode>4</damageMode>
+						<damageType>Pure</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Buildings/A/Temple/DefaultAttack.APLR" id="35EBB9BD-02FB-4372-8089-1412B1D596FC">
+				<DispatchLinear>
+					<aiming>Straight</aiming>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="/Effects/Shots/Lightning/_Hit.EFFT" />
+						<Item href="/Effects/Shots/FireBall/_Hit.EFFT" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="/Effects/Shots/Lightning/_.EFFT" />
+						<Item href="/Effects/Shots/FireBall/_.EFFT" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<flyMode>Linear</flyMode>
+					<fromLocator>Attack</fromLocator>
+					<height>0</height>
+					<killEffect>true</killEffect>
+					<locatorOrient>false</locatorOrient>
+					<maxDeviation>180</maxDeviation>
+					<maxDistance>-1</maxDistance>
+					<maxRise>0</maxRise>
+					<minRise>0</minRise>
+					<persistentApplicators />
+					<speed>30</speed>
+					<suspendTime>0</suspendTime>
+					<toLocator>Body</toLocator>
+				</DispatchLinear>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Buildings/A/Temple/DefaultAttack.APLR" id="F380E1A6-7A96-4409-8775-3168CE902F77">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>26</x>
+				<y>174</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACIQQ==</compiledString>
+				<returnType>float</returnType>
+				<sString>17</sString>
+			</range>
+			<targetFilter>538705983</targetFilter>
+			<targetSelector href="" />
+		</AreaTargetSelector>
+	</targetSelector>
+</SpellApplicator>

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator parent="/Items/Talents/Class/Dryad/status_A2_Infest.APLR">
+	<BackLink DBID="/Items/Talents/Class/Dryad/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NT.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/trigger_A2_StatusDuration_NotNT.APLR" Count="1" />
+	<applicators>
+		<Item skip="1" />
+		<Item href="/Items/Talents/Class/Dryad/spell_A2_SUP_BonusDamage.APLR" />
+		<Item href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="7D7C10CD-BD23-4639-B8AA-5ACB81390048">
+			<ProgramApplicator parent="/Items/Talents/Class/Dryad/prog_WispEffect.APLR">
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="1FA6F0A6-4573-4C4D-B32F-F741FA1B51CA">
+							<FlagsApplicator parent="/Items/Talents/Class/Dryad/effect_wispCycle.APLR">
+								<effect>
+									<Item href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="A14612AD-93C5-4C58-9D4F-A3E3E8E31A79">
+										<EffectSwitcher>
+											<deathType>Manual</deathType>
+											<effectOnInvisible href="/Effects/Shots/Whisp/_IdleEnemy.EFFT" />
+											<effectOnVisible href="/Effects/Shots/Whisp/_IdleAlly.EFFT" />
+											<enableCondition href="" />
+											<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+											<lifeTime>0</lifeTime>
+											<logic>FactionVisibility</logic>
+										</EffectSwitcher>
+									</Item>
+									<Item href="" />
+								</effect>
+								<lifeTime>
+									<compiledString>FRIAAAABAAAAHgAAAEEyX0R1cmF0aW9uVHJlZU5UAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cA2_DurationTreeNT</sString>
+								</lifeTime>
+							</FlagsApplicator>
+						</applicator>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="2E74D414-28B2-4955-ACD2-A0699543150D">
+							<FlagsApplicator parent="/Items/Talents/Class/Dryad/effect_wispEnd.APLR">
+								<effect>
+									<Item href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="F9F1FDE8-FA13-4B40-85B5-4F9CEE9227C1">
+										<EffectSwitcher>
+											<deathType>Manual</deathType>
+											<effectOnInvisible href="/Effects/Shots/Whisp/_Enemy_End.EFFT" />
+											<effectOnVisible href="/Effects/Shots/Whisp/_Ally_End.EFFT" />
+											<enableCondition href="" />
+											<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+											<lifeTime>0</lifeTime>
+											<logic>FactionVisibility</logic>
+										</EffectSwitcher>
+									</Item>
+									<Item href="" />
+								</effect>
+							</FlagsApplicator>
+						</applicator>
+					</Item>
+				</applicators>
+				<caption>Программа с эффектами на дереве</caption>
+			</ProgramApplicator>
+		</Item>
+		<Item skip="1" />
+		<Item skip="1" />
+		<Item href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="662A5210-7F63-413E-8588-BDB42405C6AA">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Heroes/DefaultStatus/_FORBIDINVIS_status.APLR" />
+					<Item href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="DC30B0D6-D7A4-4037-A9E9-CB3F404E6232">
+						<FlagsApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>FX ауры на цели</caption>
+							<consumables />
+							<effect>
+								<Item href="/Items/Talents/Class/Dryad/status_A2_InfestTree.APLR" id="BF73258F-A176-4478-8C03-FED3589EACFE">
+									<AuraEffect>
+										<deathType>Manual</deathType>
+										<enableCondition href="" />
+										<lifeTime>0</lifeTime>
+										<type>Enemy</type>
+									</AuraEffect>
+								</Item>
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>0</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Аура раздачи форбид инвиза</caption>
+				<effect>
+					<Item href="/Effects/General/Aura/_Negative.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cA2_Range</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>538771519</targets>
+				<targetSelector href="" />
+				<type>None</type>
+			</AuraApplicator>
+		</Item>
+	</applicators>
+	<caption>Статус инфеста на дереве</caption>
+	<dispellPriority>NonDispellable</dispellPriority>
+	<image href="" />
+</StatusApplicator>

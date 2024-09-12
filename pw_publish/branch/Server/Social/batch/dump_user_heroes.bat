@@ -1,0 +1,1 @@
+python admin_users.py --foreach_gc=10 --foreach_sleep=50 --dump_mysql_heroes={\"sql_host\":\"localhost:3306\",\"sql_base\":\"pw_stat\",\"sql_user\":\"pw\",\"sql_pass\":\"pwdata\"} >dump_user_heroes_.log

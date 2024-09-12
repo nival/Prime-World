@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableProxyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Marine/A2_Program.APLR" Count="2" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Marine/A2_Damages.APLR" id="0A2A3F76-DD47-4E0E-B3C1-02F28A675C11">
+				<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+					<caption>урон если цель оглушена</caption>
+					<damage>
+						<compiledString>FRoAAAACAAAAKQAAAEMAAABBMl9EYW1hZ2UAAABBMnVfRGFtYWdlTXVsAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/Si0UMUItNCFFoDAAAAItVEIsCi00Qi1BQ3V34/9LcTfjZXfTZRfSL5V3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_Damage * cA2u_DamageMul</sString>
+					</damage>
+					<enabled>
+						<compiledString></compiledString>
+					</enabled>
+					<formulaName>Damage2</formulaName>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Marine/A3_Heal.APLR" />
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Marine/A0_BonusDamage.APLR" />
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Marine/A0_Switcher.APLR" />
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Marine/A2_Damages.APLR" id="0CF51467-9AE5-4440-BF51-78B87D73BA55">
+				<UIMessageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>flyoff</caption>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<message textref="/Items/Talents/Class/Marine/A2_Damages.APLR_0cf514679ae54440bf5178b87d73ba55_message.txt" />
+					<providerName></providerName>
+					<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff_EP.UIEV" />
+					<value>
+						<compiledString>FQ0AAAABAAAAIgAAAGRhbWFnZURlYWxlZABVi+xRi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>$ParentApplVariable("damageDealed")</sString>
+					</value>
+				</UIMessageApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>урон для застунённых + A3 </caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+</VariableProxyApplicator>

@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+#automatically generated file. do not modify it!!!
+
+#!/usr/bin/env python
+
+class SessionResults_base:
+  def serializeToFile( self, file, name ):
+    pass
+
+  def generateAtributeOnlyDict(self):
+    json_dict = SessionResults_base.generateBaseDict(self)
+    _dict = self.__dict__
+    json_dict["achievScore"]=_dict.get("achievScore")
+    json_dict["assists"]=_dict.get("assists")
+    json_dict["currentDeathSpree"]=_dict.get("currentDeathSpree")
+    json_dict["currentKillSpree"]=_dict.get("currentKillSpree")
+    json_dict["damageDealedMagic"]=_dict.get("damageDealedMagic")
+    json_dict["damageDealedMaterial"]=_dict.get("damageDealedMaterial")
+    json_dict["damageDealedPure"]=_dict.get("damageDealedPure")
+    json_dict["damageDealedToHeroesMagic"]=_dict.get("damageDealedToHeroesMagic")
+    json_dict["damageDealedToHeroesMaterial"]=_dict.get("damageDealedToHeroesMaterial")
+    json_dict["damageDealedToHeroesPure"]=_dict.get("damageDealedToHeroesPure")
+    json_dict["damageDealedToHeroesTotal"]=_dict.get("damageDealedToHeroesTotal")
+    json_dict["damageDealedTotal"]=_dict.get("damageDealedTotal")
+    json_dict["damageReceivedFromHeroesMagic"]=_dict.get("damageReceivedFromHeroesMagic")
+    json_dict["damageReceivedFromHeroesMaterial"]=_dict.get("damageReceivedFromHeroesMaterial")
+    json_dict["damageReceivedFromHeroesPure"]=_dict.get("damageReceivedFromHeroesPure")
+    json_dict["damageReceivedFromHeroesTotal"]=_dict.get("damageReceivedFromHeroesTotal")
+    json_dict["damageReceivedMagic"]=_dict.get("damageReceivedMagic")
+    json_dict["damageReceivedMaterial"]=_dict.get("damageReceivedMaterial")
+    json_dict["damageReceivedPure"]=_dict.get("damageReceivedPure")
+    json_dict["damageReceivedTotal"]=_dict.get("damageReceivedTotal")
+    json_dict["deaths"]=_dict.get("deaths")
+    json_dict["enemyCreepsKilled"]=_dict.get("enemyCreepsKilled")
+    json_dict["finalLevel"]=_dict.get("finalLevel")
+    json_dict["flagsDestroyed"]=_dict.get("flagsDestroyed")
+    json_dict["flagsRaised"]=_dict.get("flagsRaised")
+    json_dict["glyphsPickuped"]=_dict.get("glyphsPickuped")
+    json_dict["grandScore"]=_dict.get("grandScore")
+    json_dict["healedAmount"]=_dict.get("healedAmount")
+    json_dict["killedByNeutrals"]=_dict.get("killedByNeutrals")
+    json_dict["kills"]=_dict.get("kills")
+    json_dict["money"]=_dict.get("money")
+    json_dict["neutralCreepsKilled"]=_dict.get("neutralCreepsKilled")
+    json_dict["numBossKillsAssist"]=_dict.get("numBossKillsAssist")
+    json_dict["numCatKillAssist"]=_dict.get("numCatKillAssist")
+    json_dict["numDragonKillAssist"]=_dict.get("numDragonKillAssist")
+    json_dict["numKillsTotal"]=_dict.get("numKillsTotal")
+    json_dict["saviourTime"]=_dict.get("saviourTime")
+    json_dict["score"]=_dict.get("score")
+    json_dict["sexHelp"]=_dict.get("sexHelp")
+    json_dict["specialPoints"]=_dict.get("specialPoints")
+    json_dict["teleportsByAbility"]=_dict.get("teleportsByAbility")
+    json_dict["timeAtHome"]=_dict.get("timeAtHome")
+    json_dict["timeElapsed"]=_dict.get("timeElapsed")
+    json_dict["timeInDeath"]=_dict.get("timeInDeath")
+    json_dict["timeInIdle"]=_dict.get("timeInIdle")
+    json_dict["totalMedalsCountDone"]=_dict.get("totalMedalsCountDone")
+    json_dict["totalMedalsCountFailed"]=_dict.get("totalMedalsCountFailed")
+    json_dict["totalMedalsCountGold"]=_dict.get("totalMedalsCountGold")
+    json_dict["totalMedalsCountSilver"]=_dict.get("totalMedalsCountSilver")
+    json_dict["totalNumQuartersDestroyed"]=_dict.get("totalNumQuartersDestroyed")
+    json_dict["totalNumTowersAssisted"]=_dict.get("totalNumTowersAssisted")
+    json_dict["totalNumTowersKilled"]=_dict.get("totalNumTowersKilled")
+    json_dict["usedPotions"]=_dict.get("usedPotions")
+    return json_dict

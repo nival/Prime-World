@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Crusader_A_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Crusader_B_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Crusader/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Crusader/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Crusader/Ability_A4u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_7_Ultimate/Status_Redset5_7_Cooldown.APLR" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FS0AAAADAAAANAAAAE0AAACLAAAAQ3J1c2FkZXJfQTRfMnUAAENydXNhZGVyX0E0XzJ1AABSYW5nZV9NZWRpdW0AVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0H4tVDFKLRQhQaCAAAACLTRCLEYtNEItCUP/Q2V306wXZ7tld9NlF9IvlXcMAAAAA</compiledString>
+		<returnType>float</returnType>
+		<sString>tal("Crusader_A4_2u") ? cRange_Medium : 0</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="D8246CBB-96A3-4144-B5DC-64FBBC1507D2">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Вешаем флаг А0 эффекта (blind)</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRsAAAACAAAAIgAAAD8AAABDcnVzYWRlcl9CZWxpZWYAQTBNYXhDb3VudABVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sRBegfZ6Nld9OsF2e7ZXfTZRfSL5V3DAAAAAAAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>sender.vCrusader_Belief&gt;= cA0MaxCount ? 1.0f : 0.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Crusader_A4ExBelief</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="2E909ACE-8588-4D16-91D7-0A2BDAE8800F">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Сбрасываем счётчик А0</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FRQAAAACAAAAGQAAAC8AAABDcnVzYWRlcl9BNEV4QmVsaWVmAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHVEAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vCrusader_A4ExBelief &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Crusader_Belief</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Crusader/var_A0_AddStack.APLR" />
+		<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="F763F32F-8328-42E8-8C88-E342CCB6DC86">
+			<BounceApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<bounceDelay>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0</sString>
+				</bounceDelay>
+				<cancelEffect>
+					<Item href="" />
+					<Item href="" />
+				</cancelEffect>
+				<caption>(Upg) рикошет</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>4</flags>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="AC992119-3CD7-4047-BDDE-56CC3E0124A5">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="EA380107-808A-41B4-9EC3-F0D47373C463">
+								<SpellSwitchApplicator>
+									<activeSpellIndex>
+										<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgkABAAD/0ItNDIsRi00Mi4JEAQAA3V34/9DcXfjf4PbEBXoJx0X0AAAAAOsHx0X0AQAAAItF9IvlXcM=</compiledString>
+										<returnType>int</returnType>
+										<sString>rStamina &gt; rWill ? 0 : 1</sString>
+									</activeSpellIndex>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>Выбираем, что понижать</caption>
+									<dontUseDispatches>true</dontUseDispatches>
+									<enabled>
+										<compiledString>FR8AAAACAAAAJgAAAD8AAABDcnVzYWRlcl9BNF8ydQAAQ3J1c2FkZXJfQTRfMnUAVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0EYtVCDtVDHQJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+										<returnType>bool</returnType>
+										<sString>tal("Crusader_A4_2u")  &amp;&amp; (pFirst != pSecond)</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spells>
+										<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="9EB2F082-2EE0-4D74-BF40-A49ABEBE86B9">
+											<Spell>
+												<applicators>
+													<Item href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+												</applicators>
+												<dispatch href="" />
+											</Spell>
+										</Item>
+										<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="D4727487-1531-4873-8B20-9D3932E2A577">
+											<Spell>
+												<applicators>
+													<Item href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+												</applicators>
+												<dispatch href="" />
+											</Spell>
+										</Item>
+									</spells>
+								</SpellSwitchApplicator>
+							</Item>
+							<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="0AE086B8-5C6E-40CD-A50A-B44433637A79">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>урон цели</caption>
+									<damage>
+										<compiledString>FQwAAAABAAAAGAAAAEE0XzJfRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cA4_2_Damage</sString>
+									</damage>
+									<damageMode>4</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvsi0UIM8k7RQwPlcGKwV3D</compiledString>
+										<returnType>bool</returnType>
+										<sString>pFirst != pSecond</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+							<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+							<Item href="/Heroes/DefaultStatus/_BLIND_status.APLR" />
+							<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="2C608AE3-87C9-4728-A4A9-9495C94B7904">
+								<FlagsApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>Хит эффект</caption>
+									<consumables />
+									<effect>
+										<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="73E82D6B-280C-47B9-AD2F-C192532A6FB2">
+											<EffectList>
+												<deathType>Manual</deathType>
+												<effects>
+													<Item href="/Effects/Shots/Shield/_GreenHit.EFFT" />
+													<Item href="/Effects/Shots/Shield/_GoldHit.EFFT" />
+												</effects>
+												<enableCondition href="" />
+												<lifeTime>0</lifeTime>
+											</EffectList>
+										</Item>
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvsi0UIM8k7RQwPlcGKwV3D</compiledString>
+										<returnType>bool</returnType>
+										<sString>pFirst != pSecond</sString>
+									</enabled>
+									<flag>0</flag>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<talents />
+									<useListAs>ListAsRule</useListAs>
+								</FlagsApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="2016CD8D-968D-464F-BA90-E17CB4EEA44C">
+							<DispatchLinear>
+								<aiming>Straight</aiming>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="39ADE6E0-407F-4F31-8203-AEC3E97383EE">
+										<EffectList>
+											<deathType>Manual</deathType>
+											<effects>
+												<Item href="/Effects/Shots/Shield/_Green_2.EFFT" />
+												<Item href="/Effects/Shots/Shield/_Gold_2.EFFT" />
+											</effects>
+											<enableCondition href="" />
+											<lifeTime>0</lifeTime>
+										</EffectList>
+									</Item>
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<flyMode>Parabolic</flyMode>
+								<fromLocator>Body</fromLocator>
+								<height>0</height>
+								<killEffect>true</killEffect>
+								<locatorOrient>false</locatorOrient>
+								<maxDeviation>180</maxDeviation>
+								<maxDistance>-1</maxDistance>
+								<maxRise>0</maxRise>
+								<minRise>0</minRise>
+								<persistentApplicators />
+								<speed>27</speed>
+								<suspendTime>0</suspendTime>
+								<toLocator>Body</toLocator>
+							</DispatchLinear>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startTarget>ApplicatorTarget</startTarget>
+				<target href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="0184FA18-3099-4D86-A203-63E38E503CBC">
+					<ComparingTargetSelector>
+						<referenceValue>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>100</sString>
+						</referenceValue>
+						<targetSelector href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="8009E16F-8A55-42E5-8761-22D1B8135CD2">
+							<ListOfTargetSelectors>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<targetSelectors>
+									<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="72E77E14-2144-4CF4-96FA-724222A69A8B">
+										<CountingTargetSelector>
+											<enableSorting>true</enableSorting>
+											<flags>0</flags>
+											<heroesFirst>true</heroesFirst>
+											<mode>SendOnce</mode>
+											<order>Increasing</order>
+											<sortingValue>
+												<compiledString>FTAAAAADAAEANwAAAEoAAABWAAAAOAEAAFJlbWVtYmVyZWRUYXJnZXRzTnVtYmVyAExhc3RSZW1lbWJlcmVkVGFyZ2V0UG9zAFWL7IPsIGgAAAAAi0UQixCLTRCLQlT/0NwdsgAAAN/g9sRBdR5oGAAAAI1N9FGLVRCLAotNEIuQhAAAAP/SiUXg6xSNRexQi00QixGLTRCLQlj/0IlF4ItN4IlN/ItV/FKNReRQi00MixGLTQyLgowBAAD/0FDoDwAAAIPECIvlXcMAAAAAAAAAAFWL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6KD+//+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+												<returnType>float</returnType>
+												<sString>d( rPos, appl.vRememberedTargetsNumber &gt; 0 ? appl.GetVectorVariable("LastRememberedTargetPos") : appl.TargetPos )</sString>
+											</sortingValue>
+											<targetSelector href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="0B8BBFAD-890F-4ABB-80DE-63FD5C502CD6">
+												<ConditionTargetSelector>
+													<condition>
+														<compiledString>FVcAAAAJAAAAXgAAAHkAAACMAAAAmAAAALEAAADnAAAA+gAAAAYBAAAfAQAAVGFyZ2V0AAB0YXJnZXQAAENydXNhZGVyX0E0XzJ1AABDcnVzYWRlcl9BNF8ydQAAdGFyZ2V0AABDcnVzYWRlcl9BNF8ydQAAQ3J1c2FkZXJfQTRfMnUAVYvsg+wUaAAAAACLRRCLEItNEItCTP/QOUUMD4TlAAAAaAgAAACLTRCLEYtNEItCVP/Q3B1zAQAA3+D2xER6T2gQAAAAi00IixGLTQiLgqgBAAD/0IXAdCpoIAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdXdoMAAAAItVEIsCi00Qi1BU/9LcHWsBAADf4PbERHpPaDgAAACLRQiLEItNCIuCqAEAAP/QhcB0KmhIAAAAi00IixGLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0CcdF7AEAAADrB8dF7AAAAACKReyL5V3DAAAAAAAA8D8AAAAAAAAIQA==</compiledString>
+														<returnType>bool</returnType>
+														<sString>pSecond!= pMisc-&gt;GetObject("Target") &amp;&amp; !(appl.GetVariable("target") ==  3 &amp;&amp;  tal("Crusader_A4_2u")) &amp;&amp; !(appl.GetVariable("target") ==  1 &amp;&amp;  !tal("Crusader_A4_2u")) </sString>
+													</condition>
+													<flags>0</flags>
+													<mode>Normal</mode>
+													<targetSelector href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="F76EE686-6FC3-453C-987E-A1A9545704F4">
+														<AreaTargetSelector>
+															<absolutePosition>
+																<x>0</x>
+																<y>0</y>
+															</absolutePosition>
+															<flags>1</flags>
+															<mode>Normal</mode>
+															<range>
+																<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cRange_Medium</sString>
+															</range>
+															<targetFilter>681312259</targetFilter>
+															<targetSelector href="" />
+														</AreaTargetSelector>
+													</targetSelector>
+												</ConditionTargetSelector>
+											</targetSelector>
+											<targetsNumber>
+												<compiledString></compiledString>
+												<returnType>int</returnType>
+												<sString>1</sString>
+											</targetsNumber>
+										</CountingTargetSelector>
+									</Item>
+									<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="5AFE8547-B7BC-4806-BFF1-A7641E863F51">
+										<SelectApplicatorTarget>
+											<applicatorIndex>0</applicatorIndex>
+											<applicatorName></applicatorName>
+											<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+											<selectTarget>AbilityOwner</selectTarget>
+										</SelectApplicatorTarget>
+									</Item>
+								</targetSelectors>
+							</ListOfTargetSelectors>
+						</targetSelector>
+						<valueToCompare>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>100</sString>
+						</valueToCompare>
+					</ComparingTargetSelector>
+				</target>
+				<targetsNumber>
+					<compiledString>FR8AAAACAAAAJgAAAD8AAABDcnVzYWRlcl9BNF8ydQAAQ3J1c2FkZXJfQTRfMnUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtkX799gbwIPgAoPAAovlXcM=</compiledString>
+					<returnType>int</returnType>
+					<sString>tal("Crusader_A4_2u") ? 4 : 2</sString>
+				</targetsNumber>
+			</BounceApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А4_2. Щит правосудия</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="86FDB609-7E2A-4058-A1A6-70903C68D4FF">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR8AAAACAAAAJgAAAD8AAABDcnVzYWRlcl9BNF8ydQAAQ3J1c2FkZXJfQTRfMnUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtkX7g+gB99gbwIPAAYvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Crusader_A4_2u") == true</sString>
+				</condition>
+				<name>Crusader_A4_2u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/Crusader/Ability_A4.TALENT" />
+		<Item href="/Items/Talents/Class/Crusader/Ability_A4u.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="59A6E7E4-AB50-4E3B-9CF1-A74107F078F0">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="1837AE33-30F6-4108-81D6-F08536BD606E">
+					<UnitConstant>
+						<name>Stun_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>1.5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="98C31834-C825-49C4-B5E0-6FA14895226A">
+					<UnitConstant>
+						<name>A4_2_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBWMAAADZHCRR2QVfAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJItNCIsRi00Ii4IwAQAA/9BR2Rwk6B8AAACDxATZHCRqAYtNEIsRi00Qi0Jg/9BdwwAA8EIAAGFEVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale(max(sStrength, sIntellect), 120, 900)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="D406C4A6-7F35-4E24-923E-DF5668034B4B">
+					<UnitConstant>
+						<name>Blind_StartCondition</name>
+						<var>
+							<compiledString>FRQAAAACAAAAGQAAAC8AAABDcnVzYWRlcl9BNEV4QmVsaWVmAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHVkAAADf4PbEAXURi00IO00MdAnHRfwBAAAA6wfHRfwAAAAA20X8i+VdwwAAAAAAAPA/</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vCrusader_A4ExBelief &gt;= 1 &amp;&amp; pFirst != pSecond</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="65882C19-5FCA-4013-BF54-C06FE7ADC572">
+					<UnitConstant>
+						<name>Blind_Duration</name>
+						<var>
+							<compiledString>FSIAAAACAAAAMQAAAEsAAABUVF9CbGluZF9EdXJhdGlvbgAAAFN0dW5fRHVyYXRpb24AVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgUAAAAi1UQiwKLTRCLUFDdXfj/0txF+Nld9NlF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cTT_Blind_Duration + cStun_Duration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="7A85F61A-6EED-4874-BAA9-715264C9E196">
+					<UnitConstant>
+						<name>TT_Blind_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/const_A0_MaxCount" />
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="DB022DA8-7F94-44F9-80A6-F11B2C77C506">
+					<UnitConstant>
+						<name>WillCut_Amount</name>
+						<var>
+							<compiledString>FRAAAAABAAAAHAAAAEFybW9yQ3V0X0Ftb3VudABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cArmorCut_Amount</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="7CD2B373-1DED-4714-B4D2-4636E4DF8FEA">
+					<UnitConstant>
+						<name>WillCut_Duration</name>
+						<var>
+							<compiledString>FRIAAAABAAAAHgAAAEFybW9yQ3V0X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cArmorCut_Duration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/const_A4_ArmorCut_Amount" />
+				<Item href="/Items/Talents/Class/Crusader/const_A4_ArmorCut_Duration" />
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="505A9977-F297-48F1-B8AD-80570C414751">
+					<UnitConstant>
+						<name>Stun_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUYtFCDPJO0UMD5XBiU3820X8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>pFirst != pSecond</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="85527D2A-CE2C-4A7A-B290-9EB9F82C1EA7">
+					<UnitConstant>
+						<name>A0_FXStartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>true</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Crusader/const_A0_AddBelief" />
+				<Item href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="DEA1DD12-0EF3-4DE3-AC0A-2740FED53639">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>100</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="E66ACD84-8FD8-4A4C-9845-1DB503D95CB6">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>11</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Crusader/A4_2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker>doCast4</marker>
+	<microAI href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="05574A08-F5BB-4595-AEA3-DCF0D34C40BC">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="47C70C11-751B-4317-AAD8-4F035A4A8987">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT" id="C483D177-93C6-456D-8E7B-48F343B78313">
+						<AreaTargetSelector>
+							<absolutePosition>
+								<x>0</x>
+								<y>0</y>
+							</absolutePosition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<range>
+								<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+								<returnType>float</returnType>
+								<sString>cRange_Long</sString>
+							</range>
+							<targetFilter>679477251</targetFilter>
+							<targetSelector href="" />
+						</AreaTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT_name.txt" />
+	<node>ability4</node>
+	<passiveApplicators />
+	<persistentId>Crusader_A4_2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Crusader/Ability_A4_2.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>681312259</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQ0AAAACAAAAGgAAAC0AAABSYW5nZV9NZWRpdW0AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3AU7AAAA2V382UX8i+VdwwAAAAAAAPA/</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Medium + 1</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

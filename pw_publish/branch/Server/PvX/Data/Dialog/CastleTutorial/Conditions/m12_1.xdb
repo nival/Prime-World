@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<BackLink DBID="/Dialog/CastleTutorial/Ador/m1/m12_qB" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Dokt/m1/m12_qA" Count="1" />
+	<code>foreach building in Buildings do
+  if building.PersistentId == "Production_Crystal" and building.Level &gt; 0 then
+    return 1
+  end
+end
+return 0</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/m12_1" id="2162D128-4451-474A-9B92-EE878EBC2B8A">
+			<SendRequestCondition>
+				<name>building_upgrade</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/m12_1" id="3B07EAB2-E0E4-4936-BCBE-D61BD8334F86">
+			<SendRequestCondition>
+				<name>move_from_pocket</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>

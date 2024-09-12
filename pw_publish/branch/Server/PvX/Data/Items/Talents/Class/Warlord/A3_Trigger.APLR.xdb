@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Warlord/status_A3_armor.APLR" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>триггер на урон</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Warlord/A3_Trigger.APLR" id="EB7A5030-5D10-4C88-A29B-A8195C7922F3">
+		<EventProcessorDamageTransformer>
+			<abilityFilter>
+				<abilitiesList />
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Energy</abilityCostMode>
+				<exceptThis>false</exceptThis>
+				<flags>1073741825</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</abilityFilter>
+			<add>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</add>
+			<applyTarget>ApplicatorSelectedTarget</applyTarget>
+			<checkSender>2</checkSender>
+			<damageTypeFilter>31</damageTypeFilter>
+			<flags>1</flags>
+			<matchTargetInverted>false</matchTargetInverted>
+			<mul>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>1.0f</sString>
+			</mul>
+			<objectFilter>542965823</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Items/Talents/Class/Warlord/A3_Trigger.APLR" id="80BF4B8C-EA99-457D-A651-D1D7C58961B4">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Warlord/A3_Trigger.APLR" id="605C377D-CC66-4936-B6F5-CB8E4D7451E4">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+								<damage>
+									<compiledString>FSEAAAACAAAAOAAAAE0AAABUYXJnZXQAAFdhcmxvcmRSZXRhbGlhdGlvbkRhbWFnZQBVi+yD7AiLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCTP/QiUX4aAgAAACLTfiLEYtN+IuCiAEAAP/Qi+Vdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>appl.parent.oTarget.vWarlordRetaliationDamage</sString>
+								</damage>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString>FQAAAAABAAAALQAAAFWL7FFR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6DEAAACDxAzcHUkAAADf4PbERHsGxkX/AesExkX/AIpF/4vlXcMAAAAAAAAAAAAAAAAAAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+									<returnType>bool</returnType>
+									<sString>ut_bldg(false, true)</sString>
+								</enabled>
+								<timeLimiter>0.3</timeLimiter>
+								<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+							</DamageApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Warlord/A3_Trigger.APLR" id="8D5C117B-217B-42F1-965B-21A9C9B96B8B">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>1</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+		</EventProcessorDamageTransformer>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

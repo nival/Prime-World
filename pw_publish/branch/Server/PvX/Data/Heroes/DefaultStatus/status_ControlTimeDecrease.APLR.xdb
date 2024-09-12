@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Chronicle/status_A4_self.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Naga/status_A3u.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Night/status_A4_2_ChangeToPanther.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/Status_G293_ControlTimeDecrease.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/G330_Dex_WillOrStmn.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset3_2_IceCream/status_G520.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset9_5_Anticontrol/Redset9_5_DecreasControl.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/status_ControlTimeDecrease.APLR" id="42BBDB70-D8CE-4EC4-94A8-C2DC5A65DAD3">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption></caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRUAAAABAAAAIQAAAERlY3JlYXNlX1RpbWVDb250cm9sAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cDecrease_TimeControl</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>TimeControl</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/status_ControlTimeDecrease.APLR" id="1D899F7A-B2F6-4C61-B3EE-0526D2148665">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Отслеживаем нужные нам статусы</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Heroes/DefaultStatus/status_ControlTimeDecrease.APLR" id="C796A691-5D35-4C85-89B4-2D78650D6FF1">
+					<EventProcessorApplicatorApplied>
+						<applicatorsList href="/Heroes/DefaultStatus/List_AllControlStatusesWithoutSlow.APLS" />
+						<applicatorTypesList href="" />
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<filter>1342177280</filter>
+						<mode>SetNewLifetime</mode>
+						<newLifetime>
+							<compiledString>FS0AAAAGAAAANAAAAEcAAABUAAAAXgAAAHgAAACOAAAATGlmZXRpbWUAAAAATGlmZXRpbWUAAAAARGVjcmVhc2VfVGltZUNvbnRyb2wAVYvsg+wUaAAAAACLRRCLEItNEItCVP/Q3B25AAAA3+D2xER6C90FuQAAAN1d+Os/aAwAAACLTRCLEYtNEItCVP/Qi00MUYtVCFJoGAAAAItFEIsQi00Qi0JQ3V3w/9DcDbEAAADZ6N7h3E3w3V343UX42V3s2UXsi+VdwwAAAAAAAPA/exSuR+F6hD8AAAAAAADwvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>appl.vLifetime == -1.0f ? -1.0f : appl.vLifetime * (1-cDecrease_TimeControl*0.01)</sString>
+						</newLifetime>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+					</EventProcessorApplicatorApplied>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/status_ControlTimeDecrease.APLR" id="87BC0C1B-F8F9-4175-A08C-C5F4477A3ED2">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>кладем переменную про снижение эффективности замедлений</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRUAAAACAAAAIgAAADUAAABEZWNyZWFzZV9UaW1lQ29udHJvbABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDUMAAADZXfzZRfyL5V3DexSuR+F6hD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>cDecrease_TimeControl*0.01</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>DecSlowPower</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Сокращаем время контроль эффектов</caption>
+	<customCounter>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/status_ControlTimeDecrease.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/ColdCharged/_Gold.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>TimeControlStatus</formulaName>
+	<image href="/UI/Styles/Icons/Talents/_330.ITEX" />
+	<lifeTime>
+		<compiledString>FRUAAAABAAAAIQAAAFRpbWVDb250cm9sX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cTimeControl_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/status_ControlTimeDecrease.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

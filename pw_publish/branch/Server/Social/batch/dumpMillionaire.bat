@@ -1,0 +1,1 @@
+admin_users.py --dump_millionaire_users > millionaire_users.txt

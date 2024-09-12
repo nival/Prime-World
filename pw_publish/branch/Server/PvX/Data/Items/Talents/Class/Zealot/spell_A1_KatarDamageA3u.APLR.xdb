@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A3.TALENT" Count="2" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>(Upg) Спелл с таргет селектором для обнаружения врагов вокруг</caption>
+	<enabled>
+		<compiledString>FRcAAAACAAAAHgAAADcAAABaZWFsb3RfQTN1AABaZWFsb3RfQTN1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Zealot_A3u")</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Zealot/spell_A1_KatarDamageA3u.APLR" id="01AB1B91-9E23-4272-85C3-ACD0821D3451">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Zealot/spell_A1_KatarDamageA3u.APLR" id="B098A095-3852-4604-8EB3-E1EF2C061911">
+					<MoveToApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>Повернуться к врагу</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<isMoveDirect>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</isMoveDirect>
+						<isNotStackable>false</isNotStackable>
+						<justRotate>true</justRotate>
+						<lifeTime>
+							<compiledString>FQUAAAACAAAAEgAAACUAAABTVEVQAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNMwAAANld/NlF/IvlXcOamZmZmZnJPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>cSTEP * 0.2</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<moveRange>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</moveRange>
+						<moveSpeed>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</moveSpeed>
+						<moveTarget>ApplicatorTarget</moveTarget>
+						<offset>
+							<x>0</x>
+							<y>0</y>
+						</offset>
+						<providerName></providerName>
+						<pushUnits>false</pushUnits>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+					</MoveToApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Zealot/appl_A1A3_KatarProgram.APLR" />
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Zealot/spell_A1_KatarDamageA3u.APLR" id="3376FFA3-073D-48F0-8465-85A227365E90">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/Zealot/spell_A1_KatarDamageA3u.APLR" id="3FBC32E3-5F63-4D95-84EF-B804A497822C">
+		<CountingTargetSelector>
+			<enableSorting>true</enableSorting>
+			<flags>0</flags>
+			<heroesFirst>true</heroesFirst>
+			<mode>Normal</mode>
+			<order>Increasing</order>
+			<sortingValue>
+				<compiledString>FQAAAAAAAAEAugAAAFWL7IPsEI1F+FCLTQyLEYtNDIuCjAEAAP/QUI1N8FGLVQiLAotNCIuQjAEAAP/SUOgHAAAAg8QIi+Vdw1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6B7///+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+				<returnType>float</returnType>
+				<sString>d(sPos,rPos)</sString>
+			</sortingValue>
+			<targetSelector href="/Items/Talents/Class/Zealot/spell_A1_KatarDamageA3u.APLR" id="3E5101F6-64E7-4B8D-93FD-0D1B18570C30">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQkAAAACAAAAGAAAADsAAABBMV9SYW5nZQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFCIsQi00Ii0J43V34/9DcNUwAAADcRfjZXfTZRfSL5V3DAAAAAAAAAEA=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA1_Range+sObjectSize/2</sString>
+					</range>
+					<targetFilter>681377855</targetFilter>
+					<targetSelector href="/Items/Talents/Class/Zealot/spell_A1_KatarDamageA3u.APLR" id="5A1838A9-7A7C-45DE-9768-D6761571B0AA">
+						<SelectApplicatorTarget>
+							<applicatorIndex>0</applicatorIndex>
+							<applicatorName></applicatorName>
+							<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+							<selectTarget>AbilityOwner</selectTarget>
+						</SelectApplicatorTarget>
+					</targetSelector>
+				</AreaTargetSelector>
+			</targetSelector>
+			<targetsNumber>
+				<compiledString></compiledString>
+				<returnType>int</returnType>
+				<sString>1</sString>
+			</targetsNumber>
+		</CountingTargetSelector>
+	</targetSelector>
+</SpellApplicator>

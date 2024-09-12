@@ -1,0 +1,122 @@
+// бесплатно: создаем обычный micro instance
+// через PuttyGen пересохраняем .pem как .ppk
+// заходим через Putty
+
+// для начала: commander и компилятор
+// ключ -y "to assume YES on all questions"
+sudo yum -y install mc
+sudo yum -y install gcc
+
+// libcurl, python, mysql нужны в development версиях
+sudo yum -y install curl-devel
+sudo yum -y install python-devel
+sudo yum -y install mysql-devel
+
+//-----------------------------------------------------------------------------------
+// memcached (вполне current, 1.4.4)
+sudo yum -y install memcached
+
+//-----------------------------------------------------------------------------------
+// nginx (тут, увы, старая версия 0.7.67)
+sudo yum -y install nginx
+
+//-----------------------------------------------------------------------------------
+// mysql server: ставим и запускаем
+sudo yum -y install mysql-server
+sudo /etc/init.d/mysqld start
+// чтобы поставить root-пароль, убрать доступную кому угодно тестовую базу и т.п.:
+sudo /usr/bin/mysql_secure_installation
+// root:de....77
+
+// затем открываем доступ к mysql снаружи для себя любимого
+cd /etc
+sudo mc
+// в файле /etc/my.cnf в секцию [mysqld] вписываем:
+port = 3306
+bind-address = ec2-50-16-18-0.compute-1.amazonaws.com       // public DNS для EC2 instance
+
+// выходим, делаем:
+sudo /etc/init.d/mysqld restart
+
+// разворачиваем базы, таблицы, создаём юзера и выдаём права
+
+// ----------- ВАРИАНТ 1, короткий (если нужно просто создать дефолтные базы pw1/pw2 с юзером pw) -----------
+mysql -u root -p <root_pwd> < /tools/pw_12_full.sql
+// ----------- 
+
+// ----------- ВАРИАНТ 2, длинный (когда нужно создавать базы и юзеров с разными именами)------------------
+// внутри создаем базы, и выдаем на них права внешнему юзеру:
+mysql> CREATE DATABASE pw1;
+mysql> CREATE DATABASE pw2;
+mysql> GRANT ALL ON pw1.* TO pw@'195.128.95.36' IDENTIFIED BY 'pwdata';
+mysql> GRANT ALL ON pw2.* TO pw@'195.128.95.36' IDENTIFIED BY 'pwdata';
+
+// не забываем и про локальный коннект:
+mysql> GRANT ALL ON pw1.* TO pw@'localhost' IDENTIFIED BY 'pwdata';
+mysql> GRANT ALL ON pw2.* TO pw@'localhost' IDENTIFIED BY 'pwdata';
+
+// всё.
+mysql> exit
+
+// ТАДА! можно заходить снаружи через MySQL Query Browser и накатывать во все базы /tools/pw.sql
+// ----------- 
+
+
+//-------------------------------------------------------------------------------------------------
+// ставим mongoDB:
+// - копируем mongodb-linux-x86_64-1.6.5.gz в ~/pw/mongo
+// разворачиваем: 
+gzip -d mongodb-linux-x86_64-1.6.5.gz
+// переименовываем в tar (внутри .gz почему-то безымянный файл, без расширения .tar), вытаскиваем содержимое в ~/pw/mongo, создаем директорию ~/pw/mongo/database
+
+//-------------------------------------------------------------------------------------------------
+// заливаем исходники из svn в ~/pw (я лично не ставил svn, а копировал руками backup исходников)
+sudo yum -y install subversion
+cd ~
+svn checkout https://svn.nivalnetwork.com/pw/trunk/Tools/SocialServer tornado --username danila.vorobyov --password .... 
+// (спросит про unencrypted пароль - отвечаем "no")
+
+// -- если не брали из svn: копируем из /vendors/ питоновские библиотеки pycurl, mysqldb, suds (.tar.gz)
+// -- если не брали из svn: копируем дерево vendor/pymongo-src-1.10
+
+// делаем всем питоновским библиотекам (pycurl, mysqldb, pymongo):
+sudo python setup.py install
+
+cd ~/pw/linux
+// ставим на все *.sh-файлы chmod флаг "execute by owner"
+sudo chmod +x *.sh
+
+// в nginx.conf меняем server_name на ip нашего инстанса
+
+// заводим набор тестовых юзеров в базе данных
+// (для этого запускаем координатор с ключом --_make_test_logins=1000)
+./_coord_make_users.sh
+
+//-----------------------------------------------------------------------------------
+// ТАДА! с этого момента можно запускать веб-сервер с заглушками:
+cd ~/pw/linux
+nohup ./standalone_ws_8801.sh &
+
+//-------------------------------------------------------------------------------------------------
+// запускаем nginx, memcache, mongo
+cd ~/pw/linux
+./nginx.sh
+nohup ./mc8901.sh &
+nohup ./mc8902.sh &
+nohup ./mongo.sh &
+
+//-------------------------------------------------------------------------------------------------
+// можно пробовать прохождение тестов unit.test.py, cluster.test.ru
+./_test_unit.sh
+./_test_cluster.sh
+
+//-------------------------------------------------------------------------------------------------
+// можно запускать полный кластер: нормальный координатор, нормальные WS, mock_matchmaker
+nohup ./coordinator.sh &
+nohup ./mock_matchmaker.sh &
+nohup ./ws_8801.sh &
+nohup ./ws_8802.sh &
+
+
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------

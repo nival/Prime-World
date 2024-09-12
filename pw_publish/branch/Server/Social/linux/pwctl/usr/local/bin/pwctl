@@ -1,0 +1,23 @@
+#!/bin/bash
+
+FABFILE=/opt/pwctl/fabric/fabfile.py
+FAB=/usr/bin/fab
+
+case "$1" in
+"list")
+	$FAB -f $FABFILE -l
+;;
+"start"|"stop"|"status"|"svn_info"|"svn_status"|"close"|"open")
+	$FAB -f $FABFILE $1
+;;
+"restart")
+	$FAB -f $FABFILE stop &&
+	sleep 10 &&
+	$FAB -f $FABFILE start
+;;
+*)
+	echo "Usage: $(basename $0) {start|stop|status|restart|svn_info|svn_status|close|open}" >&2
+	exit 3
+;;
+esac
+

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SummonApplicator>
+	<BackLink DBID="/Items/Talents/Class/Inventor/Ability_A2.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Inventor/Forbid_Death_on_Deploy.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Life.APLR" />
+		<Item href="/Items/Talents/Class/Inventor/A1/A2_SummonPriceForKill.APLR" />
+		<Item href="/Items/Talents/Class/Inventor/A0_ConstrCount.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Level.APLR" />
+		<Item href="/Items/Talents/Class/Inventor/A2_SummonDispenser.APLR" id="DEBA95E2-E920-4845-AFCF-88FFEE99BA8B">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>для GUI A2_AuraRange</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQ0AAAABAAAAGQAAAEEyX0F1cmFSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_AuraRange</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>A2_AuraRange</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Stamina.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Will.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Intellect.APLR" />
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviour href="/Items/Talents/Class/Inventor/A2_SummonDispenser.APLR" id="8D1F90DF-1BB0-4264-9FE7-5843FD32920B">
+		<SummonBehaviourCommon parent="/GameLogic/SummonBehaviourRanged">
+			<comment></comment>
+			<lashRange>
+				<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+				<returnType>float</returnType>
+				<sString>0</sString>
+			</lashRange>
+			<maxCount>
+				<compiledString>FRQAAAABAAAAIAAAAEludmVudG9yX01heFN1bW1vbnMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+				<returnType>int</returnType>
+				<sString>f2l(cInventor_MaxSummons)</sString>
+			</maxCount>
+			<maxThisCount>
+				<compiledString>FQ0AAAABAAAAGQAAAE1heERpc3BlbnNlcgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0lHZHCToBQAAAIPEBF3DuAEAAAAPovfCAAAABHQH8w8sRCQEw+kAAAAAVYvsg+wM2UUI2X38D7dF/A0ADAAAiUX42W3421302W38i0X0i+Vdww==</compiledString>
+				<returnType>int</returnType>
+				<sString>f2l(cMaxDispenser)</sString>
+			</maxThisCount>
+			<responseRange>0</responseRange>
+			<responseTime>0</responseTime>
+		</SummonBehaviourCommon>
+	</behaviour>
+	<caption>создать Диспенсер</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>5</flags>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<openWarFog>true</openWarFog>
+	<placeMode>ByTargetSelector</placeMode>
+	<placeSelector href="/Items/Talents/Class/Inventor/SummonPlaceSelector.TGSL" />
+	<providerName></providerName>
+	<spawnStats>
+		<energy>
+			<compiledString></compiledString>
+			<returnType>float</returnType>
+			<sString>-1.0</sString>
+		</energy>
+		<life>
+			<compiledString></compiledString>
+			<returnType>float</returnType>
+			<sString>-1.0</sString>
+		</life>
+	</spawnStats>
+	<summonedUnitIndex>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</summonedUnitIndex>
+	<summonedUnits>
+		<Item href="/Summons/Dispenser/_.SUMMONED" />
+	</summonedUnits>
+	<summonedUnitsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</summonedUnitsCount>
+	<summonGroupName></summonGroupName>
+	<summonSource>ByApplicator</summonSource>
+	<takeModDmg>
+		<compiledString>FRUAAAABAAAAIQAAAE1vZERhbWFnZUZyb21OZXV0cmFsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cModDamageFromNeutral</sString>
+	</takeModDmg>
+	<takeTypeUnit>839647712</takeTypeUnit>
+	<unsummonSortCriterion>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</unsummonSortCriterion>
+</SummonApplicator>

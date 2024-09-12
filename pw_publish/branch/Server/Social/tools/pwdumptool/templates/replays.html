@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='calendar.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='calendar.js') }}"></script>
+
+  <table class=table_unbordered>
+	<tr valign=top>
+		<td>
+<p><b>Replay Search</b><p>
+    <form action="{{ url_for('show_replays') }}" method=post name=session>
+	<fieldset title="SessionId">
+	<legend>Search replay by SessionId</legend>	
+		<p><label for=hostname>Hostname:</label></p>
+        <p><input type=text size=8 name=hostname></p>	
+		<p><label for=date>Date:</label></p>
+        <p><input type=text id=date name=date readonly=readonly size=10 onclick="showcalendar(this)"/></p>
+        <p><label for=SessionId>SessionId:</label></p>
+        <p><input type=text size=30 name=SessionId  required></p>
+        <p><input type=submit value=search></p>
+	</fieldset>	
+    </form>
+		</td>	
+		<td align=right>
+		</td>
+	</tr>
+	</table>		
+{% endblock %}

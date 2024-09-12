@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Creeps/Bosses/Boss2/CTE.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Bosses/Boss2/PvE.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Bosses/Boss1/PVP.CREEP" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/NewYear/PVP_NY.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="22316CD2-F567-4192-AE77-01C60869BD45">
+			<DamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<cancelInvisibility>false</cancelInvisibility>
+				<caption>урон</caption>
+				<damage>
+					<compiledString>FQkAAAABAAAAFQAAAEZpcmVfRG1nAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cFire_Dmg</sString>
+				</damage>
+				<damageMode>0</damageMode>
+				<damageType>Native</damageType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<timeLimiter>-1</timeLimiter>
+				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+			</DamageApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="FEA64291-6E79-410F-9DD7-377282CD2F37">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="BF695C85-2103-42A8-8E13-9E0FE6AD6D94">
+					<UnitConstant>
+						<name>Stun_StartCondition</name>
+						<var>
+							<compiledString>FQkAAAACAAAAJAAAADcAAABTdHVuUHJvYwBVi+yD7AiLRQxQi00IUWoCageLVQxSi0UIUGgAAAAAi00QixGLTRCLQlD/0NwNXwAAANld/NlF/FHZHCSLTRCLEYtNEItCZP/QD7bIiU3420X4i+Vdw3sUrkfheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>smartRoll(cStunProc*0.01 , 7 , 2) </sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="714B57DD-1F5E-4E92-ACA0-3B569F46A390">
+					<UnitConstant>
+						<name>Stun_Duration</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="FC9B9421-9D49-4361-B43E-7B553CB83E04">
+					<UnitConstant>
+						<name>Fire_Dmg</name>
+						<var>
+							<compiledString>FRQAAAABAAAAcAAAAEF0a0RhbWFnZURpc3BfQ3JlZXAAVYvsg+wQi0UIixCLTQiLggQBAAD/0FHZHCToXgAAAIPEBFCLTQiLEYtNCIuCAAEAAP/QUdkcJOhBAAAAg8QEUItNEIsRi00Qi0Jc/9CJRfzbRfyLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfT/0NxN9Nld8NlF8IvlXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>random (f2l(sDamageMin), f2l(sDamageMax)) * cAtkDamageDisp_Creep</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="C4BF2031-A24B-49D9-B26E-C6D2005CFF2C">
+					<UnitConstant>
+						<name>StunProc</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="A789A369-20FA-4638-8C49-ADDA5B5270A1">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/FireBall/_Hit.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Motion</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/FireBall/_.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>2</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>-1</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>20</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>5</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+		<Item href="/Creeps/Bosses/Boss1/status_Gorynich.APLR" />
+		<Item href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="E7ED5751-0FEB-46D7-B277-2C812778CE1C">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>диспелим себя если в эвейде</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="76C12751-24F7-44C4-861A-505D1A329F2B">
+					<EventProcessorCondition>
+						<applyTarget>AbilityOwner</applyTarget>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgtABAAD/0F3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>sender.IsEvading()</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="BF6EAEAD-8391-47A4-A315-E2F81F224452">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="02D08625-EA26-46C1-B35B-055E0ADE529A">
+										<DispellApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption></caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<maxEffectsToDispell>
+												<compiledString>FQAAAAAAAAAAVYvsuGQAAABdww==</compiledString>
+												<returnType>int</returnType>
+												<sString>100</sString>
+											</maxEffectsToDispell>
+											<providerName></providerName>
+											<targets href="" />
+										</DispellApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Bosses/Boss1/AttackAbility.ATCK" id="D50D6EB0-8FC9-4DA4-9D8E-7D48DE30DD00">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>6029823</targetType>
+	<type>Simple</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

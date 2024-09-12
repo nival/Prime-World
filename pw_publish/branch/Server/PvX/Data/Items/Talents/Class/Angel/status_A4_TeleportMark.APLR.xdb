@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Angel/A4_TeleportChanneling.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Angel/status_A4_TeleportMark.APLR" id="A10A86EF-AB59-40A1-B064-70A96BA93049">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Смотрим, жива ли цель телепорта или нет</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0f</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>A4TargetOn</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>Метка на цель к которой будем телепортится</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Angel/status_A4_TeleportMark.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Effects/Debuffs/Mark/_Wings.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FSEAAAACAAAALAAAAEwAAABBNF9DaGFubmVsaW5nT24AQTRfQW5nZWxGbHlTdGFydABVi+xRagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QO0UQdSlqAYtNEFFoEAAAAItVCIsCi00Ii5CcAQAA/9I7RRB1CcdF/AAAAADrB8dF/AEAAACKRfyL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applA4_ChannelingOn(UNIT) != pMisc || sender.applA4_AngelFlyStart(UNIT) != pMisc</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>A4TeleportMark</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Angel/A4.ITEX" />
+	<lifeTime>
+		<compiledString>FRIAAAACAAAAHwAAADIAAABBNF9DaGFubmVsaW5nVGltZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBUAAAADZXfzZRfyL5V3DmpmZmZmZyT8=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_ChannelingTime + 0.2</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Angel/status_A4_TeleportMark.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

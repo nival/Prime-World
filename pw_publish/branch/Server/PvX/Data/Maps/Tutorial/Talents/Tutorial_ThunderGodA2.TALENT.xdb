@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent parent="/Items/Talents/Class/ThunderGod/Ability2.TALENT">
+	<BackLink DBID="/Maps/Tutorial/Talents/ThunderM1.TALENTSET" Count="1" />
+	<castLimitations>
+		<Item href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="523BD7D7-EC71-49D1-87AB-A66DB1EE5BF3">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsUYtFDIsQi00Mi0JQ/9CD+AZ0P4tNDIsRi00Mi0JQ/9CD+Ad0LYtNDIsRi00Mi0JQ/9CD+Ah0G4tNDIsRi00Mi0JQ/9CD+A10CcdF/AEAAADrB8dF/AAAAACKRfyL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>rUnitKind != 6 &amp;&amp;  rUnitKind != 7 &amp;&amp;  rUnitKind != 8 &amp;&amp;  rUnitKind != 13</sString>
+				</condition>
+				<uiEvent href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="CFB80F83-2FC9-4D09-8FC5-8161428ACEEC">
+					<UIEvent>
+						<signRecipients>PLAYER_ONLY</signRecipients>
+						<UISigns>
+							<Item href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="2502A734-A64C-4A1E-8970-24DAF66D972A">
+								<UISignMessageToStatusLine>
+									<messages>
+										<Item textref="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT_2502a734a64c4a1e897024daf66d972a_messages_0.txt" />
+										<Item textref="" />
+										<Item textref="" />
+									</messages>
+									<signRecipients>USE_FROM_PARENT</signRecipients>
+								</UISignMessageToStatusLine>
+							</Item>
+						</UISigns>
+					</UIEvent>
+				</uiEvent>
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<passiveApplicators>
+		<Item href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="F662B317-583D-41EA-B79E-98ADA4A740B4">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Сбрасываем стеки после возрождения</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="0399BB41-C13B-48B5-9537-48EBC2820FC9">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</condition>
+						<events>1048576</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="C2229684-1218-4FAD-996B-79C96C84EA7D">
+							<Spell>
+								<applicators>
+									<Item href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="17418872-A39C-4168-917D-9F2F01D6735E">
+										<PermanentStatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>(UPG) - переменная A1SaveStack = 0</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString>FSAAAAACAAAAJwAAAEAAAABUaHVuZGVyX0ExX1VwZzIAVGh1bmRlcl9BMV9VcGcyAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>tal("Thunder_A1_Upg2")</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>A1SaveStack</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Maps/Tutorial/Talents/Tutorial_ThunderGodA2.TALENT" id="1F3B54EE-7631-48B4-AF44-5B484A7F3B6F">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>Tutorial_ThunderA2</persistentId>
+	<talentRollGroups>0</talentRollGroups>
+	<targetType>538715135</targetType>
+</Talent>

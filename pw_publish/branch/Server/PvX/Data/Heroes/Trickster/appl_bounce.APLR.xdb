@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BounceApplicator>
+	<BackLink DBID="/Heroes/Trickster/_.HROB" Count="1" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<bounceDelay>
+		<compiledString>FQ0AAAABAAAAGQAAAEJvdW5jZV9EZWxheQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cBounce_Delay</sString>
+	</bounceDelay>
+	<cancelEffect>
+		<Item href="" />
+		<Item href="" />
+	</cancelEffect>
+	<caption>bounce</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Heroes/Trickster/appl_bounce.APLR" id="F353D1B9-9071-4D7F-BA65-CCAB3C5AB9E4">
+		<Spell>
+			<applicators>
+				<Item href="/Heroes/Trickster/appl_bounce.APLR" id="444423F7-FE88-4814-8198-BA2B64D74993">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>последующие уроны</caption>
+						<damage>
+							<compiledString>FT8AAAAFAAEATAAAAI0AAACrAAAAvgAAAN0AAAA/AQAAVHJpY2tzdGVyX0F1dG9BdHRhY2tfV2FzQ3JpdAAAAABBdHRja0RhbWFnZQB0YXJnZXQAAEF0dGNrU2NhbGUAVYvsg+wYagKLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QO0UQdBKLTQiLEYtNCItCIP/Q2V386wXZ6Nld/ItNEIsRi00Qi0JI/9CJRfhoLAAAAItN+IsRi034i0JU/9BR2Rwki00MUYtVCFJoNAAAAItFEIsQi00Qi0JQ/9DcNQEBAADZXfTZRfRR2Rwk6DwAAACDxAiLTQxRi1UIUmggAAAAi0UQixCLTRCLQlDdXez/0NhN/NxN7Nld6NlF6IvlXcMAAAAAAABZQAAAgD9Vi+xR2UUM2RwkUdlFCNkcJOgFAAAAg8QIXcNVi+xR2UUMg+wI3Rwk2UUIg+wI3Rwk6J/+//+DxBDZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>((sender.applTrickster_AutoAttack_WasCrit(ABILITY) != pMisc) ? sCritMult : 1) * cAttckDamage * pow(cAttckScale/100,mObjectParent-&gt;GetVariable("target"))</sString>
+						</damage>
+						<damageMode>3</damageMode>
+						<damageType>Native</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+				<Item href="/Heroes/Trickster/spell_StacksSwitch.APLR" />
+			</applicators>
+			<dispatch href="/Heroes/Trickster/appl_bounce.APLR" id="6731C497-2E51-453F-9F36-837918D809F9">
+				<DispatchLinear>
+					<aiming>Straight</aiming>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="/Effects/Shots/Fairy/_Trickster.EFFT" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="/Effects/Shots/Bullet/_Trickster.EFFT" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>2</flags>
+					<flyMode>Linear</flyMode>
+					<fromLocator>Body</fromLocator>
+					<height>0</height>
+					<killEffect>true</killEffect>
+					<locatorOrient>false</locatorOrient>
+					<maxDeviation>180</maxDeviation>
+					<maxDistance>-1</maxDistance>
+					<maxRise>0</maxRise>
+					<minRise>0</minRise>
+					<persistentApplicators />
+					<speed>30</speed>
+					<suspendTime>0</suspendTime>
+					<toLocator>Body</toLocator>
+				</DispatchLinear>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString>FT0AAAAEAAAARAAAAF0AAACTAAAArAAAAFRyaWNrc3Rlcl9BM3UAAABUcmlja3N0ZXJfQTN1AAAAVHJpY2tzdGVyX0EzAAAAAFRyaWNrc3Rlcl9BMwBVi+yD7BRoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXRYaCAAAACLVQiLAotNCIuQqAEAAP/ShcB0KmgwAAAAi0UIixCLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0CcdF7AEAAADrB8dF7AAAAACKReyL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Trickster_A3u") &amp;&amp; tal("Trickster_A3")</sString>
+	</startCondition>
+	<startTarget>ApplicatorTarget</startTarget>
+	<target href="/Heroes/Trickster/appl_bounce.APLR" id="DBD6FD85-02C4-4C66-8FAA-EC087F95E7ED">
+		<FirstTargetSelector>
+			<nearestTarget>false</nearestTarget>
+			<targetSelector href="/Heroes/Trickster/appl_bounce.APLR" id="16E02F46-D39A-4378-94F7-532DB9787023">
+				<CountingTargetSelector>
+					<enableSorting>true</enableSorting>
+					<flags>0</flags>
+					<heroesFirst>false</heroesFirst>
+					<mode>SendOnce</mode>
+					<order>Increasing</order>
+					<sortingValue>
+						<compiledString>FTAAAAADAAEANwAAAEoAAABWAAAAOAEAAFJlbWVtYmVyZWRUYXJnZXRzTnVtYmVyAExhc3RSZW1lbWJlcmVkVGFyZ2V0UG9zAFWL7IPsIGgAAAAAi0UQixCLTRCLQlT/0NwdsgAAAN/g9sRBdR5oGAAAAI1N9FGLVRCLAotNEIuQhAAAAP/SiUXg6xSNRexQi00QixGLTRCLQlj/0IlF4ItN4IlN/ItV/FKNReRQi00MixGLTQyLgowBAAD/0FDoDwAAAIPECIvlXcMAAAAAAAAAAFWL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6KD+//+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+						<returnType>float</returnType>
+						<sString>d( rPos, appl.vRememberedTargetsNumber &gt; 0 ? appl.GetVectorVariable("LastRememberedTargetPos") : appl.TargetPos )</sString>
+					</sortingValue>
+					<targetSelector href="/Heroes/Trickster/appl_bounce.APLR" id="950C692B-3024-4202-B091-6BF07153ADD7">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FQcAAAABAAAACwAAAFRhcmdldABVi+xoAAAAAItFEIsQi00Qi0JM/9AzyTlFDA+VwYrBXcM=</compiledString>
+								<returnType>bool</returnType>
+								<sString>pSecond != pMisc-&gt;GetObject("Target")</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelector href="/Heroes/Trickster/appl_bounce.APLR" id="3CF88492-5097-44CB-A0D2-41BCF8EBFBCE">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>1</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQ0AAAABAAAAGQAAAEJvdW5jZV9SYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cBounce_Range</sString>
+									</range>
+									<targetFilter>681312319</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+					<targetsNumber>
+						<compiledString></compiledString>
+						<returnType>int</returnType>
+						<sString>1</sString>
+					</targetsNumber>
+				</CountingTargetSelector>
+			</targetSelector>
+		</FirstTargetSelector>
+	</target>
+	<targetsNumber>
+		<compiledString>FQkAAAABAAAAFQAAAE51bV9KdW1wAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJOgFAAAAg8QEXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(cNum_Jump)</sString>
+	</targetsNumber>
+</BounceApplicator>

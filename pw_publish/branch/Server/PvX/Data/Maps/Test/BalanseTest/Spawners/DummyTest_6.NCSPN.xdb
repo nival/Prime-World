@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvMapNeutralCreepSpawner>
+	<BackLink DBID="/Maps/Test/BalanseTest/_.ADMP" Count="1" />
+	<baseLevel>0</baseLevel>
+	<collision>
+		<x1>0</x1>
+		<x2>0</x2>
+		<y1>0</y1>
+		<y2>0</y2>
+	</collision>
+	<evadeParams>
+		<evadeTimeout>60</evadeTimeout>
+		<restoreHealthPercent>0</restoreHealthPercent>
+		<waitForEvadeTime>3</waitForEvadeTime>
+		<waitForNextTargetTime>3</waitForNextTargetTime>
+	</evadeParams>
+	<firstSpawnTimeOffset>0</firstSpawnTimeOffset>
+	<groups>
+		<Item>
+			<creeps>
+				<Item>
+					<creep href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="27A179EC-EDAC-4F03-82CE-F613C39F703C">
+						<AdvMapCreep parent="/Creeps/Minions/Minion3/DummyTestDps.CREEP">
+							<abilities>
+								<Item skip="1" />
+								<Item href="/Maps/Test/BalanseTest/Spawners/AbilityForBurst.ABLT" />
+								<Item skip="1" />
+								<Item skip="1" />
+								<Item skip="1" />
+							</abilities>
+							<attackAbility href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="C1F4B362-E58B-4C68-94B5-8FFE45B01012">
+								<BaseAttack parent="/Creeps/Minions/Minion3/DummyTestDps.ATCK">
+									<applicators>
+										<Item skip="1" />
+										<Item href="/Effects/Shots/HitsApplicators/Heavy.APLR" />
+									</applicators>
+									<constants href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="9062E51C-F822-4129-881A-D19752BA8C8D">
+										<UnitConstantsContainer>
+											<vars>
+												<Item href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="C6C55383-F151-4179-A0B4-7716AD9C431D">
+													<UnitConstant>
+														<name>DamageTaken</name>
+														<var>
+															<compiledString>FQsAAAACAAAAGAAAACsAAABEYW1hZ2VUaW1lAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFTQAAANld/NlF/FHZHCSLRQiLEItNCIuCsAEAAP/Qi+VdwwAAAAAAAABA</compiledString>
+															<returnType>float</returnType>
+															<sString>sender.GetDamageDealt(cDamageTime+2)</sString>
+														</var>
+													</UnitConstant>
+												</Item>
+												<Item href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="B22465E8-8DB9-4F80-B75C-63ED805D8C73">
+													<UnitConstant>
+														<name>DamageTime</name>
+														<var>
+															<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+															<returnType>float</returnType>
+															<sString>3</sString>
+														</var>
+													</UnitConstant>
+												</Item>
+												<Item href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="A50ED4E8-F1BF-41B2-8E96-05228888B17D">
+													<UnitConstant>
+														<name>EnergyTaken</name>
+														<var>
+															<compiledString>FRcAAAADAAAAJgAAAEAAAABZAAAARGFtYWdlVGFrZW4ARGFtYWdlVGltZQBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaAwAAACLVRCLAotNEItQUN1d+P/S3H343A1nAAAA2V302UX0i+VdwwAAAAAAAFlA</compiledString>
+															<returnType>float</returnType>
+															<sString>(cDamageTaken/cDamageTime)*100</sString>
+														</var>
+													</UnitConstant>
+												</Item>
+												<Item href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="A84371B9-E7A2-4460-84F0-DAE68E25FE7B">
+													<UnitConstant>
+														<name>Duration</name>
+														<var>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0f</sString>
+														</var>
+													</UnitConstant>
+												</Item>
+											</vars>
+										</UnitConstantsContainer>
+									</constants>
+									<dispatch href="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN" id="EAD4DCDE-F56C-4A06-B6FC-68ECC0F9F4D7">
+										<DispatchLinear>
+											<aiming>Straight</aiming>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Motion</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="/Effects/Shots/Stone/_.EFFT" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>2</flags>
+											<flyMode>Parabolic</flyMode>
+											<fromLocator>Attack</fromLocator>
+											<height>0</height>
+											<killEffect>true</killEffect>
+											<locatorOrient>true</locatorOrient>
+											<maxDeviation>180</maxDeviation>
+											<maxDistance>-1</maxDistance>
+											<maxRise>1</maxRise>
+											<minRise>0</minRise>
+											<persistentApplicators />
+											<speed>20</speed>
+											<suspendTime>0</suspendTime>
+											<toLocator>Body</toLocator>
+										</DispatchLinear>
+									</dispatch>
+								</BaseAttack>
+							</attackAbility>
+							<description textref="/Maps/Test/BalanseTest/Spawners/DummyTest_6.NCSPN_27a179ecedac4f0382cef613c39f703c_description.txt" />
+							<nativeAttack>Material</nativeAttack>
+							<nativeDefence>Material</nativeDefence>
+							<stats href="/Maps/Test/BalanseTest/Spawners/DummyTestBurstConst774.STCN" />
+							<targetingParams href="/Maps/Test/BalanseTest/Spawners/TargetParams_DummyUnit.UNTP" />
+						</AdvMapCreep>
+					</creep>
+					<limitWalkDistance>-1</limitWalkDistance>
+					<offset>
+						<location>
+							<x>0</x>
+							<y>0</y>
+							<z>0</z>
+						</location>
+						<rotation>
+							<w>1</w>
+							<x>0</x>
+							<y>0</y>
+							<z>0</z>
+						</rotation>
+						<scale>
+							<x>1</x>
+							<y>1</y>
+							<z>1</z>
+						</scale>
+					</offset>
+					<specialAwarding>false</specialAwarding>
+					<useSpawnerWalkLimit>true</useSpawnerWalkLimit>
+					<waveDelayToAppear>0</waveDelayToAppear>
+				</Item>
+			</creeps>
+		</Item>
+	</groups>
+	<heightObject>false</heightObject>
+	<isAggressive>false</isAggressive>
+	<levelUpInfo>
+		<increment>0</increment>
+		<interval>-1</interval>
+		<lifetimeLevelUp>false</lifetimeLevelUp>
+		<spawnLevelUpIncrement>0</spawnLevelUpIncrement>
+		<spawnLevelUpInterval>0</spawnLevelUpInterval>
+	</levelUpInfo>
+	<limitWalkDistance>15</limitWalkDistance>
+	<lockMask>
+		<mask />
+		<tileSize>0.5</tileSize>
+	</lockMask>
+	<mapForceStatModifierApplication>3</mapForceStatModifierApplication>
+	<minimapIcon>NeutralsWeak</minimapIcon>
+	<minLockScale>0</minLockScale>
+	<naftaForGroupKill>0</naftaForGroupKill>
+	<path />
+	<rounded>false</rounded>
+	<showMinimapIcon>false</showMinimapIcon>
+	<spawnDelay>1</spawnDelay>
+	<useEvade>true</useEvade>
+	<waveCount>0</waveCount>
+</AdvMapNeutralCreepSpawner>

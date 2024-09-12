@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>Замедляем все цели на пути снаряда</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="A49A9251-CDF0-4A01-8442-8ABA2DFCDC29">
+		<Spell>
+			<applicators />
+			<dispatch href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="A3739DE3-B1A7-46FD-8BC3-8679B19FB174">
+				<DispatchLinear>
+					<aiming>Straight</aiming>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Motion</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="/Effects/Shots/Circle/_.EFFT" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<flyMode>Linear</flyMode>
+					<fromLocator>Attack</fromLocator>
+					<height>0</height>
+					<killEffect>true</killEffect>
+					<locatorOrient>false</locatorOrient>
+					<maxDeviation>180</maxDeviation>
+					<maxDistance>-1</maxDistance>
+					<maxRise>0</maxRise>
+					<minRise>0</minRise>
+					<persistentApplicators>
+						<Item href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="E898DAB1-53A8-44BF-8E93-E23C8A82B709">
+							<SpellPeriodicallyApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>0</behaviorFlags>
+								<caption></caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<period>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</period>
+								<providerName></providerName>
+								<scaleMode>ScaleIsCount</scaleMode>
+								<spell href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="09ABBCBC-147E-4AC1-86E1-D9A17EB7D17F">
+									<Spell>
+										<applicators>
+											<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+										</applicators>
+										<dispatch href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="9D8E2E8D-A89E-44A9-8345-F56AE90923A5">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>Default</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>0</flags>
+												<instantApply>true</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<startOffset>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</startOffset>
+								<targetSelector href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="6FD0AE93-48CC-42A1-B701-897B6A0F36B4">
+									<CapsuleTargetSelector>
+										<cutoffFirstSegment>true</cutoffFirstSegment>
+										<flags>0</flags>
+										<mode>SendOnce</mode>
+										<range>
+											<compiledString>FQYAAAACAAAAEwAAACYAAABXaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTQAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+											<returnType>float</returnType>
+											<sString>cWidth * 0.5</sString>
+										</range>
+										<rangeFromOwner>
+											<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+											<returnType>float</returnType>
+											<sString>0</sString>
+										</rangeFromOwner>
+										<segmentBegin>PreviousPosition</segmentBegin>
+										<segmentDirectionOffset>0</segmentDirectionOffset>
+										<segmentEnd>CurrentPosition</segmentEnd>
+										<segmentEndTargetSelector href="" />
+										<targetFilter>538771519</targetFilter>
+									</CapsuleTargetSelector>
+								</targetSelector>
+							</SpellPeriodicallyApplicator>
+						</Item>
+					</persistentApplicators>
+					<speed>40</speed>
+					<suspendTime>0</suspendTime>
+					<toLocator></toLocator>
+				</DispatchLinear>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="1092B289-53B9-400E-B53D-7F05F6912ECC">
+		<PointTargetSelector>
+			<checkMinRange>true</checkMinRange>
+			<mode>RangeFromOwner</mode>
+			<offset>
+				<x>0</x>
+				<y>1</y>
+			</offset>
+			<paralleledTarget>false</paralleledTarget>
+			<range>
+				<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJItFEIsQi00Qi0IM/9BR2Rwk6AUAAACDxAhdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>min( mDist2Target, cA4_Range )</sString>
+			</range>
+			<targetSelector href="/Items/Talents/Class/Prince/A4_SpellSlow.APLR" id="36C153C2-849A-4956-B387-3F4D7DD740E3">
+				<SelectApplicatorTarget>
+					<applicatorIndex>0</applicatorIndex>
+					<applicatorName></applicatorName>
+					<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+					<selectTarget>ApplicatorTarget</selectTarget>
+				</SelectApplicatorTarget>
+			</targetSelector>
+			<traceMode>0</traceMode>
+		</PointTargetSelector>
+	</targetSelector>
+</SpellApplicator>

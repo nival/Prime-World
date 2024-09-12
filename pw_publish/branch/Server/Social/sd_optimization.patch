@@ -1,0 +1,487 @@
+Index: config/ConfigDataCustom.py
+===================================================================
+--- config/ConfigDataCustom.py	(revision 46209)
++++ config/ConfigDataCustom.py	(working copy)
+@@ -304,7 +304,8 @@
+         for heroIdId in SD.data['Heroes'].keys():
+             heroSD = SD.data['Heroes'][heroIdId]
+             if heroSD["persistentId"] not in self.EventToolsChangeFields.HERO_SILVER_PRICES:
+-                self.EventToolsChangeFields.HERO_SILVER_PRICES[heroSD["persistentId"]] = int(heroSD['lobbyData']['CostMale']['Silver'])
++
++                self.EventToolsChangeFields.HERO_SILVER_PRICES[heroSD["persistentId"]] = SD.copyPrice(heroSD['lobbyData']['CostMale']).Silver
+                 self.BuyGoldHeroInfo.REPLACE_GOLD_PRICES_MALE[heroSD["persistentId"]] = SD.GetHeroGoldPrice(heroSD, self, False)
+                 self.BuyGoldHeroInfo.REPLACE_GOLD_PRICES_FEMALE[heroSD["persistentId"]] = SD.GetHeroGoldPrice(heroSD, self, True)
+ 
+@@ -312,7 +313,7 @@
+             staticConstruction = SD.data['Constructions'][constructionId]
+             if staticConstruction['classType'] == "FirstBuyBuilding" and staticConstruction["persistentId"] not in self.EventToolsChangeFields.FIRST_BUY_GOLD_PRICES:
+                 self.EventToolsChangeFields.FIRST_BUY_GOLD_PRICES[staticConstruction["persistentId"]] = \
+-                    int(staticConstruction['Levels']['Item'][0]['price']['Gold'])
++                    SD.copyPrice(staticConstruction['Levels']['Item'][0]['price']).Gold
+ 
+         self.EventToolsChangeFields.ORDINARY_TALENTS_DROP_RARITIES.append(int(SD.data['RollTalentForTransmutationBuilding']['percents']['Item'][ETalentRarity.Class]))
+         self.EventToolsChangeFields.ORDINARY_TALENTS_DROP_RARITIES.append(int(SD.data['RollTalentForTransmutationBuilding']['percents']['Item'][ETalentRarity.ordinary]))
+@@ -350,13 +351,14 @@
+         self.EventToolsChangeFields.REROLL_SHOP_PREMIUM_SLOTS = SD.data['RerollShop']['premiumSlots']
+         self.EventToolsChangeFields.INACTIVE_REROLL_SHOP_PREMIUM_SLOTS = SD.data['RerollShop']['maxInactivePremiumSlots']
+         self.EventToolsChangeFields.INACTIVE_REROLL_SHOP_ORDINARY_SLOTS = SD.data['RerollShop']['maxInactiveUsualSlots']
+-        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Resource1 = SD.data['RerollShop']['rerollPrice']['Resource1']
+-        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Resource2 = SD.data['RerollShop']['rerollPrice']['Resource2']
+-        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Resource3 = SD.data['RerollShop']['rerollPrice']['Resource3']
+-        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Silver = SD.data['RerollShop']['rerollPrice']['Silver']
+-        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Gold = SD.data['RerollShop']['rerollPrice']['Gold']
+-        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Perl = SD.data['RerollShop']['rerollPrice']['Perl']
+-        self.EventToolsChangeFields.REROLL_SHOP_PRICE.RedPerl = SD.data['RerollShop']['rerollPrice']['RedPerl']
++        reroll_price = SD.copyPrice(SD.data['RerollShop']['rerollPrice'])
++        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Resource1 = reroll_price.Resource1
++        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Resource2 = reroll_price.Resource2
++        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Resource3 = reroll_price.Resource3
++        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Silver = reroll_price.Silver
++        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Gold = reroll_price.Gold
++        self.EventToolsChangeFields.REROLL_SHOP_PRICE.Perl = reroll_price.Perl
++        self.EventToolsChangeFields.REROLL_SHOP_PRICE.RedPerl = reroll_price.RedPerl
+         self.EventToolsChangeFields.PREMIUM_SLOTS_ARE_NOT_INACTIVE = SD.data['RerollShop']['premiumNotInactive']
+ 
+     def getRollWeightByRollTimes(self, group, rerolls):
+Index: guild/guild_bonuses_helper.py
+===================================================================
+--- guild/guild_bonuses_helper.py	(revision 46209)
++++ guild/guild_bonuses_helper.py	(working copy)
+@@ -159,8 +159,6 @@
+                 else:
+                     warn("can't find buff %r in static data", buff.PersistentId)
+ 
+-
+-
+         for staticBuff in staticBuffs:
+             buffPersistentId = staticBuff["persistentId"]
+             bonuses = staticBuff["bonuses"]["Item"]
+Index: guild/iguildservice.py
+===================================================================
+--- guild/iguildservice.py	(revision 46209)
++++ guild/iguildservice.py	(working copy)
+@@ -714,11 +714,12 @@
+             if staticItem:
+                 if acc.guilddata.GuildShopItems[str(shopItemId)] > 0:
+                     # Если покупаем только для гильдии - то за очки гильдии и только советником или главой
+-                    if (staticItem['price']['CWPoints_Clan'] != 0 and member.IsOfficer) or staticItem['price']['CWPoints_Clan'] == 0:
+-                        if staticItem['price']['CWPoints_Clan'] != 0 and member.IsOfficer:
++                    price = acc.SD.copyPrice(staticItem['price'])
++                    if (price.CWPoints_Clan != 0 and member.IsOfficer) or price.CWPoints_Clan == 0:
++                        if price.CWPoints_Clan != 0 and member.IsOfficer:
+                             # Хватает ли у гильдии денег на покупку?
+-                            if acc.guilddata.GuildInfo.CWPoints_Clan >= staticItem['price']['CWPoints_Clan']:
+-                                acc.guilddata.GuildInfo.CWPoints_Clan -= staticItem['price']['CWPoints_Clan']
++                            if acc.guilddata.GuildInfo.CWPoints_Clan >= price.CWPoints_Clan:
++                                acc.guilddata.GuildInfo.CWPoints_Clan -= price.CWPoints_Clan
+                             else:
+                                 response["error"] = "BuyGuildShopItemAction: not enough CWPoints_Clan, item_id=%r, " \
+                                                     "available cw_points = %s" % (shopItemId, acc.guilddata.GuildInfo.CWPoints_Clan)
+Index: handlers.py
+===================================================================
+--- handlers.py	(revision 46209)
++++ handlers.py	(working copy)
+@@ -669,7 +669,7 @@
+             self.I.Config.applyLocaleOverrides(self.I.SD)
+             self.I.Config.fillStaticDataDependendValues(self.I.SD)
+             self.I.SD.loadDynamicQuests(dynamicQuests, dynamicQuestPulls)
+-            for _id, event in self.I.WS.operatorEvents["activeEvents"].items():
++            for _id, event in self.I.WS.operatorEvents["activeEvents"].iteritems():
+                 self.I.Config.applyEvent(self.I.SD, event)
+         if self.I.MD:
+             self.I.MD.reloadAllEvents()
+@@ -699,7 +699,7 @@
+                 # конфиг logic_overrides может содержать переопределения полей StaticData; их тоже нужно применить к перегруженной SD
+                 self.I.Config.getConfig(locale).applyOverrides(self.I.SD.getSD(locale))
+                 self.I.Config.getConfig(locale).fillStaticDataDependendValues(self.I.SD.getSD(locale))
+-                for _id, event in self.I.WS.operatorEvents["activeEvents"].items():
++                for _id, event in self.I.WS.operatorEvents["activeEvents"].iteritems():
+                     if event["locale"].lower() == locale.lower():
+                         self.I.Config.applyEvent(self.I.SD, event)
+             self.I.SD.loadDynamicQuests(dynamicQuests, dynamicQuestPulls)
+Index: logic/guild_buy_shop_item.py
+===================================================================
+--- logic/guild_buy_shop_item.py	(revision 46209)
++++ logic/guild_buy_shop_item.py	(working copy)
+@@ -125,5 +125,5 @@
+         hasSuzerain = (self.acc.guilddata.GuildSuzerain.ShortInfo.GuildAuid != 0)
+         level = self.acc.SD.getGuildShopLevel(self.acc.guilddata.getShopOwnerRating(), self.acc.guilddata.GuildInfo.HasUltimateShop)
+         self.I.STATS.addBuyGuildShopItem(self.acc.auid, self.acc.db.guildAuid, hasSuzerain, level, self.arguments.persistentId,
+-                                          self.price, self.acc.model.Resources, int(self.shopItem['price']['CWPoints_Clan']),
++                                          self.price, self.acc.model.Resources, self.price.CWPoints_Clan,
+                                           self.acc.guilddata.GuildInfo.CWPoints_Clan)
+Index: logic/tests/building_place_test.py
+===================================================================
+--- logic/tests/building_place_test.py	(revision 46209)
++++ logic/tests/building_place_test.py	(working copy)
+@@ -467,14 +467,14 @@
+         newLimitsResource2 = limits['resourceLimits']['Resource2'] + prLevelFirst['additionalStorage']['Resource2']
+         newLimitsResource3 = limits['resourceLimits']['Resource3'] + prLevelFirst['additionalStorage']['Resource3']
+         
+-    price = staticBuilding['Levels']['Item'][0]['price']
++    price = env.acc.SD.copyPrice(staticBuilding['Levels']['Item'][0]['price'])
+         
+     assert newLimitsResource1 <= modeldata.Resources.Resource1
+-    assert amount == modeldata.Resources.Resource1 + price['Resource1']
++    assert amount == modeldata.Resources.Resource1 + price.Resource1
+     assert newLimitsResource2 <= modeldata.Resources.Resource2
+-    assert amount == modeldata.Resources.Resource2 + price['Resource2']
++    assert amount == modeldata.Resources.Resource2 + price.Resource2
+     assert newLimitsResource3 <= modeldata.Resources.Resource3
+-    assert amount == modeldata.Resources.Resource3 + price['Resource3']
++    assert amount == modeldata.Resources.Resource3 + price.Resource3
+     
+   def building_place_gold_production_house_test(self, env):
+     modeldata = env.acc.model
+Index: modeldata/DynamicQuest_base.py
+===================================================================
+--- modeldata/DynamicQuest_base.py	(revision 46209)
++++ modeldata/DynamicQuest_base.py	(working copy)
+@@ -78,7 +78,7 @@
+             while len(objective.verifiedTalentsToRemove):
+                 objective.verifiedTalentsToRemove.pop()
+         currentCountInTToRemove = {}
+-        for _id, talent in acc.model.UserInventory.items():
++        for _id, talent in acc.model.UserInventory.iteritems():
+             if talent.PersistentId in persistentIds:
+                 if talent.isSoulbounded():  # if is soulbounded
+                     continue
+Index: modeldata/ModelDataCustom.py
+===================================================================
+--- modeldata/ModelDataCustom.py	(revision 46209)
++++ modeldata/ModelDataCustom.py	(working copy)
+@@ -1934,16 +1934,17 @@
+         if guest == 1:
+             limits = SD.data['GuestResourceAndInventoryLimits']
+ 
+-        newLimits.Perl = limits['resourceLimits']['Perl']
+-        newLimits.RedPerl = limits['resourceLimits']['RedPerl']
+-        newLimits.Silver = limits['resourceLimits']['Silver']
+-        newLimits.Population = limits['resourceLimits']['Population']
+-        newLimits.Resource1 = limits['resourceLimits']['Resource1']
+-        newLimits.Resource2 = limits['resourceLimits']['Resource2']
+-        newLimits.Resource3 = limits['resourceLimits']['Resource3']
+-        newLimits.Resource1_Rare = limits['resourceLimits']['Resource1_Rare']
+-        newLimits.Resource2_Rare = limits['resourceLimits']['Resource2_Rare']
+-        newLimits.Resource3_Rare = limits['resourceLimits']['Resource3_Rare']
++        res_limits = SD.copyPrice(limits['resourceLimits'])
++        newLimits.Perl = res_limits.Perl
++        newLimits.RedPerl = res_limits.RedPerl
++        newLimits.Silver = res_limits.Silver
++        newLimits.Population = res_limits.Population
++        newLimits.Resource1 = res_limits.Resource1
++        newLimits.Resource2 = res_limits.Resource2
++        newLimits.Resource3 = res_limits.Resource3
++        newLimits.Resource1_Rare = res_limits.Resource1_Rare
++        newLimits.Resource2_Rare = res_limits.Resource2_Rare
++        newLimits.Resource3_Rare = res_limits.Resource3_Rare
+         newUserInventoryLimit = limits['inventoryLimits']
+ 
+         for buildingId in self.Buildings:
+@@ -1954,8 +1955,8 @@
+                     prLevelFirst, prLevelSecond = SD.getInterpolLevels(staticBuilding['StorageLevels'], building.Level)
+                     if prLevelFirst == None or prLevelSecond == None:
+                         continue
+-                    price1 = prLevelFirst['additionalStorage']
+-                    price2 = prLevelSecond['additionalStorage']
++                    price1 = SD.copyPrice(prLevelFirst['additionalStorage'])
++                    price2 = SD.copyPrice(prLevelSecond['additionalStorage'])
+                     coeff = 1.0
+                     if prLevelFirst['currentLevel'] != prLevelSecond['currentLevel']:
+                         coeff = float(building.Level - prLevelFirst['currentLevel']) / float( prLevelSecond['currentLevel'] - prLevelFirst['currentLevel'])
+@@ -1963,7 +1964,7 @@
+                     for k, v in newLimits.items():
+                         if v > 0:
+                             if prLevelFirst['currentLevel'] == prLevelSecond['currentLevel']:
+-                                newLimits[k] += prLevelFirst['additionalStorage'][k]
++                                newLimits[k] += price1[k]
+                             else:
+                                 newLimits[k] += SD.roundFloatToInt(price1[k] + (price2[k] - price1[k]) * coeff)
+ 
+@@ -1973,36 +1974,36 @@
+                 elif staticBuilding['classType'] == "FirstBuyBuilding":
+                     prLevelFirst, prLevelSecond = SD.getInterpolLevels(staticBuilding['FirstBuyLevels'], building.Level)
+                     if prLevelFirst != None and prLevelSecond != None:
++                        price1 = SD.copyPrice(prLevelFirst['additionalStorage'])
+                         if prLevelFirst['currentLevel'] == prLevelSecond['currentLevel']:
+                             if newLimits.Resource1 > 0:
+-                                newLimits.Resource1 += prLevelFirst['additionalStorage']['Resource1']
++                                newLimits.Resource1 += price1.Resource1
+                             if newLimits.Resource2 > 0:
+-                                newLimits.Resource2 += prLevelFirst['additionalStorage']['Resource2']
++                                newLimits.Resource2 += price1.Resource2
+                             if newLimits.Resource3 > 0:
+-                                newLimits.Resource3 += prLevelFirst['additionalStorage']['Resource3']
++                                newLimits.Resource3 += price1.Resource3
+                             if newLimits.Resource1_Rare > 0:
+-                                newLimits.Resource1_Rare += prLevelFirst['additionalStorage']['Resource1_Rare']
++                                newLimits.Resource1_Rare += price1.Resource1_Rare
+                             if newLimits.Resource2_Rare > 0:
+-                                newLimits.Resource2_Rare += prLevelFirst['additionalStorage']['Resource2_Rare']
++                                newLimits.Resource2_Rare += price1.Resource2_Rare
+                             if newLimits.Resource3_Rare > 0:
+-                                newLimits.Resource3_Rare += prLevelFirst['additionalStorage']['Resource3_Rare']
++                                newLimits.Resource3_Rare += price1.Resource3_Rare
+                         else:
+-                            price1 = prLevelFirst['additionalStorage']
+-                            price2 = prLevelSecond['additionalStorage']
++                            price2 = SD.copyPrice(prLevelSecond['additionalStorage'])
++
+                             coeff = float(building.Level - prLevelFirst['currentLevel']) / float( prLevelSecond['currentLevel'] - prLevelFirst['currentLevel'])
+                             if newLimits.Resource1 > 0:
+-                                newLimits.Resource1 += SD.roundFloatToInt(
+-                                    price1['Resource1'] + (price2['Resource1'] - price1['Resource1']) * coeff)
++                                newLimits.Resource1 += SD.roundFloatToInt(price1.Resource1 + (price2.Resource1 - price1.Resource1) * coeff)
+                             if newLimits.Resource2 > 0:
+-                                newLimits.Resource2 += SD.roundFloatToInt( price1['Resource2'] + (price2['Resource2'] - price1['Resource2']) * coeff)
++                                newLimits.Resource2 += SD.roundFloatToInt(price1.Resource2 + (price2.Resource2 - price1.Resource2) * coeff)
+                             if newLimits.Resource3 > 0:
+-                                newLimits.Resource3 += SD.roundFloatToInt( price1['Resource3'] + (price2['Resource3'] - price1['Resource3']) * coeff)
++                                newLimits.Resource3 += SD.roundFloatToInt(price1.Resource3 + (price2.Resource3 - price1.Resource3) * coeff)
+                             if newLimits.Resource1_Rare > 0:
+-                                newLimits.Resource1_Rare += SD.roundFloatToInt(price1['Resource1_Rare'] + ( price2['Resource1_Rare'] - price1['Resource1_Rare']) * coeff)
++                                newLimits.Resource1_Rare += SD.roundFloatToInt(price1.Resource1_Rare + ( price2.Resource1_Rare - price1.Resource1_Rare) * coeff)
+                             if newLimits.Resource2_Rare > 0:
+-                                newLimits.Resource2_Rare += SD.roundFloatToInt(price1['Resource2_Rare'] + ( price2['Resource2_Rare'] - price1['Resource2_Rare']) * coeff)
++                                newLimits.Resource2_Rare += SD.roundFloatToInt(price1.Resource2_Rare + ( price2.Resource2_Rare - price1.Resource2_Rare) * coeff)
+                             if newLimits.Resource3_Rare > 0:
+-                                newLimits.Resource3_Rare += SD.roundFloatToInt(price1['Resource3_Rare'] + ( price2['Resource3_Rare'] - price1['Resource3_Rare']) * coeff)
++                                newLimits.Resource3_Rare += SD.roundFloatToInt(price1.Resource3_Rare + ( price2.Resource3_Rare - price1.Resource3_Rare) * coeff)
+ 
+                     newUserInventoryLimit += SD.getIntInterpolated(staticBuilding['FirstBuyLevels'], building.Level, None, "additionalTalentSlots", 0)
+ 
+@@ -5428,14 +5429,16 @@
+                 bonus.IsEnabled = False
+                 continue
+ 
+-            if 'doNotWorkWith' in staticBonus and type(staticBonus['doNotWorkWith']) is dict:
+-                for enemyBonus in staticBonus['doNotWorkWith']['Item']:
++            if 'doNotWorkWith' in staticBonus:
++                for enemy_bonus_persistent_id in staticBonus['doNotWorkWith']:
+                     # info("deactivateAllWeakerBonuses enemyBonus: compare \n"
+                     #     "\t %s(%r),%s(%s) vs %s(%r),%s(%s)", enemyBonus['persistentId'], crc32(enemyBonus['persistentId']), enemyBonus['priority'], type(enemyBonus['priority']),
+                     #     staticBonus['persistentId'], crc32(staticBonus['persistentId']), staticBonus['priority'], type(staticBonus['priority']))
+ 
+-                    mdBonus = self.getGuildBufByPersistentId(crc32(enemyBonus['persistentId']))
+-                    if mdBonus and int(enemyBonus['priority']) > int(staticBonus['priority']):
++                    mdBonus = self.getGuildBufByPersistentId(enemy_bonus_persistent_id)
++
++                    enemy_bonus = SD.getGuildBufById(enemy_bonus_persistent_id)
++                    if mdBonus and enemy_bonus['priority'] > staticBonus['priority']:
+                         # info("deactivateAllWeakerBonuses bonus disabled!")
+                         bonus.IsEnabled = False
+                         break
+Index: modeldata/StaticData.py
+===================================================================
+--- modeldata/StaticData.py	(revision 46209)
++++ modeldata/StaticData.py	(working copy)
+@@ -1271,17 +1271,16 @@
+ 
+         if isFemale:
+             lvlReq = staticHero['lobbyData']['LevelRequireFemale']
+-            cost = staticHero['lobbyData']['CostFemale']
++            cost = StaticData.copyPrice(staticHero['lobbyData']['CostFemale'])
+         else:
+             lvlReq = staticHero['lobbyData']['LevelRequireMale']
+-            cost = staticHero['lobbyData']['CostMale']
++            cost = StaticData.copyPrice(staticHero['lobbyData']['CostMale'])
+ 
+         if lvlReq < configData.BuyGoldHeroInfo.MIN_LORD_LVL_REQUIRED:
+             return 0
+-        silverCost = cost['Silver']
+         if staticHero['persistentId'] in configData.EventToolsChangeFields.HERO_SILVER_PRICES:
+-            silverCost = configData.EventToolsChangeFields.HERO_SILVER_PRICES[staticHero['persistentId']]
+-        return (silverCost / configData.BuyGoldHeroInfo.DISCOUNT_COEFFICIENT) - 1
++            cost.Silver = configData.EventToolsChangeFields.HERO_SILVER_PRICES[staticHero['persistentId']]
++        return (cost.Silver / configData.BuyGoldHeroInfo.DISCOUNT_COEFFICIENT) - 1
+ 
+     @staticmethod
+     def getFinalPrice(prLevelFirst, prLevelSecond, price1, price2, level):
+Index: xdb/xml2obj.py
+===================================================================
+--- xdb/xml2obj.py	(revision 46209)
++++ xdb/xml2obj.py	(working copy)
+@@ -2,7 +2,7 @@
+ # -*- coding: utf-8 -*-
+ # http://code.activestate.com/recipes/149368/
+ from base.helpers import *
+-from enums import SessionCheckType, DynamicQuestCheckType, CastleResources, DynamicQuestAwardType
++from enums import SessionCheckType, DynamicQuestCheckType, CastleResources, DynamicQuestAwardType, TalentUpgradeEntityType
+ 
+ sys.path.append('..')
+ 
+@@ -9,8 +9,34 @@
+ import gc
+ import xml.sax.handler
+ from binascii import crc32 
++import sys
++from types import ModuleType, FunctionType
++from gc import get_referents
++import psutil
+ 
++# Custom objects know their class.
++# Function objects seem to know way too much, including modules.
++# Exclude modules as well.
++BLACKLIST = type, ModuleType, FunctionType
+ 
++
++def getsize(obj):
++    """sum size of object & members."""
++    if isinstance(obj, BLACKLIST):
++        raise TypeError('getsize() does not take argument of type: '+ str(type(obj)))
++    seen_ids = set()
++    size = 0
++    objects = [obj]
++    while objects:
++        need_referents = []
++        for obj in objects:
++            if not isinstance(obj, BLACKLIST) and id(obj) not in seen_ids:
++                seen_ids.add(id(obj))
++                size += sys.getsizeof(obj)
++                need_referents.append(obj)
++        objects = get_referents(*need_referents)
++    return size
++
+ def xml2obj(src):
+     non_id_char = re.compile('[^_0-9a-zA-Z]')
+     def _name_mangle(name):
+@@ -97,6 +123,11 @@
+             price['CWPoints_Clan'] = int(price['CWPoints_Clan'])
+         if 'Shard' in price:
+             price['Shard'] = int(price['Shard'])
++
++        for key, value in price.items():
++            if value == 0:
++                del price[key]
++
+         if 'Currencies' in price:
+             currencies_dict = {}
+             if 'Item' in price['Currencies']:
+@@ -645,6 +676,54 @@
+             roll_container = lootbox['rollContainer']
+             toInterface_RollItem(roll_container)
+ 
++    def convertTalentUpgradeEntities(SD):
++        for persistent_id in SD['TalentUpgradeEntities']:
++            static_ent = SD['TalentUpgradeEntities'][persistent_id]
++            static_ent['probability'] = int(static_ent['probability'])
++            static_ent['talentLevelLimit'] = int(static_ent['talentLevelLimit'])
++            static_ent['type'] = TalentUpgradeEntityType.__dict__[static_ent['type']]
++            if 'description' in static_ent:
++                del static_ent['description']
++            if 'tooltip' in static_ent:
++                del static_ent['tooltip']
++            if 'icon' in static_ent:
++                del static_ent['icon']
++
++    def convertGuildBuffsCollection(SD):
++        for persistent_id, static_buff_data in SD['GuildBuffsCollection'].iteritems():
++            #static_buff_data = SD['GuildBuffsCollection'][persistent_id]
++            if 'doNotWorkWith' in static_buff_data and 'Item' in static_buff_data['doNotWorkWith']:
++                do_not_work_with = []
++                for buff in static_buff_data['doNotWorkWith']['Item']:
++                    do_not_work_with.append(crc32(buff['persistentId']))
++                del static_buff_data['doNotWorkWith']
++                static_buff_data['doNotWorkWith'] = do_not_work_with
++
++
++            вместо кода ниже надо сделать что то типа cleanTalents(item['talents']), только для бонусов.
++            if 'bonuses' in static_buff_data:
++                bonuses = []
++                for buff in static_buff_data['bonuses']['Item']:
++
++
++                del static_buff_data['bonuses']
++                static_buff_data['bonuses'] = bonuses
++
++            static_buff_data['priority'] = int(static_buff_data['priority'])
++
++            # dump_filename = "dump_{0}.json".format(persistent_id)
++            # dump_file = open(dump_filename, "w")
++            # dump_file.write(json_dumps(static_buff_data))
++            # dump_file.close()
++            #
++            # exit(0)
++            #return static_buff_data
++
++
++
++    def convertGuildShopItems(SD):
++        pass
++
+     def convertStringsToTypes( SD ):
+         SD['AIGameLogic']['forceParameters']['baseHeroForce'] = float(SD['AIGameLogic']['forceParameters']['baseHeroForce'])
+         SD['AIGameLogic']['forceParameters']['masteryPointForce'] = float(SD['AIGameLogic']['forceParameters']['masteryPointForce'])
+@@ -706,7 +785,13 @@
+         convertRerollShopBuildings(SD)
+         convertDynamicQuestsForTalentsToMaps(SD)
+         convertLootboxes(SD)
++        convertTalentUpgradeEntities(SD)
++        convertGuildBuffsCollection(SD)
++        convertGuildShopItems(SD)
+ 
++        #print (getsize(r))
++        #exit(0)
++
+         for PersistentId in SD['Talents']:
+             staticTalent = SD['Talents'][PersistentId]
+             staticTalent['budget'] = float( staticTalent['budget'] )
+@@ -1099,7 +1184,7 @@
+                         dbid += ":" + str( obj["id"] )
+                         del obj['id']
+                     if dbid in self.dataDict:
+-                        for obj_name, obj_value in self.dataDict[dbid].items(): 
++                        for obj_name, obj_value in self.dataDict[dbid].iteritems():
+                             obj[obj_name] = obj_value
+                         type = self.objectDict[dbid]
+                         obj["classType"] = type
+@@ -1216,12 +1301,18 @@
+                 elif name == "ReforgeTalentPrices":
+                     for pr in value['Item']:
+                         tempDict[pr['rarity']] = pr
+-                    staticData["ReforgeTalentPrices"] = tempDict
++                    staticData[name] = tempDict
++                elif name == "TalentUpgradeEntities":
++                    for list_value in value['Item']:
++                        id = crc32(list_value['persistentId'])
++                        tempDict[id] = list_value
++                    staticData[name] = tempDict
+             self.objectDict = {}
+             self.dataDict = {}
+ 
+-            return staticData, self.dbid        
+-                
++            return staticData, self.dbid
++
++    s0 = psutil.virtual_memory().available
+     t0 = time.time()
+     builder = TreeBuilder()
+     if isinstance(src, basestring):
+@@ -1232,8 +1323,25 @@
+     t0 = time.time()
+     StaticData, dbid = builder.linkObjects()
+     logging.info("Linking StaticData time: %.3f" % (time.time()-t0))
+-    
++
++    print("total text-SD size: {0}".format(getsize(StaticData)))
++
+     convertStringsToTypes(StaticData)
+ 
+-    gc.collect()    
++    print("Heroes size: {0}".format(getsize(StaticData['Heroes'])))
++    print("Talents size: {0}".format(getsize(StaticData['Talents'])))
++    print("Lootboxes size: {0}".format(getsize(StaticData['Lootboxes'])))
++    print("RerollShop size: {0}".format(getsize(StaticData['RerollShop'])))
++    print("RerollShopSlots size: {0}".format(getsize(StaticData['RerollShopSlots'])))
++    print("GuildBuffsCollection size: {0}".format(getsize(StaticData['GuildBuffsCollection'])))
++    print("GuildShopItems size: {0}".format(getsize(StaticData['GuildShopItems'])))
++    print("Seasons size: {0}".format(getsize(StaticData['Seasons'])))
++    print("SeasonLeagues size: {0}".format(getsize(StaticData['SeasonLeagues'])))
++    print("total SD size: {0}".format(getsize(StaticData)))
++
++    gc.collect()
++
++    print("total SD size 2: {0}".format(s0 - psutil.virtual_memory().available))
++
++    exit(0)
+     return StaticData, dbid

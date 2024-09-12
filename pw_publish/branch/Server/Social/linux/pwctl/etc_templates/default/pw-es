@@ -1,0 +1,10 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}/services/events"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/services/events/main.py"
+RUNSCRIPT_ARGS="--config={{ conf['rundir'] }}/cfg/events.cfg --loglevel=info --log={{ conf['logging'] }}events_service.log"
+LOGGING=">> {{ conf['logging_run'] }}pw-es.log.run 2>&1"

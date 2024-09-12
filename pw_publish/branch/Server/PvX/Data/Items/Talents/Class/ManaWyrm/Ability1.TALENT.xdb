@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Manawyrm.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Manawyrm_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/ManaWyrm/Ability1Upg.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Manawyrm_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Manawyrm.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Manawyrm/Duel.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Manawyrm/Elite.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Manawyrm/Epic.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="B0E61791-D06E-465D-B637-CD0B91B641E3">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="8AFA345D-9C35-486B-B006-46F662C0CF1B">
+						<TriggerApplicator>
+							<actionsCount>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>1</sString>
+							</actionsCount>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>128</behaviorFlags>
+							<caption>Триггер на смерть цели</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString>FQ8AAAABAAAAGwAAAERlYXRoQ2hlY2tUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>cDeathCheckTime</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<playAck>false</playAck>
+							<processor href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="31385D00-8DB3-45C8-B4E2-45591D9D8735">
+								<EventProcessorOnDeath>
+									<applyTarget>AbilityOwner</applyTarget>
+									<castSpellDelay>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</castSpellDelay>
+									<checkSender>0</checkSender>
+									<objectFilter>2040319</objectFilter>
+									<senderMatchTarget>AbilityOwner</senderMatchTarget>
+									<spell href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="AE75C462-DB5A-4E16-9ADE-BB64A57B80A6">
+										<Spell>
+											<applicators>
+												<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="5B06CFE3-13BF-417E-A412-AA6906952374">
+													<RefreshCooldownApplicator>
+														<allowCdIncrease>false</allowCdIncrease>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<caption>сбросить кулдаун у маназмея</caption>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<flags>128</flags>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<reduceByPercent>false</reduceByPercent>
+														<reductionAmount>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0f</sString>
+														</reductionAmount>
+														<refreshThis>true</refreshThis>
+														<talents>
+															<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" />
+														</talents>
+														<useListAs>ListAsRule</useListAs>
+													</RefreshCooldownApplicator>
+												</Item>
+												<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="0402375F-BF12-482B-8DFB-4529F8BED47C">
+													<HealApplicator>
+														<amount>
+															<compiledString>FRIAAAABAAAAHgAAAENvbXBlc2F0aW9uRW5lcmd5AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+															<returnType>float</returnType>
+															<sString>cCompesationEnergy</sString>
+														</amount>
+														<applyTarget>AbilityOwner</applyTarget>
+														<caption> - выдаем компенсационную ману</caption>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<healTarget>Energy</healTarget>
+														<ignoreHealingMods>false</ignoreHealingMods>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<uiEvent href="" />
+													</HealApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="348BD939-E335-42FE-A34F-A509328ADDE4">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>false</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+								</EventProcessorOnDeath>
+							</processor>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<useAbilityCooldown>false</useAbilityCooldown>
+							<useAbilityOwnerMana>false</useAbilityOwnerMana>
+						</TriggerApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>128</behaviorFlags>
+				<caption>Чек на смерть цели</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>1</flags>
+				<formulaName></formulaName>
+				<image href="" />
+				<lifeTime>
+					<compiledString>FQ8AAAABAAAAGwAAAERlYXRoQ2hlY2tUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cDeathCheckTime</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR" />
+		<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="4291F535-063B-4A27-8F1D-52E968FF64C0">
+			<DamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<cancelInvisibility>false</cancelInvisibility>
+				<caption>урон</caption>
+				<damage>
+					<compiledString>FQkAAAABAAAAFQAAAEExRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cA1Damage</sString>
+				</damage>
+				<damageMode>0</damageMode>
+				<damageType>Energy</damageType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<timeLimiter>-1</timeLimiter>
+				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+			</DamageApplicator>
+		</Item>
+	</applicators>
+	<askId>1</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А1. Сеть чар</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Heroes/DefaultStatus/CheckTheWard.ABCL" />
+	</castLimitations>
+	<commonDescription textref="/Items/Talents/Class/ManaWyrm/Ability1.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="9299A1FF-F454-40DF-9DFD-5D4FB5BDECC8">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABNYW5hV3lybV9BMV9VcGcATWFuYVd5cm1fQTFfVXBnAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("ManaWyrm_A1_Upg") == false</sString>
+				</condition>
+				<name>ManaWyrm_A1_Upg</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="F201B43C-F962-4FA7-80C6-63240A269732">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="C5E3280D-F6DE-4EB4-AEF6-5B8C5072DDB8">
+					<UnitConstant>
+						<name>A1Delay</name>
+						<var>
+							<compiledString>FSgAAAADAAAALwAAAEgAAABoAAAATWFuYVd5cm1fQTFfVXBnAE1hbmFXeXJtX0ExX1VwZwBBMURlbGF5AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdDdoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTQxRi1UIUmggAAAAi0X8ixCLTfyLQlD/0Nld+OsF2e7ZXfjZRfiL5V3DAAAAAA==</compiledString>
+							<returnType>float</returnType>
+							<sString>talconstNoCheck( "ManaWyrm_A1_Upg", "A1Delay")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="532589B2-6C9A-4743-9F32-F5049164C6FD">
+					<UnitConstant>
+						<name>SlowAll_Duration</name>
+						<var>
+							<compiledString>FTEAAAADAAAAOAAAAFEAAABxAAAATWFuYVd5cm1fQTFfVXBnAE1hbmFXeXJtX0ExX1VwZwBTbG93QWxsX0R1cmF0aW9uAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdDdoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTQxRi1UIUmggAAAAi0X8ixCLTfyLQlD/0Nld+OsF2e7ZXfjZRfiL5V3DAAAAAA==</compiledString>
+							<returnType>float</returnType>
+							<sString>talconstNoCheck( "ManaWyrm_A1_Upg", "SlowAll_Duration")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="F8019B48-2C49-480A-8D72-A4281CC82107">
+					<UnitConstant>
+						<name>A1Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACGQgAA+kM=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale(sIntellect,67,500)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="5B4BB5F7-FA99-4EA7-A6B8-4C4E7A12EFA3">
+					<UnitConstant>
+						<name>Dec_MoveSpeed_Percent</name>
+						<var>
+							<compiledString>FTYAAAADAAAAPQAAAFYAAAB2AAAATWFuYVd5cm1fQTFfVXBnAE1hbmFXeXJtX0ExX1VwZwBEZWNfTW92ZVNwZWVkX1BlcmNlbnQAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0N2gQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItNDFGLVQhSaCAAAACLRfyLEItN/ItCUP/Q2V346wXZ7tld+NlF+IvlXcMAAAAA</compiledString>
+							<returnType>float</returnType>
+							<sString>talconstNoCheck("ManaWyrm_A1_Upg", "Dec_MoveSpeed_Percent")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="2D1428A3-76CD-4871-852A-D54B5BFEEBAC">
+					<UnitConstant>
+						<name>Dec_AttackSpeed</name>
+						<var>
+							<compiledString>FTAAAAADAAAANwAAAFAAAABwAAAATWFuYVd5cm1fQTFfVXBnAE1hbmFXeXJtX0ExX1VwZwBEZWNfQXR0YWNrU3BlZWQAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0N2gQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItNDFGLVQhSaCAAAACLRfyLEItN/ItCUP/Q2V346wXZ7tld+NlF+IvlXcMAAAAA</compiledString>
+							<returnType>float</returnType>
+							<sString>talconstNoCheck("ManaWyrm_A1_Upg", "Dec_AttackSpeed")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/const_A1u_StatusDamage" />
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="916B45EE-C6CF-4216-8D31-05F303FC7648">
+					<UnitConstant>
+						<name>DeathCheckTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="ABCF23F5-459D-4F04-B1A2-9106CC5FC7EA">
+					<UnitConstant>
+						<name>CompesationEnergy</name>
+						<var>
+							<compiledString>FRQAAAABAAAAMAAAAENvbXBlbnNhdGlvbkRpdmlzb3IAVYvsg+wMi0UQixCLTRCLQhj/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q2eje8dno3uHcTfjZXfTZRfSL5V3DAAAAAAAA8D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>mManaCost * (1-1/cCompensationDivisor )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="DFCC0771-50C9-4EF7-89EA-242655ED5A0C">
+					<UnitConstant>
+						<name>CompensationDivisor</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="282D8DCD-E719-4656-A410-5D896297A38B">
+					<UnitConstant>
+						<name>TT_Compensation</name>
+						<var>
+							<compiledString>FRQAAAADAAAAIQAAADQAAAA6AAAAQ29tcGVuc2F0aW9uRGl2aXNvcgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcPVAAAADcDUgAAADZXfzZRfyL5V3DAAAAAAAAWUAAAAAAAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2/cCompensationDivisor*100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="FDCF8939-0B66-456B-B750-CC5E17C2ADA7">
+					<UnitConstant>
+						<name>SlowAll_StartCondition</name>
+						<var>
+							<compiledString>FRIAAAABAAAAHQAAAE1hbmF3eXJtQTF1U3RhdHVzAFWL7FFqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+VwYlN/NtF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>pSecond-&gt;FindApplicator("ManawyrmA1uStatus", pMisc, UNIT) != pMisc</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>10</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/ManaWyrm/Ability1.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="307F403F-FF45-4EAB-B132-FF6F1A28AC31">
+		<DispatchLinear>
+			<aiming>Homing</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/Energy/_AbilityHit.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Motion</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/Web/_.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>1</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Ability1</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>50</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>20</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>11</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/ManaWyrm/A1.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQw==</compiledString>
+		<returnType>float</returnType>
+		<sString>200</sString>
+	</manaCost>
+	<marker>doCast1</marker>
+	<microAI href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="2F9FDB4D-A80C-49B8-AC21-2534887A468C">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="B8506D2B-4F86-4124-A266-4177872066EB">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/ManaWyrm/Ability1.TALENT" id="5A643D3D-DD65-4EB8-84FE-404244BA095C">
+						<AreaTargetSelector>
+							<absolutePosition>
+								<x>0</x>
+								<y>0</y>
+							</absolutePosition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<range>
+								<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+								<returnType>float</returnType>
+								<sString>cRange_Long</sString>
+							</range>
+							<targetFilter>714866751</targetFilter>
+							<targetSelector href="" />
+						</AreaTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/ManaWyrm/Ability1.TALENT_name.txt" />
+	<node>ability1</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>ManaWyrm_A1</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/ManaWyrm/Ability1.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>672989247</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Gunslinger/Ability_A3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="7E1F27CE-169B-43E5-81AF-F68EBE731271">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Помечаем, будет ли бонусный урон</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName>GunslingerA3_ModDmg_Flag</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FRQAAAACAAAAGQAAAC8AAABHdW5zbGluZ2VyQTNfTW9kRG1nAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHVEAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vGunslingerA3_ModDmg &gt; 0</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="45BEC4B7-2333-4FD5-AEC9-FC46B6B4AA3E">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR_45bec4b723334fd5aec9fc46b6b4aa3e_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="39CA8CD9-292A-4C1F-ADD6-AFEDB36DC8AC">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Отключалка, если цель ушла радиус за радиус видимости</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRcAAAABAAAAIQAAAEd1bnNsaW5nZXJEZWxheVByb2dyYW0AVYvsagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.applGunslingerDelayProgram(UNIT) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="77E2C281-D7B6-480B-811F-DC43A7231EC8">
+					<EventProcessorCondition>
+						<applyTarget>AbilityTarget</applyTarget>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QD7bA99gbwIPAAV3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.IsVisibleForEnemy(sFctn) == false</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="67303605-3755-4D60-ABF4-A19D7D7AFC51">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="2BC6EE22-70A5-4A0D-A2BC-5163D020A71C">
+										<ProgramApplicator>
+											<applicators>
+												<Item>
+													<applicator href="" />
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>0</continueEvents>
+													<delay>
+														<compiledString>FRsAAAABAAAAJwAAAEEzX091dE9mU2lnaHRUaW1lVGhyZXNob2xkAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>cA3_OutOfSightTimeThreshold</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QXcM=</compiledString>
+														<returnType>bool</returnType>
+														<sString>receiver.IsVisibleForEnemy(sFctn)</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="7A6F5534-A350-43AE-A7C7-C9823FB520A4">
+														<FlagsApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<behaviorFlags>0</behaviorFlags>
+															<caption>Доп время на сбрасывание</caption>
+															<consumables />
+															<effect>
+																<Item href="" />
+																<Item href="" />
+															</effect>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<flag>0</flag>
+															<formulaName>GunslingerStopMark</formulaName>
+															<lifeTime>
+																<compiledString>FQUAAAABAAAAEgAAAFNURVAAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3MDZXfzZRfyL5V3D</compiledString>
+																<returnType>float</returnType>
+																<sString>cSTEP * 2</sString>
+															</lifeTime>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<startCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</startCondition>
+															<talents />
+															<useListAs>ListAsRule</useListAs>
+														</FlagsApplicator>
+													</applicator>
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>1</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgpABAAD/0FCLTQyLEYtNDItCdP/QXcM=</compiledString>
+														<returnType>bool</returnType>
+														<sString>receiver.IsVisibleForEnemy(sFctn)</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+												<Item>
+													<applicator href="/Items/Talents/Class/Gunslinger/spell_A3_MarkDamage.APLR" />
+													<continueCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</continueCondition>
+													<continueEvents>2</continueEvents>
+													<delay>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</delay>
+													<stopCondition>
+														<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>0</sString>
+													</stopCondition>
+													<stopEvents>0</stopEvents>
+												</Item>
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>Программа чтобы отключать метку с задержкой</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName>GunslingerDelayProgram</formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString>FRcAAAABAAAAIQAAAEd1bnNsaW5nZXJEZWxheVByb2dyYW0AVYvsagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+												<returnType>bool</returnType>
+												<sString>receiver.applGunslingerDelayProgram(UNIT) == pMisc</sString>
+											</startCondition>
+										</ProgramApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="DC7FADA4-DCFC-41A8-9CB2-6CD138FE63EC">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+		<Item href="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR" id="440C19BD-B5F6-4450-8388-53B47452FA4C">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="" />
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString>FQwAAAACAAAAGQAAACwAAABBM19EdXJhdGlvbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcJToAAADZXfzZRfyL5V3DmpmZmZmZuT8=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA3_Duration - 0.1</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Gunslinger/spell_A3_MarkDamage.APLR" />
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>наносим урон, если статус прожил весь дьюрейшен</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityTarget</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>статус Метка жертвы</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Effects/Debuffs/Mark/_Sight.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRMAAAABAAAAHQAAAEd1bnNsaW5nZXJTdG9wTWFyawBVi+xqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applGunslingerStopMark(UNIT) == pMisc </sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>Gunslinger_MarkOfPrey</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Gunslinger/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Gunslinger/status_A3_Mark.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>FullyStackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

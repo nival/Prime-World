@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+  <table class=table_unbordered>
+	<tr valign=top>
+		<td>
+<p><b>Account Search</b><p>
+    <form action="{{ url_for('show_account') }}" method=post name=select_acc>
+	<fieldset title="auid">
+	<legend>Search by Auid</legend>	
+
+        <p><label for=auid>Auid:</label></p>
+        <p><input type=text size=30 name=auid onkeypress="document.forms.select_acc.elements[4].value='';document.forms.select_acc.elements[7].value='';document.forms.select_acc.elements[8].value='';"></p>
+        <p><input type=submit value=search></p>
+	</fieldset>	
+	
+	<fieldset title="nickname">
+	<legend>Search by NickName</legend>	
+
+        <p><label for=auid>NickName:</label></p>
+        <p><input type=text size=30 name=nickname onkeypress="document.forms.select_acc.elements[1].value='';document.forms.select_acc.elements[7].value='';document.forms.select_acc.elements[8].value='';"></p>
+        <p><input type=submit value=search></p>
+	</fieldset>	
+	
+	<fieldset title="snid">
+	<legend>Search by SN ID</legend>	
+
+        <p><label for=auid>Social network id:</label></p>
+        <p><input type=text size=3 name=snid></p>
+		<p><label for=auid>User id in the social network:</label></p>
+        <p><input type=text size=30 name=snuid  onkeypress="document.forms.select_acc.elements[1].value='';document.forms.select_acc.elements[4].value='';"></p>
+        <p><input type=submit value=search></p>
+	</fieldset>		
+    </form>
+		</td>	
+		<td align=right>
+		</td>
+	</tr>
+	</table>		
+{% endblock %}

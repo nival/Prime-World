@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_user_hero_talentset` ADD COLUMN `talentset_id` int(1) NOT NULL DEFAULT 0 AFTER `talent36`;
