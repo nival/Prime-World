@@ -57,7 +57,7 @@
 ## Как запустить PvP
 1. В `Profiles -> game.cfg` поменяйте `local_game 0`.
 2. Добавьте `login_adress` <адрес сервера>.
-3. Запустите игру с параметром -dev_login.
+3. Запустите игру с параметром -dev_login MyNickname.
 
 ## Как запустить игру с ботами
 1. В `Profiles -> private.cfg_example` переименуйте файл в `private.cfg`.
