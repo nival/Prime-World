@@ -1,0 +1,30 @@
+[/
+ / Copyright (c) 2009 Steven Watanabe
+ /
+ / Distributed under the Boost Software License, Version 1.0. (See
+ / accompanying file LICENSE_1_0.txt or copy at
+ / http://www.boost.org/LICENSE_1_0.txt)
+]
+
+For some people, performance of random number generation is an important
+consideration when choosing a random number generator or a particular
+distribution function. This page provides numerous performance tests with
+the wide variety of generators and distributions available in the boost
+library.
+
+The performance has been evaluated on an Intel(R) Xeon(TM) MP
+CPU 3.66GHz, Gentoo Base System release 1.12.11.1, GCC 4.3.2,
+glibc 2.9 and on an Intel(R) Core(TM)2 CPU T7600
+@2.33 Ghz with Microsoft Windows XP Professional, Service Pack 2 Build
+2600, Microsoft Visual C++ 2008 9.0.21022.
+The speed is reported in million random numbers
+per second (M rn/sec), generated in a tight loop.
+
+[include generator_performance_linux.qbk]
+[include generator_performance_windows.qbk]
+
+Note that the lagged Fibonacci and ranlux_01 generators produce
+floating-point numbers, whereas all others produce integers.
+
+[include distribution_performance_linux.qbk]
+[include distribution_performance_windows.qbk]

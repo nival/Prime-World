@@ -1,0 +1,73 @@
+/*!
+
+\page error_report About an Error Report
+
+When an error occurs in a client application, CrashRpt notifies the end user and allows him/her
+to review the report contents. CrashRpt can be configured to use multiple languages with its user
+interface, as described in \ref internationalization_support.
+
+\section maindlg Error Report Dialog
+
+When a crash occurs in the client application, the <b>Error Report</b> 
+dialog is displayed (see the figure below). 
+
+\image html maindlg.png "Error Report Dialog"
+
+User can optionally provide his/her E-mail address and a short problem 
+description. He can do this by clicking the 
+"Provide additional information (recommended)" link. 
+
+The user-entered E-mail address may be used later by software support staff to
+contact the user and ask for additional information about the problem.
+
+Once the user is satisfied, he/she may click the 'Send report' 
+button on the Error Report dialog. For additional information about sending error reports,
+please refer to \ref sending_error_reports page.
+
+If the user doesn't want to send the report, the user clicks the 'Close the program' button.
+
+\section detaildlg Error Report Details Dialog
+
+The <i>What does this report contain?</i> link on the Error Report dialog
+opens the Error Report Details dialog.
+
+The <b>Error Report Details</b> dialog (see below) displays the list of files 
+contained in the crash report. Double clicking a filename opens the file using 
+its associated program, if an association exists for the file type. 
+
+Pressing the <i>Export...</i> button results in exporting the error report files 
+as a ZIP archive. This may be useful if you want to save a local copy of the error 
+report to disc for later use.
+
+\image html detaildlg.png "Error Report Details Dialog"
+
+Software vendors who care about user's privacy, may provide a privacy policy file describing 
+what user information your software collects 
+on crash. You provide the URL of your privacy policy file published on your web site 
+or distributed with your software. If you need a template for the privacy policy file, 
+you may use this one: 
+<a href="http://code.google.com/p/crashrpt/wiki/PrivacyPolicyTemplate">PrivacyPolicyTemplate</a>. 
+
+\section what_does_error_report_contain What does Error Report Contain?
+
+The error report is a collection of files intended to help the developer 
+diagnose the cause of the crash: a crash minidump file, a crash description XML file,
+and other optional files. 
+
+A crash minidump file (<i>crashdump.dmp</i>) contains operating system 
+version, processor type, CPU registers state, local variables and call stack for each 
+execution thread. The minidump file can be used on developer's side to determine 
+the reason of the crash and try to fix the problem.
+
+CrashRpt generates an XML crash description file (<i>crashrpt.xml</i>) complementing the minidump. 
+The XML file contains various
+information, such as application name and version, sender's E-mail address and geographic 
+location, user-provided problem description, exception type and address and so on.
+
+Custom files, for example, application log files, desktop screen shots and screen capture videos, can be included 
+into crash report via the API functions provided by CrashRpt. For additional information,
+see the \ref using_crashrpt_api page.
+
+<i>Further reading:</i> \ref demos.
+
+*/

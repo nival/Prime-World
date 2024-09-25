@@ -1,0 +1,22 @@
+sources = [
+]
+
+defines = ['_CRT_SECURE_NO_WARNINGS', 'STEAM_API_EXPORTS']
+
+includePaths = [ 
+    'public', 
+]
+
+libPaths = [ 
+    os.path.abspath('redistributable_bin'), 
+    os.path.abspath('public/steam/lib/win32'), 
+]
+
+libDependencies = [
+    'steam_api.lib',
+    'sdkencryptedappticket.lib',
+]
+
+builders = [ 
+    InstallBuilder( 'redistributable_bin/steam_api.dll' ), 
+]

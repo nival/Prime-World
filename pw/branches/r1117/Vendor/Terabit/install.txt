@@ -1,0 +1,338 @@
+1. Requirements
+------------------------------------------------------------------
+
+New Proactor framework works with ACE version 5.3.1 or higher.
+It is possible to use ACE 5.3, but you have to replace all ACE files 
+with names Malloc*.cpp/h/i and PI_Malloc*.cpp/h/i with files from ACE 5.3.1 
+or higher.
+This is because ACE_Allocators in 5.3 have errors and
+the new POSIX Proactor uses Cash_Allocator.
+
+Note. Separate archives are provided for ACE 5.3.3
+and ACE 5.4. This is explained by big refactoring inside 
+ACE. ACE internal headers were significantly modified
+since ACE 5.3.3. 
+
+
+We still recommend to use the latest version of ACE.
+Current version was tested with ACE 5.4.8, 5.4.7 , 5.4.2, 5.4.1
+
+
+2. Two options of using TProactor
+---------------------------------------------------------------
+TProactor can be used as
+a) small library on top of standard ACE
+or
+b) replacement of standard ACE_Proactor
+
+2a. TProactor as separate library 
+---------------------------------------
+
+In case a) all Proactor classes have prefix TRB_ instead of prefix ACE_.
+This will allow to co-exist ACE standard ACE_Proactor and TRB_Proactor.
+We recommend to start using of TProactor as separate library on top
+of ACE. (TProactor still  uses ACE !!!)
+This way does not require any modification of existing ACE 
+and allow you to be sure that TProactor works reliably.
+
+
+After you unzip the package in some directory XXX,
+do the following:
+
+   1. export AIO_ROOT=XXX/Terabit
+   2. cd $AIO_ROOT
+
+   3. generate TProactor and tests makefiles with command :
+
+      perl $ACE_ROOT/bin/mwc.pl -type gnuace -include $AIO_ROOT aio.mwc
+
+      or for Linux 2.6
+      perl $ACE_ROOT/bin/mwc.pl -type gnuace -include $AIO_ROOT  -global $AIO_ROOT/linaio.mpb aio.mwc
+
+      or for Windows
+      perl $ACE_ROOT/bin/mwc.pl -type VC71 -include $AIO_ROOT aio.mwc
+
+   4. build TProactor and tests 
+
+      gmake
+
+      or for Windows run MS Visual Studio to build 
+
+   5. export LD_LIBRARY_PATH=$AIO_ROOT/lib:$ACE_ROOT/lib:$LD_LIBRARY_PATH
+
+   6. run tests:
+      cd $AIO_ROOT/bin
+
+
+   In $AIO_ROOT/bin you should find a bunch of tests :
+   P_Test, PM_Test, PSSL_Test, F_Test,U_Test...
+   Just run P_Test or any other...
+
+2b. TProactor as replacement of ACE Proactor
+----------------------------------------------------
+
+If you want to use TProactor as ACE standard Proactor,
+perform the next steps:
+
+   1. Unzip package in some directory XXX
+   2. cd XXX/Terabit
+   3. perl trb2ace.pl Test_Directory
+        
+      this command will : 
+        a) save original ACE Proactor and ace.mpc
+           in the $ACE_ROOT/ace.bak directory;
+
+        b) replace ACE original Proactor by TProactor, 
+           all TRB_ classes will be renamed into ACE_
+
+        c) modify ace.mpc file  and regenerate
+           ace makefiles
+
+        d) copy all tests with appropriate modifications
+           into Test_Directory
+
+        e) generate makefiles for TProactor tests
+
+
+    4. cd $ACE_ROOT/ace; 
+       gmake
+       (you have to rebuild ACE with updated Proactor)
+
+    5. cd Test_Directory;
+       gmake
+       (this will build tests)
+
+    6. run tests:
+       cd Test_Directory/bin
+    
+       and run  any tests (P_Test,PSSL_Test, PM_Test, F_Test, U_Test ,...)
+
+3. $ACE_ROOT/config.h notices
+------------------------------------------   
+If you are going to use 
+  Linux 2.6 (epoll, Linux NAIO) 
+  or Solaris 5.10 completion ports 
+  or system without support AIO, please modify your config.h
+(you still do not need to rebuild ACE if TProactor will be used as separate library)
+
+    Here is an example config.h
+
+//----------Begin config.h -----------------
+//
+//  Uncomment the following line
+//  to use svc.conf.xml instead of svc.conf
+//
+//#define ACE_HAS_XML_SVC_CONF
+
+#if defined (_WIN32)
+
+#  include "config-win32.h"
+
+#elif defined (linux)
+
+// uncomment the following line 
+// if you want to include LINUX_Provider
+// Linux NAIO (io_getevents/io_submit)
+// must be kernel 2.6 
+
+//#  define ACE_HAS_LINUX_LIBAIO
+
+
+// uncomment the following line 
+// if you want to include Event_Poll_Strategy
+// Linux epoll interface
+// must be kernel 2.6 
+
+#  define ACE_HAS_LINUX_EPOLL
+
+#  include "config-linux.h"
+
+#elif defined (sun)
+
+// uncomment the following line 
+// if you want to include SUN_Port_Strategy
+// SUN completion port are supported by SunOS 5.10
+ 
+//#define ACE_HAS_SUN_COMPLETION_PORTS
+
+#define ACE_HAS_DEV_POLL
+
+#  include "config-sunos5.8.h"
+
+#elif defined (__xlC__) || defined (__IBMCPP__)
+
+//
+// uncomment the following line if you
+// don't want to use AIX native AIO
+#  define ACE_HAS_AIO_EMULATION
+
+#  include "config-aix5.x.h" 
+
+#endif
+//---------- End config.h -------------------
+
+
+4. SSL notices
+-----------------------------------------------
+for building ACE SSL library:
+don't forget to set  option ssl=1 in 
+   
+    $(ACE_ROOT)/bin/MakeProjectCreator/config/global.features 
+
+setup envinronment variable SSL_ROOT.
+SSL_ROOT defines directory where OpenSSL was installed.
+For additional information see file
+
+    $(ACE_ROOT)/bin/MakeProjectCreator/config/openssl.mpb
+
+   
+
+
+5. $ACE_ROOT/include/makeinclude/platform_macros.GNU
+-----------------------------------------------------------------
+
+Linux platform-specific: 
+You should compile ACE with CPPFLAGS = -D_GNU_SOURCE 
+
+The easiest way to do this is to modify your
+$ACE_ROOT/include/makeinclude/platform_macros.GNU
+
+Here is an example of platform_macros.GNU:
+
+# ========== Begin platform_macros.GNU =======================
+CPPFLAGS = -D_GNU_SOURCE 
+
+PLATFORM_SSL_CPPFLAGS = -I$(SSL_ROOT)/include -I/usr/kerberos/include
+PLATFORM_SSL_LIBS = -lcrypto -lssl
+PLATFORM_SSL_LDFLAGS = -L$(SSL_ROOT)/lib
+
+ifeq ($(ssl),1)
+CPPFLAGS     += $(PLATFORM_SSL_CPPFLAGS)
+LDFLAGS      += $(PLATFORM_SSL_LDFLAGS)
+LIBS         += -lACE_SSL $(PLATFORM_SSL_LIBS) 
+endif
+
+#
+# uncomment the following line if you build
+# Linux 2.6 with defined ACE_HAS_LINUX_LIBAIO
+# in config.h
+#
+#LIBS += -laio
+
+include $(ACE_ROOT)/include/makeinclude/platform_linux.GNU
+# ========= end platform_macros.GNU ===========================
+
+If you are not going to use SSL or you have your own
+way to define PLAFORM_SSL_* variables, you can remove 
+PLATFORM_SSL_* lines.  
+
+
+6. Tests
+------------------------------------------------------------------
+Terabit/tests contains the following tests:
+
+Cached_Allocator_Test
+P_Test
+PM_Test
+PSSL_Test
+P2_Test
+P3_Test
+U_Test
+U_Logger
+T_Test
+TM_Test
+TSSL_Test
+Timer_Test
+F_Test
+
+
+Cached_Allocator_Test checks that POSIX_AIO_Allocator works properly,
+i.e. ACE contains right version of ACE memory allocators.
+
+P_Test - multithreaded multisession Proactor-based echo-server.
+It creates acceptor and/or number of clients.
+Clients send data continuously till specified amount of data will be sent 
+or specified time to run is expired.
+PM_Test is P_Test improvement with better buffer allocation.
+
+PSSL_Test - test similar to P_Test, but all connections are SSL-connections.
+
+P2_Test - multithreaded multisession Proactor-based proxy-server.
+It listens port defined by parameter "-r".
+For each incoming connection it establishes connection to the server
+specified by parameters "-p" and "-h".
+
+P3_Test  - test similar to P_Test, but it emulates execution of long-time 
+callbacks in background thread pool with second Proactor. 
+It demonstrates Proactive Message Queue and how the half-asynch/half-synch
+pattern can be replaced with "half-asynch/half-pseudo-asynch" pattern.
+
+U_Test  - asynchronous UDP test similar to P_Test, instead of TCP connections
+it uses UDP datagrams.
+
+U_Logger - derived from U_Test, allows to log UDP packets into file.
+The author wrote U_Logger to trace IP phone packets , when IP phone software 
+was broken.
+
+T_Test - multithreaded multisession TP_Reactor-based echo-server.
+Similar to P_Test.
+
+TM_Test - improved version of T_Test.
+
+TSSL_Test - test similar to T_Test, but all connection are SSL-connections.
+
+Timer_Test - test for asynchronous timers
+
+F_Test - test for asynchronus file transmissions. Senders send file via
+Asynch_Transmit_File and Receivers  write TCP input into output file.
+This tests actually uses Asynch_Streams, Asynch_Files, Asynch_Transmit
+
+
+All tests (except Cached_Allocator_Test) have the following parameters:
+
+-h host to connect (default ACE_LOCALHOST)
+-p port to connect (default ACE_DEFAULT_SERVER_PORT)
+-r port to listen  (default ACE_DEFAULT_SERVER_PORT)
+-n number threads in thread pool
+-j number proactor in thread pool (default 1, 1 <= j <= n)
+-s number of sender's instances
+-b run client and server at the same time
+-k data block size to send/receive
+-w flow control window size
+-x session limit transfer count
+-f filename (file to transmit in F_Test)
+-i time to run in seconds (0 means prompt to stop)
+-v log level
+    0 - log all messages
+    1 - log all short messages
+    2 - log only errors and unusual cases
+-u show this message
+ ****** the following parameters are valid     ******
+ ****** only for POSIX Proactor tests          ******
+ ****** and ignored for Win32 and TP_Reactor   ******
+-o max number of started aio operations
+-t Proactor type
+    A POSIX AIOCB
+    I POSIX SIG
+    C POSIX CALLBACK - SGI
+    S SUN        (SunOS)
+    E SELECT     (all POSIX systems)
+    P POLL       (all POSIX systems) 
+    V Dev_Poll   (SunOS 5.8+)
+    R Linux RT   (Linux 2.4+)
+    O Event_Poll (Linux 2.6+)
+    L Linux NAIO (Linux 2.6+)
+    K SUNPORT    (SunOS 5.10 Sun completion ports)
+    D default
+-g signal number for SIGNAL interrupt strategy
+   0 means use PIPE interrupt strategy (default)
+-l leader type 
+   D - dedicated
+   S - shared (default)
+-a start aio is performed in:
+   L - leader thread only
+   A - any thread (default)
+
+Have fun!
+
+Contact support@terabit.com.au if you encounter any problems.

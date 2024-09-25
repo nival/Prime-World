@@ -1,0 +1,17 @@
+// -*- MPC -*-
+// $Id: ndds_ts_defaults.mpb 1528 2009-01-11 17:18:07Z sowayaa $
+
+project {
+  Define_Custom(NDDSTypeSupport) {
+    automatic             = 1
+    command               = $(NDDSHOME)/scripts/rtiddsgen
+    dependent             = $(NDDSHOME)/scripts/rtiddsgen
+    source_pre_extension  = , Support, Plugin
+    source_outputext      = .cxx
+    header_pre_extension  = , Support, Plugin
+    header_outputext      = .h
+    keyword ndds_ts_flags = commandflags
+  }
+
+  ndds_ts_flags += -language C++ -replace -namespace
+}

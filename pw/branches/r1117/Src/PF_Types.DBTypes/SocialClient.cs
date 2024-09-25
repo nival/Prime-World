@@ -54,7 +54,7 @@ public class BonusTalents : libdb.ICompositeDBValue, libdb.IChangeable
 
 	private UndoRedoAssignableList<DBPtr<Talent>> _Talents;
 
-	[Description( "Таланты за этот уровень героя" )]
+	[Description( "??????? ?? ???? ??????? ?????" )]
 	public libdb.IChangeableList<DBPtr<Talent>> Talents { get { return _Talents; } set { _Talents.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -171,10 +171,10 @@ public class CharacterBar : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedo<EBarColor> _BarColor;
 	private UndoRedo<int> _Count;
 
-	[Description( "Цвет" )]
+	[Description( "????" )]
 	public EBarColor BarColor { get { return _BarColor.Get(); } set { _BarColor.Set( value ); } }
 
-	[Description( "Количество кадров" )]
+	[Description( "?????????? ??????" )]
 	public int Count { get { return _Count.Get(); } set { _Count.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -304,16 +304,16 @@ public class CharacterBarSettings : libdb.ICompositeDBValue, libdb.IChangeable
 	private CharacterBar _Talents;
 	private CharacterBar _Complexity;
 
-	[Description( "Атака" )]
+	[Description( "?????" )]
 	public CharacterBar Attak { get { return _Attak; } set { _Attak.Assign( value ); } }
 
-	[Description( "Защита" )]
+	[Description( "??????" )]
 	public CharacterBar Defence { get { return _Defence; } set { _Defence.Assign( value ); } }
 
-	[Description( "Таланты" )]
+	[Description( "???????" )]
 	public CharacterBar Talents { get { return _Talents; } set { _Talents.Assign( value ); } }
 
-	[Description( "Сложность" )]
+	[Description( "?????????" )]
 	public CharacterBar Complexity { get { return _Complexity; } set { _Complexity.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -596,10 +596,10 @@ public class EnduranceRegenTime : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedo<int> _level;
 	private UndoRedo<int> _enduranceRegenTime;
 
-	[Description( "Уровень героя ( начинается с 0 )" )]
+	[Description( "??????? ????? ( ?????????? ? 0 )" )]
 	public int level { get { return _level.Get(); } set { _level.Set( value ); } }
 
-	[Description( "Скорость в секундах восстановления до MaxEndurance" )]
+	[Description( "???????? ? ???????? ?????????????? ?? MaxEndurance" )]
 	public int enduranceRegenTime { get { return _enduranceRegenTime.Get(); } set { _enduranceRegenTime.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1713,10 +1713,10 @@ public class LobbyHeroData : libdb.ICompositeDBValue, libdb.IChangeable
 	[Description( "heroId's required for current hero employment." )]
 	public libdb.IChangeableList<string> RequiredHeroes { get { return _RequiredHeroes; } set { _RequiredHeroes.Assign( value ); } }
 
-	[Description( "Список талантов, которые даются за достижение нового уровня героя" )]
+	[Description( "?????? ????????, ??????? ?????? ?? ?????????? ?????? ?????? ?????" )]
 	public DBPtr<BonusTalentsForLevel> BonusTalentsForLevel { get { return _BonusTalentsForLevel.Get(); } set { _BonusTalentsForLevel.Set( value ); } }
 
-	[Description( "Настройки характеристик героя (атака, защита, таланты, сложность) " )]
+	[Description( "????????? ????????????? ????? (?????, ??????, ???????, ?????????) " )]
 	public CharacterBarSettings CharacterBarSettings { get { return _CharacterBarSettings; } set { _CharacterBarSettings.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -2077,7 +2077,7 @@ public class BonusTalentsForLevel : DBResource
 
 	private UndoRedoAssignableList<BonusTalents> _Levels;
 
-	[Description( "Уровни героя" )]
+	[Description( "?????? ?????" )]
 	public libdb.IChangeableList<BonusTalents> Levels { get { return _Levels; } set { _Levels.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -2277,10 +2277,10 @@ public class HeroStatsTable : DBResource
 	private UndoRedo<int> _MaxEndurance;
 	private UndoRedoAssignableList<EnduranceRegenTime> _EnduranceRegen;
 
-	[Description( "Максимальное кол-во бодрости" )]
+	[Description( "???????????? ???-?? ????????" )]
 	public int MaxEndurance { get { return _MaxEndurance.Get(); } set { _MaxEndurance.Set( value ); } }
 
-	[Description( "Табличка соответствия скорости восстановления бодрости и левела героя" )]
+	[Description( "???????? ???????????? ???????? ?????????????? ???????? ? ?????? ?????" )]
 	public libdb.IChangeableList<EnduranceRegenTime> EnduranceRegen { get { return _EnduranceRegen; } set { _EnduranceRegen.Assign( value ); } }
 
 	private void Initialize( DBResource owner )

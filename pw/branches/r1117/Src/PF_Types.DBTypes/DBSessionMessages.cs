@@ -30,13 +30,13 @@ public class ClientHardwareErrorMessages : libdb.ICompositeDBValue, libdb.IChang
 	private TextRef _lowMemoryError;
 	private TextRef _shader3compatibilityError;
 
-	[Description( "Общее сообщение о несовместимости с железом" )]
+	[Description( "????? ????????? ? ??????????????? ? ???????" )]
 	public TextRef errorMessage { get { return _errorMessage; } set { _errorMessage.Assign( value ); } }
 
-	[Description( "Причина 1: сообщение о нехватке памяти" )]
+	[Description( "??????? 1: ????????? ? ???????? ??????" )]
 	public TextRef lowMemoryError { get { return _lowMemoryError; } set { _lowMemoryError.Assign( value ); } }
 
-	[Description( "Причина 2: неподдерживаются шейдеры 3.0" )]
+	[Description( "??????? 2: ???????????????? ??????? 3.0" )]
 	public TextRef shader3compatibilityError { get { return _shader3compatibilityError; } set { _shader3compatibilityError.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -179,13 +179,13 @@ public class DXErrorMessages : libdb.ICompositeDBValue, libdb.IChangeable
 	[Description( "Dialog title" )]
 	public TextRef title { get { return _title; } set { _title.Assign( value ); } }
 
-	[Description( "Общее сообщение об ошибке DX (D3DERR_INVALIDCALL)" )]
+	[Description( "????? ????????? ?? ?????? DX (D3DERR_INVALIDCALL)" )]
 	public TextRef errorMessage { get { return _errorMessage; } set { _errorMessage.Assign( value ); } }
 
-	[Description( "сообщение о нехватке памяти (E_OUTOFMEMORY)" )]
+	[Description( "????????? ? ???????? ?????? (E_OUTOFMEMORY)" )]
 	public TextRef lowMemoryMessage { get { return _lowMemoryMessage; } set { _lowMemoryMessage.Assign( value ); } }
 
-	[Description( "сообщение о нехватке видеопамяти (D3DERR_OUTOFVIDEOMEMORY)" )]
+	[Description( "????????? ? ???????? ??????????? (D3DERR_OUTOFVIDEOMEMORY)" )]
 	public TextRef lowVidMemMessage { get { return _lowVidMemMessage; } set { _lowVidMemMessage.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -328,10 +328,10 @@ public class SessionMessages : DBResource
 	private ClientHardwareErrorMessages _clientHardwareErrorMessages;
 	private DXErrorMessages _dxErrorMessages;
 
-	[Description( "Сообщения о несовместимости с железом" )]
+	[Description( "????????? ? ??????????????? ? ???????" )]
 	public ClientHardwareErrorMessages clientHardwareErrorMessages { get { return _clientHardwareErrorMessages; } set { _clientHardwareErrorMessages.Assign( value ); } }
 
-	[Description( "Сообщения о проблемах графического движка" )]
+	[Description( "????????? ? ????????? ???????????? ??????" )]
 	public DXErrorMessages dxErrorMessages { get { return _dxErrorMessages; } set { _dxErrorMessages.Assign( value ); } }
 
 	private void Initialize( DBResource owner )

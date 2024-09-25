@@ -1,0 +1,141 @@
+[/ Copyright 2006-2008 Daniel James.
+ / Distributed under the Boost Software License, Version 1.0. (See accompanying
+ / file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt) ]
+
+[def __wang__
+    [@http://www.concentric.net/~Ttwang/tech/inthash.htm
+    Thomas Wang's article on integer hash functions]]
+
+[section:rationale Implementation Rationale]
+
+The intent of this library is to implement the unordered
+containers in the draft standard, so the interface was fixed. But there are
+still some implementation decisions to make. The priorities are
+conformance to the standard and portability.
+
+The [@http://en.wikipedia.org/wiki/Hash_table wikipedia article on hash tables]
+has a good summary of the implementation issues for hash tables in general.
+
+[h2 Data Structure]
+
+By specifying an interface for accessing the buckets of the container the
+standard pretty much requires that the hash table uses chained addressing.
+
+It would be conceivable to write a hash table that uses another method.  For
+example, it could use open addressing, and use the lookup chain to act as a
+bucket but there are a some serious problems with this: 
+
+* The draft standard requires that pointers to elements aren't invalidated, so
+  the elements can't be stored in one array, but will need a layer of
+  indirection instead - losing the efficiency and most of the memory gain,
+  the main advantages of open addressing.
+
+* Local iterators would be very inefficient and may not be able to
+  meet the complexity requirements.
+  
+* There are also the restrictions on when iterators can be invalidated. Since
+  open addressing degrades badly when there are a high number of collisions the
+  restrictions could prevent a rehash when it's really needed. The maximum load
+  factor could be set to a fairly low value to work around this - but the
+  standard requires that it is initially set to 1.0.
+
+* And since the standard is written with a eye towards chained
+  addressing, users will be surprised if the performance doesn't reflect that.
+
+So chained addressing is used.
+
+For containers with unique keys I store the buckets in a single-linked list.
+There are other possible data structures (such as a double-linked list)
+that allow for some operations to be faster (such as erasing and iteration)
+but the possible gain seems small compared to the extra memory needed.
+The most commonly used operations (insertion and lookup) would not be improved
+at all.
+
+But for containers with equivalent keys a single-linked list can degrade badly
+when a large number of elements with equivalent keys are inserted. I think it's
+reasonable to assume that users who choose to use `unordered_multiset` or
+`unordered_multimap` do so because they are likely to insert elements with
+equivalent keys. So I have used an alternative data structure that doesn't
+degrade, at the expense of an extra pointer per node.
+
+This works by adding storing a circular linked list for each group of equivalent
+nodes in reverse order. This allows quick navigation to the end of a group (since
+the first element points to the last) and can be quickly updated when elements
+are inserted or erased. The main disadvantage of this approach is some hairy code
+for erasing elements.
+
+[h2 Number of Buckets]
+
+There are two popular methods for choosing the number of buckets in a hash
+table. One is to have a prime number of buckets, another is to use a power
+of 2.
+
+Using a prime number of buckets, and choosing a bucket by using the modulus
+of the hash function's result will usually give a good result. The downside
+is that the required modulus operation is fairly expensive.
+
+Using a power of 2 allows for much quicker selection of the bucket
+to use, but at the expense of loosing the upper bits of the hash value.
+For some specially designed hash functions it is possible to do this and
+still get a good result but as the containers can take arbitrary hash
+functions this can't be relied on.
+
+To avoid this a transformation could be applied to the hash function, for an
+example see __wang__.  Unfortunately, a transformation like Wang's requires
+knowledge of the number of bits in the hash value, so it isn't portable enough.
+This leaves more expensive methods, such as Knuth's Multiplicative Method
+(mentioned in Wang's article). These don't tend to work as well as taking the
+modulus of a prime, and the extra computation required might negate
+efficiency advantage of power of 2 hash tables.
+
+So, this implementation uses a prime number for the hash table size.
+
+[h2 Equality operators]
+
+`operator==` and `operator!=` are not included in the standard, but I've
+added them as I think they could be useful and can be implemented
+fairly efficiently. They are specified differently to the other standard
+containers, comparing keys using the equality predicate rather than
+`operator==`.
+
+It's also different to the proposal
+[@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2009/n2944.pdf n2944].
+which uses the equality operators for the whole of `value_type`. This
+implementation just uses the key equality function for the key,
+and `mapped_type`'s equality operator in `unordered_map` and
+`unordered_multimap` for the mapped part of the element.
+
+Also, in `unordered_multimap`, the mapped values for a group of elements with
+equivalent keys are only considered equal if they are in the same order,
+in n2944 they just need to be a permutation of each other. Since the
+order of elements with equal keys is now defined to be stable, it seems to me
+that their order can be considered part of the container's value.
+
+[h2 Active Issues and Proposals]
+
+[h3 C++0x allocators]
+
+Recent drafts have included an overhaul of the allocators, but this was
+dependent on concepts which are no longer in the standard.
+[@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2009/n2946.pdf n2946]
+attempts to respecify them without concepts. I'll try to implement this (or
+an appropriate later version) in a future version of boost, possibly changed
+a little to accomodate non-C++0x compilers.
+
+[h3 Swapping containers with unequal allocators]
+
+It isn't clear how to swap containers when their allocators aren't equal.
+This is 
+[@http://www.open-std.org/jtc1/sc22/wg21/docs/lwg-active.html#431
+Issue 431: Swapping containers with unequal allocators]. This has been resolved
+with the new allocator specification, so this should be fixed when
+support is added.
+
+[h3 Are insert and erase stable for unordered_multiset and unordered_multimap?]
+
+It wan't specified if `unordered_multiset` and `unordered_multimap` preserve the order
+of elements with equivalent keys (i.e. if they're stable under `insert` and `erase`).
+Since [@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2691.pdf
+n2691] it's been specified that they do and this implementation follows that.
+
+[endsect]

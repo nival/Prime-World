@@ -1,0 +1,13 @@
+// $Id: mpich.mpb 1577 2009-05-07 15:44:53Z elliott_c $
+
+project {
+  includes += $(MPI_ROOT)/include
+  libpaths += $(MPI_ROOT)/lib
+  requires += mpi
+
+  specific(prop:windows) {
+    lit_libs += mpi
+  } else {
+    lit_libs += mpich pmpich
+  }
+}

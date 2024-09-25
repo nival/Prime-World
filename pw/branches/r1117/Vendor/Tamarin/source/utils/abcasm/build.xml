@@ -1,0 +1,179 @@
+<!--
+# ***** BEGIN LICENSE BLOCK *****
+# Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#
+# The contents of this file are subject to the Mozilla Public License Version
+# 1.1 (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+# http://www.mozilla.org/MPL/
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+# The Original Code is  [Open Source Virtual Machine.]
+#
+# The Initial Developer of the Original Code is
+# Adobe System Incorporated..
+# Portions created by the Initial Developer are Copyright (C) 2009
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s):
+#   Adobe AS3 Team
+#
+# Alternatively, the contents of this file may be used under the terms of
+# either the GNU General Public License Version 2 or later (the "GPL"), or
+# the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+# in which case the provisions of the GPL or the LGPL are applicable instead
+# of those above. If you wish to allow use of your version of this file only
+# under the terms of either the GPL or the LGPL, and not to allow others to
+# use your version of this file under the terms of the MPL, indicate your
+# decision by deleting the provisions above and replace them with the notice
+# and other provisions required by the GPL or the LGPL. If you do not delete
+# the provisions above, a recipient may use your version of this file under
+# the terms of any one of the MPL, the GPL or the LGPL.
+#
+# ***** END LICENSE BLOCK *****
+-->
+<project name="ABCasm" default="jar">
+
+	<!--  
+		Customize your settings in build.properties
+		to remain insulated from changes to this file
+	-->
+    <property file="build.properties" />
+
+	<!--
+		Properties set in build.properties; use
+		the Java properties format, for example,
+		lib.dir=/usr/local/lib/antlr-3.0.1
+	-->
+	<property name="lib.dir" location="Set in build.properties"/>
+	<!-- cygwin build requires explicit location of ANTLR2 -->
+	<property name="lib2.dir" location="${lib.dir}"/>
+	<!-- ANTLR runtime, required to run the assembler -->
+	<property name="antlr.runtime" value="../../other-licenses/ANTLR/antlr-runtime-3.0.1.jar"/>
+
+	<!-- Pull in current environment -->
+	<property environment="env"/>
+
+	<property name="target.jar" value="lib/abcasm.jar" />
+	
+	<property name="compile.debug" value="true" />
+    <property name="compile.debuglevel" value="lines,vars,source" />
+    <property name="compile.deprecation" value="false" />
+    <property name="compile.optimize" value="false" />
+
+	
+
+	<path id="antlr.classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar" />
+        <fileset dir="${lib2.dir}" includes="**/*.jar" />
+	</path>
+
+	 <path id="compile.classpath">
+        <path refid="antlr.classpath" />
+		<pathelement path="classes"/>
+    </path>
+
+	<path id="runtime.classpath">
+		<pathelement path="${target.jar}"/>
+		<pathelement path="${antlr.runtime}"/>
+    </path>
+
+	<target name="generate">
+		<java classname="org.antlr.Tool" fork="yes" failonerror="yes">
+			<arg value="-o" />
+			<arg value="gensrc" />
+			<arg value="grammar/abcasm.g3"/>
+            <classpath refid="antlr.classpath" />
+		</java>
+	</target>
+
+	<target name="generate_as3">
+		<java classname="org.antlr.Tool">
+			<arg value="abcasm_as.g3"/>
+            <classpath refid="antlr.classpath" />
+		</java>
+	</target>
+
+	<target name="compile">
+
+		<mkdir dir="classes"/>
+
+		<!--  
+			The compile sequence first compiles
+			all the Java source that doesn't 
+			depend on the grammar-generated source,
+			then the generated source, then
+			the files that do depend on the
+			generated source.  Thus the grammar
+			can use codebase classes without
+			external bootstrapping.
+		-->
+		<javac 
+			srcdir="src" 
+			excludes="abcasm/Main.java"
+			destdir="classes" 
+			classpathref="compile.classpath"
+			debug="${compile.debug}">
+		</javac>
+
+		<javac 
+			srcdir="gensrc/grammar" 
+			destdir="classes" 
+			classpathref="compile.classpath"
+			debug="${compile.debug}">
+		</javac>
+
+		<javac 
+			srcdir="src" 
+			includes="abcasm/Main.java"
+			destdir="classes" 
+			classpathref="compile.classpath"
+			debug="${compile.debug}">
+		</javac>	
+	</target>
+
+
+	<target name="jar" depends="generate,compile">
+		<mkdir dir="lib"/>
+		<jar jarfile="${target.jar}" basedir="classes" includes="abcasm/*.class">
+			<manifest>
+				<attribute name="Main-Class" value="abcasm.Main"/>
+				<attribute name="Class-Path" value="${antlr.runtime}"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="test" depends="jar">
+		<java classname="abcasm.Main" fork="yes" failonerror="yes">
+            <classpath refid="runtime.classpath" />
+			<arg value="test/parseInt.abs"/>
+			<arg value="-dump"/>
+			<arg value="-verbose"/>
+		</java>
+	</target>
+
+	<target name="clean">
+
+		<delete verbose="true">
+			<fileset dir="." includes="abcasm.jar"/>
+			<fileset dir="." includes="grammar/*__.g"/>
+			<fileset dir="." includes="*.*~" defaultexcludes="no"/>
+			<fileset dir="." includes="**/*.*~" defaultexcludes="no"/>
+			<fileset dir="test" includes="*.abc" />
+		</delete>
+
+		<delete verbose="true" dir="gensrc"/>
+		<delete verbose="true" dir="classes"/>
+		<delete verbose="true" dir="bin"/>
+		<delete verbose="true" dir="grammar/output"/>
+	</target>
+
+	<target name="extraclean" depends="clean">
+		<delete verbose="true" file="${target.jar}"/>
+	</target>
+
+</project>

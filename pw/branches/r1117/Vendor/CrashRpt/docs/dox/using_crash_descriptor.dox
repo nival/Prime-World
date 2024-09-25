@@ -1,0 +1,112 @@
+/*!
+
+\page using_crash_descriptor Using Crash Description XML
+
+The crash description is an XML file that contains basic information about the crash.
+It complements the information contained in mindump file. 
+
+A typical crash description file is presented below.
+
+\code
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<CrashRpt version="1207">
+  <CrashGUID>374db652-d268-4b0b-94dc-c014150c8cfe</CrashGUID>
+  <AppName>CrashRpt Tests</AppName>
+  <AppVersion>1.2.7</AppVersion>
+  <ImageName>D:\Projects\CrashRpt\src\bin\WTLDemo.exe</ImageName>
+  <OperatingSystem>Windows 7 Ultimate Build 7100</OperatingSystem>
+  <OSIs64Bit>1</OSIs64Bit>
+  <GeoLocation>en-us</GeoLocation>
+  <SystemTimeUTC>2010-05-15T08:21:49Z</SystemTimeUTC>
+  <ExceptionType>11</ExceptionType>
+  <GUIResourceCount>51</GUIResourceCount>
+  <OpenHandleCount>71</OpenHandleCount>
+  <MemoryUsageKbytes>8144</MemoryUsageKbytes>
+  <CustomProps>
+    <Prop name="VideoCard" value="nVidia GeForce 9800 GTX+"/>
+  </CustomProps>
+  <FileList>
+    <FileItem name="crashdump.dmp" description="Crash Dump" />
+    <FileItem name="crashrpt.xml" description="Crash Log" />
+    <FileItem name="dummy.ini" description="Dummy INI File" />
+    <FileItem name="dummy.log" description="Dummy Log File" />
+    <FileItem name="screenshot0.png" description="Desktop Screenshot" />
+  </FileList>
+</CrashRpt>
+
+\endcode
+
+The root element is \c CrashRpt. It has attribute named \c version representing
+the version of CrashRpt library that generated the error report. For example, the value of '1103'
+means version 1.1.3, the value of '1201' means version 1.2.1.
+
+The element  \c CrashGUID is a unique ID of the error report. It can be used, for example,
+as a primary key if you plan to store crash reports in a database.
+
+The element  \c AppName is the name of your application that was passed to \ref crInstall() 
+as \ref CR_INSTALL_INFO::pszAppName structure member.
+
+The element  \c AppVersion is the version of your application that was passed to \ref crInstall() 
+as \ref CR_INSTALL_INFO::pszAppVersion structure member. You are typically interested
+in analysing error reports from the latest version of your software and ignore reports from 
+older versions.
+
+The element  \c ImageName is path to the executable image of your software.
+
+\c OperatingSystem is the friendly name of end user's operating system, including name, build number
+and service pack. It is useful information because many errors are OS-specific.
+
+\c OSIs64Bit signals if user's operating system is 64-bit (equals to 1) or 32-bit (equals to 0).
+
+\c GeoLocation represents user's geographic location in an RFC 1766 compliant form.
+
+\c SystemTimeUTC is the time in UTC format when crash had occurred. This value can be used to
+order crash reports by creation time.
+
+\c UserEmail is the E-mail address of error report sender. If specified, it can be used
+to contact user and request additional info about error.
+
+\c ProblemDescription is the user-provided problem description. 
+
+\c FileList contains the list of files that are contained in the error report. 
+
+\c ExceptionType is an integer that means the type of error (see \ref CR_EXCEPTION_INFO structure documentation):
+
+- 0 SEH exception.
+- 1 C++ terminate() call.
+- 2 C++ unexpected() call.
+- 3 C++ pure virtual function call.
+- 4 C++ new operator fault.
+- 5 Buffer overrun error.
+- 6 Invalid parameter exception.
+- 7 C++ SIGABRT signal (abort).
+- 8 C++ SIGFPE signal (floating point exception).
+- 9 C++ SIGILL signal (illegal instruction).
+- 10 C++ SIGINT signal.
+- 11 C++ SIGSEGV signal (invalid storage access)
+- 12 C++ SIGTERM signal (termination request).
+
+The exception type can be used to divide error reports into some categories.
+
+There are additional elements that appear sometimes, depending on \c ExceptionType.
+
+\c ExceptionCode is the SEH exception code. It presents when \c ExceptionType is 0.
+
+\c FPESubcode is the floating point exception subcode. It presents when \c ExceptionType is 8.
+For information on floating point exception subcodes, see documentation of \b signal() function
+in MSDN and \<float.h\> header file
+
+\c InvParamFunction, \c InvParamExpression, \c InvParamFile and \c InvParamLine are present when 
+\c ExceptionType is 6. These elements are typically empty. They may be non-empty if debug version
+of CRT is used in your application.
+
+\c GUIResourceCount is the number of GUI resources used by your program at the moment of crash.
+
+\c OpenHandleCount is the number of handles (for example, file handles) in use by your program by the moment of crash.
+
+\c MemoryUsageKbytes is the amount of memory (in kilobytes) in use by your problem at the moment of crash.
+
+<i>Further reading:</i> \ref using_minidump.
+
+*/

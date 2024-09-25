@@ -8436,7 +8436,7 @@ public class DBEaselGame : DBResource
 
 	public DBPaint paint { get { return _paint; } set { _paint.Assign( value ); } }
 
-	[Description( "— какого уровн€ миниигры открываетс€ новый свиток" )]
+	[Description( "? ?????? ?????? ???????? ??????????? ????? ??????" )]
 	[EnumArray(typeof(EPaintType))]
 	public libdb.IChangeableList<int> availabilityTable { get { return _availabilityTable; } set { _availabilityTable.Assign( value ); } }
 

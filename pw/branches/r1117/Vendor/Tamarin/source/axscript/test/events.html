@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Tamarin event-handler tests</title>
+    </head>
+
+    <body>
+        Hello
+        <p>
+    <input type="button" name="myButton" id="button1" value="Click Me">
+    </body>
+    <script language="application/javascript;version=2">
+    function event_handler(target) {
+        //window.alert('hi - event is ' + window.event.x)
+        window.alert('target is ' + target)
+    }
+    // *sob* - can't make 'window.onload = func_ob' work, even though
+    // http://groups.google.com/group/microsoft.public.scripting.hosting/browse_frm/thread/4e9dcacced837a18/e6646a2ec6db7951?hl=en#e6646a2ec6db7951
+    // says that it should work (ie, simply assigning a function to the event name should work)
+    // OTOH, http://blogs.msdn.com/ericlippert/archive/2005/09/21/472465.aspx says that
+    // the engines hook up events early on - why is explicit event lookup done by jscript?
+
+    //window.onload = event_handler
+    //window.event_handler = event_handler
+    // Hook up the button
+    window.document.getElementById("button1").attachEvent("onclick", event_handler);
+    </script>
+</html>

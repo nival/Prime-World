@@ -1,0 +1,15 @@
+includePaths = [ 'include' ]
+if platform == 'win32' :
+  libDependencies = [ 'libcurl.lib', 'ws2_32.lib' ]
+else :
+  libDependencies = [ 'libcurl.so' ]
+
+if configuration == 'debug':
+  libPaths = [ 'lib/Debug' ]
+else:
+  libPaths = [ 'lib/Release' ]
+
+if platform == 'win32':
+  globalCompilerKeys = [ '/D"CURL_STATICLIB"' ]
+else:
+  defines = [ 'CURL_STATICLIB' ]

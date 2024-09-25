@@ -1,0 +1,5 @@
+include "XMLNode.as"
+include "XMLDocument.as"
+include "XMLNodeType.as"
+include "XMLParser.as"
+include "XMLTag.as"

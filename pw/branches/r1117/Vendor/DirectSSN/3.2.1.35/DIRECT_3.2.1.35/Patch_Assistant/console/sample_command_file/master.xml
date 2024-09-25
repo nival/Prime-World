@@ -1,0 +1,141 @@
+<ConsoleCommands xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   	<ConsoleCommand xsi:type="CreateBundle">
+	  <UserName>johndoe@email.com</UserName>
+	  <Password>encrypted string</Password>					
+	  <InputPath>D:\SDK\3.0.1.11\settings</InputPath>
+	  <OutputFileName>D:\SDK\3.0.1.11\builds\download.solidconfig</OutputFileName>
+	</ConsoleCommand> 
+	
+	<ConsoleCommand xsi:type="CreateHostExecutable">
+		<UserName>johndoe@email.com</UserName>
+		<Password>encrypted string</Password>	
+		<BaseName>iehost</BaseName>
+		<ProductName>Game Name Launcher</ProductName>
+		<CompanyName>Your Company</CompanyName>
+		<Copyright>Copyright Info</Copyright>
+		<InputPath>D:\SDK\3.0.1.11\skin</InputPath>
+		<OutputFileName>D:\SDK\3.0.1.11\builds\sample_launcher.exe</OutputFileName>
+		<UPX>false</UPX>
+	</ConsoleCommand>
+  
+  <ConsoleCommand xsi:type="CreateProduct">
+    <Path>D:\qa\pa\3.0\3014</Path>
+    <Title>3014-console</Title>
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+  </ConsoleCommand>
+ 
+  <ConsoleCommand xsi:type="CreatePayload">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\qa\pa\3.0\3014</ProductPath>
+    <Title>3014-SWTOR-EN-US</Title>
+    <TargetDirectory>{ModulePath}SWTOR-Assets</TargetDirectory>
+    <RequiresElevation>false</RequiresElevation>
+    <Dependencies>      
+    </Dependencies>
+  </ConsoleCommand>
+  
+  <ConsoleCommand xsi:type="EditPayload">
+	<UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\pa\products\30111-cmd</ProductPath>
+    <Title>30111-cmd-9D</Title>
+	<TargetDirectory>{ModulePath}30111-9Dcmd</TargetDirectory>
+    <RequiresElevation>false</RequiresElevation>
+    <Dependencies>	
+    </Dependencies>
+  </ConsoleCommand>
+  
+  <ConsoleCommand xsi:type="CreateRelease">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\qa\pa\3.0\3014</ProductPath>
+    <PayloadTitle>3014-SWTOR-EN-US</PayloadTitle>
+    <Name>sample_release_0</Name>
+    <SourcePath>D:\QA\PA.Source\SWTOR\EN-US\0</SourcePath>
+    <DiffType>XDelta</DiffType>
+	<Encrypt>false</Encrypt>
+    <DisableDifferential></DisableDifferential>
+    <UpdateFrom>
+      <Release>None</Release>      
+    </UpdateFrom>
+    <RollbackTo>
+    </RollbackTo>
+  </ConsoleCommand>
+  
+  <ConsoleCommand xsi:type="EditRelease">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\pa\products\30111-cmd</ProductPath>
+    <PayloadTitle>3014-SWTOR-EN-US</PayloadTitle>
+    <Name>sample_release_0</Name>	
+    <DiffType>XDelta</DiffType>
+	<Encrypt>false</Encrypt>
+    <DisableDifferential></DisableDifferential>
+    <UpdateFrom>
+      <Release>None</Release>      
+    </UpdateFrom>
+    <RollbackTo>	  
+    </RollbackTo>
+  </ConsoleCommand>
+  
+  
+  <ConsoleCommand xsi:type="BuildRelease">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\qa\pa\3.0\3014</ProductPath>
+    <PayloadTitle>3014-SWTOR-EN-US</PayloadTitle>
+    <Name>sample_release_0</Name>
+    <Clean>false</Clean>
+  </ConsoleCommand>
+  
+ <ConsoleCommand xsi:type="InjectRelease">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\qa\pa\3.0\3014</ProductPath>
+    <PayloadTitle>3014-SWTOR-EN-US</PayloadTitle>
+    <Name>sample_release_0</Name>
+    <NetworkGroup>BioWare</NetworkGroup>
+    <ReliableSourceUrl>http://qa.axt.com/pa/2.1/</ReliableSourceUrl>
+    <DownloadConfigurationUrl>{AppContentUrl}download.solidconfig</DownloadConfigurationUrl>
+  </ConsoleCommand>
+  
+    <ConsoleCommand xsi:type="CreatePatchManifest">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\qa\pa\3.0\3014</ProductPath>
+    <PayloadTitle>3014-SWTOR-EN-US</PayloadTitle>
+    <Name>3014-SWTOR-EN-US</Name>
+    <IsMaintenance>false</IsMaintenance>
+    <Required>sample_release_0</Required>
+    <Upcoming>None</Upcoming>
+  </ConsoleCommand>
+ 
+  <ConsoleCommand xsi:type="AddPatchExtraData">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\pa\products\30111-cmd</ProductPath>
+    <PayloadTitle>30111-cmd-9D</PayloadTitle>
+    <Name>9D-zero</Name>
+    <From>None</From>
+    <To>9D-zero</To>
+    <Key>QA Key</Key>
+    <Value>Value QA</Value>
+  </ConsoleCommand>
+  
+  <ConsoleCommand xsi:type="RemovePatchExtraData">
+    <UserName>johndoe@email.com</UserName>
+    <Password>encrypted string</Password>	
+    <ProductPath>D:\pa\products\30111-cmd</ProductPath>
+    <PayloadTitle>30111-cmd-9D</PayloadTitle>
+    <Name>9D-zero</Name>
+    <From>None</From>
+    <To>9D-zero</To>
+	<Key>QA Key</Key>    
+  </ConsoleCommand>
+  
+ </ConsoleCommands>
+  
+  

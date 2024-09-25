@@ -1199,7 +1199,7 @@ public class TalentKit : DBResource
 	public int kitCapacity { get { return _kitCapacity.Get(); } set { _kitCapacity.Set( value ); } }
 
 	[Custom("Social")]
-	[Description( "Список талантов в этом наборе (сете)" )]
+	[Description( "?????? ???????? ? ???? ?????? (????)" )]
 	public libdb.IChangeableList<DBPtr<Talent>> talents { get { return _talents; } set { _talents.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1346,7 +1346,7 @@ public class TalentPack : DBResource
 	private UndoRedo<bool> _isRedPack;
 	private UndoRedoAssignableList<DBPtr<Talent>> _talents;
 
-	[Description( "Имя (строковой айдишник) пака, чтобы можно было спросить через формулы. Паки должны иметь уникальные id." )]
+	[Description( "??? (????????? ????????) ????, ????? ????? ???? ???????? ????? ???????. ???? ?????? ????? ?????????? id." )]
 	public string id { get { return _id.Get(); } set { _id.Set( value ); } }
 
 	[Custom("Social")]
@@ -1362,7 +1362,7 @@ public class TalentPack : DBResource
 	public bool isRedPack { get { return _isRedPack.Get(); } set { _isRedPack.Set( value ); } }
 
 	[Custom("Social")]
-	[Description( "Список талантов в этом паке (edition-е)" )]
+	[Description( "?????? ???????? ? ???? ???? (edition-?)" )]
 	public libdb.IChangeableList<DBPtr<Talent>> talents { get { return _talents; } set { _talents.Assign( value ); } }
 
 	private void Initialize( DBResource owner )

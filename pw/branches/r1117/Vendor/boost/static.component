@@ -1,0 +1,22 @@
+if platform == 'win32' :
+  sources = [
+    'libs/thread/src/win32/thread.cpp'
+  ]
+elif platform == 'linux' :
+  sources = [
+    'libs/thread/src/pthread/thread.cpp',
+    'libs/thread/src/pthread/once.cpp',
+  ]
+
+includePaths = [
+    '.'
+]
+
+components = [
+    'Vendor/Libc'
+]
+
+if platform == 'win32':
+  globalCompilerKeys = [ '/EHa', '/D BOOST_ALL_NO_LIB' ]
+else:
+  defines = [ 'BOOST_ALL_NO_LIB' ]

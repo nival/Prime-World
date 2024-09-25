@@ -1,0 +1,14 @@
+// -*- MPC -*-
+// $Id: nddslib.mpb 1577 2009-05-07 15:44:53Z elliott_c $
+
+project {
+  libs     += nddscpp nddsc nddscore
+  libpaths += $(NDDSHOME)/lib/$(NDDSARCHITECTURE)
+  includes += $(NDDSHOME)/include $(NDDSHOME)/include/ndds
+
+  specific(prop:windows) {
+    macros += RTI_WIN32 NDDS_DLL_VARIABLE
+  } else {
+    macros += RTI_UNIX
+  }
+}

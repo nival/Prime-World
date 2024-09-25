@@ -1,0 +1,233 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+//  Test indirect memory access instructions.
+
+.script_info {
+	init: .function_id(main)
+}
+
+function main()
+{
+	getlocal0
+	pushscope
+
+	findpropstrict START
+	pushstring "Create ByteArray"
+	callpropvoid START 1
+
+	newfunction .function_id(initMemory)
+	getlocal0
+	call 0
+
+	findpropstrict END
+	callpropvoid END 0
+	
+
+	newfunction .function_id(runTest)
+	getlocal0
+	call 0
+
+	returnvoid
+}
+
+/*
+ *  Test the MOPS instructions.
+ */
+function runTest():void
+{
+	getlocal0
+	pushscope
+
+	findpropstrict START
+	pushstring "Testing MOPS instructions"
+	callpropvoid START 1
+
+	pushbyte 1
+	pushbyte 0
+	si8
+	pushbyte 0x80
+	pushbyte 1
+	si8
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Load two stored bytes as a short"
+
+	pushbyte 0
+	li32
+	pushint 0x8001
+	callpropvoid COMPARE_STRICTEQ 3
+
+	//  3.14157, IEEE-754 unrounded single-precision
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Load uint as single-precision number"
+
+	pushuint  0x40490F7B
+	pushshort 1000
+	si32
+
+	pushshort 999
+	increment_i
+	lf32
+	pushdouble 3.1415698528289795
+	callpropvoid COMPARE_STRICTEQ 3
+
+
+	//  2.22, double-precision IEEE-754
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Load 2 uints as double-precision number"
+	pushuint 0x4001C28F
+	pushshort 2104
+	si32
+	pushuint 0x5C28F5C3
+	pushshort 2100
+	si32
+
+	pushshort 2100
+	lf64
+	pushdouble 2.22
+	callpropvoid COMPARE_STRICTEQ 3
+
+
+	pushdouble 3254.2332114
+	pushshort 2200
+	sf64
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Load upper half of double as an int"
+
+	pushint 0x40A96C77 //FF6F0068E
+	pushshort 2204
+	li32
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Load lower half of double as an int"
+
+	pushint 0x677C101C
+	pushshort 2200
+	li32
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Load 2nd byte of double"
+
+	pushbyte 0x28
+	pushshort 2102
+	li8
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Sign-extend 1"
+
+	pushshort 1001
+	li8
+	sxi1
+	pushint -1
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Sign-extend 8"
+
+	pushshort 1001
+	li8
+	sxi8
+	pushbyte 15
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findpropstrict COMPARE_STRICTEQ
+	pushstring "Sign-extend 16"
+
+	pushbyte 0
+	li16
+	sxi16
+	pushint -32767
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findpropstrict END
+	callpropvoid END 0
+
+	returnvoid
+}
+
+/*
+ *  Initialize the memory buffer: create a ByteArray and
+ *  write 4K of zeroes into it.
+ */
+function initMemory():void
+{
+	getlocal0     	
+	pushscope     	
+
+	debugfile     	"initMemory"
+	debugline     	1
+
+	findpropstrict	{flash.utils}::ByteArray
+	constructprop 	{flash.utils}::ByteArray (0)
+	setlocal2
+
+	//  Init the loop counter.
+	pushbyte      	0
+	setlocal3
+	
+InitLoop: label         	
+
+	getlocal2
+	pushbyte      	0
+	callpropvoid  	writeByte (1)
+
+	inclocal_i	3   	
+
+	getlocal3
+	pushshort     	4096
+	iflt          	InitLoop
+	
+	//  The ByteArray is initialized, set the domain property and exit.
+	findpropstrict	{avmplus}::Domain
+	getproperty   	{avmplus}::Domain
+	getproperty   	currentDomain
+	getlocal       	2
+	setproperty   	domainMemory
+
+	findpropstrict PASS
+	pushstring "create ByteArray"
+	callpropvoid PASS 1
+
+	
+	returnvoid
+}
