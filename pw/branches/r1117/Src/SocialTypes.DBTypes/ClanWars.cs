@@ -30,10 +30,10 @@ public class GuildWarEventAwardItem : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedoDBPtr<Lootbox> _lootbox;
 	private UndoRedo<int> _count;
 
-	[Description( "лутбокс" )]
+	[Description( "???????" )]
 	public DBPtr<Lootbox> lootbox { get { return _lootbox.Get(); } set { _lootbox.Set( value ); } }
 
-	[Description( "количество лутбоксов" )]
+	[Description( "?????????? ?????????" )]
 	public int count { get { return _count.Get(); } set { _count.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -163,19 +163,19 @@ public class GuildRecruitment : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedo<int> _guildRequestLifetime;
 	private UndoRedoList<string> _locales;
 
-	[Description( "Максимальнеое кол-во заявок от одного пользователя" )]
+	[Description( "????????????? ???-?? ?????? ?? ?????? ????????????" )]
 	public int maxUserGuildRequests { get { return _maxUserGuildRequests.Get(); } set { _maxUserGuildRequests.Set( value ); } }
 
-	[Description( "Размер текста для прошения в гильдию" )]
+	[Description( "?????? ?????? ??? ???????? ? ???????" )]
 	public int maxUserGuildRequestSize { get { return _maxUserGuildRequestSize.Get(); } set { _maxUserGuildRequestSize.Set( value ); } }
 
-	[Description( "Размер сообщения гильдии, которое отображается игрокам при поиске гильдии" )]
+	[Description( "?????? ????????? ???????, ??????? ???????????? ??????? ??? ?????? ???????" )]
 	public int maxGuildRecruitTextSize { get { return _maxGuildRecruitTextSize.Get(); } set { _maxGuildRecruitTextSize.Set( value ); } }
 
-	[Description( "Время жизни заявки (в секундах)" )]
+	[Description( "????? ????? ?????? (? ????????)" )]
 	public int guildRequestLifetime { get { return _guildRequestLifetime.Get(); } set { _guildRequestLifetime.Set( value ); } }
 
-	[Description( "Языки клиентов, они же языки гильдий" )]
+	[Description( "????? ????????, ??? ?? ????? ???????" )]
 	public libdb.IChangeableList<string> locales { get { return _locales; } set { _locales.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -340,13 +340,13 @@ public class GuildWarEventAward : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedo<int> _members;
 	private GuildWarEventAwardItem _award;
 
-	[Description( "максимальное место клана в топе (включительно)" )]
+	[Description( "???????????? ????? ????? ? ???? (????????????)" )]
 	public int maxPlace { get { return _maxPlace.Get(); } set { _maxPlace.Set( value ); } }
 
-	[Description( "сколько самых активных игроков награждаем" )]
+	[Description( "??????? ????? ???????? ??????? ??????????" )]
 	public int members { get { return _members.Get(); } set { _members.Set( value ); } }
 
-	[Description( "награда" )]
+	[Description( "???????" )]
 	public GuildWarEventAwardItem award { get { return _award; } set { _award.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -486,13 +486,13 @@ public class GuildWarEventData : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedo<int> _duration;
 	private UndoRedoAssignableList<GuildWarEventAward> _awards;
 
-	[Description( "Размер пула" )]
+	[Description( "?????? ????" )]
 	public Int64 pointsCap { get { return _pointsCap.Get(); } set { _pointsCap.Set( value ); } }
 
-	[Description( "Длительность ивента (в днях)" )]
+	[Description( "???????????? ?????? (? ????)" )]
 	public int duration { get { return _duration.Get(); } set { _duration.Set( value ); } }
 
-	[Description( "Награды выдаваемы по завершению евента. Задавать в порядке возрастания по месту." )]
+	[Description( "??????? ????????? ?? ?????????? ??????. ???????? ? ??????? ??????????? ?? ?????." )]
 	public libdb.IChangeableList<GuildWarEventAward> awards { get { return _awards; } set { _awards.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -633,13 +633,13 @@ public class NPCCastle : libdb.ICompositeDBValue, libdb.IChangeable
 	private TextRef _clanShortName;
 	private UndoRedo<int> _clanRating;
 
-	[Description( "Название клана" )]
+	[Description( "???????? ?????" )]
 	public TextRef clanName { get { return _clanName; } set { _clanName.Assign( value ); } }
 
-	[Description( "Название клана" )]
+	[Description( "???????? ?????" )]
 	public TextRef clanShortName { get { return _clanShortName; } set { _clanShortName.Assign( value ); } }
 
-	[Description( "Рейтинг клана" )]
+	[Description( "??????? ?????" )]
 	public int clanRating { get { return _clanRating.Get(); } set { _clanRating.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -768,7 +768,7 @@ public class NPCSuzerain : NPCCastle, libdb.ICompositeDBValue, libdb.IChangeable
 
 	private UndoRedo<int> _defaultSiegePoints;
 
-	[Description( "Ежедневный доход с этого клана" )]
+	[Description( "?????????? ????? ? ????? ?????" )]
 	public int defaultSiegePoints { get { return _defaultSiegePoints.Get(); } set { _defaultSiegePoints.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -870,7 +870,7 @@ public class NPCVillage : NPCCastle, libdb.ICompositeDBValue, libdb.IChangeable
 
 	private UndoRedo<int> _everyDayProfit;
 
-	[Description( "Ежедневный доход с этого клана" )]
+	[Description( "?????????? ????? ? ????? ?????" )]
 	public int everyDayProfit { get { return _everyDayProfit.Get(); } set { _everyDayProfit.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -988,28 +988,28 @@ public class ClanWarsData : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedo<int> _numPlayersFromTopInClanRating;
 	private GuildWarEventData _guildWarEventData;
 
-	[Description( "NPC деревня" )]
+	[Description( "NPC ???????" )]
 	public NPCVillage npcVillage { get { return _npcVillage; } set { _npcVillage.Assign( value ); } }
 
-	[Description( "NPC сюзерена" )]
+	[Description( "NPC ????????" )]
 	public NPCSuzerain npcSuzerain { get { return _npcSuzerain; } set { _npcSuzerain.Assign( value ); } }
 
-	[Description( "Количество деревень" )]
+	[Description( "?????????? ????????" )]
 	public int countOfNPCVillage { get { return _countOfNPCVillage.Get(); } set { _countOfNPCVillage.Set( value ); } }
 
-	[Description( "Процент очков, который получает сюзерен со своих вассалов" )]
+	[Description( "??????? ?????, ??????? ???????? ??????? ?? ????? ????????" )]
 	public float guildVassalsTributeCoef { get { return _guildVassalsTributeCoef.Get(); } set { _guildVassalsTributeCoef.Set( value ); } }
 
-	[Description( "Рейтинг, открывающий доступ в магазин древних" )]
+	[Description( "???????, ??????????? ?????? ? ??????? ???????" )]
 	public int shopAncientRating { get { return _shopAncientRating.Get(); } set { _shopAncientRating.Set( value ); } }
 
-	[Description( "Когда клан А нападает на клан Б, второй получает в копилку на защиту сразу +X% очков" )]
+	[Description( "????? ???? ? ???????? ?? ???? ?, ?????? ???????? ? ??????? ?? ?????? ????? +X% ?????" )]
 	public float defencePointsPercent { get { return _defencePointsPercent.Get(); } set { _defencePointsPercent.Set( value ); } }
 
-	[Description( "Кол-во лучших по клановому рейтингу игроков влияющих на рейтинг клана" )]
+	[Description( "???-?? ?????? ?? ????????? ???????? ??????? ???????? ?? ??????? ?????" )]
 	public int numPlayersFromTopInClanRating { get { return _numPlayersFromTopInClanRating.Get(); } set { _numPlayersFromTopInClanRating.Set( value ); } }
 
-	[Description( "Настройки кланового ивента" )]
+	[Description( "????????? ????????? ??????" )]
 	public GuildWarEventData guildWarEventData { get { return _guildWarEventData; } set { _guildWarEventData.Assign( value ); } }
 
 	private void Initialize( DBResource owner )

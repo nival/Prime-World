@@ -45,14 +45,14 @@ public:
   virtual const NDb::BooleanPin GetColorized() const { return (const NDb::BooleanPin)0; };
   virtual const NDb::BooleanPin GetCustomizedGeometryPin() const { return (const NDb::BooleanPin)0; };
   virtual const NDb::BooleanPin GetDebugPinValue() const { return (const NDb::BooleanPin)0; };
-  virtual Render::Sampler* GetDepthMap() { return (Render::Sampler*)0; };
   virtual const Render::Sampler* GetDepthMap() const { return (const Render::Sampler*)0; };
-  virtual const Render::Sampler* GetDiffuseMap() const { return (const Render::Sampler*)0; };
+  virtual Render::Sampler* GetDepthMap() { return (Render::Sampler*)0; };
   virtual Render::Sampler* GetDiffuseMap() { return (Render::Sampler*)0; };
+  virtual const Render::Sampler* GetDiffuseMap() const { return (const Render::Sampler*)0; };
   virtual const Render::Sampler* GetDiffuseMap2() const { return (const Render::Sampler*)0; };
   virtual Render::Sampler* GetDiffuseMap2() { return (Render::Sampler*)0; };
-  virtual Render::Sampler* GetDiffuseMapBurned() { return (Render::Sampler*)0; };
   virtual const Render::Sampler* GetDiffuseMapBurned() const { return (const Render::Sampler*)0; };
+  virtual Render::Sampler* GetDiffuseMapBurned() { return (Render::Sampler*)0; };
   virtual Render::Sampler* GetDiffuseMapFrozen() { return (Render::Sampler*)0; };
   virtual const Render::Sampler* GetDiffuseMapFrozen() const { return (const Render::Sampler*)0; };
   virtual const NDb::BooleanPin GetDisablePin() const { return (const NDb::BooleanPin)0; };
@@ -62,13 +62,13 @@ public:
   virtual const Render::Sampler* GetHighlight() const { return (const Render::Sampler*)0; };
   virtual Render::Sampler* GetHighlight() { return (Render::Sampler*)0; };
   virtual const NDb::BooleanPin GetHighlightPin() const { return (const NDb::BooleanPin)0; };
-  virtual const Render::Sampler* GetLackOfMana() const { return (const Render::Sampler*)0; };
   virtual Render::Sampler* GetLackOfMana() { return (Render::Sampler*)0; };
+  virtual const Render::Sampler* GetLackOfMana() const { return (const Render::Sampler*)0; };
   virtual const NDb::BooleanPin GetLackOfManaPin() const { return (const NDb::BooleanPin)0; };
   virtual const NDb::LightingPin GetLightingPin() const { return (const NDb::LightingPin)0; };
   virtual const NDb::MaskingTypePin GetMasking() const { return (const NDb::MaskingTypePin)0; };
-  virtual Render::Sampler* GetMaskMap() { return (Render::Sampler*)0; };
   virtual const Render::Sampler* GetMaskMap() const { return (const Render::Sampler*)0; };
+  virtual Render::Sampler* GetMaskMap() { return (Render::Sampler*)0; };
   virtual const NDb::BooleanPin GetMorphShapes() const { return (const NDb::BooleanPin)0; };
   virtual const NDb::BooleanPin GetMultiplyVertexColorPin() const { return (const NDb::BooleanPin)0; };
   virtual const NDb::OpacityAndEmissiveModePin GetOpacityModePin() const { return (const NDb::OpacityAndEmissiveModePin)0; };
@@ -78,12 +78,12 @@ public:
   virtual const NDb::PackedMasksNumberPin GetPackedMasksNumberPin() const { return (const NDb::PackedMasksNumberPin)0; };
   virtual const NDb::PaintMaterialModePin GetPaintMaterialModePin() const { return (const NDb::PaintMaterialModePin)0; };
   virtual const NDb::BooleanPin GetPassivePin() const { return (const NDb::BooleanPin)0; };
-  virtual Render::Sampler* GetPressed() { return (Render::Sampler*)0; };
   virtual const Render::Sampler* GetPressed() const { return (const Render::Sampler*)0; };
+  virtual Render::Sampler* GetPressed() { return (Render::Sampler*)0; };
   virtual const NDb::BooleanPin GetPressedPin() const { return (const NDb::BooleanPin)0; };
   virtual const NDb::BooleanPin GetR2VBPin() const { return (const NDb::BooleanPin)0; };
-  virtual Render::Sampler* GetRoadMap() { return (Render::Sampler*)0; };
   virtual const Render::Sampler* GetRoadMap() const { return (const Render::Sampler*)0; };
+  virtual Render::Sampler* GetRoadMap() { return (Render::Sampler*)0; };
   virtual const NDb::BooleanPin GetScale9Grid() const { return (const NDb::BooleanPin)0; };
   virtual const NDb::BooleanPin GetScale9GridBitmap() const { return (const NDb::BooleanPin)0; };
   virtual const Render::Sampler* GetScreenMap() const { return (const Render::Sampler*)0; };
@@ -469,8 +469,8 @@ public:
   	return length;
   }
   
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetMultiplyVertexColorPin() const { return MultiplyVertexColorPinValue; }
 	virtual const NDb::BooleanPin GetSkeletalMeshPin() const { return SkeletalMeshPinValue; }
 	virtual void SetMultiplyVertexColorPin( const NDb::BooleanPin value ) { MultiplyVertexColorPinValue = value; UpdateStaticShaderIndex(); }
@@ -743,8 +743,8 @@ protected:
 	virtual int SignificantPartLength() const { return offsetof( BasicMaterial, specialTransparency ) - offsetof( BasicMaterial, renderState ) + sizeof( specialTransparency ); }
 
 public:
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::LightingPin GetLightingPin() const { return LightingPinValue; }
 	virtual const NDb::BooleanPin GetSkeletalMeshPin() const { return SkeletalMeshPinValue; }
 	virtual void SetLightingPin( const NDb::LightingPin value ) { LightingPinValue = value; UpdateStaticShaderIndex(); }
@@ -1380,8 +1380,8 @@ public:
   	return length;
   }
   
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetSkeletalMeshPin() const { return SkeletalMeshPinValue; }
 	virtual void SetSkeletalMeshPin( const NDb::BooleanPin value ) { SkeletalMeshPinValue = value; UpdateStaticShaderIndex(); }
 	virtual void FillMaterial( const NDb::Material* _pDbMaterial, void * texturePoolId, bool _savePointer = true )
@@ -1520,10 +1520,10 @@ public:
 	virtual Render::Sampler* GetBloomMap() { return &BloomMap; }
 	virtual const NDb::BooleanPin GetBloomPin() const { return BloomPinValue; }
 	virtual const NDb::ColorCorrectPin GetColorCorrectPin() const { return ColorCorrectPinValue; }
-	virtual Render::Sampler* GetDepthMap() { return &DepthMap; }
 	virtual const Render::Sampler* GetDepthMap() const { return &DepthMap; }
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
+	virtual Render::Sampler* GetDepthMap() { return &DepthMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetR2VBPin() const { return R2VBPinValue; }
 	virtual const NDb::BooleanPin GetSharpPin() const { return SharpPinValue; }
 	virtual const NDb::BooleanPin GetWarFogPin() const { return WarFogPinValue; }
@@ -2165,8 +2165,8 @@ protected:
 	virtual int SignificantPartLength() const { return offsetof( ParticleFXMaterial, scale ) - offsetof( ParticleFXMaterial, renderState ) + sizeof( scale ); }
 
 public:
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::OpacityAndEmissiveModePin GetOpacityModePin() const { return OpacityAndEmissiveModePinValue; }
 	virtual const NDb::OrientTypePin GetOrientTypePin() const { return OrientTypePinValue; }
 	virtual void SetOpacityModePin( const NDb::OpacityAndEmissiveModePin value ) { OpacityAndEmissiveModePinValue = value; UpdateStaticShaderIndex(); }
@@ -2270,8 +2270,8 @@ public:
 	virtual const Render::Sampler* GetBorderMap() const { return &BorderMap; }
 	virtual Render::Sampler* GetBorderMap() { return &BorderMap; }
 	virtual const NDb::BooleanPin GetDebugPinValue() const { return DebugPinValue; }
-	virtual Render::Sampler* GetRoadMap() { return &RoadMap; }
 	virtual const Render::Sampler* GetRoadMap() const { return &RoadMap; }
+	virtual Render::Sampler* GetRoadMap() { return &RoadMap; }
 	virtual const NDb::BooleanPin GetTextureFitPinValue() const { return TextureFitPinValue; }
 	virtual void SetDebugPinValue( const NDb::BooleanPin value ) { DebugPinValue = value; UpdateStaticShaderIndex(); }
 	virtual void SetTextureFitPinValue( const NDb::BooleanPin value ) { TextureFitPinValue = value; UpdateStaticShaderIndex(); }
@@ -2369,8 +2369,8 @@ protected:
 	virtual int SignificantPartLength() const { return offsetof( ShadowMaterial, DiffuseMap ) - offsetof( ShadowMaterial, renderState ) + sizeof( DiffuseMap ); }
 
 public:
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetSkeletalMeshPin() const { return SkeletalMeshPinValue; }
 	virtual void SetSkeletalMeshPin( const NDb::BooleanPin value ) { SkeletalMeshPinValue = value; UpdateStaticShaderIndex(); }
 	virtual void FillMaterial( const NDb::Material* _pDbMaterial, void * texturePoolId, bool _savePointer = true )
@@ -2600,8 +2600,8 @@ public:
   	return length;
   }
   
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual void FillMaterial( const NDb::Material* _pDbMaterial, void * texturePoolId, bool _savePointer = true )
 	{
 		const NDb::SkyMaterial* dbMaterial = static_cast<const NDb::SkyMaterial*>( _pDbMaterial );
@@ -3102,10 +3102,10 @@ protected:
 	virtual int SignificantPartLength() const { return offsetof( TerrainMaterial, grassRect ) - offsetof( TerrainMaterial, A_DiffuseMap ) + sizeof( grassRect ); }
 
 public:
-	virtual const Render::Sampler* GetDiffuseMap() const { return &N_DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &N_DiffuseMap; }
-	virtual Render::Sampler* GetDiffuseMapBurned() { return &B_DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &N_DiffuseMap; }
 	virtual const Render::Sampler* GetDiffuseMapBurned() const { return &B_DiffuseMap; }
+	virtual Render::Sampler* GetDiffuseMapBurned() { return &B_DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMapFrozen() { return &A_DiffuseMap; }
 	virtual const Render::Sampler* GetDiffuseMapFrozen() const { return &A_DiffuseMap; }
 	virtual const NDb::BooleanPin GetShadowCasterPin() const { return ShadowCasterPinValue; }
@@ -3225,8 +3225,8 @@ protected:
 	virtual int SignificantPartLength() const { return offsetof( TestTownMaterial, outputAdd ) - offsetof( TestTownMaterial, RenderState ) + sizeof( outputAdd ); }
 
 public:
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetUseDiffuse() const { return UseDiffuse; }
 	virtual void SetUseDiffuse( const NDb::BooleanPin value ) { UseDiffuse = value; UpdateStaticShaderIndex(); }
 	virtual void FillMaterial( const NDb::Material* _pDbMaterial, void * texturePoolId, bool _savePointer = true )
@@ -3353,8 +3353,8 @@ public:
   	return length;
   }
   
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetTraceTexturePin() const { return TraceTexturePinValue; }
 	virtual void SetTraceTexturePin( const NDb::BooleanPin value ) { TraceTexturePinValue = value; UpdateStaticShaderIndex(); }
 	virtual void FillMaterial( const NDb::Material* _pDbMaterial, void * texturePoolId, bool _savePointer = true )
@@ -3512,12 +3512,12 @@ protected:
 
 public:
 	virtual const NDb::BooleanPin GetColorized() const { return Colorized; }
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetGradient() const { return Gradient; }
 	virtual const NDb::MaskingTypePin GetMasking() const { return Masking; }
-	virtual Render::Sampler* GetMaskMap() { return &MaskMap; }
 	virtual const Render::Sampler* GetMaskMap() const { return &MaskMap; }
+	virtual Render::Sampler* GetMaskMap() { return &MaskMap; }
 	virtual const NDb::BooleanPin GetStripes() const { return Stripes; }
 	virtual const NDb::BooleanPin GetUseDiffuse() const { return UseDiffuse; }
 	virtual void SetColorized( const NDb::BooleanPin value ) { Colorized = value; UpdateStaticShaderIndex(); }
@@ -3654,18 +3654,18 @@ protected:
 public:
 	virtual Render::Sampler* GetBackgroundMap() { return &BackgroundMap; }
 	virtual const Render::Sampler* GetBackgroundMap() const { return &BackgroundMap; }
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetDisablePin() const { return DisablePin; }
 	virtual const Render::Sampler* GetHighlight() const { return &HighlightMap; }
 	virtual Render::Sampler* GetHighlight() { return &HighlightMap; }
 	virtual const NDb::BooleanPin GetHighlightPin() const { return HighlightPin; }
-	virtual const Render::Sampler* GetLackOfMana() const { return &LackOfManaMap; }
 	virtual Render::Sampler* GetLackOfMana() { return &LackOfManaMap; }
+	virtual const Render::Sampler* GetLackOfMana() const { return &LackOfManaMap; }
 	virtual const NDb::BooleanPin GetLackOfManaPin() const { return LackOfManaPin; }
 	virtual const NDb::BooleanPin GetPassivePin() const { return PassivePin; }
-	virtual Render::Sampler* GetPressed() { return &PressedMap; }
 	virtual const Render::Sampler* GetPressed() const { return &PressedMap; }
+	virtual Render::Sampler* GetPressed() { return &PressedMap; }
 	virtual const NDb::BooleanPin GetPressedPin() const { return PressedPin; }
 	virtual const Render::Sampler* GetScreenMap() const { return &ScreenMap; }
 	virtual Render::Sampler* GetScreenMap() { return &ScreenMap; }
@@ -3803,8 +3803,8 @@ protected:
 	virtual int SignificantPartLength() const { return offsetof( UIFlashMaterial, CXFormAdd ) - offsetof( UIFlashMaterial, DiffuseMap ) + sizeof( CXFormAdd ); }
 
 public:
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const Render::Sampler* GetDiffuseMap2() const { return &DiffuseMap2; }
 	virtual Render::Sampler* GetDiffuseMap2() { return &DiffuseMap2; }
 	virtual const NDb::FlashBlendModePin GetFlashBlendModePin() const { return FlashBlendMode; }
@@ -3924,8 +3924,8 @@ protected:
 	virtual int SignificantPartLength() const { return offsetof( UIFontMaterial, SecondaryColor ) - offsetof( UIFontMaterial, DiffuseMap ) + sizeof( SecondaryColor ); }
 
 public:
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual const NDb::BooleanPin GetDrawContour() const { return DrawContour; }
 	virtual const NDb::BooleanPin GetUseDiffuse() const { return UseDiffuse; }
 	virtual void SetDrawContour( const NDb::BooleanPin value ) { DrawContour = value; UpdateStaticShaderIndex(); }
@@ -4037,8 +4037,8 @@ protected:
 public:
 	virtual Render::Sampler* GetBackgroundMap() { return &BackgroundMap; }
 	virtual const Render::Sampler* GetBackgroundMap() const { return &BackgroundMap; }
-	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetDiffuseMap() { return &DiffuseMap; }
+	virtual const Render::Sampler* GetDiffuseMap() const { return &DiffuseMap; }
 	virtual Render::Sampler* GetOverlayMap() { return &OverlayMap; }
 	virtual const Render::Sampler* GetOverlayMap() const { return &OverlayMap; }
 	virtual const Render::Sampler* GetScreenMap() const { return &ScreenMap; }
