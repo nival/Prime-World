@@ -61,13 +61,13 @@ public class GroupSlot : libdb.ICompositeDBValue, libdb.IChangeable
 
 	public DBPtr<RerollShopSlot> slot { get { return _slot.Get(); } set { _slot.Set( value ); } }
 
-	[Description( "Ресурсы, за которые можно купить этот слот" )]
+	[Description( "???????, ?? ??????? ????? ?????? ???? ????" )]
 	public ERerollShopResourceType currencies { get { return _currencies.Get(); } set { _currencies.Set( value ); } }
 
-	[Description( "Минимальная цена в очках" )]
+	[Description( "??????????? ???? ? ?????" )]
 	public int minPoints { get { return _minPoints.Get(); } set { _minPoints.Set( value ); } }
 
-	[Description( "Максимальная цена в очках" )]
+	[Description( "???????????? ???? ? ?????" )]
 	public int maxPoints { get { return _maxPoints.Get(); } set { _maxPoints.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -219,13 +219,13 @@ public class ResourceToPointsConversion : libdb.ICompositeDBValue, libdb.IChange
 	private UndoRedo<float> _priceInPoints;
 	private UndoRedo<int> _roundToDigits;
 
-	[Description( "Тип ресурса" )]
+	[Description( "??? ???????" )]
 	public ERerollShopResources resource { get { return _resource.Get(); } set { _resource.Set( value ); } }
 
-	[Description( "Цена в очках" )]
+	[Description( "???? ? ?????" )]
 	public float priceInPoints { get { return _priceInPoints.Get(); } set { _priceInPoints.Set( value ); } }
 
-	[Description( "Порядок округления (если стоит 1000, то цена 1541 станет 2000)" )]
+	[Description( "??????? ?????????? (???? ????? 1000, ?? ???? 1541 ?????? 2000)" )]
 	public int roundToDigits { get { return _roundToDigits.Get(); } set { _roundToDigits.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -364,10 +364,10 @@ public class RerollTimesToDropProbabilty : libdb.ICompositeDBValue, libdb.IChang
 	private UndoRedo<int> _rerollTime;
 	private UndoRedo<float> _newProbability;
 
-	[Description( "Сколько раз нужно сделать реролл" )]
+	[Description( "??????? ??? ????? ??????? ??????" )]
 	public int rerollTime { get { return _rerollTime.Get(); } set { _rerollTime.Set( value ); } }
 
-	[Description( "Новая вероятность после rerollTime раз" )]
+	[Description( "????? ??????????? ????? rerollTime ???" )]
 	public float newProbability { get { return _newProbability.Get(); } set { _newProbability.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -501,31 +501,31 @@ public class RerollShopSettings : libdb.ICompositeDBValue, libdb.IChangeable
 	private UndoRedo<bool> _premiumNotInactive;
 	private UndoRedo<int> _slotBlinkTime;
 
-	[Description( "Группы слотов" )]
+	[Description( "?????? ??????" )]
 	public libdb.IChangeableList<DBPtr<RerollShopGroup>> groups { get { return _groups; } set { _groups.Assign( value ); } }
 
-	[Description( "Таблица стоимости ресурсов в очках" )]
+	[Description( "??????? ????????? ???????? ? ?????" )]
 	public libdb.IChangeableList<ResourceToPointsConversion> resourcesToPointsTable { get { return _resourcesToPointsTable; } set { _resourcesToPointsTable.Assign( value ); } }
 
-	[Description( "Кол-во обычных слотов" )]
+	[Description( "???-?? ??????? ??????" )]
 	public int usualSlots { get { return _usualSlots.Get(); } set { _usualSlots.Set( value ); } }
 
-	[Description( "Дополнительное кол-во слотов для ЗВ" )]
+	[Description( "?????????????? ???-?? ?????? ??? ??" )]
 	public int premiumSlots { get { return _premiumSlots.Get(); } set { _premiumSlots.Set( value ); } }
 
-	[Description( "Максимальное кол-во неактивных слотов" )]
+	[Description( "???????????? ???-?? ?????????? ??????" )]
 	public int maxInactiveUsualSlots { get { return _maxInactiveUsualSlots.Get(); } set { _maxInactiveUsualSlots.Set( value ); } }
 
-	[Description( "Максимальное кол-во неактивных слотов с ЗВ" )]
+	[Description( "???????????? ???-?? ?????????? ?????? ? ??" )]
 	public int maxInactivePremiumSlots { get { return _maxInactivePremiumSlots.Get(); } set { _maxInactivePremiumSlots.Set( value ); } }
 
-	[Description( "Цена реролла" )]
+	[Description( "???? ???????" )]
 	public ResourcesTable rerollPrice { get { return _rerollPrice; } set { _rerollPrice.Assign( value ); } }
 
-	[Description( "Выгорают ли ЗВ слоты" )]
+	[Description( "???????? ?? ?? ?????" )]
 	public bool premiumNotInactive { get { return _premiumNotInactive.Get(); } set { _premiumNotInactive.Set( value ); } }
 
-	[Description( "Раз в сколько секунд подсвечивается произвольный некупленный слот" )]
+	[Description( "??? ? ??????? ?????? ?????????????? ???????????? ??????????? ????" )]
 	public int slotBlinkTime { get { return _slotBlinkTime.Get(); } set { _slotBlinkTime.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -732,10 +732,10 @@ public class RerollShopSlot : DBResource
 	private UndoRedo<string> _persistentId;
 	private UndoRedo<int> _backgroundId;
 
-	[Description( "Id слота" )]
+	[Description( "Id ?????" )]
 	public string persistentId { get { return _persistentId.Get(); } set { _persistentId.Set( value ); } }
 
-	[Description( "Id кадра с подложкой (-1 - стандартная подложка)" )]
+	[Description( "Id ????? ? ????????? (-1 - ??????????? ????????)" )]
 	public int backgroundId { get { return _backgroundId.Get(); } set { _backgroundId.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -848,19 +848,19 @@ public class LampRerollSlot : RerollShopSlot
 	private UndoRedo<int> _maxBonus;
 	private UndoRedo<int> _transactions;
 
-	[Description( "Акция" )]
+	[Description( "?????" )]
 	public DBPtr<GoldLampEvent> lamp { get { return _lamp.Get(); } set { _lamp.Set( value ); } }
 
 	public TextRef tooltip { get { return _tooltip; } set { _tooltip.Assign( value ); } }
 
-	[Description( "Время действия (в секундах)" )]
+	[Description( "????? ???????? (? ????????)" )]
 	public int lifeTime { get { return _lifeTime.Get(); } set { _lifeTime.Set( value ); } }
 
-	[Description( "Максимальный бонус" )]
+	[Description( "???????????? ?????" )]
 	[NameMapValue]
 	public int maxBonus { get { return _maxBonus.Get(); } set { _maxBonus.Set( value ); } }
 
-	[Description( "Количество транзакций" )]
+	[Description( "?????????? ??????????" )]
 	[NameMapValue]
 	public int transactions { get { return _transactions.Get(); } set { _transactions.Set( value ); } }
 
@@ -1120,7 +1120,7 @@ public class PremiumRerollSlot : RerollShopSlot
 	private TextRef _tooltipB;
 	private UndoRedoDBPtr<Texture> _iconB;
 
-	[Description( "Количество дней" )]
+	[Description( "?????????? ????" )]
 	[NameMapValue]
 	public int days { get { return _days.Get(); } set { _days.Set( value ); } }
 
@@ -1128,14 +1128,14 @@ public class PremiumRerollSlot : RerollShopSlot
 
 	public TextRef tooltipA { get { return _tooltipA; } set { _tooltipA.Assign( value ); } }
 
-	[Description( "Иконка" )]
+	[Description( "??????" )]
 	public DBPtr<Texture> iconA { get { return _iconA.Get(); } set { _iconA.Set( value ); } }
 
 	public TextRef nameB { get { return _nameB; } set { _nameB.Assign( value ); } }
 
 	public TextRef tooltipB { get { return _tooltipB; } set { _tooltipB.Assign( value ); } }
 
-	[Description( "Иконка" )]
+	[Description( "??????" )]
 	public DBPtr<Texture> iconB { get { return _iconB.Get(); } set { _iconB.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1302,28 +1302,28 @@ public class RerollShopGroup : DBResource
 	private UndoRedo<int> _minUpgradeLevel;
 	private UndoRedo<int> _maxUpgradeLevel;
 
-	[Description( "ID группы" )]
+	[Description( "ID ??????" )]
 	public string persistentId { get { return _persistentId.Get(); } set { _persistentId.Set( value ); } }
 
-	[Description( "Доступные слоты" )]
+	[Description( "????????? ?????" )]
 	public libdb.IChangeableList<GroupSlot> slots { get { return _slots; } set { _slots.Assign( value ); } }
 
-	[Description( "Вероятности появления группы после n рероллов" )]
+	[Description( "??????????? ????????? ?????? ????? n ????????" )]
 	public libdb.IChangeableList<RerollTimesToDropProbabilty> rerollTimesToDropProbabilties { get { return _rerollTimesToDropProbabilties; } set { _rerollTimesToDropProbabilties.Assign( value ); } }
 
-	[Description( "Ресурсы, за которые можно купить товары из группы" )]
+	[Description( "???????, ?? ??????? ????? ?????? ?????? ?? ??????" )]
 	public ERerollShopResourceType currencies { get { return _currencies.Get(); } set { _currencies.Set( value ); } }
 
-	[Description( "Минимальная цена в очках" )]
+	[Description( "??????????? ???? ? ?????" )]
 	public int minPoints { get { return _minPoints.Get(); } set { _minPoints.Set( value ); } }
 
-	[Description( "Максимальная цена в очках" )]
+	[Description( "???????????? ???? ? ?????" )]
 	public int maxPoints { get { return _maxPoints.Get(); } set { _maxPoints.Set( value ); } }
 
-	[Description( "Минимальная заточка талантов в этой группе (1-10), 0 - не используется" )]
+	[Description( "??????????? ??????? ???????? ? ???? ?????? (1-10), 0 - ?? ????????????" )]
 	public int minUpgradeLevel { get { return _minUpgradeLevel.Get(); } set { _minUpgradeLevel.Set( value ); } }
 
-	[Description( "Максимальная заточка талантов в этой группе (1-10), 0 - не используется" )]
+	[Description( "???????????? ??????? ???????? ? ???? ?????? (1-10), 0 - ?? ????????????" )]
 	public int maxUpgradeLevel { get { return _maxUpgradeLevel.Get(); } set { _maxUpgradeLevel.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1492,7 +1492,7 @@ public class HeroRerollSlot : RerollShopSlot
 
 	private UndoRedoDBPtr<Hero> _hero;
 
-	[Description( "Герой" )]
+	[Description( "?????" )]
 	public DBPtr<Hero> hero { get { return _hero.Get(); } set { _hero.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1600,29 +1600,29 @@ public class ResourceRerollSlot : RerollShopSlot
 	private UndoRedoDBPtr<Texture> _iconB;
 
 	[Browsable( false )]
-	[Description( "Количество ресурса" )]
+	[Description( "?????????? ???????" )]
 	[NameMapValue]
 	public int amount { get { return _amount.Get(); } set { _amount.Set( value ); } }
 
 	[Browsable( false )]
-	[Description( "Тип ресурса" )]
+	[Description( "??? ???????" )]
 	public ERerollShopResources resourceType { get { return _resourceType.Get(); } set { _resourceType.Set( value ); } }
 
-	[Description( "ресурс" )]
+	[Description( "??????" )]
 	public ResourcesTable resource { get { return _resource; } set { _resource.Assign( value ); } }
 
 	public TextRef nameA { get { return _nameA; } set { _nameA.Assign( value ); } }
 
 	public TextRef tooltipA { get { return _tooltipA; } set { _tooltipA.Assign( value ); } }
 
-	[Description( "Иконка" )]
+	[Description( "??????" )]
 	public DBPtr<Texture> iconA { get { return _iconA.Get(); } set { _iconA.Set( value ); } }
 
 	public TextRef nameB { get { return _nameB; } set { _nameB.Assign( value ); } }
 
 	public TextRef tooltipB { get { return _tooltipB; } set { _tooltipB.Assign( value ); } }
 
-	[Description( "Иконка" )]
+	[Description( "??????" )]
 	public DBPtr<Texture> iconB { get { return _iconB.Get(); } set { _iconB.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1801,7 +1801,7 @@ public class SkinRerollSlot : RerollShopSlot
 
 	private UndoRedoDBPtr<HeroSkin> _skin;
 
-	[Description( "Скин" )]
+	[Description( "????" )]
 	public DBPtr<HeroSkin> skin { get { return _skin.Get(); } set { _skin.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1900,7 +1900,7 @@ public class TalentRerollSlot : RerollShopSlot
 
 	private UndoRedoDBPtr<Talent> _talent;
 
-	[Description( "Талант" )]
+	[Description( "??????" )]
 	public DBPtr<Talent> talent { get { return _talent.Get(); } set { _talent.Set( value ); } }
 
 	private void Initialize( DBResource owner )
@@ -1999,7 +1999,7 @@ public class TalentsListRerollSlot : RerollShopSlot
 
 	private UndoRedoAssignableList<DBPtr<Talent>> _talents;
 
-	[Description( "Таланты" )]
+	[Description( "???????" )]
 	public libdb.IChangeableList<DBPtr<Talent>> talents { get { return _talents; } set { _talents.Assign( value ); } }
 
 	private void Initialize( DBResource owner )
