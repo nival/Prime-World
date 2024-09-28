@@ -1,7 +1,7 @@
 #pragma once
 
 #include "gen-cpp/ClusterManagement.h"
-
+#include "Pointers/Strong.h"
 
 namespace ClusterAdmin
 {

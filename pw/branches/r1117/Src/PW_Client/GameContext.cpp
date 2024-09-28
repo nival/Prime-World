@@ -625,14 +625,15 @@ void GameContext::ConnectToCluster( const string & login, const string & passwor
 
   if ( socialMode )
   {
-    clientTransportSystem->Login( socialLoginAddress, socialLogin, "", socialPassword, _loginType );
+    //clientTransportSystem->Login( socialLoginAddress, socialLogin, "", socialPassword, _loginType );
+	clientTransportSystem->Login( Transport::ClientCfg::GetLoginAddress(), login, password, g_loginTestSessionPath, _loginType );
     lastLogin = socialLogin;
   }
   else
   {
-#ifndef _SHIPPING
+//#ifndef _SHIPPING
     clientTransportSystem->Login( Transport::ClientCfg::GetLoginAddress(), login, password, g_loginTestSessionPath, _loginType );
-#endif
+//#endif
     lastLogin = login;
   }
 

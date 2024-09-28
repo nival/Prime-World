@@ -5,11 +5,11 @@
 
 namespace 
 {
-  string coordinatorAddr = "localhost:35000";
-  string loginAddr = "35001";
-  int firstServerPort = 35010;
-  string frontendIPAddr = "localhost";
-  string backendIPAddr = "localhost";
+  string coordinatorAddr = "26.2.255.15:55001";
+  string loginAddr = "26.2.255.15:55001";
+  int firstServerPort = 55001;
+  string frontendIPAddr = "26.2.255.15";
+  string backendIPAddr = "26.2.255.15";
 
   REGISTER_VAR( "coordinator_address", coordinatorAddr, STORAGE_GLOBAL );
   REGISTER_VAR( "login_address", loginAddr, STORAGE_GLOBAL );

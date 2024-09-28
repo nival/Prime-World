@@ -20,7 +20,17 @@
 #ifndef _THRIFT_CONCURRENCY_THREAD_H_
 #define _THRIFT_CONCURRENCY_THREAD_H_ 1
 
+#ifdef _MSC_VER
+
+typedef __int32 int32_t;
+typedef unsigned __int32 uint32_t;
+typedef __int64 int64_t;
+typedef unsigned __int64 uint64_t;
+
+#else
 #include <stdint.h>
+#endif
+
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 

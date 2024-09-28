@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <sys/socket.h>
+//#include <sys/socket.h>
 #include <thrift/server/TSimpleServer.h>
 #include <thrift/protocol/TBinaryProtocol.h>
 #include <thrift/transport/TServerSocket.h>
@@ -29,7 +29,7 @@ namespace ClusterAdmin
   {
     LOG_M(CALOG).Trace("Initailizing thrift. port=%d", cfg.port );
 
-    nsocket::Initialize();
+    //nsocket::Initialize();
     boost::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
     boost::shared_ptr<ThriftHandler> handler(new ThriftHandler(cfg.impl));
     boost::shared_ptr<TProcessor> processor(new Thrift::ClusterManagementProcessor(handler));

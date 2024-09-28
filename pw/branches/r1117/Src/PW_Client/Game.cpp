@@ -761,11 +761,11 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   NProfile::Init( PRODUCT_TITLE );
   
   AppInstancesLimit instancesLimit( PRODUCT_TITLE_SHORT );
-#ifndef _SHIPPING
+//#ifndef _SHIPPING
   NDebug::SetProductNameAndVersion( NFile::GetBinDir(), PRODUCT_TITLE_SHORT, VERSION_LINE, VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION );
-#else //_SHIPPING
-  NDebug::SetProductNameAndVersion( NProfile::GetFullFolderPath(NProfile::FOLDER_PLAYER), PRODUCT_TITLE_SHORT, VERSION_LINE, VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION );
-#endif //_SHIPPING
+//#else //_SHIPPING
+//  NDebug::SetProductNameAndVersion( NProfile::GetFullFolderPath(NProfile::FOLDER_PLAYER), PRODUCT_TITLE_SHORT, VERSION_LINE, VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION );
+//#endif //_SHIPPING
 
   if ( !instancesLimit.Lock( 3 ) )
   {
@@ -985,23 +985,24 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   else
   {
     socialServer = new NGameX::DummySocialConnection();
+	 startFromCastle = true;
   }
 
   const char * sessLogin = pluginSett ? pluginSett->sessionLogin : 0;
   if ( !sessLogin )
     sessLogin = CmdLineLite::Instance().GetStringKey( "-session_login", 0 );
 
-#ifdef _SHIPPING
-  const bool launch = isReplay || ((isTutorial || startFromCastle) && !!sessLogin);
-
-  if (!launch)
-  {
-    ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the launcher." );
-
-    mainVars.DeInit();
-    return 0xDEAD;
-  }
-#endif
+//#ifdef _SHIPPING
+//  const bool launch = isReplay || ((isTutorial || startFromCastle) && !!sessLogin);
+//
+//  if (!launch)
+//  {
+//    ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the launcher." );
+//
+//    mainVars.DeInit();
+//    return 0xDEAD;
+//  }
+//#endif
 
   if ( pluginSett )
 	{
@@ -1111,6 +1112,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
   NFile::DeleteOldFiles( NProfile::GetRootLogsFolder().c_str(), double(g_deleteLogFilesAfterDays) * 60 * 60 * 24 );
   NFile::DeleteOldFiles( NProfile::GetFullFolderPath(NProfile::FOLDER_REPLAYS).c_str(), double(g_deleteLogFilesAfterDays) * 60 * 60 * 24 );
+  std::string currentLogin = "";
 
   if ( s_localGame || isReplay )
   {
@@ -1123,6 +1125,11 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   else
   {
     const char * devLogin = CmdLineLite::Instance().GetStringKey( "-dev_login", "" );
+	if(strlen(devLogin) > 32)
+		return -2;
+
+	currentLogin = devLogin;
+
     const char * mapId = CmdLineLite::Instance().GetStringKey( "mapId", "" );
     context = new Game::GameContext( sessLogin, devLogin, mapId, socialServer, guildEmblem, isSpectator, false );
   }
@@ -1230,6 +1237,21 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
   InitCensorDicts();
   
+  wchar_t u16_data[64] = {0};
+  wchar_t u16_data_original[64] = {0};
+  MultiByteToWideChar( CP_ACP, 0, currentLogin.c_str(), -1, u16_data, 64 );
+  memcpy(u16_data_original, u16_data, 64 * sizeof(wchar_t));
+
+  CensorFilter::Filter(u16_data);
+	for(int i=0;i<64;++i)
+	{
+		if(u16_data_original[i] != u16_data[i])
+		{
+			//used bad word
+			return -3;
+		}
+	}
+
   mainVars.initGameFSM = true;
   while ( true )
   {
