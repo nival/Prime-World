@@ -1,0 +1,819 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Artist.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Artist_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Artist/Ability_A2_SUP.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Artist/Ability_A2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Artist/status_A0_Mastery.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Artist_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Artist/Duel_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Artist/Duel_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Artist/Elite_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Artist/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Artist/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Artist/Epic_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Artist/Epic_Str_Ult2.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FUcAAAAFAAAAVAAAAHgAAACRAAAAxwAAAOcAAABBcnRpc3RfQTRfc3RhdHVzAAAAAEFydGlzdF9BNAAAAEFydGlzdF9BNAAAAEFydGlzdF9BNAAAAEE0X0JvdW5jZVJhbmdlAFWL7IPsFGoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DtFEHUK2e7ZXfzpkQAAAGgUAAAAi00IixGLTQiLgqgBAAD/0IXAdCpoIAAAAItNCIsRi00Ii4KoAQAA/9CJRfiLTfiLEYtN+ItCBP/QiEX36wTGRfcAD7ZN94XJdDdoLAAAAItVCIsCi00Ii5CoAQAA/9KJRfCLRQxQi00IUWg4AAAAi1XwiwKLTfCLUFD/0tld7OsF2e7ZXezZRezZXfzZRfyL5V3DAAAAAA==</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.applArtist_A4_status(UNIT) == pMisc ? 0 : talconst("Artist_A4","A4_BounceRange")</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="8F4D5661-7801-4274-90A3-8C64EC4DE69C">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FQAAAAAAAAAAVYvsUVaLRQiLEItNCIuCkAEAAP/Qi/CLTQyLEYtNDIuCkAEAAP/QO/B1H4tNDIsRi00Mi0JQ/9CD6BT32BvAg+D+g8ACiUX86wfHRfwBAAAAi0X8XovlXcM=</compiledString>
+					<returnType>int</returnType>
+					<sString>sFctn == rFctn ? (rUnitKind != 20 ? 0 : 2 ) : 1</sString>
+				</activeSpellIndex>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>выбор: союзник или противник</caption>
+				<dontUseDispatches>false</dontUseDispatches>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="6283D5C2-E8B7-4731-9FBB-3520CFC032E0">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="40FAA155-48E8-46EF-8DBF-7F125458032D">
+									<SpellApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>Отправляем несколько красок</caption>
+										<enabled>
+											<compiledString>FREAAAABAAAAGwAAAEFydGlzdF9BNF9zdGF0dXMAVYvsagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+											<returnType>bool</returnType>
+											<sString>sender.applArtist_A4_status(UNIT) != pMisc</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="580EF825-7856-4D27-A48E-4AA443ED1AAD">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/Artist/status_A2_heal.APLR" />
+													<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/Artist/A2_Dispatch.DSCH" />
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="43DD7F93-69C6-45AB-84ED-0AB35B7A45FB">
+											<CountingTargetSelector parent="/Items/Talents/Class/Artist/A4_CountingTargets.TGSL">
+												<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="3E2A35F6-0315-4A3E-90BD-F7F646C9A771">
+													<AreaTargetSelector>
+														<absolutePosition>
+															<x>0</x>
+															<y>0</y>
+														</absolutePosition>
+														<flags>0</flags>
+														<mode>Normal</mode>
+														<range>
+															<compiledString>FQ8AAAABAAAAGwAAAEE0X0JvdW5jZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+															<returnType>float</returnType>
+															<sString>cA4_BounceRange</sString>
+														</range>
+														<targetFilter>269221951</targetFilter>
+														<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="2CDE7040-6843-4950-88DB-353B25D58C5B">
+															<SelectApplicatorTarget>
+																<applicatorIndex>0</applicatorIndex>
+																<applicatorName></applicatorName>
+																<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																<selectTarget>ApplicatorTarget</selectTarget>
+															</SelectApplicatorTarget>
+														</targetSelector>
+													</AreaTargetSelector>
+												</targetSelector>
+											</CountingTargetSelector>
+										</targetSelector>
+									</SpellApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="59553C2A-65BB-4C43-8670-4863FD21972C">
+									<SpellApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<caption>Красим одного</caption>
+										<enabled>
+											<compiledString>FSAAAAACAAEALQAAAJMAAABGAQAAQXJ0aXN0X0E0X3N0YXR1cwAAAABBMl9NYXhSYW5nZQBVi+yD7BxqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9A7RRB1dItNDIsRi00Mi0JQ/9CD+BR0Yo1N+FGLVQyLAotNDIuQjAEAAP/SUI1F8FCLTQiLEYtNCIuCjAEAAP/QUOhBAAAAg8QIi00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ3V3o/9DcXejf4PbEAXUJx0XkAQAAAOsHx0XkAAAAAIpF5IvlXcNVi+yD7BSLRQjZQASLTQzYYQTZXfTZRfRR2Rwki1UI2QKLRQzYINld8NlF8FHZHCSNTfjoVwAAANlF+NhN+NlF/NhN/N7B2V3s2UXsUdkcJOgHAAAAg8QEi+Vdw1WL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOiS/v//g8QI2V382UX8i+Vdw1WL7FGJTfyLRfzZRQjZGItN/NlFDNlZBItF/IvlXcIIAA==</compiledString>
+											<returnType>bool</returnType>
+											<sString>sender.applArtist_A4_status(UNIT) == pMisc &amp;&amp; rUnitKind != 20 &amp;&amp; (d( sPos, rPos ) &lt;= cA2_MaxRange)</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="65648519-398C-4157-8CF4-BB13754D2D60">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/Artist/status_A2_heal.APLR" />
+													<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/Artist/A2_Dispatch.DSCH" />
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="" />
+									</SpellApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="E3261F9D-620F-4794-9D3F-D0C3693E1799">
+									<SpellApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>Красим cебя, если использовали талант на себя с включенным ультимейтом</caption>
+										<enabled>
+											<compiledString>FRkAAAACAAAAHgAAADsAAABUYXJnZXQAAEFydGlzdF9BNF9zdGF0dXMAVYvsUWgAAAAAi0UQixCLTRCLQkz/0DtFCHUpagGLTRBRaAgAAACLVQiLAotNCIuQnAEAAP/SO0UQdAnHRfwBAAAA6wfHRfwAAAAAikX8i+Vdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>$ApplTarget == pFirst &amp;&amp; sender.applArtist_A4_status(UNIT) != pMisc</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="4A7CED32-E900-4A6E-A2C2-965F5A0C960D">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/Artist/status_A2_heal.APLR" />
+													<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="E9C24D3E-3269-4497-9257-A69DC9E5BF1D">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="/Effects/Shots/Paint/_GreenHit.EFFT" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>0</flags>
+														<instantApply>false</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="" />
+									</SpellApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="2DBBB2CB-774D-4553-AFFB-A8F2364D1809">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>0</flags>
+									<instantApply>false</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="64682CED-A540-4ACA-884B-319A40F85090">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="61221459-A83F-4512-AC24-0EF1DB3E2A70">
+									<SpellApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>Красим нескольких врагов</caption>
+										<enabled>
+											<compiledString>FREAAAABAAAAGwAAAEFydGlzdF9BNF9zdGF0dXMAVYvsagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+											<returnType>bool</returnType>
+											<sString>sender.applArtist_A4_status(UNIT) != pMisc</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="5F68160C-A548-4D75-8E9A-0BE304692758">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/Artist/status_A2_damage.APLR" />
+													<Item href="/Heroes/DefaultStatus/_BLIND_status.APLR" />
+													<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/Artist/A2_DispatchEnemy.DSCH.DSCH" />
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="/Items/Talents/Class/Artist/A4_CountingTargets.TGSL" />
+									</SpellApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="A87C8575-8482-49D4-92B8-1F7A09E1970B">
+									<SpellApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<caption>Красим одного</caption>
+										<enabled>
+											<compiledString>FSAAAAACAAEALQAAAIEAAAA0AQAAQXJ0aXN0X0E0X3N0YXR1cwAAAABBMl9NYXhSYW5nZQBVi+yD7BxqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9A7RRB1Yo1N+FGLVQyLAotNDIuQjAEAAP/SUI1F8FCLTQiLEYtNCIuCjAEAAP/QUOhBAAAAg8QIi00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ3V3o/9DcXejf4PbEAXUJx0XkAQAAAOsHx0XkAAAAAIpF5IvlXcNVi+yD7BSLRQjZQASLTQzYYQTZXfTZRfRR2Rwki1UI2QKLRQzYINld8NlF8FHZHCSNTfjoVwAAANlF+NhN+NlF/NhN/N7B2V3s2UXsUdkcJOgHAAAAg8QEi+Vdw1WL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOik/v//g8QI2V382UX8i+Vdw1WL7FGJTfyLRfzZRQjZGItN/NlFDNlZBItF/IvlXcIIAA==</compiledString>
+											<returnType>bool</returnType>
+											<sString>sender.applArtist_A4_status(UNIT) == pMisc &amp;&amp; (d( sPos, rPos ) &lt;= cA2_MaxRange)</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<spell href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="F8AF4164-1269-4F6D-A707-8D86C756A12B">
+											<Spell>
+												<applicators>
+													<Item href="/Items/Talents/Class/Artist/status_A2_damage.APLR" />
+													<Item href="/Heroes/DefaultStatus/_BLIND_status.APLR" />
+													<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+												</applicators>
+												<dispatch href="/Items/Talents/Class/Artist/A2_DispatchEnemy.DSCH.DSCH" />
+											</Spell>
+										</spell>
+										<spellTarget>ApplicatorTarget</spellTarget>
+										<targetSelector href="" />
+									</SpellApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="C1192DD6-A01B-4ABA-B77E-7DDCA8BA4314">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>1</flags>
+									<instantApply>false</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="3726BA13-CB9F-49EF-BC37-A7F17FD36769">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="995C2EB0-4A3D-456C-93E5-C9F8A77D755A">
+									<FlagsApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption> - если цель = СуперСидж, то... (ПОКА НИЧЕГО. ПОТОМ МОЖЕТ ЗДЕСЬ fly-off message СДЕЛАЕМ)</caption>
+										<consumables />
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>0</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+											<returnType>float</returnType>
+											<sString>1</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="14EF6698-5F2E-4EA0-A42A-1CB5854A14F9">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>0</flags>
+									<instantApply>false</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="FA830D18-D55E-4C37-BA29-FC64AAC75606">
+			<SpellApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Красим cебя, если еще не покрасили</caption>
+				<enabled>
+					<compiledString>FQcAAAABAAAACwAAAFRhcmdldABVi+xoAAAAAItFEIsQi00Qi0JM/9AzyTtFCA+VwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>$ApplTarget != pFirst</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="BB8B3683-22FA-470F-81CE-1DE737913C22">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Artist/status_A2_heal.APLR" />
+							<Item href="/Heroes/DefaultStatus/_HASTE_status.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="4B929CBA-9287-4E32-9580-4CC6B24D58F0">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Shots/Paint/_GreenHit.EFFT" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="F7293224-A916-432E-926B-8A0F5BD40A4D">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>уменьшить Artist_Mastery</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FTsAAAAFAAAAQgAAAFgAAABqAAAAigAAAKMAAABBcnRpc3RfTWFzdGVyeQAAQXJ0aXN0X0E0X3N0YXR1cwAAAABBcnRpc3RfQTR1AABBcnRpc3RfQTR1AFWL7IPsDGgAAAAAi0UMixCLTQyLgogBAAD/0Nwd4wAAAN/g9sRBdSZqAYtNEFFoEAAAAItVCIsCi00Ii5CcAQAA/9I7RRB1BsZF/wHrU2gkAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoMAAAAItNCIsRi00Ii4KoAQAA/9CJRfiLTfiLEYtN+ItCBP/QiEX36wTGRfcAD7ZN94XJD5TCiFX/ikX/i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vArtist_Mastery &gt; 0  &amp;&amp; sender.applArtist_A4_status(UNIT) == pMisc ? true : tal("Artist_A4u") == false ? true : false
+</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Artist_Mastery</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А2. Цвет жизни</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Artist/Ability_A2.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="1A8F7565-A610-4814-847E-E8398474381F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABBcnRpc3RfQTJ1AABBcnRpc3RfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Artist_A2u") == false</sString>
+				</condition>
+				<name>Artist_A2u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="6FDF54EF-0BDD-406E-BF3E-721F901F4FE5">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABBcnRpc3RfQTJfU1VQAAAAQXJ0aXN0X0EyX1NVUABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Artist_A2_SUP") == false</sString>
+				</condition>
+				<name>Artist_A2_SUP</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="2CE553AD-ECDE-4BCD-A3C8-DEB2ADFCE16B">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="7515E4C8-F810-42CD-BD7D-6EE6E9C25685">
+					<UnitConstant>
+						<name>A2_TotalDamage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACWQgAADEQ=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 75, 560 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="015DE2D8-9CBE-466F-B2F1-65BBC6164303">
+					<UnitConstant>
+						<name>A2_Damage</name>
+						<var>
+							<compiledString>FUAAAAAEAAAATwAAAGkAAACJAAAAqQAAAEEyX1RvdGFsRGFtYWdlAABBMl9EdXJhdGlvbgBBMl9QZXJpb2QAAABBNF9Cb3VuY2VFZmZlY3RNb2RpZmllcgBVi+yD7ByLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBAAAACLVRCLAotNEItQUN1d+P/S3H34i0UMUItNCFFoHAAAAItVEIsCi00Qi1BQ3V3w/9LcTfCLRQxQi00IUWgoAAAAi1UQiwKLTRCLUFDdXej/0txN6Nld5NlF5IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_TotalDamage / cA2_Duration * cA2_Period * cA4_BounceEffectModifier</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="1CC5F777-C89D-4F0C-9F7D-87BFF1559470">
+					<UnitConstant>
+						<name>A2_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="3343AF71-22AA-4BC7-B0FC-EE48C5E9898D">
+					<UnitConstant>
+						<name>A2_Period</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="A078809F-AB49-4AB1-8DBF-FB4BD30143E0">
+					<UnitConstant>
+						<name>A2_TotalHeal</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAAB8QgCA7UM=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect, 63, 475 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="23DDB4FC-697C-48E8-84F8-721FEDDC87F9">
+					<UnitConstant>
+						<name>A2_Heal</name>
+						<var>
+							<compiledString>FUAAAAAEAAAATwAAAGkAAACJAAAAqQAAAEEyX1RvdGFsSGVhbAAAAABBMl9EdXJhdGlvbgBBMl9QZXJpb2QAAABBNF9Cb3VuY2VFZmZlY3RNb2RpZmllcgBVi+yD7ByLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBAAAACLVRCLAotNEItQUN1d+P/S3H34i0UMUItNCFFoHAAAAItVEIsCi00Qi1BQ3V3w/9LcTfCLRQxQi00IUWgoAAAAi1UQiwKLTRCLUFDdXej/0txN6Nld5NlF5IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_TotalHeal / cA2_Duration * cA2_Period * cA4_BounceEffectModifier</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="3CF2F095-F232-4FBA-88CE-593F292B8E89">
+					<UnitConstant>
+						<name>Blind_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="AA82EB66-3910-430F-A0FD-2B809019BEAA">
+					<UnitConstant>
+						<name>Blind_StartCondition</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUVaLRQiLEItNCItCTP/Qi/CLTQiLEYtNCIuCkAEAAP/QO/APlMEPttGJVfzbRfxei+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>nt(true, false)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/const_A4_BounceCount" />
+				<Item href="/Items/Talents/Class/Artist/const_A4_BounceRange" />
+				<Item href="/Items/Talents/Class/Artist/const_A4_BounceEffectModifier" />
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="23B069FF-DEB2-43EF-913D-46905403223B">
+					<UnitConstant>
+						<name>Dec_MoveSpeed</name>
+						<var>
+							<compiledString>FRUAAAABAAAAIQAAAEEydV9TbG93SGFzdGVQZXJjZW50AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2u_SlowHastePercent</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="CFDCC200-06D1-4B90-9736-A0B30D332CB3">
+					<UnitConstant>
+						<name>Slow_Duration</name>
+						<var>
+							<compiledString>FRYAAAABAAAAIgAAAEEydV9TbG93SGFzdGVEdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2u_SlowHasteDuration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="11881FE4-8A63-4685-8CF5-CA355E0633AD">
+					<UnitConstant>
+						<name>Slow_StartCondition</name>
+						<var>
+							<compiledString>FRcAAAACAAAAHgAAADcAAABBcnRpc3RfQTJ1AABBcnRpc3RfQTJ1AFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4lN9NtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Artist_A2u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="7CC92F28-3F97-4B78-8ED9-7FDDE02C3550">
+					<UnitConstant>
+						<name>Haste_Duration</name>
+						<var>
+							<compiledString>FRYAAAABAAAAIgAAAEEydV9TbG93SGFzdGVEdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2u_SlowHasteDuration</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="E88B7F70-F17D-4A43-B019-DCD1C24A6D09">
+					<UnitConstant>
+						<name>Haste_Percent</name>
+						<var>
+							<compiledString>FRUAAAABAAAAIQAAAEEydV9TbG93SGFzdGVQZXJjZW50AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2u_SlowHastePercent</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="E1B8F7AB-3868-42CF-8EB4-EF2CE8F71E6E">
+					<UnitConstant>
+						<name>Haste_StartCondition</name>
+						<var>
+							<compiledString>FRcAAAACAAAAHgAAADcAAABBcnRpc3RfQTJ1AABBcnRpc3RfQTJ1AFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4lN9NtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Artist_A2u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/const_A2u_SlowHastePercent" />
+				<Item href="/Items/Talents/Class/Artist/const_A2u_SlowHasteDuration" />
+				<Item href="/Items/Talents/Class/Artist/const_A3_Damage" />
+				<Item href="/Items/Talents/Class/Artist/const_A3_DamagePercent" />
+				<Item href="/Items/Talents/Class/Artist/const_A3_Duration" />
+				<Item href="/Items/Talents/Class/Artist/const_A3_MaxDamage" />
+				<Item href="/Items/Talents/Class/Artist/const_A3_Period" />
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="6C8457EC-4B11-45AB-8B53-B46997C9B77F">
+					<UnitConstant>
+						<name>A2_HealPerSecond_TT</name>
+						<var>
+							<compiledString>FRIAAAACAAAAIQAAADsAAABBMl9IZWFsAEEyX1BlcmlvZABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaAgAAACLVRCLAotNEItQUN1d+P/S3H342V302UX0i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_Heal / cA2_Period</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="3514F261-E78C-4DC7-B5FB-E2964848C06D">
+					<UnitConstant>
+						<name>A2_DamagePerSecond_TT</name>
+						<var>
+							<compiledString>FRYAAAACAAAAJQAAAD8AAABBMl9EYW1hZ2UAAABBMl9QZXJpb2QAVYvsg+wMi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgMAAAAi1UQiwKLTRCLUFDdXfj/0tx9+Nld9NlF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA2_Damage / cA2_Period</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="DC6EC919-CDAD-40B4-A645-131B53D92AA2">
+					<UnitConstant>
+						<name>A2_MaxRange</name>
+						<var>
+							<compiledString>FQsAAAACAAAAGAAAACsAAABSYW5nZV9Mb25nAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFOQAAANld/NlF/IvlXcMAAAAAAAAIQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long + 3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Artist/const_A4_BounceEffect" />
+				<Item href="/Items/Talents/Class/Artist/const_A2_SUP_CDReduce" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FSkAAAAFAAAAMAAAAEkAAACHAAAAmgAAAKUAAABBcnRpc3RfQTJfU1VQAAAAQXJ0aXN0X0EyX1NVUAAAAENEUmVkdWNlAFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdCWLVQxSi0UIUGggAAAAi00QixGLTRCLQlD/0NwtuQAAAN1d8OsJ3QW5AAAA3V3w3UXw2V3s2UXsi+VdwwAAAAAAAC5A</compiledString>
+		<returnType>float</returnType>
+		<sString>(tal("Artist_A2_SUP") ? 15 - cCDReduce : 15 )</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Artist/Ability_A2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="83E27863-3371-4DB5-ABD3-698117139871">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>32771</flags>
+	<forceBonus>9</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Artist/A2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADcQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>110</sString>
+	</manaCost>
+	<marker>doCast2</marker>
+	<microAI href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="3D421D3B-8AB4-463C-93EF-21245481CAB2">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="A41E0DD5-FB71-42C1-898B-78508C8E51D8">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="097A9AA1-5FDD-4C6B-BEE8-52A38ADFF6A3">
+						<ListOfTargetSelectors>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelectors>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="8E01A7F2-CFFF-4DEB-A269-6C34EC65AFA6">
+									<CountingTargetSelector>
+										<enableSorting>false</enableSorting>
+										<flags>0</flags>
+										<heroesFirst>true</heroesFirst>
+										<mode>Normal</mode>
+										<order>Decreasing</order>
+										<sortingValue>
+											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+											<returnType>float</returnType>
+											<sString>1</sString>
+										</sortingValue>
+										<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="29313FF3-1CBB-4F7F-9EF3-189E49F03100">
+											<AreaTargetSelector>
+												<absolutePosition>
+													<x>0</x>
+													<y>0</y>
+												</absolutePosition>
+												<flags>0</flags>
+												<mode>Normal</mode>
+												<range>
+													<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>cRange_Long</sString>
+												</range>
+												<targetFilter>679477279</targetFilter>
+												<targetSelector href="" />
+											</AreaTargetSelector>
+										</targetSelector>
+										<targetsNumber>
+											<compiledString>FQAAAAAAAAAAVYvsuGQAAABdww==</compiledString>
+											<returnType>int</returnType>
+											<sString>100</sString>
+										</targetsNumber>
+									</CountingTargetSelector>
+								</Item>
+								<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="F0BB41EA-E197-44A8-9B41-E1A0B5BBD236">
+									<ComparingTargetSelector>
+										<referenceValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>0.0f</sString>
+										</referenceValue>
+										<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="32C3BC4A-E3E0-4EDA-BFA6-EE14974CE363">
+											<ConditionTargetSelector>
+												<condition>
+													<compiledString>FQAAAAABAAAAJwAAAFWL7IPsDItFDIsQi00MiwL/0ItNDIsRi00Mi0IM3V34/9DcffjcHUkAAADf4PbEBXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcMAAAAAAADgPw==</compiledString>
+													<returnType>bool</returnType>
+													<sString>rLife / rMaxLife &lt; 0.5</sString>
+												</condition>
+												<flags>0</flags>
+												<mode>Normal</mode>
+												<targetSelector href="/Items/Talents/Class/Artist/Ability_A2.TALENT" id="123A7C5A-6409-49D8-8584-11F4D0EE348F">
+													<AreaTargetSelector>
+														<absolutePosition>
+															<x>0</x>
+															<y>0</y>
+														</absolutePosition>
+														<flags>0</flags>
+														<mode>Normal</mode>
+														<range>
+															<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+															<returnType>float</returnType>
+															<sString>cRange_Long</sString>
+														</range>
+														<targetFilter>1342177283</targetFilter>
+														<targetSelector href="" />
+													</AreaTargetSelector>
+												</targetSelector>
+											</ConditionTargetSelector>
+										</targetSelector>
+										<valueToCompare>
+											<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nld9NlF9IvlXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>rLife / rMaxLife</sString>
+										</valueToCompare>
+									</ComparingTargetSelector>
+								</Item>
+							</targetSelectors>
+						</ListOfTargetSelectors>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>1</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>390</naftaCost>
+	<name textref="/Items/Talents/Class/Artist/Ability_A2.TALENT_name.txt" />
+	<node>ability2</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>Artist_A2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Artist/Ability_A2.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>2015100991</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Long</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

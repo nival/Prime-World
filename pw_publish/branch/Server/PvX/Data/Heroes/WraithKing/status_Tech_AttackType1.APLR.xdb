@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/WraithKing/appl_ChangeAttackSwitch.APLR" Count="1" />
+	<BackLink DBID="/Heroes/WraithKing/status_Tech_AttackType2.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/WraithKing/status_Tech_AttackType1.APLR" id="A6E0072D-DD3C-45C1-B3CD-4E004F88324B">
+			<ChangeAnimationApplicator>
+				<affectAllSets>false</affectAllSets>
+				<animation>attack</animation>
+				<animState>Attack</animState>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>подмена анимации на attack</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true; //sender.applAttackType_2(UNIT) == pMisc</sString>
+				</enabled>
+				<formulaName>AttackType_1</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<marker>doFire</marker>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<upper>false</upper>
+			</ChangeAnimationApplicator>
+		</Item>
+		<Item href="/Heroes/WraithKing/status_Tech_AttackType1.APLR" id="52F9A2FE-07B5-4B63-9424-41AC5C52C9C6">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>vAttackType = 0</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>AttackType</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>тех. статус подмены АА на attack</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>4</flags>
+	<formulaName></formulaName>
+	<image href="" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/WraithKing/status_Tech_AttackType1.APLR" id="5C476BA4-2117-4611-B50B-EA50B3C800D6">
+		<ApplicatorsList>
+			<applicatorLists />
+			<applicators>
+				<Item href="/Heroes/WraithKing/status_Tech_AttackType2.APLR" />
+			</applicators>
+		</ApplicatorsList>
+	</unstackableWith>
+</StatusApplicator>

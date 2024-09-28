@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Rockman.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Rockman_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rockman/Ability1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rockman/Ability1Upg.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rockman/NoA1Upgrade.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rockman/WithA1Upgrade.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Rockman_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Episode1/Talents/DuelRockman_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Test-FlagsAppl.TALENT" Count="1" />
+	<BackLink DBID="/Test/Talents/Rockman/Duel_Life.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Rockman/Duel_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Rockman/Elite_Life.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Rockman/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Rockman/Epic_StrLife.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="01336E12-CF48-4FA7-A329-DF4151F2491E">
+			<HealApplicator>
+				<amount>
+					<compiledString>FRIAAAABAAAAHgAAAEExX1RlcnJfSW5zdGFIZWFsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cA1_Terr_InstaHeal</sString>
+				</amount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Инста-хил на родной земле. </caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii0JM/9CL8ItNCIsRi00Ii4KQAQAA/9AzyTvwD5TBisFeXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sTerrainType == sFctn</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<healTarget>Health</healTarget>
+				<ignoreHealingMods>false</ignoreHealingMods>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+			</HealApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="D5F12745-B26A-4BE4-B84B-A771A7270A04">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>задержка на спавн террейна</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAEAcRg==</compiledString>
+					<returnType>float</returnType>
+					<sString>10000</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="890B13AB-E6B4-4395-823C-8EEFE742A839">
+					<Spell>
+						<applicators>
+							<Item href="/GameLogic/GeneralApplicators/ChangeTerrainToNative.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="A81359D8-40ED-4B05-B994-F3DB7917D666">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.5f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Rockman/status_A1_Rock.APLR" />
+		<Item href="/Items/Talents/Class/Rockman/status_A1_Heal_native_land.APLR" />
+		<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="8D6F028E-B803-468D-8AD4-5D5894A70829">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="ABBB7F5F-D744-4C04-8038-616320793C2B">
+							<FlagsApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>0</behaviorFlags>
+								<caption>задержка</caption>
+								<consumables />
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<flag>0</flag>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<talents />
+								<useListAs>ListAsRule</useListAs>
+							</FlagsApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="DBC3A309-253F-44A5-B4E5-B7C837602F12">
+							<LockTilesApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>1</behaviorFlags>
+								<caption>залокать под собой</caption>
+								<collision>
+									<x1>0</x1>
+									<x2>0</x2>
+									<y1>0</y1>
+									<y2>0</y2>
+								</collision>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLAv/QXcM=</compiledString>
+									<returnType>bool</returnType>
+									<sString>mIsAbilityOn</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString>FQgAAAABAAAAFAAAAEExX1RpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+									<returnType>float</returnType>
+									<sString>cA1_Time</sString>
+								</lifeTime>
+								<lockMask>
+									<mask>
+										<Item>
+											<x>0</x>
+											<y>0</y>
+										</Item>
+										<Item>
+											<x>0</x>
+											<y>1</y>
+										</Item>
+										<Item>
+											<x>1</x>
+											<y>0</y>
+										</Item>
+										<Item>
+											<x>1</x>
+											<y>1</y>
+										</Item>
+									</mask>
+									<tileSize>2.5</tileSize>
+								</lockMask>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<pushCaster>false</pushCaster>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+							</LockTilesApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="EC1AAB03-3067-48D2-B53C-67CE9188BBA7">
+							<TeleportApplicator>
+								<appearEffect href="" />
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>проапдейтить своё положение на случай, если под нами окажется чужой лок тайлов</caption>
+								<disappearEffect href="" />
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<maxDistance>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</maxDistance>
+								<notifyInboundDispatches>false</notifyInboundDispatches>
+								<providerName></providerName>
+								<pushUnits>false</pushUnits>
+								<teleportTarget>ApplicatorTarget</teleportTarget>
+							</TeleportApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>программа лока тайлов</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsaAAAABCLRQiLEItNCItCaP/QD7bA99gbwIPAAV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>!sFlag(268435456)</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="F6C5FB76-0A66-40F5-9FA1-4A8D359AA5F1">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>автоматическое завершение абилки</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLAv/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>mIsAbilityOn</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQgAAAACAAAAFQAAACgAAABBMV9UaW1lAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFNgAAANld/NlF/IvlXcMAAACgmZm5Pw==</compiledString>
+					<returnType>float</returnType>
+					<sString>cA1_Time + 0.1f</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAEAcRg==</compiledString>
+					<returnType>float</returnType>
+					<sString>10000</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="2061F240-E39F-44C2-BB5F-66085520668D">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="0147BC09-1BA0-4650-AA33-BD434282F4C6">
+								<AbilityEndApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelApplicators>true</cancelApplicators>
+									<caption>завершить абилку</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+								</AbilityEndApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="07443336-950E-4614-86DE-8D7B0F1ECF2D">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>false</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQgAAAABAAAAFAAAAEExX1RpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cA1_Time</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="D55B92F9-600A-4270-9BEA-048E04345879">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>запретить использовать талант, пока кастуется</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>1024</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3Dmpk5QA==</compiledString>
+					<returnType>float</returnType>
+					<sString>2.9</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsaAAAABCLRQiLEItNCItCaP/QD7bA99gbwIPAAV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>!sFlag(268435456)</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" />
+				</talents>
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="D108093B-9186-4D69-AD0D-AC80C043E93F">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>автоматическое завершение абилки</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true; //mIsAbilityOn</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQgAAAACAAAAFQAAACgAAABBMV9UaW1lAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFNgAAANld/NlF/IvlXcMAAACgmZm5Pw==</compiledString>
+					<returnType>float</returnType>
+					<sString>cA1_Time + 0.1f</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="FCBC13CE-0255-4B3B-BFA3-7A777F728E06">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FQwAAAACAAAAKgAAAEAAAABBMUlzV29ya2luZwBVi+xRaAAAABCLRQiLEItNCItCaP/QD7bIhcl1K2gAAAAAi1UIiwKLTQiLkIgBAAD/0twdYgAAAN/g9sRBewnHRfwAAAAA6wfHRfwBAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+							<returnType>bool</returnType>
+							<sString>sFlag(268435456) || sender.vA1IsWorking &lt;= 0</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="96940021-F9D4-440E-A24A-060FEB910003">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_G766_RefreshAndNotify.APLR" />
+									<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="6B4DDE8C-1A25-4099-86E5-51152CB85D4A">
+										<AbilityEndApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelApplicators>true</cancelApplicators>
+											<caption>завершить абилку</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+										</AbilityEndApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="C98FC83C-2C0D-4D15-8990-F9D920FD6BF4">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<askId>1</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А1. Глыба</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Rockman/Ability1.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="A0B8E62C-40D9-4397-ACB0-060254A1F8C6">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR8AAAACAAAAJgAAAD8AAABSb2NrbWFuX0ExX1VwZwAAUm9ja21hbl9BMV9VcGcAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtkX799gbwIPAAYvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Rockman_A1_Upg") == false</sString>
+				</condition>
+				<name>Rockman_A1_Upg</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="5112F3F2-E008-45ED-A1C0-B71FFC378930">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="C46BAAA9-60CB-4CC8-971E-F7E4703A40D2">
+					<UnitConstant>
+						<name>A1hregenconst</name>
+						<var>
+							<compiledString>FRQAAAAHAAIAHwAAACkAAABbAAAAewAAALsAAADLAAAA6gAAADYBAABpAQAAVEVSUkJPTlVTAAAAQTFfVGltZQBVi+yD7BRqAVHZBawAAADZHCRR2QWoAAAA2RwkagGLRQiLEItNCItCDP/QUdkcJGoAi00QixGLTRCLQmD/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q3E34i00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ3V3w/9DcffDZXezZRexR2Rwk6A8AAACDxASL5V3DAADMQgBAP0RVi+yD7AjZRQjcHQwBAADf4PbEAXUf2UUI3AUEAQAA2V382UX8UdkcJOhpAAAAg8QE6x3rG9lFCNwlBAEAANld+NlF+FHZHCToFwAAAIPEBIvlXcMAAAAAAADgPwAAAAAAAAAAVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6MD+//+DxAjZXfzZRfyL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6If+//+DxAjZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>round(((abilityScaleMaxLife(102, 765))* cTERRBONUS) / cA1_Time)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="67E0DBC9-FCE3-4EA7-A6B0-5546ADA8A41C">
+					<UnitConstant>
+						<name>A1hregenpercent</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="D1D8D52F-1D1F-4E27-9E17-4991401E75FC">
+					<UnitConstant>
+						<name>A1_Time</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAQQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>9</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="638CA888-26E4-486A-9630-55F10FABFA54">
+					<UnitConstant>
+						<name>A1_StatusRegen</name>
+						<var>
+							<compiledString>FQ4AAAABAAAAGgAAAEExaHJlZ2VuY29uc3QAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1hregenconst</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="3ABA6E48-0ED6-495E-8315-5164576B5E17">
+					<UnitConstant>
+						<name>Radius_Terrain</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="DD1B05F6-02D9-4FFB-9E0F-632FED867CF8">
+					<UnitConstant>
+						<name>Time_Terrain</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>11</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="CD80E1BD-BB8B-4D9B-A062-A4D9C3198748">
+					<UnitConstant>
+						<name>A1_Terr_InstaHeal</name>
+						<var>
+							<compiledString>FQoAAAAGAAIAFQAAAB8AAABRAAAAkQAAAKEAAADAAAAADAEAAD8BAABURVJSQk9OVVMAVYvsg+wMagFR2QWCAAAA2RwkUdkFfgAAANkcJGoBi0UIixCLTQiLQgz/0FHZHCRqAYtNEIsRi00Qi0Jg/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0NxN+Nld9NlF9FHZHCToDwAAAIPEBIvlXcPNzMRBzUwwQ1WL7IPsCNlFCNwd4gAAAN/g9sQBdR/ZRQjcBdoAAADZXfzZRfxR2Rwk6GkAAACDxATrHesb2UUI3CXaAAAA2V342UX4UdkcJOgXAAAAg8QEi+VdwwAAAAAAAOA/AAAAAAAAAABVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCTo6v7//4PECNld/NlF/IvlXcNVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCTosf7//4PECNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>round((damageScaleCustomLife(sMaxLife, 24.6,176.3)) * cTERRBONUS)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABcQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>55</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Rockman/Ability1.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="07A23CAF-56B5-46DC-9E69-B3AC21EF86EE">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>24</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Rockman/A1.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABcQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>55</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Items/Talents/Class/Rockman/Ability1.TALENT" id="17B43C95-6FE5-4042-9684-FB0D85F1D9E0">
+		<BasicMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAABAAAAJwAAAFWL7IPsDItFCIsQi00IiwL/0ItNCIsRi00Ii0IM3V34/9DcffjcHUkAAADf4PbEBXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcMAAAAAAADgPw==</compiledString>
+				<returnType>bool</returnType>
+				<sString>sLife / sMaxLife &lt; 0.5</sString>
+			</condition>
+		</BasicMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Rockman/Ability1.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId>Rockman_A1</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Rockman/Ability1.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Switchable</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

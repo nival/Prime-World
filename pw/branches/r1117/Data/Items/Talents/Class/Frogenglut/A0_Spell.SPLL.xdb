@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Heroes/Frogenglut/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Frogenglut/Ability4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="B9C44BC3-1C53-4090-8FBC-55BA283E79F3">
+			<FlagsApplicator parent="/Items/Talents/Class/Frogenglut/ConsumeFx.APLR">
+				<behaviorFlags>248</behaviorFlags>
+				<enabled>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABGcm9nZW5nbHV0X0EzAAAARnJvZ2VuZ2x1dF9BMwBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>!tal("Frogenglut_A3")</sString>
+				</enabled>
+				<lifeTime>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+				</lifeTime>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="0797022B-F721-4271-888A-F5C58BA24CB6">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>увеличить счётчик кормлений</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>FeedsNumber</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Frogenglut/status_A0_satiated.APLR" />
+		<Item href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="66612392-5092-4C7C-90D6-FC0FDDE956E3">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FUwAAAAGAAEAUwAAAGwAAACiAAAAwgAAAOUAAAAHAQAAZwEAAEZyb2dlbmdsdXRfQTAAAABGcm9nZW5nbHV0X0EwAAAARnJvZ2VuZ2x1dF9BMAAAAEEwX0tpbGxzVG9Hcm93AABGZWVkc051bWJlcgBVi+yD7BRoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aCAAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoMAAAAItV9IsCi030i1BQ/9LZXfDrBdnu2V3wUdlF8NkcJGhAAAAAi0UIixCLTQiLgogBAAD/0FHZHCToMwAAAIPECNwdKQEAAN/g9sREegnHRewAAAAA6wfHRewBAAAAi0Xsi+VdwwAAAAAAAAAAAAAAAFWL7FHZRQzZHCRR2UUI2Rwk6AUAAACDxAhdw1WL7FHZRQyD7AjdHCTZRQiD7AjdHCToff7//4PEENld/NlF/IvlXcM=</compiledString>
+					<returnType>int</returnType>
+					<sString>fmod( sender.vFeedsNumber, talconst("Frogenglut_A0","A0_KillsToGrow") ) == 0 ? 0 : 1</sString>
+				</activeSpellIndex>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Анимация увеличения</caption>
+				<dontUseDispatches>false</dontUseDispatches>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="8FC7834E-74C5-43FF-9A68-C1669DE3C68C">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Frogenglut/Growth.APLR" />
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="22F13A64-F876-4B7B-8DA1-27BD0995EF2A">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>0</flags>
+									<instantApply>false</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="73E123CE-B0BD-490C-94EC-55102E7C8508">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="AC40BF8B-D9DE-4CEE-8BB3-357556202BF1">
+									<FlagsApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption></caption>
+										<consumables />
+										<effect>
+											<Item href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="76A6FD83-3CF6-479F-96F0-A7A9E642427B">
+												<ScaleColorEffect>
+													<blendMode>Off</blendMode>
+													<colorAdd>
+														<A>0</A>
+														<B>0</B>
+														<G>0</G>
+														<R>0</R>
+													</colorAdd>
+													<colorMul>
+														<A>1</A>
+														<B>1</B>
+														<G>1</G>
+														<R>1</R>
+													</colorMul>
+													<deathType>Manual</deathType>
+													<enableCondition href="" />
+													<fadeInTime>0.7</fadeInTime>
+													<fadeOutTime>0.3</fadeOutTime>
+													<fullRecolor>false</fullRecolor>
+													<lifeTime>0</lifeTime>
+													<scale>1</scale>
+													<scaleIn Animated="True">
+														<Tracks>
+															<Item>
+																<Item>
+																	<Key>0</Key>
+																	<Value>1</Value>
+																</Item>
+																<Item>
+																	<Key>0.1</Key>
+																	<Value>1.155</Value>
+																</Item>
+																<Item>
+																	<Key>0.2</Key>
+																	<Value>1.3</Value>
+																</Item>
+																<Item>
+																	<Key>0.3</Key>
+																	<Value>1.175</Value>
+																</Item>
+																<Item>
+																	<Key>0.4</Key>
+																	<Value>1.06</Value>
+																</Item>
+																<Item>
+																	<Key>0.5</Key>
+																	<Value>0.95</Value>
+																</Item>
+																<Item>
+																	<Key>0.6</Key>
+																	<Value>0.975</Value>
+																</Item>
+																<Item>
+																	<Key>0.7</Key>
+																	<Value>1</Value>
+																</Item>
+															</Item>
+														</Tracks>
+														<Type>Clamp</Type>
+														<Values>
+															<Item>
+																<Key>0</Key>
+																<Value>1</Value>
+															</Item>
+															<Item>
+																<Key>0.1</Key>
+																<Value>1.155</Value>
+															</Item>
+															<Item>
+																<Key>0.2</Key>
+																<Value>1.3</Value>
+															</Item>
+															<Item>
+																<Key>0.3</Key>
+																<Value>1.175</Value>
+															</Item>
+															<Item>
+																<Key>0.4</Key>
+																<Value>1.06</Value>
+															</Item>
+															<Item>
+																<Key>0.5</Key>
+																<Value>0.95</Value>
+															</Item>
+															<Item>
+																<Key>0.6</Key>
+																<Value>0.975</Value>
+															</Item>
+															<Item>
+																<Key>0.7</Key>
+																<Value>1</Value>
+															</Item>
+														</Values>
+													</scaleIn>
+													<scaleOut>1</scaleOut>
+												</ScaleColorEffect>
+											</Item>
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>0</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DMzMzPw==</compiledString>
+											<returnType>float</returnType>
+											<sString>0.7</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="2EF4A760-C1ED-420F-A083-452ED8EECB91">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>0</flags>
+									<instantApply>false</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Frogenglut/status_A0_Fat.APLR" />
+	</applicators>
+	<dispatch href="/Items/Talents/Class/Frogenglut/A0_Spell.SPLL" id="8913A6C4-D6A5-4B25-BB1C-2AD2AEEE65CE">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

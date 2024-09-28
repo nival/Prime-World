@@ -1,0 +1,80 @@
+#include "stdafx.h"
+#include "FixedMemoryStream.h"
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FixedMemoryStream::FixedMemoryStream()
+: pBuffer ( 0 ), offset ( 0 ), realSize ( 0 ), bufferSize ( 0 ), isOverflow ( false )
+{
+	SetBroken( true );
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FixedMemoryStream::FixedMemoryStream( const void* buffer, const int size )
+{
+	SetBuffer( buffer, size );
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void FixedMemoryStream::SetBuffer( const void* buffer, const int size )
+{
+	pBuffer = (char*)buffer;
+	offset = 0;
+	realSize = size > 0 ? size : 0;
+	bufferSize = size > 0 ? size : 0;
+	isOverflow = false;
+
+	SetCanSeek( true );
+	SetCanWrite( true );
+	SetCanRead( true );
+	SetBroken( false );
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void FixedMemoryStream::SeekInternal( const int _offset )
+{
+	offset = _offset;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void FixedMemoryStream::SetSizeInternal( const int _size )
+{
+	if ( _size > bufferSize )
+	{
+		isOverflow = true;
+		SetCanRead( false );
+	}
+	realSize = _size;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int FixedMemoryStream::ReadInternal( void *pData, const int length )
+{
+	memcpy( pData, pBuffer + offset, length );
+	offset += length;
+	return length;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int FixedMemoryStream::WriteInternal( const void *pData, const int length )
+{
+	if ( ! isOverflow )
+	{
+		memcpy( pBuffer + offset, pData, length );
+	}
+	else
+	{
+		if ( offset < bufferSize )
+		{
+			memcpy( pBuffer + offset, pData, bufferSize - offset );
+		}
+		else
+		{
+			// Ignore.
+		}
+	}
+	offset += length;
+	return length;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void FixedMemoryStream::Close()
+{
+	pBuffer = 0;
+	offset = 0;
+	realSize = 0;
+	bufferSize = 0;
+	SetBroken( true );
+}

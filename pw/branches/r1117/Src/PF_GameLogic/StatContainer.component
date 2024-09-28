@@ -1,0 +1,30 @@
+sources = [
+	'Stat.cpp',
+	'Stat.hpp',
+	'ValueWithModifiers.hpp',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+components = [
+  'Vendor/Libc',
+  'libdb/Database',
+  'libdb/dbid',
+  'libdb/Types',
+  'Render/Math',
+  'Terrain/DB',
+  'Sound/DBSound',
+  'System/NameMap',
+  'System/Ptr',
+  'System/Memory',
+  'System/Asserts',
+  'System/NSTL',
+  'PF_GameLogic/DBCamera',
+  'System/SyncProcessorState',
+]    
+
+
+if testRun:
+  compilerKeys = ['/D _TESTRUN']
+else:
+  compilerKeys = []

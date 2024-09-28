@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlAppl.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlStatusesWithoutSlow.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_RootUnstacked.APLS" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Demonolog/ProgrammaRootAndSilence.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Demonolog/status_A4_2_Root.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/status_A2u_ControlTimeDecrease.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Demonolog/status_A2_Root.APLR" id="4D7F702A-648F-473E-AB52-0A784D69AA13">
+			<FlagsApplicator parent="/Heroes/DefaultStatus/_ROOT.APLR">
+				<caption> -- Demonologs Root</caption>
+				<effect>
+					<Item href="/Summons/Trap/_Apply.EFFT" />
+					<Item skip="1" />
+				</effect>
+				<formulaName></formulaName>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Demonolog/status_A2_Root.APLR" id="328A98A8-D48A-47F2-A615-1D106E3F6092">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Items/Talents/Class/Demonolog/status_A2_Root.APLR_328a98a8d48a47f2a6151d106e3f6092_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_TECH_OpenEnemyStatus.APLR" />
+	</applicators>
+	<applyTarget>PrevApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>статус Demonologs Root (Root_Duration)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Demonolog/status_A2_Root.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAALQAAAEMAAABJbW11bmUyQ29udHJvbABVi+xRaAAAEACLRQyLEItNDItCaP/QD7bIhcl1K2gAAAAAi1UMiwKLTQyLkIgBAAD/0twdZQAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>!rFlag(1048576) &amp;&amp; receiver.vImmune2Control == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>CapturedDemonologRoot</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Demonolog/A2.ITEX" />
+	<lifeTime>
+		<compiledString>FQ4AAAABAAAAGgAAAFJvb3RfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRoot_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Demonolog/status_A2_Root.APLR_name.txt" />
+	<power>1</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_RootUnstacked.APLS" />
+</StatusApplicator>

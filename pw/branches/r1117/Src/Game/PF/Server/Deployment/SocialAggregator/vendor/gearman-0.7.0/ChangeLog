@@ -1,0 +1,32 @@
+Version 0.6.0
+-------------
+- Fixed build issue with 5.1.x
+- Merged eday changes
+- Added wait functions, uncommented other worker functions.
+- Added timeout functions.
+- Updated function list from C library and removed free methods (should use unset).
+- Added stubs for new functions, fixed tests, fixed some of the existing functions from changes.
+
+Version 0.5.0
+-------------
+- Fixed a bug in the task callbacks, the addtional data arg will now work as expected.
+- Added gearman_client_add_servers. This was adde in a recent version of libgearman.
+- Updates to zts for php 5.3
+- Replaced errno with getErrno
+
+Version 0.4.0
+-------------
+- Fixed memory leak in $task object
+- Regened constants off of libgearman v0.7
+- Removed gearman_task_take_data
+- Added exception to task job object when created without a geaman obj arg
+- Fixed a bunch of places where it was possible to use objects before verifying them
+- Other small bug fixes
+
+Version 0.3.1
+-------------
+- Initial PECL import
+- Reworked client/worker/task/job objects.
+- Added $obj->return_code() to all objects
+- Fixed compile issues with PHP 5.1 and 5.3
+

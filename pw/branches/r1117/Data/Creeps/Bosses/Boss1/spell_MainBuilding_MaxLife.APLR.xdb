@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Creeps/Bosses/Boss1/status_AuraDragonPower.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>- Спелл в ГЗ для MaxLife</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Creeps/Bosses/Boss1/spell_MainBuilding_MaxLife.APLR" id="6C639593-26CE-4428-9A1E-218451FC6FB1">
+		<Spell>
+			<applicators>
+				<Item href="/Creeps/Bosses/Boss1/spell_MainBuilding_MaxLife.APLR" id="E4AFE22A-4521-4E36-9F79-F73917185FFD">
+					<StatModApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>- Записать Макс. ХП у ГЗ в переменную и вернуть её Горынычу</caption>
+						<constraint>None</constraint>
+						<dontUpdate>false</dontUpdate>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQcAAAABAAAADAAAAFRhcmdldABVi+xRaAAAAACLRRCLEItNEItCTP/QiUX8i038ixGLTfyLQgz/0IvlXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>$ApplTarget-&gt;MaxLife</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>MainBuilding_MaxLife</variable>
+						</modifier>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<statModName></statModName>
+					</StatModApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Creeps/Bosses/Boss1/spell_MainBuilding_MaxLife.APLR" id="F35C5071-D694-421F-9936-49BC6AA9D679">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Creeps/Bosses/Boss1/spell_MainBuilding_MaxLife.APLR" id="763C01F1-9CE6-4BA7-977A-508DB9FB8B41">
+		<MainBuildingTargetSelector />
+	</targetSelector>
+</SpellApplicator>

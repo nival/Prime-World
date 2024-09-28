@@ -1,0 +1,438 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "atlres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_POPUPMENU MENU
+BEGIN
+    POPUP "menu1"
+    BEGIN
+        MENUITEM "Copy selected line(s)",       ID_MENU1_COPYSEL
+        MENUITEM "Copy the whole log",          ID_MENU1_COPYLOG
+    END
+    POPUP "menu2"
+    BEGIN
+        MENUITEM "Auto",                        ID_PREVIEW_AUTO
+        MENUITEM "Hex",                         ID_PREVIEW_HEX
+        MENUITEM "Text",                        ID_PREVIEW_TEXT
+        MENUITEM "Image",                       ID_PREVIEW_IMAGE
+        MENUITEM "Video",                       ID_PREVIEW_VIDEO
+        MENUITEM SEPARATOR
+        POPUP "Encoding"
+        BEGIN
+            MENUITEM "Auto",                        ID_ENCODING_AUTO
+            MENUITEM "ASCII",                       ID_ENCODING_ASCII
+            MENUITEM "UTF-8",                       ID_ENCODING_UTF8
+            MENUITEM "UTF-16",                      ID_ENCODING_UTF16
+            MENUITEM "UTF-16BE",                    ID_ENCODING_UTF16BE
+        END
+    END
+    POPUP "menu3"
+    BEGIN
+        MENUITEM "Show",                        ID_MENU3_SHOW
+        MENUITEM "Exit",                        ID_MENU3_EXIT
+    END
+    POPUP "menu4"
+    BEGIN
+        MENUITEM "Exit now and remind me later", ID_MENU4_REMINDLATER
+        MENUITEM "Exit now and never remind again", ID_MENU4_NEVERREMIND
+    END
+    POPUP "menu5"
+    BEGIN
+        MENUITEM "Send report later",           ID_MENU5_SENDREPORTLATER
+        MENUITEM "Close the program",           ID_MENU5_CLOSETHEPROGRAM
+    END
+    POPUP "menu6"
+    BEGIN
+        MENUITEM "Select all",                  ID_MENU6_SELECTALL
+        MENUITEM "Deselect all",                ID_MENU6_DESELECTALL
+        MENUITEM SEPARATOR
+        MENUITEM "Delete selected",             ID_MENU6_DELETESELECTED
+        MENUITEM "Delete all",                  ID_MENU6_DELETEALL
+    END
+    POPUP "menu7"
+    BEGIN
+        MENUITEM "Open",                        ID_MENU7_OPEN
+        MENUITEM "Delete Selected File(s)",     ID_MENU7_DELETESELECTEDFILE
+        MENUITEM "Attach More Files(s)...",     ID_MENU7_ATTACHMOREFILES
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DETAILDLG DIALOGEX 0, 0, 289, 230
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Error Report Details"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,105,209,57,14
+    PUSHBUTTON      "Export...",IDC_EXPORT,222,209,60,14
+    LTEXT           "Privacy Policy",IDC_PRIVACYPOLICY,14,196,144,8
+    CONTROL         "",IDC_FILE_LIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,7,19,275,78
+    LTEXT           "Double-click an item to open it with an appropriate program.",IDC_HEADERTEXT,7,7,275,8
+    LTEXT           "Preview",IDC_PREVIEWTEXT,7,100,151,8
+    LTEXT           "",IDC_PREVIEW,7,111,275,82,0,WS_EX_CLIENTEDGE
+END
+
+IDD_MAINDLG DIALOGEX 0, 0, 325, 230
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Error Report"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Send report",IDOK,10,206,80,16
+    PUSHBUTTON      "Close the program",IDC_CANCEL,101,206,80,16
+    CONTROL         "Restart the program when when this window is closed",IDC_RESTART,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,152,294,10
+    EDITTEXT        IDC_EMAIL,96,98,208,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DESCRIPTION,27,128,277,14,ES_AUTOHSCROLL
+    LTEXT           "What does this report contain?",IDC_LINK,10,66,294,8
+    LTEXT           "Provide additional info about the problem (recommended)",IDC_MOREINFO,10,81,294,8
+    CONTROL         "",IDC_HORZLINE,"Static",SS_ETCHEDHORZ,0,198,325,1
+    LTEXT           "CrashRpt",IDC_CRASHRPT,286,194,31,8,WS_DISABLED
+    CONTROL         "",IDC_UPPERHORZ,"Static",SS_ETCHEDHORZ,0,37,326,1
+    LTEXT           "Please send us this error report to help fix the problem and improve this software.",IDC_SUBHEADER,10,47,294,16
+    LTEXT           "Your E-mail:",IDC_STATMAIL,27,101,65,8
+    LTEXT           "Describe in few words what did you do when the error occurred:",IDC_DESCRIBE,27,118,279,8
+    LTEXT           "Privacy Policy",IDC_PRIVACYPOLICY,10,184,165,8
+    LTEXT           "By clicking the 'Send report' button, I confirm I'm familiar with the contents of the report and accept the terms of the Privacy Policy.",IDC_CONSENT,10,167,292,17
+    CONTROL         "",IDC_INDENT,"Static",SS_BLACKRECT,12,97,2,44
+END
+
+IDD_PROGRESSDLG DIALOGEX 0, 0, 266, 112
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Sending Error Report"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,7,91,50,14
+    CONTROL         "",IDC_LIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,7,35,252,49
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER,7,20,252,9
+    LTEXT           "The error report is now being sent...",IDC_TEXT,7,7,252,8,SS_ENDELLIPSIS
+END
+
+IDD_RESEND DIALOGEX 0, 0, 322, 178
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Sending Error Reports"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Send now",IDOK,7,157,86,14
+    PUSHBUTTON      "Other actions...",IDC_OTHERACTIONS,101,157,86,14
+    PUSHBUTTON      "Show log",IDC_SHOWLOG,196,157,86,14
+    CONTROL         "",IDC_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,20,307,77
+    LTEXT           "Double-click an item to see details.",IDC_TEXT,7,7,307,11,SS_WORDELLIPSIS
+    LTEXT           "Total size of selected items: 0 KB",IDC_SELSIZE,7,103,307,8
+    LTEXT           "By pressing...",IDC_CONSENT,7,120,307,16
+    LTEXT           "Privacy Policy",IDC_PRIVACYPOLICY,7,136,198,10
+    CONTROL         "",IDC_LINE,"Static",SS_ETCHEDHORZ,0,150,322,1
+    LTEXT           "CrashRpt",IDC_CRASHRPT,283,146,31,8,WS_DISABLED
+END
+
+IDD_ACTIONPROGRESS DIALOGEX 0, 0, 283, 48
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER,16,28,263,9
+    LTEXT           "Current action:",IDC_CURRENTACTION,0,2,279,8
+    LTEXT           "Action",IDC_ACTIONDESC,16,15,263,9,SS_WORDELLIPSIS
+END
+
+IDD_VIDEOREC DIALOGEX 0, 0, 226, 126
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Video Recording"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Allow",IDOK,46,105,65,14
+    PUSHBUTTON      "Cancel",IDCANCEL,115,105,65,14
+    LTEXT           "Text",IDC_TEXT,37,7,182,86
+    ICON            IDI_VIDEOREC,IDC_ICONVIDEO,7,7,21,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DETAILDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 282
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 223
+    END
+
+    IDD_MAINDLG, DIALOG
+    BEGIN
+        VERTGUIDE, 10
+        VERTGUIDE, 304
+        BOTTOMMARGIN, 222
+        HORZGUIDE, 105
+    END
+
+    IDD_PROGRESSDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 259
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 105
+    END
+
+    IDD_RESEND, DIALOG
+    BEGIN
+        VERTGUIDE, 7
+        VERTGUIDE, 314
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_ACTIONPROGRESS, DIALOG
+    BEGIN
+        RIGHTMARGIN, 279
+        VERTGUIDE, 16
+        BOTTOMMARGIN, 37
+    END
+
+    IDD_VIDEOREC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 119
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""atlres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\CrashSender.ico"
+IDI_VIDEOREC            ICON                    "res\\VideoRec.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,4,0,2
+ PRODUCTVERSION 1,4,0,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "Crash Report Delivery Module"
+            VALUE "FileVersion", "1.4.0.2"
+            VALUE "InternalName", "CrashSender"
+            VALUE "LegalCopyright", "Copyright 2003-2013 The CrashRpt Project Authors"
+            VALUE "OriginalFilename", "CrashSender.exe"
+            VALUE "ProductName", "CrashRpt"
+            VALUE "ProductVersion", "1.4.0.2"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "CrashSender"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+    IDS_HEADER              "{\\bnsi\\bnsicpg1252\\deff0\\deflang1033{\\fonttbl{\\f0\\fswiss\\fcharset0 Microsoft Sans Serif;}}\n{\\*\\generator Msftedit 5.41.15.1503;}\\viewkind4\\uc1\\pard\\f0\\fs30 %s has stopped working}\n "
+    IDS_INVALID_EMAIL       "Please enter a valid E-mail address. For example, name@hotmail.com."
+    IDS_ZIP_FILTER          "Zip Files (*.zip)"
+    IDS_HTTP_HEADER_CONTENT_TYPE 
+                            "Content-Type: Multipart/form-data; boundary=%s"
+    IDS_HTTP_HEADER_BOUNDARY "-----------------7d31389b0426"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_SCSIZE          "Change the window size"
+    ATL_IDS_SCMOVE          "Change the window position"
+    ATL_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    ATL_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    ATL_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    ATL_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_SCRESTORE       "Restore the window to normal size"
+    ATL_IDS_SCTASKLIST      "Activate Task List"
+    ATL_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_MRU_FILE        "Open this document"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_NAME                "Name"
+    IDS_DESC                "Description"
+    IDS_TYPE                "Type"
+    IDS_SIZE                "Size"
+    IDS_CRASH_DUMP          "Crash Dump"
+    IDS_CRASH_LOG           "Crash Log"
+    IDS_SYMBOL_FILE         "Symbol File"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+

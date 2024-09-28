@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Bomber/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Bomber/status_A1_BombCount.APLR" id="43C99CF2-89B8-41A2-AE91-C1375EF9682A">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption>Модификация урона АА</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FRsAAAACAAAAKAAAADsAAABBMV9Cb251c0RtZ19DdXJyZW50UGVyY2VudABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDVUAAADZ6N7B2V382UX8i+VdwwAAAAAAAPA/AAAAQOF6hD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f + cA1_BonusDmg_CurrentPercent * 0.01f</sString>
+					</multValue>
+					<stat>BaseAttack</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>Показываем текущее количество</caption>
+	<customCounter>
+		<compiledString>FRMAAAABAAAAFwAAAEJvbWJlckExX0JvbWJDb3VudABVi+xoAAAAAItFCIsQi00Ii4KIAQAA/9BR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(sender.vBomberA1_BombCount)</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FSQAAAACAAAAKwAAAEgAAABCb21iZXJBMV9Cb21iQ291bnQAAEExX01heEJvbWJDb3VudABVi+yD7BRoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgUAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sRBdRaLTRCLEYtNEItCHP/Q2eje4d1d8OsF2ejdXfDdRfDZXezZReyL5V3DAAAAAAAA8D8=</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.vBomberA1_BombCount &lt; cA1_MaxBombCount ? 1 - mPreparedness : 1</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Bomber/status_A1_BombCount.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRMAAAACAAAAGAAAAC4AAABCb21iZXJBMV9Cb21iQ291bnQAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdUAAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vBomberA1_BombCount &gt; 0</sString>
+	</enabled>
+	<flags>64</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Bomber/A1.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Bomber/status_A1_BombCount.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-88</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

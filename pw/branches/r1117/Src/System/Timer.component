@@ -1,0 +1,27 @@
+if platform == 'win32':
+  sources = [ 
+      'HPTimer.cpp',
+      'HPTimer.h',
+      'HPTimer_win.cpp',
+      'TimeUtils_win.cpp',
+      'TimeUtils.h',
+      'timesupport.cpp',
+      'timesupport.h',
+      'PersistentId.h',
+      'NiTimer.h',
+  ]
+else:
+  sources = [ 
+      'HPTimer.cpp',
+      'timesupport.cpp',
+      'timesupport.h',
+      'HPTimer_linux.cpp',
+      'TimeUtils_linux.cpp',
+  ]
+
+if platform == 'win32':
+  libs = ['Winmm.lib']
+
+components = [
+	'Vendor/Libc',
+]

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FB870FFC-18CD-4A7F-9007-2B7B649D09EF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>River.Tests</RootNamespace>
+    <AssemblyName>River.Tests</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\_Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\log4net\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit-console-runner, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\NUnit\bin\nunit-console-runner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Vendor\NUnit\bin\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\ClientContext.Test.cs" />
+    <Compile Include="Context\MockSyncContext.cs" />
+    <Compile Include="Context\SyncContext.Test.cs" />
+    <Compile Include="Master\BotNet.Test.cs" />
+    <Compile Include="Master\RunningSuite.Test.cs" />
+    <Compile Include="Bot\Bot.Test.cs" />
+    <Compile Include="Scenarios\OneBotSuite.cs" />
+    <Compile Include="Scenarios\ScenarioCheckContext.cs" />
+    <Compile Include="Scenarios\ScenarioCurrentDirectory.cs" />
+    <Compile Include="Scenarios\ScenarioVeryLongExecute.cs" />
+    <Compile Include="Scenarios\ScenarioVeryLongInstall.cs" />
+    <Compile Include="Scenarios\ScenarioExecuteException.cs" />
+    <Compile Include="Scenarios\ScenarioInstallException.cs" />
+    <Compile Include="Scenarios\ScenarioInstallAndExecute.cs" />
+    <Compile Include="Scenarios\SimpleExceptionScenario.cs" />
+    <Compile Include="Scenarios\SimpleNonloadableScenario.cs" />
+    <None Include="Scenarios\SimpleUnbuildableScenario.cs" />
+    <Compile Include="Scenarios\Scenarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Scenarios.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Scenarios\SimpleCorrectScenario.cs" />
+    <Compile Include="Core\Suite.Test.cs" />
+    <Compile Include="Master\MasterBot.Test.cs" />
+    <Compile Include="Master\MockBot.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenarios\TestSuite.cs" />
+    <Compile Include="Scenarios\ThreeBotsSuite.cs" />
+    <Compile Include="Scenarios\TwoBotsSuite.cs" />
+    <Compile Include="TestDumper.cs" />
+    <Compile Include="ThreadUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\River.Bot\River.Bot.csproj">
+      <Project>{32009A16-1C84-4A76-9885-8DEAA0B9BD8B}</Project>
+      <Name>River.Bot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\River.Core\River.Core.csproj">
+      <Project>{E905F543-990C-425A-8AEC-07A4C9510EAA}</Project>
+      <Name>River.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\River.Master\River.Master.csproj">
+      <Project>{5F55F273-02F0-4955-831B-35C4D8D95414}</Project>
+      <Name>River.Master</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scenarios\Scenarios.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Scenarios.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

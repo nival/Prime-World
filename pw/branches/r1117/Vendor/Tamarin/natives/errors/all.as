@@ -1,0 +1,7 @@
+include "EOFError.as"
+include "IllegalOperationError.as"
+include "InvalidSWFError.as"
+include "IOError.as"
+include "MemoryError.as"
+include "ScriptTimeoutError.as"
+include "StackOverflowError.as"

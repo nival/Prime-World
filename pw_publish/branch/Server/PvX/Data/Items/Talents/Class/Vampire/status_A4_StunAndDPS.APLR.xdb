@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator parent="/Heroes/DefaultStatus/_STUN_Status.APLR">
+	<BackLink DBID="/Items/Talents/Class/Vampire/Ability_A4.TALENT" Count="1" />
+	<applicators>
+		<Item skip="1" />
+		<Item skip="1" />
+		<Item href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="D7E771AB-B9D1-4078-AD3E-C11F712CADC6">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Запрет невидимости и движения</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>196608</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="AB5D6FC4-0476-4C87-8BC2-65035C32B896">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Периодически наносим урон</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQoAAAABAAAAFgAAAEE0X1BlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cA4_Period</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="A5C41FAA-0D4F-4443-94B0-E8C64D084995">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="DE72337F-8BAD-43DB-B189-58BA3B613853">
+								<VariableProxyApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="01D7A7DB-5475-405C-A8C8-7AAA49002D90">
+												<DamageApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<cancelInvisibility>false</cancelInvisibility>
+													<caption>урон</caption>
+													<damage>
+														<compiledString>FRMAAAABAAAAHwAAAEE0X0RhbWFnZVBlclNlY29uZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+														<returnType>float</returnType>
+														<sString>cA4_DamagePerSecond</sString>
+													</damage>
+													<damageMode>4</damageMode>
+													<damageType>Energy</damageType>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<timeLimiter>-1</timeLimiter>
+													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+												</DamageApplicator>
+											</applicator>
+											<variableNames>
+												<Item>damageDealed</Item>
+											</variableNames>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="550CB469-214C-4F6B-AB2B-806FBC2920B5">
+												<HealApplicator>
+													<amount>
+														<compiledString>FQ0AAAABAAAAIgAAAGRhbWFnZURlYWxlZABVi+xRi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>appl.parent.GetVariable("damageDealed")</sString>
+													</amount>
+													<applyTarget>AbilityOwner</applyTarget>
+													<caption>heal</caption>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<healTarget>Health</healTarget>
+													<ignoreHealingMods>false</ignoreHealingMods>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+												</HealApplicator>
+											</applicator>
+											<variableNames />
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="3AB9DA8F-CA95-4B57-82D3-2488AFDC6B4D">
+												<HealApplicator>
+													<amount>
+														<compiledString>FSQAAAADAAAAQwAAAFUAAABuAAAAZGFtYWdlRGVhbGVkAAAAAEEwX0xpZmVEcmFpblBlcmNlbnQAVYvsg+wQi0UQixCLTRCLQkj/0IlF/ItNDFGLVQhSaBAAAACLRRCLEItNEItCUP/QaAAAAACLTfyLEYtN/ItCVN1d9P/Q3E303DV8AAAA2V3w2UXwi+VdwwAAAAAAAFlA</compiledString>
+														<returnType>float</returnType>
+														<sString>appl.parent.GetVariable("damageDealed") * cA0_LifeDrainPercent / 100</sString>
+													</amount>
+													<applyTarget>AbilityOwner</applyTarget>
+													<caption>A0 heal</caption>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<healTarget>Health</healTarget>
+													<ignoreHealingMods>false</ignoreHealingMods>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+												</HealApplicator>
+											</applicator>
+											<variableNames />
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>Маг. урон и отхил</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+								</VariableProxyApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="5FCBD098-D6EE-49B6-8B73-E5FE66ABEE96">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.1</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>Hier2UpApplicatorTarget</applyTarget>
+	<caption>Не совсем стандартный статус "Оглушение" (Stun_Duration, Stun_Condition)</caption>
+	<description textref="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR" id="52CD6D0E-BB66-4BC9-B076-21B076A92103">
+			<EffectList>
+				<deathType>Manual</deathType>
+				<effects>
+					<Item href="/Effects/Debuffs/Lash/_Blood1.EFFT" />
+					<Item href="/Effects/Debuffs/Lash/_Blood2.EFFT" />
+					<Item href="/Heroes/Vampire/FXAbility4Aim.EFFT" />
+				</effects>
+				<enableCondition href="" />
+				<lifeTime>0</lifeTime>
+			</EffectList>
+		</Item>
+		<Item skip="1" />
+	</effect>
+	<image href="/UI/Styles/Icons/Heroes/Vampire/A4.ITEX" />
+	<name textref="/Items/Talents/Class/Vampire/status_A4_StunAndDPS.APLR_name.txt" />
+</StatusApplicator>

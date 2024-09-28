@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release LIB|Win32">
+      <Configuration>Release LIB</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release LIB|x64">
+      <Configuration>Release LIB</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DCE19DAF-69AC-46DB-B14A-39F0FAA5DB74}</ProjectGuid>
+    <RootNamespace>vpx</RootNamespace>
+    <Keyword>ManagedCProj</Keyword>
+    <ProjectName>vpx</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release LIB|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release LIB|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="..\src\build\x86-msvs\yasm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release LIB|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release LIB|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)thirdparty\lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)thirdparty\lib\x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Win32\$(Configuration)\vpx\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Win32\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)Win32\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release LIB|Win32'">$(SolutionDir)thirdparty\lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release LIB|x64'">$(SolutionDir)thirdparty\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Win32\$(Configuration)\vpx\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Win32\$(Configuration)\vpx\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release LIB|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release LIB|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release LIB|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release LIB|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release LIB|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release LIB|x64'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)d</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4018;4114;4090</DisableSpecificWarnings>
+    </ClCompile>
+    <YASM>
+      <IncludePaths>".";"..\src"</IncludePaths>
+      <Debug>true</Debug>
+    </YASM>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4018;4114;4090;4267</DisableSpecificWarnings>
+    </ClCompile>
+    <YASM>
+      <IncludePaths>".";"..\src"</IncludePaths>
+      <Debug>true</Debug>
+    </YASM>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4018;4114;4090</DisableSpecificWarnings>
+    </ClCompile>
+    <YASM>
+      <IncludePaths>".";"..\src"</IncludePaths>
+    </YASM>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4018;4114;4090</DisableSpecificWarnings>
+    </ClCompile>
+    <YASM>
+      <IncludePaths>".";"..\src"</IncludePaths>
+    </YASM>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release LIB|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4018;4114;4090</DisableSpecificWarnings>
+    </ClCompile>
+    <YASM>
+      <IncludePaths>".";"..\src"</IncludePaths>
+    </YASM>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release LIB|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4018;4114;4090</DisableSpecificWarnings>
+    </ClCompile>
+    <YASM>
+      <IncludePaths>".";"..\src"</IncludePaths>
+    </YASM>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\vpx\src\vpx_decoder.c" />
+    <ClCompile Include="..\src\vpx\src\vpx_encoder.c" />
+    <ClCompile Include="..\src\vpx\src\vpx_codec.c" />
+    <ClCompile Include="..\src\vpx\src\vpx_image.c" />
+    <ClCompile Include="..\src\vpx_mem\vpx_mem.c" />
+    <ClCompile Include="..\src\vpx_scale\generic\vpxscale.c" />
+    <ClCompile Include="..\src\vpx_scale\generic\yv12config.c" />
+    <ClCompile Include="..\src\vpx_scale\generic\yv12extend.c" />
+    <ClCompile Include="..\src\vpx_scale\generic\gen_scalers.c" />
+    <ClCompile Include="..\src\vp8\common\alloccommon.c" />
+    <ClCompile Include="..\src\vp8\common\asm_com_offsets.c" />
+    <ClCompile Include="..\src\vp8\common\blockd.c" />
+    <ClCompile Include="..\src\vp8\common\debugmodes.c" />
+    <ClCompile Include="..\src\vp8\common\dequantize.c" />
+    <ClCompile Include="..\src\vp8\common\entropy.c" />
+    <ClCompile Include="..\src\vp8\common\entropymode.c" />
+    <ClCompile Include="..\src\vp8\common\entropymv.c" />
+    <ClCompile Include="..\src\vp8\common\extend.c" />
+    <ClCompile Include="..\src\vp8\common\filter.c" />
+    <ClCompile Include="..\src\vp8\common\findnearmv.c" />
+    <ClCompile Include="..\src\vp8\common\generic\systemdependent.c" />
+    <ClCompile Include="..\src\vp8\common\idct_blk.c" />
+    <ClCompile Include="..\src\vp8\common\idctllm.c" />
+    <ClCompile Include="..\src\vp8\common\rtcd.c" />
+    <ClCompile Include="..\src\vp8\common\loopfilter.c" />
+    <ClCompile Include="..\src\vp8\common\loopfilter_filters.c" />
+    <ClCompile Include="..\src\vp8\common\mbpitch.c" />
+    <ClCompile Include="..\src\vp8\common\modecont.c" />
+    <ClCompile Include="..\src\vp8\common\quant_common.c" />
+    <ClCompile Include="..\src\vp8\common\reconinter.c" />
+    <ClCompile Include="..\src\vp8\common\reconintra.c" />
+    <ClCompile Include="..\src\vp8\common\reconintra4x4.c" />
+    <ClCompile Include="..\src\vp8\common\sad_c.c" />
+    <ClCompile Include="..\src\vp8\common\setupintrarecon.c" />
+    <ClCompile Include="..\src\vp8\common\swapyv12buffer.c" />
+    <ClCompile Include="..\src\vp8\common\variance_c.c" />
+    <ClCompile Include="..\src\vp8\common\treecoder.c" />
+    <ClCompile Include="..\src\vp8\common\x86\filter_x86.c" />
+    <ClCompile Include="..\src\vp8\common\x86\vp8_asm_stubs.c" />
+    <ClCompile Include="..\src\vp8\common\x86\loopfilter_x86.c" />
+    <ClCompile Include="..\src\vp8\common\mfqe.c" />
+    <ClCompile Include="..\src\vp8\common\postproc.c" />
+    <ClCompile Include="..\src\vp8\common\x86\postproc_x86.c" />
+    <ClCompile Include="..\src\vp8\vp8_cx_iface.c" />
+    <ClCompile Include="..\src\vp8\encoder\asm_enc_offsets.c" />
+    <ClCompile Include="..\src\vp8\encoder\bitstream.c" />
+    <ClCompile Include="..\src\vp8\encoder\boolhuff.c" />
+    <ClCompile Include="..\src\vp8\encoder\dct.c" />
+    <ClCompile Include="..\src\vp8\encoder\encodeframe.c" />
+    <ClCompile Include="..\src\vp8\encoder\encodeintra.c" />
+    <ClCompile Include="..\src\vp8\encoder\encodemb.c" />
+    <ClCompile Include="..\src\vp8\encoder\encodemv.c" />
+    <ClCompile Include="..\src\vp8\encoder\ethreading.c" />
+    <ClCompile Include="..\src\vp8\encoder\firstpass.c" />
+    <ClCompile Include="..\src\vp8\encoder\denoising.c" />
+    <ClCompile Include="..\src\vp8\encoder\lookahead.c" />
+    <ClCompile Include="..\src\vp8\encoder\mcomp.c" />
+    <ClCompile Include="..\src\vp8\encoder\modecosts.c" />
+    <ClCompile Include="..\src\vp8\encoder\onyx_if.c" />
+    <ClCompile Include="..\src\vp8\encoder\pickinter.c" />
+    <ClCompile Include="..\src\vp8\encoder\picklpf.c" />
+    <ClCompile Include="..\src\vp8\encoder\psnr.c" />
+    <ClCompile Include="..\src\vp8\encoder\quantize.c" />
+    <ClCompile Include="..\src\vp8\encoder\ratectrl.c" />
+    <ClCompile Include="..\src\vp8\encoder\rdopt.c" />
+    <ClCompile Include="..\src\vp8\encoder\segmentation.c" />
+    <ClCompile Include="..\src\vp8\encoder\tokenize.c" />
+    <ClCompile Include="..\src\vp8\encoder\treewriter.c" />
+    <ClCompile Include="..\src\vp8\encoder\temporal_filter.c" />
+    <ClCompile Include="..\src\vp8\vp8_dx_iface.c" />
+    <ClCompile Include="..\src\vp8\decoder\asm_dec_offsets.c" />
+    <ClCompile Include="..\src\vp8\decoder\dboolhuff.c" />
+    <ClCompile Include="..\src\vp8\decoder\decodemv.c" />
+    <ClCompile Include="..\src\vp8\decoder\decodframe.c" />
+    <ClCompile Include="..\src\vp8\decoder\detokenize.c" />
+    <ClCompile Include="..\src\vp8\decoder\onyxd_if.c" />
+    <ClCompile Include="..\src\vp8\decoder\threading.c" />
+    <ClCompile Include="vpx_config.c" />
+    <ClCompile Include="..\src\vpx_ports\x86_cpuid.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vpx.def" />
+    <None Include="..\src\libs.mk" />
+    <None Include="..\src\vpx\vpx_codec.mk" />
+    <None Include="..\src\vpx_mem\vpx_mem.mk" />
+    <None Include="..\src\vpx_scale\vpx_scale.mk" />
+    <None Include="..\src\vp8\vp8_common.mk" />
+    <None Include="..\src\vp8\vp8cx.mk" />
+    <None Include="..\src\vp8\vp8dx.mk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\vpx\vpx_decoder.h" />
+    <ClInclude Include="..\src\vpx\vpx_encoder.h" />
+    <ClInclude Include="..\src\vpx\internal\vpx_codec_internal.h" />
+    <ClInclude Include="..\src\vpx\vpx_codec.h" />
+    <ClInclude Include="..\src\vpx\vpx_codec_impl_bottom.h" />
+    <ClInclude Include="..\src\vpx\vpx_codec_impl_top.h" />
+    <ClInclude Include="..\src\vpx\vpx_image.h" />
+    <ClInclude Include="..\src\vpx_mem\vpx_mem.h" />
+    <ClInclude Include="..\src\vpx_mem\include\vpx_mem_intrnl.h" />
+    <ClInclude Include="..\src\vpx_scale\scale_mode.h" />
+    <ClInclude Include="..\src\vpx_scale\yv12config.h" />
+    <ClInclude Include="..\src\vpx_scale\vpxscale.h" />
+    <ClInclude Include="..\src\vpx_scale\generic\yv12extend_generic.h" />
+    <ClInclude Include="..\src\vp8\common\pragmas.h" />
+    <ClInclude Include="..\src\vp8\common\ppflags.h" />
+    <ClInclude Include="..\src\vp8\common\onyx.h" />
+    <ClInclude Include="..\src\vp8\common\onyxd.h" />
+    <ClInclude Include="..\src\vp8\common\coefupdateprobs.h" />
+    <ClInclude Include="..\src\vp8\common\default_coef_probs.h" />
+    <ClInclude Include="..\src\vp8\common\filter.h" />
+    <ClInclude Include="..\src\vp8\common\alloccommon.h" />
+    <ClInclude Include="..\src\vp8\common\blockd.h" />
+    <ClInclude Include="..\src\vp8\common\common.h" />
+    <ClInclude Include="..\src\vp8\common\entropy.h" />
+    <ClInclude Include="..\src\vp8\common\entropymode.h" />
+    <ClInclude Include="..\src\vp8\common\entropymv.h" />
+    <ClInclude Include="..\src\vp8\common\extend.h" />
+    <ClInclude Include="..\src\vp8\common\findnearmv.h" />
+    <ClInclude Include="..\src\vp8\common\header.h" />
+    <ClInclude Include="..\src\vp8\common\invtrans.h" />
+    <ClInclude Include="..\src\vp8\common\loopfilter.h" />
+    <ClInclude Include="..\src\vp8\common\modecont.h" />
+    <ClInclude Include="..\src\vp8\common\mv.h" />
+    <ClInclude Include="..\src\vp8\common\onyxc_int.h" />
+    <ClInclude Include="..\src\vp8\common\quant_common.h" />
+    <ClInclude Include="..\src\vp8\common\reconinter.h" />
+    <ClInclude Include="..\src\vp8\common\reconintra4x4.h" />
+    <ClInclude Include="..\src\vp8\common\setupintrarecon.h" />
+    <ClInclude Include="..\src\vp8\common\swapyv12buffer.h" />
+    <ClInclude Include="..\src\vp8\common\systemdependent.h" />
+    <ClInclude Include="..\src\vp8\common\threading.h" />
+    <ClInclude Include="..\src\vp8\common\treecoder.h" />
+    <ClInclude Include="..\src\vp8\common\variance.h" />
+    <ClInclude Include="..\src\vp8\common\vp8_entropymodedata.h" />
+    <ClInclude Include="..\src\vp8\common\x86\filter_x86.h" />
+    <ClInclude Include="..\src\vp8\common\postproc.h" />
+    <ClInclude Include="..\src\vp8\encoder\defaultcoefcounts.h" />
+    <ClInclude Include="..\src\vp8\encoder\encodeframe.h" />
+    <ClInclude Include="..\src\vp8\encoder\block.h" />
+    <ClInclude Include="..\src\vp8\encoder\boolhuff.h" />
+    <ClInclude Include="..\src\vp8\encoder\bitstream.h" />
+    <ClInclude Include="..\src\vp8\encoder\denoising.h" />
+    <ClInclude Include="..\src\vp8\encoder\encodeintra.h" />
+    <ClInclude Include="..\src\vp8\encoder\encodemb.h" />
+    <ClInclude Include="..\src\vp8\encoder\encodemv.h" />
+    <ClInclude Include="..\src\vp8\encoder\firstpass.h" />
+    <ClInclude Include="..\src\vp8\encoder\lookahead.h" />
+    <ClInclude Include="..\src\vp8\encoder\mcomp.h" />
+    <ClInclude Include="..\src\vp8\encoder\modecosts.h" />
+    <ClInclude Include="..\src\vp8\encoder\onyx_int.h" />
+    <ClInclude Include="..\src\vp8\encoder\pickinter.h" />
+    <ClInclude Include="..\src\vp8\encoder\psnr.h" />
+    <ClInclude Include="..\src\vp8\encoder\quantize.h" />
+    <ClInclude Include="..\src\vp8\encoder\ratectrl.h" />
+    <ClInclude Include="..\src\vp8\encoder\rdopt.h" />
+    <ClInclude Include="..\src\vp8\encoder\tokenize.h" />
+    <ClInclude Include="..\src\vp8\encoder\treewriter.h" />
+    <ClInclude Include="..\src\vp8\encoder\segmentation.h" />
+    <ClInclude Include="..\src\vp8\encoder\dct_value_cost.h" />
+    <ClInclude Include="..\src\vp8\encoder\dct_value_tokens.h" />
+    <ClInclude Include="..\src\vpx\vp8.h" />
+    <ClInclude Include="..\src\vpx\vp8cx.h" />
+    <ClInclude Include="..\src\vp8\decoder\dboolhuff.h" />
+    <ClInclude Include="..\src\vp8\decoder\decodemv.h" />
+    <ClInclude Include="..\src\vp8\decoder\decoderthreading.h" />
+    <ClInclude Include="..\src\vp8\decoder\detokenize.h" />
+    <ClInclude Include="..\src\vp8\decoder\onyxd_int.h" />
+    <ClInclude Include="..\src\vp8\decoder\treereader.h" />
+    <ClInclude Include="..\src\vpx\vp8dx.h" />
+    <ClInclude Include="..\src\vpx\vpx_integer.h" />
+    <ClInclude Include="..\src\vpx_ports\asm_offsets.h" />
+    <ClInclude Include="..\src\vpx_ports\vpx_timer.h" />
+    <ClInclude Include="..\src\vpx_ports\mem.h" />
+    <ClInclude Include="..\src\vpx_ports\x86.h" />
+    <ClInclude Include="vpx_rtcd.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\src\build\x86-msvs\yasm.targets" />
+  </ImportGroup>
+</Project>

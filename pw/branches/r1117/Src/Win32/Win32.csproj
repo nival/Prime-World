@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <ProjectGuid>{7398874F-AEA0-4A0E-8239-E3A6668A3712}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Win32</RootNamespace>
+    <AssemblyName>Win32</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\_Release\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Shipping|Win32' ">
+    <OutputPath>..\_Shipping\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ShippingSingleExe|Win32' ">
+    <OutputPath>..\_ShippingSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseSingleExe|Win32' ">
+    <OutputPath>..\_ReleaseSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorCodes.cs" />
+    <Compile Include="GDI.cs" />
+    <Compile Include="Kernel.cs" />
+    <Compile Include="Multimedia.cs" />
+    <Compile Include="NetApi.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shell.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Win32.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

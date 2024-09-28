@@ -1,0 +1,35 @@
+sources = [ 
+    'naio.test.cpp',
+    'specific.h',
+    'stdafx.cpp',
+    'stdafx.h',
+    'NLClientHandler.cpp',
+    'NLClientHandler.h',
+    'NLProtocolHandler.cpp',
+    'NLProtocolHandler.h',
+    'NLProtocolHandlerFactory.cpp',
+    'NLProtocolHandlerFactory.h',
+] 
+
+inlined = False
+
+components = [
+    'System/ServerDumpers', 
+    'System/ConfigFiles', 
+    'System/Asserts', 
+    'System/CrashHandler',
+    'MemoryLib/NewDelete',
+    'NetworkAIO/netlayer',
+] 
+
+libDependencies = [
+    'rpcrt4.lib' , 'shlwapi.lib'
+]
+
+includePaths = [
+    '../..',
+]
+
+globalCompilerKeys = [ '/D"_CRT_NONSTDC_NO_WARNINGS"' ]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

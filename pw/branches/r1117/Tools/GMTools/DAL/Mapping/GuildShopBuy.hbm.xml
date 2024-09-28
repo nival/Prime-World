@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="GuildShopBuy">
+
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">guildshopbuy_id_sequence</param>
+      </generator>
+    </id>
+
+    <many-to-one name="Player" not-null="true" />
+    <many-to-one name="Guild" not-null="true" />
+    <many-to-one name="GuildShopItem" not-null="true" />
+    <many-to-one name="GuildPointsLog" not-null="true" />
+
+    <property name="HasSuzerain" not-null="true" />
+    <property name="ShopLevel" not-null="true" />
+    <property name="Timestamp" not-null="true" />
+
+    <sql-insert check="none">
+      INSERT INTO guildshopbuy
+      (player, guild, guildshopitem, guildpointslog, hassuzerain, shoplevel, timestamp, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

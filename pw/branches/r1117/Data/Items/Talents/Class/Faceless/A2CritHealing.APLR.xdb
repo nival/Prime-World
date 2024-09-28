@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Heroes/Faceless/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Faceless/Ability1.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/Faceless/Ability3.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Faceless/A2CritHealing.APLR" id="3F4C3C8C-97FB-4B53-B040-48D59032CC15">
+				<HealApplicator>
+					<amount>
+						<compiledString>FTEAAAAEAAAAOAAAAFEAAACHAAAApwAAAEZhY2VsZXNzX0EyAEZhY2VsZXNzX0EyAEZhY2VsZXNzX0EyAEEySGVhbEFtb3VudABVi+yD7BBoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aBgAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoJAAAAItV9IsCi030i1BQ/9LZXfDrBdnu2V3w2UXwi+VdwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>talconst("Faceless_A2","A2HealAmount")</sString>
+					</amount>
+					<applyTarget>AbilityOwner</applyTarget>
+					<caption>лечить</caption>
+					<enabled>
+						<compiledString>FSQAAAAEAAAATAAAAF8AAACOAAAApwAAAGlzQ3JpdGljYWwAAEZhY2VsZXNzX0EyAEZhY2VsZXNzX0EyAFWL7IPsFFaLRRCLEItNEItCSP/QiUX8i038ixGLTfyLQkj/0IlF+GgAAAAAi034ixGLTfiLQlT/0Nwd9AAAAN/g9sREenuLTQiLEYtNCItCTP/Qi/CLTQiLEYtNCIuCkAEAAP/QO/B1WGgMAAAAi00IixGLTQiLgqgBAAD/0IXAdCpoGAAAAItNCIsRi00Ii4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdAnHRewBAAAA6wfHRewAAAAAikXsXovlXcMAAAAAAADwPw==</compiledString>
+						<returnType>bool</returnType>
+						<sString>mObjectParent-&gt;GetObjectParent()-&gt;GetVariable("isCritical") == 1.0f &amp;&amp; sTerrainType == sFctn &amp;&amp; (tal("Faceless_A2"))</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<healTarget>Health</healTarget>
+					<ignoreHealingMods>false</ignoreHealingMods>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+				</HealApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>33</behaviorFlags>
+	<caption>А2: полечить если на родной земле и был крит</caption>
+	<effect>
+		<Item href="/Effects/Buffs/Regen/_TimeShort.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQsAAAACAAAAIwAAADYAAABpc0NyaXRpY2FsAFWL7IPsCFaLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3B18AAAA3+D2xER6LItNCIsRi00Ii0JM/9CL8ItNCIsRi00Ii4KQAQAA/9A78HUJx0X4AQAAAOsHx0X4AAAAAIpF+F6L5V3DAAAAAAAA8D8=</compiledString>
+		<returnType>bool</returnType>
+		<sString>mObjectParent-&gt;GetVariable("isCritical") == 1.0f &amp;&amp; sTerrainType == sFctn</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

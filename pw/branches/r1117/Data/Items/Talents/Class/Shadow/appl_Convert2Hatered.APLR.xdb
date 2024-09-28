@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PermanentStatModApplicator>
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>convert to hatred</caption>
+	<customApplyType>None</customApplyType>
+	<enabled>
+		<compiledString>FRMAAAACAAAAGgAAAC8AAABIYXRyZWQAAEhhdHJlZF9NYXgAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/QaAgAAACLTQiLEYtNCIuCiAEAAN1d+P/Q3F343+D2xEF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vHatred &lt; sender.vHatred_Max</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<modifier>
+		<addValue>
+			<compiledString>FToAAAAFAAEAQQAAAFYAAAB7AAAAmAAAAMMAAAAHAQAASGF0cmVkX01heAAASGF0cmVkAABIYXRyZWRfRGFtYWdlRGVhbHQAAERhbWFnZV9QZXJfSGF0cmVkAFWL7IPsHGgAAAAAi0UIixCLTQiLgogBAAD/0GgMAAAAi00IixGLTQiLgogBAADdXfj/0Nxt+Nld9NlF9FHZHCRoFAAAAItNCIsRi00Ii4KIAQAA/9CLTQxRi1UIUmgoAAAAi0UQixCLTRCLQlDdXez/0Nx97Nld6NlF6FHZHCToJwAAAIPEBNwF3QAAANld5NlF5FHZHCToQgAAAIPECIvlXcMAAAAAAADwP1WL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOjp/v//g8QI2V382UX8i+Vdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+			<returnType>float</returnType>
+			<sString>min( floor( sender.vHatred_DamageDealt / cDamage_Per_Hatred )+1, sender.vHatred_Max - sender.vHatred)</sString>
+		</addValue>
+		<multValue>
+			<compiledString></compiledString>
+			<returnType>float</returnType>
+			<sString>1.0f</sString>
+		</multValue>
+		<stat>Life</stat>
+		<topModifier>false</topModifier>
+		<variable>Hatred</variable>
+	</modifier>
+	<providerName></providerName>
+</PermanentStatModApplicator>

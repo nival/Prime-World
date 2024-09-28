@@ -1,0 +1,1 @@
+start UniServerApp-clusteradmin.exe clusteradmin

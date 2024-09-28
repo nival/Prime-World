@@ -1,0 +1,163 @@
+<!--***** BEGIN LICENSE BLOCK *****
+ - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ - 
+ - The contents of this file are subject to the Mozilla Public License Version
+ - 1.1 (the "License"); you may not use this file except in compliance with
+ - the License. You may obtain a copy of the License at
+ - http://www.mozilla.org/MPL/
+ - 
+ - Software distributed under the License is distributed on an "AS IS" basis,
+ - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ - for the specific language governing rights and limitations under the
+ - License.
+ - 
+ - The Original Code is [Open Source Virtual Machine.].
+ - 
+ - The Initial Developer of the Original Code is
+ - Adobe System Incorporated.
+ - Portions created by the Initial Developer are Copyright (C) 2009
+ - the Initial Developer. All Rights Reserved.
+ - 
+ - Contributor(s):
+ -   Adobe AS3 Team
+ - 
+ - Alternatively, the contents of this file may be used under the terms of
+ - either the GNU General Public License Version 2 or later (the "GPL"), or
+ - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ - in which case the provisions of the GPL or the LGPL are applicable instead
+ - of those above. If you wish to allow use of your version of this file only
+ - under the terms of either the GPL or the LGPL, and not to allow others to
+ - use your version of this file under the terms of the MPL, indicate your
+ - decision by deleting the provisions above and replace them with the notice
+ - and other provisions required by the GPL or the LGPL. If you do not delete
+ - the provisions above, a recipient may use your version of this file under
+ - the terms of any one of the MPL, the GPL or the LGPL.
+ - 
+ - ***** END LICENSE BLOCK ***** -->
+
+<!--
+
+This is a strawman for how we specify version compatibility for the player.
+
+Player API versions are associated with the set of attributes that defines 
+incompatible changes to that API. At a minimum this set incudes the release 
+of the player. In Argo we will likely add two more attributes: product 
+(Player and AIR) and profile (Desktop and SmartPhone). This set of attributes
+can change over time. Note however, even if attributes are dropped from
+the specification, they must remain in the compatibility matrix forever.
+
+The list of attributes within its parent defines the compatiblity relationship
+between those attributes. Release 10.1.52 is compatible with 10.1.62, but not 
+vice-versa. A particular profile and release of Player is compatible with the
+same profile and release of AIR, but not vice-versa. 
+
+The leaf elements are always version specifications. These must be unique
+but do not have to be in any particular order. 
+
+From this xml we generate AS code that defines a compatibility matrix.
+This code is embedded in the release of Flash runtime glue and used by
+ASC and AVM to control the visibility of names in the API.
+
+-->
+
+<api>
+<versions id="Flash Runtime">
+  <release id="0">
+    <product id="player">
+      <profile id="full">
+        <version id="660" alias="FP_9_0"/>
+      </profile>
+    </product>
+    <product id="air">
+      <profile id="full">
+        <version id="661" alias="AIR_1_0"/>
+      </profile>
+    </product>
+  </release>
+  <release id="1">
+    <product id="player">
+      <profile id="full">
+	<version id="662" alias="FP_10_0"/>
+      </profile>
+    </product>
+    <product id="air">
+      <profile id="full">
+	<version id="663" alias="AIR_1_5"/>
+      </profile>
+    </product>
+  </release>
+  <release id="2">
+    <product id="air">
+      <profile id="full">
+	<version id="664" alias="AIR_1_5_1"/>
+      </profile>
+    </product>
+  </release>
+  <release id="3">
+    <product id="player">
+      <profile id="full">
+	<version id="665" alias="FP_10_0_32"/>
+      </profile>
+    </product>
+    <product id="air">
+      <profile id="full">
+	<version id="666" alias="AIR_1_5_2"/>
+      </profile>
+    </product>
+  </release>
+  <release id="4">
+    <product id="player">
+      <profile id="full">
+	<version id="667" alias="FP_10_1"/>
+      </profile>
+      <profile id="system">
+	<version id="669" alias="FP_SYS"/>
+      </profile>
+    </product>
+    <product id="air">
+      <profile id="full">
+	<version id="668" alias="AIR_2_0"/>
+      </profile>
+      <profile id="system">
+	<version id="670" alias="AIR_SYS"/>
+      </profile>
+    </product>
+  </release>
+</versions>
+<uris>
+  <uri id=""/>
+  <uri id="__AS3__.vec"/>
+  <uri id="adobe.utils"/>
+  <uri id="avmplus"/>
+  <uri id="flash.accessibility"/>
+  <uri id="flash.automation"/>
+  <uri id="flash.data"/>
+  <uri id="flash.debugger"/>
+  <uri id="flash.desktop"/>
+  <uri id="flash.display"/>
+  <uri id="flash.errors"/>
+  <uri id="flash.events"/>
+  <uri id="flash.external"/>
+  <uri id="flash.filesystem"/>
+  <uri id="flash.filters"/>
+  <uri id="flash.geom"/>
+  <uri id="flash.globalization"/>
+  <uri id="flash.html"/>
+  <uri id="flash.html.script"/>
+  <uri id="flash.media"/>
+  <uri id="flash.net"/>
+  <uri id="flash.net.dns"/>
+  <uri id="flash.net.drm"/>
+  <uri id="flash.printing"/>
+  <uri id="flash.profiler"/>
+  <uri id="flash.sampler"/>
+  <uri id="flash.security"/>
+  <uri id="flash.system"/>
+  <uri id="flash.text"/>
+  <uri id="flash.text.engine"/>
+  <uri id="flash.text.ime"/>
+  <uri id="flash.ui"/>
+  <uri id="flash.utils"/>
+  <uri id="flash.xml"/>
+</uris>
+</api>

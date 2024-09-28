@@ -1,0 +1,272 @@
+/*!
+
+\page crashrptprobe_api_examples Examples of Using CrashRptProbe API
+
+This page contains several examples of using CrashRptProbe API described 
+in \ref using_crashrptprobe_api.
+
+\section opening_an_error_report Opening Error Report
+
+The following example shows how to open an error report file:
+\code
+#include <CrashRptProbe.h>
+
+//...
+  
+CrpHandle hReport = 0;
+int nResult = crpOpenErrorReport(
+               _T("0b3b0c1b-3450-4c39-9459-42221ae66460.zip"), // Zip archive name
+               _T("2e4345603454a345064371ab34195316"), // MD5 hash for the file
+               _T("D:\\MyApp\\1.3.4\\Sym; D:\\MyApp\\1.3.5\\Sym"), // Where to look for symbols
+               0, // Reserved
+               &hReport
+               );
+
+if(nResult!=0) // Check the result
+{
+  // Get the error message
+  TCHAR szErrorMsg[256];
+  crpGetLastErrorMsg(szErrorMsg, 256);
+  return;
+}
+
+// Read the properties, extract files...
+
+// Finally, close the report
+crpCloseErrorReport(hReport);
+
+\endcode
+
+\section gettion_row_count Getting Row Count in a Table
+
+The following example shows how to get count of rows in a table.
+
+\code
+#include "CrashRptProbe.h"
+#include <assert.h>
+
+CrpHandle hReport; // We assume this variable 
+                   // contains handle to opened error report.
+
+// Get row count in the CRP_TBL_XMLDESC_MISC table. 
+// This table contains miscellaneous info loaded from XML descriptor file.
+int nRowCount = crpGetProperty(hReport, CRP_TBL_XMLDESC_MISC, 
+                    CRP_META_ROW_COUNT, 0, NULL, 0, NULL);
+assert(nRowCount==1); // This table should always contain single row.
+
+
+// Get row count in the CRP_TBL_MDMP_MODULES table. 
+// This table contains the list of modules loaded from minidump file.
+nRowCount = crpGetProperty(hReport, CRP_TBL_MDMP_MODULES, 
+                    CRP_META_ROW_COUNT, 0, NULL, 0, NULL);
+
+\endcode
+
+\section getting_misc_info Getting Miscellaneous Information about Error Report
+
+The following example shows how to get miscellaneous information from 
+\ref CRP_TBL_XMLDESC_MISC and \ref CRP_TBL_MDMP_MISC tables.
+
+\code
+#include "CrashRptProbe.h"
+
+CrpHandle hReport; // We assume this variable 
+                   // contains handle to opened error report.
+
+const int BUFF_SIZE = 1024;
+TCHAR szBuffer[BUFF_SIZE];
+
+// Get the CrashRpt version
+int nResult = crpGetProperty(hReport, CRP_TBL_XMLDESC_MISC,
+  CRP_COL_CRASHRPT_VERSION, 0, szBuffer, BUFF_SIZE, NULL);
+
+// Get the name of the application 
+nResult = crpGetProperty(hReport, CRP_TBL_XMLDESC_MISC,
+  CRP_COL_APP_NAME, 0, szBuffer, BUFF_SIZE, NULL);
+
+// Get the exception address
+nResult = crpGetProperty(hReport, CRP_TBL_MDMP_MISC,
+  CRP_COL_EXCEPTION_ADDRESS, 0, szBuffer, BUFF_SIZE, NULL);
+
+// Get the exception thread ROWID
+nResult = crpGetProperty(hReport, CRP_TBL_MDMP_MISC,
+  CRP_COL_EXCEPTION_THREAD_ROWID, 0, szBuffer, BUFF_SIZE, NULL);
+
+// Convert string to int
+int nExceptionThreadRowId = _ttoi(szBuffer);
+
+if(nResult==0)
+{
+  // Get the exception thread ID
+  nResult = crpGetProperty(hReport, CRP_TBL_MDMP_THREADS,
+    CRP_COL_THREAD_ID, nExceptionThreadRowId, szBuffer, BUFF_SIZE, NULL);
+  
+  // Get stack trace for the exception thread.
+  // See the section below to learn how to enumerate stack frames.
+}
+
+\endcode
+
+\section enumerating_threads Enumerating Threads and Loading Stack Trace for Each Thread
+
+\code
+#include "CrashRptProbe.h"
+#include <assert.h>
+
+CrpHandle hReport; // We assume this variable 
+                   // contains handle to opened error report.
+
+// Get row count in the CRP_TBL_MDMP_THREADS table.
+int nThreadCount = crpGetProperty(hReport, CRP_TBL_MDMP_THREADS, 
+                    CRP_META_ROW_COUNT, 0, NULL, 0, NULL);
+
+// Enumerate threads
+int i;
+for(i=0; i<nThreadCount; i++)
+{
+  const int BUFF_SIZE = 1024;
+  TCHAR szThreadID[BUFF_SIZE];     // Here we will store thread ID
+  TCHAR szStackTableID[BUFF_SIZE]; // Here we will store stack trace 
+                                   // table ID for a thread.
+  TCHAR szBuffer[BUFF_SIZE]; 
+
+  // Get thread ID.
+  int nResult = crpGetProperty(hReport, CRP_TBL_MDMP_THREADS,
+                 CRP_COL_THREAD_ID, i, szThreadID, BUFF_SIZE, NULL);
+  assert(nResult==0);
+
+  // Get stack trace table ID for this thread.
+  nResult = crpGetProperty(hReport, CRP_TBL_MDMP_THREADS,
+                 CRP_COL_THREAD_STACK_TABLEID, i, szStackTableID, BUFF_SIZE, NULL);
+  assert(nResult==0);
+
+  // Get row count in the stack trace table.
+  int nFrameCount = crpGetProperty(hReport, szStackTableID, 
+                      CRP_META_ROW_COUNT, 0, NULL, 0, NULL);
+
+  int j;
+  for(j=0; j<nFrameCount; j++)
+  {
+    // Get the row ID of the module for this stack frame.
+    nResult = crpGetProperty(hReport, szStackTableID,
+                 CRP_COL_STACK_MODULE_ROWID, j, szStackTableID, BUFF_SIZE, NULL);
+    if(nResult==0)
+    {
+      // Convert row ID to int
+      int nModuleRowID = _ttoi(szBuffer);
+
+      // Get the module name from CRP_MDMP_MODULES table.
+      nResult = crpGetProperty(hReport, CRP_TBL_MDMP_MODULES,
+                      CRP_COL_MODULE_NAME, nModuleRowID, szBuffer, BUFF_SIZE, NULL);		
+    }
+ 
+    // Get the symbol name for this stack frame ().
+    nResult = crpGetProperty(hReport, szStackTableID,
+                 CRP_COL_STACK_SYMBOL_NAME, j, szStackTableID, BUFF_SIZE, NULL);
+    assert(nResult==0);
+    
+    // Check if we have valid symbol name for this stack trace.
+    if(_tcscmp(szBuffer, _T(""))!=0)
+    {
+      // We have a symbol loaded for this stack frame.
+      // Get the offset in symbol.
+      nResult = crpGetProperty(hReport, szStackTableID,
+                 CRP_COL_STACK_OFFSET_IN_SYMBOL, j, szStackTableID, BUFF_SIZE, NULL);
+    }
+    else
+    {
+      // We do not have symbol loaded for this stack frame, but we can
+      // get the program counter CPU register address for this stack frame.
+      nResult = crpGetProperty(hReport, szStackTableID,
+                 CRP_COL_STACK_ADDR_PC_OFFSET, j, szStackTableID, BUFF_SIZE, NULL);
+    }       
+  }
+}
+
+\endcode
+
+
+\section enumerating_modules Enumerating Loaded Modules
+
+The following examples shows how to enumerate loaded modules.
+
+\code
+#include "CrashRptProbe.h"
+#include <assert.h>
+
+CrpHandle hReport; // We assume this variable 
+                   // contains handle to opened error report.
+
+// Get row count in the CRP_TBL_MDMP_MODULES table.
+int nRowCount = crpGetProperty(hReport, CRP_TBL_MDMP_MODULES, 
+                    CRP_META_ROW_COUNT, 0, NULL, 0, NULL);
+
+// Enumerate modules
+int i;
+for(i=0; i<nRowCount; i++)
+{
+  const int BUFF_SIZE = 1024;
+  TCHAR szBuffer[BUFF_SIZE];
+
+  // Get module name.
+  int nResult = crpGetProperty(hReport, CRP_TBL_MDMP_MODULES,
+                 CRP_COL_MODULE_NAME, i, szBuffer, BUFF_SIZE, NULL);
+  assert(nResult==0);
+
+  // Get module image name.
+  nResult = crpGetProperty(hReport, CRP_TBL_MDMP_MODULES,
+                 CRP_COL_MODULE_IMAGE_NAME, i, szBuffer, BUFF_SIZE, NULL);
+  assert(nResult==0);
+
+  // Get module PDB file name (can be used to determine if symbols were
+  // loaded for this module).
+  nResult = crpGetProperty(hReport, CRP_TBL_MDMP_MODULES,
+                 CRP_COL_MODULE_LOADED_PDB_NAME, i, szBuffer, BUFF_SIZE, NULL);
+  assert(nResult==0);  
+	                                   
+}
+\endcode
+
+\section enumerating_file_items Enumerating and Extracting Files Contained in Error Report
+
+The following example shows how to enumerate files contained in the 
+error report and extract them. 
+
+\code
+#include "CrashRptProbe.h"
+#include <assert.h>
+
+CrpHandle hReport; // We assume this variable 
+                   // contains handle to opened error report.
+
+// Get row count in the CRP_TBL_XMLDESC_FILE_ITEMS table.
+int nRowCount = crpGetProperty(hReport, CRP_TBL_XMLDESC_FILE_ITEMS, 
+                    CRP_META_ROW_COUNT, 0, NULL, 0, NULL);
+
+// Enumerate file items
+int i;
+for(i=0; i<nRowCount; i++)
+{
+  const int BUFF_SIZE = 1024;
+  TCHAR szBuffer[BUFF_SIZE];
+
+  // Get file item name
+  int nResult = crpGetProperty(hReport, CRP_TBL_XMLDESC_FILE_ITEMS,
+                 CRP_COL_FILE_ITEM_NAME, i, szBuffer, BUFF_SIZE, NULL);
+  if(nResult==0)
+  {
+    // Extract file overwriting if such file already exists
+    int nExtract = crpExtractFile(hReport, szBuffer, szBuffer, TRUE);
+  }
+
+  // Get file item description 
+  nResult = crpGetProperty(hReport, CRP_TBL_XMLDESC_FILE_ITEMS,
+                 CRP_COL_FILE_ITEM_DESCRIPTION, i, szBuffer, BUFF_SIZE, NULL);
+  assert(nResult==0);
+
+}
+
+\endcode
+
+
+*/

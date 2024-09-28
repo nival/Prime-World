@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <ProjectGuid>{D83C2206-CF59-4414-90B6-E4DC7C1EF902}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PF_Editor</RootNamespace>
+    <AssemblyName>PF_Editor</AssemblyName>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\_Release\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Shipping|Win32' ">
+    <OutputPath>..\_Shipping\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ShippingSingleExe|Win32' ">
+    <OutputPath>..\_ShippingSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ScintillaNET, Version=2.5.2.0, Culture=neutral, PublicKeyToken=948d6c9751444115, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(OutDir)\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.3.1.31872, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(OutDir)\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EditorApplication.cs" />
+    <Compile Include="Extensions\ExecutableStringImporter.cs" />
+    <Compile Include="MainForm.cs">
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\AdvMapEditor.cs">
+    </Compile>
+    <Compile Include="Map\AdvMapObjects\AddObjectController.cs" />
+    <Compile Include="Map\AdvMapObjects\AdvMapController.cs" />
+    <Compile Include="Map\AdvMapObjects\ControllableVisualObject.cs" />
+    <Compile Include="PFEditorControl.cs">
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Map\Wizard\MapCreationDialog.resx">
+      <DependentUpon>MapCreationDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Map\AdvMapObjects\mapeditor.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Extensions\TransparentImporters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EditorLib\EditorLib.csproj">
+      <Project>{AEB9B15A-6C51-4B9B-8838-7254064A4E98}</Project>
+      <Name>EditorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EditorNative\EditorNative.vcproj">
+      <Project>{8661805A-1298-4D53-8666-1FB9922886AF}</Project>
+      <Name>EditorNative</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EditorPlugins\EditorPlugins.csproj">
+      <Project>{2521247A-CE57-4FAA-BBF0-3158313680F0}</Project>
+      <Name>EditorPlugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\libdb.NET\libdb.NET.csproj">
+      <Project>{2369C873-8C70-4197-8CAB-67D34C9D5412}</Project>
+      <Name>libdb.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MayaExeInteraction\MayaExeInteraction.csproj">
+      <Project>{5DFA0790-582A-4A71-93AE-A5D31AA7864F}</Project>
+      <Name>MayaExeInteraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PF_EditorNative\PF_EditorNative.vcproj">
+      <Project>{8661805A-1298-4D53-8666-1FB9922886AE}</Project>
+      <Name>PF_EditorNative</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PF_Types.DBTypes\PF_Types.DBTypes.csproj">
+      <Project>{66E75FE1-7475-4096-B532-F8F8C033FE9A}</Project>
+      <Name>PF_Types.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialTypes.DBTypes\SocialTypes.DBTypes.csproj">
+      <Project>{E1B1F76B-5499-4725-AB2C-A2F76356D684}</Project>
+      <Name>SocialTypes.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Types.DBTypes\Types.DBTypes.csproj">
+      <Project>{CB33BF48-712E-4EAB-8436-E64DC30CBCD7}</Project>
+      <Name>Types.DBTypes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <EmbeddedResource Include="Extensions\BaseExecutableStringEditor.resx">
+      <DependentUpon>BaseExecutableStringEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TypesHash.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonAssemblyInfoCustomAttribute.cs" />
+    <Compile Include="CustomAssemblyInfo.cs" />
+    <Compile Include="ExportToSocial\ExportToSocialCommand.cs" />
+    <Compile Include="ExportToSocial\ExportToSocialConfig.cs" />
+    <Compile Include="Extensions\BaseExecutableStringEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extensions\BaseExecutableStringEditor.Designer.cs">
+      <DependentUpon>BaseExecutableStringEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\ExecutableStringExtension.cs" />
+    <Compile Include="Map\AdvMapObjects\ControllableItem.cs" />
+    <Compile Include="Map\AdvMapObjects\ListObserver.cs" />
+    <Compile Include="Map\AdvMapObjects\RoadVisualObject.cs" />
+    <Compile Include="Map\MultiStateSoundWrapper.cs" />
+    <Compile Include="Map\Wizard\CreateMapCommand.cs" />
+    <Compile Include="Map\Wizard\MapCreationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Wizard\MapCreationDialog.Designer.cs">
+      <DependentUpon>MapCreationDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PF_TypesHash.cs" />
+    <Compile Include="StandartValues.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

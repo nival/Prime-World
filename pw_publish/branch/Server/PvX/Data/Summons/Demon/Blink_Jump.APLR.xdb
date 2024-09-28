@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Summons/Demon/TripleBlink.ABLT" Count="3" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>выбор цели и телепорт</caption>
+	<enabled>
+		<compiledString>FSMAAAADAAAAMAAAAEgAAABbAAAATWVsZWVUYXJnZXRzQ291bnRlcgB0YXJnZXRzQ291bnRlcgBVi+yD7AhqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxoFAAAAItN/IsRi038i0JU/9DcHX0AAADf4PbEQXoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applMeleeTargetsCounter(GLOBAL)-&gt;GetVariable("targetsCounter") &lt;= 0</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Summons/Demon/Blink_Jump.APLR" id="9CEF4470-0397-41D9-84AC-CAE7ABD74657">
+		<Spell>
+			<applicators>
+				<Item href="/Summons/Demon/Blink_Jump.APLR" id="EABA12F7-E97D-461B-83F6-002859EF1336">
+					<MoveToApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption></caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<isMoveDirect>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</isMoveDirect>
+						<isNotStackable>false</isNotStackable>
+						<justRotate>true</justRotate>
+						<lifeTime>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.5</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<moveRange>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</moveRange>
+						<moveSpeed>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</moveSpeed>
+						<moveTarget>ApplicatorTarget</moveTarget>
+						<offset>
+							<x>0</x>
+							<y>0</y>
+						</offset>
+						<providerName></providerName>
+						<pushUnits>false</pushUnits>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+					</MoveToApplicator>
+				</Item>
+				<Item href="/Summons/Demon/Blink_Jump.APLR" id="64133459-E04D-4588-8CBE-F0DD2F893A60">
+					<TeleportApplicator>
+						<appearEffect href="/Effects/General/Blink/_RedSTD.EFFT" />
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>телепорт</caption>
+						<disappearEffect href="/Effects/General/Blink/_RedSTD.EFFT" />
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<maxDistance>
+							<compiledString>FREAAAABAAAAHQAAAFRlbGVwb3J0RGlzdGFuY2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cTeleportDistance</sString>
+						</maxDistance>
+						<notifyInboundDispatches>true</notifyInboundDispatches>
+						<providerName></providerName>
+						<pushUnits>false</pushUnits>
+						<teleportTarget>ApplicatorTarget</teleportTarget>
+					</TeleportApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Summons/Demon/Blink_Jump.APLR" id="CBEF0149-16CA-4268-8243-0BC13CB1ABB8">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Summons/Demon/Blink_Jump.APLR" id="C9804BC0-C6DE-41BE-BB3A-661B477B3FB8">
+		<CountingTargetSelector>
+			<enableSorting>true</enableSorting>
+			<flags>0</flags>
+			<heroesFirst>true</heroesFirst>
+			<mode>Normal</mode>
+			<order>Increasing</order>
+			<sortingValue>
+				<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nld9NlF9IvlXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>rLife/rMaxLife</sString>
+			</sortingValue>
+			<targetSelector href="/Summons/Demon/Blink_Destination.TGSL" />
+			<targetsNumber>
+				<compiledString></compiledString>
+				<returnType>int</returnType>
+				<sString>1</sString>
+			</targetsNumber>
+		</CountingTargetSelector>
+	</targetSelector>
+</SpellApplicator>

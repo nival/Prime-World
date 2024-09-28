@@ -1,0 +1,25 @@
+#include "_commonPostProcess.h"
+
+#define KERNEL_SIZE 9
+#define ARRAY_SIZE    (1 + (KERNEL_SIZE)/2)
+
+sampler diffuseMap : register(s0);
+sampler noiseMap   : register(s1);
+float4  noiseParams : register(PSHADER_LOCALCONST0);
+float4  kernel[ARRAY_SIZE] : register(PSHADER_LOCALCONST1);
+
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  float2 noiseTexcoord = noiseParams.xx * Input.Texcoord + noiseParams.yz;
+  float2 texCoord = Input.Texcoord;
+  texCoord.x += noiseParams.w * (tex2D(noiseMap, noiseTexcoord).x - 0.5);
+  
+  half4 diffuse = half(kernel[0].z) * tex2D(diffuseMap, texCoord);
+  for (int i = 1; i < ARRAY_SIZE; i++) {
+    diffuse += half(kernel[i].z) * tex2D(diffuseMap, texCoord + kernel[i].xy);
+    diffuse += half(kernel[i].w) * tex2D(diffuseMap, texCoord - kernel[i].xy);
+  }
+
+  return diffuse;
+}

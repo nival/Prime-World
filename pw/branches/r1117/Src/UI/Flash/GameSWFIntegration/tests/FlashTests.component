@@ -1,0 +1,40 @@
+import os
+
+sources = [
+  'FlashCompiler.cpp',
+  'FlashCompiler.h',
+]
+
+builders = [ 
+    InstallBuilder( 'EventsTests/EventPhases.as', '../' ),
+    InstallBuilder( 'EventsTests/EventCtor.as', '../' ),
+    InstallBuilder( 'DisplayTests/DisplayObjectContainer.as', '../' ),
+    InstallBuilder( 'UtilsTests/Timer.as', '../' ),
+    InstallBuilder( 'Crushes/NoProperty.as', '../' ),
+
+
+    InstallBuilder( 'swfs/SimpleGraphicsTest.swf', '../' ),
+    InstallBuilder( 'swfs/simpletext.swf', '../' ),
+    InstallBuilder( 'swfs/simpletext_.swf', '../' ),
+    InstallBuilder( 'swfs/TestRemoveAt.swf', '../' ),
+    InstallBuilder( 'swfs/escape_menu.swf', '../' ),
+    InstallBuilder( 'swfs/ElfEscMenu.swf', '../' ),
+    InstallBuilder( 'swfs/testButton.swf', '../' ),
+    InstallBuilder( 'swfs/ZZButton.swf', '../' ),
+    InstallBuilder( 'swfs/lightBox.swf', '../' ),
+    InstallBuilder( 'swfs/main.swf', '../' ),
+
+    
+    InstallBuilder( '_build_test.bat', '../' ),
+    InstallBuilder( 'build_utilities/asc.jar', '../build_utilities' ),
+    InstallBuilder( 'build_utilities/builtin.abc', '../build_utilities' ),
+    InstallBuilder( 'build_utilities/playerglobal.abc', '../build_utilities' ),
+    InstallBuilder( 'build_utilities/testing.abc', '../build_utilities' ),
+    InstallBuilder( 'build_utilities/TestingFacility.as', '../build_utilities' ),
+]
+
+components = [
+    'System/NSTL',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

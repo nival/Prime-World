@@ -1,0 +1,28 @@
+#include "stdafx.h"
+#include "NativeFileSystem.h"
+
+using namespace EditorNative;
+
+static IFileSystem* pFileSystem = nullptr;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void NativeFileSystem::Initialize()
+{
+	if ( pFileSystem == nullptr )
+	{
+		NFile::InitBaseDir();
+		pFileSystem = new WinFileSystem( NFile::GetBaseDir() + "Data", true );
+		RootFileSystem::RegisterFileSystem( pFileSystem );
+		RootFileSystem::SetWriteFileSystem( pFileSystem );
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void NativeFileSystem::Release()
+{
+	if ( pFileSystem != nullptr )
+	{
+		RootFileSystem::UnregisterFileSystem( pFileSystem );
+		pFileSystem = nullptr;
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

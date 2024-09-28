@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/Normals/Normal7/CTF_S11.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Champions/Champion1/PvE_R11.CREEP" Count="1" />
+	<applicators>
+		<Item href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="89F38F65-60D0-4CDD-9E0E-A6D0429674A9">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Трансформирует урон от героев в здоровье</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="01DC1CBE-0C48-42A6-AEFD-8E40E8A5C3BA">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1073742079</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>2</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</mul>
+						<objectFilter>536870915</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="5313D533-9CB3-486B-8A8C-CB7DF5AB7267">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="D3919F8F-C449-4E83-9630-14F953B80DC7">
+										<HealApplicator>
+											<amount>
+												<compiledString>FRAAAAABAAAAJwAAAGRhbWFnZUNvbnZlcnRlZABVi+yD7AiLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3MDZXfjZRfiL5V3D</compiledString>
+												<returnType>float</returnType>
+												<sString>appl.parent.GetVariable("damageConverted") *2</sString>
+											</amount>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption></caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<healTarget>Health</healTarget>
+											<ignoreHealingMods>false</ignoreHealingMods>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+										</HealApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="2FFE6D48-56D3-4251-915B-49598F513830">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="/Effects/Buffs/Regen/_TimeShort.EFFT" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="3F809425-8CF5-4F06-AEA9-0ACC13D2D797">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Убираем эвейд на время щита</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Evasion</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="9479F056-5D8E-4EEF-8AC5-6D079701F3F8">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Урон от саммонов не лечит</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="398A1DE2-9798-48DF-85ED-B78BB91179E5">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1073742079</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</mul>
+						<objectFilter>4</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal7/DamageTransformer.APLR" id="52671308-6312-43B7-A4A4-C08CF89020CD">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Запрещаем автоатаковать</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>2097408</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Damage Transformer</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Creeps/Normals/Normal7/DamageTransformer.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/Defence/_Gold.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Neutral/heal_shield.ITEX" />
+	<lifeTime>
+		<compiledString>FRAAAAABAAAAHAAAAFNoaWVsZF9kdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cShield_duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Creeps/Normals/Normal7/DamageTransformer.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

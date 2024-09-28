@@ -1,0 +1,28 @@
+if platform == 'win32':
+  sources = [ 
+      'NewDelete.h',
+      'NewDelete.cpp',
+      'malloc.c.h',
+      'nedmalloc.h',
+      'nedmalloc.cpp',
+      'NewHandlerDetails.h',
+      'NewHandler.h',
+      'NewHandler.cpp',
+      'NewHandlerDetails.h',
+      'UserMessage.cpp',
+      'UserMessage.h'
+  ]
+
+type = 'dll'
+
+if platform == 'win32':
+    inlined = False
+else:
+    inlined = True
+
+components = [
+    'MemoryLib/SymAccess'
+]
+
+compilerKeys = [ '/DNI_MALLOC_IMPL=1' ]
+#compilerKeys = [ '/DNI_MALLOC_IMPL=2', '/DNI_DUMP_LEAKS_TO_FILE', '/DMAX_STACK_SIZE=30', '/DCHECK_MEMORY_LEAKS']

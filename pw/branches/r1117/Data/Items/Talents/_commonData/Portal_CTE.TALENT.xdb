@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent parent="/Items/Talents/_commonData/PortalBlank.TALENT">
+	<BackLink DBID="/Items/Talents/_commonData/Portal_CTE.TALENT" Count="2" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/_.ADMPSTTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Scoring.SCTB" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/status_G336_TelBlock.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="7C954972-DF3B-43FF-87D2-C3C448401EB4">
+			<SpellApplicator parent="/Items/Talents/_commonData/Teleport_to_friendly_terrain.APLR">
+				<spell href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="8C5EDEDB-D39E-4202-BD36-ED267D9EFAF3">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="68CFE849-D612-49D1-AB83-BBDB438ED37B">
+								<ChannellingApplicator parent="/Items/Talents/_commonData/PortalChannelling.APLR">
+									<cancelSpell href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="64DDDD7B-B608-48FC-981A-03C634B1C065">
+										<Spell>
+											<applicators>
+												<Item href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="E2A3D79D-6F59-493C-A912-CAEF480FDA29">
+													<RefreshCooldownApplicator parent="/Items/Talents/_commonData/PortalCancelCDR.APLR">
+														<talents>
+															<Item href="/Items/Talents/_commonData/Portal_CTE.TALENT" />
+														</talents>
+													</RefreshCooldownApplicator>
+												</Item>
+												<Item href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="8859374D-5C6F-41F7-9B98-8548187491AB">
+													<AbilityEndApplicator parent="/GameLogic/GeneralApplicators/EndOfAbility.APLR">
+														<applyTarget>AbilityOwner</applyTarget>
+														<cancelApplicators>true</cancelApplicators>
+														<enabled>
+															<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLAv/QXcM=</compiledString>
+															<returnType>bool</returnType>
+															<sString>mIsAbilityOn</sString>
+														</enabled>
+													</AbilityEndApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="D0320C85-AA76-49A1-A245-9581CE535173">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>true</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</cancelSpell>
+								</ChannellingApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="3D5EE227-97F6-491B-8B6A-20756D6E8960">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<forceBonus>9</forceBonus>
+	<marker></marker>
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/_commonData/Portal_CTE.TALENT" id="9A26E87E-9C23-4C64-BA35-EE00D808E1BC">
+			<FlagsApplicator parent="/GameLogic/GeneralApplicators/ForbidTalentByCondition.APLR">
+				<talents>
+					<Item href="/Items/Talents/_commonData/Portal_CTE.TALENT" />
+				</talents>
+			</FlagsApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>dragonvald_Portal</persistentId>
+</Talent>

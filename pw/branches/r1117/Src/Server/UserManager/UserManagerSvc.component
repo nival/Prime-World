@@ -1,0 +1,39 @@
+sources = [ 
+  'UserManagerSvc/UserManagerImpl.cpp',
+  'UserManagerSvc/UserManagerImpl.h',
+  'UserManagerSvc/UserContext.cpp',
+  'UserManagerSvc/UserContext.h',
+  'UserManagerSvc/specific.h',
+  'UserManagerSvc/stdafx.cpp',
+  'UserManagerSvc/stdafx.h',
+  'UserManagerSvc/UserManagerSvc.cpp',
+  'UserManagerSvc/UserManagerSvc.h', 
+  'UserManagerSvc/UserManagerNaming.h',
+  'UserManagerSvc/UserManagerCfg.cpp',
+  'UserManagerSvc/UserManagerCfg.h',
+  'UserManagerSvc/Types.h',
+  'UserManagerSvc/PrepareUserEnvCtx.cpp',
+  'UserManagerSvc/PrepareUserEnvCtx.h',
+  'UserManagerSvc/UserEnvInfo.cpp',
+  'UserManagerSvc/UserEnvInfo.h',
+  'UserManagerSvc/IUserRegister.h',
+  'UserManagerSvc/IPrepareUserEnvNotify.h',
+  'UserManagerSvc/PartialReconnectSettings.cpp',
+  'UserManagerSvc/PartialReconnectSettings.h',
+]
+
+includePaths = [
+  '.',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'RPC/all',
+  'ClusterTypes',
+  'UserManager/UserManagerSvc/LUserManagerIface',
+  'UserManager/UserManagerSvc/LUserNotificationIface',
+  'UserManager/UserManagerSvc/RUserNotificationIface',
+  'Relay/RelayBalancer/RRelayBalancerIface',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'UserManagerSvc\stdafx.h' ) }

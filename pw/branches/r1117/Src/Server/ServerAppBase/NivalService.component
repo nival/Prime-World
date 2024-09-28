@@ -1,0 +1,18 @@
+sources = [
+  'NivalService.h',
+  'NivalService.cpp',
+  'NivalServiceRunner.h',
+  'NivalServiceRunner.cpp',
+  'ConfigProvider.h',
+  'PerfCounters.h',
+]
+
+components = [
+  'ServerAppBase/NivalServer',
+  'Server/DebugVarUpdate/Report',
+  'System/Threading',
+  'System/EventAccumulator',
+]
+
+if platform == 'win32':
+  components += [ 'RdpTransport/RdpFrontendAgent' ]

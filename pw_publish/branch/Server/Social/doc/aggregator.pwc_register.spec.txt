@@ -1,0 +1,20 @@
+для протокола соц.аггрегатора предлагаю новую команду pwc_register
+смысл в том, чтобы передать данные get_info сразу при регистрации, чтобы аггрегатор зря не дергал get_info 
+(и можно было без проблем отлаживать создание pwc-аккаунтов на локале)
+
+1) параметры
+action=pwc_register
+snuid=<pwc_snuid> // уникальный pw connect uid; представляет собой md5 hex digest, выдается соц.сервером, не меняется никогда (даже при смене email)
+use_billing=<0|1> // аналогично обычному register: нужно ли регистрировать соответствующий аккаунт "<prefix>+<auid>" в биллинге
+birthdate=<unixtime> // стандартный unix timestamp даты рождения (UTC)
+email=<string_utf8> 
+gender=<int> // 0=none, 1=male, 2=female
+sign=<md5_signature> // цифровая подпись запроса (*); в качестве secret используем значение "pwc_aggregator_secret", прописанное в конфигах соц.сервера и аггрегатора
+
+(*) механизм генерации цифровой подписи описан здесь:
+http://confluence.nivalnetwork.com/pages/viewpage.action?pageId=150537806#%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BBPWConnect-1.%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%D1%86%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%BE%D0%B9%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%B8%D0%B4%D0%BB%D1%8F%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2
+
+2) изменения в настройках
+в конфиг аггрегатора добавляется настройка pwc_aggregator_secret=<string>
+в конфиг соц.сервера (coord_cfg.py) добавляется настройка COORDINATOR_PWC_AGGREGATOR_SECRET=<string>
+

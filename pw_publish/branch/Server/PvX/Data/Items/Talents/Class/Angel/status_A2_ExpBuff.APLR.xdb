@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Angel/Summon_Well.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Angel/status_A2_ExpBuff.APLR" id="0277729A-CBAE-494C-A7DE-1F73292E9E7A">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>+Aspd</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgowAAAD/0ItNDIsRi00Mi4LAAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rBaseAttackSpeed &gt;= rBaseDexterity</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRAAAAABAAAAHAAAAEEydV9FeHBCdWZmQXNwZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2u_ExpBuffAspd</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Angel/status_A2_ExpBuff.APLR" id="C20FA7AD-FCFA-4ECE-B76C-2724E4CDFE3A">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>+Dex</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgowAAAD/0ItNDIsRi00Mi4LAAAAA3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rBaseAttackSpeed &lt; rBaseDexterity</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQ8AAAABAAAAGwAAAEEydV9FeHBCdWZmRGV4AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2u_ExpBuffDex</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Dexterity</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Angel/status_A2_ExpBuff.APLR" id="9E8B401C-6453-4C85-A097-16DCADAC5546">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Поглощение части урона</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>WillTerExpBuff</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Angel/status_A2_ExpBuff.APLR" id="1BC7280E-CBDD-4897-9E37-B293ACD51DF7">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610612737</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString>FQ4AAAABAAAAGgAAAEEydV9FeHBUZXJEZWYAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LZ4F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>-cA2u_ExpTerDef</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</mul>
+						<objectFilter>572465663</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii4KQAQAA/9CL8ItNCIsRi00Ii0JM/9A78A+UwF5dww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sFctn == sTerrainType ? true : false</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>статус при взрыве колодца</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Angel/status_A2_ExpBuff.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>12</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Angel/A2.ITEX" />
+	<lifeTime>
+		<compiledString>FRQAAAABAAAAIAAAAEEydV9FeHBCdWZmRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2u_ExpBuffDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Angel/status_A2_ExpBuff.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

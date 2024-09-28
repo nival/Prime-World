@@ -1,0 +1,23 @@
+import os
+
+builders = [ 
+    InstallBuilder( 'TestsData/worldMap.tilemap', '../' ),
+]
+
+sources = [
+	'CommonPathFinder.cpp',
+	'CommonPathFinder.h',
+	'AStarPathFinder.cpp',
+	'AStarPathFinder.h',
+]
+
+
+components = [
+	'PF_GameLogic/TileMap',
+	'libdb/Database',
+	'System/Memory',
+	'System/Math',
+	'Vendor/Libc',
+]    
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

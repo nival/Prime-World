@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/Abilities/channeling_kabom.APLR" Count="1" />
+	<applicators>
+		<Item href="/Creeps/Abilities/status_Burn.APLR" id="31E2ED04-5D0E-472A-871D-2326050AC20A">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>период спелл</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Creeps/Abilities/status_Burn.APLR" id="6D1D6DD2-62B0-4C36-B7AD-DDCB6C094FBA">
+					<Spell>
+						<applicators>
+							<Item href="/Creeps/Abilities/status_Burn.APLR" id="57486849-FEFD-4001-9503-13207082945C">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>урон</caption>
+									<damage>
+										<compiledString>FRAAAAABAAAAHAAAAENoYW5uZWxsaW5nX0RtZwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cChannelling_Dmg</sString>
+									</damage>
+									<damageMode>4</damageMode>
+									<damageType>Material</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Creeps/Abilities/status_Burn.APLR" id="6430F576-34D2-4995-B1FA-540F6288FFE3">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+					<returnType>float</returnType>
+					<sString>1</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/BurnFX.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>статус Горение</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Creeps/Abilities/status_Burn.APLR_description.txt" />
+	<dispellPriority>Low</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FScAAAAFAAAAVgAAAIwAAACfAAAAqwAAAMQAAABkYW1hZ2VEZWFsZWQAAAAARmlyZWZveF9BMgAARmlyZWZveF9BMgBVi+yD7BBR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6M8AAACDxAzcHRABAADf4PbERA+LnQAAAItVDIsCi00Mi1BQ/9KD+BEPhIcAAACLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3B0QAQAA3+D2xEF1WGgQAAAAi00IixGLTQiLgqgBAAD/0IXAdCpoHAAAAItNCIsRi00Ii4KoAQAA/9CJRfiLTfiLEYtN+ItCBP/QiEX36wTGRfcAD7ZN94XJdAnHRfABAAAA6wfHRfAAAAAAikXwi+VdwwAAAAAAAAAAAAAAAAAAgD9Vi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>ut_bldg(false, true) &amp;&amp; rUnitKind != 17 &amp;&amp; mObjectParent-&gt;GetVariable("damageDealed") &gt; 0 &amp;&amp; tal("Firefox_A2")</sString>
+	</enabled>
+	<flags>1</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Firefox/A2.ITEX" />
+	<lifeTime>
+		<compiledString>FTEAAAAFAAAAOAAAAFEAAACHAAAApwAAAMcAAABGaXJlZm94X0EyAABGaXJlZm94X0EyAABGaXJlZm94X0EyAABCdXJuRHVyYXRpb24AVYvsg+wUaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0N2gYAAAAi1UIiwKLTQiLkKgBAAD/0olF9ItFDFCLTQhRaCQAAACLVfSLAotN9ItQUP/S2V3w6wXZ7tld8NlF8NwF1QAAANld7NlF7IvlXcMAAAAAAADgPwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>talconst("Firefox_A2","BurnDuration") + 0.5f</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Creeps/Abilities/status_Burn.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>2</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

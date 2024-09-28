@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html id="primeworld">
+  <head>
+    <title>{{ _("change_password_title") }}</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="icon" type="image/png" href="{{ static_url('img/pw.png') }}"/>
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ static_url('img/pw.ico') }}"/>
+    <link rel="stylesheet" href="{{ static_url("css/pwc/style.css") }}" type="text/css"/>
+
+    <script type="text/javascript" src="{{ static_url("js/pwconnect.js") }}"></script>
+    <noscript>&lt;meta http-equiv="X-Frame-Options" content="deny" /&gt;</noscript>
+    <script type="text/javascript">
+        function sendForm()
+        {
+            var noErrors = checkPassReset("reg_passwd__");
+            noErrors &= checkPassReset("reg_passwd2__", "reg_passwd__" );
+
+            if(noErrors)
+            {
+                var frm = document.getElementById("pwc_section__form");
+                frm.submit();
+            }
+            return false;
+        }
+        function setLogo()
+        {
+          if ("{{locale}}" != "ru")
+          {
+            document.getElementById("logo_ru").style.display = "none";
+            document.getElementById("logo_alt").style.display = "block";
+          }
+        }
+      </script>
+  </head>
+
+  <body class="pwc [pw connect]" onload="setLogo();">
+    <div class="pwc_content">
+      <div class="pwc_header">
+        <div class="pwc_content__wrap t_middle">
+          <div class="x_block__inline">
+            <a class="x_block" href="{{logo}}" target="_blank">
+              <img id="logo_ru" class="x_block" src="{{ static_url("img/pw_logo-ru.png") }}" alt="Prime World">
+
+              <!-- лого для зарубежа -->
+              <img id="logo_alt" class="x_block" src="{{ static_url("img/pw_logo-abroad.png") }}" alt="Prime World" style="display:none">
+
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pwc_section">
+        <div class="pwc_section__head t_uppercase">
+          <p class="pwc_section__head-title t_color__white ">
+            {{_("change_password_title_small")}}
+          </p>
+
+          <!-- <p class="pwc_section__head-add t_color__cyan"> -->
+          <!--   pwaccount@gmail.com -->
+          <!-- </p> -->
+        </div>
+
+        <form class="pwc_section__form" method="post" id="reg" name="change" onsubmit="return sendForm();" action="{{pwcf_prefix}}/do/changepwd">
+          <div class="pwc_section__form-line">
+            <p class="pwc_section__form-text x_block t_color__white">
+              {{ _("new_pass_label") }}
+            </p>
+
+            <label class="pwc_section__form-label f_label x_block">
+              <input class="pwc_section__form-input f_text__cyan t_color__black" type="password" id="reg_passwd__" name="reg_passwd__" value="" onblur="checkPassReset(this.id);" onfocus="hideHintReset(this);">
+            </label>
+
+            <p id="passHint" style="display:none">
+
+            </p>
+          </div>
+
+          <div class="pwc_section__form-line">
+            <p class="pwc_section__form-text x_block t_color__white">
+              {{ _("new_pass_confirm_label") }}
+            </p>
+
+            <label class="pwc_section__form-label f_label x_block">
+              <input class="pwc_section__form-input f_text__cyan t_color__black" type="password" name="reg_passwd2__" id="reg_passwd2__" value="" onblur="checkPassReset(this.id, 'reg_passwd__');" onfocus="hideHintReset(this);">
+            </label>
+
+            <p id="passHint2" style="display:none">
+
+            </p>
+          </div>
+
+          <div class="pwc_section__form-line">
+            <label class="b_button__default b_submit b_submit__cyan">
+              <span class="b_submit__text b_submit__41">
+                {{ _("change_password_button") }}
+              </span>
+
+              <input class="f_submit__none" type="submit" name="" value="submit">
+            </label>
+          </div>
+
+          <div class="pwc_section__form-line">
+            <a class="pwc_section__form-link x_block__inline t_middle" href="javascript: void(0);">
+              <span class="x_block__inline">
+                {{_("back_button")}}
+              </span>
+            </a>
+          </div>
+
+          <input type="hidden" autocomplete="off" id="locale" name="locale" value="{{locale}}">
+          <input type="hidden" autocomplete="off" name="post_form_id" value="ad92d415b0ff2f0bbae3e9a42f1b6680">
+          <input type="hidden" autocomplete="off" name="snuid" value="{{snuid}}">
+          <input type="hidden" autocomplete="off" name="token" value="{{token}}">
+        </form>
+      </div>
+    </div>
+
+    <div class="pwc_footer">
+      <div class="pwc_content__wrap t_middle">
+        <div class="x_block__inline t_none_font">
+          <div class="x_block__inline">
+            <a class="x_block" href="http://www.nival.com/" target="_blank">
+              <img src="{{ static_url('img/nival_logo.png') }}" alt="Nival">
+            </a>
+          </div>
+
+          <p class="pwc_footer-text x_block__inline t_color__white">
+            © 2008 - 2015 <a href="http://www.nival.com/" target="_blank">Nival</a>
+                                                </br>
+                                                {{ _("copyright") }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="loc_values" style="display:none">
+      <div id="loc_err_password_req">{{ _("err_password_req") }}</div>
+      <div id="loc_err_password_to_short">{{ _("err_password_to_short") }}</div>
+      <div id="loc_err_password_to_long">{{ _("err_password_to_long") }}</div>
+      <div id="loc_err_password_wrong_symbols">{{ _("err_password_wrong_symbols") }}</div>
+      <div id="loc_err_passwords_do_not_match">{{ _("err_passwords_do_not_match") }}</div>
+    </div>
+
+  </body>
+</html>

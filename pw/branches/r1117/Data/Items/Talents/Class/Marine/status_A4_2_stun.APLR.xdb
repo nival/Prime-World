@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator parent="/Heroes/DefaultStatus/_STUN_Status.APLR">
+	<BackLink DBID="/Items/Talents/Class/Marine/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Chronicle/Ability_A5.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="85B7C1EB-8692-4A9A-914F-5131EA62758C">
+			<FlagsApplicator parent="/Heroes/DefaultStatus/_STUN.APLR">
+				<behaviorFlags>144</behaviorFlags>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+			</FlagsApplicator>
+		</Item>
+		<Item skip="1" />
+		<Item href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="642007B2-540D-418E-A478-5FD7A94E73E3">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Запрет невидимости и движения</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>196608</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="B69A8F95-BA97-4EF9-9E1D-443A7911CE72">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Периодически наносим урон</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQoAAAABAAAAFgAAAEE0X1BlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cA4_Period</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="DE6B6C6D-E863-4D9B-A476-751847C6021A">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="540DC695-EBF8-44FD-A7E2-62B9E942F7B6">
+								<VariableProxyApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="DB6D42B8-6F78-4E62-A2AA-07695F2A0EFB">
+												<DamageApplicator>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<cancelInvisibility>false</cancelInvisibility>
+													<caption>урон</caption>
+													<damage>
+														<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+														<returnType>float</returnType>
+														<sString>cA4_Damage</sString>
+													</damage>
+													<damageMode>4</damageMode>
+													<damageType>Material</damageType>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<timeLimiter>-1</timeLimiter>
+													<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+												</DamageApplicator>
+											</applicator>
+											<variableNames>
+												<Item>damageDealed</Item>
+											</variableNames>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Marine/A0_BonusDamage.APLR" />
+											<variableNames />
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Marine/A0_Switcher.APLR" />
+											<variableNames />
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Marine/A3_Heal.APLR" />
+											<variableNames />
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>уроны</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+								</VariableProxyApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="508D6544-EB28-4024-9BA6-F906DB09BDCA">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.1</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="5E8B1721-4395-41A8-B8D4-0D4F4BEF23CF">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>спелл с fx</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.1</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="2D50DC89-C6E3-4470-8207-559DBCF2D844">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="BAC79C36-990D-42CC-BBDC-BA10E13F025B">
+								<FlagsApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>fx на враге при ударах</caption>
+									<consumables />
+									<effect>
+										<Item href="/Effects/Shots/MeleeHit/_HeroB.EFFT" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flag>0</flag>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+										<returnType>float</returnType>
+										<sString>-1</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<talents />
+									<useListAs>ListAsRule</useListAs>
+								</FlagsApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="2C4C8E4F-43F0-4FF9-AC4C-A9266C8DDC07">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+					<returnType>float</returnType>
+					<sString>0</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Marine/status_A4_2_I2C.APLR" />
+		<Item href="/Items/Talents/Class/Marine/status_A4_2_stun.APLR" id="47CD6EF0-A601-4240-8CD4-3B0652BFD133">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>CastingPuncher</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName>CastingPuncher</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>Hier2UpApplicatorTarget</applyTarget>
+	<caption>Не совсем стандартный статус "Оглушение" (Stun_Duration, Stun_Condition)</caption>
+	<description textref="/Items/Talents/Class/Marine/status_A4_2_stun.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<name textref="/Items/Talents/Class/Marine/status_A4_2_stun.APLR_name.txt" />
+</StatusApplicator>

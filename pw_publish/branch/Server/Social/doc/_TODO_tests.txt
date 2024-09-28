@@ -1,0 +1,19 @@
+//
+// Dan Vorobiev [started 26-01-2011]
+//
+
+1) внешний функциональный тест, http-коннектом на внешний порт кластера (при полностью запущенном кластере)
+http.request("localhost:8888", "/one?action=login&action")
+
+2) внутренний функциональный тест веб-сервера (с запущенными внешними компонентами типа mc)
+reply = RequestHandler.Parse("/one?action=login&login=xxx&...")
+assert( reply == "success=ok&user_id=111&..." )
+
+3) совсем атомарный тест: заглушки вместо внешних компонентов, проверяем только логику работы отдельных методов самого сервера
+class Test(unittest.TestCase):
+	def test_Simple(self):
+		context = Context(iDummyMemcache, iDummySql)
+		reply = context.test_login('redjack', pwd, response) # само строит контекст и вызывает соотв. обрабатывающий метод
+		assert( reply == "success=ok&user_id=111&..." )
+
+

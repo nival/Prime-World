@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru" id="primeworld">
+    <head>
+        <link rel="icon" type="image/png" href="{{ static_url('images/pw.png') }}"/>
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ static_url('images/pw.ico') }}"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>{{ _("register_title") }}</title>
+        <link rel="stylesheet" href="{{ static_url("pwc.css") }}" type="text/css"/>
+        <noscript>&lt;meta http-equiv="X-Frame-Options" content="deny" /&gt;</noscript>
+        <script type="text/javascript" src="{{ static_url("pwconnect.js") }}"></script>
+        <script type="text/javascript">
+            function showEula()
+            {
+                window.open("{{ eula }}", "_blank");
+            }
+            function sendForm()
+            {
+                var noErrors = checkEmail("vis_email", "emailHint", "tdEmail", true);
+                noErrors &= checkPass("vis_email", "vis_pass", "passHint", "tdPass", noErrors);
+                
+                var birthDate = checkDate("idDay", "idMonth", "idYear", "tdDate", noErrors);
+                noErrors &= (birthDate != null);
+                               
+                noErrors &= checkEULA("eulaCheck", "eulaHint", "tdAcceptCheck", noErrors);
+            
+                if(noErrors)
+                {
+                    var visFrm = document.getElementById("vis_reg_form");
+                    var frm = document.getElementById("reg");
+                    
+                    document.getElementById("reg_email__").value = document.getElementById("vis_email").value;
+                    document.getElementById("reg_passwd__").value = MD5(document.getElementById("vis_pass").value);
+                
+                    document.getElementById("birth_date").value = Math.round(birthDate.valueOf()/1000);
+
+                    document.getElementById("g-recaptcha-pw").value = document.getElementById("g-recaptcha-response").value;
+
+                    frm.submit();
+                }
+                return false;
+            }
+            function onPageLoaded()
+            {
+                var sel = document.getElementById("vis_birthday_day");
+                for(var i = 1; i < 32; i++)
+                    sel.options[sel.options.length] = new Option(i, i);
+    
+                sel = document.getElementById("vis_birthday_year");
+                var curDate = new Date();
+                var year = curDate.getFullYear();
+                for(var i = year - 1; i > year - 100; i--)
+                {
+                    var opt = new Option(i, i);
+                    sel.options[sel.options.length] = opt;
+                }
+            }
+            function invalidateDateControls()
+            {
+                checkDate("idDay", "idMonth", "idYear", "tdDate");
+            }
+        </script>
+        <script src='https://www.google.com/recaptcha/api.js?hl={{locale}}'></script>
+    </head>
+<body onload="onPageLoaded();">
+
+<div class="page-content">
+<div class="b-header">
+    <h1 class="logo">
+        <a href="{{logo}}" target="_blank">
+        <img src="{{ static_url("images/logo.png") }}" alt="Prime World">
+        </a>
+    </h1> 
+</div>
+
+    <div class="b-section">
+
+        <div class="b-popup" style="width:420px">
+            <h4 class="b-popup__title">{{ _("register") }}</h4>
+
+            <form id="vis_reg_form" class="b-form" onsubmit="return sendForm();">
+                <div style="margin-right: 40px">
+                    <table class="t-form" style="margin:0;">
+                        <tr>
+                            <th><label for="vis_email">{{ _("email_label") }}</label></th>
+                            <td id="tdEmail">
+                                <input id="vis_email" type="text" class="b-input" onblur="checkEmail('vis_email', 'emailHint', 'tdEmail');" onfocus="hideErrorHint('emailHint', 'tdEmail');">
+                                <div class="b-hint" id="emailHint">
+                                    <p id="errorHint" style="display:none;"></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="vis_pass">{{ _("password_label") }}</label></th>
+                            <td id="tdPass">
+                                <input id="vis_pass" type="password" class="b-input" onblur="checkPass('vis_email', 'vis_pass', 'passHint', 'tdPass');" onfocus="hideErrorHint('passHint', 'tdPass');">
+                                <div class="b-hint" id="passHint"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ _("birth_date_label") }}</th>
+                            <td id="tdDate">
+                                <table>
+                                    <tr>
+                                        <td id="idDay">
+                                            <select class="b-select" id="vis_birthday_day" onblur="invalidateDateControls();" onfocus="hideDateErrorHint('dateHint', 'idDay', 'tdDate');">
+                                                <option value="-1" selected>{{ _("day_label") }}</option>
+                                            </select>
+                                        </td>
+                                        <td id="idMonth">
+                                            <select class="b-select" id="vis_birthday_month" onblur="invalidateDateControls();" onfocus="hideDateErrorHint('dateHint', 'idMonth', 'tdDate');">
+                                                <option value="-1" selected>{{ _("month_label") }}</option>
+                                                <option value="0">{{ _("jan_label") }}</option>
+                                                <option value="1">{{ _("feb_label") }}</option>
+                                                <option value="2">{{ _("mar_label") }}</option>
+                                                <option value="3">{{ _("apr_label") }}</option>
+                                                <option value="4">{{ _("may_label") }}</option>
+                                                <option value="5">{{ _("jun_label") }}</option>
+                                                <option value="6">{{ _("jul_label") }}</option>
+                                                <option value="7">{{ _("aug_label") }}</option>
+                                                <option value="8">{{ _("sep_label") }}</option>
+                                                <option value="9">{{ _("oct_label") }}</option>
+                                                <option value="10">{{ _("nov_label") }}</option>
+                                                <option value="11">{{ _("dec_label") }}</option>
+                                            </select>
+                                        </td>
+                                        <td id="idYear">
+                                            <select class="b-select" id="vis_birthday_year" onblur="invalidateDateControls();" onfocus="hideDateErrorHint('dateHint', 'idYear', 'tdDate');">
+                                                <option value="-1" selected>{{ _("year_label") }}</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="b-hint" id="dateHint"></div>
+                            </td>
+                        </tr>
+    <!--
+                        <tr>
+                            <th></th>
+                            <td>
+                                <div class="b-captcha">
+                                    <img src="images/temp/captcha.png" alt="">
+                                    <a href="#" class="refresh">{{ _("captcha_update") }}</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="r4">{{ _("captcha_code_label") }}</label></th>
+                            <td class="form-error">
+                                <input type="text" class="b-input b-select_error" id="r4">
+                                <div class="b-hint">
+
+                                </div>
+                            </td>
+                        </tr>
+    -->
+                    </table>
+                </div>
+
+                <div class="b-form-item" style="margin: 10px 0 0 0">
+                    <div id="tdAcceptCheck">
+                        <label><input type="checkbox" id="eulaCheck"
+                            onblur="checkEULA('eulaCheck', 'eulaHint', 'tdAcceptCheck');" 
+                            onfocus="hideErrorHint('eulaHint', 'tdAcceptCheck');"
+                            onchange="hideErrorHint('eulaHint', 'tdAcceptCheck');checkEULA('eulaCheck', 'eulaHint', 'tdAcceptCheck');">{{ _("register_eula_label") }}</label>
+                        <div id="eulaHint" class="b-hint" style="margin:-17px 0 0 0"></div>
+                    </div>
+                </div>
+
+                <div class="g-recaptcha" data-sitekey="6LdJNBYUAAAAAFyhKkYJobN_aq0MXO1Tm5rdEhX2"></div>
+
+                <div class="b-form-item">
+                    <p><input type="submit" value="{{ _("create_account_label") }}" class="b-submit"></p>
+                    <div class="ctrls">
+                        <p class="left"><a href="{{next}}">{{ _("enter_account_label") }}</a></p>
+                        <p class="right"><a href="{{support}}" target="_blank">{{ _("create_errors") }}</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form id="reg" name="reg" action="{{pwcf_prefix}}/do/register" method="post">
+            <input type="hidden" autocomplete="off" name="post_form_id" value="ad92d415b0ff2f0bbae3e9a42f1b6680">
+            <input type="hidden" id="reg_email__" name="reg_email__">
+            <input type="hidden" id="reg_passwd__" name="reg_passwd__">
+            <input type="hidden" id="sex" name="sex">
+            <input type="hidden" id="birth_date" name="birth_date">
+            <input type="hidden" name="g-recaptcha-pw" id="g-recaptcha-pw">
+            <input type="hidden" autocomplete="off" id="next" name="next" value="{{next}}">
+        </form>
+    </div>
+</div>
+<div class="page-footer">
+    <div class="footer-content">
+        <a href="http://www.nival.com/" target="_blank" style="float:left;margin:14px;display:inline-block;width:81px;height:38px; background: url({{ static_url('images/nival-logo.png') }})"></a>
+        <div style="text-align:left;padding-top:20px;">
+            © 2008 - 2013&nbsp;
+            <a href="http://www.nival.com/" target="_blank">Nival</a>
+            </br>
+            {{ _("copyright") }}
+        </div>
+    </div>
+</div>
+
+<div id="loc_values" style="display:none">
+    <div id="loc_err_email">{{ _("err_email") }}</div>
+    <div id="loc_err_email_req">{{ _("err_email_req") }}</div>
+    <div id="loc_err_password_req">{{ _("err_password_req") }}</div>
+    <div id="loc_err_password_to_short">{{ _("err_password_to_short") }}</div>
+    <div id="loc_err_password_to_long">{{ _("err_password_to_long") }}</div>
+    <div id="loc_err_password_wrong_symbols">{{ _("err_password_wrong_symbols") }}</div>
+    <div id="loc_err_password_contains_email">{{ _("err_password_contains_email") }}</div>
+    <div id="loc_err_birth_day_not_set">{{ _("err_birth_day_not_set") }}</div>
+    <div id="loc_err_birth_month_not_set">{{ _("err_birth_month_not_set") }}</div>
+    <div id="loc_err_birth_year_not_set">{{ _("err_birth_year_not_set") }}</div>
+    <div id="loc_err_wrong_date">{{ _("err_wrong_date") }}</div>
+    <div id="loc_err_gender_not_set">{{ _("err_gender_not_set") }}</div>
+    <div id="loc_err_need_accept_eula">{{ _("err_need_accept_eula") }}</div>
+</div>
+
+</body> 
+</html>

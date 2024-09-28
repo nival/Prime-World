@@ -1,0 +1,29 @@
+sources = [
+  'StrProc.cpp', 
+  'StrProc.h', 
+  'StrUtils.h', 
+  'StrFormatter.cpp', 
+  'StrFormatter.h',
+  'StrConvert.cpp',
+  'StrConvert.h',
+]
+
+if platform == 'win32' :
+  sources += [ 'StrUtils_win.cpp' ]
+else :
+  sources += [ 'StrUtils_linux.cpp' ]
+
+components = [
+    'System/ThreadLocal',
+]
+
+libDependencies = []
+if platform == 'win32' :
+  libDependencies += [
+      'rpcrt4.lib',
+      'shlwapi.lib'
+  ]
+else :
+  libDependencies += [
+      'libpthread.so',
+  ]

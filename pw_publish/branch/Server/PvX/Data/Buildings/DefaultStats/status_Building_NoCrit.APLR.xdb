@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Buildings/DefaultStats/ability_AParent_AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Buildings/DefaultStats/ability_ATier1_AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Towers/BottomA1.TOWR" Count="1" />
+	<BackLink DBID="/Buildings/DefaultStats/ability_BTier1_AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Buildings/DefaultStats/ability_BParent_AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Buildings/DefaultStats/DefaultMainAttack.ATCK" Count="1" />
+	<applicators>
+		<Item href="/Buildings/DefaultStats/status_Building_NoCrit.APLR" id="3FA1B383-0B1E-4ACB-A9C3-F8F6948CA9F7">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>trigger default crit mult</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Buildings/DefaultStats/status_Building_NoCrit.APLR" id="C6A813A3-C91B-49AB-9D78-F2AC20FDE2BE">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString>FQsAAAACAAAAEAAAACMAAABpc0NyaXRpY2FsAFWL7FFoAAAAAItFEIsQi00Qi0JU/9DcHUUAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+								<returnType>bool</returnType>
+								<sString>pMisc-&gt;GetVariable("isCritical") == 1.0</sString>
+							</abilityCondition>
+							<abilityCostMode>Any</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1073742079</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FQ0AAAABAAAAFAAAAERhbWFnZURlYWxlcgBVi+yD7AhoAAAAAItFEIsQi00Qi0JM/9CJRfyLTfyLEYtN/IuClAAAAP/Q2eje8dld+NlF+IvlXcMAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>1 / (pMisc-&gt;GetObject("DamageDealer")-&gt;GetBaseCriticalMultiplier())</sString>
+						</mul>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>no crits allowed</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Buildings/DefaultStats/status_Building_NoCrit.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Talents/_006.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Buildings/DefaultStats/status_Building_NoCrit.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-100</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

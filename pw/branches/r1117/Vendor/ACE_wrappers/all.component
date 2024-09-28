@@ -1,0 +1,34 @@
+includePaths = [ 
+    '.', 
+]
+
+libPaths = [ 
+    'lib', 
+]
+
+libs = [ ]
+
+if platform == 'win32' :
+  if configuration == "debug":
+    libs.append( 'ACEd.lib')
+
+  if configuration == "release":
+    libs.append( 'ACE.lib')
+else :
+  libs.append( 'libACE.so' )
+
+
+if configuration == "debug":
+    builders = [ 
+        InstallBuilder( 'lib/ACEd.dll' ), 
+        InstallBuilder( 'lib/ACEd.pdb' ), 
+    ]
+
+if configuration == "release":
+    builders = [ 
+        InstallBuilder( 'lib/ACE.dll' ), 
+        InstallBuilder( 'lib/ACE.pdb' ), 
+    ]
+
+if platform == 'win32':
+  compilerKeys = [ "/D WIN32" ]

@@ -1,0 +1,2 @@
+python updateSymbols.py
+pause

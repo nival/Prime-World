@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Glyph>
+	<BackLink DBID="/Glyphs/_.GLDB" Count="1" />
+	<BackLink DBID="/Glyphs/DoubleDamagerAfterKill.GLPH" Count="1" />
+	<BackLink DBID="/Glyphs/GlyphSpawnerAbility.ABLT" Count="2" />
+	<BackLink DBID="/Glyphs/PvE_Coop1_DoubleDamager.GLPH" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/_GlyphSettings" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Glyphs/DoubleDamager.GLPH" id="0A3EE723-01C7-4C46-8DCD-1F7EBA760016">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Heroes/DefaultStatus/status_DoubleDamager.APLR" />
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Glyphs/DoubleDamager.GLPH" id="19E27410-0CBC-4DA9-87A3-598D8DAE3804">
+							<TriggerApplicator>
+								<actionsCount>
+									<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+									<returnType>int</returnType>
+									<sString>1</sString>
+								</actionsCount>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>152</behaviorFlags>
+								<caption>Триггер на смерть</caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString>FRgAAAABAAAAIgAAAFN0YXR1c0RvdWJsZURhbWFnZUdseXBoAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5XBisFdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>receiver.applStatusDoubleDamageGlyph(GLOBAL) != pMisc</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString>FTkAAAAFAAAAQAAAAFYAAABqAAAAhAAAAKkAAABSZWRzZXQ3XzdDb3VudGVyAAAAAER1cmF0aW9uAAAAAEV4dHJhRHVyYXRpb24AAABEdXJhdGlvbgBVi+yD7BRoAAAAAItFDIsQi00Mi4KIAQAA/9DcHcoAAADf4PbEAXU/i00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ/9CLTQxRi1UIUmggAAAAi0UQixCLTRCLQlDdXfj/0NxF+N1d8Osdi00MUYtVCFJoMAAAAItFEIsQi00Qi0JQ/9DdXfDdRfDZXezZReyL5V3DAAAAAAAA8D8=</compiledString>
+									<returnType>float</returnType>
+									<sString>receiver.vRedset7_7Counter &gt;= 1? cDuration + cExtraDuration : cDuration</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<playAck>false</playAck>
+								<processor href="/Glyphs/DoubleDamager.GLPH" id="E35F0DFB-AA13-462B-BE19-AFAD8EB8585B">
+									<EventProcessorOnDeath>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<castSpellDelay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>0.0f</sString>
+										</castSpellDelay>
+										<checkSender>2</checkSender>
+										<objectFilter>536871391</objectFilter>
+										<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+										<spell href="/Glyphs/DoubleDamager.GLPH" id="0A86B29F-CBBF-4437-98B0-5BDBA3703944">
+											<Spell>
+												<applicators>
+													<Item href="/Glyphs/DoubleDamager.GLPH" id="7305936D-810D-4CEC-97B7-77455D7D166C">
+														<CreateGlyphApplicator>
+															<absolutePosition>
+																<x>0</x>
+																<y>0</y>
+															</absolutePosition>
+															<angle>90</angle>
+															<angleIsRelative>false</angleIsRelative>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>Создаем глиф</caption>
+															<distance>3</distance>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<glyph href="/Glyphs/DoubleDamagerAfterKill.GLPH" />
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<radius>10</radius>
+															<scriptName></scriptName>
+														</CreateGlyphApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="/Glyphs/DoubleDamager.GLPH" id="E0DE1A54-3652-43E1-8786-2F727328EF55">
+													<DispatchImmediate>
+														<alwaysApply>false</alwaysApply>
+														<applyEffect>
+															<Item href="" />
+															<Item href="" />
+														</applyEffect>
+														<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+														<applyEffectOrientation>Default</applyEffectOrientation>
+														<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+														<dieAfterApply>true</dieAfterApply>
+														<dispatchEffect>
+															<Item href="" />
+															<Item href="" />
+														</dispatchEffect>
+														<flags>0</flags>
+														<instantApply>false</instantApply>
+													</DispatchImmediate>
+												</dispatch>
+											</Spell>
+										</spell>
+									</EventProcessorOnDeath>
+								</processor>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<useAbilityCooldown>false</useAbilityCooldown>
+								<useAbilityOwnerMana>false</useAbilityOwnerMana>
+							</TriggerApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>3</behaviorFlags>
+				<caption>Программа со статусом глифа и спауном его после смерти</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<color>
+		<A>1</A>
+		<B>1</B>
+		<G>1</G>
+		<R>1</R>
+	</color>
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Glyphs/DoubleDamager.GLPH" id="E3FD400B-D4A1-4F63-AF7C-45876F0DFEB5">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgrgAAAD/0ItNDIsRi00Mi4K8AAAA3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rBaseStrength &lt; rBaseIntellect</sString>
+				</condition>
+				<name>StrOrInt</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<constants href="/Glyphs/DoubleDamager.GLPH" id="D3ADCA1B-07C9-4016-B7CB-86537F6119F4">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Glyphs/Constatnts/const_Mul_Power" />
+				<Item href="/Glyphs/DoubleDamager.GLPH" id="5D569DBE-448C-4024-BF19-858727A20592">
+					<UnitConstant>
+						<name>Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABwQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>60</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Glyphs/DoubleDamager.GLPH" id="F157EEC8-A386-4A3F-8472-E0BABC396CBF">
+					<UnitConstant>
+						<name>Mul_Power_TT_Percent</name>
+						<var>
+							<compiledString>FQwAAAAGAAIAGQAAACwAAAAyAAAAZwAAAHcAAACWAAAA4gAAABUBAABCdWlsZGluZ01vZABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDVQAAADcBUwAAADZXfzZRfxR2Rwk6BcAAACDxASL5V3DAAAAAAAAMUAAAAAAAAAWQFWL7IPsCNlFCNwduAAAAN/g9sQBdR/ZRQjcBbAAAADZXfzZRfxR2Rwk6GkAAACDxATrHesb2UUI3CWwAAAA2V342UX4UdkcJOgXAAAAg8QEi+VdwwAAAAAAAOA/AAAAAAAAAABVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCToFP///4PECNld/NlF/IvlXcNVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCTo2/7//4PECNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>round(17 + 5.5 * cBuildingMod)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Glyphs/Constatnts/const_Mul_DefPower" />
+				<Item href="/Glyphs/Constatnts/const_BuildingMod" />
+				<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/const_Redset7_7ExtraDuration" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Glyphs/DoubleDamager.GLPH_description.txt" />
+	<dispatch href="/Glyphs/DoubleDamager.GLPH" id="FD48CBF2-2F80-4D96-B2D8-F2948A23016E">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>5</flags>
+	<gameObject href="/Glyphs/DoubleDamager.SSO" />
+	<id>DoubleDamager</id>
+	<image href="/UI/Styles/Icons/Artifacts/_Test.ITEX" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minimapIcon>None</minimapIcon>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>0</naftaCost>
+	<name textref="/Glyphs/DoubleDamager.GLPH_name.txt" />
+	<node></node>
+	<openWarFogRadius>0</openWarFogRadius>
+	<passiveApplicators />
+	<pickupAbility href="" />
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>7</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Glyph>

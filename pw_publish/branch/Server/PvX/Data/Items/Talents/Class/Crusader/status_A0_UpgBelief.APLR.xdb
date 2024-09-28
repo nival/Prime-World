@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Crusader/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Crusader/status_A0_Belief.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR" id="B8622C94-0D6A-4EFA-92C4-E7D13AEE261E">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Принудительно отключаем эффект</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR" id="82F9B672-64F2-4A24-82F6-D7F4B0BD832B">
+					<EventProcessorOnDeath>
+						<applyTarget>AbilityOwner</applyTarget>
+						<castSpellDelay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</castSpellDelay>
+						<checkSender>0</checkSender>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR" id="D84DDDCB-3CC1-4AC1-A0FD-6DCA0F19E268">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR" id="064405B7-F152-434B-99CB-617FB473040B">
+										<PermanentStatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>CrusaderDeath</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>CrusaderDeath</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR" id="DC5B4924-B841-4CE5-AADD-3F5C7BC1B701">
+									<DispatchImmediate>
+										<alwaysApply>true</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnDeath>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Визуальный статус FullStack А0</caption>
+	<customCounter>
+		<compiledString>FRAAAAABAAAAFAAAAENydXNhZGVyX0JlbGllZgBVi+xoAAAAAItFCIsQi00Ii4KIAQAA/9BR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(sender.vCrusader_Belief)</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR" id="0023AB01-5D10-4CF4-AE05-478DA6AF5E1C">
+			<EffectList>
+				<deathType>Manual</deathType>
+				<effects>
+					<Item href="/Heroes/Crusader/FXAbility0Sound.EFFT" />
+					<Item href="/Heroes/Crusader/FXAbility0Full.EFFT" />
+				</effects>
+				<enableCondition href="" />
+				<lifeTime>0</lifeTime>
+			</EffectList>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FSoAAAAEAAAAMQAAAE4AAABtAAAAgwAAAENydXNhZGVyX0JlbGllZgBBME1heENvdW50AABDcnVzYWRlckRlYXRoAFWL7IPsDGgAAAAAi0UIixCLTQiLgogBAAD/0ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xEF6K2gcAAAAi00IixGLTQiLgogBAAD/0NwdpQAAAN/g9sREegnHRfQBAAAA6wfHRfQAAAAAikX0i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vCrusader_Belief &gt;= cA0MaxCount &amp;&amp; sender.vCrusaderDeath == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>HaveBelief</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Crusader/A0Up.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR_name.txt" />
+	<power>1</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-100</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Items/Talents/Class/Crusader/status_A0_UpgBelief.APLR" id="51BFB1AB-5B45-4575-905B-76E1C8AC6AA1">
+		<ApplicatorsList>
+			<applicatorLists />
+			<applicators>
+				<Item href="/Items/Talents/Class/Crusader/status_A0_Belief.APLR" />
+			</applicators>
+		</ApplicatorsList>
+	</unstackableWith>
+</StatusApplicator>

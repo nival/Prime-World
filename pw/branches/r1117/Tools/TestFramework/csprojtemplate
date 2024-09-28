@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{${py_uuidproj}}</ProjectGuid>
+    <OutputType>${py_projtype}</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>${py_projname}</RootNamespace>
+    <AssemblyName>${py_projname}</AssemblyName>
+    <TargetFrameworkVersion>${py_version}</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>${configurations}
+  <ItemGroup>${py_fileslist}
+  </ItemGroup>
+  <ItemGroup>${py_dependencies}
+  </ItemGroup>
+  <ItemGroup>${py_references}
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>${py_prebuild}</PreBuildEvent>
+  </PropertyGroup>
+</Project>

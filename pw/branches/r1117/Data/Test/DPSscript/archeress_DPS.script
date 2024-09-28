@@ -1,0 +1,24 @@
+set_alias local My
+
+kill_unit DummyDPS
+wait_steps 10 
+spawn_creep DummyDPS /Creeps/Spawners/Test/DummyTest_DPS744.CREEP 30 47 1
+teleport_to My 40 40
+wait_steps 10 
+
+refresh_cd My
+
+
+//unit_stat My 0
+wait_steps 10 
+
+
+
+use_talent_pos My Archeress_A2 38 38
+wait_steps 4
+use_talent My Archeress_A4
+attack_unit My DummyDPS
+
+wait_steps 100
+// goto 2  // - для бесконечного цикла, чтобы запускать процесс надолго
+

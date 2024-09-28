@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Creeps/Bosses/Boss2/CTE.CREEP" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>Яйцо</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Glyphs/EggTriggerDragon.APLR" id="96037758-7F9B-451D-93DB-34F48678D9D5">
+		<EventProcessorOnDeath>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<castSpellDelay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</castSpellDelay>
+			<checkSender>0</checkSender>
+			<objectFilter>2040319</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Glyphs/EggTriggerDragon.APLR" id="22F709EC-6E8A-458E-B41E-15C691B45EAD">
+				<Spell>
+					<applicators>
+						<Item href="/Glyphs/EggTriggerDragon.APLR" id="9F0C304C-8330-48E8-A8D6-7DD5D5A975F8">
+							<UIMessageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>сбж бросил</caption>
+								<enabled>
+									<compiledString>FRIAAAACAAAAFwAAAC0AAABDVEVfU3RvcEVnZ1N0YXR1cwBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1PAAAA3+D2xER7CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+									<returnType>bool</returnType>
+									<sString>sender.vCTE_StopEggStatus != 0</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<message textref="/Glyphs/EggTriggerDragon.APLR_9f0c304c833048e8a8d67dd5d5a975f8_message.txt" />
+								<providerName></providerName>
+								<uiEvent href="/Glyphs/EggTriggerDragon.APLR" id="81764430-C1BC-474B-8F1E-65C1B42FA9AB">
+									<UIEvent parent="/Glyphs/EggMessage.UIEV" />
+								</uiEvent>
+								<value>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</value>
+							</UIMessageApplicator>
+						</Item>
+						<Item href="/Glyphs/EggTriggerDragon.APLR" id="66ED184F-69E4-401C-B129-608B16070339">
+							<SpellApplicator>
+								<applyTarget>PrevApplicatorTarget</applyTarget>
+								<caption>положить глиф под горыныча</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<spell href="/Glyphs/EggTriggerDragon.APLR" id="FAB18A1A-A130-4CAB-913C-417F82ABFFE3">
+									<Spell>
+										<applicators>
+											<Item href="/Glyphs/EggTriggerDragon.APLR" id="7BB2E288-9A8A-44C7-A192-F130CC80EC13">
+												<CreateGlyphApplicator>
+													<absolutePosition>
+														<x>0</x>
+														<y>0</y>
+													</absolutePosition>
+													<angle>270</angle>
+													<angleIsRelative>false</angleIsRelative>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<caption>создать яйцо</caption>
+													<distance>10</distance>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<glyph href="/Glyphs/EggTriggerDragon.APLR" id="59DDF382-134C-43D4-AE90-16597B713591">
+														<Glyph parent="/Glyphs/Egg.GLPH">
+															<applicators>
+																<Item href="/Glyphs/UIEggEvent.APLR" />
+																<Item href="/Glyphs/EggTriggerDragon.APLR" id="99672A53-1A63-48B1-B03C-805D7464DABC">
+																	<SpellApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<caption>Лечение команды</caption>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<spell href="/Glyphs/EggTriggerDragon.APLR" id="8649F524-6A5F-4471-AF30-7303F083CBC1">
+																			<Spell>
+																				<applicators>
+																					<Item href="/Glyphs/EggTriggerDragon.APLR" id="1BF72DFF-0280-47DD-B5BD-A9A3AD3E6092">
+																						<HealApplicator>
+																							<amount>
+																								<compiledString>FQkAAAABAAAAFQAAAEFsbHlIZWFsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																								<returnType>float</returnType>
+																								<sString>cAllyHeal</sString>
+																							</amount>
+																							<applyTarget>ApplicatorTarget</applyTarget>
+																							<caption>Лечение</caption>
+																							<enabled>
+																								<compiledString></compiledString>
+																								<returnType>bool</returnType>
+																								<sString>true</sString>
+																							</enabled>
+																							<formulaName></formulaName>
+																							<healTarget>Health</healTarget>
+																							<ignoreHealingMods>false</ignoreHealingMods>
+																							<LoggingEvent>-1</LoggingEvent>
+																							<providerName></providerName>
+																							<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+																						</HealApplicator>
+																					</Item>
+																				</applicators>
+																				<dispatch href="/Glyphs/EggTriggerDragon.APLR" id="01F65021-13E5-4803-90F5-D9538C1A0AF1">
+																					<DispatchImmediate>
+																						<alwaysApply>false</alwaysApply>
+																						<applyEffect>
+																							<Item href="/Effects/Buffs/Regen/_Gender.EFFT" />
+																							<Item href="" />
+																						</applyEffect>
+																						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																						<applyEffectOrientation>Default</applyEffectOrientation>
+																						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																						<dieAfterApply>true</dieAfterApply>
+																						<dispatchEffect>
+																							<Item href="" />
+																							<Item href="" />
+																						</dispatchEffect>
+																						<flags>0</flags>
+																						<instantApply>false</instantApply>
+																					</DispatchImmediate>
+																				</dispatch>
+																			</Spell>
+																		</spell>
+																		<spellTarget>ApplicatorTarget</spellTarget>
+																		<targetSelector href="/Glyphs/EggTriggerDragon.APLR" id="E150048C-E659-4E78-BF08-144AE98882ED">
+																			<HeroEnumerator>
+																				<flags>0</flags>
+																				<mode>Normal</mode>
+																				<targetFilter>268435463</targetFilter>
+																			</HeroEnumerator>
+																		</targetSelector>
+																	</SpellApplicator>
+																</Item>
+															</applicators>
+															<constants href="/Glyphs/EggTriggerDragon.APLR" id="674CE9D3-5162-4D49-85C9-DE4D32FFB669">
+																<UnitConstantsContainer>
+																	<vars>
+																		<Item href="/Glyphs/EggTriggerDragon.APLR" id="039FBBAB-A63A-4F07-B79F-14BB576FA1AE">
+																			<UnitConstant>
+																				<name>ForbidInvis_Duration</name>
+																				<var>
+																					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1</sString>
+																				</var>
+																			</UnitConstant>
+																		</Item>
+																		<Item href="/Glyphs/EggTriggerDragon.APLR" id="C62C98DA-2103-4D45-A214-87FFD9F2FAFB">
+																			<UnitConstant>
+																				<name>TECH_ForbidInvis_Condition</name>
+																				<var>
+																					<compiledString>FRIAAAACAAAAFwAAAC0AAABDVEVfU3RvcEVnZ1N0YXR1cwBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1PAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+																					<returnType>float</returnType>
+																					<sString>receiver.vCTE_StopEggStatus == 0</sString>
+																				</var>
+																			</UnitConstant>
+																		</Item>
+																		<Item href="/Glyphs/EggTriggerDragon.APLR" id="C7929F15-7F3E-4435-A934-15E79816658C">
+																			<UnitConstant>
+																				<name>AllyHeal</name>
+																				<var>
+																					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCDP/Q3A0hAAAA2V382UX8i+VdwwAAAAAAAOA/</compiledString>
+																					<returnType>float</returnType>
+																					<sString>rMaxLife*0.5</sString>
+																				</var>
+																			</UnitConstant>
+																		</Item>
+																		<Item href="/Glyphs/EggTriggerDragon.APLR" id="245F777B-6E0F-4BC9-BA50-946B2EE68072">
+																			<UnitConstant>
+																				<name>SetMoveSpeed</name>
+																				<var>
+																					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQg==</compiledString>
+																					<returnType>float</returnType>
+																					<sString>40</sString>
+																				</var>
+																			</UnitConstant>
+																		</Item>
+																	</vars>
+																</UnitConstantsContainer>
+															</constants>
+														</Glyph>
+													</glyph>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<radius>20</radius>
+													<scriptName>CTE_Egg</scriptName>
+												</CreateGlyphApplicator>
+											</Item>
+										</applicators>
+										<dispatch href="/Glyphs/EggTriggerDragon.APLR" id="C8E744EA-83A9-456D-8C3D-6E111598E542">
+											<DispatchImmediate>
+												<alwaysApply>false</alwaysApply>
+												<applyEffect>
+													<Item href="" />
+													<Item href="" />
+												</applyEffect>
+												<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+												<applyEffectOrientation>Default</applyEffectOrientation>
+												<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+												<dieAfterApply>true</dieAfterApply>
+												<dispatchEffect>
+													<Item href="" />
+													<Item href="" />
+												</dispatchEffect>
+												<flags>0</flags>
+												<instantApply>false</instantApply>
+											</DispatchImmediate>
+										</dispatch>
+									</Spell>
+								</spell>
+								<spellTarget>ApplicatorTarget</spellTarget>
+								<targetSelector href="" />
+							</SpellApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Glyphs/EggTriggerDragon.APLR" id="67E794AA-5E8A-4EFB-9F8C-9796FEC82617">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorOnDeath>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

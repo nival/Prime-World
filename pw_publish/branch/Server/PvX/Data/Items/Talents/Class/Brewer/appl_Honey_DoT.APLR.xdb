@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Brewer/status_Honey_0E.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Brewer/status_Honey_1E.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Brewer/status_Honey_2E.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>DoT</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRYAAAACAAAAHQAAADYAAABCcmV3ZXJfQTIAAABCcmV3ZXJfQTIAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Brewer_A2")</sString>
+	</enabled>
+	<formulaName>Honey_DoT_DealDamage</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+		<returnType>float</returnType>
+		<sString>1.0f</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Brewer/appl_Honey_DoT.APLR" id="97FBB7EF-4A7E-4F2B-A049-3B2BCD86F91A">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Brewer/appl_Honey_DoT.APLR" id="101F99FB-973D-4A34-84A0-F9357B554C65">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>true</cancelInvisibility>
+						<caption>DealDamage</caption>
+						<damage>
+							<compiledString>FSkAAAACAAAAOAAAAFAAAABIb25leV9Eb1RfRFBTAAAAQnJld2VyX0hvbmV5U3RhdHVzX0VuZW15AFWL7IPsEItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SagGLRRBQaBAAAACLTQyLEYtNDIuCoAEAAN1d+P/QiUX020X03E342V3w2UXwi+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cHoney_DoT_DPS * receiver.CountApplicators( "Brewer_HoneyStatus_Enemy", pMisc, UNIT )</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Material</damageType>
+						<enabled>
+							<compiledString>FRYAAAACAAAAHQAAADYAAABCcmV3ZXJfQTIAAABCcmV3ZXJfQTIAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>tal("Brewer_A2")</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Brewer/appl_Honey_DoT.APLR" id="7B2F330C-89FF-49FD-A4CD-7E64055A52BB">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString>FRUAAAABAAAAHwAAAEhvbmV5X0RvVF9EZWFsRGFtYWdlAFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applHoney_DoT_DealDamage(UNIT) == pMisc</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DZmZmPw==</compiledString>
+		<returnType>float</returnType>
+		<sString>0.9f</sString>
+	</startOffset>
+	<targetSelector href="" />
+</SpellPeriodicallyApplicator>

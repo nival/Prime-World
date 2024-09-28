@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/Champions/Champion2/A1.ABLT" Count="1" />
+	<BackLink DBID="/Creeps/Champions/Champion3/CTF_S16_C2.CREEP" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlAppl.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlStatusesWithoutSlow.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_RootUnstacked.APLS" Count="1" />
+	<BackLink DBID="/Heroes/Ent/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Dryad/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Ent/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/status_A2u_ControlTimeDecrease.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Trickster/status_A1_root.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Unicorn/Ability3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Witcher/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G492_DMG.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Level4/G051_Root_Target.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/status_G334_Root.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_ROOT.APLR" />
+		<Item href="/Heroes/DefaultStatus/_ROOT_Status.APLR" id="BD223112-C939-4D2E-8296-D2D33684279F">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Heroes/DefaultStatus/_ROOT_Status.APLR_bd223112c9394d2e8296d2d33684279f_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+				<value>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>статус Root (Root_Duration)</caption>
+	<customCounter>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/_ROOT_Status.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FS0AAAAGAAAASwAAAGEAAAB1AAAAiAAAAJQAAACqAAAASW1tdW5lMkNvbnRyb2wAAFJvb3RfQ29uZGl0aW9uAABBbGxvd0NvbnRyb2wAVYvsUWgAABAAi0UMixCLTQyLQmj/0A+2yIXJdUloAAAAAItVDIsCi00Mi5CIAQAA/9LcHdQAAADf4PbERHoni0UMUItNCFFoEAAAAItVEIsCi00Qi1BQ/9LcHdQAAADf4PbERHoraCAAAACLRQyLEItNDIuCiAEAAP/Q3B3MAAAA3+D2xER7CcdF/AAAAADrB8dF/AEAAACKRfyL5V3DAAAAAAAA8D8AAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>(!rFlag(1048576) &amp;&amp; receiver.vImmune2Control == 0 &amp;&amp; cRoot_Condition) || receiver.vAllowControl == 1</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>StatusRoot</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/roots.ITEX" />
+	<lifeTime>
+		<compiledString>FQ4AAAABAAAAGgAAAFJvb3RfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cRoot_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/_ROOT_Status.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRQAAAACAAAAIQAAADQAAABSb290X1N0YXJ0Q29uZGl0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUAAAAN/g9sREewbGRf8B6wTGRf8AikX/i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>cRoot_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_RootUnstacked.APLS" />
+</StatusApplicator>

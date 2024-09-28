@@ -1,0 +1,26 @@
+// -*- MPC -*-
+// acedefaults.mpb,v 1.11 2004/01/28 19:28:00 elliott_c Exp
+
+project {
+  staticflags += ACE_AS_STATIC_LIBS
+  //macros      += ACE_HAS_SUN_COMPLETION_PORTS
+  //macros      += ACE_HAS_LINUX_EPOLL
+  //macros      += ACE_HAS_LINUX_LIBAIO
+  //macros      += ACE_HAS_AIO_EMULATION
+
+  //macros      += ACE_BEGIN_VERSIONED_NAMESPACE_DECL=
+  //macros      += ACE_END_VERSIONED_NAMESPACE_DECL=
+
+  libout       = $(AIO_ROOT)/lib
+  dllout       = $(AIO_ROOT)/lib
+  install      = $(AIO_ROOT)/lib
+
+  includes    += $(AIO_ROOT)
+  includes    += $(ACE_ROOT)
+
+  libpaths    += $(AIO_ROOT)/lib
+  libpaths    += $(ACE_ROOT)/lib
+  libpaths    += $(ACE_ROOT)/ace
+
+  libs        += ACE
+}

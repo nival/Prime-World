@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableProxyApplicator>
+	<BackLink DBID="/Heroes/FallenAngel/_.HROB" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Heroes/FallenAngel/FallenAngel_DamageApplicator.APLR" id="1A7CAB81-1EA6-4494-A6D0-8C3D33933C05">
+				<DamageApplicator parent="/GameLogic/GeneralApplicators/BaseAttackDmg_Hero.APLR">
+					<damage>
+						<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4IEAQAA/9BR2Rwk6DgAAACDxARQi00IixGLTQiLggABAAD/0FHZHCToGwAAAIPEBFCLTRCLEYtNEItCXP/QiUX820X8i+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+					</damage>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					</enabled>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+				<Item>isCritical</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Heroes/FallenAngel/FallenAngel_DamageApplicator.APLR" id="6D31F7BC-486F-444C-A7F8-4D3DC7B77C16">
+				<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+					<caption>Урон + А0 по герою</caption>
+					<damage>
+						<compiledString>FSQAAAACAAAALwAAAFEAAABBMF9EYW1hZ2VTdGF0AAAAQTBfQWRkaXRpb25hbERhbWFnZQBVi+xRagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QO0UQdR+LTQxRi1UIUmgQAAAAi0UQixCLTRCLQlD/0Nld/OsF2e7ZXfzZRfyL5V3DAAAAAA==</compiledString>
+						<returnType>float</returnType>
+						<sString>receiver.applA0_DamageStat(UNIT) == pMisc ? (cA0_AdditionalDamage) : 0</sString>
+					</damage>
+					<damageMode>4</damageMode>
+					<damageType>Energy</damageType>
+					<enabled>
+						<compiledString>FQUAAAACAAAAMgAAAF4AAABXYXJkAFWL7FFR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6MsAAACDxAzcHegAAADf4PbERA+LmQAAAItVDIsCi00Mi1BQ/9KD+BEPhIMAAABqAItFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9A7RRB1Y4tNDIsRi00Mi0JQ/9CD+AV0UYtNDIsRi00Mi0JQ/9CD+BJ0P4tNDIsRi00Mi0JQ/9CD+BN0LYtNDIsRi00Mi0JQ/9CD+AN0G4tNDIsRi00Mi0JQ/9CD+AR0CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAAAAAAAAACAP1WL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>ut_bldg(false, true) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc &amp;&amp; rUnitKind != 5 &amp;&amp; rUnitKind != 18 &amp;&amp; rUnitKind != 19 &amp;&amp; rUnitKind != 3 &amp;&amp; rUnitKind != 4 </sString>
+					</enabled>
+					<formulaName>FallenAngel_A0DamageHero</formulaName>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Heroes/FallenAngel/FallenAngel_DamageApplicator.APLR" id="295A01B2-9738-486A-87A6-9ABDF7E23E1D">
+				<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+					<caption>Урон + А0 по чуди</caption>
+					<damage>
+						<compiledString>FR8AAAACAAAAKgAAAEwAAABBMF9EYW1hZ2VTdGF0AAAAQTBfQ3JlZXBEYW1hZ2UAVYvsUWoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DtFEHUfi00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ/9DZXfzrBdnu2V382UX8i+VdwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>receiver.applA0_DamageStat(UNIT) == pMisc ? (cA0_CreepDamage) : 0</sString>
+					</damage>
+					<damageMode>4</damageMode>
+					<damageType>Energy</damageType>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvsUYtFDIsQi00Mi0JQ/9CD+AN0UYtNDIsRi00Mi0JQ/9CD+AR0P4tNDIsRi00Mi0JQ/9CD+AV0LYtNDIsRi00Mi0JQ/9CD+BJ0G4tNDIsRi00Mi0JQ/9CD+BN0CcdF/AAAAADrB8dF/AEAAACKRfyL5V3D</compiledString>
+						<returnType>bool</returnType>
+						<sString>(rUnitKind == 3 || rUnitKind == 4 || rUnitKind == 5 || rUnitKind == 18 || rUnitKind == 19)</sString>
+					</enabled>
+					<formulaName>FallenAngel_A0Damage1</formulaName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Heroes/FallenAngel/appl_EnergyDamage.APLR" />
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Heroes/FallenAngel/appl_CritEnergy.APLR" />
+			<variableNames />
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>урон + A0</caption>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+</VariableProxyApplicator>

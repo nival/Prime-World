@@ -1,0 +1,21 @@
+includePaths = [ 'Include' ]
+libPaths = [ 'Lib/x86' ]
+
+libDependencies = [
+    'dxguid.lib',
+    'd3d9.lib',
+    'd3dx9.lib',
+    'dxerr.lib',
+]
+
+if configuration.find('shipping') >= 0:
+    builders = [ InstallBuilder( 'bin/d3dx9_43.dll' ) ]
+else:
+    builders = [ 
+        InstallBuilder( 'bin/d3dx9_43.dll' ),
+        InstallBuilder( '../BuildUtils/D3DCompiler_43.dll' )
+    ]
+
+components = [
+    'Vendor/Libc',
+]

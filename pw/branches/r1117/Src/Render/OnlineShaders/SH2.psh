@@ -1,0 +1,27 @@
+#include "_commonPostProcess.h"
+
+sampler bigger : register(s0);
+
+float _1_bigger_dimension  : register(PSHADER_LOCALCONST0);
+
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  float2 base = Input.Texcoord * 1;
+  float stepX = 1. / 9 * _1_bigger_dimension, stepY = _1_bigger_dimension;
+
+
+  base.x += stepX / 2;
+  base.y += stepY / 2;
+  float4 res = tex2D(bigger, base);
+
+  res += tex2D(bigger, base + float2(stepX, 0));
+  res += tex2D(bigger, base + float2(stepX, stepY));
+  res += tex2D(bigger, base + float2(0, stepY));
+
+//  return float4(0.1, 0.2, 0.3, 0.4);
+
+  return res;
+  return float4(1, Input.Texcoord.x, Input.Texcoord.y, 1);
+  
+}

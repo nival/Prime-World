@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Ratcatcher/RatMainProgram.APLR" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>Запускаем таймер на отключалку</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRAAAAABAAAAGgAAAFJhdERlbGF5UHJvZ3JhbQBVi+xqAotFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applRatDelayProgram(ABILITY) == pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Ratcatcher/A3_LifeTimer.APLR" id="890D7FBE-23AE-4BB6-ABA9-89B19CAD76C1">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQAAAAAAAAAAVYvsav+LRQyLEItNDItCdP/QD7bA99gbwIPAAV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.IsVisibleForEnemy(-1) == false</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Class/Ratcatcher/A3_LifeTimer.APLR" id="37E1A19F-26B0-4948-AA12-2FD150963DD8">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Ratcatcher/A3_LifeTimer.APLR" id="28C69045-AEC5-4A79-A976-B8F6D038F3DF">
+							<ProgramApplicator>
+								<applicators>
+									<Item>
+										<applicator href="" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>0</continueEvents>
+										<delay>
+											<compiledString>FRYAAAABAAAAIgAAAEEzX0ludmlzVGltZVRocmVzaG9sZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cA3_InvisTimeThreshold</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsav+LRQyLEItNDItCdP/QXcM=</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.IsVisibleForEnemy(-1)</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Class/Ratcatcher/A3_LifeTimer.APLR" id="B0933E44-B02C-4131-81B6-CE682D898E19">
+											<KillApplicator>
+												<applyTarget>Hier3UpApplicatorTarget</applyTarget>
+												<caption>удалить крысу</caption>
+												<dontGiveRewards>true</dontGiveRewards>
+												<enabled>
+													<compiledString>FRAAAAABAAAAGgAAAFJhdEF0dGFja01hc3RlcgBVi+xqAotFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+													<returnType>bool</returnType>
+													<sString>receiver.applRatAttackMaster(ABILITY) == pMisc</sString>
+												</enabled>
+												<flag>Unsummon</flag>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+											</KillApplicator>
+										</applicator>
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>1</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsav+LRQyLEItNDItCdP/QXcM=</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.IsVisibleForEnemy(-1)</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>0</behaviorFlags>
+								<caption></caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName>RatDelayProgram</formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+							</ProgramApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Ratcatcher/A3_LifeTimer.APLR" id="147B7C8C-327E-42EE-A053-1A5DC005F22F">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>true</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

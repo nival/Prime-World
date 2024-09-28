@@ -1,0 +1,56 @@
+// This script requires multiLattice.mel
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+global proc H6_createMap( int $nX, int $nY )
+{
+	global string $gsH6TR_MapGroup = "MapGroup";
+	global string $gsH6TR_TE_Group = "TE_Group";
+	global string $gsH6TR_TE_NameAttr = "TE_Name";
+
+	file -f -new;
+	grid -sp 10 -s 320;
+	grid -divisions 4;
+
+	setAttr persp.tx -0.7327803212;
+	setAttr persp.ty -18.29350035;
+	setAttr persp.tz 24.72132046;
+	setAttr persp.rx 48.26164727;
+	setAttr persp.ry 0;
+	setAttr persp.rz -23;
+	setAttr perspShape.centerOfInterest 40;
+
+	string $list[] = {};
+	for( $nJ = 0; $nJ < $nY; $nJ++ )
+	{
+		for( $nI = 0; $nI < $nX; $nI++ )
+		{
+			string $tmp[] = `polyPlane -ch 0 -ax 0 0 1 -w 1 -h 1 -sx 1 -sy 1 -n ( "TE_" + $nI + "_" + $nJ )`;
+			move -a ( $nI * 10 + 5 ) ( $nJ * 10 + 5 ) 0 $tmp[0];
+			$list[`size $list`] = $tmp[0];
+		}
+	}
+
+	select -r $list;
+	string $sGroup = `group -n $gsH6TR_MapGroup`;
+	multiLattice $nX $nY;
+
+	for ( $sPatch in `ls -dag -typ mesh -io $gsH6TR_MapGroup` )
+	{
+		addAttr -ln $gsH6TR_TE_NameAttr -dt "string" $sPatch;
+		string $sT = stringArrayToString( `listRelatives -p $sPatch`, "" );
+		setAttr -l 1 -k 0 ( $sT + ".tx" );
+		setAttr -l 1 -k 0 ( $sT + ".ty" );
+		setAttr -l 1 -k 0 ( $sT + ".tz" );
+		setAttr -l 1 -k 0 ( $sT + ".rx" );
+		setAttr -l 1 -k 0 ( $sT + ".ry" );
+		setAttr -l 0 -k 0 ( $sT + ".rz" );
+		setAttr -l 1 -k 0 ( $sT + ".sx" );
+		setAttr -l 1 -k 0 ( $sT + ".sy" );
+		setAttr -l 1 -k 0 ( $sT + ".sz" );
+		setAttr -l 1 -k 0 ( $sT + ".v" );
+	}
+
+	return;
+}
+
+H6_createMap 3 3;

@@ -1,0 +1,3 @@
+Для редактирования грамматик исользуется GOLD Parser 5.0 (http://goldparser.org/builder/index.htm)
+Исходным файлом для них является simple.grm. Результирующим - simple.egt 
+После его генерации необходимо обновить SymbolConstants и RuleConstants для скрипта CompileQuestUtils.cs. Для этого в  GOLD Parser (у сгенеренной грамматики) надо выбрать Project/Create a Sceleton Programm/ C# и Calitha Engine Custom parser class. В нем нас будут интересовать только обновлянные enum SymbolConstants и RuleConstants.

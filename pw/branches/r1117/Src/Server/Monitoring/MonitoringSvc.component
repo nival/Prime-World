@@ -1,0 +1,45 @@
+sources = [
+  'MonitoringSvc/CumulativePerfCounter.cpp',
+  'MonitoringSvc/CumulativePerfCounter.h',
+  'MonitoringSvc/MonitoringSet.cpp',
+  'MonitoringSvc/MonitoringSet.h',
+  'MonitoringSvc/MonitorCore.cpp',
+  'MonitoringSvc/MonitorCore.h',
+  'MonitoringSvc/MonitoringIface.h',
+  'MonitoringSvc/MonitoringImpl.cpp',
+  'MonitoringSvc/MonitoringImpl.h',
+  'MonitoringSvc/MonitoringSvc.cpp',
+  'MonitoringSvc/MonitoringSvc.h',
+  'MonitoringSvc/MonitoringNaming.h',
+  'MonitoringSvc/MonitoringLogging.h',
+  'MonitoringSvc/PerfCounterCtx.cpp',
+  'MonitoringSvc/PerfCounterCtx.h',
+  'MonitoringSvc/ProviderCtx.cpp',
+  'MonitoringSvc/ProviderCtx.h',
+  'MonitoringSvc/ThriftHandler.cpp',
+  'MonitoringSvc/ThriftHandler.h',
+  'MonitoringSvc/ThriftModule.cpp',
+  'MonitoringSvc/ThriftModule.h',
+  'MonitoringSvc/specific.h',
+  'MonitoringSvc/stdafx.cpp',
+  'MonitoringSvc/stdafx.h',
+  'MonitoringSvc/MonitoringCfg.cpp',
+  'MonitoringSvc/MonitoringCfg.h',
+]
+
+components = [ 
+  'Vendor/Libc',
+  'RPC/all',
+  'Server/ServerAppBase/NivalService',
+  'Monitoring/MonitoringSvc/LMonitoringIface',
+  'Monitoring/PerfCounterProvider/RPerfCounterProviderIface',
+  'Vendor/Thrift',
+]
+
+includePaths = [
+    '.',
+]
+
+builders = [
+    ThriftBuilder( '../../../Tools/GMTools/MonitoringLib/Monitoring.thrift', 'cpp', output ='MonitoringSvc'),
+]

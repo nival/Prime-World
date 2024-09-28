@@ -1,0 +1,97 @@
+#include "stdafx.h"
+#include "Quaternion.h"
+
+using namespace EditorNative;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Quaternion::Quaternion( float _x, float _y, float _z, float _w )
+: x ( _x ),
+	y ( _y ),
+	z ( _z ),
+	w ( _w )
+{
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Quaternion::Quaternion( const CQuat& native )
+	: x ( native.x ),
+		y ( native.y ),
+		z ( native.z ),
+		w ( native.w )
+{
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Quaternion^ Quaternion::FromAngleAxis( double angle, Vector3^ axis )
+{
+	return gcnew Quaternion( CQuat( float( angle ), axis->Native ) );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Quaternion^ Quaternion::FromEulerAngles( Vector3^ eulerAngles )
+{
+  CQuat temp;
+  temp.FromEulerAngles( eulerAngles->Z * FP_PI / 180.0f, eulerAngles->X * FP_PI / 180.0f, eulerAngles->Y * FP_PI / 180.0f );
+  temp.Normalize();
+
+	return gcnew Quaternion( temp );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Vector3^ Quaternion::Rotate( Vector3^ vec )
+{
+	return gcnew Vector3( Native.Rotate( vec->Native ) );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Quaternion^ Quaternion::operator * ( Quaternion^ left, Quaternion^ right )
+{
+	return gcnew Quaternion( left->Native * right->Native );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Quaternion^ Quaternion::Inverted::get()
+{
+	CQuat native = Native;
+	native.Inverse();
+	return gcnew Quaternion( native );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float Quaternion::Yaw::get()
+{
+	float yaw, pitch, roll;
+	Native.DecompEulerAngles( &yaw, &pitch, &roll );
+	return yaw;
+}
+
+void Quaternion::Yaw::set( float value )
+{
+	float yaw, pitch, roll;
+	Native.DecompEulerAngles( &yaw, &pitch, &roll );
+  yaw = value;
+  Native.FromEulerAngles( yaw, pitch, roll );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float Quaternion::Pitch::get()
+{
+	float yaw, pitch, roll;
+	Native.DecompEulerAngles( &yaw, &pitch, &roll );
+	return pitch;
+}
+
+void Quaternion::Pitch::set( float value )
+{
+	float yaw, pitch, roll;
+	Native.DecompEulerAngles( &yaw, &pitch, &roll );
+  pitch = value;
+  Native.FromEulerAngles( yaw, pitch, roll );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+float Quaternion::Roll::get()
+{
+	float yaw, pitch, roll;
+	Native.DecompEulerAngles( &yaw, &pitch, &roll );
+	return roll;
+}
+
+void Quaternion::Roll::set( float value )
+{
+	float yaw, pitch, roll;
+	Native.DecompEulerAngles( &yaw, &pitch, &roll );
+  roll = value;
+  Native.FromEulerAngles( yaw, pitch, roll );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

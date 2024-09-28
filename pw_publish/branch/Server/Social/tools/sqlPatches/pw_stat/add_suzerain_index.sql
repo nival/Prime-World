@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_guild_rating` ADD INDEX `Index_suzerain_auid` (`suzerain`);

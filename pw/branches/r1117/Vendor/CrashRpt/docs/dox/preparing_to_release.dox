@@ -1,0 +1,88 @@
+/*!
+
+\page preparing_to_software_release Preparing to Software Release
+
+This page describes the steps you should perform to properly read error reports sent 
+by end users of your application and to recover call stacks from minidump files correctly.
+
+Before the release, it is recommended to check if exceptions are properly 
+intercepted in the main thread and in all worker threads of your application
+(use the crEmulateCrash() function).
+
+When you are ready to release your software, you should save its binary files, debugging
+information (symbols) and source code. When a crash report comes in, you use the release build, 
+source code and symbols you saved, along with the minidump included in the 
+crash report, to debug the crash.                
+
+\section savefiles Saving Binaries, Debugging Information and Source Code
+  
+First, you need to save your binary files (EXE, DLL) and corresponding 
+debugging symbols (PDB files). To do this, create a directory by the name 
+of your project. For example, if you develop the project 'MyApp', name
+your directory 'MyApp'. In that directory create a subdirectory for your 
+new software release, for example '1.0.0'. 
+
+Then copy all binary files (*.EXE, *.DLL) from your project output and 
+all debugging symbol files (*.PDB) from your project output to the directory
+you have just created. 
+
+\note It is also recommended that you copy the CrashRpt
+binaries and debugging symbols, too. This helps to ensure you will
+be able to correctly recover the call stacks from your minidump files.
+
+Finally, you should have the following directory structure (in the example below,
+XXXX is the placeholder for the CrashRpt version):
+<pre>
+  MyApp\
+      1.0.0\
+          MyApp.exe
+          MyApp.pdb
+          ...
+          CrashRptXXXX.dll
+          CrashRptXXXX.pdb
+</pre>
+
+It is also recommended that you save the source code that you used for 
+compiling the application. If you use a version control system (e.g., SVN), 
+mark the current revision of the code with tag to be able to restore its 
+state later.
+
+These steps should be performed for exactly the same software build that you plan 
+to release. If you rebuild (or at least partially rebuild) the project after the 
+files have been copied, you must copy the files again.
+
+\note Files that you have copied should be stored during the software 
+life time. PDB files should NOT be included in the software distribution and 
+should NOT be sent to end users. You should never ship PDB files as they will 
+not only take up more space, but they will also make reverse engineering 
+your code much easier.          
+
+\section rlsfiles Including CrashRpt Files in Your Software Distribution
+
+You must distribute the following files with your software (XXXX is the 
+placeholder for the CrashRpt version): 
+                                                                              
+- \b CrashRptXXXX.dll 
+- \b CrashSenderXXXX.exe
+- \b dbghelp.dll
+
+The \b CrashRptXXXX.dll and \b CrashSenderXXXX.exe are core CrashRpt modules. \b dbghelp.dll 
+(Microsoft Debug Help Library) is a dependent module.
+
+It is recommended that you place these files to the directory where your application 
+executable file is located.
+
+It is also required that you copy a language INI file \b crashrpt_lang.ini to the folder 
+where \b CrashSenderXXXX.exe is located. You can distribute several language INI files with 
+your software. On install, rename an appropriate file to \b crashrpt_lang.ini and copy it to 
+the folder where your \b CrashSenderXXXX.exe is located. For additional information about language
+files, please refer to \ref internationalization_support page.
+
+\note \b dbghelp.dll library is required to generate minidump files. \b dbghelp.dll is included in
+Windows XP distribution and in later versions of Windows, and most user machines have this 
+library installed. This means it is possible (but not recommended) to ignore distribution of \b dbghelp.dll, 
+if you strongly wish.                  
+
+<i>Further reading:</i> \ref using_error_reports.
+
+*/

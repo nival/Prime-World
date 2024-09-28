@@ -1,0 +1,14 @@
+if platform == 'win32' :
+  globalCompilerKeys = [ '/D NI_FORCE_DISABLE_INLINE_PROFILER' ]
+else :
+  defines = [ 'NI_FORCE_DISABLE_INLINE_PROFILER' ]
+  
+sources = [
+  'InlineProfiler3.h',
+]
+
+components = [
+  'Vendor/Libc',
+]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

@@ -1,0 +1,1 @@
+start UniServerApp-gamebalancer.exe gamebalancer

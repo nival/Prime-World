@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_user_profile` ADD COLUMN `is_leaver` tinyint(4) NOT NULL DEFAULT '0' AFTER `is_spectator`, ADD COLUMN `leaver_points` int(11) NOT NULL DEFAULT '0' AFTER `is_leaver`;

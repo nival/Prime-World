@@ -1,0 +1,61 @@
+[/
+ / Copyright (c) 2009 Steven Watanabe
+ /
+ / Distributed under the Boost Software License, Version 1.0. (See
+ / accompanying file LICENSE_1_0.txt or copy at
+ / http://www.boost.org/LICENSE_1_0.txt)
+]
+
+[section Synopsis of miscellaneous decorators in header <boost/random.hpp>]
+
+  namespace boost {
+    template<class UniformRandomNumberGenerator, class IntType = long>
+    class random_number_generator;
+  } // namespace boost
+
+[endsect]
+
+[section Class template random_number_generator]
+
+[section Synopsis]
+
+  template<class UniformRandomNumberGenerator, class IntType = long>
+  class random_number_generator
+  {
+  public:
+    typedef UniformRandomNumberGenerator base_type;
+    typedef IntType argument_type;
+    typedef IntType result_type;
+    random_number_generator(base_type & rng);
+    result_type operator()(argument_type n);
+  };
+
+[endsect]
+
+[section Description]
+
+Instantiations of class template random_number_generator model a
+RandomNumberGenerator (std:25.2.11 [lib.alg.random.shuffle]). On each
+invocation, it returns a uniformly distributed integer in the range [0..n).
+
+The template parameter IntType shall denote some integer-like value type.
+
+[note I consider it unfortunate that the C++ Standard uses the name
+RandomNumberGenerator for something rather specific.]
+
+[endsect]
+
+[section Members]
+
+  random_number_generator(base_type & rng)
+
+Effects: Constructs a random_number_generator functor with the given uniform
+random number generator as the underlying source of random numbers.
+
+  result_type operator()(argument_type n)
+
+Returns: The value of uniform_int<base_type>(rng, 0, n-1)().
+
+[endsect]
+
+[endsect]

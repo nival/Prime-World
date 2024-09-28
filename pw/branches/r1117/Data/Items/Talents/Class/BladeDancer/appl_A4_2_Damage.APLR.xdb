@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Heroes/BladeDancer/_.HROB" Count="2" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Урон и отхил А4_2, если есть жертва с меткой</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/BladeDancer/appl_A4_2_Damage.APLR" id="53F209CB-0308-4639-9CA5-EBA398D50A02">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/BladeDancer/appl_A4_2_Damage.APLR" id="B749E024-FE3B-4331-AD47-43980654FE4C">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>урон врагу с меткой от каждой автаатаки</caption>
+						<damage>
+							<compiledString>FRAAAAABAAAAHAAAAEE0XzJfRGFtYWdlSGVhbABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_2_DamageHeal</sString>
+						</damage>
+						<damageMode>0</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/BladeDancer/appl_A4_2_Damage.APLR" id="86F0022B-3824-4378-B369-95AA4D92DBBE">
+					<HealApplicator>
+						<amount>
+							<compiledString>FRAAAAABAAAAHAAAAEE0XzJfRGFtYWdlSGVhbABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_2_DamageHeal</sString>
+						</amount>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>лечим себя</caption>
+						<enabled>
+							<compiledString>FSYAAAACAAAALQAAAEYAAABCbGFkZURhbmNlcl9BNF8ydQAAAEJsYWRlRGFuY2VyX0E0XzJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoFAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>tal("BladeDancer_A4_2u")</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<healTarget>Health</healTarget>
+						<ignoreHealingMods>false</ignoreHealingMods>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+					</HealApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/BladeDancer/appl_A4_2_Damage.APLR" id="A180D82C-D545-4D57-AB37-DF9FFE55EAE4">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/BladeDancer/appl_A4_2_Damage.APLR" id="3603D902-1139-4054-A994-682A89593F77">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FRcAAAABAAAAIQAAAEJsYWRlRGFuY2VyX01hcmtPZlByZXkAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.applBladeDancer_MarkOfPrey(GLOBAL) != pMisc</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<targetSelector href="/Items/Talents/Class/BladeDancer/appl_A4_2_Damage.APLR" id="86BA53E1-2D63-4029-842E-111659535537">
+				<HeroEnumerator>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<targetFilter>671088643</targetFilter>
+				</HeroEnumerator>
+			</targetSelector>
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellApplicator>

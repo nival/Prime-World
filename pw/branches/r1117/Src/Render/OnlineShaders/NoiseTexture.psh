@@ -1,0 +1,15 @@
+#include "_commonPostProcess.h"
+
+sampler baseMap    : register(s0);
+sampler noiseMap   : register(s1);
+float4 noiseParams : register(PSHADER_LOCALCONST0);
+
+float4 PS_main( VS_OUTPUT Input ) : COLOR 
+{
+  float2 noiseTexcoord = noiseParams.xx * Input.Texcoord + noiseParams.yz;
+  float2 offset = tex2D(noiseMap, noiseTexcoord).rr - 0.5;
+  offset.y = 0.0;
+  float4 color  = tex2D(baseMap, Input.Texcoord + offset * noiseParams.w);
+  
+  return color;
+}

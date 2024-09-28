@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Level6/G455_Life_StrOrInt.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="F752C856-826D-4FBA-B400-3595EC949A1B">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Меняем текущие здоровье</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQ4AAAABAAAAGgAAAERyYWdvbl9IZWFsdGgAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cDragon_Health</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="B644EBCB-DF88-4AE8-99F3-8BECCCB7F8AC">
+			<HealApplicator>
+				<amount>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAECcRg==</compiledString>
+					<returnType>float</returnType>
+					<sString>20000</sString>
+				</amount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Лечим</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<healTarget>Health</healTarget>
+				<ignoreHealingMods>false</ignoreHealingMods>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<uiEvent href="" />
+			</HealApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="C8E527DA-4C29-4563-86E9-0DC856B1580F">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>запреты</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>134792828</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsException</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="A50E93F6-04C0-4DD2-A193-D0EB6208E2D3">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Меняем входящий урон </caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>Ward</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="26096191-FA16-43E9-9F21-FB228B525A01">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</mul>
+						<objectFilter>1901055</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="91B9579D-CD68-4F76-820F-0839BE9798F3">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Медленно бегать</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FREAAAABAAAAHQAAAERyYWdvbl9Nb3ZlU3BlZWQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cDragon_MoveSpeed</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>true</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="2028CDA1-FFE6-44E9-92B1-674F8665203B">
+			<InvalidAbilityTargetApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Можно атаковать только автоатакой</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</InvalidAbilityTargetApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="4024E18C-B141-496D-9334-145779BD8DE1">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>канселять все диспатчи от врагов</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAABAAAAEgAAAFWL7FGLRQyLEItNDIsC/9DcHTQAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+					<returnType>bool</returnType>
+					<sString>rLife &gt; 1</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="758C2E70-DE24-4DCB-B0E6-683CBC26972F">
+					<EventProcessorCancelDispatch>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<filter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Any</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1342178558</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</filter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+					</EventProcessorCancelDispatch>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/Transformed.APLR" />
+		<Item href="/Items/Talents/Level6/Status_G455Dragon.APLR" id="C1C20EA1-A747-4863-A426-49E88B72B05F">
+			<FlagsApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>CantDeath</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName>CantDeath</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsException</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Статус герое, при перевоплощении</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Level6/Status_G455Dragon.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAABAAAAEgAAAFWL7FGLRQyLEItNDIsC/9DcHTQAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>rLife &gt; 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>StatusHexed</formulaName>
+	<image href="/UI/Styles/Icons/Talents/_455.ITEX" />
+	<lifeTime>
+		<compiledString>FQ0AAAABAAAAGQAAAFBvbHlEdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cPolyDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Level6/Status_G455Dragon.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

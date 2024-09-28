@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Creeps/Normals/Normal2/CTF_S15.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/CTF_S7.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PVE_16_17.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PVE_19_20.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PVE_2_3.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PVE_6_7.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PvE_Coop1_DD.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PvE_Coop1_Support.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PVE_R15.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PVE_R18.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PVP.CREEP" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Spawners/Neutral_3.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/BalanseTest/Spawners/Duel_CSpawn.NCSPN" Count="1" />
+	<BackLink DBID="/Maps/Test/PlaneMap/spawners/Test_Neutral.NCSPN" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Effects/Shots/HitsApplicators/Bottle.APLR" />
+		<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="6999575E-E84A-4F87-B24A-66742601296B">
+			<DamageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<cancelInvisibility>false</cancelInvisibility>
+				<caption>урон</caption>
+				<damage>
+					<compiledString>FRQAAAABAAAAcAAAAEF0a0RhbWFnZURpc3BfQ3JlZXAAVYvsg+wQi0UIixCLTQiLggQBAAD/0FHZHCToXgAAAIPEBFCLTQiLEYtNCIuCAAEAAP/QUdkcJOhBAAAAg8QEUItNEIsRi00Qi0Jc/9CJRfzbRfyLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfT/0NxN9Nld8NlF8IvlXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+					<returnType>float</returnType>
+					<sString>random (f2l(sDamageMin), f2l(sDamageMax)) * cAtkDamageDisp_Creep</sString>
+				</damage>
+				<damageMode>3</damageMode>
+				<damageType>Native</damageType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<timeLimiter>-1</timeLimiter>
+				<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+			</DamageApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="F0C5B37E-3E01-4EB4-BE11-0234893CB277">
+			<SpellProbabilityApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Вероятность поджечь</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<probability>
+					<compiledString>FQoAAAABAAAAFgAAAEJ1cm5fUHJvYgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cBurn_Prob</sString>
+				</probability>
+				<providerName></providerName>
+				<spell href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="4B54E270-CF22-4085-9094-CE730F5B902B">
+					<Spell>
+						<applicators>
+							<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="15A256E9-834A-4714-811F-D877A1FC03C4">
+								<StatusApplicator>
+									<applicators>
+										<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="AC72D0CF-9590-472A-A1F6-6D783F9D31A4">
+											<SpellPeriodicallyApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<behaviorFlags>0</behaviorFlags>
+												<caption></caption>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<period>
+													<compiledString>FQwAAAABAAAAGAAAAEJ1cm5fUGVyaW9kAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>cBurn_Period</sString>
+												</period>
+												<providerName></providerName>
+												<scaleMode>ScaleIsCount</scaleMode>
+												<spell href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="531560E1-C2ED-4F23-9D0C-95C9A128A7FC">
+													<Spell>
+														<applicators>
+															<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="12C2C85D-4258-4F2B-8F32-60214390B1E8">
+																<DamageApplicator>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<cancelInvisibility>false</cancelInvisibility>
+																	<caption></caption>
+																	<damage>
+																		<compiledString>FQkAAAABAAAAFQAAAEJ1cm5fRG1nAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cBurn_Dmg</sString>
+																	</damage>
+																	<damageMode>0</damageMode>
+																	<damageType>Energy</damageType>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<formulaName></formulaName>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<timeLimiter>-1</timeLimiter>
+																	<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+																</DamageApplicator>
+															</Item>
+														</applicators>
+														<dispatch href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="A3E5729F-E5EB-420B-8D9E-0D93715CE5DC">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>2</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</spell>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+												<startOffset>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</startOffset>
+												<targetSelector href="" />
+											</SpellPeriodicallyApplicator>
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>горим</caption>
+									<customCounter>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>0</sString>
+									</customCounter>
+									<customProgress>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</customProgress>
+									<description textref="/Creeps/Normals/Normal2/AttackAbility.ATCK_15a256e9834a4714811fd877a1fc03c4_description.txt" />
+									<dispellPriority>Medium</dispellPriority>
+									<effect>
+										<Item href="/Effects/Debuffs/Burn/_.EFFT" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flags>0</flags>
+									<formulaName></formulaName>
+									<image href="/UI/Styles/Icons/Heroes/Firefox/A1.ITEX" />
+									<lifeTime>
+										<compiledString>FQoAAAABAAAAFgAAAEJ1cm5fVGltZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cBurn_Time</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<name textref="/Creeps/Normals/Normal2/AttackAbility.ATCK_15a256e9834a4714811fd877a1fc03c4_name.txt" />
+									<power>0</power>
+									<providerName></providerName>
+									<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+									<stackCount>0</stackCount>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<statusPosition>0</statusPosition>
+									<stopBehaviour>StopByTime</stopBehaviour>
+									<unstackableWith href="" />
+								</StatusApplicator>
+							</Item>
+							<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="18D7C99E-14E5-4602-BA93-FC5DB16AAFBF">
+								<UIMessageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>- FlyOff Message</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<message textref="/Creeps/Normals/Normal2/AttackAbility.ATCK_18d7c99e14e54602ba93fc5db16aafbf_message.txt" />
+									<providerName></providerName>
+									<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+									<value>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</value>
+								</UIMessageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="B2766A7D-EBB8-4FBA-B16C-D39CC6F63A70">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>2</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellIfFailed href="" />
+			</SpellProbabilityApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="8AEC3975-4E07-4DE8-B03A-BB3FF7E5F3CE">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="063FB0F9-2C5A-4354-8400-D775D6C8A846">
+					<UnitConstant>
+						<name>Manaburn</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="00932615-B086-4344-9FA3-E7AB25A3761D">
+					<UnitConstant>
+						<name>Burn_Prob</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="0E070AF6-5087-4A67-99CC-8D5A980163A2">
+					<UnitConstant>
+						<name>Burn_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="9EAE077D-0FDA-4BF5-9477-3DFDD8FC5CE8">
+					<UnitConstant>
+						<name>Burn_TotalDamage</name>
+						<var>
+							<compiledString>FQAAAAABAAAAFgAAAFWL7FGLRQiLEItNCIuCMAEAAP/Q3A0kAAAA2V382UX8i+VdwwAAAAAAABBA</compiledString>
+							<returnType>float</returnType>
+							<sString>sStrength*4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Normals/Normal2/AttackAbility.ATCK" id="89FB600B-6FA3-4E72-B213-FBFB0E516E12">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/Bottle/_.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>3</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>-1</maxDistance>
+			<maxRise>0.5</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>25</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>1835519</targetType>
+	<type>Simple</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

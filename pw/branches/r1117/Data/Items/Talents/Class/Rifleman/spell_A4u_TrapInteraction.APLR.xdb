@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellSwitchApplicator>
+	<BackLink DBID="/Items/Talents/Class/Rifleman/Summon_Trap.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rifleman/Summon_Trap_SUP.APLR" Count="1" />
+	<activeSpellIndex>
+		<compiledString>FQwAAAACAAAAEwAAADkAAABSaWZsZW1hbl9BNABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCHP/Q3B1bAAAA3+D2xER6CcdF+AAAAADrB8dF+AEAAACLRfiL5V3DAAAAAAAA8D8=</compiledString>
+		<returnType>int</returnType>
+		<sString>pFirst-&gt;GetTalent("Rifleman_A4")-&gt;GetPreparedness() == 1 ? 0 : 1</sString>
+	</activeSpellIndex>
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>(upg) Спелл с логикой А4у</caption>
+	<dontUseDispatches>true</dontUseDispatches>
+	<enabled>
+		<compiledString>FTUAAAAEAAAAPAAAAFUAAACLAAAApAAAAFJpZmxlbWFuX0E0AFJpZmxlbWFuX0E0AFJpZmxlbWFuX0E0dQAAAABSaWZsZW1hbl9BNHUAVYvsg+wUaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgMAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0WGgYAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoKAAAAItFCIsQi00Ii4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdAnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Rifleman_A4") &amp;&amp; tal("Rifleman_A4u"); // checking A4 is important</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spells>
+		<Item href="/Items/Talents/Class/Rifleman/spell_A4u_TrapInteraction.APLR" id="39CB1258-C093-4C47-9DFC-E277879CDC0F">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Rifleman/spell_A4u_TrapInteraction.APLR" id="69BAB196-8CC4-4D30-881D-14596DCB685E">
+						<PermanentStatModApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<caption>А4 готов -&gt; сокращаем ченнел</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>RiflemanA4_ReducedChannel</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+		<Item href="/Items/Talents/Class/Rifleman/spell_A4u_TrapInteraction.APLR" id="6B9F9FA0-26BC-472A-A201-82F23A4CBB74">
+			<Spell>
+				<applicators>
+					<Item href="/Items/Talents/Class/Rifleman/spell_A4u_TrapInteraction.APLR" id="35A61F3F-2F90-459C-B469-46B818ABCEFE">
+						<RefreshCooldownApplicator>
+							<allowCdIncrease>false</allowCdIncrease>
+							<applyTarget>AbilityOwner</applyTarget>
+							<caption>А4 не готов -&gt; откатываем</caption>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flags>128</flags>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<reduceByPercent>false</reduceByPercent>
+							<reductionAmount>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0f</sString>
+							</reductionAmount>
+							<refreshThis>false</refreshThis>
+							<talents>
+								<Item href="/Items/Talents/Class/Rifleman/Ability_A4.TALENT" />
+							</talents>
+							<useListAs>ListAsRule</useListAs>
+						</RefreshCooldownApplicator>
+					</Item>
+				</applicators>
+				<dispatch href="" />
+			</Spell>
+		</Item>
+	</spells>
+</SpellSwitchApplicator>

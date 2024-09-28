@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableProxyApplicator>
+	<BackLink DBID="/Heroes/Witch/_.HROB" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Witch/appl_A0_NT_Manaburn.APLR" id="00A008BB-37BF-4797-B10F-ED662B61A097">
+				<DamageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<cancelInvisibility>false</cancelInvisibility>
+					<caption>дамажим ману</caption>
+					<damage>
+						<compiledString>FRAAAAABAAAAHAAAAEEwX05UX01hbmFzdGVhbABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA0_NT_Manasteal</sString>
+					</damage>
+					<damageMode>0</damageMode>
+					<damageType>Mana</damageType>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="/UI/Events/CommonEvents/EventEnergyBurn.UIEV" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Witch/appl_A0_NT_Manaburn.APLR" id="681D3B1E-E6EB-4857-BEF9-FFD1A51DB892">
+				<HealApplicator>
+					<amount>
+						<compiledString>FQ0AAAABAAAAIgAAAGRhbWFnZURlYWxlZABVi+xRi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>appl.parent.GetVariable("damageDealed")</sString>
+					</amount>
+					<applyTarget>AbilityOwner</applyTarget>
+					<caption>лечим ману</caption>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<healTarget>Energy</healTarget>
+					<ignoreHealingMods>false</ignoreHealingMods>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<uiEvent href="" />
+				</HealApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>(А0) манабурн РЗ</caption>
+	<enabled>
+		<compiledString>FUAAAAAHAAAATwAAAGIAAACzAAAAxQAAAOUAAAATAQAAKQEAAFNlbmRlcl9OYXRpdmVUZXJyYWluAAAAAFdpdGNoX0EwQ3Vyc2UAAABXaXRjaF9BNEN1cnNlAAAASXNDbG9uZQBVi+yD7AiLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdTwEAAN/g9sRED4vMAAAAi0UMixCLTQyLQlD/0DPJg/gRD5XBiU3820X8UdkcJFHZ7tkcJGoBi1UMiwKLTQyLUFj/0g+2wFDoqQAAAIPEDNwdTwEAAN/g9sREe39qAItNEFFoGAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1IGoAi0UQUGgoAAAAi00MixGLTQyLgpwBAAD/0DtFEHQ/i00IixGLTQiLQlT/0A+2yIXJdSJoOAAAAItVCIsCi00Ii5CIAQAA/9LcHU8BAADf4PbERHsJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAAAAAABVi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>cSender_NativeTerrain &amp;&amp; ut_bldg( false, rUnitKind != 17 ) &amp;&amp; (receiver.applWitch_A0Curse(GLOBAL) != pMisc || receiver.applWitch_A4Curse(GLOBAL) != pMisc) &amp;&amp; (sIsHero || sender.vIsClone != 0)</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+</VariableProxyApplicator>

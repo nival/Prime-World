@@ -1,0 +1,12 @@
+# Limit setting
+ulimit -n 128000
+
+USER="pwcastle"
+RUNDIR="{{ conf['rundir'] }}"
+PYTHON="{{ conf['python_path'] }}"
+PYTHON_ARGS="-u"
+RUNSCRIPT="{{ conf['rundir'] }}/coordinator.py"
+RUNSCRIPT_ARGS="--zzima=async --billing=zzima --port={{ conf['coordinator_port'] }} --log_level={{ conf['log_level_coordinator'] }}\
+ --log_rotation=external --log_file_prefix={{ conf['logging'] }}coordinator.log\
+ --tick_period={% if conf['tick_period_coordinator'] != "0" %}{{ conf['tick_period_coordinator'] }}{% else %}{{ conf['tick_period'] }}{% end %}"
+LOGGING=">> {{ conf['logging_run'] }}pw-coordinator.log.run 2>&1"

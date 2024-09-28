@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>0</budget>
+	<caption> -- ! -- тестовый талант  -- ! --</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="" />
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>10.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Test/Talents/TST_18_TriggerMinLife.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="" />
+	<flags>1</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Artifacts/_Test.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>100.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>0</naftaCost>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Test/Talents/TST_18_TriggerMinLife.TALENT" id="A43EDFFA-DBF1-4740-9D29-2C5AEC53BFFC">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>(Триг) лечение +200 при хп &lt; 5%</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Test/Talents/TST_18_TriggerMinLife.TALENT" id="A3D58ED6-FD6B-4897-A2EB-BA7AF248F357">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FQAAAAABAAAAJAAAAFWL7IPsDItFDIsQi00MiwL/0ItNDIsRi00Mi0IM3V34/9DcDUkAAADcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcMAAACgmZmpPw==</compiledString>
+							<returnType>bool</returnType>
+							<sString>rLife &lt; rMaxLife * 0.05f</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Test/Talents/TST_18_TriggerMinLife.TALENT" id="7F5CA455-2CF0-4CC0-8A45-8E6B8F19E685">
+							<Spell>
+								<applicators>
+									<Item href="/Test/Talents/TST_18_TriggerMinLife.TALENT" id="3FF853E7-0F5A-457E-9196-02BD4CAD9D1C">
+										<HealApplicator>
+											<amount>
+												<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQw==</compiledString>
+												<returnType>float</returnType>
+												<sString>200</sString>
+											</amount>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>лечение на 200 хп</caption>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<healTarget>Health</healTarget>
+											<ignoreHealingMods>false</ignoreHealingMods>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<uiEvent href="" />
+										</HealApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Test/Talents/TST_18_TriggerMinLife.TALENT" id="5C7E558C-978D-436F-B980-56CAE153049F">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>true</useAbilityCooldown>
+				<useAbilityOwnerMana>true</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Test/Talents/TST_18_TriggerMinLife.TALENT" id="2787AA08-B90D-4B7E-809A-0243704AD9AA">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Защита (Э) +20</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>20</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>EnergyDamageDecrease</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId></persistentId>
+	<prerequisiteTalents />
+	<rarity>ordinary</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>15</talentRollGroups>
+	<talentStats />
+	<targetType>1909247</targetType>
+	<type>Passive</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Maps/PvE/Series/Episode1/Talents/RevivedStatus.ABLT" Count="1" />
+	<applicators>
+		<Item href="/Maps/PvE/Series/Episode1/Talents/DeathStatus.APLR" id="0E335CBB-F008-4D6C-861F-B6079A58967A">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>запрещаем все</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>10512261</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Maps/PvE/Series/Episode1/Talents/DeathStatus.APLR" id="0A83C549-511C-4274-A58C-F6C7CFEADEF5">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>вешаем переменную ImDead</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>ImDead</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>состояние "смерти"</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Maps/PvE/Series/Episode1/Talents/DeathStatus.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Maps/PvE/Series/Episode1/Talents/DeathStatus.APLR" id="B42E415A-C72F-42A2-AB13-0ECA753D9E2B">
+			<PlayAnimationEffect>
+				<animGraphNode>stun</animGraphNode>
+				<deathType>Manual</deathType>
+				<enableCondition href="" />
+				<goToOtherNodeOnStop>false</goToOtherNodeOnStop>
+				<lifeTime>0</lifeTime>
+				<marker></marker>
+				<markerReachTime>0</markerReachTime>
+				<returnAnimGraphNode></returnAnimGraphNode>
+			</PlayAnimationEffect>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRsAAAADAAAANgAAAFUAAABrAAAAU2hUcmlnZ2VyTGlmZQAAAFJldml2ZURvbmUAVYvsg+wMi0UIixCLTQiLAv/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEAXUraBAAAACLTQiLEYtNCIuCiAEAAP/Q3B2NAAAA3+D2xER6CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>(sLife &lt;= cShTriggerLife) &amp;&amp; (sender.vReviveDone == 0.f)</sString>
+	</enabled>
+	<flags>2</flags>
+	<formulaName>DeathState</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Stun.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Maps/PvE/Series/Episode1/Talents/DeathStatus.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

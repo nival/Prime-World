@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Heroes/Wendigo/AttackAbility.ATCK" Count="2" />
+	<applyTarget>Hier2UpApplicatorTarget</applyTarget>
+	<caption>Спелл с уроном и хилом</caption>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="6A993F95-48F3-4EE4-A598-2CCDF139E948">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="6B6CC6A2-9943-4640-BF81-CB620C979D14">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Диспатч АА</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="F4469CCC-F0F4-4840-BAC6-6CE64EF23E3B">
+							<Spell>
+								<applicators>
+									<Item href="/Effects/Shots/HitsApplicators/MeleeHero.APLR" />
+									<Item href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="C7C072FE-149E-4FEF-9A72-563D74BECBDF">
+										<DamageApplicator parent="/GameLogic/GeneralApplicators/BaseAttackDmg_Hero.APLR">
+											<damage>
+												<compiledString>FVUAAAAGAAAAXAAAAHUAAACvAAAAyAAAAAgBAACMAQAAV2VuZGlnb19BMAAAV2VuZGlnb19BMAAAV2VuZGlnb19BMF9TVVAAAFdlbmRpZ29fQTBfU1VQAABXZW5kaWdvUHJleQBBMF9TVVBfQWRkRGFtYWdlAFWL7IPsLGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJD4T6AAAAaBgAAACLVQiLAotNCIuQqAEAAP/ShcB0KmgoAAAAi0UIixCLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhckPhKcAAABqAItVEFJoOAAAAItFDIsQi00Mi4KcAQAA/9A7RRAPhYMAAACLTQyLEYtNDItCUP/QhcB1cotNCIsRi00Ii4IEAQAA/9BR2Rwk6LYAAACDxARQi00IixGLTQiLggABAAD/0FHZHCTomQAAAIPEBFCLTRCLEYtNEItCXP/QiUXs20Xsi00MUYtVCFJoRAAAAItFEIsQi00Qi0JQ3V3k/9DcReTdXdzrUItNCIsRi00Ii4IEAQAA/9BR2Rwk6EQAAACDxARQi00IixGLTQiLggABAAD/0FHZHCToJwAAAIPEBFCLTRCLEYtNEItCXP/QiUXY20XY3V3c3UXc2V3U2UXUi+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>tal("Wendigo_A0") &amp;&amp; tal("Wendigo_A0_SUP") &amp;&amp; receiver.applWendigoPrey(GLOBAL) == pMisc &amp;&amp; receiver.UnitKind == 0 ? random ( f2l(sDamageMin), f2l(sDamageMax))+ cA0_SUP_AddDamage : random ( f2l(sDamageMin), f2l(sDamageMax))</sString>
+											</damage>
+											<damageType>Material</damageType>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="FB0A2E13-1DAB-4F88-A3BF-FEC6ABCBF1D9">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="/Effects/Shots/MeleeHit/_DarkBlood.EFFT" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>5</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="" />
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="E25B0033-A48A-40AA-8471-343F8939ECF8">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Урон и отхил А2u</caption>
+						<enabled>
+							<compiledString>FSkAAAADAAAAMAAAAEkAAACFAAAAV2VuZGlnb19BMnUAV2VuZGlnb19BMnUAV2VuZGlnb19CbGVlZGluZwBVi+yD7AxoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQpagCLVRBSaBgAAACLRQyLEItNDIuCnAEAAP/QO0UQdAnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>tal("Wendigo_A2u") &amp;&amp; receiver.applWendigo_Bleeding(GLOBAL) != pMisc</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="7180DA3E-FE76-4735-B7E0-397F958569DF">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="B2C93139-624D-48CF-ACED-E7ADFCD71D24">
+										<StatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>запоминаем стаки на цели</caption>
+											<constraint>None</constraint>
+											<dontUpdate>false</dontUpdate>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+												<returnType>float</returnType>
+												<sString>0.2</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQ0AAAABAAAAJQAAAFdlbmRpZ29CbGVlZABVi+xRi0UIixCLTQiLgoQBAAD/0IlF/GgAAAAAi038ixGLTfyLgogBAAD/0IvlXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>pFirst-&gt;GetObjectTarget()-&gt;GetVariable("WendigoBleed")</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>CurrentTargetStacks</variable>
+											</modifier>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<statModName></statModName>
+										</StatModApplicator>
+									</Item>
+									<Item href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="DC22BC5C-65B1-4A39-8229-54453D822EF4">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>урон врагу с кровотечением</caption>
+											<damage>
+												<compiledString>FSQAAAACAAAAMwAAAEUAAABBMl9BdXRvRGFtYWdlAAAAQ3VycmVudFRhcmdldFN0YWNrcwBVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0mgQAAAAi0UIixCLTQiLgogBAADdXfj/0NxN+Nld9NlF9IvlXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cA2_AutoDamage * sender.vCurrentTargetStacks</sString>
+											</damage>
+											<damageMode>0</damageMode>
+											<damageType>Material</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+										</DamageApplicator>
+									</Item>
+									<Item href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="BF7B4FBA-6922-40B0-8BED-1B04059627A7">
+										<HealApplicator>
+											<amount>
+												<compiledString>FSAAAAACAAAALwAAAEEAAABBMl9BdXRvSGVhbABDdXJyZW50VGFyZ2V0U3RhY2tzAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SaAwAAACLRQiLEItNCIuCiAEAAN1d+P/Q3E342V302UX0i+Vdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cA2_AutoHeal * sender.vCurrentTargetStacks</sString>
+											</amount>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>лечим себя</caption>
+											<enabled>
+												<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<healTarget>Health</healTarget>
+											<ignoreHealingMods>false</ignoreHealingMods>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+										</HealApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="E94E0830-8AEE-4772-82A6-DCB33001CBC6">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>4</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="" />
+					</SpellApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Wendigo/A2_DamageHeal.APLR" id="64D790AF-F82D-4D2F-A092-D1F9F50430C2">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

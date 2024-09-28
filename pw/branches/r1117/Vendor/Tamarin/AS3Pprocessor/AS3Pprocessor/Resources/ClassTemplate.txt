@@ -1,0 +1,15 @@
+class ${ClassName} : public ${ParentClass}
+{
+public:
+  ${ClassName}(VTable *vtable): ${ParentClass}(vtable){}
+  ~${ClassName}(){}
+  
+  virtual ScriptObject* createInstance(VTable* ivtable, ScriptObject* prototype)
+  {
+    return new (core()->GetGC(), ivtable->getExtraSize()) ${ObjectName}(ivtable, prototype);
+  }  
+  
+${ClassFunctions}
+private:
+  DECLARE_SLOTS_${ClassName};
+};

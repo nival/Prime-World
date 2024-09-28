@@ -1,0 +1,1 @@
+bool init_ssl();

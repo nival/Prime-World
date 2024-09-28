@@ -1,0 +1,33 @@
+#include "stdafx.h"
+#include "BaseFSM.h"
+#include "BaseState.h"
+
+namespace NCore
+{
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	CFSMBase::CFSMBase()
+	{
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	void CFSMBase::SetState( IBaseFSMState *pNewState )
+	{
+		pCurrentState = pNewState;
+		//systemLog( NLogg::LEVEL_DEBUG ) << "*** Entering to new state: " << pNewState->GetObjectTypeName() << endl;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	void CFSMBase::Step(float dt)
+	{
+		if ( !IsValid( pCurrentState ) )
+			return;
+
+		CPtr<IBaseFSMState> pNewState = pCurrentState->Step(dt);
+
+		if ( IsValid( pNewState ) )
+		{
+			pNewState->Init();
+			SetState( pNewState );
+		}
+	}
+}

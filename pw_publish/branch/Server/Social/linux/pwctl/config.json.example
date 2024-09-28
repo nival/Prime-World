@@ -1,0 +1,203 @@
+{
+    "fromPath": "./etc_templates/",
+    "toPath":  "./etc/",
+
+    "host_name": "debian7",
+    "ip": "127.0.0.1",
+    "python_path": "/usr/local/bin/python",
+    "rundir": "/var/www/dduka_SocialServer",
+    "rundir_sa": "/var/www/dduka_pw_socagr",
+    "logging":"/var/www/dduka_SocialServer/logs/",
+    "logging_run":"/var/www/dduka_SocialServer/logs/",
+
+    "logging_nginx":"/var/log/nginx",
+    "nginx_user":"nobody",
+    "nginx_group":"nogroup",
+
+    "sleep_cf":"1",
+    "sleep_chat":"1",
+    "sleep_connect":"1",
+    "sleep_coordinator":"1",
+    "sleep_es":"1",
+    "sleep_friends":"1",
+    "sleep_guild":"1",
+    "sleep_login":"1",
+    "sleep_mirror":"1",
+    "sleep_ms":"0",
+    "sleep_party":"1",
+    "sleep_siege":"1",
+    "sleep_statistic":"1",
+    "sleep_status":"1",
+    "sleep_thrift":"1",
+    "sleep_ws":"7",
+    "sleep_xcoordinator":"1",
+    "sleep_xs":"1",
+    "sleep_dummy_ps":"1",
+
+    "log_level_cf":"info",
+    "log_level_chat":"info",
+    "log_level_connect":"info",
+    "log_level_coordinator":"info",
+    "log_level_es":"info",
+    "log_level_friends":"info",
+    "log_level_guild":"info",
+    "log_level_login":"info",
+    "log_level_mirror":"info",
+    "log_level_ms":"info",
+    "log_level_party":"info",
+    "log_level_siege":"info",
+    "log_level_statistic":"info",
+    "log_level_status":"info",
+    "log_level_thrift":"info",
+    "log_level_ws":"info",
+    "log_level_xcoordinator":"info",
+    "log_level_xs":"info",
+    "log_level_dummy_ps":"info",
+
+    "tick_period":"1.0",
+
+    "tick_period_cf":"0",
+    "tick_period_chat":"0",
+    "tick_period_connect":"0",
+    "tick_period_coordinator":"10.0",
+    "tick_period_es":"0",
+    "tick_period_friends":"10.0",
+    "tick_period_guild":"0",
+    "tick_period_mirror":"0",
+    "tick_period_party":"0",
+    "tick_period_siege":"0",
+    "tick_period_statistic":"0",
+    "tick_period_status":"0",
+    "tick_period_thrift":"0",
+    "tick_period_ws":"0",
+    "tick_period_xcoordinator":"0",
+    "tick_period_xs":"0",
+    "tick_period_dummy_ps":"0",
+
+    "tick_period_login":"0",
+    "tick_period_ms":"0",
+
+    "help:
+       cf chat connect coordinator es friends guild login mirror ms party siege statistic status thrift ws xcoordinator xs
+       debug info warn err error
+       login_port : --dont set from config: def
+       coordinator balancer external  from nginx config 127.0.0.1:98
+       coordinator balancer pwconnect from nginx config 127.0.0.1:888
+       coordinator balancer internal  from nginx config 127.0.0.1:8888" : "help",
+
+    "nginx_ip": "127.0.0.1",
+    "nginx_88": "98",
+    "nginx_888": "888",
+    "nginx_8888": "8888",
+
+    "coordinator_ip" : "127.0.0.1",
+    "coordinator_port" : "8700",
+
+    "xcoordinator_port" : "8701",
+
+    "thrift_port" : "8706",
+
+    "status_service_port" : "8707",
+
+    "statistic_port" : "8709",
+
+    "pw_connect_ip" : "127.0.0.1",
+    "pw_connect_port" : "8710",
+
+    "friends1_port" : "8714",
+    "friends2_port" : "8715",
+
+    "party1_port" : "8716",
+    "party2_port" : "8717",
+
+    "guilds1_port" : "8718",
+    "guilds2_port" : "8719",
+
+    "login_port" : "8724",
+
+    "mirror_port" : "8731",
+
+    "siege1_port" : "8741",
+    "siege2_port" : "8742",
+
+    "chat1_port" : "8720",
+    "chat2_port" : "8721",
+    "chat3_port" : "8010",
+    "chat4_port" : "8011",
+
+
+    "ws_one_port" : "8801",
+    "ws_two_port" : "8802",
+
+    "xs_ein_port" : "8811",
+    "xs_zwei_port" : "8812",
+
+    "mongo": {
+        "pw1": {
+            "mongo_addr": "localhost",
+            "mongo_port": 27017,
+            "mongo_base": "pw1",
+            "network_timeout": 10
+        },
+        "pw2": {
+            "mongo_addr": "localhost",
+            "mongo_port": 27017,
+            "mongo_base": "pw2",
+            "network_timeout": 10
+        }
+    },
+
+    "mysql": {
+        "pw1": {
+            "sql_host": "localhost:3306",
+            "sql_base": "pw1",
+            "sql_user": "pw",
+            "sql_pass": "pwdata"
+        },
+        "pw2": {
+            "sql_host": "localhost:3306",
+            "sql_base": "pw2",
+            "sql_user": "pw",
+            "sql_pass": "pwdata"
+        },
+        "mirror": {
+            "sql_host": "localhost:3306",
+            "sql_base": "pw_mirror",
+            "sql_user": "pwm",
+            "sql_pass": "pwmdata"
+        },
+        "stat": {
+            "sql_host": "localhost:3306",
+            "sql_base": "pw_stat",
+            "sql_user": "pws",
+            "sql_pass": "pwsdata"
+        },
+        "se1": {
+            "sql_host": "localhost:3306",
+            "sql_base": "se1",
+            "sql_user": "se",
+            "sql_pass": "sedata"
+        }
+    },
+
+    "COORDINATOR_WS_SERVERS" : {
+        "ein":  { "addr":"127.0.0.1:8811", "on":1, "ka":0 },
+        "zwei": { "addr":"127.0.0.1:8812", "on":1, "ka":0 }
+    },
+
+    "srv": {
+        "BALANCER_EXTERNAL": "127.0.0.1:98",
+        "BALANCER_PWCONNECT": "127.0.0.1:888",
+        "BALANCER_INTERNAL": "127.0.0.1:8888",
+
+        "COORDINATOR_BALANCER_EXTERNAL" : "127.0.0.1:98",
+        "COORDINATOR_BALANCER_PWCONNECT" : "127.0.0.1:888",
+        "COORDINATOR_BALANCER_INTERNAL" : "127.0.0.1:8888",
+
+        "SOCIAL_AGGREGATOR_ADDRESS" : "217.174.109.183:89",
+        "PERSON_SERVER_ADDRESS" : "127.0.0.1:8704",
+        "STATS_AGENT_URL" : "127.0.0.1:8709",
+
+        "SOCIAL_EXCHANGE_URL" : "127.0.0.1:98"
+    }
+}

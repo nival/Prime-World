@@ -1,0 +1,33 @@
+sources = [ 
+  'CoordinatorRunner.cpp',
+  'CoordinatorRunner.h',
+  'CoordinatorServer.cpp',
+  'CoordinatorServer.h',
+  'ServiceAppearanceNotifierIface.h',
+  'ServiceAppearancePublisher.cpp',
+  'ServiceAppearancePublisher.h',
+  'ServiceAppearanceNotifySink.h',
+  'CoordinatorServerNaming.h',
+  'CoordinatorServiceStatus.h',
+  'CoordinatorServerIface.h',
+  'CoordinatorClientContext.cpp', 
+  'CoordinatorClientContext.h',
+  'CoordinatorServerCfg.cpp',
+  'CoordinatorServerCfg.h',
+  'CoordinatorSvcContext.cpp',
+  'CoordinatorSvcContext.h',
+] 
+
+builders = [ 
+  RPCBuilder( 'Local', 'ServiceAppearanceNotifierIface.h', '', [] ), 
+  RPCBuilder( 'Remote', 'ServiceAppearanceNotifierIface.h', '', [] ), 
+]
+
+components = [ 
+  'Monitoring/PerfCounterProvider',
+  'NetworkAIO/transport',
+  'System/IDGenerator',
+  'Coordinator/RCoordinatorClientIface',
+  'Coordinator/CoordinatorCommon',
+  'Coordinator/LCoordinatorServerIface',
+]

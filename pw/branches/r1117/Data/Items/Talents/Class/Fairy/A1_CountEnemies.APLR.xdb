@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Fairy/Ability_A1.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>считалка обработанных врагов</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FREAAAABAAAAGwAAAEZhaXJ5X0ExX01pc3Npb24AVYvsagKLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applFairy_A1_Mission(ABILITY) != pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+		<returnType>float</returnType>
+		<sString>0.2</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/Class/Fairy/A1_CountEnemies.APLR" id="3EB4D2E4-7DB8-4670-8C13-94B611A6CBB5">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Fairy/A1_CountEnemies.APLR" id="AE7F573C-8DD0-4D79-9F3D-B4275733CF13">
+					<PermanentStatModApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>Fairy_EnemiesCounter++</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>Fairy_EnemiesCounter</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Fairy/A1_CountEnemies.APLR" id="CB0B4F92-BF65-4DED-B5D5-A497963AA085">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>false</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/Fairy/A1_CountEnemies.APLR" id="4C0237D6-4DE9-433F-930F-6FCEA4C31745">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<targetSelector href="/Items/Talents/Class/Fairy/A1_CountEnemies.APLR" id="F2CB1E9D-CCEC-42D6-B49C-A300F1B4DE50">
+				<CapsuleTargetSelector parent="/Items/Talents/Class/Fairy/A1_Enemies.TGSL">
+					<mode>SendOnce</mode>
+					<range>
+						<compiledString>FQkAAAABAAAAFQAAAEExX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA1_Range</sString>
+					</range>
+				</CapsuleTargetSelector>
+			</targetSelector>
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellPeriodicallyApplicator>

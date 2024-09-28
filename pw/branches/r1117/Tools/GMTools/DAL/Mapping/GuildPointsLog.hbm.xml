@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="GuildPointsLog">
+
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">guildpointslog_id_sequence</param>
+      </generator>
+    </id>
+
+    <many-to-one name="Guild" not-null="true" />
+    <many-to-one name="Player" />
+
+    <property name="Type" type="NHibernate.Type.EnumStringType`1[[DAL.Entities.GuildPointsLogType, DAL]], NHibernate" />
+    <property name="GuildPointsChange" not-null="true" />
+    <property name="PlayerPointsChange" not-null="true" />
+    <property name="GuildPointsTotal" not-null="true" />
+    <property name="PlayerPointsTotal" not-null="true" />
+    <property name="PersistentId" />
+    <property name="Timestamp" not-null="true" />
+
+  </class>
+</hibernate-mapping>

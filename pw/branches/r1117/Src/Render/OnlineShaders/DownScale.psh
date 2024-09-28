@@ -1,0 +1,22 @@
+#include "_commonPostProcess.h"
+
+sampler diffuseMap : register(s0);
+
+float4 g_StartAndStep : register(PSHADER_LOCALCONST1);
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+	float4 val = 0;
+	int numPixels = 0;
+	// Sample source pixels
+	float4 texCoord = 0;
+	for(texCoord.x = g_StartAndStep.x; texCoord.x < 1; texCoord.x += g_StartAndStep.z)
+		for(texCoord.y = g_StartAndStep.y; texCoord.y < 1; texCoord.y += g_StartAndStep.w)
+			val += tex2Dlod(diffuseMap, texCoord);
+		
+	float scale = 0;
+	for(int i = 0; i < NATURE_TYPES_COUNT; ++i)
+		scale += val[i];
+		
+	return val / scale;
+}

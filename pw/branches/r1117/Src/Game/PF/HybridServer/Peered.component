@@ -1,0 +1,27 @@
+sources = [
+    'Peered.h',
+    'PeeredImpl.h',
+    'PeeredImpl.cpp',
+    'ClientHolder.h',
+    'ClientHolder.cpp',
+    'BlockHistory.h',
+    'WorldData.h',
+    'WorldSnapshot.h',
+    'PeeredStatistics.h',
+    'PeeredStatistics.cpp',
+    'Protection.hpp',
+]
+
+components = [
+    'System/InlineProfiler',
+    'Server/RPC/Base',
+    'HybridServer/PeeredTypes',
+    'System/Savers',
+    'System/BlockData',
+]
+
+if platform == 'win32' :
+  components += [
+    'Server/Statistic/GameStatClient',
+    'Server/Statistic/StatClientHttpDispatcher',
+  ]

@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/Multiplayer/CTE/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Mains/_B.MBLD" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption>Раздаем статус всем героям, на проверку убийства яйценосца</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="6064640C-AB69-499F-9F00-1E2FAD975AE2">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgrgAAAD/0ItNDIsRi00Mi4K8AAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rBaseStrength&gt;=rBaseIntellect</sString>
+				</condition>
+				<name>DragonPower</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="6D12BE35-5E2B-40E0-84EE-2FD10FC5973F">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgsgAAAD/0ItNDIsRi00Mi4LMAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rBaseStamina&gt;=rBaseWill</sString>
+				</condition>
+				<name>DragonDef</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<constants href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="962A18AC-4300-4B8B-89C4-A479D1F438D8">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="94C24581-70DC-484B-9D40-DA66C3E3703B">
+					<UnitConstant>
+						<name>Range_CheckDeathSiege</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAB6RA==</compiledString>
+							<returnType>float</returnType>
+							<sString>1000</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="E88DB72F-810E-421C-AD83-BA3288278525">
+					<UnitConstant>
+						<name>DragonPowerDuration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>25</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="E8B26B80-1A0B-4655-848A-8E9E76152AF3">
+					<UnitConstant>
+						<name>Mul_Reg</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="97F920C9-3247-438F-9252-DF7285AE4E98">
+					<UnitConstant>
+						<name>Mul_DefPower</name>
+						<var>
+							<compiledString>FQwAAAAFAAIAGQAAACwAAABZAAAAaQAAAIgAAADUAAAABwEAAEJ1aWxkaW5nTW9kAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNRgAAANld/NlF/FHZHCToDwAAAIPEBIvlXcMAAAAAAAA6QFWL7IPsCNlFCNwdqgAAAN/g9sQBdR/ZRQjcBaIAAADZXfzZRfxR2Rwk6GkAAACDxATrHesb2UUI3CWiAAAA2V342UX4UdkcJOgXAAAAg8QEi+VdwwAAAAAAAOA/AAAAAAAAAABVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCToIv///4PECNld/NlF/IvlXcNVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCTo6f7//4PECNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>round(26 * cBuildingMod)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="52638848-2063-43B1-83BD-E325498D6A04">
+					<UnitConstant>
+						<name>BuildingMod</name>
+						<var>
+							<compiledString>FQAAAAACAAAAEwAAABsAAABVi+xRi0UIixCLTQiLQgz/0Nw1MQAAANzA3CUpAAAA2V382UX8i+VdwwAAAAAAAPA/AAAAAACUwUA=</compiledString>
+							<returnType>float</returnType>
+							<sString>sMaxLife/9000*2-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="27AA0F90-045B-403E-893C-207BBE8757EA">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Раздаем всем героям</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FREAAAACAAAAFgAAACwAAABIZXJvZXNCdWZmc0NoZWNrAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHU4AAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vHeroesBuffsCheck == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="F134E6CC-E19F-446E-AA7B-E65F32768458">
+					<Spell>
+						<applicators>
+							<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="109B9A81-BBD3-4B7E-89DE-2BCD9E43628F">
+								<StatusApplicator>
+									<applicators>
+										<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="02AD4F95-93CE-40C0-9FCE-B4C1BA91B8D8">
+											<TriggerApplicator>
+												<actionsCount>
+													<compiledString></compiledString>
+													<returnType>int</returnType>
+													<sString>0</sString>
+												</actionsCount>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<behaviorFlags>152</behaviorFlags>
+												<caption>триггер на смерть яйценосца</caption>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<playAck>false</playAck>
+												<processor href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="EB051E70-9830-492B-AC92-24385B05F769">
+													<EventProcessorUnitDieNearMe>
+														<applyTarget>AbilityOwner</applyTarget>
+														<checkSender>0</checkSender>
+														<killerFlags>11</killerFlags>
+														<range>
+															<compiledString>FRYAAAABAAAAIgAAAFJhbmdlX0NoZWNrRGVhdGhTaWVnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+															<returnType>float</returnType>
+															<sString>cRange_CheckDeathSiege</sString>
+														</range>
+														<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+														<spell href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="B555115E-365F-4C42-9909-FE271AA9E8F7">
+															<Spell>
+																<applicators>
+																	<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="D0D0FDC3-EBEA-4C73-B897-800471707CCB">
+																		<SpellApplicator>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<caption>Рассылаем всем союзным героям</caption>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<formulaName></formulaName>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<providerName></providerName>
+																			<spell href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="7786EF49-E7C9-45D4-95EF-8C7C92C48708">
+																				<Spell>
+																					<applicators>
+																						<Item href="/Maps/Multiplayer/CTE/status_EggPower.APLR" />
+																					</applicators>
+																					<dispatch href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="D0DBA3EE-C454-4DF8-8C15-1800A1E4EA1C">
+																						<DispatchImmediate>
+																							<alwaysApply>false</alwaysApply>
+																							<applyEffect>
+																								<Item href="" />
+																								<Item href="" />
+																							</applyEffect>
+																							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																							<applyEffectOrientation>Default</applyEffectOrientation>
+																							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																							<dieAfterApply>true</dieAfterApply>
+																							<dispatchEffect>
+																								<Item href="" />
+																								<Item href="" />
+																							</dispatchEffect>
+																							<flags>0</flags>
+																							<instantApply>false</instantApply>
+																						</DispatchImmediate>
+																					</dispatch>
+																				</Spell>
+																			</spell>
+																			<spellTarget>ApplicatorTarget</spellTarget>
+																			<targetSelector href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="C07164A0-18B7-4BB0-AB6C-16A9F588AFC8">
+																				<HeroEnumerator>
+																					<flags>0</flags>
+																					<mode>SendOnce</mode>
+																					<targetFilter>268435459</targetFilter>
+																				</HeroEnumerator>
+																			</targetSelector>
+																		</SpellApplicator>
+																	</Item>
+																</applicators>
+																<dispatch href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="EC5F10CA-AE8A-4328-8CDA-58C6DF8AF4BD">
+																	<DispatchImmediate>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Default</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>0</flags>
+																		<instantApply>false</instantApply>
+																	</DispatchImmediate>
+																</dispatch>
+															</Spell>
+														</spell>
+														<targets>536870928</targets>
+													</EventProcessorUnitDieNearMe>
+												</processor>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+												<useAbilityCooldown>false</useAbilityCooldown>
+												<useAbilityOwnerMana>false</useAbilityOwnerMana>
+											</TriggerApplicator>
+										</Item>
+										<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="14BFBBFB-149E-4AC1-91D9-BF482E77A271">
+											<PermanentStatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<caption>Отправляем, что героев нашли</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>1.0f</sString>
+													</addValue>
+													<multValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>1.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>HeroesBuffsCheck</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>216</behaviorFlags>
+									<caption>Проверка, герой убил дракона</caption>
+									<customCounter>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>0</sString>
+									</customCounter>
+									<customProgress>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</customProgress>
+									<description textref="" />
+									<dispellPriority>NonDispellable</dispellPriority>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flags>64</flags>
+									<formulaName></formulaName>
+									<image href="" />
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<name textref="" />
+									<power>0</power>
+									<providerName></providerName>
+									<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+									<stackCount>0</stackCount>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<statusPosition>0</statusPosition>
+									<stopBehaviour>StopByTime</stopBehaviour>
+									<unstackableWith href="" />
+								</StatusApplicator>
+							</Item>
+							<Item href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="2898F4FC-9458-44DD-8945-055C30D73425">
+								<FlagsApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>216</behaviorFlags>
+									<caption>FX_DragonPower</caption>
+									<consumables />
+									<effect>
+										<Item href="/Effects/Buffs/Increase/_Regeneration.EFFT" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString>FQsAAAABAAAAFQAAAERyYWdvbkRlYWQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.applDragonDead(GLOBAL) != pMisc</sString>
+									</enabled>
+									<flag>0</flag>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<talents />
+									<useListAs>ListAsRule</useListAs>
+								</FlagsApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="54FC692E-FFA3-4503-B6B6-004DDA03741B">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="/Maps/Multiplayer/CTE/CheckToKillEggSiege.ABLT" id="FC3959E4-B790-481D-91BE-6A0C8ADF09DF">
+					<HeroEnumerator>
+						<flags>2</flags>
+						<mode>Normal</mode>
+						<targetFilter>268435459</targetFilter>
+					</HeroEnumerator>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>268435459</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

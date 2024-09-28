@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<BackLink DBID="/Dialog/CastleTutorial/Ador/c4/c42_qB" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Dokt/c4/c42_qA" Count="1" />
+	<code>foreach building in Buildings do
+  if building.PersistentId == "Library" and building.Level &gt; 0 then
+    return 1
+  end
+end
+return 0</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/c42_0" id="02C58148-2458-4A44-B9F1-80B55E9D6C0E">
+			<SendRequestCondition>
+				<name>building_upgrade</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+		<Item href="/Dialog/CastleTutorial/Conditions/c42_0" id="53F8C085-1BB6-40FB-9CF1-B505312CEAC6">
+			<SendRequestCondition>
+				<name>move_from_pocket</name>
+				<phase>ClientAccepted</phase>
+			</SendRequestCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>

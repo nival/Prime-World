@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Level1/G736_Str.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level1/G737_Int.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G738_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G739_CDR_Health.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/G740_WillOrStamina.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level6/G741_DexOrAtSpd.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Триггер на смерть крипов</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName>GlyphTrigger</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/TalentKits/Redset7_7_Glyph/General_Trigger.APLR" id="87022772-1208-488D-B1B7-D2861E4B5D34">
+		<EventProcessorUnitDieNearMe>
+			<applyTarget>ApplicatorSelectedTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<killerFlags>7</killerFlags>
+			<range>
+				<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX0V4TG9uZwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+				<returnType>float</returnType>
+				<sString>cRange_ExLong</sString>
+			</range>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Items/Talents/TalentKits/Redset7_7_Glyph/General_Trigger.APLR" id="7171690B-E21C-4112-9A1B-2F2778E05AE7">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/General_Trigger.APLR" id="6305CBD5-FE77-43F4-BC2E-965B89DCA962">
+							<ProgramApplicator>
+								<applicators>
+									<Item>
+										<applicator href="/Items/Talents/TalentKits/Redset7_7_Glyph/General_Trigger.APLR" id="F0460B2D-55E8-4616-8B3A-E87454D91165">
+											<StatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<behaviorFlags>0</behaviorFlags>
+												<caption>Переменная однократного спавна</caption>
+												<constraint>None</constraint>
+												<dontUpdate>false</dontUpdate>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+													<returnType>float</returnType>
+													<sString>0.2</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+														<returnType>float</returnType>
+														<sString>1.0f</sString>
+													</addValue>
+													<multValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>1.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>SpawningOnce</variable>
+												</modifier>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+												<statModName></statModName>
+											</StatModApplicator>
+										</applicator>
+										<continueCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>1</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" />
+										<continueCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>2</continueEvents>
+										<delay>
+											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+											<returnType>float</returnType>
+											<sString>0.1</sString>
+										</delay>
+										<stopCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>0</behaviorFlags>
+								<caption>Вызов глифа</caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+							</ProgramApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/TalentKits/Redset7_7_Glyph/General_Trigger.APLR" id="2AACF343-15CA-468C-90CB-E067D1F1E426">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<targets>536870928</targets>
+		</EventProcessorUnitDieNearMe>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FSEAAAADAAAAJgAAADwAAABOAAAAUmVkc2V0N183Q291bnRlcgAAAABHbHlwaFRyaWdnZXIAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdfgAAAN/g9sQBdSlqAItNEFFoFAAAAItVCIsCi00Ii5CcAQAA/9I7RRB1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAEA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vRedset7_7Counter &gt;=2 &amp;&amp; sender.applGlyphTrigger(GLOBAL) == pMisc</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

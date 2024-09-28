@@ -1,0 +1,43 @@
+        "ItemsKeeper": {
+            "Keeper": {
+                "2": {
+                    "Talent": {
+                        "ActionBarIdx": 0, 
+                        "IsNew": false, 
+                        "Soulbound": 1, 
+                        "TalentID": 139934119, 
+                        "defaultForHero": 1, 
+                        "id": 2, 
+                        "path": "ItemsKeeper/2", 
+                        "refCounter": 1
+                    }
+                }, 
+
+Talent ===========================================
+
+  def __init__( self, modeldata, id=None, path=None ):
+	# INHERITED:
+	self.__dict__["_changeWriter"] = changeWriter
+	self.__dict__["path"] = path
+	self.__dict__["refCounter"] = 0
+	self.__dict__["id"] = id
+	
+	# OWN:
+    self.__dict__["_modeldata"] = modeldata
+    self.__dict__["ActionBarIdx"] = 0
+    self.__dict__["defaultForHero"] = Ref( modeldata, modeldata.HeroesKeeper, path, "defaultForHero" )
+    self.__dict__["IsNew"] = False
+    self.__dict__["Soulbound"] = Ref( modeldata, modeldata.HeroesKeeper, path, "Soulbound" )
+    self.__dict__["TalentID"] = 0
+    self.isDeleting = False
+
+
+Ref ===========================================
+	# INHERITED:
+	self.__dict__["_changeWriter"] = changeWriter
+	self.__dict__["path"] = path
+
+	# OWN:
+	self.__dict__["object"] = IGuidGenerator.InvalidUID
+	self.__dict__["realdict"] = realdict
+	self.__dict__["name"] = name

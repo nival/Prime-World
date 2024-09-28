@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Banshee/status_A0_Enemy.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Banshee/status_A4_2.APLR" Count="1" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Триггер на 1 хп</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName>BansheeA0_Trigger1HP</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Banshee/trigger_A0_1hp.APLR" id="340BB2BE-7EF7-4704-96EE-347453EDE8E2">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FQAAAAABAAAAEgAAAFWL7FGLRQyLEItNDIsC/9DcHTQAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+				<returnType>bool</returnType>
+				<sString>rLife == 1.0f</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Class/Banshee/trigger_A0_1hp.APLR" id="4EBDA52A-D1C1-44E5-959E-44FD4FE84A69">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Class/Banshee/trigger_A0_1hp.APLR" id="BA6C84B9-0A7A-48C4-97F2-C5B08A3632BE">
+							<DamageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<cancelInvisibility>false</cancelInvisibility>
+								<caption>Добивающий урон</caption>
+								<damage>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</damage>
+								<damageMode>0</damageMode>
+								<damageType>Pure</damageType>
+								<enabled>
+									<compiledString>FQAAAAACAAAAOAAAAEEAAABVi+yD7BSLRQyLEItNDItCJP/Qi00MixGLTQyLQgzdXfj/0ItNDIsRi00Mi0Is3V3w/9DcTfDcNWsAAADcRfjcHWMAAADf4PbEQXoJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcMAAAAAAADwvwAAAAAAAFlA</compiledString>
+									<returnType>bool</returnType>
+									<sString>rLifeRegen + rMaxLife * rLifeRegenAbs/100 &lt;= -1.0f</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<timeLimiter>-1</timeLimiter>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Class/Banshee/trigger_A0_1hp.APLR" id="4458DC07-EFB2-4B78-BB70-DF9856DC5F50">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>true</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FRUAAAABAAAAHwAAAEJhbnNoZWVBMF9UcmlnZ2VyMUhQAFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>pSecond-&gt;FindApplicator("BansheeA0_Trigger1HP", pMisc, UNIT) == pMisc</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

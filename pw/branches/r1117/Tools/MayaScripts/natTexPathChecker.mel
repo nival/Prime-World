@@ -1,0 +1,73 @@
+global proc natTexPathChecker (string $sceneName) {
+
+	if ($sceneName != "" ) {
+    	file -o -f $sceneName;
+    }
+
+	// смотрим, в какой папке лежит сцена
+	$assetPath = `file -q -sn`;
+	$assetName = basename ($assetPath,"");
+	$assetPath = substituteAllString ($assetPath,$assetName,"");
+	$prjHere = 1;
+	$workinPath = $assetPath;
+	string $projectPath = "";
+	chdir $workinPath;
+	string $uncorrectPathes[];
+	$i=0;
+    string $temp;
+	// от папки со сценой в цикле шагаем на одну папку вверх и ищем там workspace.mel. первая папка, где он нашелся и есть проектный путь
+	while ($prjHere) {
+	    $nowDir = (`pwd` + "/");
+	    chdir ("..");
+	    $workinPath = (`pwd` + "/");
+    	//если путь до chdir .. равен пути после него, значит уперлись.. в рут или c:\
+    	if ($nowDir == $workinPath) {
+	        $prjHere = 0;
+	        print ("fig znaet what happend, but project path cannot be defined");
+	    }
+
+    	$fileList = `getFileList -fld $workinPath`;
+	    if (stringArrayContains ("workspace.mel", $fileList)) {
+	        $projectPath = (`pwd` + "/");
+    	    $prjHere = 0;
+    	}
+	}
+
+	//print $projectPath;
+    $temp = $projectPath;
+    $projectPath = `tolower $projectPath`;
+
+	// для всех файл-нод смотрим абсолютный путь до текстуры. если он начинается с проектного пути - значит текстура лежит относительно проекта. проверяем наличие самого файла текстуры и
+	$texNodes = `ls -typ file`;
+
+	for ($tNode in $texNodes) {
+		//$tNode = "exp4:file5";
+    	$path = `getAttr ($tNode + ".ftn")`;
+        $temp = $path;
+		$path = `tolower $temp`;
+    	if (startsWith ($path, $projectPath)){
+			$tName = basename ($path,"");
+	        $tPath = substituteAllString ($path,$tName,"");
+    	    $fileList = `getFileList -fld $tPath`;
+            for ($i=0; $i< `size $fileList`;$i++) {
+            	$temp = $fileList[$i];
+                $fileList[$i] = `tolower ($temp)`;
+            }
+	        if (!stringArrayContains ($tName, $fileList)){
+    	    	$uncorrectPathes[$i] = ("Texture not found " + `toNativePath($path)`);
+	        	$i++;
+    	    }
+    	} else {
+        	$uncorrectPathes[$i] = ("Error: Non relative path " + `toNativePath($path)`);
+        	$i++;
+    	}
+
+	}
+
+	if (`size $uncorrectPathes` > 0) {
+		print "Error: Scene has uncorrect texture pathes:\n";
+		print $uncorrectPathes;
+	}
+}
+
+natTexPathChecker ("");

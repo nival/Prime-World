@@ -1,0 +1,14 @@
+#include "_commonPostProcess.h"
+
+sampler env : register(s0);
+sampler scene : register(s1);
+
+float alpha : register(PSHADER_LOCALCONST0);
+
+
+float4 PS_main(VS_OUTPUT Input) : COLOR
+{
+//  return float4(tex2D(scene, Input.Texcoord).rgb, alpha);
+  return tex2D(env, Input.Texcoord) * (1 - alpha) + tex2D(scene, Input.Texcoord) * alpha;
+  
+}

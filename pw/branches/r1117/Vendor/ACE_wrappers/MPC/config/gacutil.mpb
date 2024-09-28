@@ -1,0 +1,8 @@
+// $Id: gacutil.mpb 1509 2008-11-10 10:46:18Z johnnyw $
+
+project {
+  specific(vc8, vc9, vc10) {
+    postbuild += \
+      gacutil -nologo -i <%cwd%>\<%dllout%>\<%libname_prefix%><%sharedname%><%if(use_lib_modifier)%><%lib_modifier%><%endif%><%dll_ext%> -f
+  }
+}

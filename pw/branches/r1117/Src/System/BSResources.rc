@@ -1,0 +1,67 @@
+#include <winresrc.h>
+#include "BSResources.h"
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define IDC_STATIC							(-1)		 // all static controls
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+IDD_EXCEPTION_REPORT DIALOGEX 0, 0, 330, 215
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Unhandled Exception"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+		PUSHBUTTON			"&Debug",IDC_EXCEPTION_DEBUG,273,41,50,14
+		PUSHBUTTON			"&Abort",IDC_EXCEPTION_ABORT,273,58,50,14
+		ICON						IDI_ICON_ERROR,IDC_STATIC,7,7,20,20
+		PUSHBUTTON			"R&egisters...",IDC_EXCEPTION_DETAILS,273,75,50,14
+		PUSHBUTTON			"&Full Dump",IDC_EXCEPTION_FULL_MINIDUMP,273,92,50,14
+		CONTROL					"List1",IDC_EXCEPTION_CALLSTACK,"SysListView32",
+										LVS_REPORT | LVS_SINGLESEL | LVS_NOSORTHEADER | WS_TABSTOP,
+										7,41,261,167,WS_EX_CLIENTEDGE
+		LTEXT						"",IDC_STATIC_COND,35,7,288,9,0
+		LTEXT						"",IDC_STATIC_DESCR,35,19,288,18,0
+END
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+IDD_ASSERTION_REPORT DIALOGEX 0, 0, 330, 258
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Assertion Failed"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+		ICON						IDI_ICON_EXCLAMATION,IDC_STATIC,7,7,20,20
+		LTEXT						"", IDC_ASSERTION_DESCRIPTION,35,7,286,30,0
+		LTEXT						"Call stack",IDC_STATIC,7,37,58,8
+		CONTROL					"List1",IDC_LIST_CALLSTACK,"SysListView32",
+										LVS_REPORT | LVS_SINGLESEL | LVS_NOSORTHEADER | WS_TABSTOP,
+										7,48,261,104,WS_EX_CLIENTEDGE
+		DEFPUSHBUTTON		"&Continue",IDC_ASSERTION_CONTINUE,273,48,50,14
+		PUSHBUTTON			"&Ignore",IDC_ASSERTION_IGNORE,273,66,50,14
+		PUSHBUTTON			"&Debug",IDC_ASSERTION_DEBUG,273,84,50,14
+		PUSHBUTTON			"&Abort",IDC_ASSERTION_ABORT,273,102,50,14
+		PUSHBUTTON			"&Mini Dump",IDC_ASSERTION_NORMAL_MINIDUMP,273,120,50,14
+		PUSHBUTTON			"&More >>",IDC_BUTTON_MORE,273,138,50,14
+		LTEXT						"Ignores List - Double	click to remove",
+										IDC_STATIC_SPLITTER,4,160,164,8
+		CONTROL					"List1",IDC_ASSERTION_IGNORES_LIST,"SysListView32",
+										LVS_REPORT | LVS_SINGLESEL | LVS_NOSORTHEADER | WS_TABSTOP,
+										7,171,316,83,WS_EX_CLIENTEDGE
+END
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+IDD_DATA_ASSERTION_REPORT DIALOGEX 0, 0, 330, 185
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Data Assertion Failed"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    ICON            IDI_ICON_EXCLAMATION,IDC_STATIC,7,7,21,20
+    LTEXT           "",IDC_ASSERTION_DESCRIPTION,35,7,233,74
+    DEFPUSHBUTTON   "&Continue",IDC_ASSERTION_CONTINUE,273,7,50,14
+    PUSHBUTTON      "&Ignore",IDC_ASSERTION_IGNORE,273,25,50,14
+    PUSHBUTTON      "&Ignore All",IDC_ASSERTION_IGNORE_ALL,273,43,50,14
+    PUSHBUTTON      "&More >>",IDC_BUTTON_MORE,273,67,50,14
+    LTEXT           "Call stack",IDC_STATIC_SPLITTER,4,86,164,8
+    CONTROL         "List1",IDC_LIST_CALLSTACK,"SysListView32",
+										LVS_REPORT | LVS_SINGLESEL | LVS_NOSORTHEADER |	WS_TABSTOP,
+										7,96,316,83,WS_EX_CLIENTEDGE
+END
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_ERROR					ICON		DISCARDABLE		 "error.ico"
+IDI_ICON_EXCLAMATION		ICON		DISCARDABLE		 "exclamation.ico"

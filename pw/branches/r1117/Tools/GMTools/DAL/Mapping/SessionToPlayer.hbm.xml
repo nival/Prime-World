@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="SessionToPlayer">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">sessiontoplayer_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="PlayerCharacter" not-null="true" />
+    <many-to-one name="GameSession" not-null="true" />
+    <many-to-one name="Guild" />
+    <property name="FinalLevel" />
+    <property name="Leaver" />
+    <property name="MaxLevelReached" />
+    <property name="Faction" />
+    <property name="Score" />
+    <property name="Kills" />
+    <property name="Deaths" />
+    <property name="Assists" />
+    <property name="EnemyCreepsKilled" />
+    <property name="NeutralCreepsKilled" />
+    <property name="RelayAddress" />
+    <property name="StartTime" />
+
+    <sql-insert check="none">
+      INSERT INTO sessiontoplayer
+      (playercharacter, gamesession, guild, finallevel, leaver, maxlevelreached, faction, score,
+      kills, deaths, assists, enemycreepskilled, neutralcreepskilled, relayaddress, starttime, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

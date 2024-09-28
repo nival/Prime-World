@@ -1,0 +1,35 @@
+#include "_commonPostProcess.h"
+#include "..\Shaders\_bloomEncoding.hlsl"
+
+sampler diffuseMap : register(s0);
+
+#ifndef SCALE
+
+half4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  half4 diffuse = tex2D(diffuseMap, Input.Texcoord);
+  return half4(diffuse.rgb * DecodeBloomVal(diffuse.a), 1);
+}
+
+#else
+
+float4 screenAndTextureStep : register( PSHADER_LOCALCONST1 );
+
+half4 PS_main(VS_OUTPUT Input) : COLOR
+{
+  half3 result = 0;
+  float2 start = Input.Texcoord - screenAndTextureStep.xy; // screenScaleOffset.zw * (1 - 1/SCALE); 
+  float2 coord = start;
+  for(int i = 0; i < SCALE; ++i) {
+    for(int j = 0; j < SCALE; ++j) {
+      half4 diffuse = tex2D(diffuseMap, coord);
+      result += diffuse.rgb * DecodeBloomVal(diffuse.a);
+      coord.x += screenAndTextureStep.z;
+    }
+      coord.x = start.x;
+      coord.y += screenAndTextureStep.w;
+  }
+  return half4(saturate(result / (SCALE * SCALE)), 1);
+}
+
+#endif

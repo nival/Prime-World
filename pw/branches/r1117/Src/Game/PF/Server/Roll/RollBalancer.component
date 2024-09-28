@@ -1,0 +1,21 @@
+sources = [
+  'RollBalancer.h',
+  'RollServiceBalancer.cpp',
+  'RollServiceBalancer.h',
+  'RollServiceBalancerRunner.cpp',
+  'RollServiceBalancerRunner.h',
+]
+
+
+builders = [
+  RPCBuilder( 'Local', 'RollBalancer.h', '', ['RRollInstance.auto.h'] ),
+]
+
+
+
+components = [
+  'Server/ServerAppBase/NivalService',
+  'libdb/Database',
+  'Server/Roll/RollInstanceRemote',
+  'Server/Roll/RollConfig',
+]

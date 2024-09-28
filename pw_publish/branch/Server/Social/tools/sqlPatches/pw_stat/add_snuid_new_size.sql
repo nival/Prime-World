@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_user_profile` MODIFY COLUMN `snuid` VARCHAR(512);

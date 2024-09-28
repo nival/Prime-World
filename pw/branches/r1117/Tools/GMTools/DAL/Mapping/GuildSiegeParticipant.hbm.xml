@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+
+  <class name="GuildSiegeParticipant">
+
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">guildsiegeparticipant_id_sequence</param>
+      </generator>
+    </id>
+    
+    <many-to-one name="GuildSiege" not-null="true" />
+    <many-to-one name="Guild" not-null="true" />
+    <many-to-one name="GuildPointsLog" not-null="true" />
+
+    <property name="Rating" not-null="true" />
+    <property name="SiegePoints" not-null="true" />
+    <property name="StartTime" not-null="true" />
+    <property name="EndTime" not-null="true" />
+
+    <sql-insert check="none">
+      INSERT INTO guildsiegeparticipant
+      (guildsiege, guild, guildpointslog, rating, siegepoints, starttime, endtime, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

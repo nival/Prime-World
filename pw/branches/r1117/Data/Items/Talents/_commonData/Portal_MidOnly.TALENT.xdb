@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent parent="/Items/Talents/_commonData/PortalBlank.TALENT">
+	<BackLink DBID="/Items/Talents/_commonData/Portal_MidOnly.TALENT" Count="2" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/_.ADMPSTTN" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Scoring.SCTB" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/status_G336_TelBlock.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="A2708362-6C41-4BE9-A3F1-66B67BDA7B64">
+			<SpellApplicator parent="/Items/Talents/_commonData/Teleport_to_friendly_terrain.APLR">
+				<spell href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="71352AD8-E511-4398-8D22-B364D6DF080F">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="5AF8B3B2-32AC-4E6E-B038-FF89417B8B7B">
+								<ChannellingApplicator parent="/Items/Talents/_commonData/PortalChannelling.APLR">
+									<cancelSpell href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="D63C2148-3A7C-44D5-A02A-5D920978A8FD">
+										<Spell>
+											<applicators>
+												<Item href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="E80F0B8E-5C8E-4CCA-BC3D-75D421B6FB5C">
+													<RefreshCooldownApplicator parent="/Items/Talents/_commonData/PortalCancelCDR.APLR">
+														<talents>
+															<Item href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" />
+														</talents>
+													</RefreshCooldownApplicator>
+												</Item>
+												<Item href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="4E05C1CF-FA42-4B9A-99AA-A1827A02A4E0">
+													<AbilityEndApplicator parent="/GameLogic/GeneralApplicators/EndOfAbility.APLR">
+														<applyTarget>AbilityOwner</applyTarget>
+														<cancelApplicators>true</cancelApplicators>
+														<enabled>
+															<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLAv/QXcM=</compiledString>
+															<returnType>bool</returnType>
+															<sString>mIsAbilityOn</sString>
+														</enabled>
+													</AbilityEndApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="90CEE29A-34F4-453C-968C-66A7C6E7A8F2">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>true</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</cancelSpell>
+								</ChannellingApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="877707C3-C9B1-4FDC-85EB-96CA9409EAAD">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<forceBonus>9</forceBonus>
+	<marker></marker>
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" id="5503B3D4-A6DD-4466-A973-E7DD335819DC">
+			<FlagsApplicator parent="/GameLogic/GeneralApplicators/ForbidTalentByCondition.APLR">
+				<talents>
+					<Item href="/Items/Talents/_commonData/Portal_MidOnly.TALENT" />
+				</talents>
+			</FlagsApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>midonly_Portal</persistentId>
+</Talent>

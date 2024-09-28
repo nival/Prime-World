@@ -1,0 +1,1020 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Katana.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Katana_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Katana/Ability_A1.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/Katana/Ability_A1u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Katana_Mighty.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="E0C20E55-7207-4D8E-AD22-841C28D24327">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FR4AAAACAAAAKQAAAFIAAABLYXRhbmFfQTFTdGFjawAAS2F0YW5hX0ExVGltZQBVi+xRagCLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QO0UQdAnHRfwBAAAA6ytqAItNEFFoEAAAAItVCIsCi00Ii5CcAQAA/9IrRRD32BvAg+D+g8ACiUX8i0X8i+Vdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>sender.applKatana_A1Stack(GLOBAL) != pMisc ? 1 : sender.applKatana_A1Time(GLOBAL) != pMisc ? 0 : 2</sString>
+				</activeSpellIndex>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Изменяем КД абилки</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString>FRUAAAAEAAAAHAAAADUAAABrAAAAkQAAAEc3NjYAAAAARzc2NgAAAABHNzY2AFWL7IPsFGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoCAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdEpoEAAAAItVCIsCi00Ii5CoAQAA/9KJRfSLRfSLEItN9ItCHP/Q3B3CAAAA3+D2xAV6CcdF8AEAAADrB8dF8AAAAACLTfCJTezrB8dF7AEAAACKReyL5V3DAAAAAAAA8D8=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("G766") ? pFirst-&gt;GetTalent("G766")-&gt;GetPreparedness() &lt; 1.0f : true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="BA7B324A-131B-4401-99D6-F98E120BE198">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="2ECB4A01-8F85-4B13-A75A-56136077A694">
+									<RefreshCooldownApplicator>
+										<allowCdIncrease>false</allowCdIncrease>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>Обновляем сколько можем</caption>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flags>128</flags>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<reduceByPercent>false</reduceByPercent>
+										<reductionAmount>
+											<compiledString>FSUAAAAFAAAAMgAAAFgAAABpAAAAcQAAAIsAAABBMV9Db29sZG93bgBLYXRhbmFfQTFUaW1lAAAAZHVyYXRpb24AVYvsg+wUagCLRRBQaAwAAACLTQiLEYtNCIuCnAEAAP/QiUX8i00QixGLTRCLQjz/0NwlxwAAANld+NlF+FHZHCRR2QXDAAAA2RwkaBwAAACLTfyLEYtN/ItCVP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V3w/9DcZfDZXezZRexR2Rwk6EYAAACDxATZHCToEwAAAIPECIvlXcPNzMw9AAAAAAAA8D9Vi+xR2UUI2UUM3tnf4PbEQXUI2UUI2V386wbZRQzZXfzZRfyL5V3DVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+											<returnType>float</returnType>
+											<sString>min(max(cA1_Cooldown - sender.applKatana_A1Time(GLOBAL).GetVariable("duration"),0.1f), mCooldown - 1)</sString>
+										</reductionAmount>
+										<refreshThis>true</refreshThis>
+										<talents>
+											<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" />
+										</talents>
+										<useListAs>ListAsRule</useListAs>
+									</RefreshCooldownApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="9C8EE3B9-0B15-4848-A04F-DDE630836C0A">
+									<StatModApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption>Стоп статус</caption>
+										<constraint>None</constraint>
+										<dontUpdate>false</dontUpdate>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<modifier>
+											<addValue>
+												<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+												<returnType>float</returnType>
+												<sString>1.0f</sString>
+											</addValue>
+											<multValue>
+												<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</multValue>
+											<stat>Life</stat>
+											<topModifier>false</topModifier>
+											<variable>StopA1</variable>
+										</modifier>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<statModName></statModName>
+									</StatModApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="3BB30201-69B0-4456-A51F-D74EFD50CA32">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="01F16254-3A5D-4272-8EA9-156416A8A9D5">
+									<RefreshCooldownApplicator>
+										<allowCdIncrease>false</allowCdIncrease>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>Обновляем, оставляя 1 сек</caption>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flags>128</flags>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<reduceByPercent>false</reduceByPercent>
+										<reductionAmount>
+											<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRRCLEItNEItCPP/Q3CUhAAAA2V382UX8i+VdwwAAAAAAAPA/</compiledString>
+											<returnType>float</returnType>
+											<sString>mCooldown - 1</sString>
+										</reductionAmount>
+										<refreshThis>true</refreshThis>
+										<talents>
+											<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" />
+										</talents>
+										<useListAs>ListAsRule</useListAs>
+									</RefreshCooldownApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="DE7C89F2-0E3A-4D2C-8C5A-398FB2210133">
+									<StatModApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption>Стоп статус</caption>
+										<constraint>None</constraint>
+										<dontUpdate>false</dontUpdate>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<modifier>
+											<addValue>
+												<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+												<returnType>float</returnType>
+												<sString>1.0f</sString>
+											</addValue>
+											<multValue>
+												<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</multValue>
+											<stat>Life</stat>
+											<topModifier>false</topModifier>
+											<variable>StopA1</variable>
+										</modifier>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<statModName></statModName>
+									</StatModApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="" />
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_G766_RefreshAndNotify.APLR" />
+		<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="48D70053-FA85-48DA-AF14-26E956699DCD">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FQoAAAABAAAAFAAAAEthdGFuYV9BMgBVi+xqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+VwYvBXcM=</compiledString>
+					<returnType>int</returnType>
+					<sString>sender.applKatana_A2(GLOBAL) == pMisc ? 0 : 1</sString>
+				</activeSpellIndex>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Костыльный запуск анимации</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="B597DD69-2BC7-4097-8732-C9196F585CE7">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="049EB581-3C89-4589-A967-D4D91CDBBB5C">
+									<FlagsApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption></caption>
+										<consumables />
+										<effect>
+											<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="21E9DEBB-AA9A-455D-B4A0-BB3D5C38F440">
+												<PlayAnimationEffect>
+													<animGraphNode>ability1</animGraphNode>
+													<deathType>Anim</deathType>
+													<enableCondition href="" />
+													<goToOtherNodeOnStop>true</goToOtherNodeOnStop>
+													<lifeTime>0</lifeTime>
+													<marker></marker>
+													<markerReachTime>0</markerReachTime>
+													<returnAnimGraphNode></returnAnimGraphNode>
+												</PlayAnimationEffect>
+											</Item>
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>0</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="0BFDFED5-53FB-4A2B-85CF-A2801B3CA565">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="B770959C-D24A-4734-95AF-0021A90773DE">
+									<FlagsApplicator>
+										<applyTarget>AbilityOwner</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption></caption>
+										<consumables />
+										<effect>
+											<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="3017F9DD-B8FE-4250-9051-9773E7CF016F">
+												<PlayAnimationEffect>
+													<animGraphNode>ability1</animGraphNode>
+													<deathType>Anim</deathType>
+													<enableCondition href="" />
+													<goToOtherNodeOnStop>true</goToOtherNodeOnStop>
+													<lifeTime>0</lifeTime>
+													<marker></marker>
+													<markerReachTime>0</markerReachTime>
+													<returnAnimGraphNode>idle</returnAnimGraphNode>
+												</PlayAnimationEffect>
+											</Item>
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>0</flag>
+										<formulaName></formulaName>
+										<lifeTime>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="2C6F6D80-4DE8-4B69-B932-ADCDA86484AF">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Урон и замедло через 0.1 сек</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="BB0D7693-D071-45A4-91D2-ED679C78A67F">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="6CAF8FE7-6FD5-4B9B-B82A-5DAA545CA540">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>Урон</caption>
+									<damage>
+										<compiledString>FQoAAAABAAAAFgAAAEExX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA1_Damage</sString>
+									</damage>
+									<damageMode>0</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+							<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+							<Item href="/Items/Talents/Class/Katana/status_A0_SUP_Burn.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="1CF5E45A-83B7-496A-BBE1-17666F57D94B">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="/Effects/Shots/MeleeHit/_HeroB.EFFT" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="47DCF0B6-4B4C-481C-8862-13A348CEE21E">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQoAAAABAAAAFgAAAEExX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA1_Radius</sString>
+						</range>
+						<targetFilter>538705983</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="14B8D5C0-AE94-4505-893D-E94022DA907A">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FQoAAAACAAAAEQAAADcAAABLYXRhbmFfQTIAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QiUX8i038ixGLTfyLQhz/0NwdWQAAAN/g9sREegnHRfgBAAAA6wfHRfgAAAAAi0X4i+VdwwAAAAAAAPA/</compiledString>
+					<returnType>int</returnType>
+					<sString>pFirst-&gt;GetTalent("Katana_A2")-&gt;GetPreparedness() == 1 ? 1 : 0</sString>
+				</activeSpellIndex>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Откат А2</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABLYXRhbmFfQTJ1AABLYXRhbmFfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Katana_A2u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="41ECDF56-E635-444D-B9EE-05C826333F41">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="86594B7C-66DD-46F2-BB1A-DC010C2CD713">
+									<RefreshCooldownApplicator>
+										<allowCdIncrease>false</allowCdIncrease>
+										<applyTarget>AbilityOwner</applyTarget>
+										<caption>Обновляем, оставляя 1 сек</caption>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flags>128</flags>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<reduceByPercent>false</reduceByPercent>
+										<reductionAmount>
+											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+											<returnType>float</returnType>
+											<sString>20</sString>
+										</reductionAmount>
+										<refreshThis>false</refreshThis>
+										<talents>
+											<Item href="/Items/Talents/Class/Katana/Ability_A2.TALENT" />
+										</talents>
+										<useListAs>ListAsRule</useListAs>
+									</RefreshCooldownApplicator>
+								</Item>
+								<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="DACB2E03-A62F-40A4-A8E5-EC9506C0C4A9">
+									<StatusApplicator>
+										<applicators />
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>0</behaviorFlags>
+										<caption>Статус А2 без бонусов</caption>
+										<customCounter>
+											<compiledString></compiledString>
+											<returnType>int</returnType>
+											<sString>0</sString>
+										</customCounter>
+										<customProgress>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</customProgress>
+										<description textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_dacb2e03a62f40a4a8e5ec9506c0c4a9_description.txt" />
+										<dispellPriority>NonDispellable</dispellPriority>
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flags>2</flags>
+										<formulaName>Katana_A2Debuff</formulaName>
+										<image href="/UI/Styles/Icons/Heroes/Katana/A2.ITEX" />
+										<lifeTime>
+											<compiledString>FQ4AAAABAAAAGgAAAEEyX0RlYnVmZlRpbWUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+											<returnType>float</returnType>
+											<sString>cA2_DebuffTime</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<name textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_dacb2e03a62f40a4a8e5ec9506c0c4a9_name.txt" />
+										<power>0</power>
+										<providerName></providerName>
+										<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+										<stackCount>0</stackCount>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<statusPosition>0</statusPosition>
+										<stopBehaviour>StopByTime</stopBehaviour>
+										<unstackableWith href="" />
+									</StatusApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="8693457C-7C64-42C9-8924-1CB2ECADBCA6">
+						<Spell>
+							<applicators />
+							<dispatch href="" />
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="CAD97FE8-AB25-4C56-B050-FCB619300CB8">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Еще один костыль</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.2</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<askId>1</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А1. Рассекающий удар</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="BBE922D2-B9B9-4950-A728-C1BBD6D59295">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABLYXRhbmFfQTF1AABLYXRhbmFfQTF1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+4PoAffYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Katana_A1u") == true</sString>
+				</condition>
+				<name>Katana_A1u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="574DEE8C-528C-4B0F-8420-763B5A8C80EB">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="24EC04BB-14ED-496E-9BA9-2CE97A288478">
+					<UnitConstant>
+						<name>A1_Radius</name>
+						<var>
+							<compiledString>FQwAAAACAAAAGQAAACwAAABSYW5nZV9NZWxlZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBToAAADZXfzZRfyL5V3DAAAAAAAA8D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Melee + 1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="6349448F-6490-4670-8983-654BC9F9BEB4">
+					<UnitConstant>
+						<name>A1_Damage</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAACOQgDABUQ=</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( sIntellect,71, 535)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="30C7E40D-1AAA-4013-A44C-B8EFB24E6DDA">
+					<UnitConstant>
+						<name>Dec_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="0A12F057-951C-478A-8DE2-9DC31139750F">
+					<UnitConstant>
+						<name>Slow_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Katana/const_A1_Cooldown" />
+				<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="38690285-80D5-4B12-A04D-8FC38BD43BFB">
+					<UnitConstant>
+						<name>A2_DebuffTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Katana/const_A0_SUP_Burn_DPS" />
+				<Item href="/Items/Talents/Class/Katana/const_A0_SUP_Burn_Duration" />
+				<Item href="/Items/Talents/Class/Katana/const_A0_SUP_Burn_Period" />
+				<Item href="/Items/Talents/Class/Katana/const_A0_SUP_Burn_TotalDamage" />
+				<Item href="/Items/Talents/Class/Katana/const_A0_SUP_Burn_TTDPS" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>10.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="10F3C817-A4A0-4C0E-AD07-01AE0C83BA82">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>6</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Katana/A1.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABwQg==</compiledString>
+		<returnType>float</returnType>
+		<sString>60</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="44DFAC7E-6F28-4F5E-B84B-3F6B8E808F61">
+		<MultipleTargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<minTargetCount>2</minTargetCount>
+			<minTargetWeight>0</minTargetWeight>
+			<targetSelector href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="A4C982F8-73EE-4B37-BEFF-145A826954FB">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX01lbGVlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cRange_Melee</sString>
+					</range>
+					<targetFilter>671088671</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+			<unitFilter>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</unitFilter>
+		</MultipleTargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="84431711-58B7-483F-8DE1-2F1C505962D7">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption>Перезапуск статуса</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRcAAAACAAAAHgAAADcAAABLYXRhbmFfQTF1AABLYXRhbmFfQTF1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Katana_A1u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.1f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsTime</scaleMode>
+				<spell href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="78CD79D0-2B10-42B2-BA4F-FBC90B45A872">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="4F28C876-523A-4DE9-8895-AFF42583D865">
+								<ProgramApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="5DEB2D35-6E0D-4F6D-8312-EDB517F79A2A">
+												<StatusApplicator>
+													<applicators />
+													<applyTarget>AbilityOwner</applyTarget>
+													<behaviorFlags>217</behaviorFlags>
+													<caption>Статус накопления стака</caption>
+													<customCounter>
+														<compiledString></compiledString>
+														<returnType>int</returnType>
+														<sString>0</sString>
+													</customCounter>
+													<customProgress>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</customProgress>
+													<description textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_5deb2d356e0d4f6d8312edb517f79a2a_description.txt" />
+													<dispellPriority>NonDispellable</dispellPriority>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<flags>0</flags>
+													<formulaName>Katana_A1Time</formulaName>
+													<image href="/UI/Styles/Icons/Heroes/Katana/A1.ITEX" />
+													<lifeTime>
+														<compiledString>FQwAAAABAAAAGAAAAEExX0Nvb2xkb3duAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>cA1_Cooldown</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<name textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_5deb2d356e0d4f6d8312edb517f79a2a_name.txt" />
+													<power>0</power>
+													<providerName></providerName>
+													<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+													<stackCount>0</stackCount>
+													<startCondition>
+														<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</startCondition>
+													<statusPosition>0</statusPosition>
+													<stopBehaviour>StopByTime</stopBehaviour>
+													<unstackableWith href="" />
+												</StatusApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>2</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="552355C1-C723-4B7F-9B20-3C26AB6977B2">
+												<StatusApplicator>
+													<applicators />
+													<applyTarget>AbilityOwner</applyTarget>
+													<behaviorFlags>217</behaviorFlags>
+													<caption>Стак есть!</caption>
+													<customCounter>
+														<compiledString></compiledString>
+														<returnType>int</returnType>
+														<sString>0</sString>
+													</customCounter>
+													<customProgress>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</customProgress>
+													<description textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_552355c1c7234b7f9b203c26ab6977b2_description.txt" />
+													<dispellPriority>NonDispellable</dispellPriority>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<flags>0</flags>
+													<formulaName>Katana_A1Stack</formulaName>
+													<image href="/UI/Styles/Icons/Heroes/Katana/A1.ITEX" />
+													<lifeTime>
+														<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<name textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_552355c1c7234b7f9b203c26ab6977b2_name.txt" />
+													<power>0</power>
+													<providerName></providerName>
+													<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+													<stackCount>0</stackCount>
+													<startCondition>
+														<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</startCondition>
+													<statusPosition>0</statusPosition>
+													<stopBehaviour>StopByTime</stopBehaviour>
+													<unstackableWith href="" />
+												</StatusApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>2</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+									</applicators>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>219</behaviorFlags>
+									<caption>Программа</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString>FQcAAAACAAAADAAAACIAAABTdG9wQTEAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdRAAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+										<returnType>bool</returnType>
+										<sString>sender.vStopA1 == 0</sString>
+									</enabled>
+									<formulaName>Katana_A1Prog</formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString>FQ4AAAACAAAAGQAAAEEAAABLYXRhbmFfQTFQcm9nAFWL7FFqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9A7RRB1I4tNEIsRi00Qi0Ic/9DcHWMAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+										<returnType>bool</returnType>
+										<sString>sender.applKatana_A1Prog(GLOBAL) == pMisc &amp;&amp; mPreparedness==1</sString>
+									</startCondition>
+								</ProgramApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Katana/Ability_A1.TALENT" id="7C83143B-A9E7-4079-98D4-3826868CA475">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>Katana_A1</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Katana/Ability_A1.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQoAAAABAAAAFgAAAEExX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cA1_Radius</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

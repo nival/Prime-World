@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>когда убиваем героев</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/GameLogic/GeneralApplicators/OnKill.APLR" id="54C91185-639C-43E3-93E5-48BFFC59FBCA">
+		<EventProcessorUnitDieNearMe>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<killerFlags>9</killerFlags>
+			<range>
+				<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAB6RA==</compiledString>
+				<returnType>float</returnType>
+				<sString>1000</sString>
+			</range>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/GameLogic/GeneralApplicators/OnKill.APLR" id="CC79ADAC-8F3C-418A-93AB-65CD8D3A8DBD">
+				<Spell>
+					<applicators>
+						<Item href="/GameLogic/GeneralApplicators/OnKill.APLR" id="99C2C953-7D15-41A5-9933-1D62663A243B">
+							<PermanentStatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>увеличить счётчик киллов</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</addValue>
+									<multValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>KillsCount</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</Item>
+						<Item href="/GameLogic/GeneralApplicators/OnKill.APLR" id="07FD8897-C88F-4CC4-B7D5-278AB10A35A1">
+							<PermanentStatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>сбросить счётчик смертей</caption>
+								<customApplyType>None</customApplyType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</addValue>
+									<multValue>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>DeathsCount</variable>
+								</modifier>
+								<providerName></providerName>
+							</PermanentStatModApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/GameLogic/GeneralApplicators/OnKill.APLR" id="62ABD424-BAC9-40DB-996B-5C9A4768CBE6">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<targets>536870915</targets>
+		</EventProcessorUnitDieNearMe>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

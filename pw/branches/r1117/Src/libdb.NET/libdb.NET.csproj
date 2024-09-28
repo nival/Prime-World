@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <ProjectGuid>{2369C873-8C70-4197-8CAB-67D34C9D5412}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>libdb</RootNamespace>
+    <AssemblyName>libdb.NET</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\_Release\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Shipping|Win32' ">
+    <OutputPath>..\_Shipping\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ShippingSingleExe|Win32' ">
+    <OutputPath>..\_ShippingSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseSingleExe|Win32' ">
+    <OutputPath>..\_ReleaseSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Animated\Animated.cs" />
+    <Compile Include="Animated\AnimatedTrack.cs" />
+    <Compile Include="Animated\AnimatedTracks.cs" />
+    <Compile Include="DBValue.cs" />
+    <Compile Include="DB\ConfigFile.cs" />
+    <Compile Include="DB\ConfigObjectAttribute.cs" />
+    <Compile Include="DB\ConfigObjectFieldAttribute.cs" />
+    <Compile Include="DB\DBConvertResourceType.cs" />
+    <Compile Include="DB\DBMetaCopy.cs" />
+    <Compile Include="DB\DBObjectAttributes.cs" />
+    <Compile Include="DB\DBSerializable.cs" />
+    <Compile Include="DB\DBXmlSerializer.Deserialize.cs" />
+    <Compile Include="DB\FieldPath.cs" />
+    <Compile Include="DB\Serializable.cs" />
+    <Compile Include="DB\SimpleRegisteringXmlSerializer.cs" />
+    <Compile Include="DB\SimpleRegisteringXmlSerializerWithMemberFiltering.cs" />
+    <Compile Include="UndoRedo\ComplexEntity\ChangeDBPtrOperation.cs" />
+    <Compile Include="UndoRedo\ComplexEntity\ResetDBPtrOperation.cs" />
+    <Compile Include="UndoRedo\DBPtrBaseChangeOperation.cs" />
+    <Compile Include="UndoRedo\UndoRedoTransaction.cs" />
+    <Compile Include="DB\XmlSerializer.cs" />
+    <Compile Include="Diagnostics\ConsoleDumper.cs" />
+    <Compile Include="Diagnostics\DebuggerDumper.cs" />
+    <Compile Include="Diagnostics\Dumper.cs" />
+    <Compile Include="Diagnostics\FileDumper.cs" />
+    <Compile Include="Diagnostics\Log.cs" />
+    <Compile Include="IO\FileNameCounter.cs" />
+    <Compile Include="RichList.cs" />
+    <Compile Include="DB\TextRef.cs" />
+    <Compile Include="DB\TypeHelper.cs" />
+    <Compile Include="DB\Attributes.cs" />
+    <Compile Include="DB\DataBase.cs" />
+    <Compile Include="DB\DBFieldInfo.cs" />
+    <Compile Include="DB\DBID.cs" />
+    <Compile Include="DB\DBPtr.cs" />
+    <Compile Include="DB\DBPtrBase.cs" />
+    <Compile Include="DB\DBReference.cs" />
+    <Compile Include="DB\DBResource.cs" />
+    <Compile Include="DB\DBTypesCache.cs" />
+    <Compile Include="DB\TypeUtils.cs" />
+    <Compile Include="DB\DBXmlSerializer.Serialize.cs" />
+    <Compile Include="DB\FieldsWalker.cs" />
+    <Compile Include="DB\FileRef.cs" />
+    <Compile Include="DB\GeneratedCodeUtilities.cs" />
+    <Compile Include="IChangeable.cs" />
+    <Compile Include="DB\NameUtils.cs" />
+    <Compile Include="DB\UninlineFileAsker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DB\UninlineFileAsker.Designer.cs">
+      <DependentUpon>UninlineFileAsker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB\XmlContextReader.cs" />
+    <Compile Include="DB\XmlContextWriter.cs" />
+    <Compile Include="IO\FileInformation.cs" />
+    <Compile Include="IO\FileSystem.cs" />
+    <Compile Include="IO\FileUtils.cs" />
+    <Compile Include="IO\SrcFile.cs" />
+    <Compile Include="ListItemBeforeChangedEventArgs.cs" />
+    <Compile Include="ListItemChangedEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IChangeableList.cs" />
+    <Compile Include="ListItemAddedEventArgs.cs" />
+    <Compile Include="ListItemBeforeRemovedEventArgs.cs" />
+    <Compile Include="UndoRedo\ResourceChangeOperation.cs" />
+    <Compile Include="IOwnerable.cs" />
+    <Compile Include="UndoRedo\ResourceDeleteOperation.cs" />
+    <Compile Include="UndoRedo\ResourceInlineOperation.cs" />
+    <Compile Include="UndoRedo\ResourceRenameOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\ChangeItemListOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\ChangeOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\ClearListOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\InsertItemListOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\RemoveAtItemListOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\RemoveItemListOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\ResetUndoRedoOperation.cs" />
+    <Compile Include="UndoRedo\States\AddStateOperation.cs" />
+    <Compile Include="UndoRedo\States\RemoveStateOperation.cs" />
+    <Compile Include="UndoRedo\States\RenameStateOperation.cs" />
+    <Compile Include="UndoRedo\UndoRedoListBase.cs" />
+    <Compile Include="UndoRedo\UndoRedoOperation.cs" />
+    <Compile Include="UndoRedo\ResourceCreateOperation.cs" />
+    <Compile Include="UndoRedo\SimpleTypes\UndoRedo.cs" />
+    <Compile Include="UndoRedo\UndoRedoCommand.cs" />
+    <Compile Include="UndoRedo\ComplexEntity\UndoRedoDBPtr.cs" />
+    <Compile Include="UndoRedo\UndoRedoList.cs" />
+    <Compile Include="UndoRedo\UndoRedoManager.cs" />
+    <Compile Include="UndoRedo\ComplexEntity\UndoRedoAssignableList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DB\UninlineFileAsker.resx">
+      <DependentUpon>UninlineFileAsker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

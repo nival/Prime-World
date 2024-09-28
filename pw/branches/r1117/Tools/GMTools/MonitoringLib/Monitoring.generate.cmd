@@ -1,0 +1,1 @@
+..\..\..\Vendor\Thrift\thrift-0.9.0.exe -gen csharp -o %~dp0 Monitoring.thrift

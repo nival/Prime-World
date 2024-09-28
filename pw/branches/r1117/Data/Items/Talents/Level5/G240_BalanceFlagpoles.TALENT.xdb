@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_Rar4" Count="1" />
+	<BackLink DBID="/Items/Talents/Frogenglut.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Frogenglut_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/WitchDoctor.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/WitchDoctor_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="1" />
+	<BackLink DBID="/Test/Talents/Hunter/Elite_PvE.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Mage/Elite_PvE.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G240: Тактический расчет</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<conflictingTalents />
+	<constants href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="EF5ABA17-B581-4D10-9431-EA0419282749">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="BC50D5ED-CC60-4960-A564-9FD0999E6A75">
+					<UnitConstant>
+						<name>StatTotal</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAoEEAAABA</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(20, 2)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="D66B0923-6537-4F92-A2F9-0AAC44540466">
+					<UnitConstant>
+						<name>TT_TerrainStepPercent</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="ABFDD402-9C0C-45B8-8869-1DE141342578">
+					<UnitConstant>
+						<name>TT_StatPerStep</name>
+						<var>
+							<compiledString>FSIAAAAEAAAAMQAAAEQAAABRAAAAagAAAFN0YXRUb3RhbAAAAFRUX1RlcnJhaW5TdGVwUGVyY2VudABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tw1gAAAAItFDFCLTQhRaAwAAACLVRCLAotNEItQUN1d+P/S3E343DV4AAAA2V302UX0i+VdwwAAAAAAAFlAAAAAAAAAAEA=</compiledString>
+							<returnType>float</returnType>
+							<sString>cStatTotal / 2 * cTT_TerrainStepPercent / 100</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="5E45E7C0-AEEF-45EE-8FE4-720B3E822E07">
+					<UnitConstant>
+						<name>TECH_EnemyFctn</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4KQAQAA/9CD6AH32BvAg8ACiUX820X8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>sFctn == FCTN_A ? FCTN_B : FCTN_A</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="C10DC30E-DE4F-4C1D-90E1-09439BFFB7FB">
+					<UnitConstant>
+						<name>TECH_AllyTerrainBonus</name>
+						<var>
+							<compiledString>FQoAAAACAAAANwAAAFAAAABTdGF0VG90YWwAVYvsg+wMi0UIixCLTQiLgpABAAD/0FCLTRCLEYtNEItCdP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcTfjcNV4AAADZXfTZRfSL5V3DAAAAAAAAAEA=</compiledString>
+							<returnType>float</returnType>
+							<sString>appl.GetTerrainPart(sFctn) * cStatTotal / 2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="386F93E1-DE19-43B6-B34A-77DC3F842619">
+					<UnitConstant>
+						<name>TECH_EnemyTerrainBonus</name>
+						<var>
+							<compiledString>FRoAAAADAAAAKQAAAF0AAAB2AAAAVEVDSF9FbmVteUZjdG4AAFN0YXRUb3RhbABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0lHZHCToSQAAAIPEBFCLRRCLEItNEItCdP/Qi00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ3V34/9DcTfjcNYQAAADZXfTZRfSL5V3DAAAAAAAAAEC4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>appl.GetTerrainPart(f2l(cTECH_EnemyFctn)) * cStatTotal / 2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="" />
+	<flags>1</flags>
+	<forceBonus>23</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_240.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>4</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="03C39B55-40AD-4824-9D7C-3510BCECE40C">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Увеличиваем Стойкость</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRcAAAACAAAAJAAAADcAAABURUNIX0VuZW15VGVycmFpbkJvbnVzAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdWQAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cTECH_EnemyTerrainBonus &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRcAAAABAAAAIwAAAFRFQ0hfRW5lbXlUZXJyYWluQm9udXMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cTECH_EnemyTerrainBonus</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Stamina</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="FE5917E3-4760-4E03-B1CF-53B0EFD4CB62">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Увеличиваем Волю</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRcAAAACAAAAJAAAADcAAABURUNIX0VuZW15VGVycmFpbkJvbnVzAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdWQAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cTECH_EnemyTerrainBonus &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRcAAAABAAAAIwAAAFRFQ0hfRW5lbXlUZXJyYWluQm9udXMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cTECH_EnemyTerrainBonus</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Will</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="8F87191F-8DC7-467E-B6FF-A04B5F0DC0DA">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Увеличиваем Проворство</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRYAAAACAAAAIwAAADYAAABURUNIX0FsbHlUZXJyYWluQm9udXMAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1YAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cTECH_AllyTerrainBonus &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRYAAAABAAAAIgAAAFRFQ0hfQWxseVRlcnJhaW5Cb251cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cTECH_AllyTerrainBonus</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/G240_BalanceFlagpoles.TALENT" id="7ED25C2A-6F4F-4AAB-84E8-99E673E67256">
+			<StatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Увеличиваем Хитрость</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRYAAAACAAAAIwAAADYAAABURUNIX0FsbHlUZXJyYWluQm9udXMAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1YAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cTECH_AllyTerrainBonus &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRYAAAABAAAAIgAAAFRFQ0hfQWxseVRlcnJhaW5Cb251cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cTECH_AllyTerrainBonus</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Dexterity</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/status_G240.APLR" />
+	</passiveApplicators>
+	<persistentId>G240</persistentId>
+	<prerequisiteTalents />
+	<rarity>magnificent</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Passive</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

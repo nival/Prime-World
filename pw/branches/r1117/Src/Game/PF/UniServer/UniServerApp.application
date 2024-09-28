@@ -1,0 +1,59 @@
+sources = [ 
+    'main.cpp',
+    'main.h',
+    'stdafx.h',    
+]
+
+# Enable CrashRpt
+settings.enableCrashRpt = True
+
+# Uncomment this to enable Inline Profiler
+settings.enableProfiler = True
+
+inlined = False
+
+components = [
+    'ServerAppBase/ServerAppBase',
+    'Chat/ChatSvc',
+    'Server/LobbyPvx',
+    'Server/LobbySocial/SocialLobbyService',
+    'Server/LiveMMaking/LiveMMakingService',
+    'HybridServer/HybridServer',
+    'Coordinator/LoginServerRunner',  
+    'MemoryLib/NewDelete',
+    'Relay/RelaySvc',
+    'main.ace',
+    'MatchMaking/MatchMakingSvc',
+    'ClusterAdmin/ClusterAdminSvc',
+    'Server/AppFramework/TimeSlicer',
+    'Server/DebugVarUpdate/Request',
+    'Server/DebugVarUpdate/Report',
+    'Server/LiveMMaking/LiveMMakingService',
+    'Server/HttpGateway',
+    'System/CrashRptWrapper',
+    'Server/LobbyPvx/Remote', # only for PF.sln build success
+    'Client/LobbyPvx/LobbyClientLInterface',
+    'Monitoring/MonitoringSvc',
+    'Server/GameSession/GameBalancerSvc',
+    'System/InlineProfilerUI',
+    'Relay/RelayBalancerSvc',
+    'Server/Roll/RollInstance',
+    'Server/Roll/RollBalancer',
+    'UserManager/UserManagerSvc',
+    'UserManager/UserManagerAgent',
+    'NewLogin',
+    'ClientControl',
+    'System/DarkSide',
+]
+
+globalCompilerKeys = [
+  "/D VISUAL_CUTTED",
+  "/D SERVER_DB",
+  "/D CHECK_TOWN_CONSISTENCY",
+  "/D LOG_THREAD_EXIT",
+]
+
+
+libDependencies = [
+    'rpcrt4.lib' , 'shlwapi.lib'
+]

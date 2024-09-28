@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableProxyApplicator>
+	<BackLink DBID="/Heroes/Shadow/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Shadow/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Shadow/spell_A1_arrow.SPLL" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Shadow/appl_HatredGeneration.APLR" id="BED7B47B-1959-428D-9A69-EA8D047157B1">
+				<DamageApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<cancelInvisibility>true</cancelInvisibility>
+					<caption>deal damage</caption>
+					<damage>
+						<compiledString>FQcAAAABAAAAEwAAAERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cDamage</sString>
+					</damage>
+					<damageMode>0</damageMode>
+					<damageType>Energy</damageType>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName>AbilityDamage</formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<timeLimiter>-1</timeLimiter>
+					<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+				</DamageApplicator>
+			</applicator>
+			<variableNames>
+				<Item>damageDealed</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Shadow/appl_HatredGeneration.APLR" id="5C92382C-4CB5-450A-9EFA-A16363BFE0B0">
+				<PermanentStatModApplicator>
+					<applyTarget>AbilityOwner</applyTarget>
+					<caption>write damage dealt</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FWQAAAAGAAAAawAAAIYAAACwAAAA3wAAAPIAAAD7AAAAVGFyZ2V0AABCb251c0hhdHJlZFN0YXR1cwAAAEFiaWxpdHlEYW1hZ2U6ZGFtYWdlRGVhbGVkAABBYmlsaXR5RGFtYWdlOmRhbWFnZURlYWxlZAAAQTF1X0JvbnVzSGF0cmVkAFWL7IPsIGgAAAAAi0UQixCLTRCLQkz/0IlF/GoBi00QUWgIAAAAi1X8iwKLTfyLkJwBAAD/0jtFEHUni0UQixCLTRCLQkj/0IlF+GgcAAAAi034ixGLTfiLQlT/0N1d8OtPi00QixGLTRCLQkj/0IlF7ItNDFGLVQhSaFQAAACLRRCLEItNEItCUP/Q3A0qAQAA2ejewWg4AAAAi03sixGLTeyLQlTdXeT/0NxN5N1d8N1F8Nld4NlF4IvlXcMAAAAAAADwP3sUrkfheoQ/</compiledString>
+							<returnType>float</returnType>
+							<sString>appl.oTarget.applBonusHatredStatus(UNIT) == pMisc ? appl.parent.GetVariable("AbilityDamage:damageDealed") : appl.parent.GetVariable("AbilityDamage:damageDealed") * (1 + cA1u_BonusHatred*0.01)</sString>
+						</addValue>
+						<multValue>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>Hatred_DamageDealt</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Shadow/appl_HatredGeneration.APLR" id="EE0158E9-2739-480D-8BC0-986F18D7BA01">
+				<HealApplicator>
+					<amount>
+						<compiledString>FSsAAAADAAAAUAAAAGIAAAB4AAAAQWJpbGl0eURhbWFnZTpkYW1hZ2VEZWFsZWQAAExpZmVzdGVhbEZpbmFsAFWL7IPsEItFEIsQi00Qi0JI/9CJRfxR2ejZHCSLTQxRi1UIUmgcAAAAi0UQixCLTRCLQlD/0GgAAAAAi038ixGLTfyLQlTdXfT/0NwNlQAAANxN9Nld8NlF8FHZHCToEwAAAIPECIvlXcN7FK5H4XqEPwAAgD9Vi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+						<returnType>float</returnType>
+						<sString>max((appl.parent.GetVariable("AbilityDamage:damageDealed") * 0.01 * cLifestealFinal),1)</sString>
+					</amount>
+					<applyTarget>AbilityOwner</applyTarget>
+					<caption>heal for hatred</caption>
+					<enabled>
+						<compiledString>FVsAAAAIAAAAcgAAALEAAADcAAAA9QAAAC8BAABIAQAAjgEAAKEBAABUYXJnZXQAAFRhcmdldAAAU2hhZG93X0EydQAAU2hhZG93X0EydQAAU2hhZG93X0EyAAAAU2hhZG93X0EyAAAAQWJpbGl0eURhbWFnZTpkYW1hZ2VEZWFsZWQAVYvsg+woi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQkz/0IlF+GoBi034ixGLTfiLQlj/0A+2yIXJD4UVAQAAi1UQiwKLTRCLUEj/0olF9GgIAAAAi0X0ixCLTfSLQkz/0IlF8ItN8IsRi03wi0JQ/9CD+BEPhNoAAABoEAAAAItNCIsRi00Ii4KoAQAA/9CFwHQqaBwAAACLTQiLEYtNCIuCqAEAAP/QiUXsi03sixGLTeyLQgT/0IhF6+sExkXrAA+2TeuFyQ+EhwAAAGgoAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoNAAAAItFCIsQi00Ii4KoAQAA/9CJReSLTeSLEYtN5ItCBP/QiEXj6wTGReMAD7ZN44XJdDiLVRCLAotNEItQSP/SiUXcaEAAAACLRdyLEItN3ItCVP/Q3B3DAQAA3+D2xEF1CcdF2AEAAADrB8dF2AAAAACKRdiL5V3DAAAAAAAAAAA=</compiledString>
+						<returnType>bool</returnType>
+						<sString>!appl.parent.oTarget.UnitCheck(UNITCHECKID_ISBUILDING) &amp;&amp; appl.parent.oTarget.UnitKind != 17 &amp;&amp; tal("Shadow_A2u") &amp;&amp; tal("Shadow_A2") &amp;&amp; appl.parent.GetVariable("AbilityDamage:damageDealed") &gt; 0</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<healTarget>Health</healTarget>
+					<ignoreHealingMods>false</ignoreHealingMods>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+				</HealApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Shadow/appl_HatredGeneration.APLR" id="C06EE70E-0E53-4443-897D-0EA0795245CB">
+				<PermanentStatModApplicator>
+					<applyTarget>AbilityOwner</applyTarget>
+					<caption>convert to hatred</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString>FRIAAAACAAAAGQAAAC4AAABIYXRyZWQAAEhhdHJlZE1heABVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9BoCAAAAItNCIsRi00Ii4KIAQAA3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.vHatred &lt; sender.vHatredMax</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FToAAAAEAAEAQQAAAFYAAAB7AAAAmAAAAO8AAABIYXRyZWRNYXgAAABIYXRyZWQAAEhhdHJlZF9EYW1hZ2VEZWFsdAAARGFtYWdlX1Blcl9IYXRyZWQAVYvsg+wYaAAAAACLRQiLEItNCIuCiAEAAP/QaAwAAACLTQiLEYtNCIuCiAEAAN1d+P/Q3G342V302UX0UdkcJGgUAAAAi00IixGLTQiLgogBAAD/0ItNDFGLVQhSaCgAAACLRRCLEItNEItCUN1d7P/Q3H3s2V3o2UXoUdkcJOgPAAAA2Rwk6DoAAACDxAiL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6AH///+DxAjZXfzZRfyL5V3DVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>min( floor( sender.vHatred_DamageDealt / cDamage_Per_Hatred ), sender.vHatredMax - sender.vHatred)</sString>
+						</addValue>
+						<multValue>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>Hatred</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Shadow/appl_HatredGeneration.APLR" id="754DA5E2-A06F-417D-BB93-F9047BBF90C4">
+				<PermanentStatModApplicator>
+					<applyTarget>AbilityOwner</applyTarget>
+					<caption>modify damage dealt</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FScAAAACAAEAMwAAAEkAAACdAAAARGFtYWdlX1Blcl9IYXRyZWQAAABIYXRyZWRfRGFtYWdlRGVhbHQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JR2RwkaBQAAACLRQiLEItNCIuCiAEAAP/QUdkcJOgFAAAAg8QIXcNVi+xR2UUM2RwkUdlFCNkcJOgFAAAAg8QIXcNVi+xR2UUMg+wI3Rwk2UUIg+wI3Rwk6Ef///+DxBDZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>fmod(sender.vHatred_DamageDealt,cDamage_Per_Hatred)</sString>
+						</addValue>
+						<multValue>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>true</topModifier>
+						<variable>Hatred_DamageDealt</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Урон + Hatred + Heal</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+</VariableProxyApplicator>

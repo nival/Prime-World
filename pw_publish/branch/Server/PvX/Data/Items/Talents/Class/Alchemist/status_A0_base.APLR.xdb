@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A2.TALENT" Count="2" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Alchemist/status_A0_base.APLR" id="14062E32-B253-4615-8228-B3987895BD0E">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>- Увеличиваем счетчик стеков (A0_Reagent_CurrentStack) на 1</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRIAAAACAAAAFwAAAC0AAABBMF9TdW1tb25Db21wbGV0ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1PAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vA0_SummonComplete == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>A0_Reagent_CurrentStack</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>155</behaviorFlags>
+	<caption>  - Невидимый технический статус, который используется для подсчета реагентов.</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Alchemist/status_A0_base.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRIAAAACAAAAFwAAAC0AAABBMF9TdW1tb25Db21wbGV0ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1PAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vA0_SummonComplete == 0</sString>
+	</enabled>
+	<flags>1</flags>
+	<formulaName>A0_ReagentBaseStatus</formulaName>
+	<image href="" />
+	<lifeTime>
+		<compiledString>FRMAAAABAAAAHwAAAEEwX1JlYWdlbnREdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cA0_ReagentDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Alchemist/status_A0_base.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>3</stackCount>
+	<startCondition>
+		<compiledString>FRUAAAABAAAAHwAAAEEwX1JlYWdlbnRCYXNlU3RhdHVzAFWL7GoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applA0_ReagentBaseStatus(ABILITY) == pMisc</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByChild</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

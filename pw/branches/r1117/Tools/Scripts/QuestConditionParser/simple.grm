@@ -1,0 +1,47 @@
+"Start Symbol" = <expressions>
+Comment Line = '--'
+
+{id_head}  = {Letter} + [_]
+{id_tail}  = {AlphaNumeric} + [_]
+{str_char} = {Printable} - ["]
+
+variable   = {id_head} {id_tail}*
+         
+decimal    = {Digit}+
+float      = {Digit}*'.'{Digit}+
+string     = '"'( {str_char} | '\'{Printable} )* '"'
+
+
+<property> ::= <property> '.' variable | variable
+<function> ::= <property> '(' <arguments> ')' | <property> '(' ')'
+<member>   ::= <property> | <function> | <member> '.' <function> | <member> '.' <property> | <member><index_member>
+<index_member> ::= '[' <member> ']' | <index_member>'.'<member>
+
+        
+<value>    ::= decimal | float | string | <member> 
+<arguments> ::= <arguments> ',' <value> | <value>            
+
+<condition>  ::= <value> '==' <value> 
+             |   <value> '>=' <value>
+             |   <value> '<=' <value>
+             |   <value> '!=' <value>
+             |   <value> '<' <value>
+             |   <value> '>' <value>
+             |   <value>
+             
+<operator>   ::= '=' | '+=' | '-='
+             
+<conditions> ::= <condition>
+             |   not <conditions>
+             |   <conditions> or <conditions>
+             |   <conditions> and <conditions>
+             |   '(' <conditions> ')'
+
+<expressions> ::= <expressions> <expression> | <>
+<expression>  ::= <return> | <foreach> | <if> | <operation>
+
+<foreach>   ::= foreach variable in <member> do <expressions> end
+<if>        ::= if <conditions> then <expressions> end
+              | if <conditions> then <expressions> else <expressions> end
+<return>    ::= return <value>
+<operation> ::= <value> <operator> <value>

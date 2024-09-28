@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Vampire/A2_RoseProgramme.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Рут и блинк к цели</caption>
+	<enabled>
+		<compiledString>FSEAAAADAAEAKAAAAD4AAACIAAAAaQEAAEEyX1Rlcm1pbmF0aW5nAABBMl9NYXhCbGlua1JhbmdlAFWL7IPsHGgAAAAAi0UIixCLTQiLgogBAAD/0Nwd4wAAAN/g9sRED4qIAAAAjU34UYtVDIsCi00Mi5CMAQAA/9JQjUXwUItNCIsRi00Ii4KMAQAA/9BQ6G8AAACDxAiLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXej/0Nxd6N/g9sQBdS+LTQiLEYtNCIuCkAEAAP/QUItNDIsRi00Mi0J0/9APtsiD+QF1CcdF5AEAAADrB8dF5AAAAACKReSL5V3DAAAAAAAAAABVi+yD7BSLRQjZQASLTQzYYQTZXfTZRfRR2Rwki1UI2QKLRQzYINld8NlF8FHZHCSNTfjoVwAAANlF+NhN+NlF/NhN/N7B2V3s2UXsUdkcJOgHAAAAg8QEi+Vdw1WL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOhv/v//g8QI2V382UX8i+Vdw1WL7FGJTfyLRfzZRQjZGItN/NlFDNlZBItF/IvlXcIIAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vA2_Terminating == 0 &amp;&amp; d(sPos, receiver.Pos) &lt;= cA2_MaxBlinkRange &amp;&amp; receiver.IsVisibleForEnemy(sFctn) == true;</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="7E44C0E3-F38E-4147-AD51-F142E2285337">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="D0B7C26D-515A-491C-835D-8421582588D1">
+					<StatusApplicator parent="/Heroes/DefaultStatus/_ROOT_Status.APLR">
+						<applicators>
+							<Item href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="F89B726B-33AF-4593-A4EC-1B75E4BC81C0">
+								<FlagsApplicator parent="/Heroes/DefaultStatus/_ROOT.APLR">
+									<effect>
+										<Item href="/Effects/Debuffs/Roots/_Rose.EFFT" />
+										<Item skip="1" />
+									</effect>
+								</FlagsApplicator>
+							</Item>
+							<Item skip="1" />
+						</applicators>
+					</StatusApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="73426967-1251-49CC-B0EB-D314C7AB2016">
+					<SpellApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>Выбрать точку за спиной цели</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="3D796752-DF30-4DA2-931E-68EE4F0571E1">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="55AB95F9-B6B4-4EA0-8ED7-C0637C166AFB">
+										<TeleportApplicator>
+											<appearEffect href="/Effects/General/Blink/_PurpleSTD.EFFT" />
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>Блинк</caption>
+											<disappearEffect href="/Effects/General/Blink/_PurpleSTD.EFFT" />
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<maxDistance>
+												<compiledString>FREAAAABAAAAHQAAAEEyX01heEJsaW5rUmFuZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cA2_MaxBlinkRange</sString>
+											</maxDistance>
+											<notifyInboundDispatches>true</notifyInboundDispatches>
+											<providerName></providerName>
+											<pushUnits>true</pushUnits>
+											<teleportTarget>ApplicatorTarget</teleportTarget>
+										</TeleportApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="2840536A-959A-49DD-B700-4273FF49D174">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="553EE091-824E-4123-B170-7DD4503EF7E9">
+							<PointTargetSelector>
+								<checkMinRange>true</checkMinRange>
+								<mode>OffsetFromTarget</mode>
+								<offset>
+									<x>0</x>
+									<y>1</y>
+								</offset>
+								<paralleledTarget>false</paralleledTarget>
+								<range>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAwA==</compiledString>
+									<returnType>float</returnType>
+									<sString>-4</sString>
+								</range>
+								<targetSelector href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="C0CD2FC5-3048-4A8E-849E-1E77D32C88BC">
+									<SelectApplicatorTarget>
+										<applicatorIndex>0</applicatorIndex>
+										<applicatorName></applicatorName>
+										<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+										<selectTarget>ApplicatorTarget</selectTarget>
+									</SelectApplicatorTarget>
+								</targetSelector>
+								<traceMode>0</traceMode>
+							</PointTargetSelector>
+						</targetSelector>
+					</SpellApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="5A97F840-6BD4-47C6-96A7-9C6B9561E9BB">
+					<MoveToApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>Повернуть нас к цели лицом</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<isMoveDirect>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</isMoveDirect>
+						<isNotStackable>false</isNotStackable>
+						<justRotate>true</justRotate>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<moveRange>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</moveRange>
+						<moveSpeed>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</moveSpeed>
+						<moveTarget>ApplicatorTarget</moveTarget>
+						<offset>
+							<x>0</x>
+							<y>0</y>
+						</offset>
+						<providerName></providerName>
+						<pushUnits>false</pushUnits>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+					</MoveToApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="08C2F62A-E997-4C91-B9A0-7EF144D8CB8E">
+					<TauntApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption>Атаковать 1 раз</caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.1</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<strongTarget>false</strongTarget>
+						<tauntTarget>ApplicatorTarget</tauntTarget>
+					</TauntApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Vampire/A2_BlinkToTarget.APLR" id="5604F953-5B6D-4E02-9233-DED607F3801E">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

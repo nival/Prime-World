@@ -1,0 +1,12 @@
+// $Id: walk.mpc 80826 2008-03-04 14:51:23Z wotte $
+
+project (asnmp_example_walk) : aceexe {
+  exename = walk
+  after += asnmp_lib
+  libs  += asnmp
+  avoids += uses_wchar
+  includes += $(ACE_ROOT)/ASNMP
+  source_files {
+    walk.cpp
+  }
+}

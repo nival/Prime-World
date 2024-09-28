@@ -1,0 +1,21 @@
+sources =  [
+    'Asserts.h', 
+    'Asserts.cpp',
+    'Signals.h', 
+    'Signals.cpp',
+]
+
+if platform == 'win32' :
+  globalCompilerKeys = [ '/D"_DO_ASSERT"' ]
+else :
+  defines = [ '_DO_ASSERT' ]
+
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }
+
+components = [ 
+]
+
+if testRun:
+    components.append('System/TestAssertDumper')
+else:
+    components.append('System/SystemLog')

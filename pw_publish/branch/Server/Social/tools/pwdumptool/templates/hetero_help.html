@@ -1,0 +1,33 @@
+{% block body %}
+Try to use the next format for heterogeneous operations list:
+<blockquote><i>auid;operation;subject</i></blockquote>
+For operations witn nested values (like a <b>AddTalents</b>, <b>GiveLamp</b>, <b>AddBuilding</b>, <b>EditAccount</b>) use the comma separated list of values without spaces:
+<blockquote><i>auid;AddTalents;[Talentid1,Talentid2,Talentid3]</i></blockquote>
+<blockquote><i>auid;GiveLamp;[Bonus,Gold_bonus,Transaction,Duration]</i></blockquote>
+<blockquote><i>auid;AddBuilding;[Building_id,Building_level]</i></blockquote>
+<blockquote><i>auid;EditAccount;[perl,silver,resource1,resource2,resource3,fraction,cwplayerpoints]</i></blockquote>
+<blockquote><i>auid;FlushServerId</i></blockquote>
+For examle:
+<blockquote><i>
+111;LockFlag;bat<br>
+112;UnlockFlag;bat<br>
+113;LockFlag;adornia<br>
+114;UnlockFlag;adornia<br>
+115;AddTalent;-954302394<br>
+116;AddTalents;[-954302394, 1578619388, -1746171410]<br>
+117;PremiumAccount;1<br>
+118;PremiumAccount;-1<br>
+119;SendMessageToUser;Posholnah d'nino<br>
+120;GiveLamp;[100,2000,1,172800]<br>
+121;AddSkin;assassin_S1_A<br>
+122;DeleteSkin;frogenglut_S1_B<br>
+123;UnlockHero;-129083474<br>
+124;LockHero;1500997085<br>
+125;AddBuilding;[-1681448280,10]<br>
+126;EditAccount;[10,-10000,50000,-20000,30000,adornian,]<br>
+127;EditAccount;[,-50000,,,,,]<br>
+126;EditAccount;[,,,,,doct,]<br>
+127;EditAccount;[,,10000,10000,10000,,100]<br>
+128;FlushServerId<br>
+</i></blockquote>
+{% endblock %}

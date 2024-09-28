@@ -1,0 +1,12 @@
+//
+// $Id: erlang_otp.mpb 1524 2008-12-31 23:02:08Z stallions $
+//
+
+project : erlang {
+  erlcflags              += -o ebin
+
+  Modify_Custom(Erlang) {
+    generic_pre_dirname   = ebin/
+    output_follows_input  = 0
+  }
+}

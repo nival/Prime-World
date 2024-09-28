@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Alchemist/Ability_A4_2.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="DFA3A50E-61DE-4DEC-A14E-F600FD8F9765">
+				<FlagsApplicator>
+					<applyTarget>AbilityOwner</applyTarget>
+					<behaviorFlags>0</behaviorFlags>
+					<caption>- Снимаем с героя невидимость</caption>
+					<consumables />
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<flag>134217728</flag>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString>FQUAAAABAAAAEQAAAFNURVAAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cSTEP</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</startCondition>
+					<talents />
+					<useListAs>ListAsRule</useListAs>
+				</FlagsApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="0005561A-5DB9-40B6-A95A-71DE2F306F0C">
+				<SpellApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption> - Спелл с флагами на клона (чтобы ему ничего не мешало)</caption>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<spell href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="3282C1A3-D788-4E3D-BB6E-31B17F9A9C74">
+						<Spell>
+							<applicators>
+								<Item href="/GameLogic/GeneralApplicators/Dispell.APLR" />
+								<Item href="/GameLogic/GeneralApplicators/Immune2Control.APLR" />
+								<Item href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="21103002-A63D-4CB4-A28E-1A5A0FD988F6">
+									<FlagsApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>152</behaviorFlags>
+										<caption> - Флаги на клона, чтобы с ним ничего не сотворили злые враги.</caption>
+										<consumables />
+										<effect>
+											<Item href="" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<flag>86246277</flag>
+										<formulaName>CloneIsCasting</formulaName>
+										<lifeTime>
+											<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+											<returnType>float</returnType>
+											<sString>10</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<talents />
+										<useListAs>ListAsRule</useListAs>
+									</FlagsApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="A85366F8-FAFB-4C2C-9418-4FCE63BE5D0D">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>0</flags>
+									<instantApply>true</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</spell>
+					<spellTarget>ApplicatorTarget</spellTarget>
+					<targetSelector href="/Items/Talents/Class/Alchemist/CloneTargetSelector.TGSL" />
+				</SpellApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="133ACF51-E342-4F61-A8FF-046C1331D576">
+				<StatModApplicator>
+					<applyTarget>AbilityOwner</applyTarget>
+					<behaviorFlags>0</behaviorFlags>
+					<caption>записываем Алхимичке константу A4_InProgress, чтобы не вызвать нового Клона раньше времени</caption>
+					<constraint>None</constraint>
+					<dontUpdate>false</dontUpdate>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+						<returnType>float</returnType>
+						<sString>2 ; // этого должно быть достаточно, чтобы диспатч достиг цели</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</addValue>
+						<multValue>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>A4_InProgress</variable>
+					</modifier>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</startCondition>
+					<statModName></statModName>
+				</StatModApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="F94560B8-F3E3-43F0-8739-230D5E0D0804">
+				<StatusApplicator>
+					<applicators>
+						<Item href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="784A156E-5D5E-43CA-B4AC-6D8B173E0961">
+							<StatModApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>152</behaviorFlags>
+								<caption> - Alchemist_MarkForA4 =1 (метим цель для абилки Клона)</caption>
+								<constraint>None</constraint>
+								<dontUpdate>false</dontUpdate>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<modifier>
+									<addValue>
+										<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>1</sString>
+									</addValue>
+									<multValue>
+										<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>1</sString>
+									</multValue>
+									<stat>Life</stat>
+									<topModifier>false</topModifier>
+									<variable>Alchemist_MarkForA4</variable>
+								</modifier>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+								<statModName></statModName>
+							</StatModApplicator>
+						</Item>
+					</applicators>
+					<applyTarget>AbilityTarget</applyTarget>
+					<behaviorFlags>155</behaviorFlags>
+					<caption> - статус чтобы помечать цель для абилки Клона</caption>
+					<customCounter>
+						<compiledString></compiledString>
+						<returnType>int</returnType>
+						<sString>0</sString>
+					</customCounter>
+					<customProgress>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</customProgress>
+					<description textref="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR_f94560b8f3e343f08739230d5e0d0804_description.txt" />
+					<dispellPriority>NonDispellable</dispellPriority>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>FRQAAAACAAAAGQAAAC8AAABBNF9DbG9uQWJpbGl0eUFwcGx5AFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHVEAAADf4PbEBXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+						<returnType>bool</returnType>
+						<sString>receiver.vA4_ClonAbilityApply &lt; 1</sString>
+					</enabled>
+					<flags>0</flags>
+					<formulaName></formulaName>
+					<image href="" />
+					<lifeTime>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DZmbmPw==</compiledString>
+						<returnType>float</returnType>
+						<sString>1.8</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<name textref="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR_f94560b8f3e343f08739230d5e0d0804_name.txt" />
+					<power>0</power>
+					<providerName></providerName>
+					<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+					<stackCount>0</stackCount>
+					<startCondition>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</startCondition>
+					<statusPosition>0</statusPosition>
+					<stopBehaviour>StopByTime</stopBehaviour>
+					<unstackableWith href="" />
+				</StatusApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="E7C570E2-04C8-469A-A97F-9D977AF65E08">
+				<SpellApplicator>
+					<applyTarget>AbilityTarget</applyTarget>
+					<caption>спелл с уроном</caption>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<spell href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="3010CD68-CACC-4455-87F4-DA128CFDAB34">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="146AA6B4-06D3-4BF3-9762-765FA9DAB9D2">
+									<DamageApplicator>
+										<applyTarget>AbilityTarget</applyTarget>
+										<cancelInvisibility>false</cancelInvisibility>
+										<caption> - наносим урон цели абилки</caption>
+										<damage>
+											<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cA4_Damage</sString>
+										</damage>
+										<damageMode>4</damageMode>
+										<damageType>Material</damageType>
+										<enabled>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+									</DamageApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="/Items/Talents/Class/Alchemist/programm_A4_StrClone.APLR" id="3D31B3C1-4100-4B62-AF58-04047111D57E">
+								<DispatchImmediate>
+									<alwaysApply>false</alwaysApply>
+									<applyEffect>
+										<Item href="" />
+										<Item href="" />
+									</applyEffect>
+									<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+									<applyEffectOrientation>Default</applyEffectOrientation>
+									<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+									<dieAfterApply>true</dieAfterApply>
+									<dispatchEffect>
+										<Item href="" />
+										<Item href="" />
+									</dispatchEffect>
+									<flags>1</flags>
+									<instantApply>false</instantApply>
+								</DispatchImmediate>
+							</dispatch>
+						</Spell>
+					</spell>
+					<spellTarget>ApplicatorTarget</spellTarget>
+					<targetSelector href="" />
+				</SpellApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption> - Программа для Силового Клона ("Серы") : блинк к цели, дамаг, ансаммон</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/A/Heavy/PVP.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/B/Heavy/PVE1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/B/Heavy/PVP.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="C2BA7F7A-F450-4EBD-B519-123CE4316B7E">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="E004DCA5-596E-475B-9AFC-4DFC16B6CD94">
+						<FlagsApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>-- пока герой поднимает флаг, не может трогать другие флаги и становится видимым</caption>
+							<consumables />
+							<effect>
+								<Item href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="6E413B34-FF0F-4F87-9A04-04FAC02279B5">
+									<PlayAnimationEffect>
+										<animGraphNode>channeling</animGraphNode>
+										<deathType>Manual</deathType>
+										<enableCondition href="" />
+										<goToOtherNodeOnStop>true</goToOtherNodeOnStop>
+										<lifeTime>0</lifeTime>
+										<marker></marker>
+										<markerReachTime>0</markerReachTime>
+										<returnAnimGraphNode></returnAnimGraphNode>
+									</PlayAnimationEffect>
+								</Item>
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>589824</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+					<Item href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="573895FB-4A5D-44C7-8704-80122FA86681">
+						<StatModApplicator>
+							<applyTarget>AbilityTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption></caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>Occupied</variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+					<Item href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="F56DED89-4B27-4A3D-A44A-BEB38C898531">
+						<RaiseFlagApplicator>
+							<applicatorsOnSelf />
+							<applyTarget>AbilityTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<cancelOnDisable>false</cancelOnDisable>
+							<cancelOnInterrupt>true</cancelOnInterrupt>
+							<cancelSpell href="" />
+							<caption>-- Поднятие флага</caption>
+							<channelingType>Creation</channelingType>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString>FQAAAAAAAAAAVYvsUYtFDIsQi00Mi4KQAQAA/9CFwHUiaIAAAACLTQyLEYtNDItCaP/QD7bIhcl1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3D</compiledString>
+								<returnType>bool</returnType>
+								<sString>rFctn == FCTN_N &amp;&amp; rFlag(128) == false</sString>
+							</enabled>
+							<formulaName>RaiseFlag</formulaName>
+							<interruptEvents>2099615</interruptEvents>
+							<lifeTime>
+								<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+								<returnType>float</returnType>
+								<sString>4</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<period>0</period>
+							<periodicalSpell href="" />
+							<providerName></providerName>
+							<removeStartSpellEffectOnInterrupt>true</removeStartSpellEffectOnInterrupt>
+							<scaleWhenInterrupted>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</scaleWhenInterrupted>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<startSpell href="" />
+							<stopSpell href="" />
+							<targetSelector href="" />
+						</RaiseFlagApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>AbilityTarget</applyTarget>
+				<behaviorFlags>3</behaviorFlags>
+				<caption></caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>1</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByChild</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption>Поднятие флага катапультами</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="8F081052-0F5F-452C-82D2-9025989DF135">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQkAAAACAAAADgAAACQAAABPY2N1cGllZABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1GAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vOccupied == 0</sString>
+				</condition>
+				<uiEvent href="" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="" />
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>4.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="132CB3AE-B7C6-416D-8130-079259F1B6C9">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>2049</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/GameLogic/RaiseFlagAblt_Siege.ABLT" id="C614B28F-ECAB-4FA8-9951-39747907A835">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>true</castWhenIdle>
+			<condition>
+				<compiledString>FR0AAAADAAAAPwAAAFcAAABqAAAARW5lbWllc0NvdW50ZXIAAHRhcmdldHNDb3VudABVi+yD7AiLRQiLEItNCIuCfAEAAP/QO0UIdUZqAYtNEFFoAAAAAItVCIsCi00Ii5CcAQAA/9KJRfxoEAAAAItF/IsQi038i0JU/9DcHYwAAADf4PbERHoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAA==</compiledString>
+				<returnType>bool</returnType>
+				<sString>sObjectMaster == pFirst &amp;&amp; sender.FindApplicator("EnemiesCounter",pMisc,UNIT)-&gt;GetVariable("targetsCount") == 0</sString>
+			</condition>
+			<targetSelector href="/GameLogic/GeneralApplicators/FlagPolesValidForRaising.TGSL" />
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/GameLogic/GeneralApplicators/EnemiesCounter.APLR" />
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>33685504</targetType>
+	<type>Channelling</type>
+	<useRange>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>3.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

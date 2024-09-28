@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<AppConfig>
+    <Authorization>
+        <!-- ZZIMA -->
+        <ZzimaAppId>123</ZzimaAppId>
+        <ZzimaSecret>123</ZzimaSecret>
+        <ZzimaAuthRedirAddr>http://testpw.com/auth/index900.htm</ZzimaAuthRedirAddr>
+        <ZzimaGetToken>http://account.qa.nivalnetwork.com/oauth/access-token</ZzimaGetToken>
+        <ZzimaGetData>http://auth2.qa.nivalnetwork.com/version/2/info</ZzimaGetData>
+        <ZzimaLoginAddr>http://account.qa.nivalnetwork.com/oauth/authorize?response_type=code&amp;client_id={Authorization.ZzimaAppId}&amp;redirect_uri={Authorization.ZzimaAuthRedirAddr}</ZzimaLoginAddr>
+
+
+        <!-- Mail.ru -->
+        <MailRuAppId>123</MailRuAppId>
+        <MailRuSecret>123</MailRuSecret>
+        <MailRuGetToken>https://appsmail.ru/oauth/token</MailRuGetToken>
+        <MailRuRefreshToken>https://appsmail.ru/oauth/token</MailRuRefreshToken>
+        <MailRuGetData>http://www.appsmail.ru/platform/api?</MailRuGetData>
+        <MailRuAuthRedirAddr>http://connect.mail.ru/oauth/success.html</MailRuAuthRedirAddr>
+        <MailRuLoginAddr>https://connect.mail.ru/oauth/authorize?response_type=token&amp;&amp;client_id={Authorization.MailRuAppId}&amp;lang={Macros.LangCode}&amp;redirect_uri={Authorization.MailRuAuthRedirAddr}
+        </MailRuLoginAddr>
+        <!-- **************** -->
+
+        <!-- draugas -->
+        <DltAppId>123</DltAppId>
+        <DltAuthSecret>123</DltAuthSecret>
+        <DltGetToken>http://mano.draugas.lt/oauth/token</DltGetToken>
+        <DltGetData>http://mano.draugas.lt/api/me</DltGetData>
+        <DltRefreshToken>http://mano.draugas.lt/oauth/token</DltRefreshToken>
+        <DltAuthRedirUrl>http://mano.draugas.lt/oauth/playground</DltAuthRedirUrl>
+        <DltLoginAddr>http://mano.draugas.lt/oauth/authorize?client_id={Authorization.DltAppId}&amp;redirect_uri={Authorization.DltAuthRedirUrl}&amp;scope=email,profile</DltLoginAddr>
+        <!-- **************** -->
+
+        <!-- Massive -->
+        <MsvRegisterUrl>http://my.massive.ph</MsvRegisterUrl>
+        <MsvResetPasswordUrl>http://my.massive.ph/?/user/password/reset</MsvResetPasswordUrl>
+        <!-- **************** -->
+
+        <!-- Gamigo -->
+        <GmgPassKey>123</GmgPassKey>
+        <GmgRegisterUrl>https://de.gamigo.com/game/prime-world/</GmgRegisterUrl>
+        <GmgResetPasswordUrl>https://de.gamigo.com/auth/password/landing/gsvk/PW.de.de.gamigo.v1</GmgResetPasswordUrl>
+        <!-- **************** -->
+
+        <!-- Aeria -->
+        <AeriaCN>aeriagames.com</AeriaCN>
+        <AeriaAppId>123</AeriaAppId>
+        <AeriaSecret>123</AeriaSecret>
+        <AeriaGetToken>https://api.test.aeriagames.com/oauth/access_token</AeriaGetToken>
+        <AeriaRefreshToken>https://api.test.aeriagames.com/oauth/access_token</AeriaRefreshToken>
+        <AeriaGetData>https://api.test.aeriagames.com/services/v2/user/me?access_token={authToken}</AeriaGetData>
+        <AeriaAuthRedirAddr>https://www.aeriagames.com/content_only_launcher</AeriaAuthRedirAddr>
+        <AeriaLoginAddr>https://usery@test.aeriagames.com/dialog/oauth?response_type=code&amp;lang={Macros.LangCode}&amp;state=unused&amp;scope=scope_general,scope_billing,scope_social&amp;redirect_uri={Authorization.AeriaAuthRedirAddr}&amp;client_id={Authorization.AeriaAppId}
+        </AeriaLoginAddr>
+        <!-- **************** -->
+
+        <!-- Facebook -->
+        <FbAppId>123</FbAppId>
+        <FbAppSecret>123</FbAppSecret>
+        <FbAuthRedirURI>http://testpw.com/auth/index900.htm</FbAuthRedirURI>
+        <FbLoginAddr>https://www.facebook.com/v2.8/dialog/oauth?client_id={Authorization.FbAppId}&amp;scope=email&amp;response_type=token&amp;redirect_uri={Authorization.FbAuthRedirURI}</FbLoginAddr>
+        <FbLogoutAddr>https://www.facebook.com/logout.php?confirm=1&amp;app_key={Authorization.FbAppId}&amp;access_token={authToken}&amp;session_key={authToken}&amp;next=https://www.facebook.com/connect/login_success.html</FbLogoutAddr>
+        <FbGetData>https://graph.facebook.com/me/?access_token={authToken}&amp;callback=displayUserFb</FbGetData>
+        <!-- **************** -->
+
+        <!-- Odnoklassniki properties -->
+        <OkAppId>123</OkAppId>
+        <OkAuthSecret>123</OkAuthSecret>
+        <OkAuthPublic>123</OkAuthPublic>
+        <OkAuthRedirURI>http://testpw.com/auth/index900.htm</OkAuthRedirURI>
+        <OkLoginAddr>https://www.ok.ru/oauth/authorize?client_id={Authorization.OkAppId}&amp;response_type=code&amp;scope=VALUABLE
+            ACCESS;PHOTO CONTENT&amp;redirect_uri={Authorization.OkAuthRedirURI}&amp;layout=m
+        </OkLoginAddr>
+        <OkLogoutAddr>https://www.ok.ru/oauth/logout?client_id={Authorization.OkAppId}&amp;access_token={authToken}</OkLogoutAddr>
+        <OkGetToken>https://api.ok.ru/oauth/token.do?</OkGetToken>
+        <OkGetData>http://api.ok.ru/fb.do?</OkGetData>
+        <!-- **************** -->
+
+        <!-- VKontakte  -->
+        <VkAppId>123</VkAppId>
+        <VkAuthRedirURI>https://oauth.vk.com/blank.html</VkAuthRedirURI>
+        <VkLoginAddr>https://oauth.vk.com/authorize?client_id={Authorization.VkAppId}&amp;display=page&amp;scope=wall,friends,offline&amp;response_type=token&amp;redirect_uri={Authorization.VkAuthRedirURI}&amp;v=5.71</VkLoginAddr>
+        <!-- **************** -->
+    </Authorization>
+</AppConfig>

@@ -1,0 +1,1 @@
+ALTER TABLE `pw_stat`.`tbl_guild_rating` CHANGE COLUMN `in_siege` `is_locked` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'bool';

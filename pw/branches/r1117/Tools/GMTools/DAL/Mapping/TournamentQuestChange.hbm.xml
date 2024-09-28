@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DAL"
+                   namespace="DAL.Entities">
+  <class name="TournamentQuestChange">
+    <id name="Id">
+      <generator class="sequence">
+        <param name="sequence">tournamentquestchange_id_sequence</param>
+      </generator>
+    </id>
+    <many-to-one name="Player" />
+    <property name="QuestIndex" />
+    <property name="QuestName" />
+    <property name="CompleteType" />
+    <property name="Timestamp" />
+    <property name="AlternativeLine" />
+
+    <sql-insert check="none">
+      INSERT INTO tournamentquestchange
+      (player, questindex, questname, completetype, "timestamp", alternativeline, id)
+      VALUES (?, ?, ?, ?, ?, ?, ?);
+    </sql-insert>
+
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,1085 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <ProjectGuid>{2521247A-CE57-4FAA-BBF0-3158313680F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EditorPlugins</RootNamespace>
+    <AssemblyName>EditorPlugins</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>..\_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\_Release\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>False</UseVSHostingProcess>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Shipping|Win32' ">
+    <OutputPath>..\_Shipping\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ShippingSingleExe|Win32' ">
+    <OutputPath>..\_ShippingSingleExe\</OutputPath>
+    <DefineConstants>TRACE;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Northwoods.GoExpress, Version=4.1.0.2, Culture=neutral, PublicKeyToken=a4e3b7b70161cfe8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Vendor\GoExpress\Northwoods.GoExpress.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET, Version=2.5.2.0, Culture=neutral, PublicKeyToken=948d6c9751444115, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Vendor\ScintillaNET\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSvn, Version=1.8009.3299.43, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Vendor\SharpSvn\SharpSvn.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.1.6643.41644, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Vendor\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\ExitEditorCommand.cs" />
+    <Compile Include="Commands\Help\HotkeysMenuCommand.cs" />
+    <Compile Include="Commands\ReloadGeometryCommand.cs" />
+    <Compile Include="Commands\ReloadPFXCommand.cs" />
+    <Compile Include="Commands\ReloadShadersCommand.cs" />
+    <Compile Include="Commands\SaveEditorCommand.cs" />
+    <Compile Include="Commands\ShowPanelCommand.cs" />
+    <Compile Include="Commands\SymmetricalCommand.cs" />
+    <Compile Include="Commands\UndoRedo\BrowseUndoRedoCommand.cs" />
+    <Compile Include="Commands\UndoRedo\BrowseUndoRedoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Commands\UndoRedo\BrowseUndoRedoForm.Designer.cs">
+      <DependentUpon>BrowseUndoRedoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\UndoRedo\RedoEditorCommand.cs" />
+    <Compile Include="Commands\UndoRedo\UndoEditorCommand.cs" />
+    <Compile Include="Console\CreateAtlasCommand.cs" />
+    <Compile Include="Console\RelightMapCommand.cs" />
+    <Compile Include="EditorNativeApplication.cs" />
+    <Compile Include="EditorConApplication.cs" />
+    <Compile Include="EditorWinApplication.cs" />
+    <Compile Include="Extensions\FolderSelectorValueEditor.cs" />
+    <Compile Include="Extensions\MultilineStringEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extensions\MultilineStringEditorForm.Designer.cs">
+      <DependentUpon>MultilineStringEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\MultilineStringEditor.cs">
+    </Compile>
+    <Compile Include="Extensions\ObjectPathListStringConverter.cs" />
+    <Compile Include="Extensions\ObjectPathStringConverter.cs" />
+    <Compile Include="Extensions\TypeListStringConverter.cs" />
+    <Compile Include="Extensions\TypesSelectorValueEditor.cs" />
+    <Compile Include="Forms\FormUtils.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SymmetricalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SymmetricalForm.Designer.cs">
+      <DependentUpon>SymmetricalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Importer\Relight\RelightMap.cs" />
+    <Compile Include="Importer\UIAnimatedCursorImporter.cs" />
+    <Compile Include="LinksList\LinksListPanel.cs">
+    </Compile>
+    <Compile Include="LinksList\LinksListPanel.Designer.cs">
+      <DependentUpon>LinksListPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Minimap\MinimapPanel.cs">
+    </Compile>
+    <Compile Include="Minimap\MinimapPanel.Designer.cs">
+      <DependentUpon>MinimapPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectLayers\ObjectLayersConfig.cs" />
+    <Compile Include="ObjectLayers\ObjectLayersPanel.cs">
+    </Compile>
+    <Compile Include="ObjectLayers\ObjectLayersPanel.Designer.cs">
+      <DependentUpon>ObjectLayersPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectLayers\ObjectLayersPreset.cs" />
+    <Compile Include="Scene\BindsCommand.cs" />
+    <Compile Include="Commands\MipMapCommand.cs" />
+    <Compile Include="Committer\AssetInfo.cs" />
+    <Compile Include="Committer\ChangeItemInfo.cs" />
+    <Compile Include="Committer\DualCommitData.cs" />
+    <Compile Include="Committer\DualCommitDataCollater.cs" />
+    <Compile Include="Committer\DualCommitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Committer\DualCommitForm.Designer.cs">
+      <DependentUpon>DualCommitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Committer\DualCommitCommand.cs" />
+    <Compile Include="Committer\DualCommitForm.ShowDiff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Committer\DualCommitRevertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Committer\DualCommitRevertForm.Designer.cs">
+      <DependentUpon>DualCommitRevertForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Console\CheckSourceCommand.cs" />
+    <Compile Include="Console\ConvertDBCommand.cs" />
+    <Compile Include="Console\ConvertTextsCommand.cs" />
+    <Compile Include="Console\FixNameExtensionsCommand.cs" />
+    <Compile Include="Console\ResaveCommand.cs" />
+    <Compile Include="Console\RunCommand.cs" />
+    <Compile Include="Console\TypeConverterAbstractCommand.cs" />
+    <Compile Include="Console\ValidateDataBaseCommand.cs" />
+    <Compile Include="DataCheckers\CheckerGFXTextureName.cs" />
+    <Compile Include="DataCheckers\FixerFileRefCase.cs" />
+    <Compile Include="DataCheckers\FixerSourceFiles.cs" />
+    <Compile Include="EditorPluginResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditorPluginResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\AnimatedCurves\AnimatedCurvesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\AnimatedCurves\AnimatedCurvesControl.Designer.cs">
+      <DependentUpon>AnimatedCurvesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\AnimatedCurves\AnimatedCurvesItem.cs" />
+    <Compile Include="Editors\AnimatedCurves\AnimatedEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\AnimatedCurves\AnimatedEditorDialog.Designer.cs">
+      <DependentUpon>AnimatedEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\Animated\AnimatedEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\Animated\AnimatedEditor.DefaultState.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\Animated\AnimatedEditor.designer.cs">
+      <DependentUpon>AnimatedEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\Animated\AnimatedEditor.MoveState.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\Animated\AnimatedEditor.SelectionState.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\Animated\AnimatedEdtiorResources.Designer.cs" />
+    <Compile Include="Editors\Animated\AnimatedVarEditor.cs" />
+    <Compile Include="Editors\Animated\CombinedAnimated.cs" />
+    <Compile Include="Editors\Animated\LegendLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\Animated\LegendLabel.Designer.cs">
+      <DependentUpon>LegendLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\Animated\SizeGrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\Animated\SizeGrip.designer.cs">
+      <DependentUpon>SizeGrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\AnimGraph\AgControllerWrapper.cs" />
+    <Compile Include="Editors\AnimGraph\AnimGraphControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\AnimGraph\AnimGraphContext.cs" />
+    <Compile Include="Editors\AnimGraph\AnimGraphPanel.cs">
+    </Compile>
+    <Compile Include="Editors\AnimGraph\AnimGraphPanel.Designer.cs">
+      <DependentUpon>AnimGraphPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\AnimGraph\AnimGraphPanelConfig.cs" />
+    <Compile Include="Editors\AnimGraph\AnimStandardValuesProvider.cs" />
+    <Compile Include="Editors\AnimGraph\GoNodeExtended.cs" />
+    <Compile Include="Editors\AnimGraph\IAgController.cs" />
+    <Compile Include="Editors\AnimGraph\Link.cs" />
+    <Compile Include="Editors\AnimGraph\Marker.cs" />
+    <Compile Include="Editors\AnimGraph\Node.cs" />
+    <Compile Include="Editors\AnimGraph\NormalNode.cs" />
+    <Compile Include="Editors\AnimGraph\OutlinerReadOnlyList.cs" />
+    <Compile Include="Editors\AnimGraph\OwnedReportingList.cs" />
+    <Compile Include="Editors\AnimGraph\RandomNode.cs" />
+    <Compile Include="Editors\AnimGraph\ReportingList.cs" />
+    <Compile Include="Editors\AnimGraph\SubNode.cs" />
+    <Compile Include="Editors\AnimatedCurves\AnimatedCurvesPanel.cs">
+    </Compile>
+    <Compile Include="Editors\AnimatedCurves\AnimatedCurvesPanel.Designer.cs">
+      <DependentUpon>AnimatedCurvesPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\FileRef\FileRefHelper.cs" />
+    <Compile Include="Editors\FileRef\SwfFileRefEditor.cs" />
+    <Compile Include="Editors\FontViewer\FontViewer.cs">
+    </Compile>
+    <Compile Include="Editors\FontViewer\FontViewer.Designer.cs">
+      <DependentUpon>FontViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\FontViewer\FontViewerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\FontViewer\FontViewerControl.Designer.cs">
+      <DependentUpon>FontViewerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\TextRef\TextRefEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\TextRef\TextRefEditorControl.Designer.cs">
+      <DependentUpon>TextRefEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\MatrixType\MatrixUtils.cs" />
+    <Compile Include="Editors\TextRef\TextRefEditor.cs" />
+    <Compile Include="Editors\TextRef\TextRefEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\TextRef\TextRefEditorForm.Designer.cs">
+      <DependentUpon>TextRefEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\AnimatedExtensions.cs" />
+    <Compile Include="Extensions\AnimationSCEventStandardValuesProvider.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\DBPtrEditor.cs" />
+    <Compile Include="Extensions\DBPtrStringConverter.cs" />
+    <Compile Include="Extensions\DefaultValuesProvider.cs" />
+    <Compile Include="Extensions\FlagsEnumEditor.cs" />
+    <Compile Include="Extensions\FloatCommaConverter.cs" />
+    <Compile Include="Extensions\RichListStringConverter.cs" />
+    <Compile Include="Extensions\JointNamesValueProvider.cs" />
+    <Compile Include="Extensions\ListStringConverter.cs" />
+    <Compile Include="Extensions\LocatorNameSelectorValueProvider.cs" />
+    <Compile Include="Extensions\LocatorsExtensions.cs" />
+    <Compile Include="Extensions\SrcFileExtensions.cs" />
+    <Compile Include="Extensions\SrcFileListControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\TextRefEditor.cs" />
+    <Compile Include="Extensions\TextRefStringConverter.cs" />
+    <Compile Include="Extensions\UIFlashPropertiesStringConverter.cs" />
+    <Compile Include="Extensions\VectorExtensions.cs" />
+    <Compile Include="Importer\AtlasCommand\CreateAtlasCommand.cs" />
+    <Compile Include="Importer\Mesh\WaterImporter.cs" />
+    <Compile Include="Importer\Texture\CubeMapImporter.cs" />
+    <Compile Include="Importer\Texture\GlobalAtlas.cs" />
+    <Compile Include="Importer\Texture\TextureAnimatedImporter.cs" />
+    <Compile Include="LayoutEditor\AdvancedTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutEditorControl.Designer.cs">
+      <DependentUpon>LayoutEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutEditorSnapper.cs" />
+    <Compile Include="LayoutEditor\States\MoveSelectionState.cs" />
+    <Compile Include="LayoutEditor\States\ResizeSelectionState.cs" />
+    <Compile Include="Mathematics\AnaliticBSpline.cs" />
+    <Compile Include="Mathematics\AnalyticBSpline2D.cs" />
+    <Compile Include="Mathematics\CompositeBSpline.cs" />
+    <Compile Include="Mathematics\InterpolatingSpline.cs" />
+    <Compile Include="Utils\StuffUtils.cs" />
+    <Compile Include="Scene\DebugVarsFilterConfig.cs" />
+    <Compile Include="Scene\DebugVarsFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scene\DebugVarsFilterForm.Designer.cs">
+      <DependentUpon>DebugVarsFilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\DebugVarsPanel.cs">
+    </Compile>
+    <Compile Include="Scene\DebugVarsPanel.Designer.cs">
+      <DependentUpon>DebugVarsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\DoubleBufferedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\AddEntityController.cs" />
+    <Compile Include="Scene\Editors\AdvMapEditorConfig.cs" />
+    <Compile Include="Scene\Editors\CompositeMovingController.cs" />
+    <Compile Include="Scene\Editors\Drawing\NatureMapPanel.cs">
+    </Compile>
+    <Compile Include="Scene\Editors\Drawing\NatureMapPanel.Designer.cs">
+      <DependentUpon>NatureMapPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Editors\Drawing\TerrainHeightTool\TerrainHeightPanel.cs">
+    </Compile>
+    <Compile Include="Scene\Editors\Drawing\TerrainHeightTool\TerrainHeightPanel.Designer.cs">
+      <DependentUpon>TerrainHeightPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.Designer.cs">
+      <DependentUpon>EditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.DrawModeState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.DrawTerrainLayerExtension.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.EditorControlState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.MainState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.ManipulationState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.MoveObjectState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.NatureMapToolState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.ObjectAdditionState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.PickAlternativeState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.SelectByFrameState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\EditorControl.WidgetState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\IEditorControlDrawingExtension.cs" />
+    <Compile Include="Scene\Editors\IEditorControlExtension.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\ITerrainLayersProvider.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\LayerValueChangeData.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\DrawOperation.cs" />
+    <Compile Include="Scene\Editors\EditorControlWidget.cs" />
+    <Compile Include="Scene\Editors\MACTrackBar\ColorHelper.cs" />
+    <Compile Include="Scene\Editors\MACTrackBar\DrawMACStyleHelper.cs" />
+    <Compile Include="Scene\Editors\MACTrackBar\MACTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\MACTrackBar\MACTrackBarDesigner.cs" />
+    <Compile Include="Scene\Editors\Polygons\PointElement.cs" />
+    <Compile Include="Scene\Editors\Polygons\MainElement.cs" />
+    <Compile Include="Scene\Editors\Polygons\PolylineElement.cs" />
+    <Compile Include="Scene\Editors\Splines\CameraSplineControlElement.cs" />
+    <Compile Include="Scene\Editors\Splines\CameraSplineMainElement.cs" />
+    <Compile Include="Scene\Editors\Splines\ISplineMainElement.cs" />
+    <Compile Include="Scene\Editors\Splines\SplineControlElement.cs" />
+    <Compile Include="Scene\Editors\Splines\SplineMainElement.cs" />
+    <Compile Include="Scene\Editors\Splines\SplineWidthElement.cs" />
+    <Compile Include="Scene\Editors\EditorControl.TerrainHeightToolState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\Terrain\MirrorSelectedTCVs.cs">
+    </Compile>
+    <Compile Include="Scene\Editors\Terrain\NatureMapChangeOperation.cs" />
+    <Compile Include="Scene\Editors\TimeSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\TimeSlider.Designer.cs">
+      <DependentUpon>TimeSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Editors\Widgets\CameraSplineWidget.cs" />
+    <Compile Include="Scene\Editors\Widgets\CameraSplineWidgetBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\Widgets\PolygonWidget.cs" />
+    <Compile Include="Scene\Editors\Widgets\RoadWidget.cs" />
+    <Compile Include="Scene\Editors\Widgets\TerrainPathsWidget.cs" />
+    <Compile Include="Scene\Editors\Terrain\TcvChangeLocationOperation.cs" />
+    <Compile Include="Scene\Editors\Terrain\TcvChangeOperation.cs" />
+    <Compile Include="Scene\Editors\Terrain\TcvChangeRotationOperation.cs" />
+    <Compile Include="Scene\Editors\Terrain\TcvChangeScaleOperation.cs" />
+    <Compile Include="Console\ImportCommand.cs" />
+    <Compile Include="Scene\Editors\IController.cs" />
+    <Compile Include="Scene\Editors\IMovingController.cs" />
+    <Compile Include="Scene\Editors\Terrain\ControlableTerrainElement.cs" />
+    <Compile Include="Scene\Editors\Terrain\ControlableTerrainGlobalLayer.cs" />
+    <Compile Include="Scene\Editors\Drawing\ILayerView.cs" />
+    <Compile Include="Scene\Editors\Drawing\LayersListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\IDrawingController.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\BrushSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\BrushSettingsControl.Designer.cs">
+      <DependentUpon>BrushSettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\ITerrainLayersBrushSettingsController.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\LayerView.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainBrush.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\TerrainLayersDrawingController.cs" />
+    <Compile Include="Scene\Editors\Drawing\TerrainLayers\TerrainLayersEditorPanel.cs">
+    </Compile>
+    <Compile Include="Scene\Editors\EditorConfigObject.cs" />
+    <Compile Include="Editors\FileRef\FileRefEditor.cs" />
+    <Compile Include="Editors\MatrixType\MatrixTypePropertyEditor.cs" />
+    <Compile Include="Editors\MatrixType\MatrixTypePropertyEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\MatrixType\MatrixTypePropertyEditorForm.Designer.cs">
+      <DependentUpon>MatrixTypePropertyEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Editors\CursorPositionWatcher.cs" />
+    <Compile Include="Scene\Editors\Terrain\TerrainController.cs" />
+    <Compile Include="Scene\Editors\ToolBoxItemData.cs" />
+    <Compile Include="Scene\Editors\Widgets\SpawnerWidget.cs" />
+    <Compile Include="Scene\Editors\Widgets\SplineWidgetBase.cs" />
+    <Compile Include="Scene\Editors\Widgets\TargetPathWidgetBase.cs" />
+    <Compile Include="Scene\Editors\Widgets\WaterZoneWidget.cs" />
+    <Compile Include="Scene\ISceneControlExtension.cs" />
+    <Compile Include="Scene\Presets\DefaultScenePreset.cs" />
+    <Compile Include="Scene\Presets\IPresetItem.cs" />
+    <Compile Include="Scene\Presets\PresetItemList.cs" />
+    <Compile Include="Scene\Presets\PresetSaver.cs" />
+    <Compile Include="Scene\Presets\ScenePreset.cs" />
+    <Compile Include="Scene\Presets\StaticMeshPreset.cs" />
+    <Compile Include="Scene\SceneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\SceneSettings.cs" />
+    <Compile Include="Scene\SimpleSceneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Utility.cs" />
+    <Compile Include="ImageStylesEditor\ImageStyleView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImageStylesEditor\ImageStyleView.Designer.cs">
+      <DependentUpon>ImageStyleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Importer\Mesh\CollisionGeometryImporter.cs" />
+    <Compile Include="Importer\Texture\UITextureImporter.cs" />
+    <Compile Include="LayoutEditor\LayoutPropertiesEditorObject.cs" />
+    <Compile Include="Scene\Editors\Terrain\ControlableTcvMarker.cs" />
+    <Compile Include="Scene\Viewers\BackgroundMeshSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\BackgroundMeshSettingsControl.Designer.cs">
+      <DependentUpon>BackgroundMeshSettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\CollViewer\CollViewer.cs">
+    </Compile>
+    <Compile Include="Scene\Viewers\ISceneHierarchyPanelExtension.cs" />
+    <Compile Include="Scene\Viewers\SceneHierarchyPanel.cs">
+    </Compile>
+    <Compile Include="Scene\Viewers\SceneHierarchyPanel.Designer.cs">
+      <DependentUpon>SceneHierarchyPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\GMOB\GMOBViewer.cs">
+    </Compile>
+    <Compile Include="Scene\Viewers\DBSceneObject\SceneObjectViewer.cs">
+    </Compile>
+    <Compile Include="ImageStylesEditor\ImageStyleEditor.cs">
+    </Compile>
+    <Compile Include="ImageStylesEditor\ImageStyleEditor.Designer.cs">
+      <DependentUpon>ImageStyleEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageStylesEditor\ImageStylesEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImageStylesEditor\ImageStylesEditorControl.Designer.cs">
+      <DependentUpon>ImageStylesEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Importer\Mesh\FaceFXImporter.cs" />
+    <Compile Include="Importer\Mesh\MeshUtils.cs" />
+    <Compile Include="Importer\Mesh\ParticleFXImporter.cs" />
+    <Compile Include="Importer\Mesh\AnimationImporter.cs" />
+    <Compile Include="Importer\Mesh\SkeletonImporter.cs" />
+    <Compile Include="Importer\Mesh\SkinPartImporter.cs" />
+    <Compile Include="Importer\Mesh\StaticMeshImporter.cs" />
+    <Compile Include="Importer\ParticleInstanceImporter.cs" />
+    <Compile Include="Importer\Texture\Atlas.cs" />
+    <Compile Include="Importer\Texture\DdsFile.cs" />
+    <Compile Include="Importer\Texture\DdsImage.cs" />
+    <Compile Include="Importer\Texture\TextureImporter.cs" />
+    <Compile Include="Importer\Texture\TgaReader.cs" />
+    <Compile Include="Importer\Texture\Utility.cs" />
+    <Compile Include="LayoutEditor\Background\Background.cs" />
+    <Compile Include="LayoutEditor\Background\BackgroundClampTexture.cs" />
+    <Compile Include="LayoutEditor\Background\BackgroundGrid.cs" />
+    <Compile Include="LayoutEditor\Background\BackgroundScaleTexture.cs" />
+    <Compile Include="LayoutEditor\Background\BackgroundSolid.cs" />
+    <Compile Include="LayoutEditor\Background\BackgroundTexture.cs" />
+    <Compile Include="LayoutEditor\LayoutEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutEditor.Designer.cs">
+      <DependentUpon>LayoutEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutEditorState.cs" />
+    <Compile Include="LayoutEditor\LayoutEditorStatusPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutEditorStatusPanel.Designer.cs">
+      <DependentUpon>LayoutEditorStatusPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutTreeView.cs">
+    </Compile>
+    <Compile Include="LayoutEditor\LayoutTreeView.Designer.cs">
+      <DependentUpon>LayoutTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutEditor\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutEditor\States\DefaultState.cs" />
+    <Compile Include="LayoutEditor\States\NewWindowState.cs" />
+    <Compile Include="LayoutEditor\States\PreselectionState.cs" />
+    <Compile Include="LayoutEditor\States\SelectedState.cs" />
+    <Compile Include="LayoutEditor\States\BoundsControlState.cs" />
+    <Compile Include="Scene\Viewers\IAnimationSelectionPanelExtension.cs" />
+    <Compile Include="Scene\Viewers\IResourceParametersPanelExtension.cs" />
+    <Compile Include="Scene\Viewers\ISkinsSelectionPanelExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scene\Viewers\AnimationsSelectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\AnimationsSelectionPanel.Designer.cs">
+      <DependentUpon>AnimationsSelectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\ManipulatorControl.cs" />
+    <Compile Include="Scene\Viewers\PresetCopyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\PresetCopyForm.Designer.cs">
+      <DependentUpon>PresetCopyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\PresetDeleteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\PresetDeleteForm.Designer.cs">
+      <DependentUpon>PresetDeleteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\SceneInfo.cs" />
+    <Compile Include="Scene\Viewers\ShapeControl\Connection.cs" />
+    <Compile Include="Scene\Viewers\ShapeControl\Shape.cs" />
+    <Compile Include="Scene\Viewers\ShapeControl\ShapeChart.Connection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\ShapeControl\ShapeChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\ShapeControl\ShapeChart.designer.cs">
+      <DependentUpon>ShapeChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\ShapeControl\ShapeChart.Shape.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\SimpleViewer.cs">
+    </Compile>
+    <Compile Include="Scene\Viewers\SimpleViewer.MainState.cs">
+    </Compile>
+    <Compile Include="Scene\Viewers\SkinsSelectionPanel.cs">
+    </Compile>
+    <Compile Include="Scene\Viewers\SkinsSelectionPanel.Designer.cs">
+      <DependentUpon>SkinsSelectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\AnimatedMeshSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Scene\Viewers\AnimatedMeshSettingsControl.Designer.cs">
+      <DependentUpon>AnimatedMeshSettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Viewers\Texture\TextureViewer.cs">
+    </Compile>
+    <Compile Include="Sound\fmod.cs" />
+    <Compile Include="Sound\fmod_dsp.cs" />
+    <Compile Include="Sound\fmod_errors.cs" />
+    <Compile Include="Sound\fmod_event.cs" />
+    <Compile Include="Templates\NewObjectTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templates\NewObjectTemplateForm.Designer.cs">
+      <DependentUpon>NewObjectTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DefineTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templates\DefineTemplateForm.Designer.cs">
+      <DependentUpon>DefineTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\TemplateMenuItems.cs" />
+    <Compile Include="Templates\ResourceInstanceDescriptor.cs" />
+    <Compile Include="Templates\Template.cs" />
+    <Compile Include="TileMap.cs" />
+    <Compile Include="UIScene\Editor2DSceneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizards\MayaConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\MayaConfigForm.Designer.cs">
+      <DependentUpon>MayaConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\MayaConfigurationCommand.cs" />
+    <Compile Include="Wizards\MayaImportFileExists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\MayaImportFileExists.Designer.cs">
+      <DependentUpon>MayaImportFileExists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\MayaImportWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\MayaImportWizardForm.Designer.cs">
+      <DependentUpon>MayaImportWizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\MayaSceneImportWizard.cs" />
+    <Compile Include="Wizards\TextureImportWizard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EditorLib\EditorLib.csproj">
+      <Project>{AEB9B15A-6C51-4B9B-8838-7254064A4E98}</Project>
+      <Name>EditorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EditorNative\EditorNative.vcproj">
+      <Project>{8661805A-1298-4D53-8666-1FB9922886AF}</Project>
+      <Name>EditorNative</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\libdb.NET\libdb.NET.csproj">
+      <Project>{2369C873-8C70-4197-8CAB-67D34C9D5412}</Project>
+      <Name>libdb.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MayaExeInteraction\MayaExeInteraction.csproj">
+      <Project>{5DFA0790-582A-4A71-93AE-A5D31AA7864F}</Project>
+      <Name>MayaExeInteraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PF_EditorNative\PF_EditorNative.vcproj">
+      <Project>{8661805A-1298-4D53-8666-1FB9922886AE}</Project>
+      <Name>PF_EditorNative</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PF_Types.DBTypes\PF_Types.DBTypes.csproj">
+      <Project>{66E75FE1-7475-4096-B532-F8F8C033FE9A}</Project>
+      <Name>PF_Types.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialTypes.DBTypes\SocialTypes.DBTypes.csproj">
+      <Project>{E1B1F76B-5499-4725-AB2C-A2F76356D684}</Project>
+      <Name>SocialTypes.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Types.DBTypes\Types.DBTypes.csproj">
+      <Project>{CB33BF48-712E-4EAB-8436-E64DC30CBCD7}</Project>
+      <Name>Types.DBTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Types\Types.csproj">
+      <Project>{2D99C064-8D94-402F-AFB8-19FC429DF5C2}</Project>
+      <Name>Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win32\Win32.csproj">
+      <Project>{7398874F-AEA0-4A0E-8239-E3A6668A3712}</Project>
+      <Name>Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Editors\Animated\AnimatedEdtiorResources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\TextRef\TextRefEditorControl.resx">
+      <DependentUpon>TextRefEditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\TextRef\TextRefEditorForm.resx">
+      <DependentUpon>TextRefEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutEditor\LayoutEditorControl.resx">
+      <DependentUpon>LayoutEditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\DebugVarsFilterForm.resx">
+      <DependentUpon>DebugVarsFilterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorPluginResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>EditorPluginResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\MatrixType\MatrixTypePropertyEditorForm.resx">
+      <DependentUpon>MatrixTypePropertyEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageStylesEditor\ImageStyleEditor.resx">
+      <DependentUpon>ImageStyleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageStylesEditor\ImageStylesEditorControl.resx">
+      <DependentUpon>ImageStylesEditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageStylesEditor\ImageStyleView.resx">
+      <DependentUpon>ImageStyleView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutEditor\LayoutEditor.resx">
+      <DependentUpon>LayoutEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutEditor\LayoutEditorStatusPanel.resx">
+      <DependentUpon>LayoutEditorStatusPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutEditor\LayoutTreeView.resx">
+      <DependentUpon>LayoutTreeView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutEditor\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Editors\EditorControl.resx">
+      <DependentUpon>EditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Editors\Drawing\TerrainLayers\BrushSettingsControl.resx">
+      <DependentUpon>BrushSettingsControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Viewers\BackgroundMeshSettingsControl.resx">
+      <DependentUpon>BackgroundMeshSettingsControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Viewers\SceneHierarchyPanel.resx">
+      <DependentUpon>SceneHierarchyPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Viewers\AnimationsSelectionPanel.resx">
+      <DependentUpon>AnimationsSelectionPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Viewers\PresetCopyForm.resx">
+      <DependentUpon>PresetCopyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Viewers\PresetDeleteForm.resx">
+      <DependentUpon>PresetDeleteForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Viewers\SkinsSelectionPanel.resx">
+      <DependentUpon>SkinsSelectionPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\NewObjectTemplateForm.resx">
+      <DependentUpon>NewObjectTemplateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\DefineTemplateForm.resx">
+      <DependentUpon>DefineTemplateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\MayaImportWizardForm.resx">
+      <DependentUpon>MayaImportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LayoutEditor\ToolBoxIcons\Button.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LayoutEditor\ToolBoxIcons\Layout.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LayoutEditor\ToolBoxIcons\Input.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\drag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\HLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\HStretch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\HTile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\VBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\VStretch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\VTile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\VTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\HRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageStylesEditor\Resources\zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editors\Animated\Clamp.png" />
+    <Content Include="Editors\Animated\None.png" />
+    <Content Include="Editors\Animated\Wrap.png" />
+    <EmbeddedResource Include="Commands\UndoRedo\BrowseUndoRedoForm.resx">
+      <DependentUpon>BrowseUndoRedoForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Committer\DualCommitForm.resx">
+      <DependentUpon>DualCommitForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Committer\DualCommitRevertForm.resx">
+      <DependentUpon>DualCommitRevertForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\AnimatedCurves\AnimatedCurvesControl.resx">
+      <DependentUpon>AnimatedCurvesControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\AnimatedCurves\AnimatedEditorDialog.resx">
+      <DependentUpon>AnimatedEditorDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\AnimGraph\AnimGraphPanel.resx">
+      <DependentUpon>AnimGraphPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\AnimatedCurves\AnimatedCurvesPanel.resx">
+      <DependentUpon>AnimatedCurvesPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\FontViewer\FontViewer.resx">
+      <DependentUpon>FontViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\FontViewer\FontViewerControl.resx">
+      <DependentUpon>FontViewerControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Extensions\MultilineStringEditorForm.resx">
+      <DependentUpon>MultilineStringEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SymmetricalForm.resx">
+      <DependentUpon>SymmetricalForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayoutEditor\ToolBoxIcons\ShowGrid.png" />
+    <EmbeddedResource Include="LayoutEditor\ToolBoxIcons\SnapGrid.png" />
+    <EmbeddedResource Include="LayoutEditor\ToolBoxIcons\SnapParent.png" />
+    <EmbeddedResource Include="LayoutEditor\ToolBoxIcons\SnapWindows.png" />
+    <EmbeddedResource Include="LinksList\LinksListPanel.resx">
+      <DependentUpon>LinksListPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Minimap\MinimapPanel.resx">
+      <DependentUpon>MinimapPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectLayers\ObjectLayersPanel.resx">
+      <DependentUpon>ObjectLayersPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\DebugVarsPanel.resx">
+      <DependentUpon>DebugVarsPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Editors\Drawing\NatureMapPanel.resx">
+      <DependentUpon>NatureMapPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Editors\Drawing\TerrainHeightTool\TerrainHeightPanel.resx">
+      <DependentUpon>TerrainHeightPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Editors\MACTrackBar\MACTrackBar.resx">
+      <DependentUpon>MACTrackBar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene\Editors\TimeSlider.resx">
+      <DependentUpon>TimeSlider.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\MayaConfigForm.resx">
+      <DependentUpon>MayaConfigForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\MayaImportFileExists.resx">
+      <DependentUpon>MayaImportFileExists.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="editorplugins.refs" />
+    <None Include="Resources\AABB.png" />
+    <None Include="Resources\Collision.bmp" />
+    <None Include="Resources\Copy.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\GameCamera.png" />
+    <None Include="Resources\Hide2.png" />
+    <None Include="Resources\Hide.png" />
+    <None Include="Resources\HStretchedTile.bmp" />
+    <None Include="Resources\ImmidiateLightning.png" />
+    <None Include="Resources\Layers.png" />
+    <None Include="Resources\LightEnvironment.png" />
+    <None Include="Resources\Locator.png" />
+    <None Include="Resources\LockObjects.png" />
+    <None Include="Resources\Options.png" />
+    <None Include="Resources\Pause.bmp" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\Play.bmp" />
+    <None Include="Resources\PlayLoop.bmp" />
+    <Content Include="Editors\AnimGraph\Resources\frames.bmp" />
+    <Content Include="Editors\AnimGraph\Resources\MultiNode.bmp" />
+    <Content Include="Editors\AnimGraph\Resources\SimpleNode.bmp" />
+    <None Include="Resources\Folder.png" />
+    <None Include="Resources\Delete2.png" />
+    <EmbeddedResource Include="Resources\BigGreenButton.png" />
+    <None Include="Resources\spline.png" />
+    <None Include="Resources\TimeTracker.png" />
+    <None Include="Resources\Align_TCV.png" />
+    <None Include="Resources\Attack_space.png" />
+    <None Include="Resources\Z_Rotation.png" />
+    <None Include="Resources\Z_Scale.png" />
+    <None Include="Resources\Weld.png" />
+    <None Include="Resources\RescaleToFit.png" />
+    <None Include="Resources\SmartSelection.png" />
+    <None Include="Resources\ShowTiles.png" />
+    <None Include="Resources\FullLoad.png" />
+    <None Include="Resources\InlineSpawners.png" />
+    <None Include="Resources\UndoIcon.png" />
+    <None Include="Resources\RedoIcon.png" />
+    <None Include="Resources\ZoomIn.png" />
+    <None Include="Resources\ZoomOut.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\move_up.png" />
+    <None Include="Resources\move_down.png" />
+    <None Include="Resources\1339256302_gear_16.png" />
+    <None Include="Resources\1339256291_delete_16.png" />
+    <None Include="Resources\1339256263_plus_16.png" />
+    <None Include="Resources\1339676923_fire.png" />
+    <None Include="Resources\tiles.png" />
+    <None Include="Resources\attack space.png" />
+    <None Include="Resources\attack space1.png" />
+    <None Include="Resources\sh.png" />
+    <None Include="Resources\common_each_center.png" />
+    <None Include="Resources\SplineNewCPFromCamera.png" />
+    <None Include="Resources\PolygonEdgeSubdivide.png" />
+    <None Include="Resources\PolygonPointAdd.png" />
+    <None Include="Resources\PolygonPointRemove.png" />
+    <None Include="Resources\PolygonPolyCreate.png" />
+    <Content Include="Resources\NightLightEnvironment.png" />
+    <Content Include="Resources\SplineCPFromCamera.png" />
+    <Content Include="Resources\SplineCPToCamera.png" />
+    <Content Include="Scene\Editors\MACTrackBar\MACTrackBar.bmp" />
+    <None Include="Extensions\SrcFileLoading.png" />
+    <None Include="Extensions\SrcFileBrowse.png" />
+    <None Include="Resources\FlagDelete.png" />
+    <None Include="Resources\FlagCreate.png" />
+    <None Include="Resources\SplineCPDelete.png" />
+    <None Include="Resources\SplineCPInsert.png" />
+    <None Include="Resources\View.png" />
+    <None Include="Resources\TileSet.png" />
+    <None Include="Resources\TerraForming.png" />
+    <None Include="Resources\Stop.png" />
+    <None Include="Resources\Stop.bmp" />
+    <None Include="Resources\Snap.png" />
+    <None Include="Resources\RenderSH.png" />
+    <None Include="Resources\reload3.png" />
+    <None Include="Resources\record2.png" />
+    <None Include="Resources\VStretchedTile.bmp" />
+    <None Include="Resources\Record.png" />
+    <None Include="Editors\AnimGraph\Resources\MayaSpeed.bmp" />
+    <None Include="Editors\AnimGraph\Resources\AnimIndex.png" />
+    <None Include="Editors\AnimGraph\Resources\AnimLooped.png" />
+    <None Include="Editors\AnimGraph\Resources\AnimComplex.png" />
+    <None Include="Editors\AnimGraph\Resources\AnimPlayed.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>"$(ProjectDir)..\..\vendor\BuildUtils\CopyReference.exe" $(ProjectPath) $(ConfigurationName) $(TargetDir)
+robocopy $(ProjectDir)..\..\Vendor\ScintillaNET $(OutDir) SciLexer.dll SciLexer64.dll
+if %25errorlevel%25 leq 1 exit 0 else exit %25errorlevel%25</PostBuildEvent>
+    <!--<ReferencePath>$(ProjectDir)..\..\Vendor\ScintillaNET\</ReferencePath>-->
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

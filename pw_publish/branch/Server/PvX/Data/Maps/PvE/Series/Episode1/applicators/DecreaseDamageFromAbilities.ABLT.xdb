@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/PvE/Series/Episode1/_.DICT" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Maps/PvE/Series/Episode1/applicators/DecreaseDamageFromAbilities.ABLT" id="52A17771-422D-42E5-9AE2-54F7BDABC5CD">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/PvE/Series/Episode1/applicators/DecreaseDamageFromAbilities.ABLT" id="7BEE2C21-A6BE-4BDB-AFD6-EA9CCAF35E77">
+					<UnitConstant>
+						<name>Ability_Def</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>50</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Maps/PvE/Series/Episode1/applicators/DecreaseDamageFromAbilities.ABLT" id="6B1E6749-9AA4-4DCC-9D51-AB8342EE6724">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Maps/PvE/Series/Episode1/applicators/DecreaseDamageFromAbilities.ABLT" id="0C790786-1835-438A-A321-D4925C3450F7">
+						<TriggerApplicator>
+							<actionsCount>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</actionsCount>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>Защита от заклинаний</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<playAck>false</playAck>
+							<processor href="/Maps/PvE/Series/Episode1/applicators/DecreaseDamageFromAbilities.ABLT" id="E5848056-245A-4450-8A8E-31E437243525">
+								<EventProcessorDamageTransformer>
+									<abilityFilter>
+										<abilitiesList />
+										<abilityCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</abilityCondition>
+										<abilityCostMode>Energy</abilityCostMode>
+										<exceptThis>false</exceptThis>
+										<flags>1610614014</flags>
+										<onlySingleTarget>false</onlySingleTarget>
+									</abilityFilter>
+									<add>
+										<compiledString>FRYAAAADAAAAJQAAADoAAAA/AAAAQWJpbGl0eV9EZWYAcmF3RGFtYWdlAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S2eDcDWAAAABoDAAAAItFEIsQi00Qi0JU3V34/9DcTfjZXfTZRfSL5V3DexSuR+F6hD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>-cAbility_Def*0.01*appl.GetVariable("rawDamage")</sString>
+									</add>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<checkSender>0</checkSender>
+									<damageTypeFilter>31</damageTypeFilter>
+									<flags>0</flags>
+									<matchTargetInverted>false</matchTargetInverted>
+									<mul>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>1.0f</sString>
+									</mul>
+									<objectFilter>572325951</objectFilter>
+									<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+									<spell href="" />
+									<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+								</EventProcessorDamageTransformer>
+							</processor>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<useAbilityCooldown>false</useAbilityCooldown>
+							<useAbilityOwnerMana>false</useAbilityOwnerMana>
+						</TriggerApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption></caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Maps/PvE/Series/Episode1/applicators/DecreaseDamageFromAbilities.ABLT_6b1e67499aa44dcc9d51ab8342ee6724_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Statuses/Neutral/shield_violet.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Maps/PvE/Series/Episode1/applicators/DecreaseDamageFromAbilities.ABLT_6b1e67499aa44dcc9d51ab8342ee6724_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>
