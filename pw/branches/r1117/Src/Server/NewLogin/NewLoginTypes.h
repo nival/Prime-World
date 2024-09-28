@@ -173,7 +173,7 @@ struct ServiceReqReply : public rpc::Data
   int                         requestId;
   Transport::TServiceId       svcId;
   ESvcConnectionResult::Enum  code;
-  AddressString               externalAddress;
+  mutable AddressString               externalAddress;
   KeyString                   key;
 
   ZEND int operator&( IBinSaver &f ) { f.Add(2,&requestId); f.Add(3,&svcId); f.Add(4,&code); f.Add(5,&externalAddress); f.Add(6,&key); return 0; }

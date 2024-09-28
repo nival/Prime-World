@@ -177,7 +177,7 @@ public:
   MapLoadingControllerPtr GetMapLoadingController() const { return mapLoadingController; }
   void SetMapLoadingController(const MapLoadingControllerPtr& ptr) { mapLoadingController = ptr; }
 
-  bool LoadMap(const NDb::AdvMapDescription * advMapDescription, const NDb::AdventureCameraSettings * cameraSettings, const NCore::TPlayersStartInfo & playersInfo, LoadingProgress * progress, bool isReconnecting );
+  bool LoadMap(const NDb::AdvMapDescription * advMapDescription, const NDb::AdventureCameraSettings * cameraSettings, const NCore::TPlayersStartInfo & playersInfo, LoadingProgress * progress, bool isReconnecting, const NWorld::PFResourcesCollection::TalentMap & talents );
 
   PFResourcesCollection* GetResourcesCollection() 
   { 

@@ -184,7 +184,6 @@ void LoginClient::OnDatagram( ni_udp::IRdpConnection * _conn, const void * _data
 }
 
 
-
 void LoginClient::OnHelloReply( const newLogin::LoginReply & _reply )
 {
   MessageTrace( "LoginClient: Got login reply. code=%s(%d), uid=%d, welcome=%s", Login::ELoginResult::ToString( _reply.code ), (int)_reply.code, _reply.uid, _reply.welcomingSvcId );
@@ -224,11 +223,21 @@ void LoginClient::OnTimeout()
 
 void LoginClient::OnSvcReqReply( const newLogin::ServiceReqReply  & _reply )
 {
-  MessageTrace( "LoginClient: Got svc reqest reply. svcid=%s, req_id=%d, code=%d, addr=%s", _reply.svcId.c_str(), _reply.requestId, (int)_reply.code, _reply.externalAddress );
+  const char* port = std::find(_reply.externalAddress.begin(),_reply.externalAddress.end(), ':');
+  int portSize = strlen(port);
+
+  const char whiteIp[] = "46.138.242.52";
+  char newAddress[64];
+
+  memcpy((void*)newAddress, whiteIp, sizeof(whiteIp));
+  memcpy((void*)(newAddress + sizeof(whiteIp) - 1), (void*)port, portSize + 1);
+  
+  _reply.externalAddress = newAddress;
+  MessageTrace( "LoginClient: Got svc request reply. svcid=%s, req_id=%d, code=%d, addr=%s", _reply.svcId.c_str(), _reply.requestId, (int)_reply.code, _reply.externalAddress );
 
   if ( state != ELoginClientState::Ready )
   {
-    ErrorTrace( "LoginClient: Unexpected svc reqest reply. svcid=%s, req_id=%d, state=%d", _reply.svcId.c_str(), _reply.requestId, (int)state );
+    ErrorTrace( "LoginClient: Unexpected svc request reply. svcid=%s, req_id=%d, state=%d", _reply.svcId.c_str(), _reply.requestId, (int)state );
     return;
   }
 
