@@ -113,7 +113,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[9] = "Artist_A0";
 	classTalentMap[10] = "Highlander_A0";
 	classTalentMap[11] = "Marine_A0";
-	classTalentMap[12] = "FireFox_A0";
+	classTalentMap[12] = "Firefox_A0";
 	classTalentMap[13] = "Healer_A0";
 	classTalentMap[14] = "Night_A0";
 	classTalentMap[15] = "Rockman_A0";
@@ -225,11 +225,11 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[124] = "Marine_A4u";
 	classTalentMap[125] = "Firefox_A1";
 	classTalentMap[126] = "Firefox_A3";
-	classTalentMap[127] = "Firefox_A1_u1";
-	classTalentMap[128] = "Firefox_A3_u1";
+	classTalentMap[127] = "Firefox_A1_Upg1";
+	classTalentMap[128] = "Firefox_A3_Upg1";
 	classTalentMap[129] = "Firefox_A4";
-	classTalentMap[130] = "Firefox_A1_u2";
-	classTalentMap[131] = "Firefox_A4_u1";
+	classTalentMap[130] = "Firefox_A1_Upg2";
+	classTalentMap[131] = "Firefox_A4_Upg1";
 	classTalentMap[132] = "Firefox_A2";
 	classTalentMap[133] = "Healer_A1";
 	classTalentMap[134] = "Healer_A5";
@@ -534,8 +534,8 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[432] = "Ent_A3";
 	classTalentMap[433] = "Ent_A4";
 	classTalentMap[434] = "Ent_A4u";
-	classTalentMap[435] = "FireFox_A4_2";
-	classTalentMap[436] = "FireFox_A4_2U";
+	classTalentMap[435] = "Firefox_A4_2";
+	classTalentMap[436] = "Firefox_A4_2U";
 	classTalentMap[437] = "Werewolf_A4_2";
 	classTalentMap[438] = "Archeress_A4_2";
 	classTalentMap[439] = "Archeress_A4_2u";
