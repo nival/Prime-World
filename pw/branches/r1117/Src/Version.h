@@ -11,10 +11,10 @@
 
 #define VERSION_MAJOR    0
 #define VERSION_MINOR    0
-#define VERSION_PATCH    0
+#define VERSION_PATCH    3
 #define VERSION_BUILD    0
 #define VERSION_REVISION 0
 #define VERSION_REVISION_PATCHED 0
-#define VERSION_LINE     "private"
-#define VERSION_BRANCH   "private"
-#define VERSION_TYPE     "private"
+#define VERSION_LINE     "pwclassic"
+#define VERSION_BRANCH   "pwclassic"
+#define VERSION_TYPE     "pwclassic"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Core/GameTypes.h>
+#include <PF_GameLogic/PFResourcesCollection.h>
 
 namespace NWorld
 {
@@ -36,7 +37,7 @@ namespace NWorld
   typedef vector<HeroSpawnInfo>  TTeamSpawnInfo;
   typedef vector<TTeamSpawnInfo> TSpawnInfo;
 
-  bool SpawnHeroes( NWorld::PFWorld * pWorld, const NDb::AdvMapDescription* advMapDescription, const NCore::TPlayersStartInfo & players, const bool isTutorial, TSpawnInfo* pSpawnInfo, NScene::IScene * pScene, LoadingProgress * progress );
+  bool SpawnHeroes( NWorld::PFWorld * pWorld, const NDb::AdvMapDescription* advMapDescription, const NCore::TPlayersStartInfo & players, const bool isTutorial, TSpawnInfo* pSpawnInfo, NScene::IScene * pScene, LoadingProgress * progress, const NWorld::PFResourcesCollection::TalentMap& talents );
   const NDb::Hero * FindHero( const NDb::HeroesDB * db, const NDb::AdvMapDescription* advMapDesc, uint heroId );
   const wstring& FindHeroNickname( const NDb::AdvMapDescription* advMapDesc, const NDb::BaseHero * hero );
   string GetRandomHeroSkin( uint heroId, const NDb::AdvMapDescription* advMapDesc, NRandom::RandomGenerator& randGen, NCore::ETeam::Enum teamId );

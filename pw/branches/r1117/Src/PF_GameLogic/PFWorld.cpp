@@ -78,6 +78,7 @@
 #include "DayNightController.h"
 
 #include "PFClientVisibilityMap.h"
+#include <curl/curl.h>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -128,7 +129,7 @@ public:
     int idx = 0;
     for ( vector<NDb::AdvMapObject>::const_iterator it = objects.begin(), end = objects.end(); it != end; ++it, ++idx )
     {
-      NI_DATA_VERIFY( IsValid( it->gameObject ), NStr::StrFmt("Invalid gameObject assigned to advmap object #%d at %2.3f х %2.3f", it - objects.begin(), it->offset.GetPlace().pos.x, it->offset.GetPlace().pos.y ), continue; );
+      NI_DATA_VERIFY( IsValid( it->gameObject ), NStr::StrFmt("Invalid gameObject assigned to advmap object #%d at %2.3f пїЅ %2.3f", it - objects.begin(), it->offset.GetPlace().pos.x, it->offset.GetPlace().pos.y ), continue; );
 
       if(it->gameObject->GetObjectTypeID() == (DWORD)typeId )
       {
@@ -183,7 +184,7 @@ bool LoadPureClientObjectsOfType( NGameX::IAdventureScreen* pScreen, NScene::ISc
     for ( vector<NDb::AdvMapObject>::const_iterator it = objects.begin(); it != objects.end(); it++, idx++ )
     {
       NI_DATA_VERIFY( IsValid( it->gameObject ),
-                      NStr::StrFmt( "Invalid gameObject assigned to advmap object #%d at %2.3f х %2.3f",
+                      NStr::StrFmt( "Invalid gameObject assigned to advmap object #%d at %2.3f пїЅ %2.3f",
                                     it - objects.begin(), it->offset.GetPlace().pos.x, it->offset.GetPlace().pos.y ), continue );
 
       if ( it->gameObject->GetObjectTypeID() != (DWORD)typeId )
@@ -309,7 +310,7 @@ timeScale(NMainLoop::GetTimeScale())
   {
     const NCore::PlayerStartInfo & desc = info.playersInfo[i];
 
-    // также не отслеживаем поведение ботов и новичков
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     const bool enableBehaviourTracking =
       (enableBehaviourTrackingForThisGame) &&
       (desc.userID > 0) &&
@@ -394,8 +395,10 @@ void PFWorld::InitMinigames()
 }
 
 
+#pragma optimize("", off)
 
-bool PFWorld::LoadMap( const NDb::AdvMapDescription * _advMapDescription, const NDb::AdventureCameraSettings * cameraSettings, const NCore::TPlayersStartInfo & playersInfo, LoadingProgress * progress, bool isReconnecting )
+
+bool PFWorld::LoadMap( const NDb::AdvMapDescription * _advMapDescription, const NDb::AdventureCameraSettings * cameraSettings, const NCore::TPlayersStartInfo & playersInfo, LoadingProgress * progress, bool isReconnecting, const NWorld::PFResourcesCollection::TalentMap& talents )
 {
   NI_PROFILE_FUNCTION_MEM;
 
@@ -509,7 +512,7 @@ bool PFWorld::LoadMap( const NDb::AdvMapDescription * _advMapDescription, const 
 
   pTileMap->ApplyHeightMap(adventureScreen->GetHeightsAsFloat());
 
-  if( !LoadSceneMapObjects( advMapDescription, playersInfo, advMapDescription->mapType == NDb::MAPTYPE_TUTORIAL, progress ) )
+  if( !LoadSceneMapObjects( advMapDescription, playersInfo, advMapDescription->mapType == NDb::MAPTYPE_TUTORIAL, progress, talents ) )
     return false;
 
   LoadPrecachedResources( advMapDescription );
@@ -716,7 +719,7 @@ void PFWorld::LoadPrecachedResources(const NDb::AdvMapDescription * advMapDescri
   GetIAdventureScreen()->PreloadEffectsInResourceTree( NDb::SessionRoot::GetRoot()->logicRoot->aiLogic->consumableGroups, BADNODENAME );
 }
 
-bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, const NCore::TPlayersStartInfo & players, const bool isTutorial, LoadingProgress * progress )
+bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, const NCore::TPlayersStartInfo & players, const bool isTutorial, LoadingProgress * progress, const NWorld::PFResourcesCollection::TalentMap& talents )
 {
   NI_PROFILE_FUNCTION;
 
@@ -758,7 +761,7 @@ bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, con
   ObjectsLoader<PFTower>(this).Load(objects, NDb::Tower::typeId, "Tower", objectsLoaded, progress); MAP_LOADING_IP;
   progress->SetPartialProgress( EMapLoadStages::MapObjects, 0.95f );
 
-  // должен загружаться последним, так как может унлокать тайлы
+  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
   ObjectsLoader<PFAdvMapObstacle, false>(this).Load(objects, NDb::AdvMapObstacle::typeId, "AdvMapObstacle", objectsLoaded, progress); MAP_LOADING_IP;
 
   {
@@ -772,7 +775,7 @@ bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, con
     {
       MAP_LOADING_IP;
 
-      NI_DATA_VERIFY( IsValid( it->gameObject ), NStr::StrFmt("Invalid gameObject assigned to advmap object #%d at %2.3f х %2.3f", it - objects.begin(), it->offset.GetPlace().pos.x, it->offset.GetPlace().pos.y ), continue; );
+      NI_DATA_VERIFY( IsValid( it->gameObject ), NStr::StrFmt("Invalid gameObject assigned to advmap object #%d at %2.3f пїЅ %2.3f", it - objects.begin(), it->offset.GetPlace().pos.x, it->offset.GetPlace().pos.y ), continue; );
       if (pScene->GetMeshVertexColorsManager())
       {
         pScene->GetMeshVertexColorsManager()->AdvMapObjectVCBegin(idx);
@@ -835,7 +838,7 @@ bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, con
     // yes, it's hacky
     if ( heroSpawnerCount )
     {
-      bool spawned = SpawnHeroes( this, advMapDesc, players, isTutorial, &heroesSpawnInfo, pScene, progress );
+      bool spawned = SpawnHeroes( this, advMapDesc, players, isTutorial, &heroesSpawnInfo, pScene, progress, talents );
       MAP_LOADING_IP;
       NI_ASSERT( spawned, "Failed to spawn players!" );
     }
@@ -897,7 +900,7 @@ void PFWorld::UpdatePlayerStatuses(const NCore::TStatuses & statuses)
     {
       const NCore::ClientStatus & clientStatus = statuses[i];
 
-      // пишем в статистику
+      // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       PFBaseHero* hero = player->GetHero();
       if ( hero )
       {

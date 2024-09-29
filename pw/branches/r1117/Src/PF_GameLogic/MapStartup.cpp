@@ -109,7 +109,7 @@ bool MapLoadingJob::DoTheJob()
   }
   progress->SetPartialProgress( EMapLoadStages::Environment, 1.0f );
 
-  if ( !world->LoadMap( advMapDescription, camSettings, mapStartInfo.playersInfo, progress, isReconnecting || g_readWorldFromFile ) )
+  if ( !world->LoadMap( advMapDescription, camSettings, mapStartInfo.playersInfo, progress, isReconnecting || g_readWorldFromFile, world->GetResourcesCollection()->GetTalents()) )
   {
     MAP_LOADING_IP;
     NI_ALWAYS_ASSERT( NStr::StrFmt( "Failed to load map: %s", advMap->GetDBID().GetFileName() ) );
