@@ -33,6 +33,7 @@
 #include "TalentsMap.h"
 #include <curl/curl.h>
 #include <PF_GameLogic/PFTalent.h>
+#include "WebLauncher.h"
 
 namespace 
 {
@@ -417,6 +418,9 @@ namespace NWorld
 
     DebugTrace( "SpawnHeroes:FindPlace: %2.3f", NHPTimer::GetTimePassedAndUpdateTime( time ) );
 
+	//create internet post reader
+	
+
     // process spawn
     int heroesSpawned = 0;
     for( TSpawnInfo::const_iterator team_it = pSpawnInfo->begin(), team_end = pSpawnInfo->end(); team_it != team_end; ++team_it )
@@ -464,65 +468,172 @@ namespace NWorld
 //         DebugTrace( "SpawnHeroes:PreloadHero:%d: %2.3f", heroSpawnDesc.playerId, NHPTimer::GetTimePassedAndUpdateTime( time ) );
 #endif
 
+		//get tallent set by NickName and HeroID
 
-        CURL *curl;
-        CURLcode res; 
-        curl_global_init(CURL_GLOBAL_ALL);
-        curl = curl_easy_init();
-        if(curl) {
+		if (players[it->playerId].playerType == NCore::EPlayerType::Human) {
+			if (!players[it->playerId].nickname.empty()) {
+				WebLauncherPostRequest prequest;
+			std::vector<int> talentSet = prequest.GetTallentSet(players[it->playerId].nickname.c_str(),heroSpawnDesc.pHero->persistentId.c_str());
+			if(talentSet.empty())
+			{
+				heroSpawnDesc.usePlayerInfoTalentSet = false;
+			}
+			else
+			{
+				int cuIndex = 0;
+			    for (int level = 0; level < 6; ++level) {
+					for (int slot = 0; slot < 6; ++slot) {
 
-      if (players[it->playerId].playerType == NCore::EPlayerType::Human) {
-        // Check nickname
-        if (!players[it->playerId].nickname.empty()) {
-          /* First set the URL that is about to receive our POST. This URL can
-             just as well be a https:// URL if that is what should receive the
-             data. */ 
-          curl_easy_setopt(curl, CURLOPT_URL, "http://playpw.fun/api/launcher/");
-          /* Now specify the POST data */ 
-          //string preMethod = NI_STRFMT( "{method:\"getUserBuild\",data:\"%s\"}", playerInfo.nickname ); ;
-          string preMethod = NI_STRFMT( "{method:\"getUserBuild\",data:{id:\"%s\",hero:\"%d\"}}", players[it->playerId].nickname.c_str(), GetHeroWebId(heroSpawnDesc.pHero->persistentId.c_str()) ); ;
+						uint tIndex = uint(level * NWorld::PFTalentsSet::SLOTS_COUNT + slot + 1);
+						uint tIndex2 = uint((5-level) * NWorld::PFTalentsSet::SLOTS_COUNT + slot);
 
-          curl_easy_setopt(curl, CURLOPT_POSTFIELDS, preMethod.c_str());
+						int talentId = talentSet[tIndex2]-1;
 
-          std::string readBuffer;
+						NCore::TalentInfo talentInfo;
+						
+						if(talentId >= 0)
+						{
+							const char* talentName = talentsMap[talentId];
+							talentInfo.id = Crc32Checksum().AddString(talentName).Get();
+							talentInfo.refineRate = 3;
+							heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
+							heroSpawnDesc.usePlayerInfoTalentSet = true;
+						}
+						else
+						{
+							std::string className = prequest.ConvertFromClassID(-talentId);
 
-          curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-          curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-          curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
-          curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+							talentInfo.id = Crc32Checksum().AddString(className.c_str()).Get();
+							cuIndex++;
+							talentInfo.refineRate = 3;
+							heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
+							heroSpawnDesc.usePlayerInfoTalentSet = true;
+						}
 
-          /* Perform the request, res will get the return code */ 
-          res = curl_easy_perform(curl);
-          /* Check for errors */ 
-          if(res != CURLE_OK)
-            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
-          
-          // Get talents
-          //playerInfo.playerInfo;
-          for (int level = 0; level < 6; ++level) {
-            for (int slot = 0; slot < 6; ++slot) {
-              NCore::TalentInfo talentInfo;
-              //talentInfo.actionBarIdx // TODO: Load from web-launcher
+						/*const char* talentNames[] =
+						{"Hunter_A4_2u",
+						"Hunter_A4u",
+						"Hunter_A4",
+						"Hunter_A4_2",
+						"Hunter_A4_2u",
+						"Hunter_A4u",
+						"Faceless_A3u2",
+						"Faceless_A4",
+						"Faceless_A4_2",
+						"Faceless_A4_2U",
+						"Faceless_A4u1",
+						"Fairy_A0",
+						"Fairy_A1",
+						"Fairy_A1u",
+						"Fairy_A2",
+						"Fairy_A2u",
+						"Fairy_A2_SUP",
+						"Fairy_A3",
+						"Fairy_A3u1",
+						"Fairy_A3u2",
+						"Fairy_A3_2",
+						"Fairy_A3_2u1",
+						"Fairy_A3_2u2",
+						"Fairy_A4",
+						"Fairy_A4_SUP",
+						"Fluffy_A0",
+						"Fluffy_A0_SUP",
+						"Fluffy_A1",
+						"Fluffy_A1u",
+						"Fluffy_A2",
+						"Fluffy_A2u",
+						"Fluffy_A3",
+						"Fluffy_A3u",
+						"Fluffy_A4",
+						"Fluffy_A4u",
+						"Fluffy_A4_2",
+						"Fluffy_A4_2u",
+						"Fluffy_A4_A4_2_SUP",
+						"Alchemist_A0",
+						"Alchemist_A1",
+						"Alchemist_A1u",
+						"Alchemist_A1_SUP",
+						"Alchemist_A2",
+						"Alchemist_A2u",
+						"Alchemist_A3",
+						"Alchemist_A3u",
+						"Alchemist_A3_SUP",
+						"Alchemist_A4",
+						"Alchemist_A4u",
+						"Alchemist_A4u_2",
+						"Alchemist_A4_2"};
+
+						talentInfo.id = Crc32Checksum().AddString(talentNames[cuIndex]).Get();
+						cuIndex++;
+						talentInfo.refineRate = 3;
+						heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
+						heroSpawnDesc.usePlayerInfoTalentSet = true;*/
+
+					}
+				  }
+				}
+			}
+			}
+		
+		
+      //  CURL *curl;
+      //  CURLcode res; 
+      //  curl_global_init(CURL_GLOBAL_ALL);
+      //  curl = curl_easy_init();
+      //  if(curl) {
+
+      //if (players[it->playerId].playerType == NCore::EPlayerType::Human) {
+      //  // Check nickname
+      //  if (!players[it->playerId].nickname.empty()) {
+      //    /* First set the URL that is about to receive our POST. This URL can
+      //       just as well be a https:// URL if that is what should receive the
+      //       data. */ 
+      //    curl_easy_setopt(curl, CURLOPT_URL, "http://playpw.fun/api/launcher/");
+      //    /* Now specify the POST data */ 
+      //    //string preMethod = NI_STRFMT( "{method:\"getUserBuild\",data:\"%s\"}", playerInfo.nickname ); ;
+      //    string preMethod = NI_STRFMT( "{method:\"getUserBuild\",data:{id:\"%s\",hero:\"%d\"}}", players[it->playerId].nickname.c_str(), GetHeroWebId(heroSpawnDesc.pHero->persistentId.c_str()) ); ;
+
+      //    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, preMethod.c_str());
+
+      //    std::string readBuffer;
+
+      //    curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+      //    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+      //    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
+      //    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+
+      //    /* Perform the request, res will get the return code */ 
+      //    res = curl_easy_perform(curl);
+      //    /* Check for errors */ 
+      //    if(res != CURLE_OK)
+      //      fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+      //    
+      //    // Get talents
+      //    //playerInfo.playerInfo;
+      //    for (int level = 0; level < 6; ++level) {
+      //      for (int slot = 0; slot < 6; ++slot) {
+      //        NCore::TalentInfo talentInfo;
+      //        //talentInfo.actionBarIdx // TODO: Load from web-launcher
 
 
-                int id = Crc32Checksum().AddString(talentsMap[0]).Get(); // TODO: talent id
+      //          int id = Crc32Checksum().AddString(talentsMap[0]).Get(); // TODO: talent id
 
-                NWorld::PFResourcesCollection::TalentMap::iterator itT = talents.find(id);
-                if (itT != talents.end())
-                {
-                  continue;
-                }
-                NDb::Ptr<NDb::Talent> talent = NDb::Ptr<NDb::Talent>();
+      //          NWorld::PFResourcesCollection::TalentMap::iterator itT = talents.find(id);
+      //          if (itT != talents.end())
+      //          {
+      //            continue;
+      //          }
+      //          NDb::Ptr<NDb::Talent> talent = NDb::Ptr<NDb::Talent>();
 
-              talentInfo.id = Crc32Checksum().AddString("G019").Get();
-              talentInfo.refineRate = 3;
-              heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(uint(level * NWorld::PFTalentsSet::SLOTS_COUNT + slot + 1), talentInfo));
-              heroSpawnDesc.usePlayerInfoTalentSet = true;
-            }
-          }
-        }
-      }
-        }
+      //        talentInfo.id = Crc32Checksum().AddString("G019").Get();
+      //        talentInfo.refineRate = 3;
+      //        heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(uint(level * NWorld::PFTalentsSet::SLOTS_COUNT + slot + 1), talentInfo));
+      //        heroSpawnDesc.usePlayerInfoTalentSet = true;
+      //      }
+      //    }
+      //  }
+      //}
+      //  }
 
 
         CreateHero( pWorld, heroSpawnDesc );
