@@ -6,14 +6,14 @@
 namespace 
 {
   string coordinatorAddr = "localhost:35000";
-  string loginAddr = "46.138.242.52:35001@10";
-  int firstServerPort = 35010;
+  string loginAddr = "46.138.242.52:55001@10";
+  int firstServerPort = 55010;
   string frontendIPAddr = "localhost";
   string backendIPAddr = "localhost";
 
   REGISTER_VAR( "coordinator_address", coordinatorAddr, STORAGE_GLOBAL );
   //REGISTER_VAR( "login_address", loginAddr, STORAGE_GLOBAL );
-  REGISTER_VAR( "first_server_port", firstServerPort, STORAGE_GLOBAL );
+  //REGISTER_VAR( "first_server_port", firstServerPort, STORAGE_GLOBAL );
   REGISTER_VAR( "frontend_ip_addr", frontendIPAddr, STORAGE_GLOBAL);
   REGISTER_VAR( "backend_ip_addr", backendIPAddr, STORAGE_GLOBAL);
 }

@@ -1688,6 +1688,7 @@ static bool DebugKillMBuildings(const char *name, const vector<wstring> &params,
 } // namespace NGameX
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 REGISTER_CHEAT_CMD( add_gold, NGameX::HeroAddGold );
 REGISTER_CHEAT_CMD( receive_artifact,  NGameX::ReceiveArtifact );
 REGISTER_CHEAT_CMD( refresh_cd,  NGameX::ResfreshCooldown );
@@ -1729,7 +1730,6 @@ REGISTER_CHEAT_CMD( destroy_all_main_buildings,  NGameX::DebugKillMBuildings );
 
 REGISTER_CHEAT_CMD( aat, NGameX::HeroActivateAllTalents );
 REGISTER_CHEAT_CMD( activate_all_talents, NGameX::HeroActivateAllTalents );
-
 REGISTER_DEV_CMD(gl_log_unit, NGameX::LogUnitCmd);
 
 //////////////////////////////////////////////////////////////////////////
@@ -1744,4 +1744,5 @@ REGISTER_CHEAT_CMD( bidon, NGameX::ActivateBidon );
 
 REGISTER_SAVELOAD_CLASS_NM(CmdCheat, NGameX)
 
+*/
 #endif // #ifndef _SHIPPING
