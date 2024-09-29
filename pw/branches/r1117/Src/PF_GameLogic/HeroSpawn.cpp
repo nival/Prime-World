@@ -30,6 +30,9 @@
 #include "AdventureScreen.h"
 
 #include "MapLoadingUtility.hpp"
+#include "TalentsMap.h"
+#include <curl/curl.h>
+#include <PF_GameLogic/PFTalent.h>
 
 namespace 
 {
@@ -42,7 +45,7 @@ namespace
 
   BotOverride botOverride[2];
 }
-
+#pragma optimize("", off)
 static bool g_useTestTalentSet = false;
 REGISTER_DEV_VAR( "use_test_talentset", g_useTestTalentSet, STORAGE_NONE );
 
@@ -271,9 +274,19 @@ namespace NWorld
     return "";
   }
 
+  static size_t WriteCallback(char *contents, size_t size, size_t nmemb, void *userp)
+  {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+  }
+
+  static uint GetHeroWebId(const char * heroPersistentId) {
+    return 1;
+  }
+
 
   bool SpawnHeroes( NWorld::PFWorld * pWorld, const NDb::AdvMapDescription* advMapDescription, const NCore::TPlayersStartInfo & players, const bool isTutorial, 
-        TSpawnInfo* pSpawnInfo, NScene::IScene * pScene, LoadingProgress * progress )
+        TSpawnInfo* pSpawnInfo, NScene::IScene * pScene, LoadingProgress * progress, const ::NWorld::PFResourcesCollection::TalentMap& talents )
   {
     NI_PROFILE_FUNCTION_MEM;
 
@@ -450,6 +463,68 @@ namespace NWorld
 //           PreloadHero( heroSpawnDesc.pHero, pWorld, player->GetTeamID() );
 //         DebugTrace( "SpawnHeroes:PreloadHero:%d: %2.3f", heroSpawnDesc.playerId, NHPTimer::GetTimePassedAndUpdateTime( time ) );
 #endif
+
+
+        CURL *curl;
+        CURLcode res; 
+        curl_global_init(CURL_GLOBAL_ALL);
+        curl = curl_easy_init();
+        if(curl) {
+
+      if (players[it->playerId].playerType == NCore::EPlayerType::Human) {
+        // Check nickname
+        if (!players[it->playerId].nickname.empty()) {
+          /* First set the URL that is about to receive our POST. This URL can
+             just as well be a https:// URL if that is what should receive the
+             data. */ 
+          curl_easy_setopt(curl, CURLOPT_URL, "http://playpw.fun/api/launcher/");
+          /* Now specify the POST data */ 
+          //string preMethod = NI_STRFMT( "{method:\"getUserBuild\",data:\"%s\"}", playerInfo.nickname ); ;
+          string preMethod = NI_STRFMT( "{method:\"getUserBuild\",data:{id:\"%s\",hero:\"%d\"}}", players[it->playerId].nickname.c_str(), GetHeroWebId(heroSpawnDesc.pHero->persistentId.c_str()) ); ;
+
+          curl_easy_setopt(curl, CURLOPT_POSTFIELDS, preMethod.c_str());
+
+          std::string readBuffer;
+
+          curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+          curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+          curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
+          curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+
+          /* Perform the request, res will get the return code */ 
+          res = curl_easy_perform(curl);
+          /* Check for errors */ 
+          if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+          
+          // Get talents
+          //playerInfo.playerInfo;
+          for (int level = 0; level < 6; ++level) {
+            for (int slot = 0; slot < 6; ++slot) {
+              NCore::TalentInfo talentInfo;
+              //talentInfo.actionBarIdx // TODO: Load from web-launcher
+
+
+                int id = Crc32Checksum().AddString(talentsMap[0]).Get(); // TODO: talent id
+
+                NWorld::PFResourcesCollection::TalentMap::iterator itT = talents.find(id);
+                if (itT != talents.end())
+                {
+                  continue;
+                }
+                NDb::Ptr<NDb::Talent> talent = NDb::Ptr<NDb::Talent>();
+
+              talentInfo.id = Crc32Checksum().AddString("G019").Get();
+              talentInfo.refineRate = 3;
+              heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(uint(level * NWorld::PFTalentsSet::SLOTS_COUNT + slot + 1), talentInfo));
+              heroSpawnDesc.usePlayerInfoTalentSet = true;
+            }
+          }
+        }
+      }
+        }
+
+
         CreateHero( pWorld, heroSpawnDesc );
         DebugTrace( "SpawnHeroes:CreateHero:%d: %2.3f", heroSpawnDesc.playerId, NHPTimer::GetTimePassedAndUpdateTime( time ) );
 

@@ -397,11 +397,6 @@ void PFWorld::InitMinigames()
 
 #pragma optimize("", off)
 
-size_t WriteCallback(char *contents, size_t size, size_t nmemb, void *userp)
-{
-  ((std::string*)userp)->append((char*)contents, size * nmemb);
-  return size * nmemb;
-}
 
 bool PFWorld::LoadMap( const NDb::AdvMapDescription * _advMapDescription, const NDb::AdventureCameraSettings * cameraSettings, const NCore::TPlayersStartInfo & playersInfo, LoadingProgress * progress, bool isReconnecting, const NWorld::PFResourcesCollection::TalentMap& talents )
 {
@@ -517,63 +512,7 @@ bool PFWorld::LoadMap( const NDb::AdvMapDescription * _advMapDescription, const 
 
   pTileMap->ApplyHeightMap(adventureScreen->GetHeightsAsFloat());
 
-  CURL *curl;
-  CURLcode res; 
-  curl_global_init(CURL_GLOBAL_ALL);
-  curl = curl_easy_init();
-  if(curl) {
-
-    for (int playerId = 0; playerId < playersInfo.size(); ++playerId) {
-      NCore::PlayerStartInfo& playerInfo = const_cast<NCore::PlayerStartInfo&>(playersInfo[playerId]);
-
-      if (playerInfo.playerType == NCore::EPlayerType::Human) {
-        // Check nickname
-        if (!playerInfo.nickname.empty()) {
-          /* First set the URL that is about to receive our POST. This URL can
-             just as well be a https:// URL if that is what should receive the
-             data. */ 
-          curl_easy_setopt(curl, CURLOPT_URL, "https://playpw.fun/api/launcher/");
-          /* Now specify the POST data */ 
-          string preMethod = NI_STRFMT( "{method:\"getUserBuild\",data:\"%s\"}", playerInfo.nickname ); ;
-
-          curl_easy_setopt(curl, CURLOPT_POSTFIELDS, preMethod.c_str());
-
-          std::string readBuffer;
-
-          curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-          curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-          curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
-          curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
-
-          /* Perform the request, res will get the return code */ 
-          res = curl_easy_perform(curl);
-          /* Check for errors */ 
-          if(res != CURLE_OK)
-            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
-          
-          // Get talents
-          //playerInfo.playerInfo;
-          for (int level = 0; level < 6; ++level) {
-            for (int slot = 0; slot < 6; ++slot) {
-              NCore::TalentInfo talentInfo;
-              //talentInfo.actionBarIdx // TODO: Load from web-launcher
-              NDb::Ptr<NDb::Talent> talent = resourcesCollection->FindTalentById("G019");
-              talentInfo.id = Crc32Checksum().AddString("G019").Get();
-              talentInfo.refineRate = 3;
-              playerInfo.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(uint(level * PFTalentsSet::SLOTS_COUNT + slot + 1), talentInfo));
-            }
-          }
-          playerInfo.usePlayerInfoTalentSet = true;
-        }
-      }
-    }
-    /* always cleanup */ 
-    curl_easy_cleanup(curl);
-  }
-
-  curl_global_cleanup();
-
-  if( !LoadSceneMapObjects( advMapDescription, playersInfo, advMapDescription->mapType == NDb::MAPTYPE_TUTORIAL, progress ) )
+  if( !LoadSceneMapObjects( advMapDescription, playersInfo, advMapDescription->mapType == NDb::MAPTYPE_TUTORIAL, progress, talents ) )
     return false;
 
   LoadPrecachedResources( advMapDescription );
@@ -780,7 +719,7 @@ void PFWorld::LoadPrecachedResources(const NDb::AdvMapDescription * advMapDescri
   GetIAdventureScreen()->PreloadEffectsInResourceTree( NDb::SessionRoot::GetRoot()->logicRoot->aiLogic->consumableGroups, BADNODENAME );
 }
 
-bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, const NCore::TPlayersStartInfo & players, const bool isTutorial, LoadingProgress * progress )
+bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, const NCore::TPlayersStartInfo & players, const bool isTutorial, LoadingProgress * progress, const NWorld::PFResourcesCollection::TalentMap& talents )
 {
   NI_PROFILE_FUNCTION;
 
@@ -899,7 +838,7 @@ bool PFWorld::LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, con
     // yes, it's hacky
     if ( heroSpawnerCount )
     {
-      bool spawned = SpawnHeroes( this, advMapDesc, players, isTutorial, &heroesSpawnInfo, pScene, progress );
+      bool spawned = SpawnHeroes( this, advMapDesc, players, isTutorial, &heroesSpawnInfo, pScene, progress, talents );
       MAP_LOADING_IP;
       NI_ASSERT( spawned, "Failed to spawn players!" );
     }

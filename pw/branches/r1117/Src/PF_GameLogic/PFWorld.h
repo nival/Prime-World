@@ -309,7 +309,7 @@ private:
   void InitMinigames();
   void KillDeadUnits( bool fullCleanup = false );
   void LoadPrecachedResources(const NDb::AdvMapDescription * advMapDescription);
-  bool LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, const NCore::TPlayersStartInfo & players, const bool isTutorial, LoadingProgress * progress );
+  bool LoadSceneMapObjects( const NDb::AdvMapDescription* advMapDesc, const NCore::TPlayersStartInfo & players, const bool isTutorial, LoadingProgress * progress, const NWorld::PFResourcesCollection::TalentMap& talents );
 
   bool CanTrackPlayersBehaviour(const NCore::MapStartInfo& msi) const;
 
