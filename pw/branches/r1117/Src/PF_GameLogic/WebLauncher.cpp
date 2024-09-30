@@ -2,9 +2,13 @@
 #include "WebLauncher.h"
 #include <iostream>
 #include <map>
+#include <set>
 
 #pragma comment(lib, "wininet.lib")
-#pragma optimize ("",off)
+//#pragma optimize ("",off)
+
+static std::set<std::string> allResourcesIDs;
+
 
 WebLauncherPostRequest::WebLauncherPostRequest()
 {
@@ -140,11 +144,11 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[36] = "Monster_A0";
 	classTalentMap[37] = "Prince_A1";
 	classTalentMap[38] = "Prince_A2";
-	classTalentMap[39] = "Prince_A1_u1";
-	classTalentMap[40] = "Prince_A2_Upg";
+	classTalentMap[39] = "Prince_A1u1";
+	classTalentMap[40] = "Prince_A2u";
 	classTalentMap[41] = "Prince_A3";
 	classTalentMap[42] = "Prince_A4";
-	classTalentMap[43] = "Prince_A3_Upg";
+	classTalentMap[43] = "Prince_A3u";
 	classTalentMap[44] = "Prince_A5";
 	classTalentMap[45] = "SnowQueen_A1";
 	classTalentMap[46] = "SnowQueen_A2";
@@ -156,44 +160,44 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[52] = "SnowQueen_A4u";
 	classTalentMap[53] = "Faceless_A1";
 	classTalentMap[54] = "Faceless_A3";
-	classTalentMap[55] = "Faceless_A1_u1";
-	classTalentMap[56] = "Faceless_A3_u1";
+	classTalentMap[55] = "Faceless_A1u1";
+	classTalentMap[56] = "Faceless_A3u1";
 	classTalentMap[57] = "Faceless_A0";
 	classTalentMap[58] = "Faceless_A4";
-	classTalentMap[59] = "Faceless_A3_u2";
-	classTalentMap[60] = "Faceless_A4_u1";
+	classTalentMap[59] = "Faceless_A3u2";
+	classTalentMap[60] = "Faceless_A4u1";
 	classTalentMap[61] = "Warlord_A1";
 	classTalentMap[62] = "Warlord_A2";
-	classTalentMap[63] = "Warlord_A1_Upg";
-	classTalentMap[64] = "Warlord_A2_Upg";
+	classTalentMap[63] = "Warlord_A1u";
+	classTalentMap[64] = "Warlord_A2u";
 	classTalentMap[65] = "Warlord_A3";
 	classTalentMap[66] = "Warlord_A4";
-	classTalentMap[67] = "Warlord_A3_Upg";
-	classTalentMap[68] = "Warlord_A4_Upg";
-	classTalentMap[69] = "ThunderGod_A1";
-	classTalentMap[70] = "ThunderGod_A2";
-	classTalentMap[71] = "ThunderGod_A1Upg1";
-	classTalentMap[72] = "ThunderGod_A3";
-	classTalentMap[73] = "ThunderGod_A4";
-	classTalentMap[74] = "ThunderGod_A1Upg2";
-	classTalentMap[75] = "ThunderGod_A3Upg";
-	classTalentMap[76] = "ThunderGod_A4Upg";
+	classTalentMap[67] = "Warlord_A3u";
+	classTalentMap[68] = "Warlord_A4u";
+	classTalentMap[69] = "Thunder_A1";
+	classTalentMap[70] = "Thunder_A2";
+	classTalentMap[71] = "Thunder_A1_Upg";
+	classTalentMap[72] = "Thunder_A3";
+	classTalentMap[73] = "Thunder_A4";
+	classTalentMap[74] = "Thunder_A1_Upg2";
+	classTalentMap[75] = "Thunder_A3_Upg";
+	classTalentMap[76] = "Thunder_A4_Upg";
 	classTalentMap[77] = "Invisible_A1";
 	classTalentMap[78] = "Invisible_A1u";
 	classTalentMap[79] = "Invisible_A2";
-	classTalentMap[80] = "Invisible_A4u";
+	classTalentMap[80] = "Invisible_A2u1"; //wtf
 	classTalentMap[81] = "Invisible_A3";
 	classTalentMap[82] = "Invisible_A4";
-	classTalentMap[83] = "Invisible_A2u";
+	classTalentMap[83] = "Invisible_A2u2"; //wtf
 	classTalentMap[84] = "Invisible_A3u";
 	classTalentMap[85] = "Mowgli_A1";
 	classTalentMap[86] = "Mowgli_A3";
-	classTalentMap[87] = "Mowgli_A1Upg2";
-	classTalentMap[88] = "Mowgli_A3Upg";
+	classTalentMap[87] = "Mowgli_A1_Upg2";
+	classTalentMap[88] = "Mowgli_A3_Upg";
 	classTalentMap[89] = "Mowgli_A2";
-	classTalentMap[90] = "Mowgli_A1Upg1";
+	classTalentMap[90] = "Mowgli_A1_Upg1";
 	classTalentMap[91] = "Mowgli_A4";
-	classTalentMap[92] = "Mowgli_A4Upg";
+	classTalentMap[92] = "Mowgli_A4_Upg";
 	classTalentMap[93] = "Inventor_A1";
 	classTalentMap[94] = "Inventor_A3";
 	classTalentMap[96] = "Inventor_A5";
@@ -202,7 +206,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[101] = "Artist_A1";
 	classTalentMap[102] = "Artist_A3";
 	classTalentMap[103] = "Artist_A1u";
-	classTalentMap[104] = "Artist_A3u";
+	classTalentMap[104] = "Artist_A0u";
 	classTalentMap[105] = "Artist_A2";
 	classTalentMap[106] = "Artist_A2u";
 	classTalentMap[107] = "Artist_A4";
@@ -233,29 +237,29 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[132] = "Firefox_A2";
 	classTalentMap[133] = "Healer_A1";
 	classTalentMap[134] = "Healer_A5";
-	classTalentMap[135] = "Healer_A1_u2";
+	classTalentMap[135] = "Healer_A1_Upg2";
 	classTalentMap[136] = "Healer_A2";
 	classTalentMap[137] = "Healer_A4";
-	classTalentMap[138] = "Healer_A1_u1";
+	classTalentMap[138] = "Healer_A1_Upg1";
 	classTalentMap[139] = "Healer_A3";
 	classTalentMap[140] = "Healer_A4_Upg";
 	classTalentMap[141] = "Night_A2";
 	classTalentMap[142] = "Night_A1";
 	classTalentMap[143] = "Crusader_A4_2u";
-	classTalentMap[143] = "Night_A2_Upg";
-	classTalentMap[144] = "Night_A1_Upg";
+	classTalentMap[143] = "Night_A2u";
+	classTalentMap[144] = "Night_A1u";
 	classTalentMap[145] = "Night_A3";
 	classTalentMap[146] = "Night_A4";
-	classTalentMap[147] = "Night_A3_Upg";
-	classTalentMap[148] = "Night_A4_Upg";
+	classTalentMap[147] = "Night_A3u";
+	classTalentMap[148] = "Night_A4u";
 	classTalentMap[149] = "Rockman_A1";
 	classTalentMap[150] = "Rockman_A3";
-	classTalentMap[150] = "Rockman_A3Upg";
-	classTalentMap[151] = "Rockman_A1Upg";
+	classTalentMap[150] = "Rockman_A3_Upg";
+	classTalentMap[151] = "Rockman_A1_Upg";
 	classTalentMap[152] = "Rockman_A2";
 	classTalentMap[153] = "Rockman_A4";
-	classTalentMap[155] = "Rockman_A4Upg";
-	classTalentMap[156] = "Rockman_A2Upg";
+	classTalentMap[155] = "Rockman_A4_Upg";
+	classTalentMap[156] = "Rockman_A2_Upg";
 	classTalentMap[157] = "Assassin_A1";
 	classTalentMap[158] = "Assassin_A2";
 	classTalentMap[159] = "Assassin_A1u";
@@ -266,21 +270,21 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[164] = "Assassin_A3u";
 	classTalentMap[165] = "Unicorn_A1";
 	classTalentMap[166] = "Unicorn_A3";
-	classTalentMap[167] = "Unicorn_A1Upg";
-	classTalentMap[168] = "Unicorn_A3Upg";
+	classTalentMap[167] = "Unicorn_A1u";
+	classTalentMap[168] = "Unicorn_A3u";
 	classTalentMap[169] = "Unicorn_A2";
-	classTalentMap[170] = "Unicorn_A2Upg";
+	classTalentMap[170] = "Unicorn_A2u";
 	classTalentMap[171] = "Unicorn_A4";
-	classTalentMap[172] = "Unicorn_A4Upg";
+	classTalentMap[172] = "Unicorn_A4u";
 	classTalentMap[173] = "Hunter_A1";
 	classTalentMap[174] = "Hunter_A2";
-	classTalentMap[175] = "Hunter_A1_Upg";
+	classTalentMap[175] = "Hunter_A1u";
 	classTalentMap[176] = "Hunter_A3";
 	classTalentMap[177] = "Hunter_A4";
-	classTalentMap[178] = "Hunter_A3_u1";
-	classTalentMap[179] = "Hunter_A4_Upg";
+	classTalentMap[178] = "Hunter_A3u1";
+	classTalentMap[179] = "Hunter_A4u";
 	classTalentMap[180] = "Gunslinger_A4";
-	classTalentMap[180] = "Hunter_A3_u2";
+	classTalentMap[180] = "Hunter_A3u2";
 	classTalentMap[181] = "GhostLord_A2";
 	classTalentMap[182] = "GhostLord_A1";
 	classTalentMap[183] = "GhostLord_A2u";
@@ -292,10 +296,10 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[189] = "Ratcatcher_A1";
 	classTalentMap[190] = "Ratcatcher_A2";
 	classTalentMap[191] = "Ratcatcher_A1_3_Upg";
-	classTalentMap[192] = "Ratcatcher_A2_u1";
+	classTalentMap[192] = "Ratcatcher_A2_Upg1";
 	classTalentMap[193] = "Ratcatcher_A3";
 	classTalentMap[194] = "Ratcatcher_A4";
-	classTalentMap[195] = "Ratcatcher_A2_u2";
+	classTalentMap[195] = "Ratcatcher_A2_Upg2";
 	classTalentMap[196] = "Ratcatcher_A4_Upg";
 	classTalentMap[197] = "Archeress_A1";
 	classTalentMap[198] = "Archeress_A2";
@@ -307,37 +311,37 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[204] = "Archeress_A4u";
 	classTalentMap[205] = "Werewolf_A2";
 	classTalentMap[206] = "Werewolf_A1";
-	classTalentMap[207] = "Werewolf_A2_Upg";
-	classTalentMap[208] = "Werewolf_A1_1";
+	classTalentMap[207] = "Werewolf_A2u";
+	classTalentMap[208] = "Werewolf_A1u1";
 	classTalentMap[209] = "Werewolf_A3";
 	classTalentMap[210] = "Werewolf_A4";
 	classTalentMap[211] = "Reaper_A2u";
-	classTalentMap[211] = "Werewolf_A3_Upg";
-	classTalentMap[212] = "Werewolf_A1_2";
+	classTalentMap[211] = "Werewolf_A3u";
+	classTalentMap[212] = "Werewolf_A1u2";
 	classTalentMap[213] = "Frogenglut_A1";
 	classTalentMap[214] = "Frogenglut_A3";
 	classTalentMap[214] = "Frogenglut_A4_2";
-	classTalentMap[215] = "Frogenglut_A1_Upg";
-	classTalentMap[216] = "Frogenglut_A3_Upg";
+	classTalentMap[215] = "Frogenglut_A1u";
+	classTalentMap[216] = "Frogenglut_A3u";
 	classTalentMap[217] = "Frogenglut_A2";
 	classTalentMap[218] = "Frogenglut_A4";
-	classTalentMap[219] = "Frogenglut_A2_Upg";
-	classTalentMap[220] = "Frogenglut_A4_Upg";
-	classTalentMap[221] = "WitchDoctor_A1";
-	classTalentMap[222] = "WitchDoctor_A2";
-	classTalentMap[223] = "WitchDoctor_A1_u1";
-	classTalentMap[224] = "WitchDoctor_A2_u1";
-	classTalentMap[225] = "WitchDoctor_A3";
-	classTalentMap[226] = "WitchDoctor_A4";
-	classTalentMap[227] = "WitchDoctor_A3_u1";
-	classTalentMap[228] = "WitchDoctor_A4_u1";
+	classTalentMap[219] = "Frogenglut_A2u";
+	classTalentMap[220] = "Frogenglut_A4u";
+	classTalentMap[221] = "Vedun_A1";
+	classTalentMap[222] = "Vedun_A2";
+	classTalentMap[223] = "Vedun_A1u";
+	classTalentMap[224] = "Vedun_A2u";
+	classTalentMap[225] = "Vedun_A3";
+	classTalentMap[226] = "Vedun_A4";
+	classTalentMap[227] = "Vedun_A3u";
+	classTalentMap[228] = "Vedun_A4u";
 	classTalentMap[229] = "ManaWyrm_A1";
 	classTalentMap[230] = "ManaWyrm_A2";
-	classTalentMap[231] = "ManaWyrm_A1Upg";
+	classTalentMap[231] = "ManaWyrm_A1_Upg";
 	classTalentMap[232] = "ManaWyrm_A2u1";
 	classTalentMap[233] = "ManaWyrm_A3";
 	classTalentMap[234] = "ManaWyrm_A4";
-	classTalentMap[236] = "ManaWyrm_A4Upg";
+	classTalentMap[236] = "ManaWyrm_A4u";
 	classTalentMap[237] = "Bard_A1";
 	classTalentMap[238] = "Bard_A2";
 	classTalentMap[239] = "Bard_A3";
@@ -351,17 +355,17 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[247] = "Naga_A4";
 	classTalentMap[248] = "Naga_A2";
 	classTalentMap[249] = "Naga_A3";
-	classTalentMap[250] = "Naga_A4_u1";
-	classTalentMap[251] = "Naga_A2_u1";
-	classTalentMap[252] = "Naga_A3_u1";
+	classTalentMap[250] = "Naga_A4u1";
+	classTalentMap[251] = "Naga_A2u1";
+	classTalentMap[252] = "Naga_A3u1";
 	classTalentMap[253] = "Mage_A1";
 	classTalentMap[254] = "Mage_A2";
 	classTalentMap[255] = "Mage_A1_SUP";
-	classTalentMap[256] = "Mage_A2_Upg";
+	classTalentMap[256] = "Mage_A2u";
 	classTalentMap[257] = "Mage_A3";
 	classTalentMap[258] = "Mage_A4";
-	classTalentMap[259] = "Mage_A3_Upg";
-	classTalentMap[260] = "Mage_A4_Upg";
+	classTalentMap[259] = "Mage_A3u";
+	classTalentMap[260] = "Mage_A4u";
 	classTalentMap[261] = "Fairy_A1";
 	classTalentMap[262] = "Fairy_A2";
 	classTalentMap[263] = "Fairy_A1u";
@@ -388,10 +392,10 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[284] = "Alchemist_A4u";
 	classTalentMap[285] = "Demonolog_A1";
 	classTalentMap[286] = "Demonolog_A2";
-	classTalentMap[287] = "Demonolog_A1_u1";
-	classTalentMap[288] = "Demonolog_A2_u1";
+	classTalentMap[287] = "Demonolog_A1u1";
+	classTalentMap[288] = "Demonolog_A2u";
 	classTalentMap[289] = "Demonolog_A3";
-	classTalentMap[290] = "Demonolog_A1_u2";
+	classTalentMap[290] = "Demonolog_A1u2";
 	classTalentMap[291] = "Demonolog_A4";
 	classTalentMap[292] = "Demonolog_A4";
 	classTalentMap[293] = "Vampire_A1";
@@ -541,7 +545,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[439] = "Archeress_A4_2u";
 	classTalentMap[440] = "GhostLord_A4_2";
 	classTalentMap[440] = "ManaWyrm_A2u2";
-	classTalentMap[441] = "GhostLord_A4_2U";
+	classTalentMap[441] = "GhostLord_A4_2u";
 	classTalentMap[442] = "Inventor_A4_2";
 	classTalentMap[443] = "Highlander_A4a";
 	classTalentMap[444] = "Faceless_A4_2";
@@ -563,9 +567,9 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[460] = "Marine_A4_2";
 	classTalentMap[461] = "Marine_A4u_2";
 	classTalentMap[462] = "Unicorn_A4_2";
-	classTalentMap[463] = "Unicorn_A4_2U";
+	classTalentMap[463] = "Unicorn_A4_2u";
 	classTalentMap[464] = "Ratcatcher_A4_2";
-	classTalentMap[465] = "Ratcatcher_A4_2_Upg";
+	classTalentMap[465] = "Ratcatcher_A4_2u";
 	classTalentMap[467] = "Frogenglut_A4_2u";
 	classTalentMap[468] = "Witcher_A4_2";
 	classTalentMap[469] = "Witcher_A4_2u";
@@ -579,8 +583,8 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[477] = "PlagueDoctor_A3";
 	classTalentMap[478] = "PlagueDoctor_A4";
 	classTalentMap[479] = "PlagueDoctor_A4u";
-	classTalentMap[480] = "WitchDoctor_A4_2";
-	classTalentMap[481] = "WitchDoctor_A4_2u";
+	classTalentMap[480] = "Vedun_A4_2";
+	classTalentMap[481] = "Vedun_A4_2u";
 	classTalentMap[482] = "Witch_A4_2";
 	classTalentMap[483] = "Witch_A4_2u";
 	classTalentMap[484] = "Bard_A4_2";
@@ -588,7 +592,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[486] = "BladeDancer_A4_2";
 	classTalentMap[487] = "BladeDancer_A4_2u";
 	classTalentMap[488] = "Hunter_A4_2";
-	classTalentMap[489] = "Hunter_A4_2Upg";
+	classTalentMap[489] = "Hunter_A4_2u";
 	classTalentMap[490] = "Healer_A4_2";
 	classTalentMap[491] = "Healer_A4_2u";
 	classTalentMap[492] = "IronKnight_A4_2";
@@ -599,7 +603,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[496] = "Rifleman_A4_2";
 	classTalentMap[497] = "Rifleman_A4_2u";
 	classTalentMap[498] = "ManaWyrm_A4_2";
-	classTalentMap[499] = "ManaWyrm_A4_2U";
+	classTalentMap[499] = "ManaWyrm_A4_2u";
 	classTalentMap[500] = "Mowgli_A4_2";
 	classTalentMap[501] = "Mowgli_A4_2Upg";
 	classTalentMap[502] = "MagicGirl_A4_2";
@@ -644,8 +648,8 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[542] = "Fairy_A3_2";
 	classTalentMap[543] = "Fairy_A3_2u1";
 	classTalentMap[544] = "Fairy_A3_2u2";
-	classTalentMap[545] = "ThunderGod_A4_2";
-	classTalentMap[546] = "ThunderGod_A4_2u";
+	classTalentMap[545] = "Thunder_A4_2";
+	classTalentMap[546] = "Thunder_A4_2u";
 	classTalentMap[547] = "FallenAngel_A4_2";
 	classTalentMap[548] = "FallenAngel_A4_2u";
 	classTalentMap[549] = "Invisible_A4_2";
@@ -678,7 +682,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[577] = "Demonolog_A4_2";
 	classTalentMap[578] = "Demonolog_A4_2u";
 	classTalentMap[579] = "Naga_A4_2";
-	classTalentMap[580] = "Naga_A4_2_Upg";
+	classTalentMap[580] = "Naga_A4_2u";
 	classTalentMap[581] = "Night_A4_2";
 	classTalentMap[582] = "Night_A4_2u";
 	classTalentMap[583] = "Dryad_A0";
@@ -702,7 +706,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[601] = "Rockman_A3_SUP";
 	classTalentMap[602] = "Gunslinger_A2_SUP";
 	classTalentMap[603] = "Gunslinger_A3_SUP";
-	classTalentMap[604] = "Mage_A1_Upg";
+	classTalentMap[604] = "Mage_A1u";
 	classTalentMap[605] = "Mage_A2_SUP";
 	classTalentMap[606] = "PlagueDoctor_A1_SUP";
 	classTalentMap[607] = "PlagueDoctor_A5_SUP";
@@ -737,8 +741,8 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[636] = "Angel_A3_SUP";
 	classTalentMap[637] = "Ratcatcher_A1_SUP";
 	classTalentMap[638] = "Ratcatcher_A2_SUP";
-	classTalentMap[639] = "ThunderGod_A0_SUP";
-	classTalentMap[640] = "ThunderGod_A3_SUP";
+	classTalentMap[639] = "Thunder_A0_SUP";
+	classTalentMap[640] = "Thunder_A3_SUP";
 	classTalentMap[641] = "Alchemist_A1_SUP";
 	classTalentMap[642] = "Alchemist_A3_SUP";
 	classTalentMap[643] = "Inventor_A4_SUP";
@@ -779,14 +783,14 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[678] = "Chronicle_A2";
 	classTalentMap[679] = "Chronicle_A1u";
 	classTalentMap[680] = "Chronicle_A5";
-	classTalentMap[681] = "Chronicle_A3";
+	classTalentMap[681] = "Chroniclel_A3";
 	classTalentMap[682] = "Chronicle_A4_2";
 	classTalentMap[683] = "Chronicle_A3u";
 	classTalentMap[684] = "Chronicle_A4_2u";
 	classTalentMap[685] = "Chronicle_A5_SUP";
 	classTalentMap[686] = "Chronicle_A3_SUP";
-	classTalentMap[687] = "WitchDoctor_A1_SUP";
-	classTalentMap[688] = "WitchDoctor_A3_SUP";
+	classTalentMap[687] = "Vedun_A1_SUP";
+	classTalentMap[688] = "Vedun_A3_SUP";
 	classTalentMap[689] = "Chronicle_A4";
 	classTalentMap[690] = "Chronicle_A4u";
 	classTalentMap[691] = "GhostLord_A0_SUP";
@@ -873,12 +877,12 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[780] = "Trickster_A0";
 	classTalentMap[781] = "Trickster_A1";
 	classTalentMap[782] = "Trickster_A2";
-	classTalentMap[783] = "Trickster_A1Upg";
-	classTalentMap[784] = "Trickster_A2Upg";
+	classTalentMap[783] = "Trickster_A1u";
+	classTalentMap[784] = "Trickster_A2u";
 	classTalentMap[785] = "Trickster_A3";
 	classTalentMap[786] = "Trickster_A4";
-	classTalentMap[787] = "Trickster_A3Upg";
-	classTalentMap[788] = "Trickster_A4Upg";
+	classTalentMap[787] = "Trickster_A3u";
+	classTalentMap[788] = "Trickster_A4u";
 	classTalentMap[789] = "Trickster_A4_2";
 	classTalentMap[790] = "Trickster_A4_2u";
 	classTalentMap[791] = "Trickster_A2_SUP";
@@ -932,9 +936,13 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 
     for (it = classTalentMap.begin(); it != classTalentMap.end(); ++it) {
 		keysClassTalent.push_back(it->first);
-	}
 
-	printf("tallent set");
+		//if(allResourcesIDs.find(it->second) == allResourcesIDs.end())
+		//{
+		//	OutputDebugStringA(it->second.c_str());
+		//	OutputDebugStringA("\n");
+		//}
+	}
 }
 WebLauncherPostRequest::~WebLauncherPostRequest()
 {
@@ -1033,13 +1041,20 @@ std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, 
 	return result;
 }
 
-static int firstID = 36;
+static int firstID = 360;
 
 std::string WebLauncherPostRequest::ConvertFromClassID(int id)
 {
-	firstID++;
-	return classTalentMap[keysClassTalent[firstID]];
+	//firstID++;
+	//return classTalentMap[keysClassTalent[firstID]];
 
 	
-	//return classTalentMap[id-1];
+	return classTalentMap[id-1];
 }
+
+
+void AddResourcePersistanceID(const char* data)
+{
+	allResourcesIDs.insert(data);
+}
+

@@ -4,6 +4,7 @@
 #include "ResourcesCollection.h"
 #include "System/Crc32Checksum.h"
 
+//#pragma optimize ("",off)
 
 namespace NDb
 {
@@ -11,6 +12,8 @@ namespace NDb
   struct Consumable;
   struct MarketingEventRollItem;
 }
+
+//extern void AddResourcePersistanceID(const char* vname);
 
 namespace NWorld
 {
@@ -100,6 +103,9 @@ namespace NWorld
         if (resources[i]->persistentId.length() > 0)
         {
           int id = Crc32Checksum().AddString(resources[i]->persistentId.c_str()).Get();
+
+		  //OutputDebugStringA();
+		//AddResourcePersistanceID(resources[i]->persistentId.c_str());
           nstl::map<uint, H>::iterator it = hashedRes.find(id);
           NI_ASSERT(it == hashedRes.end(), NStr::StrFmt( "Dublicate collected resource found \"%s\" in \"%s\"", resources[i]->persistentId.c_str(), GetFormattedDbId( resources[i]->GetDBID())));
           hashedRes[id] = resources[i];
