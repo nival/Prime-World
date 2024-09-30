@@ -13,6 +13,8 @@ class WebLauncherPostRequest
 
 	std::map<std::string, int> characterMap;
 	std::map<int, std::string> classTalentMap;
+
+	std::vector<int> keysClassTalent;
 public:
 	WebLauncherPostRequest();
 	~WebLauncherPostRequest();

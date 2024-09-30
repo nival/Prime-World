@@ -491,24 +491,24 @@ namespace NWorld
 
 						NCore::TalentInfo talentInfo;
 						
-						if(talentId >= 0)
-						{
-							const char* talentName = talentsMap[talentId];
-							talentInfo.id = Crc32Checksum().AddString(talentName).Get();
-							talentInfo.refineRate = 3;
-							heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
-							heroSpawnDesc.usePlayerInfoTalentSet = true;
-						}
-						else
-						{
-							std::string className = prequest.ConvertFromClassID(-talentId);
-
+						//if(talentId >= 0)
+						//{
+						//	const char* talentName = talentsMap[talentId];
+						//	talentInfo.id = Crc32Checksum().AddString(talentName).Get();
+						//	talentInfo.refineRate = 5;
+						//	heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
+						//	heroSpawnDesc.usePlayerInfoTalentSet = true;
+						//}
+						//else
+						//{
+							//std::string className = prequest.ConvertFromClassID(-talentId);
+							std::string className = prequest.ConvertFromClassID(-1);
 							talentInfo.id = Crc32Checksum().AddString(className.c_str()).Get();
 							cuIndex++;
-							talentInfo.refineRate = 3;
+							talentInfo.refineRate = 5;
 							heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
 							heroSpawnDesc.usePlayerInfoTalentSet = true;
-						}
+						//}
 
 						/*const char* talentNames[] =
 						{"Hunter_A4_2u",

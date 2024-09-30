@@ -761,11 +761,11 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   NProfile::Init( PRODUCT_TITLE );
   
   AppInstancesLimit instancesLimit( PRODUCT_TITLE_SHORT );
-//#ifndef _SHIPPING
+#ifndef _SHIP_FALSE
   NDebug::SetProductNameAndVersion( NFile::GetBinDir(), PRODUCT_TITLE_SHORT, VERSION_LINE, VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION );
-//#else //_SHIPPING
-//  NDebug::SetProductNameAndVersion( NProfile::GetFullFolderPath(NProfile::FOLDER_PLAYER), PRODUCT_TITLE_SHORT, VERSION_LINE, VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION );
-//#endif //_SHIPPING
+#else //_SHIP_FALSE
+  NDebug::SetProductNameAndVersion( NProfile::GetFullFolderPath(NProfile::FOLDER_PLAYER), PRODUCT_TITLE_SHORT, VERSION_LINE, VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_REVISION );
+#endif //_SHIP_FALSE
 
   if ( !instancesLimit.Lock( 3 ) )
   {
@@ -815,11 +815,11 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   if ( mainVars.useCrashRptHandler )
   {
     const char * privacyPolicy = "http://updates.playpw.com/eula-ru.rtf";
-#ifdef _SHIPPING
+#ifdef _SHIP_FALSE
     const char * uploadUrl = CmdLineLite::Instance().GetStringKey( "-crashrpt_url", "http://SITE/upload/" );
-#else //_SHIPPING
+#else //_SHIP_FALSE
     const char * uploadUrl = CmdLineLite::Instance().GetStringKey( "-crashrpt_url", "http://SITE/upload/" );
-#endif //_SHIPPING
+#endif //_SHIP_FALSE
     CrashRptWrapper::InstallForProcess( uploadUrl, !CmdLineLite::Instance().IsKeyDefined( "-crashrpt_nomultipart" ), false, 0, privacyPolicy );
   }
   else
@@ -849,9 +849,9 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   else
     DebugTrace( "System runned under native Windows" );  
 
-#ifndef _SHIPPING
+#ifndef _SHIP_FALSE
   DebugTrace( "Development version" );
-#endif // _SHIPPING
+#endif // _SHIP_FALSE
 
   if ( isTutorial )
   {

@@ -107,7 +107,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[2] = "SnowQueen_A0";
 	classTalentMap[3] = "Faceless_A2";
 	classTalentMap[4] = "Warlord_A0";
-	classTalentMap[5] = "ThunderGod_A0";
+	classTalentMap[5] = "Thunder_A0";
 	classTalentMap[6] = "Invisible_A0";
 	classTalentMap[7] = "Mowgli_A0";
 	classTalentMap[9] = "Artist_A0";
@@ -125,7 +125,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[21] = "Archeress_A0";
 	classTalentMap[22] = "Werewolf_A0";
 	classTalentMap[23] = "Frogenglut_A0";
-	classTalentMap[24] = "WitchDoctor_A0";
+	classTalentMap[24] = "Vedun_A0";
 	classTalentMap[25] = "ManaWyrm_A0";
 	classTalentMap[26] = "Bard_A0";
 	classTalentMap[27] = "Naga_A0";
@@ -209,12 +209,12 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[108] = "Artist_A4u";
 	classTalentMap[109] = "Highlander_A1";
 	classTalentMap[110] = "Highlander_A3";
-	classTalentMap[111] = "Highlander_A1_u1";
-	classTalentMap[112] = "Highlander_A3_u1";
+	classTalentMap[111] = "Highlander_A1u1";
+	classTalentMap[112] = "Highlander_A3u";
 	classTalentMap[113] = "Highlander_A2";
-	classTalentMap[114] = "Highlander_A1_u2";
+	classTalentMap[114] = "Highlander_A1u2";
 	classTalentMap[115] = "Highlander_A4";
-	classTalentMap[116] = "Highlander_A2_u1";
+	classTalentMap[116] = "Highlander_A2u";
 	classTalentMap[117] = "Marine_A2";
 	classTalentMap[118] = "Marine_A3";
 	classTalentMap[119] = "Marine_A1";
@@ -543,7 +543,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[440] = "ManaWyrm_A2u2";
 	classTalentMap[441] = "GhostLord_A4_2U";
 	classTalentMap[442] = "Inventor_A4_2";
-	classTalentMap[443] = "Highlander_A4_2";
+	classTalentMap[443] = "Highlander_A4a";
 	classTalentMap[444] = "Faceless_A4_2";
 	classTalentMap[445] = "Faceless_A4_2U";
 	classTalentMap[446] = "Alchemist_A4u_2";
@@ -927,6 +927,14 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[830] = "Bomber_A1_SUP";
 	classTalentMap[831] = "Bomber_A3_SUP";
 
+	keysClassTalent.clear();
+	std::map<int, std::string>::iterator it;
+
+    for (it = classTalentMap.begin(); it != classTalentMap.end(); ++it) {
+		keysClassTalent.push_back(it->first);
+	}
+
+	printf("tallent set");
 }
 WebLauncherPostRequest::~WebLauncherPostRequest()
 {
@@ -1025,7 +1033,13 @@ std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, 
 	return result;
 }
 
+static int firstID = 36;
+
 std::string WebLauncherPostRequest::ConvertFromClassID(int id)
 {
-	return classTalentMap[id-1];
+	firstID++;
+	return classTalentMap[keysClassTalent[firstID]];
+
+	
+	//return classTalentMap[id-1];
 }
