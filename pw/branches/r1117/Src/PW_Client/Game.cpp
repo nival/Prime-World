@@ -107,6 +107,7 @@
 #include "steam/steam_gameserver.h"
 
 #include "RegistryToolbox.h"
+#include "../PF_GameLogic/WebLauncher.h"
 
 static int    g_VideoFPS = 10;
 static float  g_RecordingTime = 10.0f;
@@ -277,7 +278,7 @@ bool CheckHardwareCompatibility()
   const NDb::ClientHardwareErrorMessages* const heMessages = &sessionMessages->clientHardwareErrorMessages;
 
   if ( GlobalMemoryStatusEx( &globMemStatus ) )
-    hasEnoughMemory = ( ( globMemStatus.ullTotalPhys / 1024ul )  > 900000 ); // да-да смешное число
+    hasEnoughMemory = ( ( globMemStatus.ullTotalPhys / 1024ul )  > 900000 ); // пїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
   if ( !supportSM30 || !hasEnoughMemory )
   {
@@ -422,8 +423,8 @@ private:
   T arr[N];
 };
 
-//В интервале времени 0.2(9) секунды всегда
-//помещаются ровно 2 такта логики
+//пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0.2(9) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 static float g_maxMovingAvgTime = 0.2999999f;
 
 REGISTER_DEV_VAR( "max_smooth_time", g_maxMovingAvgTime, STORAGE_NONE);
@@ -443,8 +444,8 @@ void DebugTraceInvalidParamsHandler(const wchar_t* expression,
 
   DebugTrace( "Expression: %s\n", NStr::ToMBCS(expression).c_str() );
 
-  //Произошла фатальная ошибка. Продолжать работу нельзя. 
-  //Отдаём управления стандартному обработчику, который закроет программу.
+  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. 
+  //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
   (*g_oldInvalidParamHandler)( expression, function, file, line, pReserved );
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -592,10 +593,10 @@ void OnPileFileReadError(FileReadResultCode code, FileReadCallbackContext* pCont
       // Shutdown the SteamAPI
       if (s_bSteamInited)
         SteamAPI_Shutdown();
-      // Тк мы можем закараптиться на любой стадии, то у нас будет не правильная инициализация
-      // И правильно деинициализироваться мы не сможем
-      // Сейчас падает в exit(0) на деинициализации статиков где-то во флэше
-      // Поэтому показываем Message Box про закарапченные данные, а потом делаем TerminateProcess
+      // пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+      // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+      // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ exit(0) пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Message Box пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ TerminateProcess
       // NUM_TASK
       TerminateProcess( GetCurrentProcess(), 0 );
       //exit(0);
@@ -782,7 +783,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   persistentEvents::GetSingleton()->CheckUnfinishedSessions();
   persistentEvents::AutoClose persistentEventsAutoClose;
 
-  // убираем клиентский заголовок строки до состояния "как было" (только severity)
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ" (пїЅпїЅпїЅпїЅпїЅпїЅ severity)
   GetSystemLog().SetHeaderFormat( NLogg::EHeaderFormat::Default ); 
   GetGameLogicLog().SetHeaderFormat( 0 );
 
@@ -1122,16 +1123,40 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   {
     context = new Game::GameContext(socialLaunchData.sessionId.c_str(), NULL, socialLaunchData.mapId.c_str(), socialServer, guildEmblem, false, true);
   }
-  else
+
   {
-    const char * devLogin = CmdLineLite::Instance().GetStringKey( "-dev_login", "" );
+    const char * webToken = CmdLineLite::Instance().GetStringKey( "web_token", "" );
+    WebLauncherPostRequest prequest;
+    WebLauncherPostRequest::WebLoginResponse response = prequest.GetNickName(webToken);
+    if (response.retCode == WebLauncherPostRequest::LoginResponse_FAIL) {
+      // Login failed
+      ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the web-launcher. https://playpw.fun" );
+      return 0xBEBE;
+    }
+    if (response.retCode == WebLauncherPostRequest::LoginResponse_OFFLINE) {
+      // Web is offline
+      ShowLocalizedErrorMB( L"WebOffline", L"Web-launcher is offline" );
+      return 0xEBEB;
+    }
+
+    
+    if (response.retCode == WebLauncherPostRequest::LoginResponse_OK) {
+      // Login success
+      currentLogin = response.response;
+    }
+
+    /*
+    // Plan-B?
+    if (response.retCode == WebLauncherPostRequest::LoginResponse_OFFLINE) {
+      const char * devLogin = CmdLineLite::Instance().GetStringKey( "dev_login", "" );
 	if(strlen(devLogin) > 32)
 		return -2;
-
 	currentLogin = devLogin;
+    }
+    */
 
     const char * mapId = CmdLineLite::Instance().GetStringKey( "mapId", "" );
-    context = new Game::GameContext( sessLogin, devLogin, mapId, socialServer, guildEmblem, isSpectator, false );
+    context = new Game::GameContext( sessLogin, response.response.c_str(), mapId, socialServer, guildEmblem, isSpectator, false );
   }
 
   context->Start();
@@ -1374,7 +1399,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
     const float commonTimeDelta = NMainLoop::GetTimeDelta();
     
-    //Усредняем длительность кадра, что даёт значительно более плавную картинку, при FPS < 60
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ FPS < 60
     const float smoothTimeDelta = avgDeltaTime.NextValue( NMainLoop::GetTimeDelta(), g_maxMovingAvgTime );    
     NMainLoop::SetTemporaryTimeDelta( smoothTimeDelta );
     

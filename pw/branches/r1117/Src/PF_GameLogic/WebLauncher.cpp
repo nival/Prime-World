@@ -1053,6 +1053,67 @@ std::string WebLauncherPostRequest::ConvertFromClassID(int id)
 }
 
 
+// TODO: Remove duplicate code
+WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(const char* token)
+{
+  WebLoginResponse res;
+  res.response = std::string();
+  char jsonBuff[1024];
+  ZeroMemory(jsonBuff,1024);
+
+  sprintf(jsonBuff,"{\"method\": \"getUserByToken\", \"data\": {\"token\": \"%s\"}}", token);
+  const std::string jsonData = jsonBuff;
+
+  // Set headers and data for the POST request
+  const char* headers = "Content-Type: application/json\r\n";
+  const char* postData = jsonData.c_str();
+  DWORD postDataLen = jsonData.length();
+  DWORD headersDataLen = strlen(headers);
+
+  // Send the HTTP request
+  BOOL bRequestSent = HttpSendRequestA(hRequest, headers, headersDataLen, (LPVOID)postData, postDataLen);
+  if (!bRequestSent) {
+    std::cerr << "HttpSendRequest failed with error: " << GetLastError() << std::endl;
+    InternetCloseHandle(hRequest);
+    InternetCloseHandle(hConnect);
+    InternetCloseHandle(hInternet);
+    res.retCode = WebLauncherPostRequest::LoginResponse_OFFLINE;
+    res.response = "";
+    return res;
+  }
+
+  // Read the response
+  char buffer[4096];
+  DWORD bytesRead = 0;
+  std::string responseStream;
+
+  while (InternetReadFile(hRequest, buffer, sizeof(buffer) - 1, &bytesRead) && bytesRead > 0) {
+    buffer[bytesRead] = '\0'; // Null-terminate the buffer
+    responseStream += buffer;
+  }
+
+  OutputDebugStringA(responseStream.c_str());
+
+  std::string curNumber = "";
+  bool isCollectingNumbers = false;
+  int curID = 0;
+  
+  std::string response(responseStream);
+  const char* nicknameFindSubstr = "nickname\":\"";
+  int nicknamePos = response.find(nicknameFindSubstr);
+
+  if (response.find("{\"error\":\"\",\"data\":{") == -1 || nicknamePos == -1) {
+    res.retCode = WebLauncherPostRequest::LoginResponse_FAIL;
+    return res;
+  }
+  int nicknameStart = nicknamePos + strlen(nicknameFindSubstr);
+  int nicknameSize = response.size() - (nicknameStart + 3 /* ""} */);
+  res.response = response.substr(nicknameStart, nicknameSize);
+  res.retCode = res.response.empty() ?  WebLauncherPostRequest::LoginResponse_FAIL : WebLauncherPostRequest::LoginResponse_OK;
+
+  return res;
+}
+
 void AddResourcePersistanceID(const char* data)
 {
 	allResourcesIDs.insert(data);

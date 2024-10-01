@@ -481,6 +481,7 @@ namespace NWorld
 			else
 			{
 				int cuIndex = 0;
+        int actionBarIdx = 0;
 			    for (int level = 0; level < 6; ++level) {
 					for (int slot = 0; slot < 6; ++slot) {
 
@@ -495,7 +496,24 @@ namespace NWorld
 						{
 							const char* talentName = talentsMap[talentId];
 							talentInfo.id = Crc32Checksum().AddString(talentName).Get();
-							talentInfo.refineRate = 5;
+              talentInfo.refineRate = 5;
+
+              NWorld::PFResourcesCollection::TalentMap::iterator it = talents.find(talentInfo.id);
+              if (it != talents.end())
+              {
+                 NDb::Ptr<NDb::Talent> talentPtr = it->second;
+                 NDb::EAbilityType abilityType = talentPtr->type;
+                 bool isTalentActive =
+                   abilityType == NDb::ABILITYTYPE_ACTIVE || 
+                   abilityType == NDb::ABILITYTYPE_MULTIACTIVE || 
+                   abilityType == NDb::ABILITYTYPE_CHANNELLING || 
+                   abilityType == NDb::ABILITYTYPE_SWITCHABLE;
+
+                 if (isTalentActive) {
+                   talentInfo.actionBarIdx = ++actionBarIdx;
+                 }
+              }
+
 							heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
 							heroSpawnDesc.usePlayerInfoTalentSet = true;
 						}

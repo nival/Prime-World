@@ -19,6 +19,18 @@ public:
 	WebLauncherPostRequest();
 	~WebLauncherPostRequest();
 
+  enum LoginResponse {
+    LoginResponse_OK,
+    LoginResponse_FAIL,
+    LoginResponse_OFFLINE, // Not safe
+  };
+
+  struct WebLoginResponse {
+    std::string response;
+    LoginResponse retCode;
+  };
+
 	std::vector<int> GetTallentSet(const wchar_t* nickName, const char* heroName);
 	std::string ConvertFromClassID(int id);
+  WebLoginResponse GetNickName(const char* token);
 };

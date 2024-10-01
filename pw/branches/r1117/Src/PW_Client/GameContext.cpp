@@ -95,7 +95,7 @@ GameContext::GameContext( const char * _sessionKey, const char * _devLogin, cons
   if (_mapId)
     mapId = _mapId;
 
-  NGlobal::RegisterContextCmd( "login", this, &GameContext::LoginOnServer );
+  //NGlobal::RegisterContextCmd( "login", this, &GameContext::LoginOnServer );
   NGlobal::RegisterContextCmd( "replay", this, &GameContext::LoadReplay );
   NGlobal::RegisterContextCmd( "custom_game_create", this, &GameContext::CustomGameCreate );
   NGlobal::RegisterContextCmd( "custom_game_join", this, &GameContext::CustomGameJoin );
@@ -109,7 +109,7 @@ GameContext::GameContext( const char * _sessionKey, const char * _devLogin, cons
 
 GameContext::~GameContext()
 {
-  NGlobal::UnregisterCmd( "login" );
+  //NGlobal::UnregisterCmd( "login" );
   NGlobal::UnregisterCmd( "custom_game_create" );
   NGlobal::UnregisterCmd( "custom_game_join" );
   NGlobal::UnregisterCmd( "custom_game_reconnect" );
@@ -159,7 +159,7 @@ void GameContext::Cleanup()
   debugVarsSender = 0;
   if ( chatClient )
   {
-    // Разрываем кольцо NUM_TASK
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ NUM_TASK
     chatClient->Shutdown();
   }
   chatClient = 0;
@@ -738,7 +738,7 @@ void GameContext::AcquireGameStat()
 {
   gameStat = 0;
 
-  //UGLY: Объект создается здесь, инициализируется и поллится из SessionRunnerPW
+  //UGLY: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ SessionRunnerPW
   debugVarsSender = new DebugVarsSender;
 
   StrongMT<StatisticService::IStatDataDispatcher> statDispatcher = s_stat_immidiate ? 
