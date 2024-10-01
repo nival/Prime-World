@@ -2,12 +2,13 @@
 #include "ClusterConfiguration.h"
 #include "System/Commands.h"
 #include "Network/FreePortsFinder.h"
+#include "PW_Game/server_ip.h"
 
 namespace 
 {
-  string coordinatorAddr = "localhost:35000";
-  string loginAddr = "46.138.242.52:55001@10";
-  int firstServerPort = 55010;
+  string coordinatorAddr = string(SERVER_IP) + ":" + SERVER_PORT;
+  string loginAddr = string(SERVER_IP) + ":" + LOGIN_PORT + "@10";
+  int firstServerPort = SERVER_PORT_INT;
   string frontendIPAddr = "localhost";
   string backendIPAddr = "localhost";
 

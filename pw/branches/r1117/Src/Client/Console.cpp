@@ -94,15 +94,23 @@ bool Console::IsModal() const
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool Console::OpenClose()
 {
+#ifdef ENABLE_CHEATS
+  consoleActive = !consoleActive;
+  logic->Show( consoleActive );
+  return true;
+#else
+  return false;
+#endif
+
+  /*
 #ifndef _SHIPPING
 	consoleActive = !consoleActive;
 	logic->Show( consoleActive );
 	return true;
 #else
-	consoleActive = !consoleActive;
-	logic->Show( consoleActive );
-	return true;
+	return false;
 #endif
+  */
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
