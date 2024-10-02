@@ -33,6 +33,7 @@ static bool bManageCursor = true;
 static bool s_bMinimizeOnDeactivate = false;
 static bool bAppAlwaysActive = false;
 static bool s_fullscreen = false;
+static bool s_borderless = false;
 static WNDPROC s_OldWindowProc = 0;
 static ULONG s_prevScreenWidth = 0;
 static ULONG s_prevScreenHeight = 0;
@@ -310,7 +311,7 @@ static void SetClipCursorRect( HWND _hWnd )
 	if (!GetWindowRect( _hWnd, &r ))
 	  return;
 	
-  if ( !s_fullscreen )
+  if ( !s_fullscreen && !s_borderless )
 	{
     //NUM_TASK Сессия в оконном режиме - курсор не должен покидать пределы окна
     if (s_clipCursorInWindowedMode && !cursorClipDisabled)
@@ -581,6 +582,7 @@ bool NMainFrame::InitApplication( HINSTANCE hInstance, const char *pszAppName, c
 	::hInstance = hInstance;
 
   s_fullscreen = fullscreen;
+  s_borderless = false;
 	
   if ( hUseWindow )
   {
@@ -771,7 +773,7 @@ static RECT GetMonitorRect( const RECT &windowRect )
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void NMainFrame::ResizeWindow( unsigned long width, unsigned long height, bool isFullScreen )
+void NMainFrame::ResizeWindow( unsigned long width, unsigned long height, bool isFullScreen, bool isBorderless )
 {
   //http://cboard.cprogramming.com/game-programming/56863-directx-mode-switching-fullscreen-windowed.html
   //http://www.gamedev.ru/code/forum/?id=15956
@@ -806,12 +808,18 @@ void NMainFrame::ResizeWindow( unsigned long width, unsigned long height, bool i
     dwExStyle = ( dwExStyle & ~dwExStyleFullscreen ) | dwExStyleNonFullscreen;
 
     ::SetRect( &rect, newPos.x, newPos.y, newPos.x + width, newPos.y + height );
+
+    // Override fullscreen/windowed
+    if (isBorderless) {
+      dwStyle = dwStyleFullscreen;
+      ::SetRect( &rect, 0, 0, width, height );
+    }
   }
 
   ::SetWindowLong(hWindow, GWL_STYLE, dwStyle);
   ::SetWindowLong(hWindow, GWL_EXSTYLE, dwExStyle);
 
-  if( !isFullScreen )
+  if( !isFullScreen && !isBorderless )
   {
     ::AdjustWindowRectEx( &rect, 
       ::GetWindowLong(hWindow, GWL_STYLE), 
@@ -824,6 +832,7 @@ void NMainFrame::ResizeWindow( unsigned long width, unsigned long height, bool i
   }
      
   s_fullscreen = isFullScreen;
+  s_borderless = isBorderless;
    
   // adjust the size of the window
   ::SetWindowPos(
@@ -836,9 +845,9 @@ void NMainFrame::ResizeWindow( unsigned long width, unsigned long height, bool i
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void NMainFrame::ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen )
+void NMainFrame::ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen, bool isBorderless )
 {
-  ResizeWindow( width, height, isFullScreen );
+  ResizeWindow( width, height, isFullScreen, isBorderless );
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -50,6 +50,7 @@ void EditorRender::Initialize( HWND hEditorWindow, bool loadUI )
   renderMode.width = min(4096, screenSizeMax.cx);
   renderMode.height = min(2400, screenSizeMax.cy);
 	renderMode.isFullScreen = false;
+  renderMode.isBorderless = true;
 	renderMode.vsyncCount = 0;
 	renderMode.multiSampleQuality = 0;
 	renderMode.multiSampleType = Render::MULTISAMPLE_NONE;

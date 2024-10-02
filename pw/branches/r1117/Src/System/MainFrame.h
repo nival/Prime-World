@@ -71,12 +71,12 @@ void ShowCursor( bool bShow );
 HCURSOR GetCurrentCursor();
 void EnableCursorManagement( bool bEnable );
 bool UpdateCursorRectInt( const char* name, const vector<wstring> &paramsSet );
-void ResizeWindow( unsigned long width, unsigned long height, bool isFullScreen );
+void ResizeWindow( unsigned long width, unsigned long height, bool isFullScreen, bool isBorderless );
 
 void DumpWindowStyle( DWORD dwStyle );
 void DumpExWindowStyle( DWORD dwStyle );
 
-void ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen );
+void ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen, bool isBorderless );
 void SetActualClipCursorRect();
 
 void SetCloseHandler( ICloseApplicationHandler* handler );

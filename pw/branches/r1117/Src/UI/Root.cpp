@@ -255,7 +255,7 @@ void SubstituteText( wstring & result, const wchar_t * source, ICustomSubstitute
 
 
 
-void ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen )
+void ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen, bool isBorderless )
 {
   UpdateScreenResolution( width, height, false );
 }

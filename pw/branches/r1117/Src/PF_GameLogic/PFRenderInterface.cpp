@@ -1936,10 +1936,10 @@ static bool RestartRender()
   Interface::Get()->InvalidateResources();  
   Render::GetRenderer()->InvalidateResources();
  
-  NMainFrame::ApplyNewParams( renderMode.width, renderMode.height, renderMode.isFullScreen );
+  NMainFrame::ApplyNewParams( renderMode.width, renderMode.height, renderMode.isFullScreen, renderMode.isBorderless );
   Render::GetRenderer()->ApplyNewParams(renderMode);
        
-  UI::ApplyNewParams( renderMode.width, renderMode.height, renderMode.isFullScreen );             
+  UI::ApplyNewParams( renderMode.width, renderMode.height, renderMode.isFullScreen, renderMode.isBorderless );             
   Interface::Get()->ApplyNewParams(renderMode);
   UI::GetFontRenderer()->Initialize();
 

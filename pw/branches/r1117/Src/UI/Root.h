@@ -18,7 +18,7 @@ class User;
 
 
 STARFORCE_EXPORT void Initialize( const NDb::UIRoot *pRoot );
-void ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen );
+void ApplyNewParams( unsigned long width, unsigned long height, bool isFullScreen, bool isBorderless );
 
 void Release();
 

@@ -1211,7 +1211,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   if(s_NullRender != RENDER_DISABLE_FLAG) {
     const Render::RenderMode& currentRenderMode = Render::GetRenderer()->GetCurrentRenderMode();
     UI::UpdateScreenResolution( currentRenderMode.width, currentRenderMode.height, false );
-    NMainFrame::ResizeWindow( currentRenderMode.width, currentRenderMode.height, currentRenderMode.isFullScreen );
+    NMainFrame::ResizeWindow( currentRenderMode.width, currentRenderMode.height, currentRenderMode.isFullScreen, currentRenderMode.isBorderless );
   }
 
   if ( mainVars.logBox )

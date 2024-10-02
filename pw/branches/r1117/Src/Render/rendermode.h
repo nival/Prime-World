@@ -14,6 +14,7 @@ struct RenderMode
 	EMultiSampleType multiSampleType;
 	unsigned int multiSampleQuality;
 	bool isFullScreen;
+  bool isBorderless;
 	unsigned int width;
 	unsigned int height;
   unsigned int width3D;
