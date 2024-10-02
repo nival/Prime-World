@@ -246,7 +246,8 @@ void AdventureScreenLogic::UpdatePreferences()
     if(!m_owner->IsInReplayMode())
     {
       NGlobal::SaveConfig( NProfile::GetFullFilePath( "user.cfg", NProfile::FOLDER_USER ), STORAGE_USER );
-#ifdef _SHIPPING
+#if 1
+//#ifdef _SHIPPING
       Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
     }
@@ -260,7 +261,8 @@ void AdventurepreferencesProcessor::Apply()
   if(!NGameX::AdventureScreen::Instance()->IsInReplayMode())
   {
     NGlobal::SaveConfig( NProfile::GetFullFilePath( "user.cfg", NProfile::FOLDER_USER ), STORAGE_USER );
-#ifdef _SHIPPING
+#if 1
+//#ifdef _SHIPPING
     Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
   }
@@ -276,7 +278,8 @@ void AdventurepreferencesProcessor::Cancel()
   {
     NGlobal::SaveConfig( NProfile::GetFullFilePath( "user.cfg", NProfile::FOLDER_USER ), STORAGE_USER );
 
-#ifdef _SHIPPING
+#if 1
+//#ifdef _SHIPPING
     Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
   }
@@ -311,7 +314,8 @@ void AdventurepreferencesProcessor::ApplyShortcuts()
       }
     }
 
-#ifdef _SHIPPING
+#if 1
+//#ifdef _SHIPPING
     Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
   }
