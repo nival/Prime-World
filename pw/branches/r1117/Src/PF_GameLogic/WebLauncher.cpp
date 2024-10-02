@@ -315,7 +315,6 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[208] = "Werewolf_A1u1";
 	classTalentMap[209] = "Werewolf_A3";
 	classTalentMap[210] = "Werewolf_A4";
-	classTalentMap[211] = "Reaper_A2u";
 	classTalentMap[211] = "Werewolf_A3u";
 	classTalentMap[212] = "Werewolf_A1u2";
 	classTalentMap[213] = "Frogenglut_A1";
@@ -462,6 +461,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[355] = "Reaper_A1";
 	classTalentMap[356] = "Reaper_A2";
 	classTalentMap[357] = "Reaper_A1u";
+	classTalentMap[358] = "Reaper_A2u";
 	classTalentMap[359] = "Reaper_A3";
 	classTalentMap[360] = "Reaper_A4";
 	classTalentMap[361] = "Reaper_A3u";
