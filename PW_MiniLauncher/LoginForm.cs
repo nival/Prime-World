@@ -14,6 +14,9 @@ namespace PW_MiniLauncher
 {  
     public partial class LoginForm : Form
     {
+        private string currentGameVersion = "0.2";
+        private string currentLauncherVersion = "1.0"; // текущая версия лаунчера
+
         private const string baseUrlLauncher = "https://playpw.fun/update/launcher/"; // URL for all files of launcher
         private const string baseUrlGame = "https://playpw.fun/update/client/"; // URL for all files of game
         private string endFileName = ".zip"; // file with new launcher
@@ -26,7 +29,7 @@ namespace PW_MiniLauncher
         private bool status = false;
         private string web_token;
         private string copyDefaultName;
-
+        
         public LoginForm(string defaultName)
         {
             InitializeComponent();
@@ -64,13 +67,13 @@ namespace PW_MiniLauncher
         {
             try
             {
-                var currentVersion = "1.0"; // текущая версия лаунчера
+                
                 var serverVersion = await GetVersionFromServer(baseUrlLauncher + launcherVersionFile);
                 newLauncherFile = EditArchive(serverVersion);
                 var launcherPath = GetLauncherDirectory();
                 var newLauncherPath = Path.Combine(launcherPath, "PW_MiniLauncher.exe");
 
-                if ((serverVersion != currentVersion) && System.IO.File.Exists(newLauncherPath))
+                if ((serverVersion != currentLauncherVersion) && System.IO.File.Exists(newLauncherPath))
                 {
                     playButton.Enabled = false;
                     await DownloadAndUpdateLauncher();
@@ -184,7 +187,7 @@ namespace PW_MiniLauncher
 
         private async Task CheckGameVersionUpdate()
         {
-            var currentGameVersion = "0.2";
+            
             var serverGameVersion = await GetVersionFromServer(baseUrlGame + gameVersionFile);
             gameDirectory = GetGameInstallationDirectory(); // Get game installation directory
 
