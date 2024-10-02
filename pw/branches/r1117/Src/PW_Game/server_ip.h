@@ -1,4 +1,0 @@
-#define SERVER_IP "127.0.0.1"
-#define SERVER_PORT "55000"
-#define SERVER_PORT_INT 55000
-#define LOGIN_PORT "55001"
