@@ -6,7 +6,7 @@
 
 #pragma code_seg(push, "~")
 
-#ifdef STARFORCE_PROTECTED
+#ifdef STARFORCE_PROTECTED_OFF
   #define STARFORCE_EXPORT __declspec(dllexport) __declspec(noinline)
   #define STARFORCE_FORCE_INLINE __forceinline
   #define STARFORCE_FORCE_NOINLINE __declspec(noinline)

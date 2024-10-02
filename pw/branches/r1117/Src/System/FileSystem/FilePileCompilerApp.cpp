@@ -14,6 +14,8 @@
 #include "System/CmdLineLite.h"
 #include "Version.h"
 
+#pragma comment (lib, "Dbghelp.lib")
+#pragma comment (lib, "rpcrt4.lib")
 
 #if defined(NI_PLATF_LINUX)
 
