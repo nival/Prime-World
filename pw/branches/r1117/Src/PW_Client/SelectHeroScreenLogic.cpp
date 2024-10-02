@@ -36,7 +36,7 @@ void SelectHeroScreenLogic::SelectHero( const char * heroId )
 void SelectHeroScreenLogic::PlayerReady()
 { 
   if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() )
-    locked->SetReady( lobby::EGameMemberReadiness::Ready ); //TODO: lobby::EGameMemberReadiness::ReadyForAnything
+    locked->SetReady( lobby::EGameMemberReadiness::ReadyForAnything ); //TODO: lobby::EGameMemberReadiness::ReadyForAnything
 }
 
 
