@@ -425,11 +425,11 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[317] = "Crusader_A1_B";
 	classTalentMap[319] = "Monster_A1";
 	classTalentMap[320] = "Monster_A3";
-	classTalentMap[321] = "Monster_A1u";
-	classTalentMap[321] = "Monster_A2u";
+	classTalentMap[321] = "Monster_A1u";	
 	classTalentMap[322] = "Monster_A3u";
 	classTalentMap[323] = "Monster_A2";
 	classTalentMap[324] = "Monster_A4";
+	classTalentMap[325] = "Monster_A2u";
 	classTalentMap[326] = "Monster_A4u";
 	classTalentMap[327] = "Angel_A0";
 	classTalentMap[328] = "Angel_A1";
