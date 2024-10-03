@@ -45,7 +45,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
     characterMap.insert(std::make_pair("warlord", 4));
     characterMap.insert(std::make_pair("thundergod", 5));
     characterMap.insert(std::make_pair("invisible", 6));
-    characterMap.insert(std::make_pair("mowgli", 7));
+    characterMap.insert(std::make_pair("mowgly", 7));
     characterMap.insert(std::make_pair("inventor", 8));
     characterMap.insert(std::make_pair("artist", 9));
     characterMap.insert(std::make_pair("highlander", 10));
@@ -73,8 +73,8 @@ WebLauncherPostRequest::WebLauncherPostRequest()
     characterMap.insert(std::make_pair("demonolog", 32));
     characterMap.insert(std::make_pair("vampire", 33));
     characterMap.insert(std::make_pair("witch", 34));
-    characterMap.insert(std::make_pair("crusader_a", 35));
-    characterMap.insert(std::make_pair("crusader_b", 36));
+    characterMap.insert(std::make_pair("crusader_A", 35));
+    characterMap.insert(std::make_pair("crusader_B", 36));
     characterMap.insert(std::make_pair("monster", 37));
     characterMap.insert(std::make_pair("angel", 38));
     characterMap.insert(std::make_pair("freeze", 39));
@@ -967,6 +967,7 @@ std::string WideCharToMultiByteString(const wchar_t* wideCharString) {
     return result;
 }
 
+#pragma optimize("", off)
 std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, const char* heroName)
 {
 	std::vector<int> result;
@@ -1039,12 +1040,16 @@ std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, 
 		{
 			isCollectingNumbers = true;
 		}
+    if (curID >= 36) {
+      break; // web-launcher should not crash the game
+    }
 	}
 
 	if(curID < 36)
 	{
 		result.clear();
 	}
+
 
 	return result;
 }

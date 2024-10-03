@@ -314,7 +314,7 @@ void LocalGameContext::UpdateCustomLobbyPlayers( const set<int> & hilitePlayers 
   {
     lobby::ETeam::Enum team = i ? lobby::ETeam::Team2 : lobby::ETeam::Team1;
 
-    lines.push_back( i ? L"Team two:" : L"Team one:" );
+    lines.push_back( i ? L"Adornia:" : L"Doct:" );
     linesIds.push_back( -1 );
     for ( int j = 0; j < gameLineup.size(); ++j )
     {
