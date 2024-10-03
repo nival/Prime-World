@@ -52,18 +52,20 @@ void SelectHeroScreen::CommonStep( bool bAppActive )
 
   if (!logic->IsPlayerReady()) {
     lobbyTimeout += dt;
-    if (lobbyTimeout > 60.f) {
+    if (lobbyTimeout > 10.f) {
         canBeKicked = true;
         
-        /*
-        this->CloseThisScreen();
+        CloseThisScreen();
+        
         if ( StrongMT<Game::IGameContextUiInterface> locked = GameCtx().Lock() ) {
-          locked->SetDeveloperParty(0); // trigger update
+          //locked->SetReady(lobby::EGameMemberReadiness::NotReady); // trigger update
           locked->ConnectToCluster( g_devLogin, "" );
         }
+        
         return;
-        */
     }
+  } else {
+    lobbyTimeout = 0.f;
   }
 
   bool update = false;

@@ -50,7 +50,7 @@ public:
 
 
 
-
+#pragma optimize("", off)
 ClientBase::ClientBase( Transport::TClientId _clientId, bool _inSocialMode ) :
 inSocialMode( _inSocialMode ),
 status( EClientStatus::Initial ),
