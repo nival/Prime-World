@@ -19,6 +19,10 @@ struct RenderMode
 	unsigned int height;
   unsigned int width3D;
   unsigned int height3D;
+  unsigned int windowedWidth;
+  unsigned int windowedHeight;
+  unsigned int fullscreenWidth;
+  unsigned int fullscreenHeight;
 	unsigned int refreshRate;
 	unsigned int vsyncCount;
 

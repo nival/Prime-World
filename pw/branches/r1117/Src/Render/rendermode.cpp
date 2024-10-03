@@ -20,7 +20,7 @@ RenderMode::RenderMode()
 	: multiSampleType( MULTISAMPLE_NONE )
 	, multiSampleQuality( 0 )
 	, isFullScreen( true )
-  , isBorderless( true )
+  , isBorderless( false )
 	, width( WIDTH_DEFAULT )
 	, height( HEIGHT_DEFAULT )
   , width3D( WIDTH_DEFAULT )
@@ -55,12 +55,12 @@ public:
       //http://msdn.microsoft.com/en-us/library/ee417691.aspx#_1.5
       //The game uses the desktop resolution of the display device by 
       //default if it is a supported resolution. 
-      GetDesktopResolution( g_renderMode.width, g_renderMode.height );
+      GetDesktopResolution( g_renderMode.fullscreenWidth, g_renderMode.fullscreenHeight );
       return;
     }
     
-    g_renderMode.width = NStr::ToInt( res[0] );
-    g_renderMode.height = NStr::ToInt( res[1] );
+	g_renderMode.width = g_renderMode.windowedWidth = NStr::ToInt( res[0] );
+    g_renderMode.height = g_renderMode.windowedHeight =NStr::ToInt( res[1] );
 
     s_ScreenResolution.SetValue( "%dx%d", g_renderMode.width, g_renderMode.height );
   }
@@ -140,12 +140,30 @@ void SetResolution( unsigned int width, unsigned int height )
 {
   g_renderMode.width = width;
   g_renderMode.height = height;
+  g_renderMode.windowedWidth = width;
+  g_renderMode.windowedHeight = height;
   g_renderMode.refreshRate = RenderMode::REFRESH_RATE_DEFAULT;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void GetRenderModeFromConfig(RenderMode &renderMode)
 {	
+	if(g_renderMode.isFullScreen)
+	{
+		g_renderMode.isBorderless = true;
+
+		g_renderMode.width = g_renderMode.width3D = g_renderMode.fullscreenWidth;
+		g_renderMode.height = g_renderMode.height3D = g_renderMode.fullscreenHeight;
+	}
+	else
+	{
+		g_renderMode.isBorderless = false;
+
+		g_renderMode.width = g_renderMode.width3D = g_renderMode.windowedWidth;
+		g_renderMode.height = g_renderMode.height3D = g_renderMode.windowedHeight;
+	}
+
+
 	renderMode = g_renderMode;
 }
 

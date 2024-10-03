@@ -869,13 +869,15 @@ void Renderer::Convert( const RenderMode &_renderMode, D3DPRESENT_PARAMETERS &pp
   ZeroMemory(&pp, sizeof(pp));
   pp.BackBufferWidth = _renderMode.width;
   pp.BackBufferHeight = _renderMode.height;
-  pp.Windowed = !_renderMode.isFullScreen;
-  pp.FullScreen_RefreshRateInHz = pp.Windowed ? D3DPRESENT_RATE_DEFAULT : _renderMode.refreshRate;
+  pp.Windowed = 1;
+  pp.FullScreen_RefreshRateInHz = _renderMode.refreshRate;
   pp.EnableAutoDepthStencil = true;
   pp.AutoDepthStencilFormat = D3DFMT_D24S8;
   pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
   pp.BackBufferFormat = D3DFMT_A8R8G8B8;
   pp.hDeviceWindow = (HWND)hWnd;
+
+	pp.BackBufferCount = 1;
 
   bTripleBufferUsed = s_use_triple_buffer && _renderMode.vsyncCount;
   if(bTripleBufferUsed)
@@ -890,12 +892,12 @@ void Renderer::Convert( const RenderMode &_renderMode, D3DPRESENT_PARAMETERS &pp
     case 4: pp.PresentationInterval = D3DPRESENT_INTERVAL_FOUR; break;
     default: pp.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT; break;
   }
-  
-  if( !pp.Windowed )
-  {
-    CorrectResolution( pp.BackBufferWidth, pp.BackBufferHeight );
-    CorrectRefreshRate( pp.BackBufferWidth, pp.BackBufferHeight, pp.FullScreen_RefreshRateInHz );
-  }
+  //pp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+  //if( !pp.Windowed )
+  //{
+  //  CorrectResolution( pp.BackBufferWidth, pp.BackBufferHeight );
+  //  CorrectRefreshRate( pp.BackBufferWidth, pp.BackBufferHeight, pp.FullScreen_RefreshRateInHz );
+  //}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -903,8 +905,8 @@ void Renderer::CorrectRenderMode( RenderMode &_renderMode ) const
 {
   if( _renderMode.isFullScreen )
   {
-    CorrectResolution( _renderMode.width, _renderMode.height );
-    CorrectRefreshRate( _renderMode.width, _renderMode.height, _renderMode.refreshRate );
+    //CorrectResolution( _renderMode.width, _renderMode.height );
+    //CorrectRefreshRate( _renderMode.width, _renderMode.height, _renderMode.refreshRate );
   }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
