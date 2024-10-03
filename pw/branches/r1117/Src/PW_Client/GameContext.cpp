@@ -48,8 +48,8 @@
 static string g_loginTestSessionPath;
 REGISTER_VAR( "login_test_session_path", g_loginTestSessionPath, STORAGE_NONE );
 
-static bool s_stat_enabled = true;
-REGISTER_VAR( "stat_enabled", s_stat_enabled , STORAGE_NONE );
+static bool s_stat_enabled = false;
+//REGISTER_VAR( "stat_enabled", s_stat_enabled , STORAGE_NONE );
 
 static float s_stat_timeout = 15.0f;
 REGISTER_VAR( "stat_timeout", s_stat_timeout , STORAGE_NONE );
