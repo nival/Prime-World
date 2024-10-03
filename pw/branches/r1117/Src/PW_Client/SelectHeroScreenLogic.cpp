@@ -9,6 +9,7 @@
 #include "SelectHeroScreenLogic.h"
 #include "NewLobbyClientPW.h"
 
+extern string g_devLogin;
 
 namespace UI
 {
@@ -35,8 +36,10 @@ void SelectHeroScreenLogic::SelectHero( const char * heroId )
 
 void SelectHeroScreenLogic::PlayerReady()
 { 
+  isPlayerReady = true;
   if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() )
     locked->SetReady( lobby::EGameMemberReadiness::ReadyForAnything ); //TODO: lobby::EGameMemberReadiness::ReadyForAnything
+  //locked->ConnectToCluster( g_devLogin, "" ); //TODO: lobby::EGameMemberReadiness::ReadyForAnything
 }
 
 

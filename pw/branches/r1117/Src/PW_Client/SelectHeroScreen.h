@@ -38,6 +38,9 @@ private:
   vector<int>       debugPlayerIds;
   map<int, float>   debugHiliteTimes;
   wstring           debugPlayerStatus;
+
+  bool canBeKicked;
+  float lobbyTimeout;
 };
 
 } // End of namespace Game

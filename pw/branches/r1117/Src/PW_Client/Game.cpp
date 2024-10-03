@@ -712,6 +712,8 @@ void InitCensorDicts()
   LoadCensorDict("custom_whitelist.txt", true);
 }
 
+string g_devLogin;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, SPluginSettings * pluginSett )
 {
@@ -1144,6 +1146,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
     if (response.retCode == WebLauncherPostRequest::LoginResponse_OK) {
       // Login success
       currentLogin = response.response;
+      g_devLogin = currentLogin.c_str();
     }
 
     /*
