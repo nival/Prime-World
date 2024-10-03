@@ -40,7 +40,6 @@ void SelectHeroScreenLogic::PlayerReady()
   isPlayerReady = true;
   if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() )
     locked->SetReady( lobby::EGameMemberReadiness::ReadyForAnything ); //TODO: lobby::EGameMemberReadiness::ReadyForAnything
-  //locked->ConnectToCluster( g_devLogin, "" ); //TODO: lobby::EGameMemberReadiness::ReadyForAnything
 }
 
 void SelectHeroScreenLogic::LeaveLobby()
@@ -69,6 +68,11 @@ void SelectHeroScreenLogic::SetDeveloperParty(int party)
 
 void SelectHeroScreenLogic::DebugDisplayPlayers ( const wstring & status )
 {
+  if (isPlayerReady) { // Update ready status for everyone
+    if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() ) {
+      locked->SetReady( lobby::EGameMemberReadiness::Ready );
+    }
+  }
   UI::ImageLabel * pDesc = UI::GetChildChecked < UI::ImageLabel > ( pBaseWindow, "DebugPlayers", true );
   if ( pDesc )
     pDesc->SetCaptionTextW ( status.c_str() );

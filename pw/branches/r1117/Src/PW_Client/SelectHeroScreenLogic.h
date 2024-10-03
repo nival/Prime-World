@@ -17,7 +17,7 @@ private:
   bool isPlayerReady;
  
 public:
-  SelectHeroScreenLogic() {}
+  SelectHeroScreenLogic() { isPlayerReady = false; }
 
   void SetOwner( NGameX::SelectHeroScreen * _screen ) { screen = _screen; }    
 
