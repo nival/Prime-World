@@ -23,6 +23,7 @@ public:
   //Lua
   void SelectHero( const char * heroId );
   void PlayerReady();
+  void LeaveLobby();
   void ChangeTeam( int team );
   void ChangeFaction( int faction );
   void SetDeveloperParty(int party);

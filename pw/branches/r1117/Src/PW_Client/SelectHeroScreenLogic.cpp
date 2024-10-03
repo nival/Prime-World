@@ -18,6 +18,7 @@ namespace UI
 BEGIN_LUA_TYPEINFO( SelectHeroScreenLogic, ClientScreenUILogicBase )
   LUA_METHOD( SelectHero )
   LUA_METHOD( PlayerReady )
+  LUA_METHOD( LeaveLobby )
   LUA_METHOD( ChangeTeam )
   LUA_METHOD( ChangeFaction )
   LUA_METHOD( SetDeveloperParty )
@@ -39,7 +40,11 @@ void SelectHeroScreenLogic::PlayerReady()
     locked->SetReady( lobby::EGameMemberReadiness::ReadyForAnything ); //TODO: lobby::EGameMemberReadiness::ReadyForAnything
 }
 
-
+void SelectHeroScreenLogic::LeaveLobby()
+{ 
+  if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() )
+    locked->ConnectToCluster( "HolyDel_DEV", "" );
+}
 
 void SelectHeroScreenLogic::ChangeTeam( int team )
 {
