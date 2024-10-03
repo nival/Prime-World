@@ -57,7 +57,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
     characterMap.insert(std::make_pair("assassin", 16));
     characterMap.insert(std::make_pair("unicorn", 17));
     characterMap.insert(std::make_pair("hunter", 18));
-    characterMap.insert(std::make_pair("ghostLord", 19));
+    characterMap.insert(std::make_pair("ghostlord", 19));
     characterMap.insert(std::make_pair("ratcatcher", 20));
     characterMap.insert(std::make_pair("archeress", 21));
     characterMap.insert(std::make_pair("werewolf", 22));
