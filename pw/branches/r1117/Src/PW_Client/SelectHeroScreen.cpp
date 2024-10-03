@@ -7,11 +7,15 @@
 #include "Client/MainTimer.h"
 #include "System/InlineProfiler.h"
 
+extern string g_devLogin;
+
 namespace NGameX
 {  
 
 SelectHeroScreen::SelectHeroScreen( Game::IGameContextUiInterface * _ctx ) :
-gameCtx( _ctx )
+gameCtx( _ctx ),
+canBeKicked(false),
+lobbyTimeout(0.f)
 {   
 }
 
@@ -45,6 +49,23 @@ void SelectHeroScreen::CommonStep( bool bAppActive )
   DefaultScreenBase::CommonStep( bAppActive );
 
   float dt = NMainLoop::GetTimeDelta();
+
+  if (!logic->IsPlayerReady()) {
+    lobbyTimeout += dt;
+    if (lobbyTimeout > 60.f) {
+        canBeKicked = true;
+        
+        /*
+        this->CloseThisScreen();
+        if ( StrongMT<Game::IGameContextUiInterface> locked = GameCtx().Lock() ) {
+          locked->SetDeveloperParty(0); // trigger update
+          locked->ConnectToCluster( g_devLogin, "" );
+        }
+        return;
+        */
+    }
+  }
+
   bool update = false;
   for( map<int, float>::iterator it = debugHiliteTimes.begin(), next = it; it != debugHiliteTimes.end(); it = next )
   {

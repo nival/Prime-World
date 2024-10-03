@@ -14,6 +14,7 @@ private:
   DECLARE_LUA_TYPEINFO( SelectHeroScreenLogic );
 
   Weak<NGameX::SelectHeroScreen> screen;
+  bool isPlayerReady;
  
 public:
   SelectHeroScreenLogic() {}
@@ -23,6 +24,7 @@ public:
   //Lua
   void SelectHero( const char * heroId );
   void PlayerReady();
+  bool IsPlayerReady() { return isPlayerReady; }
   void LeaveLobby();
   void ChangeTeam( int team );
   void ChangeFaction( int faction );
