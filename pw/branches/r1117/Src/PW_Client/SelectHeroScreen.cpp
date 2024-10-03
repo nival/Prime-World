@@ -52,7 +52,7 @@ void SelectHeroScreen::CommonStep( bool bAppActive )
 
   if (!logic->IsPlayerReady()) {
     lobbyTimeout += dt;
-    if (lobbyTimeout > 10.f) {
+    if (lobbyTimeout > 100.f) {
         canBeKicked = true;
         
         CloseThisScreen();

@@ -36,11 +36,9 @@ namespace PW_MiniLauncher
             copyDefaultName = defaultName;
             this.Load += async (s, e) => await CheckVersionAndLaunch();
 
-            int lastSlashIndex = defaultName.LastIndexOf('/');
-            web_token = lastSlashIndex != -1 ? defaultName.Substring(lastSlashIndex + 1) : defaultName;
+            string[] args = defaultName.Split('/');
 
-            foreach (Control control in this.Controls)
-            {
+         foreach (Control control in this.Controls) {
                 if (control is Button button)
                 {
                     button.FlatStyle = FlatStyle.Flat;
@@ -49,19 +47,21 @@ namespace PW_MiniLauncher
             }
 
             MakeButtonCircular(button1, button2, button3, button4);
+            playButton.Enabled = true;
+            grayButton.Visible = false;
 
-            playButton.Click += (s, e) => Play();
-            playButton.Enabled = false;
-
-            if (status)
-            {
-                grayButton.Visible = false;
+            if (status) {
                 playButton.Enabled = true;
             }
-            button5.Visible = lastSlashIndex == -1;
-            
+            button5.Visible = !(args.Length > 2);
 
-        }
+         if (args.Length > 2)
+         {
+            web_token = args[2];
+            playButton.Click += (s, e) => Play();
+         }
+
+      }
 
         private async Task CheckVersionAndLaunch()
         {
@@ -196,7 +196,7 @@ namespace PW_MiniLauncher
             if (serverGameVersion != currentGameVersion)
             {
                 playButton.Enabled = false;
-                grayButton.Visible = true;
+                grayButton.Visible = false;
                 status = false;
                 await DownloadAndUpdateGame();
             }
@@ -342,7 +342,8 @@ namespace PW_MiniLauncher
                     return;
                 }
             grayButton.Visible = false;
-            LaunchGame(web_token, false);
+         System.Threading.Thread.Sleep(1000);
+         LaunchGame(web_token, false);
             Close();
         }
 
@@ -436,5 +437,10 @@ namespace PW_MiniLauncher
         {
             this.Close();
         }
-    }
+
+      private void button5_Click(object sender, EventArgs e)
+      {
+         Process.Start(new ProcessStartInfo("https://playpw.fun") { UseShellExecute = true });
+      }
+   }
 }
