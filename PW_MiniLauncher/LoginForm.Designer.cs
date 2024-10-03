@@ -67,16 +67,19 @@
          // label2
          // 
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(12, 357);
+         this.label2.BackColor = System.Drawing.Color.Transparent;
+         this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+         this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+         this.label2.Location = new System.Drawing.Point(163, 324);
          this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(0, 13);
+         this.label2.Size = new System.Drawing.Size(0, 20);
          this.label2.TabIndex = 5;
          this.label2.Visible = false;
          // 
          // button1
          // 
          this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-         this.button1.Location = new System.Drawing.Point(772, 234);
+         this.button1.Location = new System.Drawing.Point(772, 249);
          this.button1.Name = "button1";
          this.button1.Size = new System.Drawing.Size(60, 60);
          this.button1.TabIndex = 6;
@@ -86,7 +89,7 @@
          // button2
          // 
          this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-         this.button2.Location = new System.Drawing.Point(772, 168);
+         this.button2.Location = new System.Drawing.Point(772, 183);
          this.button2.Name = "button2";
          this.button2.Size = new System.Drawing.Size(60, 60);
          this.button2.TabIndex = 7;
@@ -96,7 +99,7 @@
          // button3
          // 
          this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-         this.button3.Location = new System.Drawing.Point(772, 102);
+         this.button3.Location = new System.Drawing.Point(772, 117);
          this.button3.Name = "button3";
          this.button3.Size = new System.Drawing.Size(60, 60);
          this.button3.TabIndex = 8;
@@ -110,7 +113,7 @@
          this.grayButton.ForeColor = System.Drawing.SystemColors.ControlText;
          this.grayButton.Location = new System.Drawing.Point(696, 300);
          this.grayButton.Name = "grayButton";
-         this.grayButton.Size = new System.Drawing.Size(125, 100);
+         this.grayButton.Size = new System.Drawing.Size(0, 0);
          this.grayButton.TabIndex = 9;
          this.grayButton.Text = "Играть!";
          this.grayButton.UseVisualStyleBackColor = true;
@@ -118,7 +121,7 @@
          // button4
          // 
          this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-         this.button4.Location = new System.Drawing.Point(772, 36);
+         this.button4.Location = new System.Drawing.Point(772, 51);
          this.button4.Name = "button4";
          this.button4.Size = new System.Drawing.Size(60, 60);
          this.button4.TabIndex = 10;
@@ -127,11 +130,15 @@
          // 
          // closeButton
          // 
-         this.closeButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+         this.closeButton.BackColor = System.Drawing.Color.Transparent;
          this.closeButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closeButton.BackgroundImage")));
-         this.closeButton.Location = new System.Drawing.Point(807, 5);
+         this.closeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+         this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+         this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.closeButton.ForeColor = System.Drawing.Color.Transparent;
+         this.closeButton.Location = new System.Drawing.Point(788, 1);
          this.closeButton.Name = "closeButton";
-         this.closeButton.Size = new System.Drawing.Size(25, 25);
+         this.closeButton.Size = new System.Drawing.Size(44, 44);
          this.closeButton.TabIndex = 12;
          this.closeButton.UseVisualStyleBackColor = false;
          this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -141,7 +148,7 @@
          this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
          this.button5.Location = new System.Drawing.Point(696, 300);
          this.button5.Name = "button5";
-         this.button5.Size = new System.Drawing.Size(124, 100);
+         this.button5.Size = new System.Drawing.Size(0, 0);
          this.button5.TabIndex = 11;
          this.button5.Text = "Запустите лаунчер через сайт!";
          this.button5.UseVisualStyleBackColor = true;
