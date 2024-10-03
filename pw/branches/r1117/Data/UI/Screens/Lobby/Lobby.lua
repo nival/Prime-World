@@ -8,6 +8,11 @@ function LobbyMainWnd:OnInit( )
     button.OnAction = function()  self.context:PlayerReady() end
   end
   
+  button = self:GetChild("Btn_LeaveLobby")
+  if button then
+    button.OnAction = function()  self.context:LeaveLobby() end
+  end
+
   button = self:GetBaseParent():FindChild( "Btn_Team1" )
   if button then
     button.OnAction = function() self.context:ChangeTeam( 0 ) end

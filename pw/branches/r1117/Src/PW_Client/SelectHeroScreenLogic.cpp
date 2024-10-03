@@ -46,7 +46,7 @@ void SelectHeroScreenLogic::PlayerReady()
 void SelectHeroScreenLogic::LeaveLobby()
 { 
   if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() )
-    locked->ConnectToCluster( "HolyDel_DEV", "" );
+    locked->ConnectToCluster( g_devLogin, "" );
 }
 
 void SelectHeroScreenLogic::ChangeTeam( int team )
