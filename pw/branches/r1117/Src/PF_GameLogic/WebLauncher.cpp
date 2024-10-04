@@ -361,7 +361,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[252] = "Naga_A3u1";
 	classTalentMap[253] = "Mage_A1";
 	classTalentMap[254] = "Mage_A2";
-	classTalentMap[255] = "Mage_A1_SUP";
+	classTalentMap[255] = "Mage_A1u";
 	classTalentMap[256] = "Mage_A2u";
 	classTalentMap[257] = "Mage_A3";
 	classTalentMap[258] = "Mage_A4";
@@ -710,7 +710,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[601] = "Rockman_A3_SUP";
 	classTalentMap[602] = "Gunslinger_A2_SUP";
 	classTalentMap[603] = "Gunslinger_A3_SUP";
-	classTalentMap[604] = "Mage_A1u";
+	classTalentMap[604] = "Mage_A1_SUP";
 	classTalentMap[605] = "Mage_A2_SUP";
 	classTalentMap[606] = "PlagueDoctor_A1_SUP";
 	classTalentMap[607] = "PlagueDoctor_A5_SUP";
