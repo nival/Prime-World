@@ -10,6 +10,7 @@
 #include "NewLobbyClientPW.h"
 
 extern string g_devLogin;
+extern bool g_needNotifyLobbyClients;
 
 namespace UI
 {
@@ -68,9 +69,17 @@ void SelectHeroScreenLogic::SetDeveloperParty(int party)
 
 void SelectHeroScreenLogic::DebugDisplayPlayers ( const wstring & status )
 {
-  if (isPlayerReady) { // Update ready status for everyone
+  if (isPlayerReady && needUpdatePlayerReadyness) {
     if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() ) {
-      locked->SetReady( lobby::EGameMemberReadiness::Ready );
+      locked->SetReady( lobby::EGameMemberReadiness::ReadyForAnything );
+      needUpdatePlayerReadyness = false;
+    }
+  }
+  if (isPlayerReady && g_needNotifyLobbyClients) { // Update ready status for everyone
+    if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() ) {
+      locked->SetReady( lobby::EGameMemberReadiness::NotReady );
+      needUpdatePlayerReadyness = true;
+      g_needNotifyLobbyClients = false;
     }
   }
   UI::ImageLabel * pDesc = UI::GetChildChecked < UI::ImageLabel > ( pBaseWindow, "DebugPlayers", true );

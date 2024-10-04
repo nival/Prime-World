@@ -50,9 +50,10 @@ void SelectHeroScreen::CommonStep( bool bAppActive )
 
   float dt = NMainLoop::GetTimeDelta();
 
-  if (!logic->IsPlayerReady()) {
+  // Temporary solution
+  if (!logic->IsPlayerReady() && debugPlayerIds.size() == 10) {
     lobbyTimeout += dt;
-    if (lobbyTimeout > 10.f) {
+    if (lobbyTimeout > 30.f) {
         canBeKicked = true;
         
         CloseThisScreen();
