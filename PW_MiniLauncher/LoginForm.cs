@@ -63,8 +63,8 @@ namespace PW_MiniLauncher
 
          string exeDir = (string)Registry.GetValue(keyName, "", "");
          //noSuch.Split("PW_Minilauncher.exe %s");
-         gameDirectory = exeDir.Substring(1, exeDir.Length - 25);
-
+         bool hasSemicolons = exeDir[0] == '\"';
+         gameDirectory = exeDir.Substring(hasSemicolons ? 1 : 0, exeDir.Length - (hasSemicolons ? 25 : 23));
       }
 
       private void RunConditional()
