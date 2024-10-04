@@ -46,7 +46,6 @@ namespace
 
   BotOverride botOverride[2];
 }
-#pragma optimize("", off)
 static bool g_useTestTalentSet = false;
 REGISTER_DEV_VAR( "use_test_talentset", g_useTestTalentSet, STORAGE_NONE );
 

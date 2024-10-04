@@ -967,7 +967,6 @@ std::string WideCharToMultiByteString(const wchar_t* wideCharString) {
     return result;
 }
 
-#pragma optimize("", off)
 std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, const char* heroName)
 {
 	std::vector<int> result;
@@ -1024,6 +1023,9 @@ std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, 
 				result[curID] = value;
 				curNumber = "";
 				curID++;
+        if (value == 0) { // error
+          break;
+        }
 			}
 			else
 			{

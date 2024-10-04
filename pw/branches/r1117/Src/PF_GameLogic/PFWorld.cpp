@@ -395,8 +395,6 @@ void PFWorld::InitMinigames()
 }
 
 
-#pragma optimize("", off)
-
 
 bool PFWorld::LoadMap( const NDb::AdvMapDescription * _advMapDescription, const NDb::AdventureCameraSettings * cameraSettings, const NCore::TPlayersStartInfo & playersInfo, LoadingProgress * progress, bool isReconnecting, const NWorld::PFResourcesCollection::TalentMap& talents )
 {
