@@ -96,6 +96,8 @@ bool LaunchGameDll()
 
 int __stdcall WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, char * lpCmdLine, int nCmdShow )
 {
+	SetProcessDPIAware();
+
 #ifndef DO_NOT_USE_DLLMAIN
   if ( !LaunchGameDll() )
   {
