@@ -8,6 +8,7 @@
 
 #include "SelectHeroScreenLogic.h"
 #include "NewLobbyClientPW.h"
+#include "Client/ScreenCommands.h"
 
 extern string g_devLogin;
 extern bool g_needNotifyLobbyClients;
@@ -45,8 +46,15 @@ void SelectHeroScreenLogic::PlayerReady()
 
 void SelectHeroScreenLogic::LeaveLobby()
 { 
-  if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() )
+  if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() ) {
+    isPlayerReady = false;
+    needUpdatePlayerReadyness = false;
+    g_needNotifyLobbyClients = false;
+
+    NScreenCommands::PushCommand( NScreenCommands::CreatePopScreenCommand( screen.Get() ) );
+    locked->SetReady( lobby::EGameMemberReadiness::NotReady );
     locked->ConnectToCluster( g_devLogin, "" );
+  }
 }
 
 void SelectHeroScreenLogic::ChangeTeam( int team )
@@ -69,6 +77,7 @@ void SelectHeroScreenLogic::SetDeveloperParty(int party)
 
 void SelectHeroScreenLogic::DebugDisplayPlayers ( const wstring & status )
 {
+  
   if (isPlayerReady && needUpdatePlayerReadyness) {
     if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() ) {
       locked->SetReady( lobby::EGameMemberReadiness::ReadyForAnything );
@@ -82,6 +91,7 @@ void SelectHeroScreenLogic::DebugDisplayPlayers ( const wstring & status )
       g_needNotifyLobbyClients = false;
     }
   }
+  
   UI::ImageLabel * pDesc = UI::GetChildChecked < UI::ImageLabel > ( pBaseWindow, "DebugPlayers", true );
   if ( pDesc )
     pDesc->SetCaptionTextW ( status.c_str() );
