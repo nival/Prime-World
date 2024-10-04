@@ -10,13 +10,16 @@
 #include "FastReconnectCtxPW.h"
 
 
+bool g_needNotifyLobbyClients = false;
+
 namespace lobby
 {
 
 ClientPW::ClientPW( Transport::TClientId _clientId, bool _socialMode, Game::IGameContextUiInterface * _gameCtx, FastReconnectCtxPW * _fastReconnectCtx ) :
 ClientBase( _clientId, _socialMode ),
 gameCtx( _gameCtx ),
-fastReconnectCtxPw( _fastReconnectCtx )
+fastReconnectCtxPw( _fastReconnectCtx ),
+lastRememberedPlayers ( -1 ) 
 {
 }
 
@@ -102,15 +105,14 @@ void ClientPW::RemoveFirstLobbyScreen()
     NScreenCommands::PushCommand( NScreenCommands::CreatePopScreenCommand( lobbyScreen ) );
 }
 
-
-
 void ClientPW::UpdateCustomLobbyPlayers( const set<int> & hilitePlayers )
 {
   if ( !heroScreen )
     return;
-
   vector<wstring> lines;
   vector<int> linesIds;
+
+  int readyPlayers = 0;
 
   for( int i = 0; i < 2; ++i )
   {
@@ -125,6 +127,7 @@ void ClientPW::UpdateCustomLobbyPlayers( const set<int> & hilitePlayers )
         continue;
       
       const bool ready = ( ReadyPlayers().find( memb.user.userId ) != ReadyPlayers().end() );
+      readyPlayers += ready ? 1 : 0;
 
       wstring line = NStr::StrFmtW( L"<space:2>%s (%d) as %s (%s), %s",
         memb.user.nickname.c_str(),
@@ -137,6 +140,20 @@ void ClientPW::UpdateCustomLobbyPlayers( const set<int> & hilitePlayers )
       linesIds.push_back( memb.user.userId );
     }
   }
+
+  int totalPlayers = lines.size();
+  if (lastRememberedPlayers != totalPlayers) {
+    // Notify all members to be ready only if new not every player is ready
+    // In other case all players will be ready to play, but someone left the game
+    if (totalPlayers == readyPlayers) {
+      g_needNotifyLobbyClients = true;
+    }
+  }
+  // If someone just connected - notify
+  if (lastRememberedPlayers < totalPlayers) {
+    g_needNotifyLobbyClients = true;
+  }
+  lastRememberedPlayers = totalPlayers;
 
   heroScreen->UpdatePlayers( lines, linesIds, hilitePlayers );
 }

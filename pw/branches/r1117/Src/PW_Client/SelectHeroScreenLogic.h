@@ -15,9 +15,10 @@ private:
 
   Weak<NGameX::SelectHeroScreen> screen;
   bool isPlayerReady;
+  bool needUpdatePlayerReadyness;
  
 public:
-  SelectHeroScreenLogic() { isPlayerReady = false; }
+  SelectHeroScreenLogic() { isPlayerReady = false; needUpdatePlayerReadyness = false; }
 
   void SetOwner( NGameX::SelectHeroScreen * _screen ) { screen = _screen; }    
 

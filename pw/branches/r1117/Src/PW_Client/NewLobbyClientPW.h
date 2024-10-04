@@ -54,6 +54,8 @@ private:
   Weak<NGameX::SelectHeroScreen>        heroScreen;
   StrongMT<FastReconnectCtxPW>          fastReconnectCtxPw;
 
+  int lastRememberedPlayers;
+
   void RemoveFirstLobbyScreen();
   void UpdateCustomLobbyPlayers( const set<int> & hilitePlayers );
 };
