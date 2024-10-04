@@ -63,7 +63,7 @@ namespace PW_MiniLauncher
 
          string exeDir = (string)Registry.GetValue(keyName, "", "");
          //noSuch.Split("PW_Minilauncher.exe %s");
-         gameDirectory = exeDir.Substring(0, exeDir.Length - 23);
+         gameDirectory = exeDir.Substring(1, exeDir.Length - 25);
 
       }
 
