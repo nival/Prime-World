@@ -478,7 +478,7 @@ namespace NWorld
 				heroSpawnDesc.usePlayerInfoTalentSet = false;
 			}
 			else
-			{
+      {
         int actionBarIdx = 0;
 			    for (int level = 0; level < 6; ++level) {
 					for (int slot = 0; slot < 6; ++slot) {
@@ -507,6 +507,9 @@ namespace NWorld
             {
               NDb::Ptr<NDb::Talent> talentPtr = it->second;
               NDb::EAbilityType abilityType = talentPtr->type;
+              if (talentPtr->naftaCost == 0) { // default class talent
+                heroSpawnDesc.usePlayerInfoTalentSet = true;
+              }
               bool isTalentActive =
                 abilityType == NDb::ABILITYTYPE_ACTIVE || 
                 abilityType == NDb::ABILITYTYPE_MULTIACTIVE || 
@@ -522,7 +525,6 @@ namespace NWorld
             talentInfo.refineRate = 5;
 
             heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
-            heroSpawnDesc.usePlayerInfoTalentSet = true;
 
 					}
 				  }
