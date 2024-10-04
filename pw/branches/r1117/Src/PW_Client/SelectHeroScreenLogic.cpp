@@ -71,6 +71,7 @@ void SelectHeroScreenLogic::DebugDisplayPlayers ( const wstring & status )
   if (isPlayerReady) { // Update ready status for everyone
     if ( StrongMT<Game::IGameContextUiInterface> locked = screen->GameCtx().Lock() ) {
       locked->SetReady( lobby::EGameMemberReadiness::Ready );
+      //locked->RefreshGamesList();
     }
   }
   UI::ImageLabel * pDesc = UI::GetChildChecked < UI::ImageLabel > ( pBaseWindow, "DebugPlayers", true );
