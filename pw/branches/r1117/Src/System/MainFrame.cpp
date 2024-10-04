@@ -582,7 +582,7 @@ bool NMainFrame::InitApplication( HINSTANCE hInstance, const char *pszAppName, c
 	::hInstance = hInstance;
 
   s_fullscreen = fullscreen;
-  s_borderless = false;
+  s_borderless = s_fullscreen;
 	
   if ( hUseWindow )
   {
