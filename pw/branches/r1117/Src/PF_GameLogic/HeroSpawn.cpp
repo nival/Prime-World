@@ -35,6 +35,8 @@
 #include <PF_GameLogic/PFTalent.h>
 #include "WebLauncher.h"
 
+#pragma optimize("",off)
+
 namespace 
 {
   struct BotOverride
@@ -469,19 +471,27 @@ namespace NWorld
 
 		//get tallent set by NickName and HeroID
 
-		if (players[it->playerId].playerType == NCore::EPlayerType::Human) {
+		if (players[it->playerId].playerType == NCore::EPlayerType::Human)
+		{
 			if (!players[it->playerId].nickname.empty()) {
 				WebLauncherPostRequest prequest;
+
 			std::vector<int> talentSet = prequest.GetTallentSet(players[it->playerId].nickname.c_str(),heroSpawnDesc.pHero->persistentId.c_str());
+			
 			if(talentSet.empty())
 			{
 				heroSpawnDesc.usePlayerInfoTalentSet = false;
 			}
 			else
-      {
-        int actionBarIdx = 0;
-			    for (int level = 0; level < 6; ++level) {
-					for (int slot = 0; slot < 6; ++slot) {
+			{
+				int actionBarIdx = 0;
+				int numUltimates = 0;
+				int num5lineUpgrades = 0;
+
+				for (int level = 0; level < 6; ++level)
+				{
+					for (int slot = 0; slot < 6; ++slot)
+					{
 
 						uint tIndex = uint(level * NWorld::PFTalentsSet::SLOTS_COUNT + slot + 1);
 						uint tIndex2 = uint((5-level) * NWorld::PFTalentsSet::SLOTS_COUNT + slot);
@@ -489,7 +499,7 @@ namespace NWorld
 						int talentId = talentSet[tIndex2]-1;
 
 						NCore::TalentInfo talentInfo;
-						
+					
 						if(talentId >= 0)
 						{
 							const char* talentName = talentsMap[talentId];
@@ -497,40 +507,50 @@ namespace NWorld
 						}
 						else
 						{
+							if(level == 4)
+								num5lineUpgrades++;
+
 							std::string className = prequest.ConvertFromClassID(-talentId);
 							//std::string className = prequest.ConvertFromClassID(-1);
 							talentInfo.id = Crc32Checksum().AddString(className.c_str()).Get();
-            }
+						}
 
-            NWorld::PFResourcesCollection::TalentMap::iterator it = talents.find(talentInfo.id);
-            if (it != talents.end())
-            {
-              NDb::Ptr<NDb::Talent> talentPtr = it->second;
-              NDb::EAbilityType abilityType = talentPtr->type;
-              if (talentPtr->naftaCost == 0) { // default class talent
-                heroSpawnDesc.usePlayerInfoTalentSet = true;
-              }
-              bool isTalentActive =
-                abilityType == NDb::ABILITYTYPE_ACTIVE || 
-                abilityType == NDb::ABILITYTYPE_MULTIACTIVE || 
-                abilityType == NDb::ABILITYTYPE_CHANNELLING || 
-                abilityType == NDb::ABILITYTYPE_SWITCHABLE;
+						NWorld::PFResourcesCollection::TalentMap::iterator it = talents.find(talentInfo.id);
+						if (it != talents.end())
+						{
+							NDb::Ptr<NDb::Talent> talentPtr = it->second;
+							NDb::EAbilityType abilityType = talentPtr->type;			  
+							if (talentPtr->naftaCost == 0) { // default class talent
+								heroSpawnDesc.usePlayerInfoTalentSet = true;
+							}
+							bool isTalentActive =
+								abilityType == NDb::ABILITYTYPE_ACTIVE || 
+								abilityType == NDb::ABILITYTYPE_MULTIACTIVE || 
+								abilityType == NDb::ABILITYTYPE_CHANNELLING || 
+								abilityType == NDb::ABILITYTYPE_SWITCHABLE;
 
-              if (isTalentActive) {
-                talentInfo.actionBarIdx = actionBarIdx++;
-              } else {
-                talentInfo.actionBarIdx = -1;
-              }
-            }
-            talentInfo.refineRate = 5;
+							if (isTalentActive) {
+								talentInfo.actionBarIdx = actionBarIdx++;
+							} else {
+								talentInfo.actionBarIdx = -1;
+							}
+				
+							if(talentPtr->isUltimateTalent)
+								numUltimates++;
+						}
+						talentInfo.refineRate = 5;
 
-            heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
-
+						heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
 					}
-				  }
 				}
+
+				if(numUltimates > 1 || num5lineUpgrades > 1)
+					heroSpawnDesc.usePlayerInfoTalentSet = false;
 			}
-			}
+		}
+
+
+      }
 
         CreateHero( pWorld, heroSpawnDesc );
         DebugTrace( "SpawnHeroes:CreateHero:%d: %2.3f", heroSpawnDesc.playerId, NHPTimer::GetTimePassedAndUpdateTime( time ) );
