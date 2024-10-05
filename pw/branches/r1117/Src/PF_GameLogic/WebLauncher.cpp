@@ -5,7 +5,7 @@
 #include <set>
 
 #pragma comment(lib, "wininet.lib")
-//#pragma optimize ("",off)
+#pragma optimize ("",off)
 
 static std::set<std::string> allResourcesIDs;
 
@@ -976,7 +976,7 @@ std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, 
 	char jsonBuff[1024];
 	ZeroMemory(jsonBuff,1024);
 
-	sprintf(jsonBuff,"{\"method\": \"getUserBuildByNickname\", \"data\": {\"nickname\": \"%s\", \"hero\": %d}}",nickNameU8.c_str(), heroID);
+sprintf(jsonBuff,"{\"method\": \"getUserBuildByNickname\", \"data\": {\"nickname\": \"%s\", \"hero\": %d}}",nickNameU8.c_str(), heroID);
 	const std::string jsonData = jsonBuff;
 
 	// Set headers and data for the POST request
@@ -1123,7 +1123,23 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
   }
   int nicknameStart = nicknamePos + strlen(nicknameFindSubstr);
   int nicknameSize = response.size() - (nicknameStart + 3 /* ""} */);
-  res.response = response.substr(nicknameStart, nicknameSize);
+
+  std::string utf8String = response.substr(nicknameStart, nicknameSize);
+  
+	int utf8Length = static_cast<int>(utf8String.length());
+    int wideCharLength = MultiByteToWideChar(CP_UTF8, 0, utf8String.c_str(), utf8Length, NULL, 0);
+
+    wchar_t* wideCharString = new wchar_t[wideCharLength + 1];
+    MultiByteToWideChar(CP_UTF8, 0, utf8String.c_str(), utf8Length, wideCharString, wideCharLength);
+    wideCharString[wideCharLength] = L'\0';
+
+    int win1251Length = WideCharToMultiByte(1251, 0, wideCharString, -1, NULL, 0, NULL, NULL);
+	char* someCyrilcStr = "выапдлгувктпуклгш";
+    char* win1251String = new char[win1251Length];
+    WideCharToMultiByte(1251, 0, wideCharString, -1, win1251String, win1251Length, NULL, NULL);
+
+
+  res.response = win1251String;
   res.retCode = res.response.empty() ?  WebLauncherPostRequest::LoginResponse_FAIL : WebLauncherPostRequest::LoginResponse_OK;
 
   return res;
