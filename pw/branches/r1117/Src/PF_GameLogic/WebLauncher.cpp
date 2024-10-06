@@ -8,7 +8,7 @@
 #pragma comment(lib, "wininet.lib")
 
 static std::set<std::string> allResourcesIDs;
-
+#pragma optimize("", off)
 
 WebLauncherPostRequest::WebLauncherPostRequest()
 {
@@ -971,68 +971,108 @@ std::string WideCharToMultiByteString(const wchar_t* wideCharString) {
 static Json::Value ParseJson(const char* json) {
   Json::Reader jsonReader;
   Json::Value root;
-  jsonReader.parse(json, root, false);
-  return root;
+  bool isOk = jsonReader.parse(json, root, false);
+  return isOk ? root : Json::Value();
 }
 
 
-std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, const char* heroName)
+std::string WebLauncherPostRequest::SendPostRequest(const std::string& jsonData) {
+  // Set headers and data for the POST request
+  const char* headers = "Content-Type: application/json\r\n";
+  const char* postData = jsonData.c_str();
+  DWORD postDataLen = jsonData.length();
+  DWORD headersDataLen = strlen(headers);
+
+  // Send the HTTP request
+  BOOL bRequestSent = HttpSendRequestA(hRequest, headers, headersDataLen, (LPVOID)postData, postDataLen);
+  if (!bRequestSent) {
+    InternetCloseHandle(hRequest);
+    InternetCloseHandle(hConnect);
+    InternetCloseHandle(hInternet);
+    return "";
+  }
+
+  // Read the response
+  char buffer[4096];
+  DWORD bytesRead = 0;
+  std::string responseStream;
+
+  while (InternetReadFile(hRequest, buffer, sizeof(buffer) - 1, &bytesRead) && bytesRead > 0) {
+    buffer[bytesRead] = '\0'; // Null-terminate the buffer
+    responseStream += buffer;
+  }
+
+  OutputDebugStringA(responseStream.c_str());
+
+  return responseStream;
+}
+
+
+std::vector<WebLauncherPostRequest::TalentWebData> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, const char* heroName)
 {
-	std::vector<int> result;
+	std::vector<TalentWebData> result;
 
 	int heroID = characterMap[heroName];
 	std::string nickNameU8 = WideCharToMultiByteString(nickName);
+
+  // Talent build json request
 	char jsonBuff[1024];
 	ZeroMemory(jsonBuff,1024);
+  sprintf(jsonBuff,"{\"method\": \"getUserBuildByNickname\", \"data\": {\"nickname\": \"%s\", \"hero\": %d}}",nickNameU8.c_str(), heroID);
+	std::string jsonData = jsonBuff;
+  std::string responseStream = SendPostRequest(jsonData);
 
-sprintf(jsonBuff,"{\"method\": \"getUserBuildByNickname\", \"data\": {\"nickname\": \"%s\", \"hero\": %d}}",nickNameU8.c_str(), heroID);
-	const std::string jsonData = jsonBuff;
+  Json::Value parsedJsonSet = ParseJson(responseStream.c_str());
+  Json::Value errorSet = parsedJsonSet.get("error", "ERROR");
+  if (!errorSet.asString().empty()) {
+    return result; // no talent set will be loaded
+  }
+  Json::Value dataSet = parsedJsonSet.get("data", "");
+  bool isArrayTalents = dataSet.isArray();
+  if (!isArrayTalents) {
+    return result; // json parsing error
+  }
 
-	// Set headers and data for the POST request
-	const char* headers = "Content-Type: application/json\r\n";
-	const char* postData = jsonData.c_str();
-	DWORD postDataLen = jsonData.length();
-	DWORD headersDataLen = strlen(headers);
+  // Talent active slots json request
+  ZeroMemory(jsonBuff,1024);
+  sprintf(jsonBuff,"{\"method\": \"getUserActiveBarByNickname\", \"data\": {\"nickname\": \"%s\", \"hero\": %d}}",nickNameU8.c_str(), heroID);
+  jsonData = jsonBuff;
+  responseStream = SendPostRequest(jsonData);
+  //responseStream = "{\"error\":\"\",\"data\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-3,-9,0,8,0,0,0,0,7,0,0,2,0,0,0,0,0,0]}";
 
-	// Send the HTTP request
-	BOOL bRequestSent = HttpSendRequestA(hRequest, headers, headersDataLen, (LPVOID)postData, postDataLen);
-	if (!bRequestSent) {
-		std::cerr << "HttpSendRequest failed with error: " << GetLastError() << std::endl;
-		InternetCloseHandle(hRequest);
-		InternetCloseHandle(hConnect);
-		InternetCloseHandle(hInternet);
-		return result;
-	}
+  result.resize(36); // resize by max talent number
 
-	// Read the response
-	char buffer[4096];
-	DWORD bytesRead = 0;
-	std::string responseStream;
+  Json::Value parsedJsonBar = ParseJson(responseStream.c_str());
+  Json::Value errorBar = parsedJsonBar.get("error", "ERROR_BAR");
+  bool useUserSlots = true;
+  if (!errorBar.asString().empty()){
+    // load talents, but no slots
+    useUserSlots = false;
+  } else {
+    Json::Value dataBar = parsedJsonBar.get("data" , "");
+    bool isArrayBar = dataBar.isArray();
+    if (!isArrayBar) {
+      useUserSlots = false; // error in array
+    } else {
+      int talId = 0;
 
-	while (InternetReadFile(hRequest, buffer, sizeof(buffer) - 1, &bytesRead) && bytesRead > 0) {
-		buffer[bytesRead] = '\0'; // Null-terminate the buffer
-		responseStream += buffer;
-	}
+      for (int i = 0; i < 36; ++i) {
+        int activeSlot = dataBar[i].asInt();
+        result[i].activeSlot = abs(activeSlot) - 1; // fill active slots
+        result[i].isSmartCast = activeSlot < 0;
+      }
+    }
+  }
 
-	OutputDebugStringA(responseStream.c_str());
-
-	result.resize(36);
-  Json::Value parsedJson = ParseJson(responseStream.c_str());
-  Json::Value data = parsedJson.get("data", "");
-  
-  bool isArray = data.isArray();
-
-  int curID = 0;
-  for (Json::Value::iterator it = data.begin(); it != data.end(); ++it) {
-    int val = it->asInt();
-    result[curID++] = val;
-    if (val == 0) {
+  for (int i = 0; i < 36; ++i) {
+    result[i].webTalentId = dataSet[i].asInt();;
+    if (!useUserSlots) {
+      result[i].activeSlot = -1;
+    }
+    if (result[i].webTalentId == 0) {
+      result.clear();
       break; // empty slot in build
     }
-	}
-
-	if(curID < 36) {
-		result.clear(); // has empty slots
 	}
 
 	return result;
@@ -1042,10 +1082,6 @@ static int firstID = 360;
 
 std::string WebLauncherPostRequest::ConvertFromClassID(int id)
 {
-	//firstID++;
-	//return classTalentMap[keysClassTalent[firstID]];
-
-	
 	return classTalentMap[id-1];
 }
 
@@ -1063,33 +1099,7 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
   sprintf(jsonBuff,"{\"method\": \"getUserByToken\", \"data\": {\"token\": \"%s\"}}", token);
   const std::string jsonData = jsonBuff;
 
-  // Set headers and data for the POST request
-  const char* headers = "Content-Type: application/json\r\n";
-  const char* postData = jsonData.c_str();
-  DWORD postDataLen = jsonData.length();
-  DWORD headersDataLen = strlen(headers);
-
-  // Send the HTTP request
-  BOOL bRequestSent = HttpSendRequestA(hRequest, headers, headersDataLen, (LPVOID)postData, postDataLen);
-  if (!bRequestSent) {
-    std::cerr << "HttpSendRequest failed with error: " << GetLastError() << std::endl;
-    InternetCloseHandle(hRequest);
-    InternetCloseHandle(hConnect);
-    InternetCloseHandle(hInternet);
-    res.retCode = WebLauncherPostRequest::LoginResponse_OFFLINE;
-    res.response = "";
-    return res;
-  }
-
-  // Read the response
-  char buffer[4096];
-  DWORD bytesRead = 0;
-  std::string responseStream;
-
-  while (InternetReadFile(hRequest, buffer, sizeof(buffer) - 1, &bytesRead) && bytesRead > 0) {
-    buffer[bytesRead] = '\0'; // Null-terminate the buffer
-    responseStream += buffer;
-  }
+  std::string responseStream = SendPostRequest(jsonData);
 
   OutputDebugStringA(responseStream.c_str());
 
@@ -1103,16 +1113,17 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
   Json::Value nickname = data.get("nickname", "");
   std::string utf8String = nickname.asString();
   
+  // Fix 1251 encoding
 	int utf8Length = static_cast<int>(utf8String.length());
-    int wideCharLength = MultiByteToWideChar(CP_UTF8, 0, utf8String.c_str(), utf8Length, NULL, 0);
+  int wideCharLength = MultiByteToWideChar(CP_UTF8, 0, utf8String.c_str(), utf8Length, NULL, 0);
 
-    wchar_t* wideCharString = new wchar_t[wideCharLength + 1];
-    MultiByteToWideChar(CP_UTF8, 0, utf8String.c_str(), utf8Length, wideCharString, wideCharLength);
-    wideCharString[wideCharLength] = L'\0';
+  wchar_t* wideCharString = new wchar_t[wideCharLength + 1];
+  MultiByteToWideChar(CP_UTF8, 0, utf8String.c_str(), utf8Length, wideCharString, wideCharLength);
+  wideCharString[wideCharLength] = L'\0';
 
-    int win1251Length = WideCharToMultiByte(1251, 0, wideCharString, -1, NULL, 0, NULL, NULL);
-    char* win1251String = new char[win1251Length];
-    WideCharToMultiByte(1251, 0, wideCharString, -1, win1251String, win1251Length, NULL, NULL);
+  int win1251Length = WideCharToMultiByte(1251, 0, wideCharString, -1, NULL, 0, NULL, NULL);
+  char* win1251String = new char[win1251Length];
+  WideCharToMultiByte(1251, 0, wideCharString, -1, win1251String, win1251Length, NULL, NULL);
 
 
   res.response = win1251String;

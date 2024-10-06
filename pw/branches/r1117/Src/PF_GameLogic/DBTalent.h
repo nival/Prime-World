@@ -49,6 +49,16 @@ enum ETalentRarity
 	TALENTRARITY_EXCLUSIVE = 5,
 	TALENTRARITY_OUTSTANDING = 6,
 };
+static const int TalentRarityToRefineRemap[] =
+{
+  5,  //TALENTRARITY_CLASS = 0,
+  10, //TALENTRARITY_ORDINARY = 1,
+  10, //TALENTRARITY_GOOD = 2,
+  10, //TALENTRARITY_EXCELLENT = 3,
+  9,  //TALENTRARITY_MAGNIFICENT = 4,
+  7,  //TALENTRARITY_EXCLUSIVE = 5,
+  5,  //TALENTRARITY_OUTSTANDING = 6,
+};
 
 const char *EnumToString( const ETalentRarity value );
 const ETalentRarity StringToEnum_ETalentRarity( const char* value );

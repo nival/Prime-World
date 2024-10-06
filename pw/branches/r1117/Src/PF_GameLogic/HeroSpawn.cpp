@@ -34,7 +34,7 @@
 #include <curl/curl.h>
 #include <PF_GameLogic/PFTalent.h>
 #include "WebLauncher.h"
-
+#pragma optimize("", off)
 
 namespace 
 {
@@ -475,7 +475,7 @@ namespace NWorld
 			if (!players[it->playerId].nickname.empty()) {
 				WebLauncherPostRequest prequest;
 
-			std::vector<int> talentSet = prequest.GetTallentSet(players[it->playerId].nickname.c_str(),heroSpawnDesc.pHero->persistentId.c_str());
+        std::vector<WebLauncherPostRequest::TalentWebData> talentSet = prequest.GetTallentSet(players[it->playerId].nickname.c_str(),heroSpawnDesc.pHero->persistentId.c_str());
 			
 			if(talentSet.empty())
 			{
@@ -485,7 +485,14 @@ namespace NWorld
 			{
 				int actionBarIdx = 0;
 				int numUltimates = 0;
-				int num5lineUpgrades = 0;
+        int num5lineUpgrades = 0;
+        bool useUserSlots = false;
+        for (int i = 0; i < 36; ++i) {
+          if (talentSet[i].activeSlot != -1) {
+            useUserSlots = true;
+            break;
+          }
+        }
 
 				for (int level = 0; level < 6; ++level)
 				{
@@ -495,7 +502,9 @@ namespace NWorld
 						uint tIndex = uint(level * NWorld::PFTalentsSet::SLOTS_COUNT + slot + 1);
 						uint tIndex2 = uint((5-level) * NWorld::PFTalentsSet::SLOTS_COUNT + slot);
 
-						int talentId = talentSet[tIndex2]-1;
+						int talentId = talentSet[tIndex2].webTalentId-1;
+            int activeSlot = talentSet[tIndex2].activeSlot;
+            int isSmartCast = talentSet[tIndex2].isSmartCast;
 
 						NCore::TalentInfo talentInfo;
 					
@@ -506,8 +515,9 @@ namespace NWorld
 						}
 						else
 						{
-							if(level == 4)
+              if(level == 4) {
 								num5lineUpgrades++;
+              }
 
 							std::string className = prequest.ConvertFromClassID(-talentId);
 							//std::string className = prequest.ConvertFromClassID(-1);
@@ -529,22 +539,26 @@ namespace NWorld
 								abilityType == NDb::ABILITYTYPE_SWITCHABLE;
 
 							if (isTalentActive) {
-								talentInfo.actionBarIdx = actionBarIdx++;
+                talentInfo.actionBarIdx = useUserSlots ? activeSlot : actionBarIdx++;
+                talentInfo.isInstaCast = isSmartCast;
 							} else {
 								talentInfo.actionBarIdx = -1;
 							}
+
+              talentInfo.refineRate = NDb::TalentRarityToRefineRemap[talentPtr->rarity];
 				
-							if(talentPtr->isUltimateTalent)
+              if(talentPtr->isUltimateTalent && talentPtr->rarity == NDb::TALENTRARITY_CLASS) {
 								numUltimates++;
+              }
 						}
-						talentInfo.refineRate = 5;
 
 						heroSpawnDesc.playerInfo.talents.insert(nstl::pair<const uint, NCore::TalentInfo>(tIndex, talentInfo));
 					}
 				}
 
-				if(numUltimates > 1 || num5lineUpgrades > 1)
+        if(numUltimates > 1 || num5lineUpgrades > 1) {
 					heroSpawnDesc.usePlayerInfoTalentSet = false;
+        }
 			}
 		}
 

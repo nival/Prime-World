@@ -33,9 +33,11 @@ public:
   struct TalentWebData {
     int webTalentId;
     int activeSlot; // negative = smart cast
+    bool isSmartCast;
   };
 
-	std::vector<int> GetTallentSet(const wchar_t* nickName, const char* heroName);
+	std::vector<TalentWebData> GetTallentSet(const wchar_t* nickName, const char* heroName);
 	std::string ConvertFromClassID(int id);
   WebLoginResponse GetNickName(const char* token);
+  std::string WebLauncherPostRequest::SendPostRequest(const std::string& jsonData);
 };
