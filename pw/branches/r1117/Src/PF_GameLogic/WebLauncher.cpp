@@ -3,6 +3,7 @@
 #include <iostream>
 #include <map>
 #include <set>
+#include <json/json.h>
 
 #pragma comment(lib, "wininet.lib")
 
@@ -966,6 +967,15 @@ std::string WideCharToMultiByteString(const wchar_t* wideCharString) {
     return result;
 }
 
+
+static Json::Value ParseJson(const char* json) {
+  Json::Reader jsonReader;
+  Json::Value root;
+  jsonReader.parse(json, root, false);
+  return root;
+}
+
+
 std::vector<int> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, const char* heroName)
 {
 	std::vector<int> result;
@@ -1007,50 +1017,23 @@ sprintf(jsonBuff,"{\"method\": \"getUserBuildByNickname\", \"data\": {\"nickname
 	OutputDebugStringA(responseStream.c_str());
 
 	result.resize(36);
-	std::string curNumber = "";
-	bool isCollectingNumbers = false;
-	int curID = 0;
+  Json::Value parsedJson = ParseJson(responseStream.c_str());
+  Json::Value data = parsedJson.get("data", "");
+  
+  bool isArray = data.isArray();
 
-	for(uint i=0;i<responseStream.size();++i)
-	{
-		if(isCollectingNumbers)
-		{
-			if(responseStream[i] == ',' || responseStream[i] == ']')
-			{
-				char *endp = 0;
-				int value = strtol( curNumber.c_str(), &endp, 10 );
-				result[curID] = value;
-				curNumber = "";
-				curID++;
-        if (value == 0) { // error
-          break;
-        }
-			}
-			else
-			{
-				curNumber += responseStream[i];		
-			}			
-		}
-
-		if(responseStream[i] == '[')
-		{
-			isCollectingNumbers = true;
-		}
-
-		if(responseStream[i] == ']')
-		{
-			isCollectingNumbers = true;
-		}
-    if (curID >= 36) {
-      break; // web-launcher should not crash the game
+  int curID = 0;
+  for (Json::Value::iterator it = data.begin(); it != data.end(); ++it) {
+    int val = it->asInt();
+    result[curID++] = val;
+    if (val == 0) {
+      break; // empty slot in build
     }
 	}
 
-	if(curID < 36)
-	{
-		result.clear();
+	if(curID < 36) {
+		result.clear(); // has empty slots
 	}
-
 
 	return result;
 }
@@ -1072,6 +1055,8 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
 {
   WebLoginResponse res;
   res.response = std::string();
+  res.retCode = LoginResponse_FAIL;
+
   char jsonBuff[1024];
   ZeroMemory(jsonBuff,1024);
 
@@ -1112,18 +1097,11 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
   bool isCollectingNumbers = false;
   int curID = 0;
   
-  std::string response(responseStream);
-  const char* nicknameFindSubstr = "nickname\":\"";
-  int nicknamePos = response.find(nicknameFindSubstr);
-
-  if (response.find("{\"error\":\"\",\"data\":{") == -1 || nicknamePos == -1) {
-    res.retCode = WebLauncherPostRequest::LoginResponse_FAIL;
-    return res;
-  }
-  int nicknameStart = nicknamePos + strlen(nicknameFindSubstr);
-  int nicknameSize = response.size() - (nicknameStart + 3 /* ""} */);
-
-  std::string utf8String = response.substr(nicknameStart, nicknameSize);
+  Json::Value parsedJson = ParseJson(responseStream.c_str());
+  
+  Json::Value data = parsedJson.get("data", "");
+  Json::Value nickname = data.get("nickname", "");
+  std::string utf8String = nickname.asString();
   
 	int utf8Length = static_cast<int>(utf8String.length());
     int wideCharLength = MultiByteToWideChar(CP_UTF8, 0, utf8String.c_str(), utf8Length, NULL, 0);
@@ -1133,7 +1111,6 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
     wideCharString[wideCharLength] = L'\0';
 
     int win1251Length = WideCharToMultiByte(1251, 0, wideCharString, -1, NULL, 0, NULL, NULL);
-	char* someCyrilcStr = "выапдлгувктпуклгш";
     char* win1251String = new char[win1251Length];
     WideCharToMultiByte(1251, 0, wideCharString, -1, win1251String, win1251Length, NULL, NULL);
 
