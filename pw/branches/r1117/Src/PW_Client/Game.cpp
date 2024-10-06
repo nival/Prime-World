@@ -162,7 +162,7 @@ static NDebug::DebugVar<int> unfreeVirtualAllocs( "UnfreeVirtualAllocs", "", tru
 
 static NDebug::DebugVar<int> totalAllocsSize( "TotalAllocsSize", "", true );
 
-
+//#pragma optimize ("", off)
 //CRAP
 extern "C" INTERMODULE_EXPORT void TooSmartLinker();
 
@@ -714,6 +714,14 @@ void InitCensorDicts()
 
 string g_devLogin;
 
+std::string GetDirectoryFromPath(const std::string& fullPath) {
+    std::size_t found = fullPath.find_last_of("/\\");
+    if (found != std::string::npos) {
+        return fullPath.substr(0, found);
+    }
+    return "";
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, SPluginSettings * pluginSett )
 {
@@ -1116,7 +1124,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
   NFile::DeleteOldFiles( NProfile::GetRootLogsFolder().c_str(), double(g_deleteLogFilesAfterDays) * 60 * 60 * 24 );
   NFile::DeleteOldFiles( NProfile::GetFullFolderPath(NProfile::FOLDER_REPLAYS).c_str(), double(g_deleteLogFilesAfterDays) * 60 * 60 * 24 );
-  std::string currentLogin = "";
+  static std::string currentLogin = "";
 
   if ( s_localGame || isReplay )
   {
@@ -1128,7 +1136,66 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   }
 
   {
-    const char * webToken = CmdLineLite::Instance().GetStringKey( "web_token", "" );
+	  
+
+	  bool isOK = true;
+	  if(CmdLineLite::Instance().ArgsCount() < 2)
+		  isOK = false;
+		
+	  std::string pwGameExecutableFullPath = CmdLineLite::Instance().Argument(0);
+	  const char* protocolLine = CmdLineLite::Instance().Argument(1);
+	  std::string commanLineArgs = protocolLine;
+
+	  const char* delimiter = "/";
+
+    char* token = strtok(const_cast<char*>(protocolLine), delimiter);
+	std::vector<std::string> allTokens;
+	allTokens.reserve(4);
+
+    while (token != 0) {
+		allTokens.push_back(token);
+        token = strtok(0, delimiter);
+    }
+
+	if(allTokens.size() < 2)
+		isOK = false;
+
+	int selectedHeroID = atoi(allTokens[2].c_str());
+	const char* versionStr = allTokens[3].c_str();
+
+	int versionMajor = VERSION_MAJOR;
+	int versionMinor = VERSION_MINOR;
+	int versionPatch = VERSION_PATCH;
+
+	char versionStrBuff[64] = {};
+
+	sprintf_s(versionStrBuff,"%d.%d.%d",versionMajor, versionMinor, versionPatch);
+
+	if(strcmp(versionStrBuff, versionStr) != 0)
+	{
+		char curDirBuff[260];
+		GetCurrentDirectoryA(260,curDirBuff);
+
+		LPCTSTR applicationName = "PW_MicroUpdater.exe";
+		LPCTSTR commandLineArgs = commanLineArgs.c_str();
+
+		std::string fullExecutableName = GetDirectoryFromPath(pwGameExecutableFullPath);
+		fullExecutableName += "\\..\\";
+		fullExecutableName += applicationName;
+
+		STARTUPINFO startupInfo;
+		PROCESS_INFORMATION processInfo;
+		ZeroMemory(&startupInfo, sizeof(startupInfo));
+		startupInfo.cb = sizeof(startupInfo);
+		ZeroMemory(&processInfo, sizeof(processInfo));
+
+		if (CreateProcessA(fullExecutableName.c_str(), (LPSTR)commandLineArgs, NULL, NULL, FALSE, 0, NULL, NULL, &startupInfo, &processInfo)) {
+						exit(0);
+		}
+		//Launch microupdater
+	}
+
+	const char * webToken = allTokens[1].c_str();
     WebLauncherPostRequest prequest;
     WebLauncherPostRequest::WebLoginResponse response = prequest.GetNickName(webToken);
     if (response.retCode == WebLauncherPostRequest::LoginResponse_FAIL) {
