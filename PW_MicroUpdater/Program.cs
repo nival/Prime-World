@@ -16,7 +16,7 @@ namespace PW_MicroUpdater
     class Program
     {
         const string serverURL = "https://rekongstor.github.io/update/client/";
-        const string binariesPath = "_ShippingSingleExe";
+        const string binariesPath = "Bin";
 
         [DllImport("wininet.dll", SetLastError = true)]
         public static extern IntPtr InternetOpen(string lpszAgent, int dwAccessType, string lpszProxyName, string lpszProxyBypass, int dwFlags);

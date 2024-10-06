@@ -1139,8 +1139,11 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 	  
 
 	  bool isOK = true;
-	  if(CmdLineLite::Instance().ArgsCount() < 2)
+    if(CmdLineLite::Instance().ArgsCount() < 2) {
 		  isOK = false;
+      ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the web-launcher. https://playpw.fun" );
+      return 0xBEEB;
+    } else {
 		
 	  std::string pwGameExecutableFullPath = CmdLineLite::Instance().Argument(0);
 	  const char* protocolLine = CmdLineLite::Instance().Argument(1);
@@ -1194,7 +1197,6 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 		}
 		//Launch microupdater
 	}
-
 	const char * webToken = allTokens[1].c_str();
     WebLauncherPostRequest prequest;
     WebLauncherPostRequest::WebLoginResponse response = prequest.GetNickName(webToken);
@@ -1228,6 +1230,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
     const char * mapId = CmdLineLite::Instance().GetStringKey( "mapId", "" );
     context = new Game::GameContext( sessLogin, response.response.c_str(), mapId, socialServer, guildEmblem, isSpectator, false );
+    }
   }
 
   context->Start();
