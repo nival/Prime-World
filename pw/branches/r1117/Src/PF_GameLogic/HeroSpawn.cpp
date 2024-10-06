@@ -35,7 +35,6 @@
 #include <PF_GameLogic/PFTalent.h>
 #include "WebLauncher.h"
 
-#pragma optimize("",off)
 
 namespace 
 {

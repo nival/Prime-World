@@ -248,7 +248,7 @@ void AdventureScreenLogic::UpdatePreferences()
       NGlobal::SaveConfig( NProfile::GetFullFilePath( "user.cfg", NProfile::FOLDER_USER ), STORAGE_USER );
 #if 1
 //#ifdef _SHIPPING
-      Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
+      Input::SaveInputConfig( NProfile::GetFullFilePath( "input_new.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
     }
   }
@@ -263,7 +263,7 @@ void AdventurepreferencesProcessor::Apply()
     NGlobal::SaveConfig( NProfile::GetFullFilePath( "user.cfg", NProfile::FOLDER_USER ), STORAGE_USER );
 #if 1
 //#ifdef _SHIPPING
-    Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
+    Input::SaveInputConfig( NProfile::GetFullFilePath( "input_new.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
   }
 }
@@ -280,7 +280,7 @@ void AdventurepreferencesProcessor::Cancel()
 
 #if 1
 //#ifdef _SHIPPING
-    Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
+    Input::SaveInputConfig( NProfile::GetFullFilePath( "input_new.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
   }
 }
@@ -316,7 +316,7 @@ void AdventurepreferencesProcessor::ApplyShortcuts()
 
 #if 1
 //#ifdef _SHIPPING
-    Input::SaveInputConfig( NProfile::GetFullFilePath( "input.cfg", NProfile::FOLDER_USER ), L"input" );
+    Input::SaveInputConfig( NProfile::GetFullFilePath( "input_new.cfg", NProfile::FOLDER_USER ), L"input" );
 #endif
   }
 }

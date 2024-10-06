@@ -5,7 +5,6 @@
 #include <set>
 
 #pragma comment(lib, "wininet.lib")
-#pragma optimize ("",off)
 
 static std::set<std::string> allResourcesIDs;
 
