@@ -166,6 +166,7 @@ namespace PW_MicroUpdater
                 }
             }
 
+            System.IO.File.Delete(zipFilePath);
             return true;
         }
 
