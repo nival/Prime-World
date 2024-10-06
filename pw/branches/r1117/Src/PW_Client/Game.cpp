@@ -1172,10 +1172,11 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
 	char versionStrBuff[64] = {};
 
-	sprintf_s(versionStrBuff,"%d.%d.%d",versionMajor, versionMinor, versionPatch);
+	//sprintf_s(versionStrBuff,"%d.%d.%d",versionMajor, versionMinor, versionPatch);
+	sprintf_s(versionStrBuff,"%d.%d",versionMajor, versionMinor);
 
 	if(strcmp(versionStrBuff, versionStr) != 0)
-	{
+  {
 		char curDirBuff[260];
 		GetCurrentDirectoryA(260,curDirBuff);
 
@@ -1184,6 +1185,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
 		std::string fullExecutableName = GetDirectoryFromPath(pwGameExecutableFullPath);
 		fullExecutableName += "\\..\\";
+    std::string dirName = fullExecutableName;
 		fullExecutableName += applicationName;
 
 		STARTUPINFO startupInfo;
@@ -1192,12 +1194,12 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 		startupInfo.cb = sizeof(startupInfo);
 		ZeroMemory(&processInfo, sizeof(processInfo));
 
-		if (CreateProcessA(fullExecutableName.c_str(), (LPSTR)commandLineArgs, NULL, NULL, FALSE, 0, NULL, NULL, &startupInfo, &processInfo)) {
-						exit(0);
+		if (CreateProcessA(fullExecutableName.c_str(), (LPSTR)commandLineArgs, NULL, NULL, FALSE, 0, NULL, dirName.c_str(), &startupInfo, &processInfo)) {
+		  exit(0);
 		}
 		//Launch microupdater
 	}
-	const char * webToken = allTokens[1].c_str();
+	  const char * webToken = allTokens[1].c_str();
     WebLauncherPostRequest prequest;
     WebLauncherPostRequest::WebLoginResponse response = prequest.GetNickName(webToken);
     if (response.retCode == WebLauncherPostRequest::LoginResponse_FAIL) {

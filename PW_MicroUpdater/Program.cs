@@ -155,82 +155,66 @@ namespace PW_MicroUpdater
 
         static bool UnpackUpdate(string filename)
         {
-            string zipFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
-            string destinationFolder = AppDomain.CurrentDomain.BaseDirectory;
 
-            using (ZipFile zip = ZipFile.Read(zipFilePath))
-            {
-                foreach (ZipEntry entry in zip)
-                {
-                    entry.Extract(destinationFolder, ExtractExistingFileAction.OverwriteSilently);
-                }
-            }
+         string zipFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
+         string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "7za.exe");
 
-            System.IO.File.Delete(zipFilePath);
-            return true;
-        }
+         if (!File.Exists(fullPath))
+         {
+            return false;
+         }
+
+         ProcessStartInfo startInfo = new ProcessStartInfo
+         {
+            FileName = fullPath,
+            Arguments = "x -y " + filename,
+            UseShellExecute = false,
+            WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory,
+         };
+         var process = Process.Start(startInfo);
+         process.WaitForExit();
+         System.IO.File.Delete(zipFilePath);
+         return true;
+      }
 
         static bool LaunchPWGame(string args)
         {
-            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, binariesPath + "/PW_Game.exe");
+            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, binariesPath + "\\LaunchGame.bat");
 
             if (!File.Exists(fullPath))
             {
                 return false;
             }
 
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = fullPath,
-                Arguments = args,
-                UseShellExecute = true,
-                WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory,
+         ProcessStartInfo startInfo = new ProcessStartInfo
+         {
+            FileName = fullPath,
+            Arguments = args,
+            UseShellExecute = true,
+            WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, binariesPath)
             };
             Process.Start(startInfo);
 
             return true;
         }
 
-        static void WaitWhilePWGameIsRunning()
+      static bool IsProcessRunning(string processName)
+      {
+         // Получаем все процессы с именем processName
+         var processes = Process.GetProcessesByName(processName);
+
+         // Проверяем, если ли такие процессы
+         return processes.Length > 0;
+      }
+
+      static void WaitWhilePWGameIsRunning()
         {
-            Thread.Sleep(1000);
-            //PROCESSENTRY32 pe32 = new PROCESSENTRY32();
-            //pe32.dwSize = (uint)Marshal.SizeOf(typeof(PROCESSENTRY32));
-
-            //IntPtr hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-
-            //if (hProcessSnap == IntPtr.Zero)
-            //{
-            //    Console.WriteLine("CreateToolhelp32Snapshot failed.");
-            //    return;
-            //}
-
-            //if (Process32First(hProcessSnap, ref pe32))
-            //{
-            //    do
-            //    {
-            //       // string processName = Encoding.Default.GetString(pe32.szExeFile).Trim('\0');
-                    
-            //       // Console.WriteLine("Process Name: " + pe32.szExeFile);
-            //        Console.WriteLine("Process ID: " + pe32.th32ProcessID);
-                    
-
-            //        // Check if the process you are looking for is running
-            //        //if (pe32.szExeFile.Equals("process_name.exe", StringComparison.OrdinalIgnoreCase))
-            //        //{
-            //        //    Console.WriteLine("Process is running.");
-            //        //    break;
-            //        //}
-
-            //    } while (Process32Next(hProcessSnap, ref pe32));
-            //}
-
-            //if (hProcessSnap != IntPtr.Zero)
-            //{
-            //    // Close the handle
-            //    Marshal.FreeHGlobal(hProcessSnap);
-            //}
-        }
+         while (IsProcessRunning("PW_Game.exe"))
+         {
+            var processes = Process.GetProcessesByName("PW_Game.exe");
+            processes[0].Kill();
+         }
+      }
 
         static void Main(string[] args)
         {
@@ -241,9 +225,9 @@ namespace PW_MicroUpdater
             string updateFileName = clientVer + ".zip";
 
             isOK &= DownloadUpdate(updateFileName);
-            isOK &= UnpackUpdate(updateFileName);
-
             WaitWhilePWGameIsRunning();
+
+            isOK &= UnpackUpdate(updateFileName);
 
             isOK &= LaunchPWGame(args[0]); ;
 
