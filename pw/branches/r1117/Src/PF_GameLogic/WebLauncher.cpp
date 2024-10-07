@@ -1023,10 +1023,15 @@ std::vector<WebLauncherPostRequest::TalentWebData> WebLauncherPostRequest::GetTa
   std::string responseStream = SendPostRequest(jsonData);
 
   Json::Value parsedJsonSet = ParseJson(responseStream.c_str());
+  if (parsedJsonSet.empty()) {
+    return result; // Failed json
+  }
+
   Json::Value errorSet = parsedJsonSet.get("error", "ERROR");
   if (!errorSet.asString().empty()) {
     return result; // no talent set will be loaded
   }
+
   Json::Value dataSet = parsedJsonSet.get("data", "");
   bool isArrayTalents = dataSet.isArray();
   if (!isArrayTalents) {
@@ -1042,24 +1047,22 @@ std::vector<WebLauncherPostRequest::TalentWebData> WebLauncherPostRequest::GetTa
 
   result.resize(36); // resize by max talent number
 
+  bool useUserSlots = false;
   Json::Value parsedJsonBar = ParseJson(responseStream.c_str());
-  Json::Value errorBar = parsedJsonBar.get("error", "ERROR_BAR");
-  bool useUserSlots = true;
-  if (!errorBar.asString().empty()){
-    // load talents, but no slots
-    useUserSlots = false;
-  } else {
-    Json::Value dataBar = parsedJsonBar.get("data" , "");
-    bool isArrayBar = dataBar.isArray();
-    if (!isArrayBar) {
-      useUserSlots = false; // error in array
-    } else {
-      int talId = 0;
+  if (!parsedJsonBar.empty()) {
+    Json::Value errorBar = parsedJsonBar.get("error", "ERROR_BAR");
+    if (errorBar.asString().empty()){
+      Json::Value dataBar = parsedJsonBar.get("data" , "");
+      bool isArrayBar = dataBar.isArray();
+      if (isArrayBar) {
+        useUserSlots = true;
+        int talId = 0;
 
-      for (int i = 0; i < 36; ++i) {
-        int activeSlot = dataBar[i].asInt();
-        result[i].activeSlot = abs(activeSlot) - 1; // fill active slots
-        result[i].isSmartCast = activeSlot < 0;
+        for (int i = 0; i < 36; ++i) {
+          int activeSlot = dataBar[i].asInt();
+          result[i].activeSlot = abs(activeSlot) - 1; // fill active slots
+          result[i].isSmartCast = activeSlot < 0;
+        }
       }
     }
   }
@@ -1108,6 +1111,9 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
   int curID = 0;
   
   Json::Value parsedJson = ParseJson(responseStream.c_str());
+  if (parsedJson.empty()) {
+    return res; // Failed json
+  }
   
   Json::Value data = parsedJson.get("data", "");
   Json::Value nickname = data.get("nickname", "");
