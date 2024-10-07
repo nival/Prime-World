@@ -5,7 +5,6 @@ using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Data;
-using Ionic.Zip;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading;
