@@ -1139,16 +1139,12 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 	  
 
 	  bool isOK = true;
-    if(CmdLineLite::Instance().ArgsCount() < 2) {
-		  isOK = false;
+  if(CmdLineLite::Instance().ArgsCount() != 3) {
       ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the web-launcher. https://playpw.fun" );
-      return 0xBEEB;
+    return 0xA000;
     } else {
 		
-	  std::string pwGameExecutableFullPath = CmdLineLite::Instance().Argument(0);
-	  const char* protocolLine = CmdLineLite::Instance().Argument(1);
-	  std::string commanLineArgs = protocolLine;
-
+  const char* protocolLine = CmdLineLite::Instance().GetStringKey( "protocol", "" );
 	  const char* delimiter = "/";
 
     char* token = strtok(const_cast<char*>(protocolLine), delimiter);
@@ -1160,44 +1156,24 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
         token = strtok(0, delimiter);
     }
 
-	if(allTokens.size() < 2)
-		isOK = false;
+  if(allTokens.size() < 4) {
+    ShowLocalizedErrorMB( L"StartViaLauncher", L"Invalid protocol" );
+    return 0xA001;
+  }
 
 	int selectedHeroID = atoi(allTokens[2].c_str());
 	const char* versionStr = allTokens[3].c_str();
 
 	int versionMajor = VERSION_MAJOR;
 	int versionMinor = VERSION_MINOR;
-	int versionPatch = VERSION_PATCH;
-
 	char versionStrBuff[64] = {};
 
-	//sprintf_s(versionStrBuff,"%d.%d.%d",versionMajor, versionMinor, versionPatch);
 	sprintf_s(versionStrBuff,"%d.%d",versionMajor, versionMinor);
 
 	if(strcmp(versionStrBuff, versionStr) != 0)
   {
-		char curDirBuff[260];
-		GetCurrentDirectoryA(260,curDirBuff);
-
-		LPCTSTR applicationName = "PW_MicroUpdater.exe";
-		LPCTSTR commandLineArgs = commanLineArgs.c_str();
-
-		std::string fullExecutableName = GetDirectoryFromPath(pwGameExecutableFullPath);
-		fullExecutableName += "\\..\\";
-    std::string dirName = fullExecutableName;
-		fullExecutableName += applicationName;
-
-		STARTUPINFO startupInfo;
-		PROCESS_INFORMATION processInfo;
-		ZeroMemory(&startupInfo, sizeof(startupInfo));
-		startupInfo.cb = sizeof(startupInfo);
-		ZeroMemory(&processInfo, sizeof(processInfo));
-
-		if (CreateProcessA(fullExecutableName.c_str(), (LPSTR)commandLineArgs, NULL, NULL, FALSE, 0, NULL, dirName.c_str(), &startupInfo, &processInfo)) {
-		  exit(0);
-		}
-		//Launch microupdater
+    ShowLocalizedErrorMB( L"Update failed", L"Game update has failed! Try to run from web-launcher" );
+    return 0xA002;
 	}
 	  const char * webToken = allTokens[1].c_str();
     WebLauncherPostRequest prequest;
@@ -1205,12 +1181,12 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
     if (response.retCode == WebLauncherPostRequest::LoginResponse_FAIL) {
       // Login failed
       ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the web-launcher. https://playpw.fun" );
-      return 0xBEBE;
+      return 0xA003;
     }
     if (response.retCode == WebLauncherPostRequest::LoginResponse_OFFLINE) {
       // Web is offline
       ShowLocalizedErrorMB( L"WebOffline", L"Web-launcher is offline" );
-      return 0xEBEB;
+      return 0xA004;
     }
 
     
@@ -1219,16 +1195,6 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
       currentLogin = response.response;
       g_devLogin = currentLogin.c_str();
     }
-
-    /*
-    // Plan-B?
-    if (response.retCode == WebLauncherPostRequest::LoginResponse_OFFLINE) {
-      const char * devLogin = CmdLineLite::Instance().GetStringKey( "dev_login", "" );
-	if(strlen(devLogin) > 32)
-		return -2;
-	currentLogin = devLogin;
-    }
-    */
 
     const char * mapId = CmdLineLite::Instance().GetStringKey( "mapId", "" );
     context = new Game::GameContext( sessLogin, response.response.c_str(), mapId, socialServer, guildEmblem, isSpectator, false );
