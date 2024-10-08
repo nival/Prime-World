@@ -398,7 +398,7 @@ WebLauncherPostRequest::WebLauncherPostRequest()
 	classTalentMap[289] = "Demonolog_A3";
 	classTalentMap[290] = "Demonolog_A1u2";
 	classTalentMap[291] = "Demonolog_A4";
-	classTalentMap[292] = "Demonolog_A4";
+	classTalentMap[292] = "Demonolog_A4u";
 	classTalentMap[293] = "Vampire_A1";
 	classTalentMap[294] = "Vampire_A2";
 	classTalentMap[295] = "Vampire_A1u";

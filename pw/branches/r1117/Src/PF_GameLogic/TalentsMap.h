@@ -1,5 +1,4 @@
-static const char* talentsMap[] = {
-  "G001",
+static const char* talentsMap[] = { "G001",
   "G002",
   "G003",
   "G004",
@@ -617,8 +616,8 @@ static const char* talentsMap[] = {
   "G625",
   "G626",
   "G627",
-  "G628",
   "G629",
+  "G628",
   "G630",
   "G631",
   "G632",
