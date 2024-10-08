@@ -34,7 +34,7 @@
 #include <curl/curl.h>
 #include <PF_GameLogic/PFTalent.h>
 #include "WebLauncher.h"
-#pragma optimize("", off)
+//#pragma optimize("", off)
 
 namespace 
 {
@@ -540,7 +540,7 @@ namespace NWorld
 
 							if (isTalentActive) {
                 talentInfo.actionBarIdx = useUserSlots ? activeSlot : actionBarIdx++;
-                talentInfo.isInstaCast = isSmartCast;
+				talentInfo.isInstaCast = isSmartCast || (talentPtr->flags & NDb::ABILITYFLAGS_INSTACAST);// = dbSlot.talent->flags & NDb::ABILITYFLAGS_INSTACAST || isSmartCast;
 							} else {
 								talentInfo.actionBarIdx = -1;
 							}
