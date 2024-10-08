@@ -1138,7 +1138,6 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   {
 	  
 
-	  bool isOK = true;
   if(CmdLineLite::Instance().ArgsCount() != 3) {
       ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the web-launcher. https://playpw.fun" );
     return 0xA000;
@@ -1161,7 +1160,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
     return 0xA001;
   }
 
-	int selectedHeroID = atoi(allTokens[2].c_str());
+	//int selectedHeroID = atoi(allTokens[2].c_str());
 	const char* versionStr = allTokens[3].c_str();
 
 	int versionMajor = VERSION_MAJOR;

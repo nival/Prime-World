@@ -9,7 +9,7 @@
 // For showing calling stack when errors occur in major functions.
 // Meant to be enabled in release builds.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#ifdef _DO_ASSERT_NO
+#ifdef _DO_ASSERT
 #define NI_ASSERT( expr, user_text ) NI_FORCE_ASSERT( expr, NLogg::LEVEL_ASSERT, #expr, user_text )
 #define NI_ALWAYS_ASSERT( user_text ) NI_FORCE_ALWAYS_ASSERT( NLogg::LEVEL_ASSERT, user_text )
 #define NI_VERIFY( expr, user_text, statement ) { const bool bCheck = (expr); NI_FORCE_ASSERT( bCheck, NLogg::LEVEL_ASSERT, #expr, user_text ); if ( !bCheck ) { statement; } }

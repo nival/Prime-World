@@ -1056,7 +1056,6 @@ std::vector<WebLauncherPostRequest::TalentWebData> WebLauncherPostRequest::GetTa
       bool isArrayBar = dataBar.isArray();
       if (isArrayBar) {
         useUserSlots = true;
-        int talId = 0;
 
         for (int i = 0; i < 36; ++i) {
           int activeSlot = dataBar[i].asInt();
@@ -1107,8 +1106,6 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
   OutputDebugStringA(responseStream.c_str());
 
   std::string curNumber = "";
-  bool isCollectingNumbers = false;
-  int curID = 0;
   
   Json::Value parsedJson = ParseJson(responseStream.c_str());
   if (parsedJson.empty()) {
