@@ -540,7 +540,7 @@ namespace NWorld
 
 							if (isTalentActive) {
                 talentInfo.actionBarIdx = useUserSlots ? activeSlot : actionBarIdx++;
-				talentInfo.isInstaCast = isSmartCast || (talentPtr->flags & NDb::ABILITYFLAGS_INSTACAST);// = dbSlot.talent->flags & NDb::ABILITYFLAGS_INSTACAST || isSmartCast;
+				        talentInfo.isInstaCast = isSmartCast || (!useUserSlots && talentPtr->flags & NDb::ABILITYFLAGS_INSTACAST);
 							} else {
 								talentInfo.actionBarIdx = -1;
 							}
