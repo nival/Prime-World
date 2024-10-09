@@ -8,7 +8,7 @@
 #pragma comment(lib, "wininet.lib")
 
 static std::set<std::string> allResourcesIDs;
-#pragma optimize("", off)
+//#pragma optimize("", off)
 
 WebLauncherPostRequest::WebLauncherPostRequest()
 {
@@ -1023,8 +1023,17 @@ std::vector<WebLauncherPostRequest::TalentWebData> WebLauncherPostRequest::GetTa
   std::string responseStream = SendPostRequest(jsonData);
 
   Json::Value parsedJsonSet = ParseJson(responseStream.c_str());
+  int buildFetchRetryCount = 0;
+  while (parsedJsonSet.empty() && buildFetchRetryCount < 10) {
+    CriticalTrace( "Build fetch failed!" );
+    parsedJsonSet = ParseJson(responseStream.c_str());
+    Sleep(1000);
+    buildFetchRetryCount++; // Failed json
+  }
   if (parsedJsonSet.empty()) {
-    return result; // Failed json
+    ErrorTrace( "Build fetch failed! Player may be kicked from server" );
+    ErrorTrace( responseStream.c_str() );
+    return result;
   }
 
   Json::Value errorSet = parsedJsonSet.get("error", "ERROR");
@@ -1042,8 +1051,9 @@ std::vector<WebLauncherPostRequest::TalentWebData> WebLauncherPostRequest::GetTa
   ZeroMemory(jsonBuff,1024);
   sprintf(jsonBuff,"{\"method\": \"getUserActiveBarByNickname\", \"data\": {\"nickname\": \"%s\", \"hero\": %d}}",nickNameU8.c_str(), heroID);
   jsonData = jsonBuff;
-  responseStream = SendPostRequest(jsonData);
+  //responseStream = SendPostRequest(jsonData);
   //responseStream = "{\"error\":\"\",\"data\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-3,-9,0,8,0,0,0,0,7,0,0,2,0,0,0,0,0,0]}";
+  responseStream = "{\"error\":\"invalid\",\"data\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}";
 
   result.resize(36); // resize by max talent number
 
