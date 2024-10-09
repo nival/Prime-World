@@ -722,9 +722,55 @@ std::string GetDirectoryFromPath(const std::string& fullPath) {
     return "";
 }
 
+#include <windows.h>
+#include <TlHelp32.h>
+
+int NumProcessRunning(const char* processName)
+{
+int count = 0;
+
+    HANDLE hProcessSnap;
+    PROCESSENTRY32 pe32;
+    pe32.dwSize = sizeof(PROCESSENTRY32);
+    hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+
+    if (hProcessSnap == INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(hProcessSnap);
+        return 0;
+    }
+
+    if (Process32First(hProcessSnap, &pe32))
+    {
+        do
+        {
+            if (_stricmp(pe32.szExeFile, processName) == 0)
+            {
+                count++;
+            }
+        } while (Process32Next(hProcessSnap, &pe32));
+    }
+
+    CloseHandle(hProcessSnap);
+    return count;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, SPluginSettings * pluginSett )
 {
+	 char buffer[MAX_PATH];
+    GetModuleFileName(NULL, buffer, MAX_PATH);
+
+    // Extract only the executable name from the full path
+    std::string fullPath = buffer;
+    size_t found = fullPath.find_last_of("\\");
+    std::string executableName = fullPath.substr(found + 1);
+
+	if(NumProcessRunning(executableName.c_str()) > 1)
+	{
+		return -1;
+	}
+
   MainVars mainVars;
 
   g_oldInvalidParamHandler = _set_invalid_parameter_handler( DebugTraceInvalidParamsHandler );
@@ -1138,7 +1184,7 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
   {
 	  
 
-  if(CmdLineLite::Instance().ArgsCount() != 3) {
+  if(CmdLineLite::Instance().ArgsCount() < 2) {
       ShowLocalizedErrorMB( L"StartViaLauncher", L"Please start the game via the web-launcher. https://playpw.fun" );
     return 0xA000;
     } else {
