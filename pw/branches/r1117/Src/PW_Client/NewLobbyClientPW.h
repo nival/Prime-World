@@ -3,6 +3,7 @@
 
 #include "Client/LobbyPvx/LobbyClientBase.h"
 #include "IGameContext.h"
+#include <map>
 
 namespace NGameX
 {
@@ -58,6 +59,14 @@ private:
 
   void RemoveFirstLobbyScreen();
   void UpdateCustomLobbyPlayers( const set<int> & hilitePlayers );
+  struct HeroName{
+	  string HeroNameA;
+	  string HeroNameB;
+	  HeroName(string nameA, string nameB);
+	  HeroName();
+  };
+  std::map<string, HeroName> HeroNameLobby;
+  void fillHeroNeme();
 };
 
 } //namespace lobby
