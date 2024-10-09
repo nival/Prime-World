@@ -50,10 +50,11 @@ void SelectHeroScreen::CommonStep( bool bAppActive )
 
   float dt = NMainLoop::GetTimeDelta();
 
+  const float kickoutTime = 30.0f;
   // Temporary solution
   if (!logic->IsPlayerReady() && debugPlayerIds.size() == 12) {
     lobbyTimeout += dt;
-    if (lobbyTimeout > 30.f) {
+    if (lobbyTimeout > kickoutTime) {
         canBeKicked = true;
         
         CloseThisScreen();
@@ -88,6 +89,8 @@ void SelectHeroScreen::CommonStep( bool bAppActive )
     DebugFormatPlayerInfo();
     logic->DebugDisplayPlayers( debugPlayerStatus );
   }
+
+  logic->UpdateTimer((int)(kickoutTime - lobbyTimeout));
 }
 
 

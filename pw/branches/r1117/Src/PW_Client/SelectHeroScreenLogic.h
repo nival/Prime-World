@@ -32,6 +32,7 @@ public:
   void SetDeveloperParty(int party);
 
   void DebugDisplayPlayers ( const wstring & status );
+  void UpdateTimer(int seconds);
 };
 
 }
