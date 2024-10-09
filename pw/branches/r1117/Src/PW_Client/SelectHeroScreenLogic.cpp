@@ -97,5 +97,19 @@ void SelectHeroScreenLogic::DebugDisplayPlayers ( const wstring & status )
     pDesc->SetCaptionTextW ( status.c_str() );
 }
 
+void SelectHeroScreenLogic::UpdateTimer(int seconds)
+{
+  UI::ImageLabel * pDesc = UI::GetChildChecked < UI::ImageLabel > ( pBaseWindow, "Text_Timer", true );
+  if ( pDesc )
+  {
+	wchar_t buff[8];
+	int minutes = 0;
+	swprintf_s(buff,L"%d:%d",minutes, seconds);
+
+	pDesc->SetCaptionTextW ( buff );
+  }
+
+}
+
 }//end of namespace
 
