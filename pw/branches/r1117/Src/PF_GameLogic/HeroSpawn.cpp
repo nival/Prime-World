@@ -475,7 +475,7 @@ namespace NWorld
 			if (!players[it->playerId].nickname.empty()) {
 				WebLauncherPostRequest prequest;
 
-        std::vector<WebLauncherPostRequest::TalentWebData> talentSet = prequest.GetTallentSet(players[it->playerId].nickname.c_str(),heroSpawnDesc.pHero->persistentId.c_str());
+        std::vector<WebLauncherPostRequest::TalentWebData> talentSet = prequest.GetTallentSet(players[it->playerId].nickname.c_str() + 1,heroSpawnDesc.pHero->persistentId.c_str());
 			
 			if(talentSet.empty())
 			{

@@ -1237,12 +1237,13 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
     
     if (response.retCode == WebLauncherPostRequest::LoginResponse_OK) {
       // Login success
-      currentLogin = response.response;
+      currentLogin = std::string(" ") + response.response;
+      currentLogin[0] = 0x09;
       g_devLogin = currentLogin.c_str();
     }
 
     const char * mapId = CmdLineLite::Instance().GetStringKey( "mapId", "" );
-    context = new Game::GameContext( sessLogin, response.response.c_str(), mapId, socialServer, guildEmblem, isSpectator, false );
+    context = new Game::GameContext( sessLogin, g_devLogin.c_str(), mapId, socialServer, guildEmblem, isSpectator, false );
     }
   }
 
