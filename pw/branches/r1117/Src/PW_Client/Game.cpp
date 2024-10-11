@@ -1350,20 +1350,6 @@ int __stdcall PseudoWinMain( HINSTANCE hInstance, HWND hWnd, LPTSTR lpCmdLine, S
 
   InitCensorDicts();
   
-  wchar_t u16_data[64] = {0};
-  wchar_t u16_data_original[64] = {0};
-  MultiByteToWideChar( CP_ACP, 0, currentLogin.c_str(), -1, u16_data, 64 );
-  memcpy(u16_data_original, u16_data, 64 * sizeof(wchar_t));
-
-  CensorFilter::Filter(u16_data);
-	for(int i=0;i<64;++i)
-	{
-		if(u16_data_original[i] != u16_data[i])
-		{
-			//used bad word
-			return -3;
-		}
-	}
 
   mainVars.initGameFSM = true;
   while ( true )
