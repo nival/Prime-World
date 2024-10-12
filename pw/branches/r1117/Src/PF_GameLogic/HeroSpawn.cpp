@@ -34,7 +34,7 @@
 #include <curl/curl.h>
 #include <PF_GameLogic/PFTalent.h>
 #include "WebLauncher.h"
-#pragma optimize("", off)
+//#pragma optimize("", off)
 
 namespace 
 {
@@ -307,6 +307,14 @@ namespace NWorld
     int heroesToSpawn = 0;
     int overrideCnt[] = { 0, 0 };
 
+    int kindaRandomNumber = 0;
+    for( NCore::TPlayersStartInfo::const_iterator player_it = players.begin(), player_end = players.end(); player_it != player_end; ++player_it)
+    {
+      if( player_it->playerType == NCore::EPlayerType::Human ) {
+        kindaRandomNumber += player_it->userID * ((int)(player_it->teamID) + 1) + 1;
+      }
+    }
+
     for( NCore::TPlayersStartInfo::const_iterator player_it = players.begin(), player_end = players.end(); player_it != player_end; ++player_it)
     {
       MAP_LOADING_IP;
@@ -421,15 +429,26 @@ namespace NWorld
 	//create internet post reader
 
 
-    std::string bigJsonRequest = "";
+    std::vector<std::wstring> nickNames;
+    std::vector<std::string> heroNames;
 
-    int kindaRandomNumber = 0;
-    for( NCore::TPlayersStartInfo::const_iterator player_it = players.begin(), player_end = players.end(); player_it != player_end; ++player_it)
+    for( TSpawnInfo::const_iterator team_it = pSpawnInfo->begin(), team_end = pSpawnInfo->end(); team_it != team_end; ++team_it )
     {
-      if( player_it->playerType == NCore::EPlayerType::Human ) {
-        kindaRandomNumber += player_it->userID * 1241 + (int)(player_it->teamID) * 4221;
+      int inTeamId = 1; // yes, I know :( it`s pretty bad, but I need count heroes starting from 1
+      for( TTeamSpawnInfo::const_iterator it = team_it->begin(), end = team_it->end(); it != end; ++it )
+      {
+        if (players[it->playerId].playerType == NCore::EPlayerType::Human) {
+          const NDb::Hero * hero = FindHero( pHeroes, advMapDescription, it->playerInfo.heroId );
+          
+          std::wstring tmpNickname = players[it->playerId].nickname.c_str() + 1;
+          nickNames.push_back(tmpNickname);
+          heroNames.push_back(hero->persistentId.c_str());
+        }
       }
     }
+    WebLauncherPostRequest prequest;
+
+    std::map<std::wstring, WebLauncherPostRequest::WebUserData> usersData = prequest.GetUsersData(nickNames, heroNames);
 
     // process spawn
     int heroesSpawned = 0;
@@ -485,7 +504,9 @@ namespace NWorld
 			if (!players[it->playerId].nickname.empty()) {
 				WebLauncherPostRequest prequest;
 
-        std::vector<WebLauncherPostRequest::TalentWebData> talentSet = prequest.GetTallentSet(players[it->playerId].nickname.c_str() + 1,heroSpawnDesc.pHero->persistentId.c_str());
+        std::wstring nick = players[it->playerId].nickname.c_str() + 1;
+        std::vector<WebLauncherPostRequest::TalentWebData>& talentSet = usersData[nick].talents;
+        //prequest.GetTallentSet(players[it->playerId].nickname.c_str() + 1,heroSpawnDesc.pHero->persistentId.c_str());
 			
 			if(talentSet.empty())
 			{

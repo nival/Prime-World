@@ -1007,6 +1007,89 @@ std::string WebLauncherPostRequest::SendPostRequest(const std::string& jsonData)
   return responseStream;
 }
 
+std::map<std::wstring, WebLauncherPostRequest::WebUserData> WebLauncherPostRequest::GetUsersData(const std::vector<std::wstring>& nickNames, const std::vector<std::string>& heroNames)
+{
+  std::map<std::wstring, WebUserData> resWebData;
+    
+  std::string jsonReq = "{\"method\":\"getDataUsers\",\"data\":[";
+  // Prepare json request
+  for (size_t pId = 0; pId < nickNames.size(); ++pId) {
+    int heroID = characterMap[heroNames[pId].c_str()];
+    std::string nickNameU8 = WideCharToMultiByteString(nickNames[pId].c_str());
+    char jsonBuff[1024];
+    ZeroMemory(jsonBuff,1024);
+    sprintf(jsonBuff,"{\"nickname\": \"%s\", \"hero\": %d}%s",nickNameU8.c_str(), heroID, pId == nickNames.size() - 1 ? "" : "," );
+    jsonReq += jsonBuff;
+  }
+  jsonReq += "]}";
+
+  std::string responseStream = SendPostRequest(jsonReq);
+
+  Json::Value parsedJsonSet = ParseJson(responseStream.c_str());
+  int buildFetchRetryCount = 0;
+  while (parsedJsonSet.empty() && buildFetchRetryCount < 10) {
+    CriticalTrace( "Build fetch failed!" );
+    parsedJsonSet = ParseJson(responseStream.c_str());
+    Sleep(1000);
+    buildFetchRetryCount++; // Failed json
+  }
+  if (parsedJsonSet.empty()) {
+    ErrorTrace( "Build fetch failed! Player may be kicked from server" );
+    ErrorTrace( responseStream.c_str() );
+    return resWebData; // server failed
+  }
+
+  Json::Value errorSet = parsedJsonSet.get("error", "ERROR");
+  if (!errorSet.asString().empty()) {
+    return resWebData; // json request or server error
+  }
+
+  Json::Value dataSet = parsedJsonSet.get("data", "");
+  bool isArray = dataSet.isArray();
+  if (!isArray) {
+    return resWebData; // json parsing error
+  }
+  for (size_t pId = 0; pId < nickNames.size(); ++pId) {
+    WebUserData& webUserData = resWebData[nickNames[pId]];
+
+    Json::Value playerData = dataSet[pId];
+    // Talents
+    Json::Value dataTalents = playerData.get("body" , "");
+    if (!dataTalents.isArray()) {
+      continue;
+    }
+
+    bool useUserActives = true;
+    Json::Value dataActives = playerData.get("active" , "");
+    if (!dataActives.isArray()) {
+      useUserActives = false;
+    }
+
+    webUserData.talents.resize(36);
+
+    for (int i = 0; i < 36; ++i) {
+      webUserData.talents[i].webTalentId = dataTalents[i].asInt();;
+
+      if (webUserData.talents[i].webTalentId == 0) {
+        webUserData.talents.clear();
+        continue; // empty slot in build
+      }
+    }
+
+    for (int a = 0; a < 10; ++a) {
+      int activeRaw = dataActives[a].asInt();
+      if (activeRaw != 0) {
+        int activeRef = abs(activeRaw) - 1;
+        bool isSmartCast = activeRaw < 0;
+
+        webUserData.talents[activeRef].activeSlot = a;
+        webUserData.talents[activeRef].isSmartCast = isSmartCast;
+      }
+    }
+  }
+
+  return resWebData;
+}
 
 std::vector<WebLauncherPostRequest::TalentWebData> WebLauncherPostRequest::GetTallentSet(const wchar_t* nickName, const char* heroName)
 {

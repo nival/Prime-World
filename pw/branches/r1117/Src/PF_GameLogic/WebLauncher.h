@@ -36,7 +36,12 @@ public:
     bool isSmartCast;
   };
 
+  struct WebUserData {
+    std::vector<TalentWebData> talents;
+  };
+
 	std::vector<TalentWebData> GetTallentSet(const wchar_t* nickName, const char* heroName);
+  std::map<std::wstring, WebUserData> WebLauncherPostRequest::GetUsersData(const std::vector<std::wstring>& nickNames, const std::vector<std::string>& heroNames);
 	std::string ConvertFromClassID(int id);
   WebLoginResponse GetNickName(const char* token);
   std::string WebLauncherPostRequest::SendPostRequest(const std::string& jsonData);
