@@ -11,6 +11,7 @@
 
 
 bool g_needNotifyLobbyClients = false;
+string g_selectedHeroes[10];
 
 namespace lobby
 {
@@ -113,7 +114,12 @@ void ClientPW::UpdateCustomLobbyPlayers( const set<int> & hilitePlayers )
   vector<wstring> lines;
   vector<int> linesIds;
 
+  for (int i = 0; i < 10; ++i) {
+    g_selectedHeroes[i].clear();
+  }
+
   int readyPlayers = 0;
+  int heroCounter = 0;
 
   for( int i = 0; i < 2; ++i )
   {
@@ -129,20 +135,23 @@ void ClientPW::UpdateCustomLobbyPlayers( const set<int> & hilitePlayers )
       
       const bool ready = ( ReadyPlayers().find( memb.user.userId ) != ReadyPlayers().end() );
       readyPlayers += ready ? 1 : 0;
-	  string newHeroName =  memb.context.hero.c_str();
-	  if(HeroNameLobby.count(newHeroName)){
-		  newHeroName = (memb.context.original_team == lobby::ETeam::Team2) ? HeroNameLobby[newHeroName].HeroNameB : HeroNameLobby[newHeroName].HeroNameA;
-	  }
-      wstring line = NStr::StrFmtW( L"<space:2>%s (%d)  %s as %s (%s), %s",
+      g_selectedHeroes[heroCounter] = memb.context.hero.c_str();
+
+      string newHeroName;
+
+	    if(HeroNameLobby.count(g_selectedHeroes[heroCounter])){
+		    newHeroName = (memb.context.original_team == lobby::ETeam::Team2) ? HeroNameLobby[g_selectedHeroes[heroCounter]].HeroNameB : HeroNameLobby[g_selectedHeroes[heroCounter]].HeroNameA;
+	    }
+      wstring line = NStr::StrFmtW( L"<space:2>%s (%d)  %s (%s), %s",
         memb.user.nickname.c_str(),
         memb.user.userId,
         NStr::ToUnicode( newHeroName ).c_str(),
-		NStr::ToUnicode( memb.context.hero ).c_str(),
         memb.context.original_team == lobby::ETeam::Team2 ? L"Адорниец" : L"Докт",
         ready ? L"<style:green>ready</style>" : L"<style:money>not ready</style>" );
 
       lines.push_back( line );
       linesIds.push_back( memb.user.userId );
+      heroCounter++;
     }
   }
 
