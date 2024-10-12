@@ -142,11 +142,12 @@ void ClientPW::UpdateCustomLobbyPlayers( const set<int> & hilitePlayers )
 	    if(HeroNameLobby.count(g_selectedHeroes[heroCounter])){
 		    newHeroName = (memb.context.original_team == lobby::ETeam::Team2) ? HeroNameLobby[g_selectedHeroes[heroCounter]].HeroNameB : HeroNameLobby[g_selectedHeroes[heroCounter]].HeroNameA;
 	    }
-      wstring line = NStr::StrFmtW( L"<space:2>%s (%d)  %s (%s), %s",
+      wstring line = NStr::StrFmtW( L"<space:2>%s (%d)  %s %s, %s",
         memb.user.nickname.c_str(),
         memb.user.userId,
         NStr::ToUnicode( newHeroName ).c_str(),
-        memb.context.original_team == lobby::ETeam::Team2 ? L"Адорниец" : L"Докт",
+        //memb.context.original_team == lobby::ETeam::Team2 ? L"(Адорниец)" : L"(Докт)",
+        memb.context.original_team == lobby::ETeam::Team2 ? L"" : L"", // disabled for some time since skins are random
         ready ? L"<style:green>ready</style>" : L"<style:money>not ready</style>" );
 
       lines.push_back( line );

@@ -42,7 +42,7 @@ namespace
   {
     string heroIds[5];
     int pet[5];           // PetType
-    string customTS[5];   // xdb с переопределенным TS
+    string customTS[5];   // xdb пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ TS
   };
 
   BotOverride botOverride[2];
@@ -419,7 +419,17 @@ namespace NWorld
     DebugTrace( "SpawnHeroes:FindPlace: %2.3f", NHPTimer::GetTimePassedAndUpdateTime( time ) );
 
 	//create internet post reader
-	
+
+
+    std::string bigJsonRequest = "";
+
+    int kindaRandomNumber = 0;
+    for( NCore::TPlayersStartInfo::const_iterator player_it = players.begin(), player_end = players.end(); player_it != player_end; ++player_it)
+    {
+      if( player_it->playerType == NCore::EPlayerType::Human ) {
+        kindaRandomNumber += player_it->userID * 1241 + (int)(player_it->teamID) * 4221;
+      }
+    }
 
     // process spawn
     int heroesSpawned = 0;
@@ -450,7 +460,7 @@ namespace NWorld
         NI_ASSERT( hero, "" );
 
         /*
-        IM: убрал прелоад героя, т.к. тут он не нужен - все случается чуть позже при создании. Если будут проблемы, вернуть.
+        IM: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅ.пїЅ. пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
         int precacheDepth = G_GetPrechacheSessionData() ? 20 : 0;
         heroSpawnDesc.pHero NDb::Precache<NDb::BaseHero>( hero->GetDBID(), precacheDepth );
         DebugTrace( "SpawnHeroes:Precache:%d: %2.3f", heroSpawnDesc.playerId, NHPTimer::GetTimePassedAndUpdateTime( time ) );
@@ -559,7 +569,9 @@ namespace NWorld
         if(numUltimates > 1 || num5lineUpgrades > 1) {
 					heroSpawnDesc.usePlayerInfoTalentSet = false;
         }
-        heroSpawnDesc.playerInfo.heroSkin = "invisible_S41";
+
+        heroSpawnDesc.playerInfo.heroSkin = GetSkinByHeroPersistentId(heroSpawnDesc.pHero->persistentId.c_str(), kindaRandomNumber).c_str() ; //"invisible_S41";
+        int ikas = 0;
 			}
 		}
 

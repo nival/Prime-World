@@ -856,10 +856,10 @@ void Transceiver::Step( float dt )
   }*/
 
   const int asyncStep = scheduler->GetAsyncStep();
-  if ( !asyncState && asyncStep >= 0 )
+  if ( !asyncState && asyncStep >= 10 )
   {
     crcCalc.DumpCrc( asyncStep );
-#ifdef _SHIPPING
+#if 0
     throw "Async detected";
 #else
     NI_ALWAYS_ASSERT( NStr::StrFmt( "Async detected at step %d", asyncStep ) );

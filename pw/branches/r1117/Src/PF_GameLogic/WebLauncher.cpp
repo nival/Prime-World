@@ -1145,6 +1145,84 @@ WebLauncherPostRequest::WebLoginResponse WebLauncherPostRequest::GetNickName(con
   return res;
 }
 
+std::string GetSkinByHeroPersistentId(const std::string& heroId, int someValue)
+{
+  std::map<std::string, std::vector<std::string>> skinMap;
+
+  skinMap["alchemist"].push_back("default");skinMap["alchemist"].push_back("alchemist_S1");
+  skinMap["angel"].push_back("angel_S0_A");skinMap["angel"].push_back("angel_S0_B");skinMap["angel"].push_back("angel_S1_A");skinMap["angel"].push_back("angel_S1_B");skinMap["angel"].push_back("angel_S2");
+  skinMap["archeress"].push_back("archeress_S0_A");skinMap["archeress"].push_back("archeress_S0_B");skinMap["archeress"].push_back("archeress_S1_A");skinMap["archeress"].push_back("archeress_S1_B");skinMap["archeress"].push_back("archeress_S2_A");skinMap["archeress"].push_back("archeress_S2_B");skinMap["archeress"].push_back("archeress_S3");skinMap["archeress"].push_back("archeress_S4");skinMap["archeress"].push_back("archeress_S5");skinMap["archeress"].push_back("archeress_S6");skinMap["archeress"].push_back("archeress_S7");
+  skinMap["artist"].push_back("default");skinMap["artist"].push_back("artist_S1");skinMap["artist"].push_back("artist_S2");skinMap["artist"].push_back("artist_S3");skinMap["artist"].push_back("artist_S4");
+  skinMap["assassin"].push_back("assassin_S0_A");skinMap["assassin"].push_back("assassin_S0_B");skinMap["assassin"].push_back("assassin_S1_A");skinMap["assassin"].push_back("assassin_S1_B");skinMap["assassin"].push_back("assassin_S2");skinMap["assassin"].push_back("assassin_S3");skinMap["assassin"].push_back("assassin_S4");skinMap["assassin"].push_back("assassin_S5");skinMap["assassin"].push_back("assassin_S6");
+  skinMap["banshee"].push_back("default");skinMap["banshee"].push_back("banshee_S1");
+  skinMap["bard"].push_back("bard_S0_A");skinMap["bard"].push_back("bard_S0_B");skinMap["bard"].push_back("bard_S1_A");skinMap["bard"].push_back("bard_S1_B");skinMap["bard"].push_back("bard_S2");
+  skinMap["bladedancer"].push_back("default");skinMap["bladedancer"].push_back("bladedancer_S1");
+  skinMap["bomber"].push_back("default");
+  skinMap["brewer"].push_back("default");skinMap["brewer"].push_back("brewer_S1");
+  skinMap["chronicle"].push_back("default");skinMap["chronicle"].push_back("chronicle_S1");
+  skinMap["crusader_A"].push_back("default");skinMap["crusader_A"].push_back("crusader_S1_A");skinMap["crusader_A"].push_back("crusader_S2_A");skinMap["crusader_A"].push_back("crusader_S3_A");
+  skinMap["crusader_B"].push_back("default");skinMap["crusader_B"].push_back("crusader_S1_B");skinMap["crusader_B"].push_back("crusader_S2_B");skinMap["crusader_B"].push_back("crusader_S3_B");
+  skinMap["demonolog"].push_back("default");skinMap["demonolog"].push_back("demonolog_S1");skinMap["demonolog"].push_back("demonolog_S2");
+  skinMap["dryad"].push_back("default");skinMap["dryad"].push_back("dryad_S1");
+  skinMap["ent"].push_back("default");skinMap["ent"].push_back("ent_S1");
+  skinMap["faceless"].push_back("faceless_S0_A");skinMap["faceless"].push_back("faceless_S0_B");skinMap["faceless"].push_back("faceless_S1_A");skinMap["faceless"].push_back("faceless_S1_B");skinMap["faceless"].push_back("faceless_S2_A");skinMap["faceless"].push_back("faceless_S2_B");skinMap["faceless"].push_back("faceless_S3");
+  skinMap["fairy"].push_back("fairy_S0_A");skinMap["fairy"].push_back("fairy_S0_B");skinMap["fairy"].push_back("fairy_S1_A");skinMap["fairy"].push_back("fairy_S1_B");skinMap["fairy"].push_back("fairy_S2");
+  skinMap["fallenangel"].push_back("default");skinMap["fallenangel"].push_back("fallenangel_S1");skinMap["fallenangel"].push_back("fallenangel_S2");
+  skinMap["firefox"].push_back("firefox_S0_A");skinMap["firefox"].push_back("firefox_S0_B");skinMap["firefox"].push_back("firefox_S1_A");skinMap["firefox"].push_back("firefox_S1_B");skinMap["firefox"].push_back("firefox_S2_A");skinMap["firefox"].push_back("firefox_S2_B");skinMap["firefox"].push_back("firefox_S3");skinMap["firefox"].push_back("firefox_S4_A");skinMap["firefox"].push_back("firefox_S4_B");skinMap["firefox"].push_back("firefox_S5");
+  skinMap["fluffy"].push_back("default");skinMap["fluffy"].push_back("fluffy_S1");
+  skinMap["freeze"].push_back("default");skinMap["freeze"].push_back("freeze_S1");skinMap["freeze"].push_back("freeze_S2");
+  skinMap["frogenglut"].push_back("frogenglut_S0_A");skinMap["frogenglut"].push_back("frogenglut_S0_B");skinMap["frogenglut"].push_back("frogenglut_S1_A");skinMap["frogenglut"].push_back("frogenglut_S1_B");skinMap["frogenglut"].push_back("frogenglut_S2_A");skinMap["frogenglut"].push_back("frogenglut_S2_B");
+  skinMap["ghostlord"].push_back("ghostlord_S0_A");skinMap["ghostlord"].push_back("ghostlord_S0_B");skinMap["ghostlord"].push_back("ghostlord_S1_A");skinMap["ghostlord"].push_back("ghostlord_S1_B");skinMap["ghostlord"].push_back("ghostlord_S2_A");skinMap["ghostlord"].push_back("ghostlord_S2_B");skinMap["ghostlord"].push_back("ghostlord_S3");
+  skinMap["gunner"].push_back("default");skinMap["gunner"].push_back("gunner_S1");
+  skinMap["gunslinger"].push_back("default");skinMap["gunslinger"].push_back("gunslinger_S1");skinMap["gunslinger"].push_back("gunslinger_S2");skinMap["gunslinger"].push_back("gunslinger_S3");
+  skinMap["healer"].push_back("healer_S0_A");skinMap["healer"].push_back("healer_S0_B");skinMap["healer"].push_back("healer_S1_A");skinMap["healer"].push_back("healer_S1_B");skinMap["healer"].push_back("healer_S2");skinMap["healer"].push_back("healer_S3_A");skinMap["healer"].push_back("healer_S3_B");skinMap["healer"].push_back("healer_S4_A");skinMap["healer"].push_back("healer_S4_B");
+  skinMap["highlander"].push_back("highlander_S0_A");skinMap["highlander"].push_back("highlander_S0_B");skinMap["highlander"].push_back("highlander_S1_A");skinMap["highlander"].push_back("highlander_S1_B");skinMap["highlander"].push_back("highlander_S2_A");skinMap["highlander"].push_back("highlander_S2_B");skinMap["highlander"].push_back("highlander_S3_A");skinMap["highlander"].push_back("highlander_S3_B");skinMap["highlander"].push_back("highlander_S4");
+  skinMap["hunter"].push_back("hunter_S0_A");skinMap["hunter"].push_back("hunter_S0_B");skinMap["hunter"].push_back("hunter_S1_A");skinMap["hunter"].push_back("hunter_S1_B");skinMap["hunter"].push_back("hunter_S2_A");skinMap["hunter"].push_back("hunter_S2_B");skinMap["hunter"].push_back("hunter_S3");
+  skinMap["inventor"].push_back("default");skinMap["inventor"].push_back("inventor_S1");skinMap["inventor"].push_back("inventor_S2");skinMap["inventor"].push_back("inventor_S3");
+  skinMap["invisible"].push_back("invisible_S0_A");skinMap["invisible"].push_back("invisible_S0_B");skinMap["invisible"].push_back("invisible_S1_A");skinMap["invisible"].push_back("invisible_S1_B");skinMap["invisible"].push_back("invisible_S2");skinMap["invisible"].push_back("invisible_S3");skinMap["invisible"].push_back("invisible_S4");
+  skinMap["ironknight"].push_back("default");skinMap["ironknight"].push_back("ironknight_S1");skinMap["ironknight"].push_back("ironknight_S2");
+  skinMap["katana"].push_back("default");skinMap["katana"].push_back("katana_S1");
+  skinMap["mage"].push_back("mage_S0_A");skinMap["mage"].push_back("mage_S0_B");skinMap["mage"].push_back("mage_S1_A");skinMap["mage"].push_back("mage_S1_B");skinMap["mage"].push_back("mage_S2");skinMap["mage"].push_back("mage_S3");skinMap["mage"].push_back("mage_S4");
+  skinMap["magicgirl"].push_back("default");skinMap["magicgirl"].push_back("magicgirl_S1");
+  skinMap["manawyrm"].push_back("manawyrm_S0_A");skinMap["manawyrm"].push_back("manawyrm_S0_B");skinMap["manawyrm"].push_back("manawyrm_S1_A");skinMap["manawyrm"].push_back("manawyrm_S1_B");skinMap["manawyrm"].push_back("manawyrm_S2");skinMap["manawyrm"].push_back("manawyrm_S3");skinMap["manawyrm"].push_back("manawyrm_S4");
+  skinMap["marine"].push_back("marine_S0_A");skinMap["marine"].push_back("marine_S0_B");skinMap["marine"].push_back("marine_S1_A");skinMap["marine"].push_back("marine_S1_B");skinMap["marine"].push_back("marine_S2_A");skinMap["marine"].push_back("marine_S2_B");skinMap["marine"].push_back("marine_S3_A");skinMap["marine"].push_back("marine_S3_B");skinMap["marine"].push_back("marine_S4");skinMap["marine"].push_back("marine_S5");
+  skinMap["monster"].push_back("monster_S0_A");skinMap["monster"].push_back("monster_S0_B");skinMap["monster"].push_back("monster_S1_A");skinMap["monster"].push_back("monster_S1_B");skinMap["monster"].push_back("monster_S2");
+  skinMap["mowgly"].push_back("mowgly_S0_A");skinMap["mowgly"].push_back("mowgly_S0_B");skinMap["mowgly"].push_back("mowgly_S1_A");skinMap["mowgly"].push_back("mowgly_S1_B");skinMap["mowgly"].push_back("mowgly_S2_A");skinMap["mowgly"].push_back("mowgly_S2_B");
+  skinMap["naga"].push_back("naga_S0_A");skinMap["naga"].push_back("naga_S0_B");skinMap["naga"].push_back("naga_S1_A");skinMap["naga"].push_back("naga_S1_B");skinMap["naga"].push_back("naga_S2");skinMap["naga"].push_back("naga_S3");skinMap["naga"].push_back("naga_S4");
+  skinMap["night"].push_back("night_S0_A");skinMap["night"].push_back("night_S0_B");skinMap["night"].push_back("night_S1_A");skinMap["night"].push_back("night_S1_B");skinMap["night"].push_back("night_S2_A");skinMap["night"].push_back("night_S2_B");skinMap["night"].push_back("night_S3_A");skinMap["night"].push_back("night_S3_B");skinMap["night"].push_back("night_S4");skinMap["night"].push_back("night_S5");
+  skinMap["pinkgirl"].push_back("default");skinMap["pinkgirl"].push_back("pinkgirl_S1");
+  skinMap["plaguedoctor"].push_back("default");skinMap["plaguedoctor"].push_back("plaguedoctor_S1");skinMap["plaguedoctor"].push_back("plaguedoctor_S2");skinMap["plaguedoctor"].push_back("plaguedoctor_S3");
+  skinMap["plane"].push_back("default");skinMap["plane"].push_back("plane_S1");
+  skinMap["prince"].push_back("prince_S0_A");skinMap["prince"].push_back("prince_S0_B");skinMap["prince"].push_back("prince_S1_A");skinMap["prince"].push_back("prince_S1_B");skinMap["prince"].push_back("prince_S2_A");skinMap["prince"].push_back("prince_S2_B");skinMap["prince"].push_back("prince_S3");skinMap["prince"].push_back("prince_S4");skinMap["prince"].push_back("prince_S5");
+  skinMap["ratcatcher"].push_back("ratcatcher_S0_A");skinMap["ratcatcher"].push_back("ratcatcher_S0_B");skinMap["ratcatcher"].push_back("ratcatcher_S1_A");skinMap["ratcatcher"].push_back("ratcatcher_S1_B");skinMap["ratcatcher"].push_back("ratcatcher_S2");
+  skinMap["reaper"].push_back("default");skinMap["reaper"].push_back("reaper_S1");skinMap["reaper"].push_back("reaper_S2");
+  skinMap["rifleman"].push_back("default");skinMap["rifleman"].push_back("rifleman_S1");
+  skinMap["rockman"].push_back("rockman_S0_A");skinMap["rockman"].push_back("rockman_S0_B");skinMap["rockman"].push_back("rockman_S1_A");skinMap["rockman"].push_back("rockman_S1_B");skinMap["rockman"].push_back("rockman_S2_A");skinMap["rockman"].push_back("rockman_S2_B");skinMap["rockman"].push_back("rockman_S3");
+  skinMap["shadow"].push_back("default");skinMap["shadow"].push_back("shadow_S1");
+  skinMap["shaman"].push_back("default");
+  skinMap["snowqueen"].push_back("snowqueen_S0_A");skinMap["snowqueen"].push_back("snowqueen_S0_B");skinMap["snowqueen"].push_back("snowqueen_S1_A");skinMap["snowqueen"].push_back("snowqueen_S1_B");skinMap["snowqueen"].push_back("snowqueen_S2_A");skinMap["snowqueen"].push_back("snowqueen_S2_B");skinMap["snowqueen"].push_back("snowqueen_S4");skinMap["snowqueen"].push_back("snowqueen_S5");skinMap["snowqueen"].push_back("snowqueen_S6");skinMap["snowqueen"].push_back("snowqueen_S7");
+  skinMap["stalker"].push_back("default");skinMap["stalker"].push_back("stalker_S1");
+  skinMap["thundergod"].push_back("thundergod_S0_A");skinMap["thundergod"].push_back("thundergod_S0_B");skinMap["thundergod"].push_back("thundergod_S1_A");skinMap["thundergod"].push_back("thundergod_S1_B");skinMap["thundergod"].push_back("thundergod_S2_A");skinMap["thundergod"].push_back("thundergod_S2_B");skinMap["thundergod"].push_back("thundergod_S3");skinMap["thundergod"].push_back("thundergod_S4");skinMap["thundergod"].push_back("thundergod_S5");skinMap["thundergod"].push_back("thundergod_S6");
+  skinMap["trickster"].push_back("default");skinMap["trickster"].push_back("trickster_S1");
+  skinMap["unicorn"].push_back("unicorn_S0_A");skinMap["unicorn"].push_back("unicorn_S0_B");skinMap["unicorn"].push_back("unicorn_S1_A");skinMap["unicorn"].push_back("unicorn_S1_B");skinMap["unicorn"].push_back("unicorn_S3");
+  skinMap["vampire"].push_back("vampire_S0_A");skinMap["vampire"].push_back("vampire_S0_B");skinMap["vampire"].push_back("vampire_S1_A");skinMap["vampire"].push_back("vampire_S1_B");skinMap["vampire"].push_back("vampire_S2");skinMap["vampire"].push_back("vampire_S3");skinMap["vampire"].push_back("vampire_S4");
+  skinMap["warlord"].push_back("warlord_S0_A");skinMap["warlord"].push_back("warlord_S0_B");skinMap["warlord"].push_back("warlord_S1_A");skinMap["warlord"].push_back("warlord_S1_B");skinMap["warlord"].push_back("warlord_S2");skinMap["warlord"].push_back("warlord_S3");
+  skinMap["wendigo"].push_back("default");
+  skinMap["werewolf"].push_back("werewolf_S0_A");skinMap["werewolf"].push_back("werewolf_S0_B");skinMap["werewolf"].push_back("werewolf_S1_A");skinMap["werewolf"].push_back("werewolf_S1_B");skinMap["werewolf"].push_back("werewolf_S2");skinMap["werewolf"].push_back("werewolf_S3");skinMap["werewolf"].push_back("werewolf_S4");
+  skinMap["witch"].push_back("witch_S0_A");skinMap["witch"].push_back("witch_S0_B");skinMap["witch"].push_back("witch_S1_A");skinMap["witch"].push_back("witch_S1_B");skinMap["witch"].push_back("witch_S2_A");skinMap["witch"].push_back("witch_S2_B");skinMap["witch"].push_back("witch_S3");
+  skinMap["witchdoctor"].push_back("witchdoctor_S0_A");skinMap["witchdoctor"].push_back("witchdoctor_S0_B");skinMap["witchdoctor"].push_back("witchdoctor_S1_A");skinMap["witchdoctor"].push_back("witchdoctor_S1_B");skinMap["witchdoctor"].push_back("witchdoctor_S2");
+  skinMap["witcher"].push_back("default");skinMap["witcher"].push_back("witcher_S1");skinMap["witcher"].push_back("witcher_S2");skinMap["witcher"].push_back("witcher_S3");
+  skinMap["wraithking"].push_back("default");skinMap["wraithking"].push_back("wraithking_S1");
+  skinMap["zealot"].push_back("default");skinMap["zealot"].push_back("zealot_S1");
+
+
+  std::vector<std::string>& skins = skinMap[heroId];
+  if (skins.empty()) {
+    return "";
+  }
+  return skins[someValue % skins.size()];
+}
+
 void AddResourcePersistanceID(const char* data)
 {
 	allResourcesIDs.insert(data);

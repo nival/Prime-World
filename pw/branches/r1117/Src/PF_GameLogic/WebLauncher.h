@@ -40,4 +40,7 @@ public:
 	std::string ConvertFromClassID(int id);
   WebLoginResponse GetNickName(const char* token);
   std::string WebLauncherPostRequest::SendPostRequest(const std::string& jsonData);
+
 };
+
+extern std::string GetSkinByHeroPersistentId(const std::string& heroId, int someValue);
