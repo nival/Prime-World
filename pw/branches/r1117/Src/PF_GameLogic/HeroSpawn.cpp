@@ -34,7 +34,7 @@
 #include <curl/curl.h>
 #include <PF_GameLogic/PFTalent.h>
 #include "WebLauncher.h"
-//#pragma optimize("", off)
+#pragma optimize("", off)
 
 namespace 
 {
@@ -559,6 +559,7 @@ namespace NWorld
         if(numUltimates > 1 || num5lineUpgrades > 1) {
 					heroSpawnDesc.usePlayerInfoTalentSet = false;
         }
+        heroSpawnDesc.playerInfo.heroSkin = "invisible_S41";
 			}
 		}
 
