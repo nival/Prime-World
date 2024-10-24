@@ -7,6 +7,8 @@
 	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_OrangeSet1.ROLLCONT" Count="1" />
 	<BackLink DBID="/Test/Talents/TestSetKits.TALENTSET" Count="1" />
 	<BackLink DBID="/Test/Talents/Unicorn/Elite_Will.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Vampiric2_ArmourPush/V2_ArmourPush.TALKIT" Count="1" />
+	<BackLink DBID="/Items/Talents/WitchDoctor.TALENTSET" Count="1" />
 	<activationConditions />
 	<activeCustomTrigger>true</activeCustomTrigger>
 	<allowChase>
@@ -36,7 +38,7 @@
 		<sString>0.0f</sString>
 	</castAllowRange>
 	<castLimitations />
-	<commonDescription textref="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT_commonDescription.txt" />
+	<commonDescription textref="" />
 	<compiledDescriptionA textref="" />
 	<compiledDescriptionB textref="" />
 	<conditionFormulas>
@@ -60,16 +62,6 @@
 				<name>StrOrInt</name>
 			</ConditionFormula>
 		</Item>
-		<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="45E9B5A6-4E07-42AC-B50D-E16DB835A6C5">
-			<ConditionFormula>
-				<condition>
-					<compiledString>FQ8AAAACAAAAFAAAACoAAABHMzAwX1N0YU9yV2lsbABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
-					<returnType>bool</returnType>
-					<sString>sender.vG300_StaOrWill==1</sString>
-				</condition>
-				<name>StaOrWill</name>
-			</ConditionFormula>
-		</Item>
 	</conditionFormulas>
 	<conflictingTalents />
 	<constants href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="6A520FB4-1E95-4A08-B189-9FDCF68207BB">
@@ -77,11 +69,11 @@
 			<vars>
 				<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="88A1BB68-43B4-4397-A298-6A50E8EE4205">
 					<UnitConstant>
-						<name>Add_Stat</name>
+						<name>Add_EnergyRegAbs</name>
 						<var>
-							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAoECamZk+</compiledString>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
 							<returnType>float</returnType>
-							<sString>refineScale(5, 0.3)</sString>
+							<sString>3</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -89,9 +81,9 @@
 					<UnitConstant>
 						<name>Add_Stat2</name>
 						<var>
-							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAgECamZk+</compiledString>
+							<compiledString>FQAAAAABAAAADAAAAFWL7FHZ6NkcJFHZBSIAAADZHCSLRRCLEItNEItCbP/QXcMAAKBAAACAPw==</compiledString>
 							<returnType>float</returnType>
-							<sString>refineScale(4, 0.3)</sString>
+							<sString>refineScale(5, 1)</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -104,7 +96,7 @@
 	</constants>
 	<consumptionBonus>
 		<constant>0</constant>
-		<percent>9</percent>
+		<percent>0</percent>
 	</consumptionBonus>
 	<cooldownTime>
 		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
@@ -140,96 +132,6 @@
 	<name textref="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT_name.txt" />
 	<node></node>
 	<passiveApplicators>
-		<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="FB802848-07C6-42D9-B8F3-C670890C7968">
-			<PermanentStatModApplicator>
-				<applyTarget>ApplicatorTarget</applyTarget>
-				<caption>StaOrWill</caption>
-				<customApplyType>Maximize</customApplyType>
-				<enabled>
-					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsgAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
-					<returnType>bool</returnType>
-					<sString>sBaseStamina&gt;=sBaseWill</sString>
-				</enabled>
-				<formulaName></formulaName>
-				<LoggingEvent>-1</LoggingEvent>
-				<modifier>
-					<addValue>
-						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
-						<returnType>float</returnType>
-						<sString>1</sString>
-					</addValue>
-					<multValue>
-						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
-						<returnType>float</returnType>
-						<sString>0</sString>
-					</multValue>
-					<stat>Life</stat>
-					<topModifier>false</topModifier>
-					<variable>G300_StaOrWill</variable>
-				</modifier>
-				<providerName></providerName>
-			</PermanentStatModApplicator>
-		</Item>
-		<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="63D10EB5-A204-4922-BD93-BD43C76E1507">
-			<PermanentStatModApplicator>
-				<applyTarget>ApplicatorTarget</applyTarget>
-				<caption>+ Add_Will</caption>
-				<customApplyType>Maximize</customApplyType>
-				<enabled>
-					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsgAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
-					<returnType>bool</returnType>
-					<sString>sBaseStamina&lt;sBaseWill</sString>
-				</enabled>
-				<formulaName></formulaName>
-				<LoggingEvent>-1</LoggingEvent>
-				<modifier>
-					<addValue>
-						<compiledString>FQkAAAABAAAAFQAAAEFkZF9TdGF0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
-						<returnType>float</returnType>
-						<sString>cAdd_Stat</sString>
-					</addValue>
-					<multValue>
-						<compiledString></compiledString>
-						<returnType>float</returnType>
-						<sString>1.0f</sString>
-					</multValue>
-					<stat>Will</stat>
-					<topModifier>false</topModifier>
-					<variable></variable>
-				</modifier>
-				<providerName></providerName>
-			</PermanentStatModApplicator>
-		</Item>
-		<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="2260F492-BB0C-4D41-9BE3-B6C8300A3178">
-			<PermanentStatModApplicator>
-				<applyTarget>ApplicatorTarget</applyTarget>
-				<caption>Add_Stamina</caption>
-				<customApplyType>Maximize</customApplyType>
-				<enabled>
-					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsgAAAD/0ItNCIsRi00Ii4LMAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
-					<returnType>bool</returnType>
-					<sString>sBaseStamina&gt;=sBaseWill</sString>
-				</enabled>
-				<formulaName></formulaName>
-				<LoggingEvent>-1</LoggingEvent>
-				<modifier>
-					<addValue>
-						<compiledString>FQkAAAABAAAAFQAAAEFkZF9TdGF0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
-						<returnType>float</returnType>
-						<sString>cAdd_Stat</sString>
-					</addValue>
-					<multValue>
-						<compiledString></compiledString>
-						<returnType>float</returnType>
-						<sString>1.0f</sString>
-					</multValue>
-					<stat>Stamina</stat>
-					<topModifier>false</topModifier>
-					<variable></variable>
-				</modifier>
-				<providerName></providerName>
-			</PermanentStatModApplicator>
-		</Item>
 		<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="69C69DA5-138A-48E5-BE7C-C02D7E1F2299">
 			<PermanentStatModApplicator>
 				<applyTarget>ApplicatorTarget</applyTarget>
@@ -320,10 +222,40 @@
 				<providerName></providerName>
 			</PermanentStatModApplicator>
 		</Item>
+		<Item href="/Items/Talents/Level3/G300_LifeRegen_Will.TALENT" id="465F6496-BE77-43F6-B658-FFEE392F416B">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Add_EnergyRegAbs</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FREAAAABAAAAHQAAAEFkZF9FbmVyZ3lSZWdBYnMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cAdd_EnergyRegAbs</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>EnergyRegenerationAbsolute</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
 	</passiveApplicators>
 	<persistentId>G300</persistentId>
 	<prerequisiteTalents />
-	<rarity>exclusive</rarity>
+	<rarity>outstanding</rarity>
 	<requireLineOfSight>false</requireLineOfSight>
 	<shortDescription textref="" />
 	<talentRollGroups>63</talentRollGroups>

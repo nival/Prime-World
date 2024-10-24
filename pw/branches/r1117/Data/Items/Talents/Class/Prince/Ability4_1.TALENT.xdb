@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Items/Talents/Prince.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Prince/program_A4_Duel.APLR" />
+	</applicators>
+	<askId>4</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А4. Дуэль</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="B0ECEB7E-C5B0-46D0-8642-7E270ADEAD94">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vImmune2Control == 0</sString>
+				</condition>
+				<uiEvent href="/UI/Events/ErrorMessages/CastError_Immune2Ctrl.UIEV" />
+			</ConditionCastLimitation>
+		</Item>
+		<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="6017FFD7-514D-4652-9949-C393812EDA5A">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FRgAAAADAAAAHQAAADMAAABFAAAAVHJhbnNmb3JtZWQAU3RhdHVzSGV4ZWQAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwddQAAAN/g9sREeilqAItNEFFoDAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vTransformed == 0  &amp;&amp; receiver.applStatusHexed(GLOBAL) == pMisc</sString>
+				</condition>
+				<uiEvent href="/UI/Events/ErrorMessages/CastError_AlreadyTransformed.UIEV" />
+			</ConditionCastLimitation>
+		</Item>
+		<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="8C551476-C4B8-42A2-A085-7CA1A9198A09">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQ4AAAABAAAAEgAAAFdlcmV3b2xmX0E0XzIAVYvsaAAAAACLRQiLEItNCIuCqAEAAP/Q99gbwIPAAV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>!sender.GetTalent( "Werewolf_A4_2" )</sString>
+				</condition>
+				<uiEvent href="" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="/Items/Talents/Class/Prince/Ability4_1.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="39899226-D100-49E0-B4F1-0CB4B404F6B1">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FS0AAAACAAAANAAAAE0AAABXZXJld29sZl9BNF9BNF8yX1NVUAAAAABXZXJld29sZl9BNF9BNF8yX1NVUABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBgAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Werewolf_A4_A4_2_SUP") == false</sString>
+				</condition>
+				<name>Werewolf_A4_A4_2_SUP</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/Werewolf/Ability4_2.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="954699F2-C5C3-42E1-A3F9-8A37F58310AD">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="571EABD0-7BE7-4451-AD8A-38D40E77918F">
+					<UnitConstant>
+						<name>A4_Range</name>
+						<var>
+							<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX01lbGVlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Melee</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="E3CA262F-57EF-4821-87D6-4A628CACF8FE">
+					<UnitConstant>
+						<name>A4_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="652CD3E9-8D70-4BAA-A0F5-50A8D8DF93B6">
+					<UnitConstant>
+						<name>A4_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABwQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>60</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="2620D3CC-5163-471E-919A-5D6ABB08CBA3">
+					<UnitConstant>
+						<name>Fear_Penalty</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3DMzPTQAAASEI=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale (sIntellect, 6.6, 50)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="34E6E48C-A292-4BFF-B1A2-7DAE128E5F26">
+					<UnitConstant>
+						<name>Fear_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="48F2F842-49C4-4050-BB78-DBDEC79DAB20">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="65C21BC5-E96F-4D0C-95CD-8705FF0E8DE2">
+					<UnitConstant>
+						<name>NightMS</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC0Qg==</compiledString>
+		<returnType>float</returnType>
+		<sString>90</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Prince/Ability4_1.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="2285246C-3715-4B86-9E06-2AAF8CD17529">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>4107</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Prince/A5.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAB6Qw==</compiledString>
+		<returnType>float</returnType>
+		<sString>250</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="733D781E-C79F-42BB-B24D-4E392BD83DB7">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="5137656D-5925-4518-B280-48196331F496">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="81109E6F-4C47-42FB-9279-6320E45E5A45">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+								<returnType>bool</returnType>
+								<sString>receiver.vImmune2Control == 0</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelector href="/Items/Talents/Class/Prince/Ability4_1.TALENT" id="D084B3EB-6945-4277-9BE0-34CE7E06E891">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+										<returnType>float</returnType>
+										<sString>cA4_Range</sString>
+									</range>
+									<targetFilter>679477251</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/Prince/Ability4_1.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId>Prince_A4_1</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Prince/Ability4_1.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>671350787</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQwAAAACAAAAGQAAACwAAABSYW5nZV9NZWxlZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcBToAAADZXfzZRfyL5V3DAAAAAAAA8D8=</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Melee+1</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

@@ -13,6 +13,9 @@
 	<BackLink DBID="/Test/Talents/RedSet2_1.TALENTSET" Count="1" />
 	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_NY2020_BadList.ROLLCONT" Count="1" />
 	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_Season13_BadList.ROLLCONT" Count="1" />
+	<BackLink DBID="/Items/Talents/Rockman.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Highlander.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Witcher.TALENTSET" Count="1" />
 	<activationConditions />
 	<activeCustomTrigger>true</activeCustomTrigger>
 	<allowChase>
@@ -171,23 +174,23 @@
 	<constants href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="D2D4BD1E-9503-47EB-846C-2B65EF2ACFEA">
 		<UnitConstantsContainer>
 			<vars>
-				<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="1075D1BF-254F-41B7-B0F9-6DAFF030B63D">
+				<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="FB5FD91C-193C-4B1C-923A-F39E446CC798">
 					<UnitConstant>
-						<name>Add_LifeDrain</name>
+						<name>Add_Life</name>
 						<var>
-							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAkEEzM7M/</compiledString>
+							<compiledString>FQsAAAADAAAAFAAAAB4AAAA7AAAATGlmZUJ1ZGdldABVi+yD7AxR2QVgAAAA2RwkUdkFXAAAANkcJItFEIsQi00Qi0Js/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0NxN+Nld9NlF9IvlXcMAAOBAAAAAPw==</compiledString>
 							<returnType>float</returnType>
-							<sString>refineScale(18, 1.4)</sString>
+							<sString>refineScale(7,0.5)*cLifeBudget</sString>
 						</var>
 					</UnitConstant>
 				</Item>
-				<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="ED46D70C-A200-4798-B4BE-78EB0950BA0F">
+				<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="1F0466D0-6918-4BD8-A592-00E4B2EEAEE2">
 					<UnitConstant>
-						<name>Add_AttackSpeed</name>
+						<name>Add_Stat</name>
 						<var>
-							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAIEEzMzM/</compiledString>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAQEFmZmY/</compiledString>
 							<returnType>float</returnType>
-							<sString>refineScale(10, 0.7)</sString>
+							<sString>refineScale(12, 0.9)</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -202,9 +205,9 @@
 		<percent>0</percent>
 	</consumptionBonus>
 	<cooldownTime>
-		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQg==</compiledString>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABwQg==</compiledString>
 		<returnType>float</returnType>
-		<sString>120</sString>
+		<sString>60</sString>
 	</cooldownTime>
 	<cooldownTimeSecondState>
 		<compiledString></compiledString>
@@ -232,7 +235,7 @@
 			<instantApply>false</instantApply>
 		</DispatchImmediate>
 	</dispatch>
-	<flags>2</flags>
+	<flags>1</flags>
 	<forceBonus>0</forceBonus>
 	<image href="/UI/Styles/Icons/Talents/_480.ITEX" />
 	<imageSecondState href="" />
@@ -253,10 +256,10 @@
 	<name textref="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT_name.txt" />
 	<node></node>
 	<passiveApplicators>
-		<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="D36586C1-12EB-490F-B98E-C1981C2B64E7">
+		<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="8BAFBD44-713A-4A3D-BF07-B7A88CEAA181">
 			<PermanentStatModApplicator>
 				<applyTarget>ApplicatorTarget</applyTarget>
-				<caption>Add_LifeDrain</caption>
+				<caption>Life</caption>
 				<customApplyType>None</customApplyType>
 				<enabled>
 					<compiledString></compiledString>
@@ -267,39 +270,39 @@
 				<LoggingEvent>-1</LoggingEvent>
 				<modifier>
 					<addValue>
-						<compiledString>FQ4AAAABAAAAGgAAAEFkZF9MaWZlRHJhaW4AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<compiledString>FQkAAAABAAAAFQAAAEFkZF9MaWZlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
 						<returnType>float</returnType>
-						<sString>cAdd_LifeDrain</sString>
+						<sString>cAdd_Life</sString>
 					</addValue>
 					<multValue>
 						<compiledString></compiledString>
 						<returnType>float</returnType>
 						<sString>1.0f</sString>
 					</multValue>
-					<stat>LifeDrain</stat>
+					<stat>Life</stat>
 					<topModifier>false</topModifier>
 					<variable></variable>
 				</modifier>
 				<providerName></providerName>
 			</PermanentStatModApplicator>
 		</Item>
-		<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="B550B934-B189-4E61-A090-205D618D2D18">
+		<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="92F15212-42B2-410A-877D-36573323CF59">
 			<PermanentStatModApplicator>
 				<applyTarget>ApplicatorTarget</applyTarget>
-				<caption>Add_AttackSpeed</caption>
-				<customApplyType>None</customApplyType>
+				<caption>AttackSpeed</caption>
+				<customApplyType>Maximize</customApplyType>
 				<enabled>
-					<compiledString></compiledString>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgowAAAD/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
 					<returnType>bool</returnType>
-					<sString>true</sString>
+					<sString>sBaseAttackSpeed &gt;= sBaseDexterity</sString>
 				</enabled>
 				<formulaName></formulaName>
 				<LoggingEvent>-1</LoggingEvent>
 				<modifier>
 					<addValue>
-						<compiledString>FRAAAAABAAAAHAAAAEFkZF9BdHRhY2tTcGVlZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<compiledString>FQkAAAABAAAAFQAAAEFkZF9TdGF0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
 						<returnType>float</returnType>
-						<sString>cAdd_AttackSpeed</sString>
+						<sString>cAdd_Stat</sString>
 					</addValue>
 					<multValue>
 						<compiledString></compiledString>
@@ -309,6 +312,66 @@
 					<stat>AttackSpeed</stat>
 					<topModifier>false</topModifier>
 					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="0C027060-6F9A-40E9-86D4-7731570B104F">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Dexterity</caption>
+				<customApplyType>Maximize</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgowAAAD/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseAttackSpeed &lt; sBaseDexterity</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQkAAAABAAAAFQAAAEFkZF9TdGF0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cAdd_Stat</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Dexterity</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level5/G480_Vamp_AttackSpeed.TALENT" id="395A705F-4C4C-4391-8B88-A7F3F74F9AF4">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>SpdOrDex</caption>
+				<customApplyType>Maximize</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgowAAAD/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseAttackSpeed&gt;=sBaseDexterity</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>G727_SpdOrDex</variable>
 				</modifier>
 				<providerName></providerName>
 			</PermanentStatModApplicator>

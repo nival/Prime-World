@@ -17,7 +17,7 @@
 	<alternativeTargets />
 	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
 	<aoeHeight>0</aoeHeight>
-	<aoeMaterial href="" />
+	<aoeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
 	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
 	<aoeSize>
 		<compiledString></compiledString>
@@ -26,39 +26,6 @@
 	</aoeSize>
 	<aoeType>None</aoeType>
 	<applicators>
-		<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="B20C5AD5-10AA-4651-B936-F60FD1076BBE">
-			<FlagsApplicator>
-				<applyTarget>AbilityOwner</applyTarget>
-				<behaviorFlags>144</behaviorFlags>
-				<caption>(upg) Считалка времени для стуна</caption>
-				<consumables />
-				<effect>
-					<Item href="" />
-					<Item href="" />
-				</effect>
-				<enabled>
-					<compiledString></compiledString>
-					<returnType>bool</returnType>
-					<sString>true</sString>
-				</enabled>
-				<flag>0</flag>
-				<formulaName>BomberA2_Timer</formulaName>
-				<lifeTime>
-					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
-					<returnType>float</returnType>
-					<sString>10.0f; //beware, used in marker!</sString>
-				</lifeTime>
-				<LoggingEvent>-1</LoggingEvent>
-				<providerName></providerName>
-				<startCondition>
-					<compiledString>FRcAAAACAAAAHgAAADcAAABCb21iZXJfQTJ1AABCb21iZXJfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
-					<returnType>bool</returnType>
-					<sString>tal("Bomber_A2u")</sString>
-				</startCondition>
-				<talents />
-				<useListAs>ListAsRule</useListAs>
-			</FlagsApplicator>
-		</Item>
 		<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="EA57A15D-4A22-47E0-908C-038918E194CD">
 			<SpellApplicator>
 				<applyTarget>ApplicatorTarget</applyTarget>
@@ -117,7 +84,127 @@
 																		<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
 																	</DamageApplicator>
 																</Item>
-																<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+																<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="08DD7150-3088-4B2D-89FA-B44D8C654EE6">
+																	<StatusApplicator>
+																		<applicators>
+																			<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="68598C8E-13F9-4F77-9EBD-B36AF41C2E93">
+																				<StatModApplicator>
+																					<applyTarget>ApplicatorTarget</applyTarget>
+																					<behaviorFlags>152</behaviorFlags>
+																					<caption> -- Уменьшаем Движение</caption>
+																					<constraint>None</constraint>
+																					<dontUpdate>false</dontUpdate>
+																					<effect>
+																						<Item href="" />
+																						<Item href="" />
+																					</effect>
+																					<enabled>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</enabled>
+																					<formulaName></formulaName>
+																					<lifeTime>
+																						<compiledString></compiledString>
+																						<returnType>float</returnType>
+																						<sString>-1.0</sString>
+																					</lifeTime>
+																					<LoggingEvent>-1</LoggingEvent>
+																					<modifier>
+																						<addValue>
+																							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																							<returnType>float</returnType>
+																							<sString>0</sString>
+																						</addValue>
+																						<multValue>
+																							<compiledString>FRsAAAACAAAAKAAAADsAAABEZWNNb3ZlU3BlZWRfV2l0aFJlZHVjdGlvbgBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDVUAAADZ6N7h2V382UX8i+VdwwAAAAAAAPA/exSuR+F6hD8=</compiledString>
+																							<returnType>float</returnType>
+																							<sString>1 - cDecMoveSpeed_WithReduction*0.01</sString>
+																						</multValue>
+																						<stat>MoveSpeed</stat>
+																						<topModifier>false</topModifier>
+																						<variable></variable>
+																					</modifier>
+																					<providerName></providerName>
+																					<startCondition>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</startCondition>
+																					<statModName>Dec_MoveSpeed</statModName>
+																				</StatModApplicator>
+																			</Item>
+																			<Item href="/Heroes/DefaultStatus/SlowFX.APLR" />
+																			<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="9A6A0445-10B3-4081-9A7F-31AAEB1BB345">
+																				<UIMessageApplicator>
+																					<applyTarget>ApplicatorTarget</applyTarget>
+																					<caption> - FlyOff Message</caption>
+																					<enabled>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</enabled>
+																					<formulaName></formulaName>
+																					<LoggingEvent>-1</LoggingEvent>
+																					<message textref="/Items/Talents/Class/Bomber/Ability_A2.TALENT_9a6a044510b340819a7f31aaeb1bb345_message.txt" />
+																					<providerName></providerName>
+																					<uiEvent href="" />
+																					<value>
+																						<compiledString></compiledString>
+																						<returnType>float</returnType>
+																						<sString>-1.0</sString>
+																					</value>
+																				</UIMessageApplicator>
+																			</Item>
+																		</applicators>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>144</behaviorFlags>
+																		<caption>- Стандарт.статус "Замедление" (Dec_MoveSpeed, Slow_Duration)</caption>
+																		<customCounter>
+																			<compiledString></compiledString>
+																			<returnType>int</returnType>
+																			<sString>0</sString>
+																		</customCounter>
+																		<customProgress>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</customProgress>
+																		<description textref="/Items/Talents/Class/Bomber/Ability_A2.TALENT_08dd715030884b2d89fab44d8c654ee6_description.txt" />
+																		<dispellPriority>Medium</dispellPriority>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString>FTcAAAAGAAAAPgAAAFQAAABgAAAAdgAAAIIAAACbAAAASW1tdW5lMkNvbnRyb2wAAEFsbG93Q29udHJvbAAAAABCb21iZXJfQTJ1AABCb21iZXJfQTJ1AFWL7IPsDGgAAAAAi0UMixCLTQyLgogBAAD/0Nwd7wAAAN/g9sREeyJoEAAAAItNDIsRi00Mi4KIAQAA/9DcHecAAADf4PbERHpYaCAAAACLTQiLEYtNCIuCqAEAAP/QhcB0KmgsAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAAAAA8D8AAAAAAAAAAA==</compiledString>
+																			<returnType>bool</returnType>
+																			<sString>(receiver.vImmune2Control == 0 || receiver.vAllowControl == 1) &amp;&amp; tal("Bomber_A2u")</sString>
+																		</enabled>
+																		<flags>8</flags>
+																		<formulaName>StandartStatus_Slow</formulaName>
+																		<image href="/UI/Styles/Icons/Statuses/Standard/Slow.ITEX" />
+																		<lifeTime>
+																			<compiledString>FQ4AAAABAAAAGgAAAFNsb3dfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																			<returnType>float</returnType>
+																			<sString>cSlow_Duration</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<name textref="" />
+																		<power>9</power>
+																		<providerName></providerName>
+																		<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+																		<stackCount>0</stackCount>
+																		<startCondition>
+																			<compiledString>FRkAAAAEAAAAJgAAADkAAABtAAAAkQAAAFNsb3dfU3RhcnRDb25kaXRpb24AV2FyZABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcHckAAADf4PbERHtvUdno2RwkUdnu2RwkagGLRQyLEItNDItCWP/QD7bIUehpAAAAg8QM3B3JAAAA3+D2xER7O4tVDIsCi00Mi1BQ/9KD+BF0KWoAi0UQUGgUAAAAi00MixGLTQyLgpwBAAD/0DtFEHUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAACAPwAAAAAAAAAAVYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+																			<returnType>bool</returnType>
+																			<sString>cSlow_StartCondition &amp;&amp; ut_bldg( false, true ) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+																		</startCondition>
+																		<statusPosition>0</statusPosition>
+																		<stopBehaviour>StopByTime</stopBehaviour>
+																		<unstackableWith href="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" />
+																	</StatusApplicator>
+																</Item>
 															</applicators>
 															<dispatch href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="5D5851B2-AA0D-47A5-90B2-AED234E8B8C8">
 																<DispatchImmediate>
@@ -150,64 +237,6 @@
 												<sString>0</sString>
 											</continueCondition>
 											<continueEvents>1</continueEvents>
-											<delay>
-												<compiledString></compiledString>
-												<returnType>float</returnType>
-												<sString>-1.0</sString>
-											</delay>
-											<stopCondition>
-												<compiledString></compiledString>
-												<returnType>bool</returnType>
-												<sString>0</sString>
-											</stopCondition>
-											<stopEvents>0</stopEvents>
-										</Item>
-										<Item>
-											<applicator href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="CE2A5B4A-071C-4FDA-82C7-C3F849EDB9C2">
-												<MarkerApplicator>
-													<addValue>
-														<compiledString>FRkAAAADAAAAJgAAAD4AAABRAAAAQm9tYmVyQTJfVGltZXIAAGR1cmF0aW9uAFWL7IPsCGoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgQAAAAi038ixGLTfyLQlT/0NwtXwAAANld+NlF+IvlXcMAAAAAAAAkQA==</compiledString>
-														<returnType>float</returnType>
-														<sString>10 - pFirst-&gt;FindApplicator("BomberA2_Timer", pMisc, ABILITY)-&gt;GetVariable("duration")</sString>
-													</addValue>
-													<applyTarget>ApplicatorTarget</applyTarget>
-													<behaviorFlags>144</behaviorFlags>
-													<caption>(upg) Запоминаем время полёта ракеты</caption>
-													<effect>
-														<Item href="" />
-														<Item href="" />
-													</effect>
-													<enabled>
-														<compiledString></compiledString>
-														<returnType>bool</returnType>
-														<sString>true</sString>
-													</enabled>
-													<formulaName>BomberA2_TravelTime</formulaName>
-													<lifeTime>
-														<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
-														<returnType>float</returnType>
-														<sString>0.5</sString>
-													</lifeTime>
-													<LoggingEvent>-1</LoggingEvent>
-													<multValue>
-														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
-														<returnType>float</returnType>
-														<sString>0.0f</sString>
-													</multValue>
-													<providerName></providerName>
-													<startCondition>
-														<compiledString>FRcAAAACAAAAHgAAADcAAABCb21iZXJfQTJ1AABCb21iZXJfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
-														<returnType>bool</returnType>
-														<sString>tal("Bomber_A2u")</sString>
-													</startCondition>
-												</MarkerApplicator>
-											</applicator>
-											<continueCondition>
-												<compiledString></compiledString>
-												<returnType>bool</returnType>
-												<sString>0</sString>
-											</continueCondition>
-											<continueEvents>2</continueEvents>
 											<delay>
 												<compiledString></compiledString>
 												<returnType>float</returnType>
@@ -431,9 +460,9 @@
 					<UnitConstant>
 						<name>A2_Damage</name>
 						<var>
-							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0F3DAAC0QgDAKEQ=</compiledString>
+							<compiledString>FQAAAAAEAAAAOAAAAEIAAAB4AAAAggAAAFWL7IPsDItFCIsQi00Ii4K4AAAA/9CLTQiLEYtNCIuCvAAAAN1d+P/Q3F343+D2xEF6QGoBUdkFxAAAANkcJFHZBcAAAADZHCRqAItNCIsRi00Ii4IwAQAA/9BR2RwkagGLTRCLEYtNEItCYP/Q2V306z5qAVHZBbwAAADZHCRR2QW4AAAA2RwkagCLTQiLEYtNCIuCNAEAAP/QUdkcJGoBi00QixGLTRCLQmD/0Nld9NlF9IvlXcMAALRCAMAoRAAAfEIAAOxD</compiledString>
 							<returnType>float</returnType>
-							<sString>damageScale( sIntellect, 90, 675)</sString>
+							<sString>(sBaseStrength&gt;=sBaseIntellect)? damageScale(sStrength, 63, 472) : damageScale(sIntellect, 90, 675)</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -469,6 +498,26 @@
 				</Item>
 				<Item href="/Items/Talents/Class/Bomber/const_A2u_StunDuration_Min" />
 				<Item href="/Items/Talents/Class/Bomber/const_A2u_StunDuration_Max" />
+				<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="267068A7-BB7B-458E-8210-6E8E699933B1">
+					<UnitConstant>
+						<name>Dec_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgrgAAAD/0ItNCIsRi00Ii4K8AAAA3V34/9DcXfjf4PbEQXoJx0X0KAAAAOsHx0X0FAAAANtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>(sBaseStrength&gt;=sBaseIntellect)? 40 : 20</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bomber/Ability_A2.TALENT" id="E4C2FF87-B7FE-4EA2-B9E9-CC686D3A6E88">
+					<UnitConstant>
+						<name>Slow_Duration</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgrgAAAD/0ItNCIsRi00Ii4K8AAAA3V34/9DcXfjf4PbEQXoJx0X0BAAAAOsHx0X0AgAAANtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>(sBaseStrength&gt;=sBaseIntellect)? 4 : 2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
 			</vars>
 		</UnitConstantsContainer>
 	</constants>
@@ -477,9 +526,9 @@
 		<percent>0</percent>
 	</consumptionBonus>
 	<cooldownTime>
-		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAMQg==</compiledString>
+		<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgrgAAAD/0ItNCIsRi00Ii4K8AAAA3V34/9DcXfjf4PbEQXoJx0X0DwAAAOsHx0X0HgAAANtF9IvlXcM=</compiledString>
 		<returnType>float</returnType>
-		<sString>35</sString>
+		<sString>(sBaseStrength&gt;=sBaseIntellect)? 15 : 30</sString>
 	</cooldownTime>
 	<cooldownTimeSecondState>
 		<compiledString></compiledString>
@@ -604,11 +653,11 @@
 	<type>Active</type>
 	<upgradeLevel>0</upgradeLevel>
 	<useRange>
-		<compiledString></compiledString>
+		<compiledString>FQ0AAAABAAAASQAAAFJhbmdlX0V4TG9uZwBVi+yD7AyLRQiLEItNCIuCuAAAAP/Qi00IixGLTQiLgrwAAADdXfj/0Nxd+N/g9sRBeh+LTQxRi1UIUmgAAAAAi0UQixCLTRCLQlD/0Nld9OsF2e7ZXfTZRfSL5V3DAAAAAA==</compiledString>
 		<returnType>float</returnType>
-		<sString>0.0f</sString>
+		<sString>(sBaseStrength&gt;=sBaseIntellect)? cRange_ExLong : 0.0f</sString>
 	</useRange>
-	<useRangeMaterial href="" />
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
 	<variativeMaxTalentStats />
 	<variativeMinTalentStats />
 	<vendorCost>0</vendorCost>

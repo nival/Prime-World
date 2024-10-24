@@ -11,6 +11,9 @@
 	<BackLink DBID="/Test/Talents/RedSet2_1.TALENTSET" Count="1" />
 	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_NY2020_BadList.ROLLCONT" Count="1" />
 	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_Season13_BadList.ROLLCONT" Count="1" />
+	<BackLink DBID="/Items/Talents/Rockman.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Highlander.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Witcher.TALENTSET" Count="1" />
 	<activationConditions />
 	<activeCustomTrigger>true</activeCustomTrigger>
 	<allowChase>
@@ -138,9 +141,9 @@
 				<caption>Add_AttackSpeed</caption>
 				<customApplyType>None</customApplyType>
 				<enabled>
-					<compiledString></compiledString>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgowAAAD/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
 					<returnType>bool</returnType>
-					<sString>true</sString>
+					<sString>sBaseAttackSpeed &gt;= sBaseDexterity</sString>
 				</enabled>
 				<formulaName></formulaName>
 				<LoggingEvent>-1</LoggingEvent>
@@ -279,6 +282,36 @@
 					<stat>Life</stat>
 					<topModifier>false</topModifier>
 					<variable>G481_Active</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level6/G481_AttackSpeed_StaOrWill.TALENT" id="37496F9B-82A8-4688-A047-59508FBF6572">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Add_Dex</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgsAAAAD/0ItNCIsRi00Ii4KMAAAA3V34/9DcXfjf4PbEBXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseDexterity &gt; sBaseAttackSpeed </sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRAAAAABAAAAHAAAAEFkZF9BdHRhY2tTcGVlZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cAdd_AttackSpeed</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Dexterity</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
 				</modifier>
 				<providerName></providerName>
 			</PermanentStatModApplicator>

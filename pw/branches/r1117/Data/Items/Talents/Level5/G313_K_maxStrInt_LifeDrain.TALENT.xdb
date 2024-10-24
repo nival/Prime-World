@@ -5,7 +5,7 @@
 	<BackLink DBID="/GameLogic/TalentGroup.TGRP" Count="1" />
 	<BackLink DBID="/Items/RerollShop/TalentsList_Rar5_Set1" Count="1" />
 	<BackLink DBID="/Items/Talents/Level5/G313_K_maxStrInt_LifeDrain.TALENT" Count="1" />
-	<BackLink DBID="/Items/Talents/TalentKits/Vampiric2_ArmourPush/V2_ArmourPush.TALKIT" Count="2" />
+	<BackLink DBID="/Items/Talents/TalentKits/Vampiric2_ArmourPush/V2_ArmourPush.TALKIT" Count="1" />
 	<BackLink DBID="/Items/Talents/TalentList_Mighty/Alchemist_Mighty.TALENTSET" Count="1" />
 	<BackLink DBID="/Items/Talents/TalentList_Mighty/Assassin_Mighty.TALENTSET" Count="1" />
 	<BackLink DBID="/Items/Talents/TalentList_Mighty/Chronicle_MightyStr.TALENTSET" Count="1" />
@@ -54,6 +54,8 @@
 	<BackLink DBID="/Test/Talents/WitchDoctor/Elite_Str.TALENTSET" Count="1" />
 	<BackLink DBID="/Test/Talents/Witcher/Elite_Int.TALENTSET" Count="1" />
 	<BackLink DBID="/Test/Talents/Witcher/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/WitchDoctor.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Rockman.TALENTSET" Count="1" />
 	<activationConditions />
 	<activeCustomTrigger>true</activeCustomTrigger>
 	<allowChase>
@@ -289,14 +291,14 @@
 																</Item>
 															</Values>
 														</angle>
-														<applyTarget>AbilityOwner</applyTarget>
+														<applyTarget>AbilityTarget</applyTarget>
 														<behaviorFlags>0</behaviorFlags>
 														<caption>Self throw</caption>
 														<collisionFlags>5</collisionFlags>
 														<enabled>
-															<compiledString>FTsAAAAFAAAAVwAAAHYAAACMAAAAngAAAL4AAABURUNIX1B1c2hEaXN0YW5jZVNlbGYAAABJbW11bmUyQ29udHJvbAAAVGhyb3cAAABUaHJvd19KdW1wAFWL7IPsDItFEIsQi00Qi0IM/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sRBdWtoGAAAAItNDIsRi00Mi4KIAQAA/9DcHe4AAADf4PbERHpJagCLTRBRaCgAAACLVQyLAotNDIuQnAEAAP/SO0UQdSlqAItFEFBoMAAAAItNDIsRi00Mi4KcAQAA/9A7RRB1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAAAAAAAA=</compiledString>
+															<compiledString>FUMAAAAGAAAAXwAAAHwAAACeAAAAtAAAAMYAAADmAAAAVEVDSF9QdXNoRGlzdGFuY2UAAABURUNIX1JhbmdlAABJbW11bmUyQ29udHJvbAAAVGhyb3cAAABUaHJvd19KdW1wAFWL7IPsFItFEIsQi00Qi0IM/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0ItNDFGLVQhSaBQAAACLRRCLEItNEItCUN1d8P/Q3EXw3F343+D2xEF1a2ggAAAAi00MixGLTQyLgogBAAD/0NwdFgEAAN/g9sREeklqAItNEFFoMAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1KWoAi0UQUGg4AAAAi00MixGLTQyLgpwBAAD/0DtFEHUJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcMAAAAAAAAAAA==</compiledString>
 															<returnType>bool</returnType>
-															<sString>mDist2Target &lt; cTECH_PushDistanceSelf &amp;&amp; receiver.vImmune2Control == 0 &amp;&amp; receiver.applThrow(GLOBAL) == pMisc &amp;&amp; receiver.applThrow_Jump(GLOBAL) == pMisc</sString>
+															<sString>mDist2Target &lt; (cTECH_PushDistance + cTECH_Range) &amp;&amp; receiver.vImmune2Control == 0 &amp;&amp; receiver.applThrow(GLOBAL) == pMisc &amp;&amp; receiver.applThrow_Jump(GLOBAL) == pMisc</sString>
 														</enabled>
 														<firstTargetToHit href="" />
 														<flightType>Throw</flightType>
@@ -378,7 +380,7 @@
 														<targetSelector href="/Items/Talents/Level5/G313_K_maxStrInt_LifeDrain.TALENT" id="EA97A13E-9ACB-41DE-BECA-287C645C32FA">
 															<PointTargetSelector>
 																<checkMinRange>true</checkMinRange>
-																<mode>OffsetFromOwner</mode>
+																<mode>OffsetFromTarget</mode>
 																<offset>
 																	<x>0</x>
 																	<y>1</y>
@@ -899,7 +901,7 @@
 											<Item href="" />
 										</effect>
 										<enabled>
-											<compiledString></compiledString>
+											<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
 											<returnType>bool</returnType>
 											<sString>true</sString>
 										</enabled>
@@ -912,7 +914,7 @@
 										<LoggingEvent>-1</LoggingEvent>
 										<providerName></providerName>
 										<startCondition>
-											<compiledString></compiledString>
+											<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
 											<returnType>bool</returnType>
 											<sString>true</sString>
 										</startCondition>
@@ -1009,9 +1011,9 @@
 					<UnitConstant>
 						<name>Add_Stat2</name>
 						<var>
-							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwzMzg0CamZk+</compiledString>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
 							<returnType>float</returnType>
-							<sString>refineScale(4.1, 0.3)</sString>
+							<sString>6</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -1019,9 +1021,9 @@
 					<UnitConstant>
 						<name>Add_Stat</name>
 						<var>
-							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9BdwwAAQEFmZmY/</compiledString>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcyUQQ==</compiledString>
 							<returnType>float</returnType>
-							<sString>refineScale(12, 0.9)</sString>
+							<sString>18.6</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -1030,9 +1032,9 @@
 					<UnitConstant>
 						<name>TECH_Range</name>
 						<var>
-							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<compiledString>FSkAAAAEAAAAMAAAAEkAAACHAAAApgAAAEczMDQAAAAARzMwNAAAAABSYW5nZV9Mb25nAABSYW5nZV9NZWRpdW0AVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0H4tVDFKLRQhQaBAAAACLTRCLEYtNEItCUP/Q2V306x2LTQxRi1UIUmgcAAAAi0UQixCLTRCLQlD/0Nld9NlF9IvlXcM=</compiledString>
 							<returnType>float</returnType>
-							<sString>cRange_Long</sString>
+							<sString>tal("G304") ? cRange_Long  : cRange_Medium</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -1040,9 +1042,9 @@
 					<UnitConstant>
 						<name>TECH_PushDistanceSelf</name>
 						<var>
-							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<compiledString>FRsAAAAEAAAAIgAAADsAAAB5AAAAkQAAAEczMTUAAAAARzMxNQAAAABSYW5nZV9Mb25nAFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoCAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdB+LVQxSi0UIUGgQAAAAi00QixGLTRCLQlD/0Nld9OsJ2QWfAAAA2V302UX0i+VdwwAA4EA=</compiledString>
 							<returnType>float</returnType>
-							<sString>cRange_Medium</sString>
+							<sString>tal("G315") ? cRange_Long : 7</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -1050,9 +1052,9 @@
 					<UnitConstant>
 						<name>TECH_PushDistance</name>
 						<var>
-							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<compiledString>FRsAAAAEAAAAIgAAADsAAAB5AAAAkQAAAEczMTUAAAAARzMxNQAAAABSYW5nZV9Mb25nAFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoCAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdB+LVQxSi0UIUGgQAAAAi00QixGLTRCLQlD/0Nld9OsJ2QWfAAAA2V302UX0i+VdwwAA4EA=</compiledString>
 							<returnType>float</returnType>
-							<sString>cRange_Medium</sString>
+							<sString>tal("G315") ? cRange_Long : 7</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -1258,41 +1260,6 @@
 				<providerName></providerName>
 			</PermanentStatModApplicator>
 		</Item>
-		<Item href="/Items/Talents/Level5/G313_K_maxStrInt_LifeDrain.TALENT" id="46C0D454-4DE4-4645-B2BA-3768CC46F290">
-			<FlagsApplicator>
-				<applyTarget>AbilityOwner</applyTarget>
-				<behaviorFlags>0</behaviorFlags>
-				<caption>Запрет использовать без остальных талантов кита</caption>
-				<consumables />
-				<effect>
-					<Item href="" />
-					<Item href="" />
-				</effect>
-				<enabled>
-					<compiledString>FS0AAAAGAAAANAAAAE0AAACHAAAAoAAAANYAAADvAAAARzMwNAAAAABHMzA0AAAAAEczMTAAAAAARzMxMAAAAABHMzE1AAAAAEczMTUAVYvsg+wcaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hckPhKcAAABoEAAAAItVCIsCi00Ii5CoAQAA/9KFwHQqaBgAAACLRQiLEItNCIuCqAEAAP/QiUX0i030ixGLTfSLQgT/0IhF8+sExkXzAA+2TfOFyXRYaCAAAACLVQiLAotNCIuQqAEAAP/ShcB0KmgoAAAAi0UIixCLTQiLgqgBAAD/0IlF7ItN7IsRi03si0IE/9CIRevrBMZF6wAPtk3rhcl0CcdF5AAAAADrB8dF5AEAAACKReSL5V3D</compiledString>
-					<returnType>bool</returnType>
-					<sString>!tal("G304") || !tal("G310") || !tal("G315")</sString>
-				</enabled>
-				<flag>1024</flag>
-				<formulaName></formulaName>
-				<lifeTime>
-					<compiledString></compiledString>
-					<returnType>float</returnType>
-					<sString>-1.0</sString>
-				</lifeTime>
-				<LoggingEvent>-1</LoggingEvent>
-				<providerName></providerName>
-				<startCondition>
-					<compiledString></compiledString>
-					<returnType>bool</returnType>
-					<sString>true</sString>
-				</startCondition>
-				<talents>
-					<Item href="/Items/Talents/Level5/G313_K_maxStrInt_LifeDrain.TALENT" />
-				</talents>
-				<useListAs>ListAsRule</useListAs>
-			</FlagsApplicator>
-		</Item>
 		<Item href="/Items/Talents/Level5/G313_K_maxStrInt_LifeDrain.TALENT" id="903E87DE-6A78-419D-8081-413F09DF86F7">
 			<PermanentStatModApplicator>
 				<applyTarget>ApplicatorTarget</applyTarget>
@@ -1386,9 +1353,9 @@
 	</passiveApplicators>
 	<persistentId>G313</persistentId>
 	<prerequisiteTalents />
-	<rarity>exclusive</rarity>
+	<rarity>outstanding</rarity>
 	<requireLineOfSight>false</requireLineOfSight>
-	<shortDescription textref="/Items/Talents/Level5/G313_K_maxStrInt_LifeDrain.TALENT_shortDescription.txt" />
+	<shortDescription textref="" />
 	<talentRollGroups>63</talentRollGroups>
 	<talentStats>
 		<Item>
@@ -1403,7 +1370,7 @@
 			</values>
 		</Item>
 	</talentStats>
-	<targetType>1745092611</targetType>
+	<targetType>2013528067</targetType>
 	<type>Active</type>
 	<upgradeLevel>0</upgradeLevel>
 	<useRange>

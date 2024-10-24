@@ -3,7 +3,6 @@
 	<BackLink DBID="/Social.ROOT" Count="1" />
 	<BackLink DBID="/GameLogic/AILogic.AILP" Count="1" />
 	<BackLink DBID="/Items/RerollShop/TalentsList_Rar5_Set1" Count="1" />
-	<BackLink DBID="/Items/Talents/Stalker.TALENTSET" Count="1" />
 	<BackLink DBID="/Items/Talents/TalentKits/Vampiric3_StunProc/V3_StunProc.TALKIT" Count="1" />
 	<BackLink DBID="/Social/TalentsCollection" Count="3" />
 	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_OrangeSet1.ROLLCONT" Count="1" />
@@ -18,6 +17,8 @@
 	<BackLink DBID="/Test/Talents/Naga/Elite_Will.TALENTSET" Count="1" />
 	<BackLink DBID="/Test/Talents/WitchDoctor/Elite_Int.TALENTSET" Count="1" />
 	<BackLink DBID="/Test/Talents/WitchDoctor/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Archeress.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Alchemist.TALENTSET" Count="1" />
 	<activationConditions />
 	<activeCustomTrigger>true</activeCustomTrigger>
 	<allowChase>
@@ -68,6 +69,36 @@
 				<Item href="/Items/Talents/TalentKits/Vampiric3_StunProc/const_Cooldown" />
 				<Item href="/Items/Talents/TalentKits/Vampiric3_StunProc/const_Stun_Duration" />
 				<Item href="/Items/Talents/TalentKits/Vampiric3_StunProc/const_AbilityChance" />
+				<Item href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="FE0DA066-D422-4E63-BC04-50DE055C627F">
+					<UnitConstant>
+						<name>G295_Damage</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPg==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.4</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="FEE0745E-AF60-4E67-B4C5-0A07F32BC254">
+					<UnitConstant>
+						<name> DmgPercent</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DmpmZPg==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.3f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="DA80ECC6-D867-479F-BB53-49A474F5817C">
+					<UnitConstant>
+						<name>Current_Heal</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
 			</vars>
 		</UnitConstantsContainer>
 	</constants>
@@ -109,35 +140,174 @@
 	<name textref="/Items/Talents/Level1/G295_LifeDrain.TALENT_name.txt" />
 	<node></node>
 	<passiveApplicators>
-		<Item href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="13AA595C-660C-44A7-A61A-8F190D56583D">
-			<PermanentStatModApplicator>
+		<Item href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="33F600CE-15AD-49C1-8093-85FD5527B5D1">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="CDA512E2-7FB5-4325-B5F1-33790AFF6087">
+							<VariableProxyApplicator>
+								<applicators>
+									<Item>
+										<applicator href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="305060C8-3651-48B9-996E-DCD220562BC1">
+											<DamageApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<cancelInvisibility>false</cancelInvisibility>
+												<caption>Наносим урон</caption>
+												<damage>
+													<compiledString>FQsAAAACAAAAJwAAAD0AAABEbWdQZXJjZW50AFWL7IPsDItFDIsQi00Mi0IM/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfj/0NwNTgAAANxN+Nld9NlF9IvlXcN7FK5H4XqEPw==</compiledString>
+													<returnType>float</returnType>
+													<sString> rMaxLife * ( cDmgPercent * 0.01)</sString>
+												</damage>
+												<damageMode>0</damageMode>
+												<damageType>Pure</damageType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<timeLimiter>-1</timeLimiter>
+												<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed.UIEV" />
+											</DamageApplicator>
+										</applicator>
+										<variableNames>
+											<Item>damageDealed</Item>
+										</variableNames>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="6C938D3C-5263-48DC-8087-3AD76A84C7D3">
+											<PermanentStatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<caption>Сохраняем нанесенный урон</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQ0AAAABAAAAIgAAAGRhbWFnZURlYWxlZABVi+xRi0UQixCLTRCLQkj/0IlF/GgAAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>appl.parent.GetVariable("damageDealed")</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>G295_DmgDealed</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</applicator>
+										<variableNames />
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Наносим и сохраняем урон</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+							</VariableProxyApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/Level1/G295_LifeDrain.TALENT" id="926304FE-6AD1-4A36-A6AD-74D19F302C91">
+							<HealApplicator>
+								<amount>
+									<compiledString>FQ8AAAABAAAAEwAAAEcyOTVfRG1nRGVhbGVkAFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0F3D</compiledString>
+									<returnType>float</returnType>
+									<sString>sender.vG295_DmgDealed</sString>
+								</amount>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Теперь лечим</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<healTarget>Health</healTarget>
+								<ignoreHealingMods>false</ignoreHealingMods>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+							</HealApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
 				<applyTarget>ApplicatorTarget</applyTarget>
-				<caption>+ Add_LifeDrain</caption>
-				<customApplyType>None</customApplyType>
+				<behaviorFlags>154</behaviorFlags>
+				<caption>Программа с уроном и лечением</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
 				<enabled>
 					<compiledString></compiledString>
 					<returnType>bool</returnType>
 					<sString>true</sString>
 				</enabled>
 				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
 				<LoggingEvent>-1</LoggingEvent>
-				<modifier>
-					<addValue>
-						<compiledString>FQ4AAAABAAAAGgAAAEFkZF9MaWZlRHJhaW4AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
-						<returnType>float</returnType>
-						<sString>cAdd_LifeDrain</sString>
-					</addValue>
-					<multValue>
-						<compiledString></compiledString>
-						<returnType>float</returnType>
-						<sString>1.0f</sString>
-					</multValue>
-					<stat>LifeDrain</stat>
-					<topModifier>false</topModifier>
-					<variable></variable>
-				</modifier>
 				<providerName></providerName>
-			</PermanentStatModApplicator>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</ProgramApplicator>
 		</Item>
 	</passiveApplicators>
 	<persistentId>G295</persistentId>

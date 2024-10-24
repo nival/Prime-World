@@ -15,6 +15,7 @@
 	<BackLink DBID="/Test/Talents/Rockman/Elite_Life.TALENTSET" Count="1" />
 	<BackLink DBID="/Social/TalentsCollection" Count="4" />
 	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_OrangeSet1.ROLLCONT" Count="1" />
+	<BackLink DBID="/Items/Talents/Faceless.TALENTSET" Count="1" />
 	<activationConditions />
 	<activeCustomTrigger>true</activeCustomTrigger>
 	<allowChase>
@@ -102,9 +103,9 @@
 					<UnitConstant>
 						<name>Add_Stat</name>
 						<var>
-							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9Bdw83MNEHNzEw/</compiledString>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9Bdw83MTEDNzEw+</compiledString>
 							<returnType>float</returnType>
-							<sString>refineScale(11.3, 0.8)</sString>
+							<sString>refineScale(3.2, 0.2)</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -140,6 +141,20 @@
 							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
 							<returnType>float</returnType>
 							<sString>0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Vampiric6_CasterBoost/G308_Damage" />
+				<Item href="/Items/Talents/TalentKits/Vampiric6_CasterBoost/G302_Damage" />
+				<Item href="/Items/Talents/TalentKits/Vampiric6_CasterBoost/G308_StackCount" />
+				<Item href="/Items/Talents/TalentKits/Vampiric6_CasterBoost/G296_StackCount" />
+				<Item href="/Items/Talents/Level4/G308_K_Life_Energy.TALENT" id="00DF7CC1-D489-408C-8D4F-16C833DBBF52">
+					<UnitConstant>
+						<name>Add_LifeRegAbs</name>
+						<var>
+							<compiledString>FQAAAAACAAAABgAAABAAAABVi+xR2QUqAAAA2RwkUdkFJgAAANkcJItFEIsQi00Qi0Js/9Bdw2ZmBkDNzMw9</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(2.1, 0.1)</sString>
 						</var>
 					</UnitConstant>
 				</Item>
@@ -301,12 +316,42 @@
 	</manaCost>
 	<marker></marker>
 	<microAI href="" />
-	<minLevel>3</minLevel>
+	<minLevel>1</minLevel>
 	<minUseRangeCorrection>0</minUseRangeCorrection>
 	<naftaCost>-1</naftaCost>
 	<name textref="/Items/Talents/Level4/G308_K_Life_Energy.TALENT_name.txt" />
 	<node></node>
 	<passiveApplicators>
+		<Item href="/Items/Talents/Level4/G308_K_Life_Energy.TALENT" id="4134E896-A444-4681-917C-E2333881F5A3">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Add_LifeRegAbs</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQ8AAAABAAAAGwAAAEFkZF9MaWZlUmVnQWJzAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cAdd_LifeRegAbs</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>LifeRegenerationAbsolute</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
 		<Item href="/Items/Talents/Level4/G308_K_Life_Energy.TALENT" id="946B33DA-C895-4486-99A4-18D10A4D81E9">
 			<PermanentStatModApplicator>
 				<applyTarget>ApplicatorTarget</applyTarget>
@@ -401,16 +446,16 @@
 			<FlagsApplicator>
 				<applyTarget>ApplicatorTarget</applyTarget>
 				<behaviorFlags>0</behaviorFlags>
-				<caption>Запрет использовать без стеков и без остальных талантов кита</caption>
+				<caption>Запрет использовать без стеков </caption>
 				<consumables />
 				<effect>
 					<Item href="" />
 					<Item href="" />
 				</effect>
 				<enabled>
-					<compiledString>FS0AAAAGAAAANAAAAEoAAABaAAAAcwAAAKkAAADCAAAAQmxvb2RDb3VudGVyAAAAAEcyOTYAAAAARzI5NgAAAABHMzAyAAAAAEczMDIAVYvsg+wUaAAAAACLRQiLEItNCIuCiAEAAP/Q3B0OAQAA3+D2xEEPi6cAAABoEAAAAItNCIsRi00Ii4KoAQAA/9CFwHQqaBgAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXRYaCAAAACLVQiLAotNCIuQqAEAAP/ShcB0KmgoAAAAi0UIixCLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0CcdF7AAAAADrB8dF7AEAAACKReyL5V3DAAAAAAAAAAA=</compiledString>
+					<compiledString>FQ0AAAACAAAAEgAAACgAAABCbG9vZENvdW50ZXIAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdSgAAAN/g9sRBegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
 					<returnType>bool</returnType>
-					<sString>sender.vBloodCounter &lt;= 0 || !tal("G296") || !tal("G302")</sString>
+					<sString>sender.vBloodCounter &lt;= 0 </sString>
 				</enabled>
 				<flag>1024</flag>
 				<formulaName></formulaName>
@@ -447,9 +492,9 @@
 					<Item href="" />
 				</effect>
 				<enabled>
-					<compiledString>FR0AAAAEAAAAJAAAAD0AAABzAAAAjAAAAEcyOTYAAAAARzI5NgAAAABHMzAyAAAAAEczMDIAVYvsg+wUaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0WGgQAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoGAAAAItFCIsQi00Ii4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdAnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
 					<returnType>bool</returnType>
-					<sString>tal("G296") &amp;&amp; tal("G302")</sString>
+					<sString>true</sString>
 				</enabled>
 				<formulaName></formulaName>
 				<lifeTime>
@@ -657,9 +702,9 @@
 					<Item href="" />
 				</effect>
 				<enabled>
-					<compiledString>FR0AAAAEAAAAJAAAAD0AAABzAAAAjAAAAEcyOTYAAAAARzI5NgAAAABHMzAyAAAAAEczMDIAVYvsg+wUaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0WGgQAAAAi1UIiwKLTQiLkKgBAAD/0oXAdCpoGAAAAItFCIsQi00Ii4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdAnHRewBAAAA6wfHRewAAAAAikXsi+Vdww==</compiledString>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
 					<returnType>bool</returnType>
-					<sString>tal("G296") &amp;&amp; tal("G302")</sString>
+					<sString>true</sString>
 				</enabled>
 				<formulaName></formulaName>
 				<lifeTime>
@@ -856,7 +901,7 @@
 	</passiveApplicators>
 	<persistentId>G308</persistentId>
 	<prerequisiteTalents />
-	<rarity>exclusive</rarity>
+	<rarity>outstanding</rarity>
 	<requireLineOfSight>true</requireLineOfSight>
 	<shortDescription textref="/Items/Talents/Level4/G308_K_Life_Energy.TALENT_shortDescription.txt" />
 	<talentRollGroups>63</talentRollGroups>
