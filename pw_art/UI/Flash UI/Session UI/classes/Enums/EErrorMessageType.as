@@ -1,0 +1,23 @@
+package Enums
+{
+	public class EErrorMessageType
+	{
+		public static const ERRORMESSAGETYPE_NOTENOUGHPRIMETOBUY:int = 0;
+		public static const ERRORMESSAGETYPE_NOTENOUGHMANAFORABILITY:int = 1;
+		public static const ERRORMESSAGETYPE_ABILITYONCOOLDOWN:int = 2;
+		public static const ERRORMESSAGETYPE_WRONGTARGET:int = 3;
+		public static const ERRORMESSAGETYPE_INVULNERABLETARGET:int = 4;
+		public static const ERRORMESSAGETYPE_FLAGPOLEPROTECTEDBYTOWER:int = 5;
+		public static const ERRORMESSAGETYPE_FLAGPOLEPROTECTEDBYNEXT:int = 6;
+		public static const ERRORMESSAGETYPE_FLAGPOLETOOFAR:int = 7;
+		public static const ERRORMESSAGETYPE_FLAGPOLECURRENTLYRISING:int = 8;
+		public static const ERRORMESSAGETYPE_MINIGAMEBUSY:int = 9;
+		public static const ERRORMESSAGETYPE_MINIGAMEPROTECTEDBYTOWERS:int = 10;
+		public static const ERRORMESSAGETYPE_WAITINGFORTARGET:int = 11;
+		public static const ERRORMESSAGETYPE_OUTOFINVENTORY:int = 12;
+		public static const ERRORMESSAGETYPE_MINIGAMENOTREADY:int = 13;
+		public static const ERRORMESSAGETYPE_MINIGAMEDISABLED:int = 14;
+		public static const ERRORMESSAGETYPE_NOTENOUGHLIFEFORABILITY:int = 15;
+		public static const ERRORMESSAGETYPE_PINGRESTRICTED:int = 16;
+	}
+}
