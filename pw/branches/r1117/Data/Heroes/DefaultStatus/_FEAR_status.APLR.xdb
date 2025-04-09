@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/Normals/Normal2/CTF_S7.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal2/PvE_Coop1_AoE_Channel.ABLT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Fluffy/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Werewolf/status_Fear_A4.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Werewolf/status_A4_curse.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset4_3_Fire/status_G557_Mark.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_FEAR_status.APLR" id="BACC2FE7-9DE3-4479-8E48-F207EA4361FA">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>понижение урона от страха (герои)</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQlT/0F3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>rIsHero</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FR0AAAADAAAAOAAAAFIAAABpAAAARmVhcl9QZW5hbHR5AAAAAEFyY2hlcmVzc19BMABVi+yD7AyLRQyLEItNDItCVP/QD7bIhcl0JGgQAAAAi1UMiwKLTQyLkKgBAAD/0oXAdAvdBZEAAADdXfjrBdno3V34i0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LZ4NxN+Nld9NlF9IvlXcMAAAAAAADwPwAAAAAAAOA/</compiledString>
+						<returnType>float</returnType>
+						<sString>-cFear_Penalty * (( rIsHero &amp;&amp; receiver.GetTalent("Archeress_A0")) ? 0.5 : 1)</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>BaseAttack</stat>
+					<topModifier>false</topModifier>
+					<variable>DamageSummand</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Fear_Penalty</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_FEAR_status.APLR" id="63A78B6D-0833-4DAC-90C2-F0EE5113ABEA">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>понижение урона от страха (НЕ герои)</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQlT/0A+2wPfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>!rIsHero</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQ0AAAABAAAAGQAAAEZlYXJfUGVuYWx0eQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tngXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>-cFear_Penalty</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>BaseAttack</stat>
+					<topModifier>false</topModifier>
+					<variable>DamageSummand</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Fear_Penalty</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_FEAR_status.APLR" id="41681D74-8308-42E1-BB23-9E757F3FA561">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Heroes/DefaultStatus/_FEAR_status.APLR_41681d74830842e1bb239e757f3fa561_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="" />
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>статус страх</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/_FEAR_status.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="/Effects/Debuffs/Fear/_.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>StatusFear</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Fear.ITEX" />
+	<lifeTime>
+		<compiledString>FQ4AAAABAAAAGgAAAEZlYXJfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cFear_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/_FEAR_status.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

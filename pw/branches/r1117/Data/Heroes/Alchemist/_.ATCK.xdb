@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Heroes/Alchemist/_.HROB" Count="1" />
+	<BackLink DBID="/Summons/Clone/_Parent.SUMMONED" Count="1" />
+	<BackLink DBID="/Summons/Clone/Intellect.SUMMONED" Count="1" />
+	<BackLink DBID="/Summons/Clone/Strength.SUMMONED" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Effects/Shots/HitsApplicators/Bottle2.APLR" />
+		<Item href="/Heroes/Alchemist/_.ATCK" id="2E356814-D142-4BD5-8924-3EBFAB12CB4C">
+			<VariableProxyApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Heroes/Alchemist/_.ATCK" id="8A4B4BAC-2234-4DB1-889F-06B5AD276508">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/BaseAttackDmg_Hero.APLR">
+								<uiEvent href="" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+							<Item>isCritical</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Heroes/Alchemist/_.ATCK" id="A765ED4E-93C9-482B-9BD9-56AEE2706742">
+							<DamageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<cancelInvisibility>false</cancelInvisibility>
+								<caption>Урон А4</caption>
+								<damage>
+									<compiledString>FQ8AAAABAAAAGwAAAEE0X0JvbnVzRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cA4_BonusDamage</sString>
+								</damage>
+								<damageMode>4</damageMode>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString>FRUAAAACAAAAIAAAAEAAAABBNF9Cb251c0RhbWFnZQAAV2FyZABVi+xRagCLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QO0UQdClqAItNEFFoEAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3D</compiledString>
+									<returnType>bool</returnType>
+									<sString>sender.applA4_BonusDamage(GLOBAL) != pMisc &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+								</enabled>
+								<formulaName>Alchemist_A4Damage</formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<timeLimiter>-1</timeLimiter>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Heroes/Alchemist/msg_AA_Damage.APLR" />
+						<variableNames />
+					</Item>
+					<Item>
+						<applicator href="/Heroes/Alchemist/msg_AA_CritDamage.APLR" />
+						<variableNames />
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Уроны</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+			</VariableProxyApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Heroes/Alchemist/_.ATCK" id="F5EC07EE-6500-4CFA-B9DE-127896FAFD38">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Alchemist/const_A4_BonusDamage" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Heroes/Alchemist/_.ATCK" id="785EC023-37CF-464F-AE98-CACCD4BF7C55">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/Bottle/_2.EFFT" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>7</flags>
+			<flyMode>Parabolic</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>true</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>-1</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>25</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>0</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>
