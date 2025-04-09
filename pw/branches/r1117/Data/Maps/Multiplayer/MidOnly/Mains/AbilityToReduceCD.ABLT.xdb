@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Mains/_A.MBLD" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption> -- Статус, который будем вешать на всех героев, чтобы понижать им КД и открывалка тумана над целями для суперсиджей (ТОЛЬКО ДЛЯ ЭТОЙ КАРТЫ)</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="257F6EF7-86AA-49DA-99C8-4CADB80CA348">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="02EFBADF-A766-4F26-B7A8-EF9FF7B48B57">
+					<UnitConstant>
+						<name>CD_Reduce_percent</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAMQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>35</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="A7DAA9C5-6E8C-4C09-88D4-050E7C377946">
+					<UnitConstant>
+						<name>Range_HeroDeathToDamageSiege</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQw==</compiledString>
+							<returnType>float</returnType>
+							<sString>200</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="8F486089-0750-4816-A239-1DC7FC95EA39">
+					<UnitConstant>
+						<name>DamageToSiege_ifHeroDie</name>
+						<var>
+							<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCDP/Q3A0hAAAA2V382UX8i+Vdw2ZmZmZmZtY/</compiledString>
+							<returnType>float</returnType>
+							<sString>rMaxLife * 0.35</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="B8741F15-0CB6-46D5-A0C3-F7F1E8EC0764">
+					<UnitConstant>
+						<name>OpenVisibilityAroundTargets</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>5</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="8238DA29-E1D5-45BD-8C83-D2C6CB6E6E66">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Maps/Multiplayer/MidOnly/Mains/status_ReduceCD.APLR" />
+					<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="B5E50FB3-4759-479D-AC66-AD2C7CFB3C8D">
+						<TriggerApplicator>
+							<actionsCount>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</actionsCount>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>- Триггер на смерть героя - для того, чтобы наносить урон сиджам</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<playAck>false</playAck>
+							<processor href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="5B2A1395-DC33-454C-8E87-C7506838A66B">
+								<EventProcessorOnDeath>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<castSpellDelay>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>0.0f</sString>
+									</castSpellDelay>
+									<checkSender>0</checkSender>
+									<objectFilter>2040319</objectFilter>
+									<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+									<spell href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="0D3174AA-54D1-4158-891B-F98A580D2CD4">
+										<Spell>
+											<applicators>
+												<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="E016A123-869C-4B2A-88C2-0423D2F39510">
+													<SpellApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<caption></caption>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<spell href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="20DF8675-C587-40C0-8AA7-D25AE3DDC97A">
+															<Spell>
+																<applicators>
+																	<Item href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="98370317-3824-44C7-AEA0-C56D3A1299E1">
+																		<DamageApplicator>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<cancelInvisibility>false</cancelInvisibility>
+																			<caption></caption>
+																			<damage>
+																				<compiledString>FRgAAAABAAAAJAAAAERhbWFnZVRvU2llZ2VfaWZIZXJvRGllAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>cDamageToSiege_ifHeroDie</sString>
+																			</damage>
+																			<damageMode>0</damageMode>
+																			<damageType>Pure</damageType>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<formulaName></formulaName>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<providerName></providerName>
+																			<timeLimiter>-1</timeLimiter>
+																			<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_toSiege_MO.UIEV" />
+																		</DamageApplicator>
+																	</Item>
+																</applicators>
+																<dispatch href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="0444D630-0A20-429C-9CC8-47AB6B3D58CD">
+																	<DispatchImmediate>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Default</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>0</flags>
+																		<instantApply>false</instantApply>
+																	</DispatchImmediate>
+																</dispatch>
+															</Spell>
+														</spell>
+														<spellTarget>ApplicatorTarget</spellTarget>
+														<targetSelector href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="F97ABDEC-2181-4E2C-A3A3-7B2B66F62F6E">
+															<AreaTargetSelector>
+																<absolutePosition>
+																	<x>0</x>
+																	<y>0</y>
+																</absolutePosition>
+																<flags>0</flags>
+																<mode>Normal</mode>
+																<range>
+																	<compiledString>FR0AAAABAAAAKQAAAFJhbmdlX0hlcm9EZWF0aFRvRGFtYWdlU2llZ2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cRange_HeroDeathToDamageSiege</sString>
+																</range>
+																<targetFilter>269484048</targetFilter>
+																<targetSelector href="" />
+															</AreaTargetSelector>
+														</targetSelector>
+													</SpellApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="34BF0BB3-E871-40D5-A7F0-C272705FFA1F">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>false</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+								</EventProcessorOnDeath>
+							</processor>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<useAbilityCooldown>false</useAbilityCooldown>
+							<useAbilityOwnerMana>false</useAbilityOwnerMana>
+						</TriggerApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption></caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>2040319</targets>
+				<targetSelector href="/Maps/Multiplayer/MidOnly/Mains/AbilityToReduceCD.ABLT" id="A18F6BF0-0F45-4B8D-B9AC-A2A79F9E78B8">
+					<HeroEnumerator>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetFilter>268435459</targetFilter>
+					</HeroEnumerator>
+				</targetSelector>
+				<type>None</type>
+			</AuraApplicator>
+		</Item>
+		<Item href="/Creeps/DefaultStats/MidOnly/EyeSend.APLR" />
+	</passiveApplicators>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>807346687</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

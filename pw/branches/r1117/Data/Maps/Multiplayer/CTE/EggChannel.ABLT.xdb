@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Glyphs/Egg.GLPH" Count="1" />
+	<BackLink DBID="/Glyphs/EggTriggerDragon.APLR" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Maps/Multiplayer/CTE/EggChannel.ABLT" id="E0E507E7-E66A-4B2E-9BAF-C5ED48E3DA5C">
+			<PickupChannelingApplicator>
+				<applicatorsOnSelf>
+					<Item href="/Maps/Multiplayer/CTE/EggChannel.ABLT" id="C3A7A54B-F399-448E-B809-D67AA55D2CF4">
+						<FlagsApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>-- пока герой поднимает флаг, он становится видимым</caption>
+							<consumables />
+							<effect>
+								<Item href="/Maps/Multiplayer/CTE/EggChannel.ABLT" id="0309B0D9-EB66-4B4D-9FB1-1E1AB0D0A827">
+									<PlayAnimationEffect>
+										<animGraphNode>channeling</animGraphNode>
+										<deathType>Manual</deathType>
+										<enableCondition href="" />
+										<goToOtherNodeOnStop>false</goToOtherNodeOnStop>
+										<lifeTime>0</lifeTime>
+										<marker></marker>
+										<markerReachTime>0</markerReachTime>
+										<returnAnimGraphNode></returnAnimGraphNode>
+									</PlayAnimationEffect>
+								</Item>
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>65536</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+				</applicatorsOnSelf>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>3</behaviorFlags>
+				<cancelOnDisable>false</cancelOnDisable>
+				<cancelOnInterrupt>true</cancelOnInterrupt>
+				<cancelSpell href="" />
+				<caption>Собственно, сам ченнелинг глифа</caption>
+				<channelingType>Creation</channelingType>
+				<effect>
+					<Item href="/Maps/Multiplayer/CTE/EggChannel.ABLT" id="DB2BB74A-5796-4E3C-9F4F-DBF0A4A9DF8E">
+						<PlayAnimationEffect>
+							<animGraphNode>channeling</animGraphNode>
+							<deathType>Manual</deathType>
+							<enableCondition href="" />
+							<goToOtherNodeOnStop>false</goToOtherNodeOnStop>
+							<lifeTime>0</lifeTime>
+							<marker></marker>
+							<markerReachTime>0</markerReachTime>
+							<returnAnimGraphNode></returnAnimGraphNode>
+						</PlayAnimationEffect>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>DragonEggUp</formulaName>
+				<interruptEvents>73931231</interruptEvents>
+				<lifeTime>
+					<compiledString>FQ8AAAABAAAAGwAAAENoYW5uZWxpbmdUaW1lAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cChannelingTime</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>0</period>
+				<periodicalSpell href="" />
+				<providerName></providerName>
+				<removeStartSpellEffectOnInterrupt>false</removeStartSpellEffectOnInterrupt>
+				<scaleWhenInterrupted>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f</sString>
+				</scaleWhenInterrupted>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startSpell href="" />
+				<stopSpell href="" />
+				<targetSelector href="" />
+			</PickupChannelingApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>4</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Maps/Multiplayer/CTE/EggChannel.ABLT" id="4DBDA787-7AE2-4BD1-B72B-972D0C2FFB0A">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/Multiplayer/CTE/EggChannel.ABLT" id="9E045CDA-AE65-4ACD-A1BA-F106EA9C14E6">
+					<UnitConstant>
+						<name>ChannelingTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>2</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Maps/Multiplayer/CTE/EggChannel.ABLT" id="5468B283-A72D-4B09-A26A-AAE9D929B593">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>2081</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>4</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>
