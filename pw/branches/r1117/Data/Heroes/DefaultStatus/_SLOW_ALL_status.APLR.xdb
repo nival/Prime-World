@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/Normals/Normal4/PvP_NY.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal8/PvE_Coop1.CREEP" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" Count="1" />
+	<BackLink DBID="/Heroes/ManaWyrm/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/status_A2u_ControlTimeDecrease.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/ManaWyrm/status_A1_CharmNet.APLR" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_SLOW_ALL_status.APLR" id="6F1DF9B6-B963-4431-8122-6CE257588D96">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>уменьшение движения (Dec_MoveSpeed_Percent)</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vImmune2Control == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FSIAAAACAAAALwAAAEIAAABEZWNNb3ZlU3BlZWRQZXJjZW50X1dpdGhSZWR1Y3Rpb24AVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3A1cAAAA2eje4dld/NlF/IvlXcMAAAAAAADwP3sUrkfheoQ/</compiledString>
+						<returnType>float</returnType>
+						<sString>1 - cDecMoveSpeedPercent_WithReduction*0.01</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Dec_MoveSpeed_Percent</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_SLOW_ALL_status.APLR" id="0C2E4681-2CE9-4E16-8BE0-423B1E049133">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>уменьшение скорости (Dec_AttackSpeed_Percent)</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRAAAAACAAAAHQAAADAAAABEZWNfQXR0YWNrU3BlZWQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3A0+AAAA2V382UX8i+VdwwAAAAAAAPC/</compiledString>
+						<returnType>float</returnType>
+						<sString>-1 * cDec_AttackSpeed</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Dec_AttackSpeed_Percent</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/_SLOW_ALL_status.APLR" id="F4C76EB6-90B6-4965-9FA0-FF633184D1DA">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Heroes/DefaultStatus/_SLOW_ALL_status.APLR_f4c76eb690b649659fa0ff633184d1da_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/SlowFX.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>статус усталость (Dec_MoveSpeed_Percent, Dec_AttackSpeed, SlowAll_Duration)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/_SLOW_ALL_status.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>8</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Slow2.ITEX" />
+	<lifeTime>
+		<compiledString>FREAAAABAAAAHQAAAFNsb3dBbGxfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cSlowAll_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/_SLOW_ALL_status.APLR_name.txt" />
+	<power>20</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FRcAAAADAAAARAAAAGoAAAB9AAAAU2xvd0FsbF9TdGFydENvbmRpdGlvbgBVi+xRUdno2RwkUdnu2RwkagGLRQyLEItNDItCWP/QD7bIUehwAAAAg8QM3B2fAAAA3+D2xER7QotVDIsCi00Mi1BQ/9KD+BF0MItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B2fAAAA3+D2xER7CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAAAAAAAAACAP1WL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>ut_bldg( false, true ) &amp;&amp; rUnitKind != 17 &amp;&amp; cSlowAll_StartCondition</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" />
+</StatusApplicator>

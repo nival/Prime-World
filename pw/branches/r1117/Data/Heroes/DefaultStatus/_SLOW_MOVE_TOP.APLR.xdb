@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Ent/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Shadow/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Shadow/spell_A1_arrow.SPLL" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_SLOW_MOVE_TOP.APLR" id="A2ABBBA9-8793-46B6-9389-F324F29FD73A">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption> -- Уменьшаем Движение</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRsAAAADAAAAOgAAAFAAAABZAAAARGVjTW92ZVNwZWVkX1dpdGhSZWR1Y3Rpb24AVYvsg+wMi0UMixCLTQyLgogAAAD/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d+P/Q3C2EAAAA3E343DWEAAAA2V302UX0UdkcJItNDIsRi00Mi0IY/9BR2Rwk6A8AAACDxAiL5V3DAAAAAAAAWUBVi+xR2UUI2UUM3tnf4PbEQXUI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+						<returnType>float</returnType>
+						<sString>min(rMoveSpeed, rBaseMoveSpeed * (100 - cDecMoveSpeed_WithReduction)/100)</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>MoveSpeed</stat>
+					<topModifier>true</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName>Dec_MoveSpeed</statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/SlowFX.APLR" />
+		<Item href="/Heroes/DefaultStatus/_SLOW_MOVE_TOP.APLR" id="0CE7F94D-4E6A-434E-A4CC-7B805F002760">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption> - FlyOff Message</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Heroes/DefaultStatus/_SLOW_MOVE_TOP.APLR_0ce7f94d4e6a434ea4cc7b805f002760_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>- Стандарт.статус "Замедление" (Dec_MoveSpeed, SlowTop_Duration)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Heroes/DefaultStatus/_SLOW_MOVE_TOP.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FR0AAAAEAAAAIgAAADgAAABEAAAAWgAAAEltbXVuZTJDb250cm9sAABBbGxvd0NvbnRyb2wAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdhAAAAN/g9sREeytoEAAAAItNDIsRi00Mi4KIAQAA/9DcHXwAAADf4PbERHsJx0X8AAAAAOsHx0X8AQAAAIpF/IvlXcMAAAAAAADwPwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vImmune2Control == 0 || receiver.vAllowControl == 1</sString>
+	</enabled>
+	<flags>8</flags>
+	<formulaName>StandartStatus_Slow</formulaName>
+	<image href="/UI/Styles/Icons/Statuses/Standard/Slow.ITEX" />
+	<lifeTime>
+		<compiledString>FREAAAABAAAAHQAAAFNsb3dUb3BfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cSlowTop_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Heroes/DefaultStatus/_SLOW_MOVE_TOP.APLR_name.txt" />
+	<power>100</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FR0AAAAEAAAAKgAAAD0AAABxAAAAlQAAAFNsb3dUb3BfU3RhcnRDb25kaXRpb24AAFdhcmQAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B3NAAAA3+D2xER7b1HZ6NkcJFHZ7tkcJGoBi0UMixCLTQyLQlj/0A+2yFHoaQAAAIPEDNwdzQAAAN/g9sREezuLVQyLAotNDItQUP/Sg/gRdClqAItFEFBoGAAAAItNDIsRi00Mi4KcAQAA/9A7RRB1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAgD8AAAAAAAAAAFWL7FEPtkUIhcB0CNlFDNld/OsG2UUQ2V382UX8i+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>cSlowTop_StartCondition &amp;&amp; ut_bldg( false, true ) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Heroes/DefaultStatus/List_SlowUnstacked.APLS" />
+</StatusApplicator>
