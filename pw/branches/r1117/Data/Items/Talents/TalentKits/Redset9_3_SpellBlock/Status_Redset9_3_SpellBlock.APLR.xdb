@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Programm_Redset9_3_SpellBlock.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Status_Redset9_3_SpellBlock.APLR" id="12D58BBF-D150-4AE4-977F-B00574E7FC81">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>триггер на снижение урона от талантов</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Status_Redset9_3_SpellBlock.APLR" id="4C495F72-1515-401E-AAB4-42DB66424247">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Any</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1073741952</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FRYAAAABAAAAIwAAAFNwZWxsQmxvY2tfUGVyY2VudGFnZQBVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LZ6N7J2V382UX8i+VdwwAAAAAAAPA/</compiledString>
+							<returnType>float</returnType>
+							<sString>1 * cSpellBlock_Percentage</sString>
+						</mul>
+						<objectFilter>1900607</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>Статус, защищающий от урона спеллов</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Status_Redset9_3_SpellBlock.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/Defence/_Blue_dreamcatcher.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Talents/_707.ITEX" />
+	<lifeTime>
+		<compiledString>FRQAAAABAAAAIAAAAFNwZWxsQmxvY2tfRHVyYXRpb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cSpellBlock_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/TalentKits/Redset9_3_SpellBlock/Status_Redset9_3_SpellBlock.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FTIAAAADAAAAPwAAAHEAAACDAAAARzcwNl9EZWJ1ZmZPbmxpbmUAAAByYXdEYW1hZ2UAAABTcGVsbEJsb2NrX0Ftb3VudABVi+yD7BBqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9A7RRB1UotNEIsRi00Qi0JI/9CJRfyLTQxRi1UIUmggAAAAi0UQixCLTRCLQlD/0GgUAAAAi038ixGLTfyLQlTdXfT/0Nxd9N/g9sQBdQnHRfABAAAA6wfHRfAAAAAAikXwi+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applG706_DebuffOnline(UNIT) == pMisc &amp;&amp; (appl.parent.GetVariable("rawDamage") &gt;= cSpellBlock_Amount)</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

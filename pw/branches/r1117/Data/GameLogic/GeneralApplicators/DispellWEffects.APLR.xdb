@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableProxyApplicator>
+	<BackLink DBID="/Creeps/Normals/Normal1/PvE_Coop1_Support.CREEP" Count="1" />
+	<BackLink DBID="/Impulses/_.IBCN" Count="1" />
+	<BackLink DBID="/Items/Consumables/CleansingAllPotion.ARCT" Count="1" />
+	<BackLink DBID="/Items/Consumables/CleansingCake.ARCT" Count="1" />
+	<BackLink DBID="/Items/Consumables/CleansingPotion.ARCT" Count="1" />
+	<BackLink DBID="/Items/Consumables/Snowball.ARCT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Marine/status_A4_2_I2C.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PinkGirl/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Shadow/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Stalker/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Vampire/status_A4u_Immune2Control.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Witcher/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Witcher/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Zealot/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level1/G482_SelfHeal.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/trigger_G349.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/trigger_G349_Night.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level3/G515_Life_MoveSpeed.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G293_GuildAllyDispell.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G660_GuildAllyDispell_Red.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/auraApplicator_G353.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/G063_Life-Int-DispellAoE.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/spell_G766_RefreshAndNotify.SPLL" Count="1" />
+	<BackLink DBID="/Items/Temp/DispellStick.ARCT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/GameLogic/GeneralApplicators/Dispell.APLR" />
+			<variableNames>
+				<Item>effectsDispelled</Item>
+			</variableNames>
+		</Item>
+		<Item>
+			<applicator href="/GameLogic/GeneralApplicators/DispellWEffects.APLR" id="15D545BA-8779-4C3E-B135-A153859FEBE1">
+				<FlagsApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>33</behaviorFlags>
+					<caption>fx dispell</caption>
+					<consumables />
+					<effect>
+						<Item href="/Effects/Buffs/Purge/_.EFFT" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>FREAAAACAAAAKAAAADsAAABlZmZlY3RzRGlzcGVsbGVkAFWL7IPsCItFEIsQi00Qi0JI/9CJRfxoAAAAAItN/IsRi038i0JU/9DcHV0AAADf4PbEQXUJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAA==</compiledString>
+						<returnType>bool</returnType>
+						<sString>mObjectParent-&gt;GetVariable("effectsDispelled") &gt; 0</sString>
+					</enabled>
+					<flag>0</flag>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+						<returnType>float</returnType>
+						<sString>0.2f</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</startCondition>
+					<talents />
+					<useListAs>ListAsRule</useListAs>
+				</FlagsApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+		<Item>
+			<applicator href="/GameLogic/GeneralApplicators/DispellWEffects.APLR" id="D6A3778F-BB51-4D40-B4E1-3CB6D2EC35D3">
+				<FlagsApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>33</behaviorFlags>
+					<caption>fx no actual dispells</caption>
+					<consumables />
+					<effect>
+						<Item href="/Effects/Buffs/Purge/_Simple.EFFT" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>FREAAAACAAAAKAAAADsAAABlZmZlY3RzRGlzcGVsbGVkAFWL7IPsCItFEIsQi00Qi0JI/9CJRfxoAAAAAItN/IsRi038i0JU/9DcHV0AAADf4PbERHoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAA==</compiledString>
+						<returnType>bool</returnType>
+						<sString>mObjectParent-&gt;GetVariable("effectsDispelled") == 0</sString>
+					</enabled>
+					<flag>0</flag>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+						<returnType>float</returnType>
+						<sString>0.2f</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</startCondition>
+					<talents />
+					<useListAs>ListAsRule</useListAs>
+				</FlagsApplicator>
+			</applicator>
+			<variableNames />
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Диспелл и эффекты к нему</caption>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+</VariableProxyApplicator>

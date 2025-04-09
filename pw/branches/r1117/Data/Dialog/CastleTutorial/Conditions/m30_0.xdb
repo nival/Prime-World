@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelDataCondition>
+	<BackLink DBID="/Dialog/CastleTutorial/Ador/m3/m30_qB" Count="1" />
+	<BackLink DBID="/Dialog/CastleTutorial/Dokt/m3/m30_qA" Count="1" />
+	<code>foreach hero in Heroes do
+ foreach talent in hero.TalentSets[hero.ActiveTalentSet].Talents do
+  if talent.Level == 4 then
+   return 1
+  end
+ end
+end
+foreach talent in Lord.UserInventory do
+ if talent.Level == 4 then
+  return 1
+ end
+end
+return 0</code>
+	<triggers>
+		<Item href="/Dialog/CastleTutorial/Conditions/m30_0" id="2FC69B15-46C1-40DF-8D81-599037A32BCF">
+			<StatisticEventCondition>
+				<countOnly>false</countOnly>
+				<events>
+					<Item>
+						<description></description>
+						<eventType>TALENT_UPGRADE</eventType>
+					</Item>
+				</events>
+			</StatisticEventCondition>
+		</Item>
+	</triggers>
+</ModelDataCondition>

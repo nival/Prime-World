@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Creeps/DefaultStats/MidOnly/SiegeStatuses_MidOnly.ABLT" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption> - ManaShield</caption>
+	<effect>
+		<Item href="/Effects/Buffs/Defence/_BlueLight.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQyLEItNDItCBP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAWUA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>rEnergy &gt; 100</sString>
+	</enabled>
+	<formulaName>SpecialShield</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Creeps/DefaultStats/MidOnly/ManaShield.APLR" id="91101320-072B-49F4-A1CF-340846B53D59">
+		<EventProcessorDamageTransformer>
+			<abilityFilter>
+				<abilitiesList />
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Energy</abilityCostMode>
+				<exceptThis>false</exceptThis>
+				<flags>1610614015</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</abilityFilter>
+			<add>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</add>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<damageTypeFilter>15</damageTypeFilter>
+			<flags>0</flags>
+			<matchTargetInverted>false</matchTargetInverted>
+			<mul>
+				<compiledString>FRsAAAACAAAAKAAAADsAAABNYW5hU2hpZWxkX0ZyYWN0aW9uUGVyY2VudABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDVUAAADZ6N7h2V382UX8i+VdwwAAAAAAAPA/AAAAQOF6hD8=</compiledString>
+				<returnType>float</returnType>
+				<sString>1.0f - cManaShield_FractionPercent * 0.01f</sString>
+			</mul>
+			<objectFilter>1909247</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Creeps/DefaultStats/MidOnly/ManaShield.APLR" id="2913B476-EE9B-48E3-95D6-9F47A4AE24E7">
+				<Spell>
+					<applicators>
+						<Item href="/Creeps/DefaultStats/MidOnly/ManaShield.APLR" id="06803740-E807-4337-8DC5-3B8EC1A211AB">
+							<DamageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<cancelInvisibility>false</cancelInvisibility>
+								<caption>Урон, который привысил количество текущей энергии.</caption>
+								<damage>
+									<compiledString>FRAAAAABAAAANAAAAGRhbWFnZUNvbnZlcnRlZABVi+yD7BCLRRCLEItNEItCSP/QiUX8i00MixGLTQyLQgT/0GgAAAAAi038ixGLTfyLQlTdXfT/0Nxl9Nld8NlF8IvlXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>appl.parent.GetVariable("damageConverted") - rEnergy</sString>
+								</damage>
+								<damageMode>0</damageMode>
+								<damageType>Pure</damageType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<timeLimiter>-1</timeLimiter>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</Item>
+						<Item href="/Creeps/DefaultStats/MidOnly/ManaShield.APLR" id="7CAC410C-21A5-48B6-B177-A6F931F953A9">
+							<DamageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<cancelInvisibility>false</cancelInvisibility>
+								<caption>урон в энергию</caption>
+								<damage>
+									<compiledString>FSwAAAACAAAAQwAAAF0AAABNYW5hU2hpZWxkX01hbmFQZXJEYW1hZ2UAAAAAZGFtYWdlQ29udmVydGVkAFWL7IPsEItFEIsQi00Qi0JI/9CJRfxoHAAAAItN/IsRi038i0JU/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfT/0NxN9Nld8NlF8IvlXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cManaShield_ManaPerDamage * appl.parent.GetVariable("damageConverted") </sString>
+								</damage>
+								<damageMode>0</damageMode>
+								<damageType>Mana</damageType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<timeLimiter>-1</timeLimiter>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Creeps/DefaultStats/MidOnly/ManaShield.APLR" id="2CB2AE4F-C6FF-4A75-8F48-9426039D0FD3">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>true</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+		</EventProcessorDamageTransformer>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

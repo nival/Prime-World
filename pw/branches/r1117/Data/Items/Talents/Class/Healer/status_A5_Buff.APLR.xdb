@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Healer/Ability5.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="5DEC0939-9FED-481B-98B0-E6829C11D0AF">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>увеличить жизнь</caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQsAAAABAAAAFwAAAEE1X0FkZExpZmUAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cA5_AddLife</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="982ED0BE-C89A-43C4-BB7E-90761898FE34">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>период лечение</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQ4AAAABAAAAGgAAAEE1X0hlYWxQZXJpb2QAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cA5_HealPeriod</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="DC41026B-371C-458B-9EB8-222768BD1F4A">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="34B70FD9-8DB4-407B-B577-0C3CF59B30F0">
+								<VariableProxyApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="0E155B90-B7F1-4319-BA0D-055CBB06F7AB">
+												<HealApplicator>
+													<amount>
+														<compiledString>FQ4AAAABAAAAGgAAAEE1X0hlYWxBbW91bnQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+														<returnType>float</returnType>
+														<sString>cA5_HealAmount</sString>
+													</amount>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<caption>лечить</caption>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<healTarget>Health</healTarget>
+													<ignoreHealingMods>false</ignoreHealingMods>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+												</HealApplicator>
+											</applicator>
+											<variableNames>
+												<Item>amountRestored</Item>
+											</variableNames>
+										</Item>
+										<Item>
+											<applicator href="/Items/Talents/Class/Healer/A0GiveNafta.APLR" />
+											<variableNames />
+										</Item>
+									</applicators>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>полечить и дать нафты</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+								</VariableProxyApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="7CB295F7-E9CB-4C70-9F11-0852893D54B5">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.5</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="5ED78E04-D955-4B78-9886-8F2D9D98F6BC">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>145</behaviorFlags>
+				<caption>Эффект на цели</caption>
+				<consumables />
+				<effect>
+					<Item href="/Effects/Buffs/Bless/_Gold.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="9BABE6C8-E102-49B7-85B6-FFE00420A438">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>Скейл эффект на крипах</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/Class/Healer/status_A5_Buff.APLR" id="6548E904-FCD8-4217-9FB8-C9DA88197626">
+						<ScaleColorEffect>
+							<blendMode>Off</blendMode>
+							<colorAdd>
+								<A>0</A>
+								<B>0</B>
+								<G>0</G>
+								<R>0</R>
+							</colorAdd>
+							<colorMul>
+								<A>1</A>
+								<B>1</B>
+								<G>1</G>
+								<R>1</R>
+							</colorMul>
+							<deathType>Manual</deathType>
+							<enableCondition href="" />
+							<fadeInTime>1</fadeInTime>
+							<fadeOutTime>1</fadeOutTime>
+							<fullRecolor>false</fullRecolor>
+							<lifeTime>0</lifeTime>
+							<scale>1.2</scale>
+							<scaleIn>1</scaleIn>
+							<scaleOut>1</scaleOut>
+						</ScaleColorEffect>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsi0UMixCLTQyLQlT/0A+2wPfYG8CDwAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>rIsHero == false</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>статус Благославение родной земли</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Healer/status_A5_Buff.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Healer/A5.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEE1X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA5_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Healer/status_A5_Buff.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

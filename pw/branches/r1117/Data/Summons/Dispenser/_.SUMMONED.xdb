@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Summoned>
+	<BackLink DBID="/Heroes/Inventor/_.HROB" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Inventor/A2_SummonDispenser.APLR" Count="1" />
+	<abilities>
+		<Item href="" />
+		<Item href="/Summons/Dispenser/_.SUMMONED" id="6B62FA81-2DF3-452B-8D00-DE4B24A2592A">
+			<Ability>
+				<activeCustomTrigger>true</activeCustomTrigger>
+				<allowChase>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</allowChase>
+				<alternativeTargets />
+				<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+				<aoeHeight>0</aoeHeight>
+				<aoeMaterial href="" />
+				<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+				<aoeSize>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</aoeSize>
+				<aoeType>None</aoeType>
+				<applicators>
+					<Item href="/Summons/Dispenser/_.SUMMONED" id="1E5C4C6A-80AC-450E-A3C0-6A135F506EDF">
+						<FlagsApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>144</behaviorFlags>
+							<caption>Эффект на диспенсер, "я хиляю"</caption>
+							<consumables />
+							<effect>
+								<Item href="/Effects/Buffs/Bless/_Gold.EFFT" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>0</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+								<returnType>float</returnType>
+								<sString>1</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+					<Item href="/Summons/Dispenser/status_A2_DispHeal.APLR" />
+				</applicators>
+				<autoTargetSelector href="" />
+				<caption>Лечение и Штамповка</caption>
+				<castAllowRange>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</castAllowRange>
+				<castLimitations />
+				<commonDescription textref="" />
+				<compiledDescriptionA textref="" />
+				<compiledDescriptionB textref="" />
+				<conditionFormulas>
+					<Item href="/Summons/Dispenser/_.SUMMONED" id="489BF215-2118-47F1-84BF-2658CFE5DE1E">
+						<ConditionFormula>
+							<condition>
+								<compiledString>FRgAAAABAAAAIgAAAEludmVudG9yX0EyX01vcmVEZXRhaWxzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgqABAAD/0DPJhcAPn8GKwV3D</compiledString>
+								<returnType>bool</returnType>
+								<sString>receiver.CountApplicators("Inventor_A2_MoreDetails", pMisc, GLOBAL) &gt; 0</sString>
+							</condition>
+							<name>ShowDetailsBonus</name>
+						</ConditionFormula>
+					</Item>
+				</conditionFormulas>
+				<constants href="/Summons/Dispenser/_.SUMMONED" id="4C44CCF2-DFBA-41A8-8448-9EF7CF529B00">
+					<UnitConstantsContainer>
+						<vars>
+							<Item href="/Items/Talents/Class/Inventor/const_A2_AddLifeRegAbs" />
+							<Item href="/Items/Talents/Class/Inventor/A2_AddLifeRegAbs_Turret" />
+							<Item href="/Items/Talents/Class/Inventor/const_A2u_MoreDetails" />
+							<Item href="/Summons/Dispenser/_.SUMMONED" id="197B8E6E-1D12-46C1-AD32-9BFA4B142DC5">
+								<UnitConstant>
+									<name>A2_LifeHealPerTick</name>
+									<var>
+										<compiledString>FSAAAAACAAAALwAAAEkAAABBMl9Ub3RhbEhlYWwAAAAAQTJfSGVhbER1cmF0aW9uAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/Si0UMUItNCFFoEAAAAItVEIsCi00Qi1BQ3V34/9LcffjZXfTZRfSL5V3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA2_TotalHeal/cA2_HealDuration</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Summons/Dispenser/_.SUMMONED" id="A6E8873B-EC9F-4508-9E66-E7585547CA6F">
+								<UnitConstant>
+									<name>A2u_MoreDetails_Total</name>
+									<var>
+										<compiledString>FSgAAAACAAAANwAAAE8AAABBMnVfTW9yZURldGFpbHMASW52ZW50b3JfQTJfTW9yZURldGFpbHMAVYvsg+wQi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JqAItFEFBoEAAAAItNDIsRi00Mi4KgAQAA3V34/9CJRfTbRfTcTfjZXfDZRfCL5V3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA2u_MoreDetails *  receiver.CountApplicators("Inventor_A2_MoreDetails", pMisc, GLOBAL)</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Summons/Dispenser/_.SUMMONED" id="7B056801-8E4D-4350-A35C-EF90293222FF">
+								<UnitConstant>
+									<name>A2_AuraRange</name>
+									<var>
+										<compiledString>FTEAAAAEAAAAYAAAAIwAAADVAAAA9QAAAEludmVudG9yX0EyAEludmVudG9yX0EyAEludmVudG9yX0EyAEEyX0F1cmFSYW5nZQBVi+yD7ByLRQiLEItNCIuCfAEAAP/QO0UIdGmLTQiLEYtNCIuCfAEAAP/QiUX8aAAAAACLTfyLEYtN/IuCqAEAAP/QhcB0PYtNCIsRi00Ii4J8AQAA/9CJRfhoDAAAAItN+IsRi034i4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdEqLVQiLAotNCIuQfAEAAP/SiUXsaBgAAACLReyLEItN7IuCqAEAAP/QiUXoi00MUYtVCFJoJAAAAItF6IsQi03oi0JQ/9DZXeTrBdnu2V3k2UXki+VdwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>mastertalconst("Inventor_A2", "A2_AuraRange")</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Summons/Dispenser/_.SUMMONED" id="7381C894-CEA7-4751-8399-B7A88A25C00A">
+								<UnitConstant>
+									<name>A2_HealDuration</name>
+									<var>
+										<compiledString>FTQAAAAEAAAAYwAAAI8AAADYAAAA+AAAAEludmVudG9yX0EyAEludmVudG9yX0EyAEludmVudG9yX0EyAEEyX0hlYWxEdXJhdGlvbgBVi+yD7ByLRQiLEItNCIuCfAEAAP/QO0UIdGmLTQiLEYtNCIuCfAEAAP/QiUX8aAAAAACLTfyLEYtN/IuCqAEAAP/QhcB0PYtNCIsRi00Ii4J8AQAA/9CJRfhoDAAAAItN+IsRi034i4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdEqLVQiLAotNCIuQfAEAAP/SiUXsaBgAAACLReyLEItN7IuCqAEAAP/QiUXoi00MUYtVCFJoJAAAAItF6IsQi03oi0JQ/9DZXeTrBdnu2V3k2UXki+VdwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>mastertalconst("Inventor_A2", "A2_HealDuration")</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Summons/Dispenser/_.SUMMONED" id="7C9D584D-56C0-4BEA-AC75-9B76F5A7A635">
+								<UnitConstant>
+									<name>A2_TotalHeal</name>
+									<var>
+										<compiledString>FTEAAAAEAAAAYAAAAIwAAADVAAAA9QAAAEludmVudG9yX0EyAEludmVudG9yX0EyAEludmVudG9yX0EyAEEyX1RvdGFsSGVhbABVi+yD7ByLRQiLEItNCIuCfAEAAP/QO0UIdGmLTQiLEYtNCIuCfAEAAP/QiUX8aAAAAACLTfyLEYtN/IuCqAEAAP/QhcB0PYtNCIsRi00Ii4J8AQAA/9CJRfhoDAAAAItN+IsRi034i4KoAQAA/9CJRfSLTfSLEYtN9ItCBP/QiEXz6wTGRfMAD7ZN84XJdEqLVQiLAotNCIuQfAEAAP/SiUXsaBgAAACLReyLEItN7IuCqAEAAP/QiUXoi00MUYtVCFJoJAAAAItF6IsQi03oi0JQ/9DZXeTrBdnu2V3k2UXki+VdwwAAAAA=</compiledString>
+										<returnType>float</returnType>
+										<sString>mastertalconst("Inventor_A2", "A2_TotalHeal")</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+							<Item href="/Summons/Dispenser/_.SUMMONED" id="7B850226-C874-4F0D-8017-2DFFBC11A5A6">
+								<UnitConstant>
+									<name>A2_NTBonusIntellect</name>
+									<var>
+										<compiledString>FTgAAAAEAAAAZwAAAJMAAADcAAAA/AAAAEludmVudG9yX0EyAEludmVudG9yX0EyAEludmVudG9yX0EyAEEyX05UQm9udXNJbnRlbGxlY3QAVYvsg+wci0UIixCLTQiLgnwBAAD/0DtFCHRpi00IixGLTQiLgnwBAAD/0IlF/GgAAAAAi038ixGLTfyLgqgBAAD/0IXAdD2LTQiLEYtNCIuCfAEAAP/QiUX4aAwAAACLTfiLEYtN+IuCqAEAAP/QiUX0i030ixGLTfSLQgT/0IhF8+sExkXzAA+2TfOFyXRKi1UIiwKLTQiLkHwBAAD/0olF7GgYAAAAi0XsixCLTeyLgqgBAAD/0IlF6ItNDFGLVQhSaCQAAACLReiLEItN6ItCUP/Q2V3k6wXZ7tld5NlF5IvlXcMAAAAA</compiledString>
+										<returnType>float</returnType>
+										<sString>mastertalconst("Inventor_A2", "A2_NTBonusIntellect")</sString>
+									</var>
+								</UnitConstant>
+							</Item>
+						</vars>
+					</UnitConstantsContainer>
+				</constants>
+				<cooldownTime>
+					<compiledString>FRUAAAABAAAAIQAAAEEyX0Rpc3BlbnNlckNvb2xkb3duAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cA2_DispenserCooldown</sString>
+				</cooldownTime>
+				<cooldownTimeSecondState>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</cooldownTimeSecondState>
+				<description textref="" />
+				<dispatch href="/Summons/Dispenser/_.SUMMONED" id="698EB0D6-E098-43DE-82CB-762B316D3583">
+					<DispatchImmediate>
+						<alwaysApply>false</alwaysApply>
+						<applyEffect>
+							<Item href="" />
+							<Item href="" />
+						</applyEffect>
+						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+						<applyEffectOrientation>Default</applyEffectOrientation>
+						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+						<dieAfterApply>true</dieAfterApply>
+						<dispatchEffect>
+							<Item href="" />
+							<Item href="" />
+						</dispatchEffect>
+						<flags>0</flags>
+						<instantApply>true</instantApply>
+					</DispatchImmediate>
+				</dispatch>
+				<flags>2</flags>
+				<image href="" />
+				<imageSecondState href="" />
+				<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+				<manaCost>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</manaCost>
+				<marker></marker>
+				<microAI href="/Summons/Dispenser/_.SUMMONED" id="87E67267-1185-41CB-9641-B8D368C86A18">
+					<TargetSelectorMicroAI>
+						<castWhenIdle>false</castWhenIdle>
+						<condition>
+							<compiledString>FRIAAAABAAAAHAAAAEEyRGlzcGVuc2VyU3RhdHVzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.applA2DispenserStatus(GLOBAL)==pMisc</sString>
+						</condition>
+						<targetSelector href="/Summons/Dispenser/_.SUMMONED" id="81110271-77CE-4F6F-9915-F688885422C3">
+							<ComparingTargetSelector>
+								<referenceValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</referenceValue>
+								<targetSelector href="/Summons/Dispenser/_.SUMMONED" id="0A984FCC-D8C9-419C-B710-CDD5C5D91EC9">
+									<ConditionTargetSelector>
+										<condition>
+											<compiledString>FR4AAAADAAAAJQAAADsAAACHAAAATGlrZUhlcm8AAAAAQTJEaXNwZW5zZXJTdGF0dXMAVYvsg+wMaAAAAACLRQyLEItNDIuCiAEAAP/Q3B23AAAA3+D2xEF0FItNDIsRi00Mi0JU/9APtsiFyXRPi1UMiwKLTQyLEP/Si0UMixCLTQyLQgzdXfj/0Nxd+N/g9sRBdSlqAItNEFFoDAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAAAAAAAA=</compiledString>
+											<returnType>bool</returnType>
+											<sString>(receiver.vLikeHero &gt; 0 || rIsHero) &amp;&amp; rLife&lt;rMaxLife &amp;&amp; receiver.applA2DispenserStatus(GLOBAL)==pMisc</sString>
+										</condition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<targetSelector href="/Summons/Dispenser/_.SUMMONED" id="F2B9F2F2-1692-46DB-98BB-50B11116AA48">
+											<AreaTargetSelector>
+												<absolutePosition>
+													<x>0</x>
+													<y>0</y>
+												</absolutePosition>
+												<flags>0</flags>
+												<mode>Normal</mode>
+												<range>
+													<compiledString>FQ0AAAABAAAAGQAAAEEyX0F1cmFSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+													<returnType>float</returnType>
+													<sString>cA2_AuraRange</sString>
+												</range>
+												<targetFilter>268435463</targetFilter>
+												<targetSelector href="" />
+											</AreaTargetSelector>
+										</targetSelector>
+									</ConditionTargetSelector>
+								</targetSelector>
+								<valueToCompare>
+									<compiledString>FQkAAAAFAAAAEAAAACYAAAAzAAAAUgAAAF0AAABJbnZlbnRvcgBVi+yD7BxoAAAAAItFDIsQi00Mi4KIAQAA/9DcHa4AAADf4PbEQXUL3QWmAAAA3V346y6LTQyLEYtNDItCVP/QD7bIhcl0C90FngAAAN1d8OsJ3QWWAAAA3V3w3UXw3V34i1UMiwKLTQyLEP/Si0UMixCLTQyLQgzdXej/0Nx96NxF+Nld5NlF5IvlXcMAAAAAAABZQJqZmZmZmdk/AAAAAABAj0AAAAAAAAAAAA==</compiledString>
+									<returnType>float</returnType>
+									<sString>(receiver.vInventor&gt;0 ? 1000 :  (rIsHero ? 0.4 : 100)) + rLife/rMaxLife</sString>
+								</valueToCompare>
+							</ComparingTargetSelector>
+						</targetSelector>
+					</TargetSelectorMicroAI>
+				</microAI>
+				<minUseRangeCorrection>0</minUseRangeCorrection>
+				<name textref="" />
+				<node></node>
+				<passiveApplicators>
+					<Item href="/Summons/Dispenser/_.SUMMONED" id="E87DA14E-C9A9-4FCF-B6E9-E35F6378F3A6">
+						<AuraApplicator>
+							<applicators>
+								<Item href="/Items/Talents/Class/Inventor/status_A2_dispenser.APLR" />
+							</applicators>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>аура Востанавливаем детали</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString>FR0AAAACAAAATAAAAHgAAABJbnZlbnRvcl9BMnUAAAAASW52ZW50b3JfQTJ1AFWL7IPsEItFCIsQi00Ii4J8AQAA/9A7RQh0aYtNCIsRi00Ii4J8AQAA/9CJRfxoAAAAAItN/IsRi038i4KoAQAA/9CFwHQ9i00IixGLTQiLgnwBAAD/0IlF+GgQAAAAi034ixGLTfiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wCKRfOL5V3D</compiledString>
+								<returnType>bool</returnType>
+								<sString>mastertal("Inventor_A2u")</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<range>
+								<compiledString>FQ0AAAABAAAAGQAAAEEyX0F1cmFSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+								<returnType>float</returnType>
+								<sString>cA2_AuraRange</sString>
+							</range>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<targets>268435459</targets>
+							<targetSelector href="/Summons/Dispenser/_.SUMMONED" id="E330D788-0A3F-4B51-BE79-5F8C10929351">
+								<ConditionTargetSelector>
+									<condition>
+										<compiledString>FQwAAAABAAAAFgAAAEhhdmVEZXRhaWxzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5XBisFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.applHaveDetails(GLOBAL) != pMisc</sString>
+									</condition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<targetSelector href="/Summons/Dispenser/_.SUMMONED" id="825B1221-5E7C-4989-962C-DD68037FF9EE">
+										<AreaTargetSelector>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<flags>0</flags>
+											<mode>Normal</mode>
+											<range>
+												<compiledString>FQ0AAAABAAAAGQAAAEEyX0F1cmFSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cA2_AuraRange</sString>
+											</range>
+											<targetFilter>268435459</targetFilter>
+											<targetSelector href="" />
+										</AreaTargetSelector>
+									</targetSelector>
+								</ConditionTargetSelector>
+							</targetSelector>
+							<type>None</type>
+						</AuraApplicator>
+					</Item>
+					<Item href="/Summons/Dispenser/_.SUMMONED" id="8F4F68B6-7C46-4BE0-82A4-3BF38E582B8B">
+						<AuraApplicator>
+							<applicators>
+								<Item href="/Summons/Dispenser/status_A2_RangeAura.APLR" />
+							</applicators>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>аура что мы находимся в зоне действия Вита-генератора</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<range>
+								<compiledString>FQ0AAAABAAAAGQAAAEEyX0F1cmFSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+								<returnType>float</returnType>
+								<sString>cA2_AuraRange</sString>
+							</range>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<targets>268435459</targets>
+							<targetSelector href="/Summons/Dispenser/_.SUMMONED" id="90001945-E72F-4867-8059-45EE5A33712D">
+								<ConditionTargetSelector>
+									<condition>
+										<compiledString>FRgAAAABAAAAIgAAAEludmVudG9yX0EyX01vcmVEZXRhaWxzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>receiver.applInventor_A2_MoreDetails(GLOBAL) == pMisc</sString>
+									</condition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<targetSelector href="/Summons/Dispenser/_.SUMMONED" id="9A6C9B11-C202-453E-8C4E-2FC58AD54EB3">
+										<AreaTargetSelector>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<flags>0</flags>
+											<mode>Normal</mode>
+											<range>
+												<compiledString>FQ0AAAABAAAAGQAAAEEyX0F1cmFSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cA2_AuraRange</sString>
+											</range>
+											<targetFilter>270270527</targetFilter>
+											<targetSelector href="" />
+										</AreaTargetSelector>
+									</targetSelector>
+								</ConditionTargetSelector>
+							</targetSelector>
+							<type>None</type>
+						</AuraApplicator>
+					</Item>
+				</passiveApplicators>
+				<requireLineOfSight>false</requireLineOfSight>
+				<shortDescription textref="" />
+				<targetType>270270527</targetType>
+				<type>Active</type>
+				<useRange>
+					<compiledString>FQ0AAAABAAAAGQAAAEEyX0F1cmFSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cA2_AuraRange</sString>
+				</useRange>
+				<useRangeMaterial href="" />
+				<warFogRemoveRadius>0</warFogRemoveRadius>
+				<warFogRemoveTime>0</warFogRemoveTime>
+			</Ability>
+		</Item>
+		<Item href="/Summons/Dispenser/_.SUMMONED" id="DDD433D5-45BA-4900-B9CE-1A9CCFC2E554">
+			<Ability>
+				<activeCustomTrigger>true</activeCustomTrigger>
+				<allowChase>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</allowChase>
+				<alternativeTargets />
+				<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+				<aoeHeight>0</aoeHeight>
+				<aoeMaterial href="" />
+				<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+				<aoeSize>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</aoeSize>
+				<aoeType>None</aoeType>
+				<applicators />
+				<autoTargetSelector href="" />
+				<caption>Флаги</caption>
+				<castAllowRange>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</castAllowRange>
+				<castLimitations />
+				<commonDescription textref="" />
+				<compiledDescriptionA textref="" />
+				<compiledDescriptionB textref="" />
+				<conditionFormulas />
+				<constants href="" />
+				<cooldownTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</cooldownTime>
+				<cooldownTimeSecondState>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</cooldownTimeSecondState>
+				<description textref="" />
+				<dispatch href="" />
+				<flags>1</flags>
+				<image href="" />
+				<imageSecondState href="" />
+				<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+				<manaCost>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</manaCost>
+				<marker></marker>
+				<microAI href="" />
+				<minUseRangeCorrection>0</minUseRangeCorrection>
+				<name textref="" />
+				<node></node>
+				<passiveApplicators>
+					<Item href="/Summons/Dispenser/_.SUMMONED" id="FC9A88EE-38E3-417A-832C-606BC1A5E9B9">
+						<FlagsApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>запреты</caption>
+							<consumables />
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>2228231</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</Item>
+					<Item href="/GameLogic/GeneralApplicators/Immune2Control.APLR" />
+					<Item href="/Summons/Dispenser/_.SUMMONED" id="9368C60E-6C7A-4147-B031-63F9D31F5256">
+						<StatModApplicator parent="/GameLogic/GeneralApplicators/IgnoreTarget.APLR">
+							<lifeTime>
+								<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+								<returnType>float</returnType>
+								<sString>0.2f</sString>
+							</lifeTime>
+						</StatModApplicator>
+					</Item>
+					<Item href="/GameLogic/GeneralApplicators/Pet.APLR" />
+					<Item href="/GameLogic/GeneralApplicators/Uncontrollable.APLR" />
+					<Item href="/Summons/Dispenser/_.SUMMONED" id="6BEBF1B1-5022-43AF-AD19-E994211162F4">
+						<PermanentStatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<caption>Записывалка Boss3Ignore</caption>
+							<customApplyType>None</customApplyType>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>Boss3Ignore</variable>
+							</modifier>
+							<providerName></providerName>
+						</PermanentStatModApplicator>
+					</Item>
+				</passiveApplicators>
+				<requireLineOfSight>true</requireLineOfSight>
+				<shortDescription textref="" />
+				<targetType>136258047</targetType>
+				<type>Passive</type>
+				<useRange>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</useRange>
+				<useRangeMaterial href="" />
+				<warFogRemoveRadius>0</warFogRemoveRadius>
+				<warFogRemoveTime>0</warFogRemoveTime>
+			</Ability>
+		</Item>
+		<Item href="" />
+		<Item href="" />
+	</abilities>
+	<attackAbility href="" />
+	<collision>
+		<x1>0</x1>
+		<x2>0</x2>
+		<y1>0</y1>
+		<y2>0</y2>
+	</collision>
+	<creepSkins />
+	<deathParameters href="/Summons/Dispenser/_.SUMMONED" id="F8F9FA56-560A-4B74-B0B0-86DA16B61332">
+		<UnitDeathParameters parent="/GameLogic/Summon.UNDP">
+			<deathTime>4</deathTime>
+			<effect href="" />
+			<fallOffset>0.3</fallOffset>
+			<fallSpeed>5</fallSpeed>
+			<unsummonTime>0.35</unsummonTime>
+		</UnitDeathParameters>
+	</deathParameters>
+	<description textref="/Summons/Dispenser/_.SUMMONED_description.txt" />
+	<heightObject>false</heightObject>
+	<image href="/UI/Styles/Icons/Summons/Dispenser/Face.ITEX" />
+	<interaction href="" />
+	<lockMask>
+		<mask />
+		<tileSize>0.5</tileSize>
+	</lockMask>
+	<minimapIcon>Default</minimapIcon>
+	<minLockScale>0</minLockScale>
+	<nativeAttack>Material</nativeAttack>
+	<nativeDefence>Material</nativeDefence>
+	<normalLevelling>0</normalLevelling>
+	<overtipBarsWidth>0</overtipBarsWidth>
+	<overtipVerticalOffset>1</overtipVerticalOffset>
+	<pathFindingSteps>1</pathFindingSteps>
+	<recolor>
+		<A>0</A>
+		<B>0</B>
+		<G>0</G>
+		<R>0</R>
+	</recolor>
+	<rounded>false</rounded>
+	<sceneObject href="/Summons/Dispenser/_.SOBJ" />
+	<selectionAoe>
+		<Item href="/Summons/Dispenser/_.SUMMONED" id="151D7C47-9BFC-4463-B973-F5FC46C2AA16">
+			<AoeVisual>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<material href="/Effects/UI/AOESelection/RadiusSummon.MTRL" />
+				<size>
+					<compiledString>FQ0AAAABAAAAEQAAAEEyX0F1cmFSYW5nZQBVi+xoAAAAAItFCIsQi00Ii4KIAQAA/9Bdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>sender.vA2_AuraRange</sString>
+				</size>
+			</AoeVisual>
+		</Item>
+		<Item href="" />
+	</selectionAoe>
+	<size>3</size>
+	<sizeDynamic>0</sizeDynamic>
+	<stats href="/Summons/Dispenser/_.SUMMONED" id="4F2DE44E-AC4F-48F5-94E9-06014C4AEB8F">
+		<StatsContainer>
+			<stats>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Life</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>100</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>MoveSpeed</statId>
+					<value>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</value>
+				</Item>
+			</stats>
+		</StatsContainer>
+	</stats>
+	<targetingParams href="" />
+</Summoned>

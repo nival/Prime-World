@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Summons/Whisper/PvE_Coop1.CREEP" Count="2" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<caption>взрываемся</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Summons/Whisper/PvE_Coop1Explosion.APLR" id="C5212156-F618-4853-A71B-B880CAC5B33C">
+		<Spell>
+			<applicators>
+				<Item href="/Summons/Whisper/PvE_Coop1Explosion.APLR" id="F175A6D1-8414-446E-BDBA-35F3912E90FF">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>урон</caption>
+						<damage>
+							<compiledString>FRAAAAABAAAAHAAAAEV4cGxvc2lvbkRhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cExplosionDamage</sString>
+						</damage>
+						<damageMode>3</damageMode>
+						<damageType>Native</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Summons/Whisper/PvE_Coop1Explosion.APLR" id="6F8A1236-41E4-4DBA-81B9-0A3163CF54BA">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Summons/Whisper/PvE_Coop1Explosion.APLR" id="FC5A7DF8-1816-4648-8E0F-23B85EA5ED17">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>0</x>
+				<y>0</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQ8AAAABAAAAGwAAAEV4cGxvc2lvblJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>cExplosionRange</sString>
+			</range>
+			<targetFilter>538771519</targetFilter>
+			<targetSelector href="" />
+		</AreaTargetSelector>
+	</targetSelector>
+</SpellApplicator>

@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Creeps/Normals/Normal5/CTF_S14.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Effects/Shots/HitsApplicators/MeleeHero.APLR" />
+		<Item href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="317D7D96-FF25-45B4-890C-61ED13477E06">
+			<VariableProxyApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="D3FD9F70-D198-41D1-9E77-9131E78FE707">
+							<DamageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<cancelInvisibility>false</cancelInvisibility>
+								<caption>урон</caption>
+								<damage>
+									<compiledString>FQAAAAAAAAAAVYvsUYtFCIsQi00Ii4IEAQAA/9BR2Rwk6DgAAACDxARQi00IixGLTQiLggABAAD/0FHZHCToGwAAAIPEBFCLTRCLEYtNEItCXP/QiUX820X8i+Vdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>random ( f2l(sDamageMin), f2l(sDamageMax))</sString>
+								</damage>
+								<damageMode>3</damageMode>
+								<damageType>Native</damageType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<timeLimiter>-1</timeLimiter>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+							<Item>isCritical</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="CE227C1E-CD36-4F73-AF2B-36B519E1AC3C">
+							<DamageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<cancelInvisibility>false</cancelInvisibility>
+								<caption>доп урон</caption>
+								<damage>
+									<compiledString>FRgAAAACAAAANwAAAEkAAABkYW1hZ2VEZWFsZWQAAAAATXVsdERtZwBVi+yD7BCLRRCLEItNEItCSP/QiUX8i00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ/9BoAAAAAItN/IsRi038i0JU3V30/9DcTfTZXfDZRfCL5V3D</compiledString>
+									<returnType>float</returnType>
+									<sString>$ParentApplVariable("damageDealed") * cMultDmg</sString>
+								</damage>
+								<damageMode>4</damageMode>
+								<damageType>Native</damageType>
+								<enabled>
+									<compiledString>FQAAAAAAAAAAVYvsaAAgAACLRQyLEItNDItCaP/QD7bAg+gB99gbwIPAAV3D</compiledString>
+									<returnType>bool</returnType>
+									<sString>rFlag(8192) ==! 0</sString>
+								</enabled>
+								<formulaName>MultDamage</formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<timeLimiter>-1</timeLimiter>
+								<uiEvent href="" />
+							</DamageApplicator>
+						</applicator>
+						<variableNames>
+							<Item>damageDealed</Item>
+						</variableNames>
+					</Item>
+					<Item>
+						<applicator href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="AB01DD1C-FFF8-4432-BD0A-94572D65D32E">
+							<UIMessageApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>вывести суммарный урон</caption>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<message textref="/Creeps/Normals/Normal5/AttackAbility.ATCK_ab01dd1cfff84432bd0a94572d65d32e_message.txt" />
+								<providerName></providerName>
+								<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff_EP.UIEV" />
+								<value>
+									<compiledString>FSgAAAACAAAATwAAAGEAAABkYW1hZ2VEZWFsZWQAAAAATXVsdERhbWFnZTpkYW1hZ2VEZWFsZWQAVYvsg+wUi0UQixCLTRCLQkj/0IlF/ItNEIsRi00Qi0JI/9CJRfhoEAAAAItN+IsRi034i0JU/9BoAAAAAItN/IsRi038i0JU3V3w/9DcRfDZXezZReyL5V3D</compiledString>
+									<returnType>float</returnType>
+									<sString>$ParentApplVariable("damageDealed") + $ParentApplVariable("MultDamage:damageDealed")</sString>
+								</value>
+							</UIMessageApplicator>
+						</applicator>
+						<variableNames />
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Раздаем уроны</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+			</VariableProxyApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="6BA3C21A-B594-469B-900C-41D15F8ACD43">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>застунить</caption>
+				<enabled>
+					<compiledString>FREAAAADAAAAHAAAAE8AAABlAAAATWlzdGljAABCZVN0dW5lZABVi+xRagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QO0UQdERoACAAAItNDIsRi00Mi0Jo/9APtsiFyXUraAgAAACLVQiLAotNCIuQiAEAAP/S3B2HAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applMistic(UNIT) != pMisc &amp;&amp; rFlag(8192) == 0 &amp;&amp; sender.vBeStuned == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="350CFECF-05D1-4F45-94CC-8DCF794C88B4">
+					<Spell>
+						<applicators>
+							<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+							<Item href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="8A6AF54F-A68E-4AE0-8119-18768F5264A2">
+								<StatModApplicator>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>Больше не станим</caption>
+									<constraint>None</constraint>
+									<dontUpdate>false</dontUpdate>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FQsAAAABAAAAFwAAAFN0dW5QZXJpb2QAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cStunPeriod</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>BeStuned</variable>
+									</modifier>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<statModName></statModName>
+								</StatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="058639BB-2B09-4941-9546-26CEC6E2480E">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>2</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="4F5131D4-A691-4E77-993E-4F4024179EF4">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="A22657D2-FD33-40F3-9BDB-19A6E78387FE">
+					<UnitConstant>
+						<name>MultDmg</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="BEF95E2D-DEBE-4E76-809A-8F1E67E226A6">
+					<UnitConstant>
+						<name>Stun_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="0D76B63D-C123-4CD2-B18A-5F74B0D44540">
+					<UnitConstant>
+						<name>StunPeriod</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>24</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Creeps/Normals/Normal5/AttackAbility.ATCK" id="B12761BD-A439-44F9-94F0-480AF1727E4D">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>2</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>5</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+		<Item href="/Glyphs/HealTriggerCreeps.APLR" />
+	</passiveApplicators>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>1835519</targetType>
+	<type>Simple</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

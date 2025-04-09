@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AuraApplicator>
+	<applicators>
+		<Item href="/Creeps/Champions/Champion3/Aura.APLR" id="4D04D3EF-EFDA-475B-A96C-655956F6A893">
+			<StatusApplicator>
+				<applicators>
+					<Item href="/Creeps/Champions/Champion3/Aura.APLR" id="E9ED51C7-F1B6-48DB-94A7-2A6C04940FF0">
+						<TriggerApplicator>
+							<actionsCount>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</actionsCount>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>триггер на использование таланта</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<playAck>false</playAck>
+							<processor href="/Creeps/Champions/Champion3/Aura.APLR" id="31F36EF5-4143-4212-9840-71FBD21BBA98">
+								<EventProcessorAbilityManacostTransformer>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<filter>
+										<abilitiesList />
+										<abilityCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</abilityCondition>
+										<abilityCostMode>Energy</abilityCostMode>
+										<exceptThis>false</exceptThis>
+										<flags>1073742012</flags>
+										<onlySingleTarget>false</onlySingleTarget>
+									</filter>
+									<spell href="/Creeps/Champions/Champion3/Aura.APLR" id="43E4EE46-A710-4603-9EBF-99CAB0CCD75B">
+										<Spell>
+											<applicators>
+												<Item href="/Creeps/Champions/Champion3/Aura.APLR" id="9667AE7F-5C76-4412-AA04-4A7046388CAA">
+													<SpellApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<caption>- распределяем полученное здоровье по друзьям</caption>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<spell href="/Creeps/Champions/Champion3/Aura.APLR" id="22F5B2DE-34ED-48FA-B338-EE7B08E72AFB">
+															<Spell>
+																<applicators>
+																	<Item href="/Creeps/Champions/Champion3/Aura.APLR" id="3DEF36F0-4183-4874-9624-FF6CF0343A6D">
+																		<HealApplicator>
+																			<amount>
+																				<compiledString>FRwAAAACAAAAOwAAAE0AAABzcGVsbHNTZW50AABIZWFsRnJvbUFiaWxpdHkAVYvsg+wQi0UQixCLTRCLQkj/0IlF/ItNDFGLVQhSaAwAAACLRRCLEItNEItCUP/QaAAAAACLTfyLEYtN/ItCVN1d9P/Q3E302V3w2UXwi+Vdww==</compiledString>
+																				<returnType>float</returnType>
+																				<sString>mObjectParent-&gt;GetVariable("spellsSent") * cHealFromAbility</sString>
+																			</amount>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<caption>Лечим цель на количество затраченной энергии</caption>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<formulaName></formulaName>
+																			<healTarget>Health</healTarget>
+																			<ignoreHealingMods>false</ignoreHealingMods>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<providerName></providerName>
+																			<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+																		</HealApplicator>
+																	</Item>
+																</applicators>
+																<dispatch href="/Creeps/Champions/Champion3/Aura.APLR" id="B9E55BF4-A17B-4141-AD65-3D30154CF4DD">
+																	<DispatchImmediate>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Default</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>0</flags>
+																		<instantApply>false</instantApply>
+																	</DispatchImmediate>
+																</dispatch>
+															</Spell>
+														</spell>
+														<spellTarget>ApplicatorTarget</spellTarget>
+														<targetSelector href="/Creeps/Champions/Champion3/Aura.APLR" id="4FADE78A-116C-4460-A7AC-41FB39BB4F1A">
+															<AreaTargetSelector>
+																<absolutePosition>
+																	<x>0</x>
+																	<y>0</y>
+																</absolutePosition>
+																<flags>0</flags>
+																<mode>Normal</mode>
+																<range>
+																	<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cRange</sString>
+																</range>
+																<targetFilter>269221920</targetFilter>
+																<targetSelector href="" />
+															</AreaTargetSelector>
+														</targetSelector>
+													</SpellApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Creeps/Champions/Champion3/Aura.APLR" id="0F01B537-38DA-4097-8905-D2DC7D9F9455">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="/Effects/Buffs/Regen/_Time.EFFT" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>false</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+								</EventProcessorAbilityManacostTransformer>
+							</processor>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<useAbilityCooldown>false</useAbilityCooldown>
+							<useAbilityOwnerMana>false</useAbilityOwnerMana>
+						</TriggerApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Stone Guard</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Creeps/Champions/Champion3/Aura.APLR_4d04d3efefda475ba96c655956f6a893_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Talents/_133.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Creeps/Champions/Champion3/Aura.APLR_4d04d3efefda475ba96c655956f6a893_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Аура на врагов</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<range>
+		<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange</sString>
+	</range>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<targets>538911231</targets>
+	<targetSelector href="/Creeps/Champions/Champion3/Aura.APLR" id="1BB403D7-025D-4CBC-8E42-2BF7D29AE1F1">
+		<AreaTargetSelector>
+			<absolutePosition>
+				<x>0</x>
+				<y>0</y>
+			</absolutePosition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<range>
+				<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+				<returnType>float</returnType>
+				<sString>cRange</sString>
+			</range>
+			<targetFilter>675282947</targetFilter>
+			<targetSelector href="" />
+		</AreaTargetSelector>
+	</targetSelector>
+	<type>Enemy</type>
+</AuraApplicator>

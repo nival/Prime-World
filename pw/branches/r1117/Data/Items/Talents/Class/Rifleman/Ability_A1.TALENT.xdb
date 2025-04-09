@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Rifleman.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Rifleman_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rifleman/Ability_A1_SUP.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Rifleman/Ability_A1u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Rifleman_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Rifleman/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Rifleman/Epic_Str.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>false</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="103D9E28-E4C7-4C51-8B80-19E38E44ABB3">
+			<AlternativeTarget>
+				<alternativeActivity href="" />
+				<fromMinimap>false</fromMinimap>
+				<index>0</index>
+				<targetSelector href="/Items/Talents/Class/Rifleman/A1_TargetSelector.TGSL" />
+				<updateTarget>false</updateTarget>
+			</AlternativeTarget>
+		</Item>
+	</alternativeTargets>
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="04259BE6-00D8-432D-A9EB-99D94D1752EB">
+			<SetAdvancedSummonTargetApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Приказы для мишки</caption>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABCZWFySXNBbGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vBearIsAlive &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+			</SetAdvancedSummonTargetApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="9A8C9C8D-CEAC-407A-AA89-8AB8B14A71F6">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Указываем цель для А1у мишки</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLQnD/0DPJhcAPncGKwV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>mAlternativeTargetIndex &gt;= 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="A81B5F52-758F-4B7F-BB8F-E32AF53BC1B8">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Rifleman/status_A1_TechMark.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="A461EA57-7C5A-4625-896F-919C76D953D6">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Rifleman/A1_TargetSelector.TGSL" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>1</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А1. Фронтовой товарищ</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="1E2278EC-199F-40FD-8D74-53CF97B36D70">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQgAAAACAAAADQAAACMAAABJc0Nsb25lAFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHUUAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vIsClone == 0</sString>
+				</condition>
+				<uiEvent href="/UI/Events/ErrorMessages/CastError_NoValidCurrentTarget.UIEV" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="/Items/Talents/Class/Rifleman/Ability_A1.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="2F1E373C-E130-410D-9127-86BDBAD988D7">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR0AAAACAAAAJAAAAD0AAABSaWZsZW1hbl9BMXUAAAAAUmlmbGVtYW5fQTF1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Rifleman_A1u") == false</sString>
+				</condition>
+				<name>Rifleman_A1u</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="EDF49B38-5329-4DCB-96B9-7A5FF5FD5AA8">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABSaWZsZW1hbl9BMV9TVVAAUmlmbGVtYW5fQTFfU1VQAFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Rifleman_A1_SUP") == false</sString>
+				</condition>
+				<name>Rifleman_A1_SUP</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="BCDE1514-CD92-490D-A2B3-C7C9F495E5C4">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="2F62626B-B7DC-4D1C-A4DA-A7AF55ECA14B">
+					<UnitConstant>
+						<name>MasterStatConnected_Life</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBWMAAADZHCRR2QVfAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJItNCIsRi00Ii4IwAQAA/9BR2Rwk6B8AAACDxATZHCRqAItNEIsRi00Qi0Jg/9BdwwAAc0MAIOREVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale( max( sStrength, sIntellect ), 243, 1825 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="AEAACB77-8A3F-455F-8D0E-1B0918D2CD13">
+					<UnitConstant>
+						<name>MasterStatConnected_Power</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCMAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3DmpkJQTMzgUI=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale(sStrength, 8.6, 64.6 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="9869A1F9-8DBE-4358-9945-04FA2EFADA1A">
+					<UnitConstant>
+						<name>MasterStatConnected_Dexterity</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgjgBAAD/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sDexterity</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="0537A5E6-5F1E-4E5F-AF3D-443AB6C77BC5">
+					<UnitConstant>
+						<name>MasterStatConnected_AttackSpeed</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLQhz/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sAttackSpeed</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="77F58B7D-7006-4596-AF05-1DF153B8D399">
+					<UnitConstant>
+						<name>MasterStatConnected_Stamina</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgkABAAD/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString>sStamina</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="2DEF5863-C644-4D72-A86D-9F0BB2A61BAD">
+					<UnitConstant>
+						<name>MasterStatConnected_Will</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvsi0UIixCLTQiLgkQBAAD/0F3D</compiledString>
+							<returnType>float</returnType>
+							<sString> sWill
+
+</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="78427E0C-9975-4E01-AA38-3D1AB07577B8">
+					<UnitConstant>
+						<name>Bear_ResurrectTime</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="24AA9E48-0185-4700-A579-21E43F352EAF">
+					<UnitConstant>
+						<name>BearBonusToSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DLbKtPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>1.357</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="AAA05D76-BB8B-47FF-9041-8A479E43E32D">
+					<UnitConstant>
+						<name>TT_BearLife</name>
+						<var>
+							<compiledString>FRkAAAACAAAAJgAAADkAAABNYXN0ZXJTdGF0Q29ubmVjdGVkX0xpZmUAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3AVHAAAA2V382UX8i+VdwwAAAAAAQG9A</compiledString>
+							<returnType>float</returnType>
+							<sString>250 + cMasterStatConnected_Life</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="CAA83B71-941D-4C77-A377-AFFCD554EF42">
+					<UnitConstant>
+						<name>TT_BearPower</name>
+						<var>
+							<compiledString>FRoAAAACAAAAJwAAADoAAABNYXN0ZXJTdGF0Q29ubmVjdGVkX1Bvd2VyAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twFSAAAANld/NlF/IvlXcMAAAAAAAAkQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>10 + cMasterStatConnected_Power</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Rifleman/A1_Bear_Ability_Period" />
+				<Item href="/Items/Talents/Class/Rifleman/A1y_Damage" />
+				<Item href="/Items/Talents/Class/Rifleman/A1y_Stun_Duration" />
+				<Item href="/Items/Talents/Class/Rifleman/const_A0_Mark_Duration" />
+				<Item href="/Items/Talents/Class/Rifleman/const_TT_BearAbility_Damage" />
+				<Item href="/Items/Talents/Class/Rifleman/const_A1_BonusDefence" />
+				<Item href="/Items/Talents/Class/Rifleman/const_A1_SUP_BonusMoveSpeed" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+		<returnType>float</returnType>
+		<sString>1</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Rifleman/Ability_A1.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="B4F21BB6-1203-4EB5-ABC9-2346019898E0">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>32771</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Rifleman/A1.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker>doCast1</marker>
+	<microAI href="" />
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Rifleman/Ability_A1.TALENT_name.txt" />
+	<node>ability1</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="15964584-ED06-4628-B919-8B85906CC6E9">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>136</behaviorFlags>
+				<caption>Спел, который возрождает медведя</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRgAAAAEAAAAHQAAADMAAAA/AAAAVQAAAEJlYXJJc0FsaXZlAEJlYXJTcGF3bmVkAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHXcAAADf4PbERHoraAwAAACLTQiLEYtNCIuCiAEAAP/Q3B13AAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vBearIsAlive == 0 &amp;&amp; sender.vBearSpawned == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="BE6F52CF-4C58-407C-9EE9-564C45BD5DA1">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="843FA82D-FF3C-4D8F-BDE8-AED14344512A">
+								<StatModApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>отметка о спавне медведя при спавне героя</caption>
+									<constraint>None</constraint>
+									<dontUpdate>true</dontUpdate>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>BearSpawned</variable>
+									</modifier>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<statModName></statModName>
+								</StatModApplicator>
+							</Item>
+							<Item href="/Items/Talents/Class/Rifleman/Summon_Bear.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="428DD957-5DB2-4032-9594-43CCF52CE9B9">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" id="C5262B56-F3F8-4566-8946-B73668B8A096">
+			<FlagsApplicator parent="/GameLogic/GeneralApplicators/ForbidTalentByCondition.APLR">
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>автозапрет таланта если нет мишки</caption>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABCZWFySXNBbGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vBearIsAlive == 0 </sString>
+				</enabled>
+				<talents>
+					<Item href="/Items/Talents/Class/Rifleman/Ability_A1.TALENT" />
+				</talents>
+			</FlagsApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>Rifleman_A1</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Rifleman/Ability_A1.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>2040332351</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAEAcRg==</compiledString>
+		<returnType>float</returnType>
+		<sString>10000</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A1.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/status_A4.APLR" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="49451E90-BB09-4903-8A27-92295F245ED0">
+				<ProgramApplicator>
+					<applicators>
+						<Item>
+							<applicator href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="58713858-D956-4627-8CCC-783072C9F63D">
+								<PermanentStatModApplicator>
+									<applyTarget>AbilityOwner</applyTarget>
+									<caption>собираем остаток</caption>
+									<customApplyType>None</customApplyType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString>FSsAAAACAAAANgAAAE4AAABBcnNlbmFsX0Fic29yYkRhbWFnZUFwcGwAAAAAZGFtYWdlVG9BYnNvcmIAVYvsUWoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>sender.applArsenal_AbsorbDamageAppl(UNIT)-&gt;GetVariable("damageToAbsorb")</sString>
+										</addValue>
+										<multValue>
+											<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+											<returnType>float</returnType>
+											<sString>0</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>RemainAbsorbDamage</variable>
+									</modifier>
+									<providerName></providerName>
+								</PermanentStatModApplicator>
+							</applicator>
+							<continueCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</continueCondition>
+							<continueEvents>2</continueEvents>
+							<delay>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</delay>
+							<stopCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</stopCondition>
+							<stopEvents>0</stopEvents>
+						</Item>
+						<Item>
+							<applicator href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="EAA9B266-0194-4569-9409-6F6F68142B49">
+								<StatusApplicator>
+									<applicators>
+										<Item href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="AD156938-F0EA-49A4-B52A-ED00F1249E74">
+											<StatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>0</behaviorFlags>
+												<caption></caption>
+												<constraint>None</constraint>
+												<dontUpdate>false</dontUpdate>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString>FQgAAAABAAAAEgAAAEE0XzJfT04AVYvsagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.applA4_2_ON(UNIT) != pMisc</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString>FQUAAAACAAAAEgAAACUAAABTVEVQAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNMwAAANld/NlF/IvlXcMAAAAAAAAQQA==</compiledString>
+													<returnType>float</returnType>
+													<sString>cSTEP * 4</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+														<returnType>float</returnType>
+														<sString>1</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+														<returnType>float</returnType>
+														<sString>1</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>A4_2_ON</variable>
+												</modifier>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+												<statModName></statModName>
+											</StatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="4FB922D9-93BF-4590-AA6D-53C2E2AD41E1">
+											<AbsorbShieldApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>1</behaviorFlags>
+												<caption>Хитовая подушка</caption>
+												<damageToAbsorb>
+													<compiledString>FaoAAAALAAAAsQAAAMcAAADfAAAA+QAAABsBAAA4AQAAVQEAAJIBAACsAQAAzgEAAOsBAABBM19IZXJvAEEwX0Fyc2VuYWxUb3RhbABBMF9TaGllbGRDYXBhY2l0eQAAAFJlbWFpbkFic29yYkRhbWFnZQAAQTNfRm9ySGVybwAAQTBfU2hpZWxkQ2FwYWNpdHkAAABBMF9BcnNlbmFsVG90YWwAQTBfU2hpZWxkQ2FwYWNpdHkAAABSZW1haW5BYnNvcmJEYW1hZ2UAAEEwX1NoaWVsZENhcGFjaXR5AFWL7IPsPGgAAAAAi0UIixCLTQiLgogBAAD/0NwdHgIAAN/g9sRBD4WzAAAAi00MUYtVCFJoCAAAAItFEIsQi00Qi0JQ/9CLTQxRi1UIUmgYAAAAi0UQixCLTRCLQlDdXfj/0NxN+Nld9NlF9FHZHCRoLAAAAItNCIsRi00Ii4KIAQAA/9CLTQxRi1UIUmhAAAAAi0UQixCLTRCLQlDdXez/0ItNDFGLVQhSaEwAAACLRRCLEItNEItCUN1d5P/Q3E3k3EXs2V3g2UXgUdkcJOioAAAAg8QI2V3c6Y4AAACLTQxRi1UIUmhgAAAAi0UQixCLTRCLQlD/0ItNDFGLVQhSaHAAAACLRRCLEItNEItCUN1d1P/Q3E3U2V3Q2UXQUdkcJGiEAAAAi00IixGLTQiLgogBAAD/0ItNDFGLVQhSaJgAAACLRRCLEItNEItCUN1dyP/Q3EXI2V3E2UXEUdkcJOgVAAAAg8QI2V3c2UXci+VdwwAAAAAAAAAAVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>sender.vA3_Hero &gt; 0 ? (min( (sender.vRemainAbsorbDamage + cA3_ForHero * cA0_ShieldCapacity) , (cA0_ArsenalTotal * cA0_ShieldCapacity))) :(min( (sender.vRemainAbsorbDamage + cA0_ShieldCapacity) , (cA0_ArsenalTotal * cA0_ShieldCapacity)))</sString>
+												</damageToAbsorb>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName>Arsenal_AbsorbDamageAppl</formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString>FQgAAAACAAAADQAAACMAAABBNF8yX09OAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUUAAADf4PbEBXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.vA4_2_ON &lt; 1 </sString>
+												</startCondition>
+											</AbsorbShieldApplicator>
+										</Item>
+										<Item href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="B23BB025-C234-4A50-9415-109686A49AB9">
+											<AbsorbShieldApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>1</behaviorFlags>
+												<caption>Хитовая подушка A4_2</caption>
+												<damageToAbsorb>
+													<compiledString>FV4AAAAFAAAAbQAAAIcAAACpAAAAxgAAAOMAAABBMF9BcnNlbmFsVG90YWwAQTBfU2hpZWxkQ2FwYWNpdHkAAABSZW1haW5BYnNvcmJEYW1hZ2UAAEE0XzJfR2l2ZUFyc2VuYWwAAAAAQTBfU2hpZWxkQ2FwYWNpdHkAVYvsg+wgi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9KLRQxQi00IUWgQAAAAi1UQiwKLTRCLUFDdXfj/0txN+Nld9NlF9FHZHCRoJAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmg4AAAAi0UQixCLTRCLQlDdXez/0ItNDFGLVQhSaEwAAACLRRCLEItNEItCUN1d5P/Q3E3k3EXs2V3g2UXgUdkcJOgHAAAAg8QIi+Vdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>min((sender.vRemainAbsorbDamage + cA4_2_GiveArsenal * cA0_ShieldCapacity),(cA0_ArsenalTotal * cA0_ShieldCapacity)) </sString>
+												</damageToAbsorb>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName>Arsenal_AbsorbDamageAppl</formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString>FQgAAAACAAAADQAAACMAAABBNF8yX09OAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUUAAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.vA4_2_ON &gt; 0 </sString>
+												</startCondition>
+											</AbsorbShieldApplicator>
+										</Item>
+										<Item href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="F0BDEBA6-7596-4C50-A8B6-DFBD0346979B">
+											<StatModApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>152</behaviorFlags>
+												<caption>переменная для сброса текущего значение щита</caption>
+												<constraint>None</constraint>
+												<dontUpdate>false</dontUpdate>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<lifeTime>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>-1.0</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FSsAAAACAAAANgAAAE4AAABBcnNlbmFsX0Fic29yYkRhbWFnZUFwcGwAAAAAZGFtYWdlVG9BYnNvcmIAVYvsUWoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GgcAAAAi038ixGLTfyLQlT/0IvlXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>sender.applArsenal_AbsorbDamageAppl(UNIT)-&gt;GetVariable("damageToAbsorb")</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>A0_CurrentShieldCapacity</variable>
+												</modifier>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+												<statModName></statModName>
+											</StatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" id="AF35046C-31D9-49FF-98A7-3299295BCDD9">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>vA3_Hero == 0</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>0.0f</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>A3_Hero</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+									</applicators>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>2</behaviorFlags>
+									<caption>Тех. Статус</caption>
+									<customCounter>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>0</sString>
+									</customCounter>
+									<customProgress>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</customProgress>
+									<description textref="" />
+									<dispellPriority>NonDispellable</dispellPriority>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<flags>4</flags>
+									<formulaName></formulaName>
+									<image href="" />
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<name textref="" />
+									<power>0</power>
+									<providerName></providerName>
+									<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+									<stackCount>0</stackCount>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<statusPosition>0</statusPosition>
+									<stopBehaviour>StopByTime</stopBehaviour>
+									<unstackableWith href="" />
+								</StatusApplicator>
+							</applicator>
+							<continueCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</continueCondition>
+							<continueEvents>1</continueEvents>
+							<delay>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</delay>
+							<stopCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>0</sString>
+							</stopCondition>
+							<stopEvents>2</stopEvents>
+						</Item>
+					</applicators>
+					<applyTarget>AbilityOwner</applyTarget>
+					<behaviorFlags>1</behaviorFlags>
+					<caption>Программа щита</caption>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</startCondition>
+				</ProgramApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>Программа щита</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true </sString>
+	</startCondition>
+</ProgramApplicator>

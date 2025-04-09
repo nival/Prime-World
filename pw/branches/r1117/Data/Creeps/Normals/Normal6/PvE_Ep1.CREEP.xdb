@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvMapCreep parent="/Creeps/Normals/Normal6/CTF_S4.CREEP">
+	<BackLink DBID="/Maps/PvE/Series/Episode1/Spawners/Left1_5.NCSPN" Count="3" />
+	<BackLink DBID="/Maps/PvE/Series/Episode1/Spawners/neutral_3.NCSPN" Count="3" />
+	<abilities>
+		<Item skip="1" />
+		<Item skip="1" />
+		<Item href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="675E933F-36DC-4C30-8213-887A1792F4EF">
+			<Ability parent="/Creeps/Abilities/_PvE_Run_Away.ABLT">
+				<caption>отбегать от цели (не бояться дохлого Ведьмака)</caption>
+				<microAI href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="092AE419-7274-4C45-B1B2-8045F5A15E45">
+					<TargetSelectorMicroAI>
+						<castWhenIdle>false</castWhenIdle>
+						<condition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</condition>
+						<targetSelector href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="376961E9-6F26-4A96-8F4D-586A2175AE54">
+							<NearestTargetSelector>
+								<targetSelector href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="C3332E48-274D-491D-9DF2-772D18A26E16">
+									<ConditionTargetSelector>
+										<condition>
+											<compiledString>FQcAAAACAAAADAAAACIAAABJbURlYWQAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdRAAAAN/g9sRBegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.vImDead &lt;= 0.f</sString>
+										</condition>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<targetSelector href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="F58A1098-0ECC-45DC-9DEB-9C64FBD2259A">
+											<AreaTargetSelector>
+												<absolutePosition>
+													<x>0</x>
+													<y>0</y>
+												</absolutePosition>
+												<flags>0</flags>
+												<mode>Normal</mode>
+												<range>
+													<compiledString>FRAAAAACAAAAHQAAADAAAABSdW5Bd2F5RGlzdGFuY2UAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3CU+AAAA2V382UX8i+VdwwAAAAAAABRA</compiledString>
+													<returnType>float</returnType>
+													<sString>cRunAwayDistance - 5</sString>
+												</range>
+												<targetFilter>672923711</targetFilter>
+												<targetSelector href="" />
+											</AreaTargetSelector>
+										</targetSelector>
+									</ConditionTargetSelector>
+								</targetSelector>
+							</NearestTargetSelector>
+						</targetSelector>
+					</TargetSelectorMicroAI>
+				</microAI>
+			</Ability>
+		</Item>
+		<Item skip="1" />
+		<Item skip="1" />
+	</abilities>
+	<attackAbility href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="373EEAE6-5B76-4939-B6D3-28AA41FFE9C6">
+		<BaseAttack parent="/Creeps/Normals/Normal6/AttackAbility.ATCK">
+			<caption></caption>
+			<constants href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="8D0304EC-78DA-4C9C-ADA1-5C9C973E5264">
+				<UnitConstantsContainer>
+					<vars>
+						<Item href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="58393E57-0DD5-44D9-B487-513CF34A487D">
+							<UnitConstant>
+								<name>Liferegen</name>
+								<var>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>0.0f</sString>
+								</var>
+							</UnitConstant>
+						</Item>
+					</vars>
+				</UnitConstantsContainer>
+			</constants>
+			<flags>5</flags>
+			<passiveApplicators>
+				<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+			</passiveApplicators>
+			<requireLineOfSight>false</requireLineOfSight>
+		</BaseAttack>
+	</attackAbility>
+	<stats href="/Creeps/Normals/Normal6/PvE_Ep1.CREEP" id="54FE9BF3-3732-4D0E-8726-12ECEA2DDCB8">
+		<StatsContainer>
+			<stats>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Life</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQw==</compiledString>
+						<returnType>float</returnType>
+						<sString>400</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Intellect</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>30</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>AttackSpeed</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>40</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Dexterity</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABIQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>50</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Stamina</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>20</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Will</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACgQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>20</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>VisibilityRange</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABwQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>15</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>MoveSpeed</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAwQg==</compiledString>
+						<returnType>float</returnType>
+						<sString>44</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>Range</statId>
+					<value>
+						<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cRange_Medium</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>LifeRegenerationAbsolute</statId>
+					<value>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+						<returnType>float</returnType>
+						<sString>4</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>TeamNaftaForKill</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>30</sString>
+					</value>
+				</Item>
+				<Item>
+					<calcIncrement>0</calcIncrement>
+					<calcValue>0</calcValue>
+					<increment>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</increment>
+					<levelUpgrades />
+					<statId>NaftaForKill</statId>
+					<value>
+						<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+						<returnType>float</returnType>
+						<sString>8</sString>
+					</value>
+				</Item>
+			</stats>
+		</StatsContainer>
+	</stats>
+	<targetingParams href="/GameLogic/TargetingParams_PvE_Ep1.UNTP" />
+</AdvMapCreep>

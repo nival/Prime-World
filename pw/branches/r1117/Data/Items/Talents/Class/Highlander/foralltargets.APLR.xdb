@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ForAllTargetsApplicator>
+	<BackLink DBID="/Items/Talents/Class/Highlander/Ability1.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>136</behaviorFlags>
+	<caption>атаковать все цели</caption>
+	<continueEvents>14</continueEvents>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<program href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="3EC56108-5F9D-4F71-B8CD-1B01A1D88B2E">
+		<ProgramApplicator>
+			<applicators>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="C4955E2A-3FAA-4E9D-9947-89CC85EDE707">
+						<TeleportApplicator>
+							<appearEffect href="/Effects/General/Blink/_OrangeSTD.EFFT" />
+							<applyTarget>AbilityOwner</applyTarget>
+							<caption>-- Телепорт</caption>
+							<disappearEffect href="/Effects/General/Blink/_OrangeEnd.EFFT" />
+							<enabled>
+								<compiledString>FRMAAAABAAAAPwAAAEExX01heFRlbGVwb3J0RGlzdABVi+yD7BCLRRCLEItNEItCSP/QiUX8i038ixGLTfyLQgz/0ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d9P/Q3F303+D2xAF1CcdF8AEAAADrB8dF8AAAAACKRfCL5V3D</compiledString>
+								<returnType>bool</returnType>
+								<sString>appl.parent.Dist2Target &lt;= cA1_MaxTeleportDist</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<maxDistance>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>0.0f</sString>
+							</maxDistance>
+							<notifyInboundDispatches>true</notifyInboundDispatches>
+							<providerName></providerName>
+							<pushUnits>true</pushUnits>
+							<teleportTarget>PrevApplicatorTarget</teleportTarget>
+						</TeleportApplicator>
+					</applicator>
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>2</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FRMAAAABAAAALwAAAEExX01heFRlbGVwb3J0RGlzdABVi+yD7AyLRRCLEItNEItCDP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEBXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+						<returnType>bool</returnType>
+						<sString>mDist2Target &gt; cA1_MaxTeleportDist</sString>
+					</stopCondition>
+					<stopEvents>8</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="15B0D30A-9B98-4EDD-A46C-2905BE927DEC">
+						<MoveToApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>повернуться к цели</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<isMoveDirect>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>false</sString>
+							</isMoveDirect>
+							<isNotStackable>false</isNotStackable>
+							<justRotate>true</justRotate>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<moveRange>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</moveRange>
+							<moveSpeed>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>0.0</sString>
+							</moveSpeed>
+							<moveTarget>PrevApplicatorTarget</moveTarget>
+							<offset>
+								<x>0</x>
+								<y>0</y>
+							</offset>
+							<providerName></providerName>
+							<pushUnits>false</pushUnits>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+						</MoveToApplicator>
+					</applicator>
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>10</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="9C4E4546-6AA6-44F6-8A7B-11BCCDEB6AFD">
+						<FlagsApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>анимация атаки</caption>
+							<consumables />
+							<effect>
+								<Item href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="09256EA0-22BF-40BB-8E52-C28A3CDE07EF">
+									<PlayAnimationEffect>
+										<animGraphNode>ability1</animGraphNode>
+										<deathType>Manual</deathType>
+										<enableCondition href="" />
+										<goToOtherNodeOnStop>false</goToOtherNodeOnStop>
+										<lifeTime>0</lifeTime>
+										<marker></marker>
+										<markerReachTime>0</markerReachTime>
+										<returnAnimGraphNode></returnAnimGraphNode>
+									</PlayAnimationEffect>
+								</Item>
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>0</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3Dw/WoPg==</compiledString>
+								<returnType>float</returnType>
+								<sString>0.33</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</applicator>
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>1</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="458D2681-2BA9-4585-88BB-F794851DEAAA">
+						<FlagsApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>задержка 0.15</caption>
+							<consumables />
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>0</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DmpkZPg==</compiledString>
+								<returnType>float</returnType>
+								<sString>0.15</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</applicator>
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>2</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FRsAAAACAAEAMgAAAE8AAAA0AQAAVGFyZ2V0AABBMV9NYXhUZWxlcG9ydERpc3QAVYvsg+wki0UQixCLTRCLQkj/0IlF7GgAAAAAi03sixGLTeyLQkz/0IlF6ItNDFGLVQhSaAgAAACLRRCLEItNEItCUP/QjU34UYtV6IsCi03oi5CMAQAA3V3g/9JQjUXwUItNCIsRi00Ii4KMAQAA/9BQ6CQAAACDxAjcXeDf4PbEQXUJx0XcAQAAAOsHx0XcAAAAAIpF3IvlXcNVi+yD7BSLRQjZQASLTQzYYQTZXfTZRfRR2Rwki1UI2QKLRQzYINld8NlF8FHZHCSNTfjoVwAAANlF+NhN+NlF/NhN/N7B2V3s2UXsUdkcJOgHAAAAg8QEi+Vdw1WL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOik/v//g8QI2V382UX8i+Vdw1WL7FGJTfyLRfzZRQjZGItN/NlFDNlZBItF/IvlXcIIAA==</compiledString>
+						<returnType>bool</returnType>
+						<sString>d( sPos, appl.parent.oTarget.Pos ) &gt; cA1_MaxTeleportDist</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="12909294-1A79-4274-9189-150C2337C763">
+						<SpellApplicator>
+							<applyTarget>PrevApplicatorTarget</applyTarget>
+							<caption>спелл с уроном</caption>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<spell href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="2DB27A0A-5F2C-49C2-9913-69D11919063E">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="125E6D13-FF3A-46B7-B54A-13E8926A2DE8">
+											<DamageApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<cancelInvisibility>false</cancelInvisibility>
+												<caption>урон</caption>
+												<damage>
+													<compiledString>FQkAAAABAAAAFQAAAEExRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+													<returnType>float</returnType>
+													<sString>cA1Damage</sString>
+												</damage>
+												<damageMode>7</damageMode>
+												<damageType>Material</damageType>
+												<enabled>
+													<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii4KQAQAA/9CL8ItNDIsRi00Mi4KQAQAA/9AzyTvwD5XBisFeXcM=</compiledString>
+													<returnType>bool</returnType>
+													<sString>sFctn != rFctn</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<timeLimiter>-1</timeLimiter>
+												<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+											</DamageApplicator>
+										</Item>
+										<Item href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="32DB9FBC-0D8C-4E18-BA4A-A59081503E8A">
+											<SpellApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>стун если есть А1_SUP</caption>
+												<enabled>
+													<compiledString>FUYAAAAEAAAATQAAAGYAAACcAAAAtQAAAEhpZ2hsYW5kZXJfQTF1MQBIaWdobGFuZGVyX0ExdTEASGlnaGxhbmRlcl9BMV9TVVAAAABIaWdobGFuZGVyX0ExX1NVUABVi+yD7BRoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXRYaCAAAACLVQiLAotNCIuQqAEAAP/ShcB0Kmg0AAAAi0UIixCLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0CcdF7AEAAADrB8dF7AAAAACKReyL5V3D</compiledString>
+													<returnType>bool</returnType>
+													<sString>tal("Highlander_A1u1") &amp;&amp; tal("Highlander_A1_SUP")
+
+</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<spell href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="76EA648E-53BE-43B0-AEE1-0546651F56D6">
+													<Spell>
+														<applicators>
+															<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+														</applicators>
+														<dispatch href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="DFBF5DF1-CE13-4575-9DEF-44472C261512">
+															<DispatchImmediate>
+																<alwaysApply>false</alwaysApply>
+																<applyEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</applyEffect>
+																<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																<applyEffectOrientation>Default</applyEffectOrientation>
+																<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																<dieAfterApply>true</dieAfterApply>
+																<dispatchEffect>
+																	<Item href="" />
+																	<Item href="" />
+																</dispatchEffect>
+																<flags>0</flags>
+																<instantApply>false</instantApply>
+															</DispatchImmediate>
+														</dispatch>
+													</Spell>
+												</spell>
+												<spellTarget>PrevApplicatorTarget</spellTarget>
+												<targetSelector href="" />
+											</SpellApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="F584C4F2-2640-41A4-A91C-E8907ACC7FB5">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>1</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+							<spellTarget>ApplicatorTarget</spellTarget>
+							<targetSelector href="" />
+						</SpellApplicator>
+					</applicator>
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>1</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="95D78585-794A-45D2-A0DD-A8BC3C883A39">
+						<SpellApplicator>
+							<applyTarget>PrevApplicatorTarget</applyTarget>
+							<caption>стун если цель - герой и больше целей нет</caption>
+							<enabled>
+								<compiledString>FVIAAAAGAAAAkQAAAKQAAAC0AAAAzQAAAAMBAAAcAQAAbGFzdFRhcmdldAAASGlnaGxhbmRlcl9BMXUxAEhpZ2hsYW5kZXJfQTF1MQBIaWdobGFuZGVyX0ExX1NVUAAAAEhpZ2hsYW5kZXJfQTFfU1VQAFWL7IPsHItFDIsQi00Mi0JU/9APtsiFyQ+E6gAAAItVEIsCi00Qi1BI/9KJRfyLRfyLEItN/ItCSP/QiUX4aAAAAACLTfiLEYtN+ItCVP/Q3B1oAQAA3+D2xEQPiqcAAABoDAAAAItNCIsRi00Ii4KoAQAA/9CFwHQqaBwAAACLTQiLEYtNCIuCqAEAAP/QiUX0i030ixGLTfSLQgT/0IhF8+sExkXzAA+2TfOFyXRYaCwAAACLVQiLAotNCIuQqAEAAP/ShcB0KmhAAAAAi0UIixCLTQiLgqgBAAD/0IlF7ItN7IsRi03si0IE/9CIRevrBMZF6wAPtk3rhcl1CcdF5AEAAADrB8dF5AAAAACKReSL5V3DAAAAAAAA8D8=</compiledString>
+								<returnType>bool</returnType>
+								<sString>rIsHero &amp;&amp; mObjectParent-&gt;GetObjectParent()-&gt;GetVariable("lastTarget") == 1.0f &amp;&amp; tal("Highlander_A1u1") &amp;&amp; !tal("Highlander_A1_SUP")
+
+</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<spell href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="202402C7-B332-41A9-9659-7F097F063BDF">
+								<Spell>
+									<applicators>
+										<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+									</applicators>
+									<dispatch href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="C25B5A07-3B31-4420-A2F2-5809F3546CC7">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+							<spellTarget>PrevApplicatorTarget</spellTarget>
+							<targetSelector href="" />
+						</SpellApplicator>
+					</applicator>
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>13</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/status_A2_JoyOfBattle.APLR" />
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>1</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/foralltargets.APLR" id="3F6CEBD4-31C1-41B8-BF6F-D1CBA3CA75F9">
+						<FlagsApplicator>
+							<applyTarget>AbilityOwner</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>задержка 0.2</caption>
+							<consumables />
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<flag>0</flag>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzcxMPg==</compiledString>
+								<returnType>float</returnType>
+								<sString>0.2</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<talents />
+							<useListAs>ListAsRule</useListAs>
+						</FlagsApplicator>
+					</applicator>
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>2</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+				<Item>
+					<applicator href="/Items/Talents/Class/Highlander/TargetMark.APLR" />
+					<continueCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</continueCondition>
+					<continueEvents>1</continueEvents>
+					<delay>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</delay>
+					<stopCondition>
+						<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>0</sString>
+					</stopCondition>
+					<stopEvents>0</stopEvents>
+				</Item>
+			</applicators>
+			<applyTarget>AbilityOwner</applyTarget>
+			<behaviorFlags>0</behaviorFlags>
+			<caption>программа для каждой цели</caption>
+			<effect>
+				<Item href="" />
+				<Item href="" />
+			</effect>
+			<enabled>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</enabled>
+			<formulaName></formulaName>
+			<lifeTime>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</lifeTime>
+			<LoggingEvent>-1</LoggingEvent>
+			<providerName></providerName>
+			<startCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</startCondition>
+		</ProgramApplicator>
+	</program>
+	<providerName></providerName>
+	<skipTargetIfInvalid>true</skipTargetIfInvalid>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<stopEvents>0</stopEvents>
+	<targets href="/Items/Talents/Class/Highlander/A1_TargetSelector.TGSL" />
+</ForAllTargetsApplicator>

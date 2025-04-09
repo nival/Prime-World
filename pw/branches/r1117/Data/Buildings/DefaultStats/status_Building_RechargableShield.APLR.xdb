@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Buildings/DefaultStats/DefaultMainAttack.ATCK" Count="2" />
+	<applicators>
+		<Item href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="B7B1553B-731E-41C6-AEE0-D202FD53D3AA">
+			<AbsorbShieldApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Shield</caption>
+				<damageToAbsorb>
+					<compiledString>FQ0AAAABAAAAGQAAAFNoaWVsZEFtb3VudABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cShieldAmount</sString>
+				</damageToAbsorb>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>CantDeath</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</AbsorbShieldApplicator>
+		</Item>
+		<Item href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="92EC30C8-AB9F-4F8B-96DE-D7BDBDA0EAFB">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Перенакладываем триггер на урон для FX щита</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRcAAAABAAAAIQAAAE1haW5CdWlsZGluZ19GWFRyaWdnZXIAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.applMainBuilding_FXTrigger(GLOBAL) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FRAAAAABAAAAHAAAAEZYVHJpZ2dlclBlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cFXTriggerPeriod</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="8BAEA993-761B-497F-AFB2-AA73F94C8463">
+					<Spell>
+						<applicators>
+							<Item href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="24AE65AF-E1B0-431B-85FC-309A584C2631">
+								<TriggerApplicator>
+									<actionsCount>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>1</sString>
+									</actionsCount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>Триггер на урон для FX щита (сам FX в диспатче)</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName>MainBuilding_FXTrigger</formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<playAck>false</playAck>
+									<processor href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="11EA6A17-6895-4444-A3F2-96F897426F10">
+										<EventProcessorDamageTransformer>
+											<abilityFilter>
+												<abilitiesList />
+												<abilityCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</abilityCondition>
+												<abilityCostMode>Energy</abilityCostMode>
+												<exceptThis>false</exceptThis>
+												<flags>1610614015</flags>
+												<onlySingleTarget>false</onlySingleTarget>
+											</abilityFilter>
+											<add>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</add>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<checkSender>0</checkSender>
+											<damageTypeFilter>31</damageTypeFilter>
+											<flags>0</flags>
+											<matchTargetInverted>false</matchTargetInverted>
+											<mul>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>1.0f</sString>
+											</mul>
+											<objectFilter>2040319</objectFilter>
+											<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+											<spell href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="F99CBF5A-A713-4B0F-B497-5B29C0016295">
+												<Spell>
+													<applicators />
+													<dispatch href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="C0E31C92-54B5-47EC-A68D-CFD8CA9A1745">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="/Effects/Buffs/Bubble/_MainBuildingShield.EFFT" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>true</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+										</EventProcessorDamageTransformer>
+									</processor>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<useAbilityCooldown>false</useAbilityCooldown>
+									<useAbilityOwnerMana>false</useAbilityOwnerMana>
+								</TriggerApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" id="2C2DDF34-845C-4288-A53F-CEC05C346BD6">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>2</behaviorFlags>
+	<caption>rechargable shield</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Buildings/DefaultStats/status_Building_RechargableShield.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>12</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Impulses/Isto4nik.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Buildings/DefaultStats/status_Building_RechargableShield.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-100</statusPosition>
+	<stopBehaviour>StopByChild</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

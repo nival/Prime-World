@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/FallenAngel.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/FallenAngel_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/Ability_A2u.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/FallenAngel_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/FallenAngel/Epic_IntDex.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/FallenAngel/Epic_IntSpeed.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="542D8830-9D79-409F-ABAB-E60A4470CB03">
+			<PermanentStatModApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>Отбираем стек</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABGYWxsZW5BbmdlbF9BMnUARmFsbGVuQW5nZWxfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("FallenAngel_A2u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRIAAAABAAAAHgAAAEEyX0RlY1N0YWNrUGVyVXNlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S2eBdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>-cA2_DecStackPerUse</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>FallenAngel_A2Stack</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="A0E83B1E-C4A1-417B-9708-EE90FF0D6D43">
+			<SpellApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<caption>select point to move to</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="C6CB2FDF-0DCC-4149-B18D-56939A10F06F">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="39C9366B-9B8C-490A-9CB4-8EDC260EB712">
+								<ProgramApplicator>
+									<applicators>
+										<Item>
+											<applicator href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="626B0616-11E1-4D34-87F7-1C4B23028CBF">
+												<ProgramApplicator>
+													<applicators>
+														<Item>
+															<applicator href="/GameLogic/GeneralApplicators/IsolatedWDamage.APLR" />
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/GameLogic/GeneralApplicators/SetTossed.APLR" />
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="766C116F-A750-4652-91D8-0332645304B8">
+																<FlagsApplicator>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<behaviorFlags>184</behaviorFlags>
+																	<caption>Эффект начала движения</caption>
+																	<consumables />
+																	<effect>
+																		<Item href="/Effects/General/Blink/_Blue_Angel.EFFT" />
+																		<Item href="" />
+																	</effect>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<flag>0</flag>
+																	<formulaName></formulaName>
+																	<lifeTime>
+																		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+																		<returnType>float</returnType>
+																		<sString>2.0</sString>
+																	</lifeTime>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<startCondition>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</startCondition>
+																	<talents />
+																	<useListAs>ListAsRule</useListAs>
+																</FlagsApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="241DDDB7-17B9-419D-A613-D04E7C7C0FFD">
+																<ThrowApplicator>
+																	<angle Animated="True">
+																		<Tracks>
+																			<Item>
+																				<Item>
+																					<Key>0</Key>
+																					<Value>-0.00089553</Value>
+																				</Item>
+																				<Item>
+																					<Key>1</Key>
+																					<Value>-0.00089553</Value>
+																				</Item>
+																			</Item>
+																		</Tracks>
+																		<Type>Clamp</Type>
+																		<Values>
+																			<Item>
+																				<Key>0</Key>
+																				<Value>-0.00089553</Value>
+																			</Item>
+																			<Item>
+																				<Key>1</Key>
+																				<Value>-0.00089553</Value>
+																			</Item>
+																		</Values>
+																	</angle>
+																	<applyTarget>AbilityOwner</applyTarget>
+																	<behaviorFlags>0</behaviorFlags>
+																	<caption>Рывок</caption>
+																	<collisionFlags>7</collisionFlags>
+																	<enabled>
+																		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<firstTargetToHit href="" />
+																	<flightType>Jump</flightType>
+																	<flipTime>
+																		<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																		<returnType>float</returnType>
+																		<sString>1</sString>
+																	</flipTime>
+																	<flyEffect>
+																		<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="742809EE-F1D5-4F87-9EC7-A65A4111620E">
+																			<PlayAnimationEffect>
+																				<animGraphNode>ability2</animGraphNode>
+																				<deathType>Manual</deathType>
+																				<enableCondition href="" />
+																				<goToOtherNodeOnStop>false</goToOtherNodeOnStop>
+																				<lifeTime>0</lifeTime>
+																				<marker></marker>
+																				<markerReachTime>0</markerReachTime>
+																				<returnAnimGraphNode></returnAnimGraphNode>
+																			</PlayAnimationEffect>
+																		</Item>
+																		<Item href="" />
+																	</flyEffect>
+																	<formulaName>Throw_Jump</formulaName>
+																	<landTime>0</landTime>
+																	<lockRotation>false</lockRotation>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<maxDistance>0</maxDistance>
+																	<maxHeight>1</maxHeight>
+																	<moveSpeed>
+																		<compiledString>FQ0AAAABAAAAGQAAAEEyX01vdmVTcGVlZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																		<returnType>float</returnType>
+																		<sString>cA2_MoveSpeed</sString>
+																	</moveSpeed>
+																	<providerName></providerName>
+																	<startSpell href="" />
+																	<stopSpell href="" />
+																	<surfaceSpeedFromAG>false</surfaceSpeedFromAG>
+																	<takeOffTime>0.1</takeOffTime>
+																	<targetSelector href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="6D0DFDCA-DF7A-4F7A-BDE6-0453A11E8DDA">
+																		<SelectApplicatorTarget>
+																			<applicatorIndex>0</applicatorIndex>
+																			<applicatorName></applicatorName>
+																			<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																			<selectTarget>Hier2UpApplicatorTarget</selectTarget>
+																		</SelectApplicatorTarget>
+																	</targetSelector>
+																	<trackTargetUnit>false</trackTargetUnit>
+																	<trajectory Animated="True">
+																		<Tracks>
+																			<Item>
+																				<Item>
+																					<Key>0</Key>
+																					<Value>0</Value>
+																				</Item>
+																				<Item>
+																					<Key>1</Key>
+																					<Value>0</Value>
+																				</Item>
+																			</Item>
+																		</Tracks>
+																		<Type>Clamp</Type>
+																		<Values>
+																			<Item>
+																				<Key>0</Key>
+																				<Value>0</Value>
+																			</Item>
+																			<Item>
+																				<Key>1</Key>
+																				<Value>0</Value>
+																			</Item>
+																		</Values>
+																	</trajectory>
+																</ThrowApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>2</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+														<Item>
+															<applicator href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="904FA2D4-55D6-4924-8F97-27404BE38579">
+																<FlagsApplicator>
+																	<applyTarget>ApplicatorTarget</applyTarget>
+																	<behaviorFlags>32</behaviorFlags>
+																	<caption>idle если мы долетели</caption>
+																	<consumables />
+																	<effect>
+																		<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="E94D3696-26DB-4316-B6FC-C6D4F2285564">
+																			<PlayAnimationEffect>
+																				<animGraphNode>idle</animGraphNode>
+																				<deathType>Manual</deathType>
+																				<enableCondition href="" />
+																				<goToOtherNodeOnStop>false</goToOtherNodeOnStop>
+																				<lifeTime>0</lifeTime>
+																				<marker></marker>
+																				<markerReachTime>0</markerReachTime>
+																				<returnAnimGraphNode></returnAnimGraphNode>
+																			</PlayAnimationEffect>
+																		</Item>
+																		<Item href="" />
+																	</effect>
+																	<enabled>
+																		<compiledString></compiledString>
+																		<returnType>bool</returnType>
+																		<sString>true</sString>
+																	</enabled>
+																	<flag>0</flag>
+																	<formulaName></formulaName>
+																	<lifeTime>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>0.1</sString>
+																	</lifeTime>
+																	<LoggingEvent>-1</LoggingEvent>
+																	<providerName></providerName>
+																	<startCondition>
+																		<compiledString>FSEAAAADAAEAKAAAAHAAAACCAAAAOAEAAEFiaWxpdHlUYXJnZXQAAABGYWxsZW5BbmdlbF9BNF8yAFWL7IPsGGgAAAAAi0UQixCLTRCLQkz/0IlF7I1N+FGLVeyLAotN7IuQjAEAAP/SUI1F8FCLTQiLEYtNCIuCjAEAAP/QUOhPAAAAg8QI3B2yAAAA3+D2xEF6KWoBi00QUWgQAAAAi1UIiwKLTQiLkJwBAAD/0jtFEHUJx0XoAQAAAOsHx0XoAAAAAIpF6IvlXcMAAAAAAAAAAFWL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6KD+//+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+																		<returnType>bool</returnType>
+																		<sString>d( sPos, appl.oAbilityTarget.Pos ) &lt;= 0 &amp;&amp; sender.applFallenAngel_A4_2(UNIT) == pMisc</sString>
+																	</startCondition>
+																	<talents />
+																	<useListAs>ListAsRule</useListAs>
+																</FlagsApplicator>
+															</applicator>
+															<continueCondition>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>0</sString>
+															</continueCondition>
+															<continueEvents>1</continueEvents>
+															<delay>
+																<compiledString></compiledString>
+																<returnType>float</returnType>
+																<sString>-1.0</sString>
+															</delay>
+															<stopCondition>
+																<compiledString>FQ4AAAACAAEAFQAAAF0AAAAFAQAAQWJpbGl0eVRhcmdldABVi+yD7BhoAAAAAItFEIsQi00Qi0JM/9CJReyNTfhRi1XsiwKLTeyLkIwBAAD/0lCNRfBQi00IixGLTQiLgowBAAD/0FDoLwAAAIPECNwdfwAAAN/g9sRBegnHRegBAAAA6wfHRegAAAAAikXoi+VdwwAAAAAAAAAAVYvsg+wUi0UI2UAEi00M2GEE2V302UX0UdkcJItVCNkCi0UM2CDZXfDZRfBR2RwkjU346FcAAADZRfjYTfjZRfzYTfzewdld7NlF7FHZHCToBwAAAIPEBIvlXcNVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCTo0/7//4PECNld/NlF/IvlXcNVi+xRiU38i0X82UUI2RiLTfzZRQzZWQSLRfyL5V3CCAA=</compiledString>
+																<returnType>bool</returnType>
+																<sString>d( sPos, appl.oAbilityTarget.Pos ) &lt;= 0</sString>
+															</stopCondition>
+															<stopEvents>0</stopEvents>
+														</Item>
+													</applicators>
+													<applyTarget>ApplicatorTarget</applyTarget>
+													<behaviorFlags>2</behaviorFlags>
+													<caption>Program</caption>
+													<effect>
+														<Item href="" />
+														<Item href="" />
+													</effect>
+													<enabled>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</enabled>
+													<formulaName></formulaName>
+													<lifeTime>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>-1.0</sString>
+													</lifeTime>
+													<LoggingEvent>-1</LoggingEvent>
+													<providerName></providerName>
+													<startCondition>
+														<compiledString></compiledString>
+														<returnType>bool</returnType>
+														<sString>true</sString>
+													</startCondition>
+												</ProgramApplicator>
+											</applicator>
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>2</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+										<Item>
+											<applicator href="/GameLogic/GeneralApplicators/EndOfAbility.APLR" />
+											<continueCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</continueCondition>
+											<continueEvents>1</continueEvents>
+											<delay>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</delay>
+											<stopCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>0</sString>
+											</stopCondition>
+											<stopEvents>0</stopEvents>
+										</Item>
+									</applicators>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption>outer program</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+								</ProgramApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="FB47E3DA-2AF1-4E9B-8F3F-930D800D2F22">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="BC7AE408-2A2B-4A9A-B58C-32F3D3A63CA0">
+					<UnitPlaceCorrector>
+						<checkByRangeToRequester>true</checkByRangeToRequester>
+						<checkLineOfSight>false</checkLineOfSight>
+						<nativeTerrainOnly>false</nativeTerrainOnly>
+						<passabilityCheckMode>6</passabilityCheckMode>
+						<radius>11</radius>
+						<targetSelector href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="66662487-6FDF-47F0-B990-3D5F1FB3C2FB">
+							<PointTargetSelector>
+								<checkMinRange>true</checkMinRange>
+								<mode>RangeFromOwner</mode>
+								<offset>
+									<x>0</x>
+									<y>1</y>
+								</offset>
+								<paralleledTarget>false</paralleledTarget>
+								<range>
+									<compiledString>FRMAAAACAAAAIgAAAEsAAABBMl9SYW5nZQAAAABUYXJnZXQAVYvsg+wQi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JR2RwkUdnu2Rwki0UQixCLTRCLQgz/0GgMAAAAi00QixGLTRCLQkzdXfj/0CtFDPfYG8CD4ASJRfTbRfTcbfjZXfDZRfBR2Rwk6D4AAACDxATZHCToCwAAAIPECIvlXcMAAAAAVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdw1WL7FHZRQjZRQze2d/g9sQFegjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>clamp( mDist2Target - (pMisc-&gt;GetObject("Target") != pSecond ? 4 : 0 ), 0, cA2_Range )</sString>
+								</range>
+								<targetSelector href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="6751114C-93DD-433A-9FCB-FBB344FEC15F">
+									<SelectApplicatorTarget>
+										<applicatorIndex>0</applicatorIndex>
+										<applicatorName></applicatorName>
+										<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+										<selectTarget>ApplicatorTarget</selectTarget>
+									</SelectApplicatorTarget>
+								</targetSelector>
+								<traceMode>0</traceMode>
+							</PointTargetSelector>
+						</targetSelector>
+					</UnitPlaceCorrector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>2</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А2. На обожженных крыльях</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="9C34B490-B8D0-4D9C-AAB9-9609338DC5B8">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABGYWxsZW5BbmdlbF9BMnUARmFsbGVuQW5nZWxfQTJ1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("FallenAngel_A2u") == false</sString>
+				</condition>
+				<name>FallenAngel_A2u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="D72FB3A5-050C-47E9-898C-AFF515EC7B9A">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="EC078B83-92A6-4201-8B8F-0B84B2D4BB37">
+					<UnitConstant>
+						<name>A2_Range</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAQQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>9</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="4E70A4E7-D735-41A4-B993-F4821E811707">
+					<UnitConstant>
+						<name>A2_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="FDC4170F-04EF-4AE4-A253-232F1BD3A009">
+					<UnitConstant>
+						<name>A2_ManaCost</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACqQg==</compiledString>
+							<returnType>float</returnType>
+							<sString>85</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="666B7ADE-71E1-4808-AD24-418A699CFB34">
+					<UnitConstant>
+						<name>A2_DecStackPerUse</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="B9558FF4-C472-4119-A559-B1B9B5CAF0F0">
+					<UnitConstant>
+						<name>A2u_MaxStacks</name>
+						<var>
+							<compiledString>FT4AAAAEAAAARQAAAF4AAACUAAAAtAAAAEZhbGxlbkFuZ2VsX0EydQBGYWxsZW5BbmdlbF9BMnUARmFsbGVuQW5nZWxfQTJ1AEEydV9NYXhTdGFja3MAVYvsg+wQaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0N2ggAAAAi1UIiwKLTQiLkKgBAAD/0olF9ItFDFCLTQhRaDAAAACLVfSLAotN9ItQUP/S2V3w6wXZ7tld8NlF8IvlXcMAAAAA</compiledString>
+							<returnType>float</returnType>
+							<sString>talconst("FallenAngel_A2u", "A2u_MaxStacks")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="DC164820-6B12-490F-963B-C98B0E48E81B">
+					<UnitConstant>
+						<name>A2u_StackCooldown</name>
+						<var>
+							<compiledString>FUIAAAAEAAAASQAAAGIAAACYAAAAuAAAAEZhbGxlbkFuZ2VsX0EydQBGYWxsZW5BbmdlbF9BMnUARmFsbGVuQW5nZWxfQTJ1AEEydV9TdGFja0Nvb2xkb3duAFWL7IPsEGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdDdoIAAAAItVCIsCi00Ii5CoAQAA/9KJRfSLRQxQi00IUWgwAAAAi1X0iwKLTfSLUFD/0tld8OsF2e7ZXfDZRfCL5V3DAAAAAA==</compiledString>
+							<returnType>float</returnType>
+							<sString>talconst("FallenAngel_A2u", "A2u_StackCooldown")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="B6B019B5-924E-4760-87E3-FAEF4B661FE4">
+					<UnitConstant>
+						<name>A2u_AddStacksPerCooldown</name>
+						<var>
+							<compiledString>FUkAAAAEAAAAUAAAAGkAAACfAAAAvwAAAEZhbGxlbkFuZ2VsX0EydQBGYWxsZW5BbmdlbF9BMnUARmFsbGVuQW5nZWxfQTJ1AEEydV9BZGRTdGFja3NQZXJDb29sZG93bgBVi+yD7BBoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aCAAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoMAAAAItV9IsCi030i1BQ/9LZXfDrBdnu2V3w2UXwi+VdwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>talconst("FallenAngel_A2u", "A2u_AddStacksPerCooldown")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="CB920EFB-1E24-498B-BB3D-C9F441B0A484">
+					<UnitConstant>
+						<name>TT_A2uCurrentStacks</name>
+						<var>
+							<compiledString>FRQAAAABAAAAGAAAAEZhbGxlbkFuZ2VsX0EyU3RhY2sAVYvsaAAAAACLRQiLEItNCIuCiAEAAP/QXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>sender.vFallenAngel_A2Stack</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="913B4140-5A05-4D1B-ADD4-5D80F42A4A90">
+					<UnitConstant>
+						<name>A2_Cooldown</name>
+						<var>
+							<compiledString>FRAAAAACAAAAQwAAAGMAAABBMnVfRGVjcmVhc2VDRFIAVYvsg+wIVotFCIsQi00Ii0JM/9CL8ItNCIsRi00Ii4KQAQAA/9A78HUfi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9DZXfzrBdnu2V382UX83C1yAAAA2V342UX4XovlXcMAAAAAAAAsQAAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>14.0f - nt( cA2u_DecreaseCDR, 0 ) </sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="011A9955-893A-4C1B-9229-21FD773F60CD">
+					<UnitConstant>
+						<name>A2u_Cooldown</name>
+						<var>
+							<compiledString>FVAAAAAFAAAAWAAAAHEAAACnAAAAxwAAAA4BAABGYWxsZW5BbmdlbF9BMnUARmFsbGVuQW5nZWxfQTJ1AEZhbGxlbkFuZ2VsX0EydQBBMnVfQ29vbGRvd24AAAAAQTJ1X0RlY3JlYXNlQ0RSAFWL7IPsGFZoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ3aCAAAACLVQiLAotNCIuQqAEAAP/SiUX0i0UMUItNCFFoMAAAAItV9IsCi030i1BQ/9LZXfDrBdnu2V3wi0UIixCLTQiLQkz/0Ivwi00IixGLTQiLgpABAAD/0DvwdR+LTQxRi1UIUmhAAAAAi0UQixCLTRCLQlD/0Nld7OsF2e7ZXezZRfDYZezZXejZRehei+VdwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>talconst("FallenAngel_A2u", "A2u_Cooldown") - nt( cA2u_DecreaseCDR, 0 ) </sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/FallenAngel/const_A2u_DecreaseControl" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FTwAAAAEAAAAQwAAAFwAAACaAAAAuQAAAEZhbGxlbkFuZ2VsX0EydQBGYWxsZW5BbmdlbF9BMnUAQTJ1X0Nvb2xkb3duAAAAAEEyX0Nvb2xkb3duAFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4XJdB+LVQxSi0UIUGggAAAAi00QixGLTRCLQlD/0Nld9Osdi00MUYtVCFJoMAAAAItFEIsQi00Qi0JQ/9DZXfTZRfSL5V3D</compiledString>
+		<returnType>float</returnType>
+		<sString>tal("FallenAngel_A2u") ? cA2u_Cooldown : cA2_Cooldown</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="9BA0C323-7CF6-4DA9-9AFC-9203B15BE25E">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>true</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>595</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/FallenAngel/A2.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>false</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQwAAAABAAAAGAAAAEEyX01hbmFDb3N0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_ManaCost</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="E75304C6-990C-4FB9-9EEA-08286630A52D">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString>FQAAAAACAAAAJwAAAFMAAABVi+yD7BSLRQiLEItNCIsC/9CLTQiLEYtNCItCDN1d+P/Q3H343B19AAAA3+D2xAV6NYtNDIsRi00MiwL/0ItNDIsRi00Mi0IM3V3w/9DcffDcHXUAAADf4PbEBXoJx0XsAQAAAOsHx0XsAAAAAIpF7IvlXcOamZmZmZnpP5qZmZmZmck/</compiledString>
+				<returnType>bool</returnType>
+				<sString>sLife / sMaxLife &lt; 0.2 &amp;&amp; rLife / rMaxLife &lt; 0.8</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="0668E82E-D01A-41F7-A264-8D9C402C5997">
+				<PointTargetSelector>
+					<checkMinRange>true</checkMinRange>
+					<mode>RangeFromOwner</mode>
+					<offset>
+						<x>0</x>
+						<y>1</y>
+					</offset>
+					<paralleledTarget>false</paralleledTarget>
+					<range>
+						<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA2_Range</sString>
+					</range>
+					<targetSelector href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="94A460FA-3B4C-4F3D-A789-7E07CE7ED275">
+						<FountainTargetSelector />
+					</targetSelector>
+					<traceMode>0</traceMode>
+				</PointTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" id="722B9FFB-5959-4EFD-969B-820DDF2CB416">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>автозапрет таланта при ForbidMoveSpeical</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsaAAAAgCLRQyLEItNDItCaP/QXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rFlag(131072)</sString>
+				</enabled>
+				<flag>1024</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/FallenAngel/Ability_A2.TALENT" />
+				</talents>
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>FallenAngel_A2</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>689700927</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEEyX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

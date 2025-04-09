@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/Class/Inventor/A3_SummonBomb.APLR" Count="2" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Взрыв</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="9F83C5DB-81F2-4042-820E-4396D31F950A">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="68A6A759-DDAE-4A5A-A477-F5CB6072B5FE">
+					<SpellApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Спелл с уроном</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="3D54BC13-7B1E-4A2F-B583-90E7DF92665B">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="3BC7E1F1-549E-4BBC-B304-E4BB5B101B75">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>урон</caption>
+											<damage>
+												<compiledString>FQoAAAABAAAAFgAAAEEzX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cA3_Damage</sString>
+											</damage>
+											<damageMode>4</damageMode>
+											<damageType>Material</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="1FBB8469-5D8C-40B6-9961-4FD3727308A4">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="" />
+					</SpellApplicator>
+				</Item>
+				<Item href="/GameLogic/GeneralApplicators/ThrowUp.APLR" />
+			</applicators>
+			<dispatch href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="E0F3A040-7620-41FC-B8CD-C105BBB48E9E">
+				<DispatchImmediate>
+					<alwaysApply>true</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>1</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="F337BDC8-1ED0-46DE-B59A-0B12107A8A48">
+		<ConditionTargetSelector>
+			<condition>
+				<compiledString>FRAAAAACAAAAFQAAACsAAABJZ25vcmFibGVUYXJnZXQAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdTQAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+				<returnType>bool</returnType>
+				<sString>receiver.vIgnorableTarget == 0</sString>
+			</condition>
+			<flags>0</flags>
+			<mode>Normal</mode>
+			<targetSelector href="/Items/Talents/Class/Inventor/A3_BombExpl.APLR" id="A98977DD-5418-46AC-99F2-D567D84B8530">
+				<AreaTargetSelector>
+					<absolutePosition>
+						<x>0</x>
+						<y>0</y>
+					</absolutePosition>
+					<flags>0</flags>
+					<mode>Normal</mode>
+					<range>
+						<compiledString>FQwAAAABAAAAGAAAAEEzX0FvZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+						<returnType>float</returnType>
+						<sString>cA3_AoeRange</sString>
+					</range>
+					<targetFilter>538771519</targetFilter>
+					<targetSelector href="" />
+				</AreaTargetSelector>
+			</targetSelector>
+		</ConditionTargetSelector>
+	</targetSelector>
+</SpellApplicator>

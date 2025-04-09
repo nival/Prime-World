@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/A/Heavy/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Creeps/A/Melee1/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Creeps/A/Melee2/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Creeps/A/Range/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Creeps/B/Heavy/PVP.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/B/Melee1/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Creeps/B/Melee2/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Creeps/B/Melee2/PvE_R10.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/B/Melee2/PvE1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/B/Range/AttackAbility.ATCK" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" id="96655C95-1D31-47B0-BB57-61C2521F1465">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Урон атакующему герою</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" id="45299F2D-D308-4C36-8978-8513FF354668">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1073743103</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorSelectedTarget</applyTarget>
+						<checkSender>2</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>1</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</mul>
+						<objectFilter>536870915</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" id="AAB46AB1-EE1A-46CA-836D-BF32A2EB9302">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" id="AEBF9BDB-6105-45CC-B9D6-0A2ED414CB61">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>Дамаг</caption>
+											<damage>
+												<compiledString>FQsAAAABAAAAFwAAAERhbWFnZUJhY2sAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cDamageBack</sString>
+											</damage>
+											<damageMode>4</damageMode>
+											<damageType>Energy</damageType>
+											<enabled>
+												<compiledString>FQAAAAABAAAALQAAAFWL7FFR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6EkAAACDxAzcHWEAAADf4PbERHsbi1UMiwKLTQyLUFD/0oP4EXQJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAAAAAAAAAIA/VYvsUQ+2RQiFwHQI2UUM2V386wbZRRDZXfzZRfyL5V3D</compiledString>
+												<returnType>bool</returnType>
+												<sString>ut_bldg( false, true ) &amp;&amp; rUnitKind != 17</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" id="CF818777-3009-420B-9D45-1AE4630F862A">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Статус Опытный воин</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" id="3D9619A3-7EB9-495F-813A-81B3CBF553A5">
+			<AuraEffect>
+				<deathType>Manual</deathType>
+				<enableCondition href="" />
+				<lifeTime>0</lifeTime>
+				<type>Ally</type>
+			</AuraEffect>
+		</Item>
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRAAAAACAAAAFQAAACsAAABBdXJhTGVnMUtpdFB1c2gAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdTQAAAN/g9sREewnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vAuraLeg1KitPush != 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>Leg1KitPush</formulaName>
+	<image href="/UI/Styles/Icons/Talents/_582.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR_name.txt" />
+	<power>1</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" id="282CA447-B2FA-4BF5-8CC9-3A1568ED6907">
+		<ApplicatorsList>
+			<applicatorLists />
+			<applicators>
+				<Item href="/Items/Talents/TalentKits/Redset5_1_Push/status_redset5_1_CreepBuffStatus.APLR" />
+			</applicators>
+		</ApplicatorsList>
+	</unstackableWith>
+</StatusApplicator>

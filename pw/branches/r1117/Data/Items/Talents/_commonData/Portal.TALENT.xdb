@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent parent="/Items/Talents/_commonData/PortalBlank.TALENT">
+	<BackLink DBID="/GameLogic/AILogic.AILP" Count="1" />
+	<BackLink DBID="/GameLogic/Scoring.SCTB" Count="1" />
+	<BackLink DBID="/GameLogic/GeneralApplicators/ForbidUsePortal.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/_commonData/Portal.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/_commonData/PortalCancelCDR.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/status_G336_TelBlock.APLR" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/_.SCTB" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/PFmap/_.SCTB" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/_.ADMPDSCR" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Blue.ADMPDSCR" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Green.ADMPDSCR" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Orange.ADMPDSCR" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Red.ADMPDSCR" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Test_2x2_Blue.ADMPDSCR" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Violet.ADMPDSCR" Count="1" />
+	<BackLink DBID="/Items/Talents/_commonData/PortalForcedCancelCDR.APLR" Count="1" />
+	<forceBonus>9</forceBonus>
+	<marker></marker>
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/_commonData/Portal.TALENT" id="EA6450AD-B91F-4419-8BBB-0FC6A0D94A51">
+			<FlagsApplicator parent="/GameLogic/GeneralApplicators/ForbidTalentByCondition.APLR">
+				<talents>
+					<Item href="/Items/Talents/_commonData/Portal.TALENT" />
+				</talents>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/_commonData/Portal.TALENT" id="7A18DD50-968A-4056-B83E-A128B2DEF343">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Срабатывает 1 раз в начале</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/_commonData/Portal.TALENT" id="86211CB3-C061-4318-A0CC-970471340023">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="" />
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>true</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>commonPortal</persistentId>
+</Talent>

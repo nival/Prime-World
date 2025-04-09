@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/WraithKing/_.HROB" Count="4" />
+	<BackLink DBID="/Heroes/WraithKing/appl_SpellA3Damage.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/status_A2.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" id="039401E6-1C0A-46F4-8304-94984BF9344F">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>65</behaviorFlags>
+				<caption>триггер на смерть цели</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>A3_Trigger</formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" id="084665C3-BC3B-4A09-B28A-E8FEC28EA7DC">
+					<EventProcessorOnDeath>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<castSpellDelay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</castSpellDelay>
+						<checkSender>2</checkSender>
+						<objectFilter>538705983</objectFilter>
+						<senderMatchTarget>AbilityOwner</senderMatchTarget>
+						<spell href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" id="06AE9AB9-EEDA-44DF-B0F9-067ABBC7A0DC">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/WraithKing/stat_A3_Cooldown.APLR" />
+									<Item href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" id="F3B82006-89AB-4A48-9122-93D51C877BB9">
+										<PermanentStatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>vA3_Hero == 1</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString>FQcAAAABAAAADAAAAFRhcmdldABVi+xRaAAAAACLRRCLEItNEItCTP/QiUX8i038ixGLTfyLQlT/0IvlXcM=</compiledString>
+												<returnType>bool</returnType>
+												<sString>$ApplTarget-&gt;IsHero() </sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+													<returnType>float</returnType>
+													<sString>1</sString>
+												</addValue>
+												<multValue>
+													<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+													<returnType>float</returnType>
+													<sString>0</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>A3_Hero</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+									<Item href="/Items/Talents/Class/WraithKing/prog_AbsorbShield.APLR" />
+									<Item href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" id="8100AAC9-B746-4CC0-B0E4-9073222E0C68">
+										<PermanentStatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>vA3u_Stop  +1</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+													<returnType>float</returnType>
+													<sString>1</sString>
+												</addValue>
+												<multValue>
+													<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+													<returnType>float</returnType>
+													<sString>1</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>A3u_Stop</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/WraithKing/status_A3_WatchDead.APLR" id="803B3DDD-FF1E-4AFA-9CC9-5BB7FAD34CEA">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnDeath>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>66</behaviorFlags>
+	<caption>Чек на смерть цели</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FS4AAAAEAAAANQAAAE4AAACEAAAAqgAAAFdyYWl0aEtpbmdfQTMAAABXcmFpdGhLaW5nX0EzAAAAV3JhaXRoS2luZ19BMwBVi+yD7BBoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQ7aCAAAACLVQiLAotNCIuQqAEAAP/SiUX0i0X0ixCLTfSLQhz/0NwdzAAAAN/g9sREegnHRfABAAAA6wfHRfAAAAAAikXwi+VdwwAAAAAAAPA/</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("WraithKing_A3") &amp;&amp; sender.GetTalent("WraithKing_A3")-&gt;GetPreparedness() == 1.0</sString>
+	</enabled>
+	<flags>5</flags>
+	<formulaName></formulaName>
+	<image href="" />
+	<lifeTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+		<returnType>float</returnType>
+		<sString>0.5</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

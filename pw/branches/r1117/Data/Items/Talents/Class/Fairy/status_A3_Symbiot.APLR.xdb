@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fairy/Ability_A3.TALENT" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/Fairy/A3Target.TGSL" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Fairy/status_A3_Parasyte.APLR" Count="1" />
+	<BackLink DBID="/Maps/PvE/Series/Coop1/Heroes/Fairy/Ability_A3.TALENT" Count="2" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Fairy/status_A3_Symbiot.APLR" id="C66846A2-68A6-4D2F-8ABE-88866E81ECBA">
+			<MountApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>замаунтить фею на цель</caption>
+				<controlMount>false</controlMount>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName>FairyMountA3</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<mountTarget>ApplicatorTarget</mountTarget>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</MountApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Fairy/status_A3_Self.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>статус Симбиот + Fairy fx</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Fairy/status_A3_Symbiot.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Items/Talents/Class/Fairy/status_A3_Symbiot.APLR" id="C2652183-7535-42A1-9BB0-34978339684C">
+			<EffectSwitcher>
+				<deathType>Manual</deathType>
+				<effectOnInvisible href="/Heroes/Fairy/FXAbility3EnemyA.EFFT" />
+				<effectOnVisible href="/Heroes/Fairy/FXAbility3AllyA.EFFT" />
+				<enableCondition href="" />
+				<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+				<lifeTime>0</lifeTime>
+				<logic>FactionVisibility</logic>
+			</EffectSwitcher>
+		</Item>
+		<Item href="/Items/Talents/Class/Fairy/status_A3_Symbiot.APLR" id="EDEACC0F-6820-471A-A667-40AAAAACCDC8">
+			<EffectSwitcher>
+				<deathType>Manual</deathType>
+				<effectOnInvisible href="/Heroes/Fairy/FXAbility3EnemyB.EFFT" />
+				<effectOnVisible href="/Heroes/Fairy/FXAbility3AllyB.EFFT" />
+				<enableCondition href="" />
+				<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+				<lifeTime>0</lifeTime>
+				<logic>FactionVisibility</logic>
+			</EffectSwitcher>
+		</Item>
+	</effect>
+	<enabled>
+		<compiledString>FQ0AAAACAAAAJQAAADsAAABBbmdlbEE1U3RhcnQAVYvsUYtFEIsQi00QiwL/0A+2yIXJdCtoAAAAAItVDIsCi00Mi5CIAQAA/9LcHV0AAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>mIsAbilityOn &amp;&amp; receiver.vAngelA5Start == 0</sString>
+	</enabled>
+	<flags>32</flags>
+	<formulaName>Fairy_Symbiot</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Fairy/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Fairy/status_A3_Symbiot.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii4KQAQAA/9CL8ItNDIsRi00Mi4KQAQAA/9AzyTvwD5TBisFeXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sFctn == rFctn</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByChild</stopBehaviour>
+	<unstackableWith href="/Items/Talents/Class/Fairy/status_A3_Symbiot.APLR" id="5502B088-828C-401A-B367-4641949B8963">
+		<ApplicatorsList>
+			<applicatorLists />
+			<applicators>
+				<Item href="/Items/Talents/Class/Fairy/status_A3_Parasyte.APLR" />
+			</applicators>
+		</ApplicatorsList>
+	</unstackableWith>
+</StatusApplicator>

@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/PlagueDoctor.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PlagueDoctor/Ability_A4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PlagueDoctor/Ability_A4_2u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/PlagueDoctor/Ability_A4u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset5_7_Ultimate/Status_Redset5_7_Cooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/PlagueDoctor_Mighty.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_Range</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="A26BCD3C-59BB-43A9-AF7C-200C9E32E355">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Туман радиуса Лонг</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="ED27DD92-3ABE-4218-B929-06B31D0010D7">
+					<Spell>
+						<applicators />
+						<dispatch href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="F00C749F-9D26-4EB1-9622-61B2355D6E34">
+							<DispatchByTime>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<cancelOnSenderDeath>false</cancelOnSenderDeath>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="891A1B99-5660-463B-8064-908F291A7360">
+										<EffectSwitcher>
+											<deathType>Manual</deathType>
+											<effectOnInvisible href="/Effects/Debuffs/DoT/_LongEnemy.EFFT" />
+											<effectOnVisible href="/Effects/Debuffs/DoT/_LongAlly.EFFT" />
+											<enableCondition href="" />
+											<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+											<lifeTime>0</lifeTime>
+											<logic>FactionVisibility</logic>
+										</EffectSwitcher>
+									</Item>
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<lifeTime>
+									<compiledString>FQwAAAABAAAAGAAAAEE0X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cA4_Duration</sString>
+								</lifeTime>
+								<persistentApplicators>
+									<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="D6E464ED-CD53-499A-8704-36A2CB8CDD74">
+										<AuraApplicator>
+											<applicators>
+												<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="E8DD3B3C-A4F4-4611-95D5-C48A6D26A37A">
+													<StatusApplicator parent="/Items/Talents/Class/PlagueDoctor/PlagueDoctorDot.APLR">
+														<dispellPriority>NonDispellable</dispellPriority>
+														<enabled>
+															<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+															<returnType>bool</returnType>
+															<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+														</enabled>
+														<formulaName>PlagueDoctor_DotAura</formulaName>
+														<lifeTime>
+															<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</lifeTime>
+													</StatusApplicator>
+												</Item>
+												<Item href="/Heroes/DefaultStatus/_Vulnerability_status.APLR" />
+												<Item href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+												<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="B5DFA53A-2C65-4498-8FF3-FA4335C4A1E3">
+													<StatusApplicator parent="/Heroes/DefaultStatus/_BLIND_status.APLR">
+														<dispellPriority>NonDispellable</dispellPriority>
+														<effect>
+															<Item href="" />
+															<Item skip="1" />
+														</effect>
+													</StatusApplicator>
+												</Item>
+												<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="C4E23A46-94C2-4E2B-876D-BF461159EEFA">
+													<SpellApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<caption></caption>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<spell href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="503628C6-2970-4E99-925E-CF5E70801554">
+															<Spell>
+																<applicators />
+																<dispatch href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="B283B0CF-0A58-4454-861E-5452CDC76D87">
+																	<DispatchImmediate>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Default</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>1</flags>
+																		<instantApply>true</instantApply>
+																	</DispatchImmediate>
+																</dispatch>
+															</Spell>
+														</spell>
+														<spellTarget>ApplicatorTarget</spellTarget>
+														<targetSelector href="" />
+													</SpellApplicator>
+												</Item>
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>152</behaviorFlags>
+											<caption>Аура отравления</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<range>
+												<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+												<returnType>float</returnType>
+												<sString>cA4_Range</sString>
+											</range>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<targets>0</targets>
+											<targetSelector href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="D8D797EA-88A1-42A8-B597-04DA0B3DC9C6">
+												<AreaTargetSelector>
+													<absolutePosition>
+														<x>0</x>
+														<y>0</y>
+													</absolutePosition>
+													<flags>0</flags>
+													<mode>Normal</mode>
+													<range>
+														<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>cA4_Range</sString>
+													</range>
+													<targetFilter>547094591</targetFilter>
+													<targetSelector href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="F01DA81B-60D7-4E37-ADA2-7A2132B51CDB">
+														<SelectApplicatorTarget>
+															<applicatorIndex>0</applicatorIndex>
+															<applicatorName></applicatorName>
+															<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+															<selectTarget>AbilityTarget</selectTarget>
+														</SelectApplicatorTarget>
+													</targetSelector>
+												</AreaTargetSelector>
+											</targetSelector>
+											<type>None</type>
+										</AuraApplicator>
+									</Item>
+								</persistentApplicators>
+							</DispatchByTime>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>4</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А4. Миазмы</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="277213EC-09B6-4EC0-93D8-5E9D6F7E2460">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FSUAAAACAAAALAAAAEUAAABQbGFndWVEb2N0b3JfQTR1AAAAAFBsYWd1ZURvY3Rvcl9BNHUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgUAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("PlagueDoctor_A4u")</sString>
+				</condition>
+				<name>PlagueDoctor_A4u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents>
+		<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4_2.TALENT" />
+		<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4_2u.TALENT" />
+	</conflictingTalents>
+	<constants href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="6E6BF355-DA30-44F9-B3C9-126C5012B561">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/PlagueDoctor/const_A0_Damage" />
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="30EDBEB1-9167-43F6-9898-5E4393A50124">
+					<UnitConstant>
+						<name>A4_Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="7B97ACC2-6DA3-4DE8-A8D6-AC1A27106D50">
+					<UnitConstant>
+						<name>A4_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>8.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="348E8C9B-4539-40F2-97AD-332DE2D59963">
+					<UnitConstant>
+						<name>A4_VisRange</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>8.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/const_A4_DecStat" />
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="73142CC3-6842-400F-8973-C06597BEA12B">
+					<UnitConstant>
+						<name>WillCut_Amount</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAEE0X0RlY1N0YXQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_DecStat</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="27FEC8C4-E4F4-4871-8894-3390991106C5">
+					<UnitConstant>
+						<name>WillCut_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="5B30663F-09D0-488C-85BE-5F7681670DBE">
+					<UnitConstant>
+						<name>ArmorCut_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="F2307521-E9B5-460A-A23E-CDD3C732849F">
+					<UnitConstant>
+						<name>ArmorCut_Amount</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAEE0X0RlY1N0YXQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cA4_DecStat</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="836D118E-B7A3-4770-9316-FCE4D32E6618">
+					<UnitConstant>
+						<name>WillCut_StartCondition</name>
+						<var>
+							<compiledString>FSUAAAACAAAAWQAAAHIAAABQbGFndWVEb2N0b3JfQTR1AAAAAFBsYWd1ZURvY3Rvcl9BNHUAVYvsg+wUi0UMixCLTQyLgswAAAD/0ItNDIsRi00Mi4LIAAAA3V34/9DcXfjf4PbEQXpYaAAAAACLTQiLEYtNCIuCqAEAAP/QhcB0KmgUAAAAi00IixGLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0CcdF7AEAAADrB8dF7AAAAADbReyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>rBaseWill &gt;= rBaseStamina &amp;&amp; tal("PlagueDoctor_A4u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="05FA8667-A7BE-41C8-8827-1BF849A81523">
+					<UnitConstant>
+						<name>ArmorCut_StartCondition</name>
+						<var>
+							<compiledString>FSUAAAACAAAAWQAAAHIAAABQbGFndWVEb2N0b3JfQTR1AAAAAFBsYWd1ZURvY3Rvcl9BNHUAVYvsg+wUi0UMixCLTQyLgswAAAD/0ItNDIsRi00Mi4LIAAAA3V34/9DcXfjf4PbEQXVYaAAAAACLTQiLEYtNCIuCqAEAAP/QhcB0KmgUAAAAi00IixGLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0CcdF7AEAAADrB8dF7AAAAADbReyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>rBaseWill &lt; rBaseStamina &amp;&amp; tal("PlagueDoctor_A4u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="F0ACB1AA-A6A1-44E8-9328-00523311A0A6">
+					<UnitConstant>
+						<name>Blind_VisibilityRange</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>6.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="AE4CD621-674C-4214-BA44-5956DC56150F">
+					<UnitConstant>
+						<name>Blind_MissChance</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADIQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>25.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="2DE319AB-FB48-4505-B5C4-D40F6403F248">
+					<UnitConstant>
+						<name>Blind_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="CEF5C899-460F-4619-BBC6-172332E1D0C7">
+					<UnitConstant>
+						<name>UltimateConstant</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAC0Qg==</compiledString>
+		<returnType>float</returnType>
+		<sString>90</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="65EC1918-3A9A-4AF0-92F7-7ABF3E49208F">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>2</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/PlagueDoctor/A4.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>true</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAA0Qw==</compiledString>
+		<returnType>float</returnType>
+		<sString>180</sString>
+	</manaCost>
+	<marker>doCast4</marker>
+	<microAI href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="CDE68A9A-1690-4EEC-8874-03EA854A4E7C">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="7712FDA9-AEE2-49E8-BD94-C495DE3D999E">
+				<ConvertTargetToLand>
+					<aggregateMode>First</aggregateMode>
+					<targetSelector href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="0BC1CD35-F328-449C-AC7A-C5A3FA576266">
+						<FirstTargetSelector>
+							<nearestTarget>false</nearestTarget>
+							<targetSelector href="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT" id="C1249001-0589-472C-B901-CEE63D53CF96">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange_Long</sString>
+									</range>
+									<targetFilter>671088671</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</FirstTargetSelector>
+					</targetSelector>
+				</ConvertTargetToLand>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>2</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>540</naftaCost>
+	<name textref="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT_name.txt" />
+	<node>ability4</node>
+	<passiveApplicators />
+	<persistentId>PlagueDoctor_A4</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/PlagueDoctor/Ability_A4.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>16777216</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEE0X1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

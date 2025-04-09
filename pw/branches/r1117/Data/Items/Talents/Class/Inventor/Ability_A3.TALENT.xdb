@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Inventor.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Inventor_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Inventor/Ability_A3.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Inventor/Ability_A3u.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G567_CasterBase.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset6_2_CDR/appl_Redset6_2_RefreshCooldown.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Inventor_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Inventor/Duel_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Inventor/Duel_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Inventor/Elite_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Inventor/Elite_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Inventor/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Inventor/Epic_Str.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Inventor/Epic_Str_Ult2.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Corridor.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0FvZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_AoeRange</sString>
+	</aoeSize>
+	<aoeType>Corridor</aoeType>
+	<applicators>
+		<Item href="/Items/Talents/Class/Inventor/SpendDetails.APLR" />
+		<Item href="/Items/Talents/Class/Inventor/A0_IncMoveSpeed.APLR" />
+		<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="128EF193-C068-4657-8A6C-DD7B9B7A7A09">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Создаем бомбу</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="D131268E-2D80-4539-A278-510EB74BD98F">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Inventor/A3_SummonBomb.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="DCC9A36F-FD74-40A7-97CD-3AB65052B8D3">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="69BE753E-F24A-4183-A71E-70946B4C8C78">
+					<PointTargetSelector>
+						<checkMinRange>true</checkMinRange>
+						<mode>RangeFromOwner</mode>
+						<offset>
+							<x>0</x>
+							<y>1</y>
+						</offset>
+						<paralleledTarget>false</paralleledTarget>
+						<range>
+							<compiledString>FQkAAAABAAAAFQAAAEEzX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJItFEIsQi00Qi0IM/9BR2Rwk6AUAAACDxAhdw1WL7FHZRQjZRQze2d/g9sRBdQjZRQjZXfzrBtlFDNld/NlF/IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>min( mDist2Target, cA3_Range )</sString>
+						</range>
+						<targetSelector href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="D176AF29-CE73-43B4-A813-EB4EDEA9106A">
+							<SelectApplicatorTarget>
+								<applicatorIndex>0</applicatorIndex>
+								<applicatorName></applicatorName>
+								<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+								<selectTarget>ApplicatorTarget</selectTarget>
+							</SelectApplicatorTarget>
+						</targetSelector>
+						<traceMode>0</traceMode>
+					</PointTargetSelector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<askId>3</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А3. Часовая бомба</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="/Items/Talents/Class/Inventor/Ability_A3.TALENT_commonDescription.txt" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Inventor/condition_EnoughDetails" />
+		<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="17409B61-3279-4E7D-A364-CD60AC919881">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FR0AAAACAAAAJAAAAD0AAABJbnZlbnRvcl9BM3UAAAAASW52ZW50b3JfQTN1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZF+/fYG8CDwAGL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Inventor_A3u") == false</sString>
+				</condition>
+				<name>Inventor_A3u</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="B369AC0C-48A0-4C13-8E7B-FECF8215FFE1">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="9FFFCE9E-BD7C-47DD-92E7-4547F3011E42">
+					<UnitConstant>
+						<name>DetailsCost</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="907357AC-03FD-4019-B870-89354993914D">
+					<UnitConstant>
+						<name>A3_AoeRange</name>
+						<var>
+							<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX01lbGVlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Melee</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="C0F7F622-6316-4432-94A0-5842A5991FE6">
+					<UnitConstant>
+						<name>Invisibility_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>7</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="3CEEB413-8D8D-4EBB-A629-382780063BDF">
+					<UnitConstant>
+						<name>A3_TriggerRange</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/const_A3_Damage" />
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="2765EF9D-3087-4B9D-80DD-A6310256827E">
+					<UnitConstant>
+						<name>A3_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>30</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="E9B39CD6-D13A-4D2A-8A6C-FF5988622CFF">
+					<UnitConstant>
+						<name>Invisibility_FadeIn</name>
+						<var>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="8FE7B00B-602D-4D6A-8169-C341AE5DE3D6">
+					<UnitConstant>
+						<name>A3_CDMul</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="C7D0561B-665F-4E66-992B-26DEE03F900B">
+					<UnitConstant>
+						<name>A3_Range</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX0V4TG9uZwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_ExLong</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="A033EB9E-2182-4330-A8A2-244F156A05AE">
+					<UnitConstant>
+						<name>ThrowUp_StartCondition</name>
+						<var>
+							<compiledString>FR0AAAACAAAAJAAAAD0AAABJbnZlbnRvcl9BM3UAAAAASW52ZW50b3JfQTN1AFWL7IPsDGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAD7ZN+4lN9NtF9IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>tal("Inventor_A3u")</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Inventor/const_A0_Haste_Duration" />
+				<Item href="/Items/Talents/Class/Inventor/const_A0_Haste_Percent" />
+				<Item href="/Items/Talents/Class/Inventor/const_A0_CurrentInventor_Details" />
+				<Item href="/Items/Talents/Class/Inventor/const_A0_MaxDetails" />
+				<Item href="/Items/Talents/Class/Inventor/const_A0_TechHastePercentperDetail" />
+				<Item href="/Items/Talents/Class/Inventor/const_A0_TechDetailsperHastPercent" />
+				<Item href="/Items/Talents/Class/Inventor/const_A0_BaseAttackTotal" />
+				<Item href="/Items/Talents/Class/Inventor/const_A0_BaseAttackPerDetail" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>8</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Inventor/Ability_A3.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="5ECA4D6C-79E0-455D-8DEA-4FCBA628CAB0">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>67</flags>
+	<forceBonus>6</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Inventor/A3.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker>doCast3</marker>
+	<microAI href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="228F44E7-EE85-4091-99DB-A6519D458BAD">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="F7268F15-F404-4B8E-8E6B-7B63D41DB477">
+				<ConvertTargetToLand>
+					<aggregateMode>First</aggregateMode>
+					<targetSelector href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="06EF50CB-AED9-4475-9095-4D25CA04575B">
+						<FirstTargetSelector>
+							<nearestTarget>false</nearestTarget>
+							<targetSelector href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="9D535322-BAEE-41C5-B784-9A8C03D09BE6">
+								<CountingTargetSelector>
+									<enableSorting>false</enableSorting>
+									<flags>0</flags>
+									<heroesFirst>true</heroesFirst>
+									<mode>Normal</mode>
+									<order>Decreasing</order>
+									<sortingValue>
+										<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+										<returnType>float</returnType>
+										<sString>1</sString>
+									</sortingValue>
+									<targetSelector href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="3E2A5809-D261-468A-9AFE-43FA523DEFE7">
+										<AreaTargetSelector>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<flags>0</flags>
+											<mode>Normal</mode>
+											<range>
+												<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX0V4TG9uZwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cRange_ExLong</sString>
+											</range>
+											<targetFilter>679477279</targetFilter>
+											<targetSelector href="" />
+										</AreaTargetSelector>
+									</targetSelector>
+									<targetsNumber>
+										<compiledString>FQAAAAAAAAAAVYvsuGQAAABdww==</compiledString>
+										<returnType>int</returnType>
+										<sString>100</sString>
+									</targetsNumber>
+								</CountingTargetSelector>
+							</targetSelector>
+						</FirstTargetSelector>
+					</targetSelector>
+				</ConvertTargetToLand>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>300</naftaCost>
+	<name textref="/Items/Talents/Class/Inventor/Ability_A3.TALENT_name.txt" />
+	<node>ability3</node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" id="0E98C26C-99BA-42EA-BE65-D44C986A6398">
+			<FlagsApplicator parent="/Items/Talents/Class/Inventor/ForbidOnLowDetails.APLR">
+				<enabled>
+					<compiledString>FSAAAAACAAAAJwAAAEQAAABJbnZlbnRvcl9EZXRhaWxzAAAAAERldGFpbHNDb3N0AFWL7IPsDGgAAAAAi0UIixCLTQiLgogBAAD/0ItNDFGLVQhSaBQAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xEF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+				</enabled>
+				<startCondition>
+					<compiledString></compiledString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/Inventor/Ability_A3.TALENT" />
+				</talents>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G766_RefreshAndNotify.APLR" />
+	</passiveApplicators>
+	<persistentId>Inventor_A3</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="/Items/Talents/Class/Inventor/Ability_A3.TALENT_shortDescription.txt" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>16777216</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEEzX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

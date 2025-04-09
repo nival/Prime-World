@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Если не здание/флаг/вард, то вешаем аппликаторы</caption>
+	<enabled>
+		<compiledString>FQUAAAACAAAAMgAAAFYAAABXYXJkAFWL7FFR2ejZHCRR2e7ZHCRqAYtFDIsQi00Mi0JY/9APtshR6GkAAACDxAzcHYYAAADf4PbERHs7i1UMiwKLTQyLUFD/0oP4EXQpagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QO0UQdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAAAAAAAAAAgD9Vi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>ut_bldg(false, true) &amp;&amp; rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="DB801DA6-51F6-4757-BB39-38C3C4B977C8">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="1D3BB95B-2567-4441-A997-E95F01885756">
+					<SpellSwitchApplicator>
+						<activeSpellIndex>
+							<compiledString>FQwAAAABAAAAFgAAAFN0YWNrRXhpc3RzAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5XBi8Fdww==</compiledString>
+							<returnType>int</returnType>
+							<sString>receiver.applStackExists(GLOBAL) != pMisc ? 1 : 0; // 1 - есть флаг, 0 - флага нет.</sString>
+						</activeSpellIndex>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>- Спелл свитчер, где 1 - "Казнь", 0 - обычная атака с увечьями</caption>
+						<dontUseDispatches>true</dontUseDispatches>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spells>
+							<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="66EC4131-BBC7-4A83-9892-E0C2A401F8DD">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="F7C40009-4DF6-413A-9DB0-91A0ED2EB405">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>- Обнуляем стаки увечий в перманент стат моде</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FRIAAAABAAAAHgAAAEhhbmRpY3VwX0Z1bmN0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>cHandicup_Function</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>Stacks</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_pntStatMod_G761.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_pntStatMod_G762.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_pntStatMod_G764.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="C2DC78BF-07F4-4F06-8AAC-18C0142322FD">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>- Переменная, если у сендера выкачан G759</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQwAAAACAAAAEQAAACcAAABHNzU5X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>sender.vG759_Active &gt; 0 ? 1 : 0</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>Haste_G759</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="B662D7DD-A3BD-4E32-8C68-3B1B1732EDCC">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>- Переменная, если у сендера выкачан G760</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQwAAAACAAAAEQAAACcAAABHNzYwX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAADbRfyL5V3DAAAAAAAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>sender.vG760_Active &gt; 0 ? 1 : 0</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>Haste_G760</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/status_Flag_StackExists.APLR" />
+									</applicators>
+									<dispatch href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="086C71AB-95DC-47D4-8B5B-7D633CE5367B">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="/Effects/General/Firework/_Heart.EFFT" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</Item>
+							<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="806A894D-D57A-4CE1-839A-EC6E1E658CDB">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="7B21CA19-5E66-454F-B14C-E15F7A415DBD">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>Увеличиваем стаки увечий</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FRIAAAABAAAAHgAAAEhhbmRpY3VwX0Z1bmN0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+														<returnType>float</returnType>
+														<sString>cHandicup_Function</sString>
+													</addValue>
+													<multValue>
+														<compiledString></compiledString>
+														<returnType>float</returnType>
+														<sString>1.0f</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>Stacks</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_pntStatMod_G761.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_pntStatMod_G762.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_pntStatMod_G764.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="53F6EECA-8142-4D41-8FAF-1E62A29D3A4E">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>- Переменная, если у сендера выкачан G759</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString>FQwAAAACAAAAEQAAACcAAABHNzU5X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.vG759_Active &gt; 0</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+														<returnType>float</returnType>
+														<sString>1</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>Haste_G759</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="3087334F-A32D-4A1A-9D80-E98FB774E08B">
+											<PermanentStatModApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>- Переменная, если у сендера выкачан G760</caption>
+												<customApplyType>None</customApplyType>
+												<enabled>
+													<compiledString>FQwAAAACAAAAEQAAACcAAABHNzYwX0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+													<returnType>bool</returnType>
+													<sString>sender.vG760_Active &gt; 0</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<modifier>
+													<addValue>
+														<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+														<returnType>float</returnType>
+														<sString>1</sString>
+													</addValue>
+													<multValue>
+														<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+														<returnType>float</returnType>
+														<sString>0</sString>
+													</multValue>
+													<stat>Life</stat>
+													<topModifier>false</topModifier>
+													<variable>Haste_G760</variable>
+												</modifier>
+												<providerName></providerName>
+											</PermanentStatModApplicator>
+										</Item>
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_Execution.APLR" />
+										<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/status_Flag_StackExists.APLR" />
+									</applicators>
+									<dispatch href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="14D6CA12-BCCD-4B02-9366-4EA0C929A775">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</Item>
+						</spells>
+					</SpellSwitchApplicator>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_10_Buthcer/status_Handicap.APLR" />
+			</applicators>
+			<dispatch href="/Items/Talents/TalentKits/Redset7_10_Buthcer/appl_UpgradeAA_Condition.APLR" id="F2CB20DD-3FA3-4C9F-961B-F53F81421CF1">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="/Effects/Shots/Blade/_LegendaryHit_NoSound.EFFT" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

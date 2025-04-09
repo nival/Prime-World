@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DispatchLinear>
+	<BackLink DBID="/Items/Talents/Class/Hunter/A4Channel.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Hunter/ArrowDispatch10.DSCH" Count="1" />
+	<aiming>Straight</aiming>
+	<alwaysApply>false</alwaysApply>
+	<applyEffect>
+		<Item href="/Effects/Shots/Arrow/_AreaHit.EFFT" />
+		<Item href="" />
+	</applyEffect>
+	<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+	<applyEffectOrientation>Motion</applyEffectOrientation>
+	<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+	<dieAfterApply>true</dieAfterApply>
+	<dispatchEffect>
+		<Item href="/Effects/Shots/Arrow/_Area6.EFFT" />
+		<Item href="" />
+	</dispatchEffect>
+	<flags>0</flags>
+	<flyMode>Linear</flyMode>
+	<fromLocator>Arrow4</fromLocator>
+	<height>0</height>
+	<killEffect>true</killEffect>
+	<locatorOrient>true</locatorOrient>
+	<maxDeviation>180</maxDeviation>
+	<maxDistance>-1</maxDistance>
+	<maxRise>0</maxRise>
+	<minRise>0</minRise>
+	<persistentApplicators>
+		<Item href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="91857F67-910A-421B-B003-C0F3AC14C381">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>рассылаем урон врагам, пока летим</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="7CDAC4E7-9CD5-4DD6-BC74-A8D2574AE5EA">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="EE7148BA-502E-437A-BF25-A85E8BAFA9A3">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>урон</caption>
+									<damage>
+										<compiledString>FR4AAAADAAAASgAAAG4AAACOAAAARGFtYWdlAABNaW5EYW1hZ2UAAABNaW5EYW1hZ2UAVYvsg+wgi0UQixCLTRCLQkj/0IlF/ItN/IsRi038i0IU/9CLTQxRi1UIUmgUAAAAi0UQixCLTRCLQlDdXfT/0Nno3uHcTfSLTQxRi1UIUmgIAAAAi0UQixCLTRCLQlDdXez/0NxF7ItNDFGLVQhSaAAAAACLRRCLEItNEItCUN1d5P/Q3E3k2V3g2UXgi+VdwwAAAAAAAPA/</compiledString>
+										<returnType>float</returnType>
+										<sString>cDamage * ( cMinDamage + (1 - cMinDamage) * mObjectParent-&gt;GetParentScale() )</sString>
+									</damage>
+									<damageMode>4</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="F49233F9-A7D0-444A-ABD2-1A84B96A2B6A">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="130F510A-D233-47D2-BC8A-5DA1453C035C">
+					<CapsuleTargetSelector>
+						<cutoffFirstSegment>true</cutoffFirstSegment>
+						<flags>0</flags>
+						<mode>SendOnce</mode>
+						<range>
+							<compiledString>FQYAAAACAAAAEwAAACYAAABXaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTQAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>cWidth * 0.5</sString>
+						</range>
+						<rangeFromOwner>
+							<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange</sString>
+						</rangeFromOwner>
+						<segmentBegin>PreviousPosition</segmentBegin>
+						<segmentDirectionOffset>0</segmentDirectionOffset>
+						<segmentEnd>CurrentPosition</segmentEnd>
+						<segmentEndTargetSelector href="" />
+						<targetFilter>538771519</targetFilter>
+					</CapsuleTargetSelector>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="E3746E77-2C3E-4215-B57A-B9F053E74A96">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>145</behaviorFlags>
+				<caption>рассылаем ломание деревьям</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="66F80BC7-0F19-4B8E-8F84-668FFA38E082">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="BD01653A-9049-43B2-9FAD-59DBF405DEDE">
+								<DropTreeApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>уронить дерево</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+								</DropTreeApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="30582FFF-D1D6-4DFD-8FEA-088937A54FD3">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="2AFD91F7-0D9B-4C0E-A8D7-290CED171731">
+					<CapsuleTargetSelector>
+						<cutoffFirstSegment>true</cutoffFirstSegment>
+						<flags>0</flags>
+						<mode>SendOnce</mode>
+						<range>
+							<compiledString>FQYAAAACAAAAEwAAACYAAABXaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTQAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+							<returnType>float</returnType>
+							<sString>cWidth * 0.5</sString>
+						</range>
+						<rangeFromOwner>
+							<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange</sString>
+						</rangeFromOwner>
+						<segmentBegin>PreviousPosition</segmentBegin>
+						<segmentDirectionOffset>0</segmentDirectionOffset>
+						<segmentEnd>CurrentPosition</segmentEnd>
+						<segmentEndTargetSelector href="" />
+						<targetFilter>805307392</targetFilter>
+					</CapsuleTargetSelector>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="0084B148-FC2E-4668-BBA5-139643CFB193">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>открываем туман</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.1f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="8F6CD0ED-BA94-49EC-A77F-769BD018DD76">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="1A79F0D4-B520-4874-84E6-F6C2395DEF5C">
+								<EyeApplicator>
+									<applyTarget>AbilityOwner</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<cancelObstacles>false</cancelObstacles>
+									<caption>открыть туман</caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<eyeTarget>ApplicatorTarget</eyeTarget>
+									<flags>8</flags>
+									<formulaName></formulaName>
+									<lifeTime>
+										<compiledString>FRAAAAABAAAAHAAAAE9wZW5Gb2dEdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cOpenFogDuration</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<visRange>
+										<compiledString>FQ0AAAABAAAAGQAAAE9wZW5Gb2dSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cOpenFogRange</sString>
+									</visRange>
+								</EyeApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="55845E15-8D5A-4C58-8B36-706DFC1D2547">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Class/Hunter/ArrowDispatch.DSCH" id="90A55C26-4483-45BB-97F8-A519CD2D04D9">
+					<ConvertTargetToLand>
+						<aggregateMode>First</aggregateMode>
+						<targetSelector href="" />
+					</ConvertTargetToLand>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</persistentApplicators>
+	<speed>25</speed>
+	<suspendTime>0</suspendTime>
+	<toLocator></toLocator>
+</DispatchLinear>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Vampire/Ability_A3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Vampire/status_A3u_BatSwarmArmour.APLR" id="76F5B127-9564-4A86-877D-51EBCA7CDF54">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>(Upg) Ловим урон и уменьшаем</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FTEAAAAFAAEAOAAAAFEAAADCAAAA4QAAAPcAAACfAQAAVmFtcGlyZV9BM3UAVmFtcGlyZV9BM3UAQTNfSW52aXNSYWRpdXMAAFZhbXBBM09uAFWL7IPsJGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoDAAAAItNCIsRi00Ii4KoAQAA/9CJReyLTeyLEYtN7ItCBP/QiEXr6wTGResAD7ZN64XJD4SBAAAAjVX4UotFEIsQi00Qi0JY/9BQjU3wUYtVCIsCi00Ii5CMAQAA/9JQ6GsAAACDxAiLRQxQi00IUWgYAAAAi1UQiwKLTRCLUFDdXeD/0txd4N/g9sQBdStoKAAAAItFCIsQi00Ii4KIAQAA/9DcHRkBAADf4PbEAXUJx0XcAQAAAOsHx0XcAAAAAIpF3IvlXcMAAAAAAADwP1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6Dn+//+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Vampire_A3u") &amp;&amp; d(sPos, mTargetPos) &lt;= cA3_InvisRadius &amp;&amp; sender.vVampA3On &gt;= 1</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Vampire/status_A3u_BatSwarmArmour.APLR" id="86A46892-8BCF-43AD-80C2-8E00D5D3175F">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FRsAAAACAAAAKAAAADsAAABBM3VfRGFtYWdlUmVkdWN0aW9uUGVyY2VudABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcNVUAAADZ6N7h2V382UX8i+VdwwAAAAAAAPA/AAAAAAAAWUA=</compiledString>
+							<returnType>float</returnType>
+							<sString>1 - cA3u_DamageReductionPercent/100</sString>
+						</mul>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Статус про иконку и (Upg) уменьшение урона</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FSgAAAADAAAANQAAAFUAAABnAAAAVmFtcGlyZUEzVGltZQAAAGR1cmF0aW9uAAAAAEEzX0R1cmF0aW9uAFWL7IPsEGoCi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/ItNDFGLVQhSaBwAAACLRRCLEItNEItCUP/QaBAAAACLTfyLEYtN/ItCVN1d9P/Q3HX02V3w2UXwi+Vdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.applVampireA3Time(ABILITY).GetVariable("duration") / cA3_Duration</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Vampire/status_A3u_BatSwarmArmour.APLR_description.txt" />
+	<dispellPriority>Medium</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRkAAAADAAEAOAAAAIYAAACcAAAARAEAAEEzX0ludmlzUmFkaXVzAABWYW1wQTNPbgBVi+yD7CCLRRCLEItNEItCSP/QiUXsi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ/9CNTfhRi1XsiwKLTeyLUFjdXeT/0lCNRfBQi00IixGLTQiLgowBAAD/0FDoTgAAAIPECNxd5N/g9sRBeitoEAAAAItNCIsRi00Ii4KIAQAA/9DcHb4AAADf4PbEAXUJx0XgAQAAAOsHx0XgAAAAAIpF4IvlXcMAAAAAAADwP1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6JT+//+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+		<returnType>bool</returnType>
+		<sString>d(sPos, appl.parent.TargetPos) &lt;= cA3_InvisRadius &amp;&amp; sender.vVampA3On &gt;= 1</sString>
+	</enabled>
+	<flags>64</flags>
+	<formulaName>VampireA3Armour</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Vampire/A3.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Vampire/status_A3u_BatSwarmArmour.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByAllChilds</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

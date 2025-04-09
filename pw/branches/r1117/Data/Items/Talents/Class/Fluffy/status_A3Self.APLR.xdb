@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Fluffy/Ability_A3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="E0B9EBAF-884C-469D-9162-A13493792507">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Heroes/DefaultStatus/_ARMORCUT_status.APLR" />
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Аура с понижением Стойкости и Воли</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>10428927</targets>
+				<targetSelector href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="01DB1F44-A973-4F3A-A71C-B8C66993600F">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="4EBB89CF-969A-4A91-957B-B999709DECA5">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQoAAAABAAAAFgAAAEEzX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cA3_Radius</sString>
+								</range>
+								<targetFilter>538771519</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</targetSelector>
+				<type>None</type>
+			</AuraApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="33F4556B-500B-469F-8E7B-8FDD6AB0C5DB">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Период с оглушением</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAPg==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.25f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="717E3DBE-B07C-4E9F-BAFC-230CFCF4B074">
+					<Spell>
+						<applicators>
+							<Item href="/Heroes/DefaultStatus/_STUN_Status.APLR" />
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="F60B7144-BE33-49FF-BDAE-E269380A7C01">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString>FRQAAAACAAAAIQAAADQAAABTdHVuX1N0YXJ0Q29uZGl0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUAAAAN/g9sREewbGRf8B6wTGRf8AikX/i+VdwwAAAAAAAAAA</compiledString>
+					<returnType>bool</returnType>
+					<sString>cStun_StartCondition</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="8123002A-222C-4175-A46D-CBA15EF26B58">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="E28EBE79-805E-49CE-B5EA-A8F4A75E9ED4">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>SendOnce</mode>
+								<range>
+									<compiledString>FQoAAAABAAAAFgAAAEEzX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cA3_Radius</sString>
+								</range>
+								<targetFilter>538771519</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="FEF38797-4299-4167-9C4E-393A89FD1D2F">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Спелл периодикал</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQoAAAABAAAAFgAAAEEzX1BlcmlvZABVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cA3_Period</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsTime</scaleMode>
+				<spell href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="76215A4F-8757-41A1-B28C-1A8AF1F7D6E6">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Fluffy/Rage_Inc.APLR" />
+							<Item href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="ED92F1A0-EAE5-42E6-BA49-3BD4D9191C33">
+								<DamageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelInvisibility>false</cancelInvisibility>
+									<caption>Урон</caption>
+									<damage>
+										<compiledString>FRAAAAABAAAAHAAAAEEzX0ZsdWZmeURhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cA3_FluffyDamage</sString>
+									</damage>
+									<damageMode>4</damageMode>
+									<damageType>Energy</damageType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<timeLimiter>-1</timeLimiter>
+									<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+								</DamageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="228BA02E-4F82-40D8-997D-C21402BCC173">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>1</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+					<returnType>float</returnType>
+					<sString>0</sString>
+				</startOffset>
+				<targetSelector href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="41A11402-3B5E-4084-93AB-D3EA14245F08">
+					<ConditionTargetSelector>
+						<condition>
+							<compiledString>FQUAAAABAAAADwAAAFdhcmQAVYvsagCLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlMGKwV3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.applWard(GLOBAL) == pMisc</sString>
+						</condition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<targetSelector href="/Items/Talents/Class/Fluffy/status_A3Self.APLR" id="94ABE98A-CFC7-42A0-85FF-7119B04C7D24">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQoAAAABAAAAFgAAAEEzX1JhZGl1cwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cA3_Radius</sString>
+								</range>
+								<targetFilter>538771519</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+					</ConditionTargetSelector>
+				</targetSelector>
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Статус А3 на няшке</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Fluffy/status_A3Self.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Heroes/Fluffy/FXAbility3.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQgAAAACAAAADQAAACMAAABCaWdGb3JtAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUUAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vBigForm == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Fluffy/A3_small.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Fluffy/status_A3Self.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

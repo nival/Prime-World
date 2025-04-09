@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Level6/G185_Life_ifLifeDown.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level6/trigger_G185.APLR" Count="1" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>136</behaviorFlags>
+	<caption>триггер на низкое Здоровье</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FR8AAAAEAAAAMgAAAD4AAABUAAAAZgAAAFBhbnRoZXJJc0FsaXZlAABHNDU1UG9seVN0YXR1cwBVi+xRi0UQixCLTRCLQhz/0NwdlgAAAN/g9sREektoAAAAAItNCIsRi00Ii4KIAQAA/9DcHZYAAADf4PbERHspagCLTRBRaBAAAACLVQiLAotNCIuQnAEAAP/SO0UQdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAPA/</compiledString>
+		<returnType>bool</returnType>
+		<sString>mPreparedness == 1.0f &amp;&amp; sender.vPantherIsAlive != 1.0 &amp;&amp; sender.applG455PolyStatus(GLOBAL) == pMisc</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Level6/trigger_G185.APLR" id="34575B56-58FC-4AB9-BC51-BB980C5424F2">
+		<EventProcessorCondition>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<condition>
+				<compiledString>FSYAAAAFAAAAUQAAAGoAAAB5AAAAjwAAAKEAAABMaWZlRG93bgAAAABHMTg1X0hlYWxEb25lAAAARmFrZURlYXRoAFWL7IPsFItFCIsQi00IiwL/0ItNCIsRi00Ii0IM3V34/9CLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlDdXfD/0NxN8NwN2QAAANxd+N/g9sRBdUtoDAAAAItNCIsRi00Ii4KIAQAA/9DcHdEAAADf4PbERHopagCLTRBRaBwAAACLVQyLAotNDIuQnAEAAP/SO0UQdQnHRewBAAAA6wfHRewAAAAAikXsi+VdwwAAAAAAAAAAexSuR+F6hD8=</compiledString>
+				<returnType>bool</returnType>
+				<sString>(sLife &lt; sMaxLife * cLifeDown * 0.01) &amp;&amp; (sender.vG185_HealDone == 0 /* Wierd PF-38788 stuff */) &amp;&amp; (receiver.applFakeDeath(GLOBAL) == pMisc)</sString>
+			</condition>
+			<events>8192</events>
+			<onlyParent>false</onlyParent>
+			<spell href="/Items/Talents/Level6/trigger_G185.APLR" id="0039BD2B-AED3-4B36-8076-762497441F0D">
+				<Spell>
+					<applicators>
+						<Item href="/Items/Talents/Level6/trigger_G185.APLR" id="497BD052-D9F3-4A0D-B447-669EA40DCB7C">
+							<ProgramApplicator>
+								<applicators>
+									<Item>
+										<applicator href="/GameLogic/GeneralApplicators/Heal.APLR" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>1</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level6/status_G185_ifWeCant.APLR" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>2</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Items/Talents/Level6/trigger_G185.APLR" />
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>2</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+								</applicators>
+								<applyTarget>AbilityOwner</applyTarget>
+								<behaviorFlags>152</behaviorFlags>
+								<caption>Программа с воздействиями, статусом-КД и перенакладыванием триггера</caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+							</ProgramApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Items/Talents/Level6/trigger_G185.APLR" id="DB1B92D1-F20C-4B68-B84E-AA178F9D8B4A">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorCondition>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>true</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

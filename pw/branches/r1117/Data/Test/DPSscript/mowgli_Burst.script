@@ -1,0 +1,24 @@
+set_alias local My
+//use_talent My Mowgli_A1
+//wait_steps 30
+
+kill_unit DummyBurst 
+wait_steps 10 
+spawn_creep DummyBurst /Creeps/Spawners/Test/DummyTest_Burst744.CREEP 30 40 1
+teleport_to My 40 40
+wait_steps 10 
+refresh_cd My
+wait_steps 10 
+// ------------------конец подготовки 
+
+
+use_talent_unit My Mowgli_A4 My
+wait_steps 6
+use_talent_unit My Mowgli_A3 DummyBurst
+attack_unit My DummyBurst
+wait_steps 15
+
+
+
+wait_steps 100
+// goto 4  // - для бесконечного цикла, чтобы запускать процесс надолго

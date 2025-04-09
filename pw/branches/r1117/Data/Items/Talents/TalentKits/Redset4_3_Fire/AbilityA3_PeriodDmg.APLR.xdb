@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellPeriodicallyApplicator>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>145</behaviorFlags>
+	<caption>период урон всем врагам</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRUAAAABAAAAHwAAAEZhbGxlbkFuZ2VsX0EzU3RhdHVzAFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5XBisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applFallenAngel_A3Status(UNIT) != pMisc</sString>
+	</enabled>
+	<formulaName>G557_AoEPeriodDmg</formulaName>
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<period>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0ludGVydmFsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Interval</sString>
+	</period>
+	<providerName></providerName>
+	<scaleMode>ScaleIsCount</scaleMode>
+	<spell href="/Items/Talents/TalentKits/Redset4_3_Fire/AbilityA3_PeriodDmg.APLR" id="5758901A-5A7B-48D5-A58A-363B56892303">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/TalentKits/Redset4_3_Fire/AbilityA3_PeriodDmg.APLR" id="234E6662-C4F9-409F-BB3C-2E63DCDA56D3">
+					<DamageApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<cancelInvisibility>false</cancelInvisibility>
+						<caption>урон врагам</caption>
+						<damage>
+							<compiledString>FQoAAAABAAAAFgAAAEEzX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cA3_Damage</sString>
+						</damage>
+						<damageMode>4</damageMode>
+						<damageType>Energy</damageType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<timeLimiter>-1</timeLimiter>
+						<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+					</DamageApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/TalentKits/Redset4_3_Fire/AbilityA3_PeriodDmg.APLR" id="6C50AA46-7D15-437E-844E-6F7252622BED">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<startCondition>
+		<compiledString>FTMAAAADAAAAQAAAAFoAAABzAAAARzU1N19Bb0VQZXJpb2REbWcAAABGYWxsZW5BbmdlbF9BMwAARmFsbGVuQW5nZWxfQTMAVYvsg+wMagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QO0UQdVhoFAAAAItNCIsRi00Ii4KoAQAA/9CFwHQqaCQAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2TfuFyXQJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applG557_AoEPeriodDmg(UNIT) == pMisc &amp;&amp; tal("FallenAngel_A3")</sString>
+	</startCondition>
+	<startOffset>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</startOffset>
+	<targetSelector href="/Items/Talents/Class/FallenAngel/TargetSelector_A3.TGSL" />
+</SpellPeriodicallyApplicator>

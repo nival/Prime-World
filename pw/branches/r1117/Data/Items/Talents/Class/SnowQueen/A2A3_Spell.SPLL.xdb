@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Items/Talents/Class/SnowQueen/A2A3_OnDamage.EVNT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/SnowQueen/status_A3_IceShiverAlly.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/SnowQueen/A2A3_Spell.SPLL" id="FAED46DF-D5A7-45E7-AE3E-D69D1F22E61D">
+			<VariableProxyApplicator parent="/Items/Talents/Class/SnowQueen/damageWithA0.APLR">
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/Class/SnowQueen/A2A3_Spell.SPLL" id="12C253D1-9D90-4C1D-A1B0-A9E332F2DC57">
+							<DamageApplicator parent="/GameLogic/GeneralApplicators/CommonDamage.APLR">
+								<damage>
+									<compiledString>FQoAAAABAAAAFgAAAEEyX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cA2_Damage</sString>
+								</damage>
+								<damageType>Energy</damageType>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+							</DamageApplicator>
+						</applicator>
+					</Item>
+					<Item skip="1" />
+				</applicators>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+			</VariableProxyApplicator>
+		</Item>
+	</applicators>
+	<dispatch href="/Items/Talents/Class/SnowQueen/A2A3_Spell.SPLL" id="353AEB0A-CA4B-41A7-A0DC-94EDD7A03674">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/Icicle/_Hit.EFFT" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

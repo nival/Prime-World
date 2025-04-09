@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Ent.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Ent_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Ent_Mighty.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ent/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Ent/Epic_Str.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<askId>3</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А0. Сила древа</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="E2F99F3A-EDF6-4844-9A22-982B22019647">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLgrgAAAD/0ItNDIsRi00Mi4K8AAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>rBaseStrength &gt;= rBaseIntellect</sString>
+				</condition>
+				<name>Boost_Stat</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="AE5A0DAB-9822-4531-AD30-F838065B7D62">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="06009273-934E-434A-8F76-EE2AEADBB2D7">
+					<UnitConstant>
+						<name>A0_Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="83C83026-983F-42A6-9496-42515A543451">
+					<UnitConstant>
+						<name>A0_AddStrInt</name>
+						<var>
+							<compiledString>FVUAAAAEAAAAtQAAANkAAAAeAQAAQgEAAEEwX0FkZFN0ckJhc2UAAABBMF9UZXJyYWluQWRkaXRpb25hbFN0YXQAAAAAQTBfQWRkSW50QmFzZQAAAEEwX1RlcnJhaW5BZGRpdGlvbmFsU3RhdABVi+yD7BxWi0UIixCLTQiLgrgAAAD/0ItNCIsRi00Ii4K8AAAA3V34/9DcXfjf4PbEQXppi00IixGLTQiLQkz/0Ivwi00IixGLTQiLgpABAAD/0DvwdR+LTQxRi1UIUmgQAAAAi0UQixCLTRCLQlD/0Nld9OsF2e7ZXfSLTQxRi1UIUmgAAAAAi0UQixCLTRCLQlD/0NhF9N1d7Otni00IixGLTQiLQkz/0Ivwi00IixGLTQiLgpABAAD/0DvwdR+LTQxRi1UIUmg8AAAAi0UQixCLTRCLQlD/0Nld6OsF2e7ZXeiLTQxRi1UIUmgsAAAAi0UQixCLTRCLQlD/0NhF6N1d7N1F7Nld5NlF5F6L5V3DAAAAAA==</compiledString>
+							<returnType>float</returnType>
+							<sString>sBaseStrength &gt;= sBaseIntellect ?  (cA0_AddStrBase + nt( cA0_TerrainAdditionalStat, 0 )) : (cA0_AddIntBase + nt( cA0_TerrainAdditionalStat, 0 ))</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="078F20A6-2905-4606-9C19-5C790697F895">
+					<UnitConstant>
+						<name>A0_TerrainAdditionalStat</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAFHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3DAADAP83MNEE=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale(sIntellect, 1.5, 11.3, false)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="75CD2E3F-F98D-4681-A446-578629DF8054">
+					<UnitConstant>
+						<name>A0_AddStrBase</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAFHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3DAADAP83MNEE=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale(sIntellect, 1.5, 11.3, false)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="2E2A9BD6-C7BE-4CC3-A871-016533FDBA1C">
+					<UnitConstant>
+						<name>A0_AddIntBase</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAFHZBUQAAADZHCRR2QVAAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJGoAi00QixGLTRCLQmD/0F3DAADAP83MNEE=</compiledString>
+							<returnType>float</returnType>
+							<sString>abilityScale(sIntellect, 1.5, 11.3, false)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Ent/const_A5_AddStatForTreeEatPercent" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Ent/Ability_A0.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="" />
+	<flags>1</flags>
+	<forceBonus>9</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Ent/A0.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>true</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>0</naftaCost>
+	<name textref="/Items/Talents/Class/Ent/Ability_A0.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="D2B3637A-0022-4B3D-BEAE-DE5DC8978535">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Items/Talents/Class/Ent/status_A0_StrInt.APLR" />
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>аура</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString>FQkAAAABAAAAFQAAAEEwX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cA0_Range</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>270475775</targets>
+				<targetSelector href="/Items/Talents/Class/Ent/Ability_A0.TALENT" id="8FF6FC18-3227-4CE3-9FC2-7EE529FE59AB">
+					<HeroEnumerator>
+						<flags>1</flags>
+						<mode>Normal</mode>
+						<targetFilter>270475775</targetFilter>
+					</HeroEnumerator>
+				</targetSelector>
+				<type>None</type>
+			</AuraApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>Ent_A0</persistentId>
+	<prerequisiteTalents />
+	<rarity>Class</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>2040319</targetType>
+	<type>Passive</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQkAAAABAAAAFQAAAEEwX1JhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA0_Range</sString>
+	</useRange>
+	<useRangeMaterial href="/Effects/UI/AOESelection/Radius.MTRL" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

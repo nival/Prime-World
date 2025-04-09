@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Artist/Ability_A0.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Artist/status_A0_Mastery.APLR" id="8B7C0F4B-0C05-4646-9D06-816191490C38">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>увеличить проворство</caption>
+				<constraint>None</constraint>
+				<dontUpdate>false</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FSsAAAACAAAAMgAAAE8AAABBcnRpc3RfTWFzdGVyeQAAQTBfQWRkQXR0dGFja1NwZWVkUGVyU3RhY2sAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoEAAAAItFEIsQi00Qi0JQ3V34/9DcTfjZXfTZRfSL5V3D</compiledString>
+						<returnType>float</returnType>
+						<sString>sender.vArtist_Mastery *cA0_AddAtttackSpeedPerStack</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Artist/status_A0_Mastery.APLR" id="FC108C9F-AE41-494F-9261-160048EAD6C3">
+			<AbilityModApplicator>
+				<addValue>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</addValue>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>уменьшить кд абилок</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<mode>cooldown</mode>
+				<multValue>
+					<compiledString>FSIAAAADAAAAKQAAAEYAAABfAAAAQXJ0aXN0X01hc3RlcnkAAEEwX1JlZHVjQ2RQZXJjZW50AFWL7IPsDGgAAAAAi0UIixCLTQiLgogBAAD/0ItNDFGLVQhSaBAAAACLRRCLEItNEItCUN1d+P/Q3E343A15AAAA2eje4dld9NlF9IvlXcMAAAAAAADwP3sUrkfheoQ/</compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f - sender.vArtist_Mastery * cA0_ReducCdPercent * 0.01</sString>
+				</multValue>
+				<providerName></providerName>
+				<specificAbility href="" />
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/Artist/Ability_A1.TALENT" />
+					<Item href="/Items/Talents/Class/Artist/Ability_A2.TALENT" />
+					<Item href="/Items/Talents/Class/Artist/Ability_A4.TALENT" />
+					<Item href="/Items/Talents/Class/Artist/Ability_A4_2.TALENT" />
+				</talents>
+				<targetAbilities>128</targetAbilities>
+				<useListAs>ListAsRule</useListAs>
+			</AbilityModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Статус Палитра</caption>
+	<customCounter>
+		<compiledString>FQ8AAAABAAAAEwAAAEFydGlzdF9NYXN0ZXJ5AFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0FHZHCToBQAAAIPEBF3DuAEAAAAPovfCAAAABHQH8w8sRCQEw+kAAAAAVYvsg+wM2UUI2X38D7dF/A0ADAAAiUX42W3421302W38i0X0i+Vdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l( sender.vArtist_Mastery )</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FUoAAAAGAAAAUQAAAG4AAACQAAAAoAAAAMAAAADSAAAAQXJ0aXN0X01hc3RlcnkAAEEwX01heFN0YWNrcwAAAABBcnRpc3RfQTBQZXJpb2QAZHVyYXRpb24AAAAAQTBfUGVyaW9kVGltZQBVi+yD7CBoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgQAAAAi0UQixCLTRCLQlDdXfj/0N1F+Nrp3+D2xER6C90F+QAAAN1d8OtTagGLTRBRaCAAAACLVQiLAotNCIuQnAEAAP/SiUXsi0UMUItNCFFoPAAAAItVEIsCi00Qi1BQ/9JoMAAAAItF7IsQi03si0JU3V3k/9DcdeTdXfDdRfDZXeDZReCL5V3DAAAAAAAA8L8=</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.vArtist_Mastery == cA0_MaxStacks ?-1: sender.applArtist_A0Period(UNIT).GetVariable("duration")/cA0_PeriodTime</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Artist/status_A0_Mastery.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAAFAAAACoAAABBcnRpc3RfTWFzdGVyeQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vArtist_Mastery &gt; 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Artist/A0.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Artist/status_A0_Mastery.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-100</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

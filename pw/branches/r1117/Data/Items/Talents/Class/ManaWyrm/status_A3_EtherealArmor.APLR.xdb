@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/ManaWyrm/Ability3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="54113C09-19F4-4299-B3E0-B876D442A083">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>отключить абилку, если мало энергии</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="A3CF220F-7D67-46B5-8FC3-C87E4E91B743">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="9156ABFB-B633-4E38-8FCB-0749413334E2">
+								<AbilityEndApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<cancelApplicators>true</cancelApplicators>
+									<caption>энергия сравнивается с размером регена за степ</caption>
+									<enabled>
+										<compiledString>FQAAAAABAAAAKAAAAFWL7IPsDItFDIsQi00Mi0IE/9CLTQyLEYtNDIuC/AAAAN1d+P/Q3A1NAAAA3F343+D2xEF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3DAAAAoJmZyT8=</compiledString>
+										<returnType>bool</returnType>
+										<sString>rEnergy &lt; rEnergyRegenTotal * 0.2f</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+								</AbilityEndApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="D2B6E14F-615E-4AAD-846B-199089343B29">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="7611F048-E9B4-460D-9FED-33007D1F2E12">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>триггер на дамаг</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="F263AA8C-785E-4055-996F-52B8AEB4F7DE">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614015</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString>FREAAAACAAAAHgAAADEAAABBM0RhbWFnZUZyYWN0aW9uAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twNSwAAANno3uHZXfzZRfyL5V3DAAAAAAAA8D8AAABA4XqEPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f - cA3DamageFraction * 0.01f</sString>
+						</mul>
+						<objectFilter>1909247</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="43913D88-AD46-48B8-A47E-074309CE2E82">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="5B7F74E9-38AE-4C8C-9377-85B08713FF9C">
+										<DamageApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<cancelInvisibility>false</cancelInvisibility>
+											<caption>урон в энергию</caption>
+											<damage>
+												<compiledString>FSAAAAADAAAANwAAAFEAAABnAAAAQTNNYW5hRm9yRGFtYWdlAGRhbWFnZUNvbnZlcnRlZABVi+yD7BCLRRCLEItNEItCSP/QiUX8aBAAAACLTfyLEYtN/ItCVP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V30/9DcDXgAAADcTfTZXfDZRfCL5V3DAAAAAAAA8L8=</compiledString>
+												<returnType>float</returnType>
+												<sString>cA3ManaForDamage * -1.0f * appl.parent.GetVariable("damageConverted") </sString>
+											</damage>
+											<damageMode>0</damageMode>
+											<damageType>Mana</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="/UI/Events/CommonEvents/EventEnergyBurn.UIEV" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR" id="95F4AC2B-8714-4B1A-B42D-849F5431F312">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>фиктивный статус</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/Bubble/_PowerfulBlue.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/ManaWyrm/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FRIAAAABAAAAHgAAAEEzX1N0YXR1c0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_StatusDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/ManaWyrm/status_A3_EtherealArmor.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

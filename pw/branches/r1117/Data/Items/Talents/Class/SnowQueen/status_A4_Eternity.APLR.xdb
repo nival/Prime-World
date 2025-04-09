@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlAppl.APLS" Count="1" />
+	<BackLink DBID="/Heroes/DefaultStatus/List_AllControlStatusesWithoutSlow.APLS" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Chronicle/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/status_A2u_ControlTimeDecrease.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/SnowQueen/Ability_A4.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="0BABD1E0-2455-4B93-9DDC-96C64C59AC1A">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>запреты (без стана)</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>67199</flag>
+				<formulaName>ChannelingInterrupt</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/Shadow/Ability_A3.TALENT" />
+				</talents>
+				<useListAs>ListAsException</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="B76588AA-5D6C-4E0C-A840-D42F4A7C4704">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>триггер на появление друзей цели</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRgAAAACAAAANwAAAEkAAABkdXJhdGlvbgAAAABBNF9EdXJhdGlvbgBVi+yD7BCLRRCLEItNEItCSP/QiUX8i00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ/9BoAAAAAItN/IsRi038i0JU3V30/9DcXfTf4PbEBXoJx0XwAQAAAOsHx0XwAAAAAIpF8IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>$ParentApplVariable("duration") &lt; cA4_Duration</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="A7044AE9-D1C9-462B-9A47-4E0D4BED7544">
+					<EventProcessorOnTarget>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<minTargets>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</minTargets>
+						<spell href="" />
+						<targetSelector href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="5B1F0740-C0B9-4AD8-96E4-933552817AA6">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>1</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQ0AAAABAAAAGQAAAEE0X01lbHRSYW5nZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cA4_MeltRange</sString>
+								</range>
+								<targetFilter>536870915</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+					</EventProcessorOnTarget>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="E939C44B-5DF2-4D93-BFE7-C27C08CE4E00">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>fx large</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="995C71F0-6E9D-4D04-9BA8-43EDAE1E2741">
+						<EffectList>
+							<deathType>Manual</deathType>
+							<effects>
+								<Item href="/Effects/Debuffs/Freeze/_Full.EFFT" />
+								<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="26FB675F-A21A-465A-82CB-25A3DBFC0851">
+									<ScaleColorEffect>
+										<blendMode>LerpByAlpha</blendMode>
+										<colorAdd>
+											<A>0</A>
+											<B>0</B>
+											<G>0</G>
+											<R>0</R>
+										</colorAdd>
+										<colorMul>
+											<A>0</A>
+											<B>0.9098039</B>
+											<G>0.4156863</G>
+											<R>0.1490196</R>
+										</colorMul>
+										<deathType>Manual</deathType>
+										<enableCondition href="" />
+										<fadeInTime>0.2</fadeInTime>
+										<fadeOutTime>0.5</fadeOutTime>
+										<fullRecolor>false</fullRecolor>
+										<lifeTime>0</lifeTime>
+										<scale>1</scale>
+										<scaleIn>1</scaleIn>
+										<scaleOut>1</scaleOut>
+									</ScaleColorEffect>
+								</Item>
+							</effects>
+							<enableCondition href="" />
+							<lifeTime>0</lifeTime>
+						</EffectList>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FTgAAAAEAAAAPwAAAFgAAACmAAAAuAAAAFNub3dRdWVlbl9BNHUAAABTbm93UXVlZW5fQTR1AAAAZHVyYXRpb24AAAAAQTRfRHVyYXRpb24AVYvsg+wcaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0YYtVEIsCi00Qi1BI/9KJRfSLRQxQi00IUWgsAAAAi1UQiwKLTRCLUFD/0mggAAAAi0X0ixCLTfSLQlTdXez/0Nxd7N/g9sRBdQnHRegBAAAA6wfHRegAAAAAi03oiU3k6wfHReQAAAAAikXki+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("SnowQueen_A4u") ? ($ParentApplVariable("duration") &gt; cA4_Duration ) : false</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="A80E5E04-FC57-44C5-9621-D0FC4CBE782A">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>fx small</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="8314D3E8-2386-40BB-AE83-9BE0C2B50962">
+						<EffectList>
+							<deathType>Manual</deathType>
+							<effects>
+								<Item href="/Effects/Debuffs/Freeze/_Partial.EFFT" />
+								<Item href="/Items/Talents/Class/SnowQueen/ScaleColor.EFFT" />
+							</effects>
+							<enableCondition href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="298A1753-BC79-471D-AEAE-17C9C023DA13">
+								<ConditionFormula>
+									<condition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</condition>
+									<name></name>
+								</ConditionFormula>
+							</enableCondition>
+							<lifeTime>0</lifeTime>
+						</EffectList>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FTgAAAAEAAAAPwAAAFgAAACmAAAAuAAAAFNub3dRdWVlbl9BNHUAAABTbm93UXVlZW5fQTR1AAAAZHVyYXRpb24AAAAAQTRfRHVyYXRpb24AVYvsg+wYaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0UotVEIsCi00Qi1BI/9KJRfSLRQxQi00IUWgsAAAAi1UQiwKLTRCLUFD/0mggAAAAi0X0ixCLTfSLQlTdXez/0Nxd7N/g9sRBewnHRegAAAAA6wfHRegBAAAAikXoi+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>!tal("SnowQueen_A4u") || ($ParentApplVariable("duration") &lt;= cA4_Duration )</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR" id="35EDA726-9624-43C2-AE50-FB832F82F420">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>stun</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRgAAAACAAAANwAAAEkAAABkdXJhdGlvbgAAAABBNF9EdXJhdGlvbgBVi+yD7BCLRRCLEItNEItCSP/QiUX8i00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ/9BoAAAAAItN/IsRi038i0JU3V30/9DcXfTf4PbEBXoJx0XwAQAAAOsHx0XwAAAAAIpF8IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>$ParentApplVariable("duration") &lt; cA4_Duration</sString>
+				</enabled>
+				<flag>8192</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>статус Вечность</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAAFAAAACoAAABJbW11bmUyQ29udHJvbABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1MAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vImmune2Control == 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>SnowQueen_A4</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/SnowQueen/A4.ITEX" />
+	<lifeTime>
+		<compiledString>FT4AAAAEAAAARQAAAF4AAACcAAAAwAAAAEE0X0R1cmF0aW9uAFNub3dRdWVlbl9BNHUAAABTbm93UXVlZW5fQTR1AAAAQTR1X0JvbnVzRHVyYXRpb24AVYvsg+wUaAwAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgcAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0H4tVDFKLRQhQaCwAAACLTRCLEYtNEItCUP/Q3V3w6wXZ7t1d8ItNDFGLVQhSaAAAAACLRRCLEItNEItCUP/Q3EXw2V3s2UXsi+VdwwAAAAAAAAAA</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4_Duration + ( tal("SnowQueen_A4u") ? cA4u_BonusDuration : 0.0 )</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/SnowQueen/status_A4_Eternity.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByChild</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

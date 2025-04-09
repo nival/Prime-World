@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Buildings/DefaultStats/spell_CastTriggerOnEveryHero.APLR" Count="1" />
+	<actionsCount>
+		<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>- Триггер на смерть дракона</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName>TriggerDragonKill</formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Buildings/DefaultStats/trigger_DragonKill.APLR" id="9930C365-D6E9-45DA-95C4-BF87EA3D55FB">
+		<EventProcessorUnitDieNearMe>
+			<applyTarget>ApplicatorSelectedTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<killerFlags>9</killerFlags>
+			<range>
+				<compiledString>FRcAAAABAAAAIwAAAFJhbmdlX0NoZWNrRGVhdGhEcmFnb24AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+				<returnType>float</returnType>
+				<sString>cRange_CheckDeathDragon</sString>
+			</range>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Buildings/DefaultStats/trigger_DragonKill.APLR" id="CE858B1D-A95A-4F10-A838-2AD3E0C1EECF">
+				<Spell>
+					<applicators>
+						<Item href="/Creeps/Bosses/Boss1/summon_SpawnWalkedDragon.APLR" />
+					</applicators>
+					<dispatch href="/Buildings/DefaultStats/trigger_DragonKill.APLR" id="03A1D52B-2C2A-48D8-B90F-4B3E2444116D">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+			<targets>570949632</targets>
+		</EventProcessorUnitDieNearMe>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString>FRIAAAABAAAAHAAAAFRyaWdnZXJEcmFnb25LaWxsAFWL7GoAi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.applTriggerDragonKill(GLOBAL) == pMisc</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

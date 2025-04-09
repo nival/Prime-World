@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SummonApplicator>
+	<BackLink DBID="/Creeps/A/Heavy/Glyph_Spawner.ABLT" Count="2" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_7_Glyph/General_Trigger.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="D0C6F570-6FB1-40EC-A193-861A2CE264C2">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Выбираем случайный глиф</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvsUWoHagGLRRCLEItNEItCXP/QiUX820X8i+Vdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>random(1,7)</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>GlyphNumber</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="AF9C9889-006A-4D85-AF7F-2E5301178DF7">
+			<ProgramApplicator>
+				<applicators>
+					<Item>
+						<applicator href="/Items/Talents/TalentKits/Redset7_7_Glyph/status_Glyph_FirstPick.APLR" />
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>1</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="FC30E79A-6732-48BA-A8D1-07F1D0F70258">
+							<StatusApplicator parent="/Items/Consumables/status_Eye.APLR">
+								<image href="/UI/Styles/Icons/Glyphs/glyph_energy_status.ITEX" />
+								<lifeTime>
+									<compiledString>FQ8AAAABAAAAGwAAAFRvdGFsX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+									<returnType>float</returnType>
+									<sString>cTotal_Duration</sString>
+								</lifeTime>
+							</StatusApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString>FQoAAAACAAAADwAAACUAAABEaWVEaWVEaWUAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdRwAAAN/g9sRBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+							<returnType>bool</returnType>
+							<sString>receiver.vDieDieDie &gt; 0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+					<Item>
+						<applicator href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="A5579D4A-0A0D-4BB5-98E6-3228F340FC8F">
+							<KillApplicator>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<caption>Убираем глиф</caption>
+								<dontGiveRewards>true</dontGiveRewards>
+								<enabled>
+									<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<flag>Unsummon</flag>
+								<formulaName></formulaName>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+							</KillApplicator>
+						</applicator>
+						<continueCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</continueCondition>
+						<continueEvents>2</continueEvents>
+						<delay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</delay>
+						<stopCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>0</sString>
+						</stopCondition>
+						<stopEvents>0</stopEvents>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>154</behaviorFlags>
+				<caption>программа жизни глифа</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</ProgramApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="BA48782B-0CE4-4CCC-982D-14F0C26A255E">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Запреты</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>67240071</flag>
+				<formulaName>NotAuraTarget</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="7932A5DB-0811-4392-8C7A-7437B3FD97CC">
+			<GhostMoveApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>ghost move</caption>
+				<collisionFlags>7</collisionFlags>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<pushUnits>true</pushUnits>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</GhostMoveApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="2BF76FA5-47BB-4EA7-9C58-83DDEDAA9E41">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Отображение нужного глифа</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="52D17984-FCC5-4BCC-AE26-01175875C052">
+						<EffectList>
+							<deathType>Manual</deathType>
+							<effects>
+								<Item href="/Glyphs/_FXBooster.EFFT" />
+								<Item href="/Glyphs/_FXCDR.EFFT" />
+								<Item href="/Glyphs/_FXDoubleDamage.EFFT" />
+								<Item href="/Glyphs/_FXInvisible.EFFT" />
+							</effects>
+							<enableCondition href="" />
+							<lifeTime>0</lifeTime>
+						</EffectList>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>67239943</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviour href="" />
+	<caption>Создаем глиф на земле</caption>
+	<enabled>
+		<compiledString>FSUAAAAFAAAAKgAAAEAAAABSAAAAbAAAAIIAAABJYW10dXJyZXQAAABJQU1TYW1vaG9kAABTcGF3bmluZ09uY2UAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdrAAAAN/g9sREektqAItNEFFoDAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1K2gYAAAAi0UMixCLTQyLgogBAAD/0NwdpAAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAPA/AAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>receiver.vIamturret == 0 &amp;&amp; receiver.applIAMSamohod(GLOBAL) == pMisc &amp;&amp; receiver.vSpawningOnce == 1</sString>
+	</enabled>
+	<flags>128</flags>
+	<formulaName>GlyphCreation</formulaName>
+	<lifeTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<openWarFog>false</openWarFog>
+	<placeMode>ByApplicator</placeMode>
+	<placeSelector href="" />
+	<providerName></providerName>
+	<spawnStats>
+		<energy>
+			<compiledString></compiledString>
+			<returnType>float</returnType>
+			<sString>-1.0</sString>
+		</energy>
+		<life>
+			<compiledString></compiledString>
+			<returnType>float</returnType>
+			<sString>-1.0</sString>
+		</life>
+	</spawnStats>
+	<summonedUnitIndex>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</summonedUnitIndex>
+	<summonedUnits>
+		<Item href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="56329536-17DA-477C-A056-0D73C11E67BD">
+			<Summoned parent="/Summons/Whisper/_FireWard.SUMMONED">
+				<description textref="" />
+				<interaction href="/Items/Talents/TalentKits/Redset7_7_Glyph/Summon_Glyph.APLR" id="E8AA04B7-B229-4EAC-BB13-ECE6DEC97AB5">
+					<Interaction>
+						<allowedFactions>3</allowedFactions>
+						<externalAbility href="/Items/Talents/TalentKits/Redset7_7_Glyph/Interaction.ABLT" />
+					</Interaction>
+				</interaction>
+			</Summoned>
+		</Item>
+	</summonedUnits>
+	<summonedUnitsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</summonedUnitsCount>
+	<summonGroupName></summonGroupName>
+	<summonSource>ByApplicator</summonSource>
+	<takeModDmg>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>1.0f</sString>
+	</takeModDmg>
+	<takeTypeUnit>10428927</takeTypeUnit>
+	<unsummonSortCriterion>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</unsummonSortCriterion>
+</SummonApplicator>

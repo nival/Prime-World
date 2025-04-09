@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EventProcessorUnitDieNearMe>
+	<BackLink DBID="/Items/Talents/Class/GhostLord/Ability_A5.TALENT" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<checkSender>0</checkSender>
+	<killerFlags>1</killerFlags>
+	<range>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</range>
+	<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+	<spell href="/Items/Talents/Class/GhostLord/A5_EventKilledByMe.EVNT" id="492626AE-17F6-4D02-BD49-52DD8F3B9BCE">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/GhostLord/A5_EventKilledByMe.EVNT" id="4F8AFE1B-5B96-497A-BDB2-2012FB422953">
+					<PermanentStatModApplicator>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption> - увеличиваем счетчик "A5_IncDurationCount"</caption>
+						<customApplyType>None</customApplyType>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<modifier>
+							<addValue>
+								<compiledString>FQ8AAAABAAAAGwAAAEE1X0luY0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>cA5_IncDuration</sString>
+							</addValue>
+							<multValue>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>1.0f</sString>
+							</multValue>
+							<stat>Life</stat>
+							<topModifier>false</topModifier>
+							<variable>A5_IncDurationCount</variable>
+						</modifier>
+						<providerName></providerName>
+					</PermanentStatModApplicator>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A5_EventKilledByMe.EVNT" id="2EE7BB91-CC8B-4923-B64F-596CDE4DF395">
+					<AddApplicatorDuration>
+						<applicators>
+							<Item href="/Items/Talents/Class/GhostLord/status_A4u_DeathSpectre.APLR" />
+							<Item href="/Items/Talents/Class/GhostLord/status_A4u_2_DeathSpectre.APLR" />
+							<Item href="/Items/Talents/Class/GhostLord/status_A4_Haste.APLR" />
+						</applicators>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>увеличить длительность А4 и А4_2</caption>
+						<durationToAdd>
+							<compiledString>FQ8AAAABAAAAGwAAAEE1X0luY0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cA5_IncDuration</sString>
+						</durationToAdd>
+						<enabled>
+							<compiledString>FSYAAAACAAAALQAAAEoAAABBNV9JbmNEdXJhdGlvbkNvdW50AEE1X0luY0R1cmF0aW9uQ2FwAFWL7IPsDGgAAAAAi0UIixCLTQiLgogBAAD/0ItNDFGLVQhSaBQAAACLRRCLEItNEItCUN1d+P/Q3F343+D2xAF1CcdF9AEAAADrB8dF9AAAAACKRfSL5V3D</compiledString>
+							<returnType>bool</returnType>
+							<sString>sender.vA5_IncDurationCount &lt;= cA5_IncDurationCap</sString>
+						</enabled>
+						<flags>0</flags>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<nameToCheck></nameToCheck>
+						<providerName></providerName>
+					</AddApplicatorDuration>
+				</Item>
+				<Item href="/Items/Talents/Class/GhostLord/A5_AddOngoingA1Duration.APLR" />
+			</applicators>
+			<dispatch href="/Items/Talents/Class/GhostLord/A5_EventKilledByMe.EVNT" id="12838988-49D0-4D9F-80C2-63AE36A50149">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<targets>538705983</targets>
+</EventProcessorUnitDieNearMe>

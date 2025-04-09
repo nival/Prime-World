@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/GameLogic/AILogic.AILP" Count="1" />
+	<BackLink DBID="/Items/RerollShop/TalentsList_MiniRefresher" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/Redset7_11_MiniRefresher.TALKIT" Count="1" />
+	<BackLink DBID="/Social/TalentsCollection" Count="5" />
+	<BackLink DBID="/Social/Lootboxes/LB_G769" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_RedSet11.ROLLCONT" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_Redset7_11.ROLLCONT" Count="1" />
+	<BackLink DBID="/Social/Lootboxes/ROLLCONTS/roll_Season13_CollectionList.ROLLCONT" Count="1" />
+	<BackLink DBID="/Test/Talents/RedSet7_11.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>G769: Момент скорости</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="765B4047-C27E-4298-BFD2-A91D71FA21E5">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABHNzY5X0FjdGl2ZQBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG769_Active &gt; 0</sString>
+				</condition>
+				<name>InForma</name>
+			</ConditionFormula>
+		</Item>
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="0A43AB8F-BF79-4463-BD76-1CCA56D11A82">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FQ4AAAACAAAAEwAAACkAAABHNzY5X1NwZE9yRGV4AFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUsAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAADwPw==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vG769_SpdOrDex == 1</sString>
+				</condition>
+				<name>SpdOrDex</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="E6961727-37E9-42CE-B1EB-D040062A2BE9">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="FCCEDB69-1778-461E-8386-EC7636E5997B">
+					<UnitConstant>
+						<name>Add_MoveSpeed</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADgQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>7.0f</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="AACB74B3-CC93-466B-B6C9-CE4AB150D899">
+					<UnitConstant>
+						<name>AddStat</name>
+						<var>
+							<compiledString>FQAAAAABAAAADAAAAFWL7FHZ6NkcJFHZBSIAAADZHCSLRRCLEItNEItCbP/QXcMAAMBAAACAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>refineScale(6,1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/const_G769_BonusMS" />
+				<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="3A645659-C0E0-4454-AF2B-F43BD661951F">
+					<UnitConstant>
+						<name>TECH_G769_CurrentBonusMS</name>
+						<var>
+							<compiledString>FS0AAAADAAAAPAAAAE4AAABxAAAAQWRkX01vdmVTcGVlZAAAAEFkZGVkX01vdmVTcGVlZABHNzY5X0JvbnVzTVMAVYvsg+wUi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JoEAAAAItFCIsQi00Ii4KIAQAA3V34/9DcbfiLTQxRi1UIUmggAAAAi0UQixCLTRCLQlDdXfD/0NxF8Nld7NlF7IvlXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cAdd_MoveSpeed - sender.vAdded_MoveSpeed + cG769_BonusMS</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/const_G766_MaxForm" />
+				<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/const_G766_CanCountActivate" />
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="" />
+	<flags>4</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Talents/_769.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>3</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>-1</naftaCost>
+	<name textref="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Items/Talents/_commonData/parent_MoveChange.APLR" />
+		<Item href="/Items/Talents/_commonData/AddedMoveSpeed.APLR" />
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="C02A2D4E-4698-49D9-B8B9-B947FF6F87FF">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Установить G769_CurrentBonusMS на новую величину</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRkAAAABAAAAJQAAAFRFQ0hfRzc2OV9DdXJyZW50Qm9udXNNUwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cTECH_G769_CurrentBonusMS</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>G769_CurrentBonusMS</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="ADD1E259-28B1-412D-B946-6B9F7CDB01C9">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption>Триггер "Я купил талант на Скорость!" И у меня есть база (т.е. Скорость вообще должна меняться)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FRgAAAADAAAAHwAAADgAAAB0AAAARzc2NgAAAABHNzY2AAAAAFRocm93VXAAVYvsg+wMaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtk37hcl0KWoAi1UQUmgQAAAAi0UIixCLTQiLgpwBAAD/0DtFEHUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("G766") &amp;&amp; sender.applThrowUp(GLOBAL) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="840ED0F2-975E-471F-8B3D-F2507AC4B369">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FS0AAAACAAAANAAAAFEAAABHNzY5X0N1cnJlbnRCb251c01TAFRFQ0hfRzc2OV9DdXJyZW50Qm9udXNNUwBVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgUAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sQFegnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>sender.vG769_CurrentBonusMS &gt; cTECH_G769_CurrentBonusMS</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="CBE044C8-61BF-44C5-97DE-C7117EE2103A">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="151C8A2C-94E6-42C5-A150-550086C8B6C8">
+										<PermanentStatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>Add_MoveSpeed (убрать лишнее, если есть)</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString>FQwAAAACAAAAEQAAACcAAABHNzY2X0lzT25DRABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+												<returnType>bool</returnType>
+												<sString>sender.vG766_IsOnCD == 1</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FS0AAAACAAAANAAAAFEAAABHNzY5X0N1cnJlbnRCb251c01TAFRFQ0hfRzc2OV9DdXJyZW50Qm9udXNNUwBVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgUAAAAi0UQixCLTRCLQlDdXfj/0Nxt+Nng2V302UX0i+Vdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>-(sender.vG769_CurrentBonusMS - cTECH_G769_CurrentBonusMS)</sString>
+												</addValue>
+												<multValue>
+													<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+													<returnType>float</returnType>
+													<sString>1</sString>
+												</multValue>
+												<stat>MoveSpeed</stat>
+												<topModifier>false</topModifier>
+												<variable></variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+									<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="26A9CFC8-4E4D-49AC-BAB3-CC238AB41839">
+										<PermanentStatModApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Установить G769_CurrentBonusMS на новую величину</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FRkAAAABAAAAJQAAAFRFQ0hfRzc2OV9DdXJyZW50Qm9udXNNUwBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+													<returnType>float</returnType>
+													<sString>cTECH_G769_CurrentBonusMS</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>0.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>G769_CurrentBonusMS</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="1D6F1D3A-55F3-460B-95D6-7BF5B0BC77B1">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>true</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/trigger_G679_NotReady.APLR" />
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="FF14243B-5C5C-4ED5-AFF0-C461DACE0641">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>SpdOrDex</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgowAAAD/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseAttackSpeed&gt;=sBaseDexterity</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>G769_SpdOrDex</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="02FC7655-7D71-4B99-A8C0-3FD1C6A3A168">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>AttackSpeed</caption>
+				<customApplyType>Maximize</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgowAAAD/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXoJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseAttackSpeed &gt;= sBaseDexterity</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQgAAAABAAAAFAAAAEFkZFN0YXQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cAddStat</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>AttackSpeed</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="9DE212EA-55BE-44A8-B4E0-BF9E701D982D">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Dexterity</caption>
+				<customApplyType>Maximize</customApplyType>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsg+wMi0UIixCLTQiLgowAAAD/0ItNCIsRi00Ii4LAAAAA3V34/9DcXfjf4PbEQXUJx0X0AQAAAOsHx0X0AAAAAIpF9IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sBaseAttackSpeed &lt; sBaseDexterity</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQgAAAABAAAAFAAAAEFkZFN0YXQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cAddStat</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Dexterity</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/TalentKits/Redset7_11_MiniRefresher/appl_G766_FormCounter.APLR" />
+		<Item href="/Items/Talents/Level4/G769_Move_AtSpdOrDex.TALENT" id="45FDB253-BD5A-4AE7-86C4-A156B83E6D9C">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>G769_Active</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FRYAAAACAAAAIwAAADYAAABHNzY2X0NhbkNvdW50QWN0aXZhdGUAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S3B1SAAAA3+D2xER7BsZF/wHrBMZF/wCKRf+L5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>cG766_CanCountActivate</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>G769_Active</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+	</passiveApplicators>
+	<persistentId>G769</persistentId>
+	<prerequisiteTalents />
+	<rarity>outstanding</rarity>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>16</talentRollGroups>
+	<talentStats />
+	<targetType>0</targetType>
+	<type>Simple</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>-1</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

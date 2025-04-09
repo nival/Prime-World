@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/Champions/Champion3/CTF_S16_C1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Champions/Champion3/PvE_Coop1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Champions/Champion3/PvE_Ep1.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption>Баффаем защиту и хиляем союзников</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="035A917B-650F-451C-8728-C4856D3BB460">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="F24030C6-4D7B-4E41-B21E-8480D9DCB5EA">
+					<UnitConstant>
+						<name>BuffAmount</name>
+						<var>
+							<compiledString>FQAAAAABAAAAFgAAAFWL7FGLRQiLEItNCIuCyAAAAP/Q3A0kAAAA2V382UX8i+Vdw9ejcD0K19M/</compiledString>
+							<returnType>float</returnType>
+							<sString>sBaseStamina*0.31</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="DDCF21F2-FB5B-49D4-B12E-B46FAF0E8DB8">
+					<UnitConstant>
+						<name>DefenceRange</name>
+						<var>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="9F02730C-AE33-4478-A939-A97BA9E9646F">
+					<UnitConstant>
+						<name>Range</name>
+						<var>
+							<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Long</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="E0DAFDB7-9DB6-40F8-BF94-299BADB311B3">
+					<UnitConstant>
+						<name>HealFromAbility</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>0.5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT_description.txt" />
+	<dispatch href="" />
+	<flags>0</flags>
+	<image href="/UI/Styles/Icons/Talents/_054.ITEX" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT_name.txt" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Creeps/Champions/Champion3/AllyAura.APLR" />
+		<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="0467A69E-7EAC-4DC8-B76B-E7AEE0CB3550">
+			<StatusApplicator>
+				<applicators />
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Status_fake мы источник</caption>
+				<customCounter>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</customCounter>
+				<customProgress>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</customProgress>
+				<description textref="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT_0467a69e7eac4dc8b76be7aee0cb3550_description.txt" />
+				<dispellPriority>NonDispellable</dispellPriority>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flags>0</flags>
+				<formulaName></formulaName>
+				<image href="/UI/Styles/Icons/Statuses/Neutral/spriggan.ITEX" />
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<name textref="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT_0467a69e7eac4dc8b76be7aee0cb3550_name.txt" />
+				<power>0</power>
+				<providerName></providerName>
+				<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+				<stackCount>0</stackCount>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statusPosition>0</statusPosition>
+				<stopBehaviour>StopByTime</stopBehaviour>
+				<unstackableWith href="" />
+			</StatusApplicator>
+		</Item>
+		<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="741469E3-DC0A-4A9D-8D37-8CE1D31BA04E">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Add_Stamina</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQsAAAABAAAAFwAAAEJ1ZmZBbW91bnQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cBuffAmount</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Stamina</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="A73039A1-A136-430A-8546-C74105B292A6">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Add_Will</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FQsAAAABAAAAFwAAAEJ1ZmZBbW91bnQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+						<returnType>float</returnType>
+						<sString>cBuffAmount</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Will</stat>
+					<topModifier>false</topModifier>
+					<variable></variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="E18C6A4F-D5D5-414E-A5EF-DA6E413911BE">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="664A0E7A-20AF-458C-B130-4CEB05FA9410">
+						<TriggerApplicator>
+							<actionsCount>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>0</sString>
+							</actionsCount>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>0</behaviorFlags>
+							<caption>Триггер на хилялку</caption>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<playAck>false</playAck>
+							<processor href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="26E3E0FF-FC87-433C-A854-8F54E2BB89D0">
+								<EventProcessorAbilityManacostTransformer>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<filter>
+										<abilitiesList />
+										<abilityCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</abilityCondition>
+										<abilityCostMode>Any</abilityCostMode>
+										<exceptThis>false</exceptThis>
+										<flags>536871102</flags>
+										<onlySingleTarget>false</onlySingleTarget>
+									</filter>
+									<spell href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="005AF516-C407-403D-8FA2-E74534827DEF">
+										<Spell>
+											<applicators>
+												<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="8DBD0364-9E7B-4616-BDCC-84F7C469EC48">
+													<SpellApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<caption>распределяем полученное здоровье</caption>
+														<enabled>
+															<compiledString>FQkAAAACAAAAIAAAADMAAABtYW5hQ29zdABVi+yD7AiLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3B1VAAAA3+D2xER7CcdF+AEAAADrB8dF+AAAAACKRfiL5V3DAAAAAAAAAAA=</compiledString>
+															<returnType>bool</returnType>
+															<sString>appl.parent.GetVariable("manaCost") != 0</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<spell href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="D146E831-FFBB-4FC1-B15C-30F18C064E2A">
+															<Spell>
+																<applicators>
+																	<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="D3AE4477-D7D4-48CD-ACC0-BDD60619FAF5">
+																		<HealApplicator>
+																			<amount>
+																				<compiledString>FRwAAAACAAAASwAAAF0AAABtYW5hQ29zdAAAAABIZWFsRnJvbUFiaWxpdHkAVYvsg+wUi0UQixCLTRCLQkj/0IlF/ItN/IsRi038i0JI/9CJRfiLTQxRi1UIUmgMAAAAi0UQixCLTRCLQlD/0GgAAAAAi034ixGLTfiLQlTdXfD/0NxN8Nld7NlF7IvlXcM=</compiledString>
+																				<returnType>float</returnType>
+																				<sString>appl.parent.parent.GetVariable("manaCost")*cHealFromAbility</sString>
+																			</amount>
+																			<applyTarget>ApplicatorTarget</applyTarget>
+																			<caption>Хил</caption>
+																			<enabled>
+																				<compiledString></compiledString>
+																				<returnType>bool</returnType>
+																				<sString>true</sString>
+																			</enabled>
+																			<formulaName></formulaName>
+																			<healTarget>Health</healTarget>
+																			<ignoreHealingMods>false</ignoreHealingMods>
+																			<LoggingEvent>-1</LoggingEvent>
+																			<providerName></providerName>
+																			<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+																		</HealApplicator>
+																	</Item>
+																</applicators>
+																<dispatch href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="AC2E816A-0B2D-4B76-A3D6-45F8800DA0B8">
+																	<DispatchLinear>
+																		<aiming>Straight</aiming>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="/Effects/Buffs/Regen/_ShotEnd.EFFT" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Motion</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>0</flags>
+																		<flyMode>Linear</flyMode>
+																		<fromLocator>Body</fromLocator>
+																		<height>0</height>
+																		<killEffect>true</killEffect>
+																		<locatorOrient>false</locatorOrient>
+																		<maxDeviation>180</maxDeviation>
+																		<maxDistance>-1</maxDistance>
+																		<maxRise>0</maxRise>
+																		<minRise>0</minRise>
+																		<persistentApplicators />
+																		<speed>40</speed>
+																		<suspendTime>0</suspendTime>
+																		<toLocator>Body</toLocator>
+																	</DispatchLinear>
+																</dispatch>
+															</Spell>
+														</spell>
+														<spellTarget>ApplicatorTarget</spellTarget>
+														<targetSelector href="/Creeps/Champions/Champion3/HealTargeting.TGSL" />
+													</SpellApplicator>
+												</Item>
+												<Item href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="24EB9D0D-C2F1-4AA5-989B-7BE8D2EC9C28">
+													<SpellApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<caption></caption>
+														<enabled>
+															<compiledString>FQkAAAACAAAAIAAAADMAAABtYW5hQ29zdABVi+yD7AiLRRCLEItNEItCSP/QiUX8aAAAAACLTfyLEYtN/ItCVP/Q3B1VAAAA3+D2xER7CcdF+AEAAADrB8dF+AAAAACKRfiL5V3DAAAAAAAAAAA=</compiledString>
+															<returnType>bool</returnType>
+															<sString>appl.parent.GetVariable("manaCost") != 0</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<spell href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="D32F7430-9EAD-4CB1-AC9A-BE4F176F1130">
+															<Spell>
+																<applicators />
+																<dispatch href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="0FAD5B78-62C5-41AA-854B-A05E8C16D2C5">
+																	<DispatchLinear>
+																		<aiming>Straight</aiming>
+																		<alwaysApply>false</alwaysApply>
+																		<applyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</applyEffect>
+																		<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																		<applyEffectOrientation>Motion</applyEffectOrientation>
+																		<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																		<dieAfterApply>true</dieAfterApply>
+																		<dispatchEffect>
+																			<Item href="/Effects/Buffs/Regen/_ShotBlue.EFFT" />
+																			<Item href="" />
+																		</dispatchEffect>
+																		<flags>0</flags>
+																		<flyMode>Linear</flyMode>
+																		<fromLocator>Body</fromLocator>
+																		<height>0</height>
+																		<killEffect>true</killEffect>
+																		<locatorOrient>false</locatorOrient>
+																		<maxDeviation>180</maxDeviation>
+																		<maxDistance>-1</maxDistance>
+																		<maxRise>0</maxRise>
+																		<minRise>0</minRise>
+																		<persistentApplicators />
+																		<speed>0</speed>
+																		<suspendTime>0</suspendTime>
+																		<toLocator>Body</toLocator>
+																	</DispatchLinear>
+																</dispatch>
+															</Spell>
+														</spell>
+														<spellTarget>ApplicatorTarget</spellTarget>
+														<targetSelector href="/Creeps/Champions/Champion3/HealTargeting.TGSL" />
+													</SpellApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="6D1238FC-CCF8-4B1A-B20C-459B57B0671B">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="/Effects/Buffs/Regen/_Shot.EFFT" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>false</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+								</EventProcessorAbilityManacostTransformer>
+							</processor>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<useAbilityCooldown>false</useAbilityCooldown>
+							<useAbilityOwnerMana>false</useAbilityOwnerMana>
+						</TriggerApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>- Восстанавлиаем друзьям здоровье, когда враги кастуют</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+					<returnType>float</returnType>
+					<sString>cRange</sString>
+				</range>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<targets>536870915</targets>
+				<targetSelector href="/Creeps/Champions/Champion3/AllyBuffAndHeal.ABLT" id="299A67E4-8475-4EEC-BAD2-A97B766AD805">
+					<AreaTargetSelector>
+						<absolutePosition>
+							<x>0</x>
+							<y>0</y>
+						</absolutePosition>
+						<flags>0</flags>
+						<mode>Normal</mode>
+						<range>
+							<compiledString>FQYAAAABAAAAEgAAAFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange</sString>
+						</range>
+						<targetFilter>675282947</targetFilter>
+						<targetSelector href="" />
+					</AreaTargetSelector>
+				</targetSelector>
+				<type>Enemy</type>
+			</AuraApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/status_Evade.APLR" />
+	</passiveApplicators>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>0</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Heroes/BladeDancer/_.HROB" Count="2" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>Диспатч АА</caption>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Items/Talents/Class/BladeDancer/appl_BladeDancerAA.APLR" id="26E0BBDB-8129-4E76-A8BF-E2AE2977FA56">
+		<Spell>
+			<applicators>
+				<Item href="/Effects/Shots/HitsApplicators/MeleeHero.APLR" />
+				<Item href="/Items/Talents/Class/BladeDancer/appl_BladeDancerAA.APLR" id="3B8EC879-67C9-4AC5-AE73-37130CB99937">
+					<VariableProxyApplicator>
+						<applicators>
+							<Item>
+								<applicator href="/Items/Talents/Class/BladeDancer/appl_BladeDancerAA.APLR" id="46986BE0-70F3-46A1-A24F-9843766A24A2">
+									<DamageApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<cancelInvisibility>false</cancelInvisibility>
+										<caption> -- Base Attack Damage (Hero)</caption>
+										<damage>
+											<compiledString>FVcAAAAIAAAAXgAAAHQAAACIAAAAmwAAAKoAAADDAAAAAQEAABQBAABBNF9Nb2RlT24AAABBNHVfTW9kRGFtYWdlAAAAQmxhZGVEYW5jZXJfQTBfU1VQAABCbGFkZURhbmNlcl9BMF9TVVAAAEEwX1NVUF9TdGFja0RhbWFnZQBVi+yD7CBoAAAAAItFCIsQi00Ii4KIAQAA/9DcHZMBAADf4PbEQXUli00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ/9DcJYsBAADdXfjrBdnu3V34aBwAAACLTQiLEYtNCIuCqAEAAP/QhcB0KmgwAAAAi00IixGLTQiLgqgBAAD/0IlF9ItN9IsRi030i0IE/9CIRfPrBMZF8wAPtk3zhcl0JYtVDFKLRQhQaEQAAACLTRCLEYtNEItCUP/Q3DWDAQAA3V3o6wXZ7t1d6ItNCIsRi00Ii4IEAQAA/9BR2Rwk6GAAAACDxARQi00IixGLTQiLggABAAD/0FHZHCToQwAAAIPEBFCLTRCLEYtNEItCXP/QiUXk20Xk2ejcRfjcRejeydld4NlF4IvlXcMAAAAAAABZQAAAAAAAAPA/AAAAAAAAAAC4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+											<returnType>float</returnType>
+											<sString>random ( f2l(sDamageMin), f2l(sDamageMax)) * (1 + (sender.vA4_ModeOn &gt; 0 ? cA4u_ModDamage - 1 : 0) + (tal("BladeDancer_A0_SUP")? cA0_SUP_StackDamage/100 : 0))</sString>
+										</damage>
+										<damageMode>11</damageMode>
+										<damageType>Native</damageType>
+										<enabled>
+											<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</enabled>
+										<formulaName></formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+									</DamageApplicator>
+								</applicator>
+								<variableNames>
+									<Item>damageDealed</Item>
+									<Item>isCritical</Item>
+								</variableNames>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/BladeDancer/appl_BladeDancerAA.APLR" id="07660B6F-CFD6-4031-BE9D-234C14E3659E">
+									<DamageApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<cancelInvisibility>false</cancelInvisibility>
+										<caption>Урон от А1</caption>
+										<damage>
+											<compiledString>FQoAAAABAAAAFgAAAEExX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cA1_Damage</sString>
+										</damage>
+										<damageMode>4</damageMode>
+										<damageType>Energy</damageType>
+										<enabled>
+											<compiledString>FRgAAAADAAAANQAAAE8AAABlAAAAV2FyZAAAAABBMV9EYXNoT25UYXJnZXQAVYvsUYtFDIsQi00Mi0JQ/9CD+BF0S2oAi00QUWgAAAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUraAgAAACLRQiLEItNCIuCiAEAAP/Q3B2HAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+											<returnType>bool</returnType>
+											<sString>rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc &amp;&amp; sender.vA1_DashOnTarget &gt; 0</sString>
+										</enabled>
+										<formulaName>BladeDancer_A1</formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="" />
+									</DamageApplicator>
+								</applicator>
+								<variableNames>
+									<Item>damageDealed</Item>
+								</variableNames>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/BladeDancer/appl_BladeDancerAA.APLR" id="E224E1F7-87FA-4087-9CB3-CD648948D7E3">
+									<DamageApplicator>
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<cancelInvisibility>false</cancelInvisibility>
+										<caption>Урон от А2</caption>
+										<damage>
+											<compiledString>FQoAAAABAAAAFgAAAEEyX0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+											<returnType>float</returnType>
+											<sString>cA2_Damage</sString>
+										</damage>
+										<damageMode>4</damageMode>
+										<damageType>Energy</damageType>
+										<enabled>
+											<compiledString>FRUAAAACAAAAMgAAAFIAAABXYXJkAAAAAEJEQWJpbGl0eTJPbgBVi+xRi0UMixCLTQyLQlD/0IP4EXRJagCLTRBRaAAAAACLVQyLAotNDIuQnAEAAP/SO0UQdSlqAYtFEFBoCAAAAItNCIsRi00Ii4KcAQAA/9A7RRB0CcdF/AEAAADrB8dF/AAAAACKRfyL5V3D</compiledString>
+											<returnType>bool</returnType>
+											<sString>rUnitKind != 17 &amp;&amp; receiver.applWard(GLOBAL) == pMisc &amp;&amp; sender.applBDAbility2On(UNIT) != pMisc</sString>
+										</enabled>
+										<formulaName>BladeDancer_A2</formulaName>
+										<LoggingEvent>-1</LoggingEvent>
+										<providerName></providerName>
+										<timeLimiter>-1</timeLimiter>
+										<uiEvent href="" />
+									</DamageApplicator>
+								</applicator>
+								<variableNames>
+									<Item>damageDealed</Item>
+								</variableNames>
+							</Item>
+							<Item>
+								<applicator href="/Items/Talents/Class/BladeDancer/appl_BladeDancerAA.APLR" id="DC5D1E8B-A116-4DEE-B760-8A19ED93A249">
+									<UIMessageApplicator parent="/UI/Events/CommonEvents/UI_Message_Damage_Energy.APLR">
+										<enabled>
+											<compiledString>FVUAAAAEAAAAjAAAAJ4AAACzAAAAzwAAAEJsYWRlRGFuY2VyX0ExOmRhbWFnZURlYWxlZABCbGFkZURhbmNlcl9BMjpkYW1hZ2VEZWFsZWQAQmxhZGVEYW5jZXJfQTJ1OmRhbWFnZURlYWxlZABVi+yD7CCLRRCLEItNEItCSP/QiUX8i00QixGLTRCLQkj/0IlF+ItNEIsRi00Qi0JI/9CJRfRoOAAAAItN9IsRi030i0JU/9BoHAAAAItN+IsRi034i0JU3V3s/9BoAAAAAItN/IsRi038i0JU3V3k/9DcReTcRezcHfEAAADf4PbEQXUJx0XgAQAAAOsHx0XgAAAAAIpF4IvlXcMAAAAAAAAAAA==</compiledString>
+											<returnType>bool</returnType>
+											<sString>($ParentApplVariable("BladeDancer_A1:damageDealed") + $ParentApplVariable("BladeDancer_A2:damageDealed") + $ParentApplVariable("BladeDancer_A2u:damageDealed"))&gt;0</sString>
+										</enabled>
+										<value>
+											<compiledString>FVUAAAADAAAAjAAAAJ4AAACzAAAAQmxhZGVEYW5jZXJfQTE6ZGFtYWdlRGVhbGVkAEJsYWRlRGFuY2VyX0EyOmRhbWFnZURlYWxlZABCbGFkZURhbmNlcl9BMnU6ZGFtYWdlRGVhbGVkAFWL7IPsIItFEIsQi00Qi0JI/9CJRfyLTRCLEYtNEItCSP/QiUX4i00QixGLTRCLQkj/0IlF9Gg4AAAAi030ixGLTfSLQlT/0GgcAAAAi034ixGLTfiLQlTdXez/0GgAAAAAi038ixGLTfyLQlTdXeT/0NxF5NxF7Nld4NlF4IvlXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>$ParentApplVariable("BladeDancer_A1:damageDealed") + $ParentApplVariable("BladeDancer_A2:damageDealed") + $ParentApplVariable("BladeDancer_A2u:damageDealed")</sString>
+										</value>
+									</UIMessageApplicator>
+								</applicator>
+								<variableNames />
+							</Item>
+						</applicators>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>урон</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+					</VariableProxyApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/BladeDancer/appl_BladeDancerAA.APLR" id="FB139F78-49B6-4FCE-84A8-DE09EA51FE9E">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>7</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="" />
+</SpellApplicator>

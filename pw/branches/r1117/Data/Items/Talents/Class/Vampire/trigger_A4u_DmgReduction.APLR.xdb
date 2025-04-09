@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Items/Talents/Class/Vampire/Ability_A4.TALENT" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</actionsCount>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>(Upg) Ловим урон и уменьшаем</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRgAAAACAAAAHwAAADgAAABWYW1waXJlX0E0dQBWYW1waXJlX0E0dQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaAwAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Vampire_A4u")</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString>FRsAAAABAAAAJwAAAEE0dV9JbW11bmUyQ29udHJvbER1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA4u_Immune2ControlDuration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Items/Talents/Class/Vampire/trigger_A4u_DmgReduction.APLR" id="6173ABA5-CA8E-45D3-B9AD-39ED3AB5B751">
+		<EventProcessorDamageTransformer>
+			<abilityFilter>
+				<abilitiesList />
+				<abilityCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</abilityCondition>
+				<abilityCostMode>Energy</abilityCostMode>
+				<exceptThis>false</exceptThis>
+				<flags>1610614015</flags>
+				<onlySingleTarget>false</onlySingleTarget>
+			</abilityFilter>
+			<add>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>0.0f</sString>
+			</add>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<checkSender>0</checkSender>
+			<damageTypeFilter>31</damageTypeFilter>
+			<flags>0</flags>
+			<matchTargetInverted>false</matchTargetInverted>
+			<mul>
+				<compiledString>FRoAAAACAAAAJwAAADoAAABBNHVfRG1nRGVjcmVjcmVhc2VQZXJjZW50AFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0tw1VAAAANno3uHZXfzZRfyL5V3DAAAAAAAA8D8AAAAAAABZQA==</compiledString>
+				<returnType>float</returnType>
+				<sString>1 - cA4u_DmgDecrecreasePercent/100</sString>
+			</mul>
+			<objectFilter>2040319</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="" />
+			<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+		</EventProcessorDamageTransformer>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

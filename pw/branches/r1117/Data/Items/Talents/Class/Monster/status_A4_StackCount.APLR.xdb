@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Monster/Ability_A4.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Monster/status_A4_StackCooldown.APLR" Count="1" />
+	<applicators />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>216</behaviorFlags>
+	<caption>Статус А4 Твари про количество стеков</caption>
+	<customCounter>
+		<compiledString>FRwAAAABAAAAIAAAAE1vbnN0ZXJfQTRDdXJyZW50VG94aW5TdGFjawBVi+xoAAAAAItFCIsQi00Ii4KIAQAA/9BR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(sender.vMonster_A4CurrentToxinStack)</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FT0AAAADAAAASgAAAGoAAAB8AAAATW9uc3Rlcl9BNFN0YWNrQ29vbGRvd25TcGVsbAAAAABkdXJhdGlvbgAAAABBNF9TdGFja0Nvb2xkb3duAFWL7IPsEGoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/ItNDFGLVQhSaCwAAACLRRCLEItNEItCUP/QaCAAAACLTfyLEYtN/ItCVN1d9P/Q3HX02V3w2UXwi+Vdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>sender.applMonster_A4StackCooldownSpell(UNIT).GetVariable("duration")/cA4_StackCooldown</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Monster/status_A4_StackCount.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Heroes/Monster/FXAbility4Start.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRwAAAACAAAAIQAAADcAAABNb25zdGVyX0E0Q3VycmVudFRveGluU3RhY2sAVYvsUWgAAAAAi0UIixCLTQiLgogBAAD/0NwdWQAAAN/g9sQBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAPA/</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vMonster_A4CurrentToxinStack &gt;= 1</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Monster/A4.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Monster/status_A4_StackCount.APLR_name.txt" />
+	<power>1</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-88</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="/Items/Talents/Class/Monster/status_A4_StackCount.APLR" id="ED3B8D5D-1AC7-46B9-BA66-13B499522FA2">
+		<ApplicatorsList>
+			<applicatorLists />
+			<applicators>
+				<Item href="/Items/Talents/Class/Monster/status_A4_StackCooldown.APLR" />
+			</applicators>
+		</ApplicatorsList>
+	</unstackableWith>
+</StatusApplicator>

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<BackLink DBID="/Social.ROOT" Count="1" />
+	<BackLink DBID="/SocialTest.ROOT" Count="1" />
+	<BackLink DBID="/Items/Talents/Bard_Alternative.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Duel_Dex.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Duel_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Elite_Dex.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Elite_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Test/Talents/Bard/Epic_Int.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/Bard.TALENTSET" Count="1" />
+	<BackLink DBID="/Items/Talents/TalentList_Mighty/Bard_Mighty.TALENTSET" Count="1" />
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>-1</budget>
+	<caption>А3у. Энергия звука</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3u.TALENT" id="49E7EE84-8DE2-450D-B8FF-62A682DFDC4B">
+			<ConditionFormula>
+				<condition>
+					<compiledString>FRAAAAACAAAAFwAAADAAAABCYXJkX0EzAEJhcmRfQTMAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgIAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wAPtkX799gbwIPAAYvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Bard_A3") == false</sString>
+				</condition>
+				<name>Bard_A3</name>
+			</ConditionFormula>
+		</Item>
+	</conditionFormulas>
+	<conflictingTalents />
+	<constants href="/Items/Talents/Class/Bard/Ability_A3u.TALENT" id="B281EA29-4F31-45FC-B37F-A6DCCDD0832C">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Items/Talents/Class/Bard/const_A3u_ReplenishEnergy" />
+				<Item href="/Items/Talents/Class/Bard/Ability_A3u.TALENT" id="9DC7E55F-951F-4A98-BA5A-58FBF0EF4665">
+					<UnitConstant>
+						<name>A3u_ReplenishEnergy_TT</name>
+						<var>
+							<compiledString>FRcAAAAHAAAAHgAAADQAAABIAAAAWwAAAGEAAAB0AAAAfgAAAEE0XzJfQWN0aXZlAEE0XzJfUG93ZXIAVYvsg+wMaAAAAACLRQiLEItNCIuCiAEAAP/Q3B3mAAAA3+D2xER6K4tNDFGLVQhSaAwAAACLRRCLEItNEItCUP/Q3DXeAAAA3AXmAAAA3V346wXZ6N1d+GoBUdkF2gAAANkcJFHZBdYAAADZHCRqAItNCIsRi00Ii4I0AQAA/9BR2Rwki00IixGLTQiLgjgBAAD/0FHZHCToOgAAAIPEBNkcJGoBi00QixGLTRCLQmD/0NxN+Nld9NlF9IvlXcMAABBCAABmQwAAAAAAAFlAAAAAAAAA8D9Vi+xR2UUI2UUM3tnf4PbEBXoI2UUI2V386wbZRQzZXfzZRfyL5V3D</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( max(sDexterity, sIntellect), 36, 230 ) * (sender.vA4_2_Active == 1 ? cA4_2_Power/100 + 1 : 1)</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Items/Talents/Class/Bard/Ability_A3u.TALENT" id="58A376CC-BACD-43A6-B24D-51F6502D757E">
+					<UnitConstant>
+						<name>A3u_ReplenishEnergy_TT_Castle</name>
+						<var>
+							<compiledString>FQAAAAACAAAACAAAABIAAABVi+xqAVHZBWMAAADZHCRR2QVfAAAA2RwkagCLRQiLEItNCIuCNAEAAP/QUdkcJItNCIsRi00Ii4I4AQAA/9BR2Rwk6B8AAACDxATZHCRqAYtNEIsRi00Qi0Jg/9BdwwAAEEIAAGZDVYvsUdlFCNlFDN7Z3+D2xAV6CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+							<returnType>float</returnType>
+							<sString>damageScale( max(sDexterity, sIntellect), 36, 230 )</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Items/Talents/Class/Bard/Ability_A3u.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="" />
+	<flags>1</flags>
+	<forceBonus>9</forceBonus>
+	<image href="/UI/Styles/Icons/Heroes/Bard/A3.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUltimateTalent>false</isUltimateTalent>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>1</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>290</naftaCost>
+	<name textref="/Items/Talents/Class/Bard/Ability_A3u.TALENT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId>Bard_A3u</persistentId>
+	<prerequisiteTalents>
+		<Item href="/Items/Talents/Class/Bard/Ability_A3.TALENT" />
+	</prerequisiteTalents>
+	<rarity>Class</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>63</talentRollGroups>
+	<talentStats />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<upgradeLevel>1</upgradeLevel>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

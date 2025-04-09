@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/A3_ProgrammMark.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/FallenAngel/Ability_A3.TALENT" Count="2" />
+	<applicators>
+		<Item href="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR" id="DCB2C221-F1CF-4908-BA06-953E59A5CCF2">
+			<AuraApplicator>
+				<applicators>
+					<Item href="/Items/Talents/Class/FallenAngel/TECH_status_A3.APLR" />
+					<Item href="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR" id="1102C07A-0F2E-4BB6-A130-8508714327FF">
+						<StatModApplicator>
+							<applyTarget>ApplicatorTarget</applyTarget>
+							<behaviorFlags>145</behaviorFlags>
+							<caption>Счётчик аур</caption>
+							<constraint>None</constraint>
+							<dontUpdate>false</dontUpdate>
+							<effect>
+								<Item href="" />
+								<Item href="" />
+							</effect>
+							<enabled>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</enabled>
+							<formulaName></formulaName>
+							<lifeTime>
+								<compiledString></compiledString>
+								<returnType>float</returnType>
+								<sString>-1.0</sString>
+							</lifeTime>
+							<LoggingEvent>-1</LoggingEvent>
+							<modifier>
+								<addValue>
+									<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</addValue>
+								<multValue>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>1.0f</sString>
+								</multValue>
+								<stat>Life</stat>
+								<topModifier>false</topModifier>
+								<variable>FallenAngel_A3_Stack</variable>
+							</modifier>
+							<providerName></providerName>
+							<startCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</startCondition>
+							<statModName></statModName>
+						</StatModApplicator>
+					</Item>
+				</applicators>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>145</behaviorFlags>
+				<caption>Аура, которая отслеживает кому нанести урон</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<range>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</range>
+				<startCondition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABGYWxsZW5BbmdlbF9BM3UARmFsbGVuQW5nZWxfQTN1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("FallenAngel_A3u")</sString>
+				</startCondition>
+				<targets>10428927</targets>
+				<targetSelector href="/Items/Talents/Class/FallenAngel/TargetSelector_A3.TGSL" />
+				<type>Enemy</type>
+			</AuraApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR" id="5FAB47E8-913B-437A-A166-0BB0B42B0A37">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>FX горелки</caption>
+				<consumables />
+				<effect>
+					<Item href="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR" id="BE6BCA64-83AF-4C51-897F-FA764939C0A0">
+						<EffectSwitcher>
+							<deathType>Manual</deathType>
+							<effectOnInvisible href="/Effects/Debuffs/Barrier/_FireAlly.EFFT" />
+							<effectOnVisible href="/Effects/Debuffs/Barrier/_FireEnemy.EFFT" />
+							<enableCondition href="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR" id="14D2934A-6E92-4D8F-9CD5-DA399059C73F">
+								<ConditionFormula>
+									<condition>
+										<compiledString>FSAAAAACAAAAJwAAAEAAAABGYWxsZW5BbmdlbF9BM3UARmFsbGVuQW5nZWxfQTN1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+										<returnType>bool</returnType>
+										<sString>tal("FallenAngel_A3u")</sString>
+									</condition>
+									<name>Эффект только при А3u</name>
+								</ConditionFormula>
+							</enableCondition>
+							<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+							<lifeTime>0</lifeTime>
+							<logic>FactionVisibility</logic>
+						</EffectSwitcher>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FSAAAAACAAAAJwAAAEAAAABGYWxsZW5BbmdlbF9BM3UARmFsbGVuQW5nZWxfQTN1AFWL7IPsCGgAAAAAi0UIixCLTQiLgqgBAAD/0IXAdCpoEAAAAItNCIsRi00Ii4KoAQAA/9CJRfyLTfyLEYtN/ItCBP/QiEX76wTGRfsAikX7i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("FallenAngel_A3u")</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR" id="6E889DDC-91ED-4AD9-ADA6-A790EC9B1D1A">
+			<EyeApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<cancelObstacles>false</cancelObstacles>
+				<caption>Открываем варфог</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FScAAAACAAAALgAAAEcAAABGYWxsZW5BbmdlbF9BM19TVVAAAEZhbGxlbkFuZ2VsX0EzX1NVUABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBQAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("FallenAngel_A3_SUP")</sString>
+				</enabled>
+				<eyeTarget>ApplicatorTarget</eyeTarget>
+				<flags>8</flags>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0f</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<visRange>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+					<returnType>float</returnType>
+					<sString>4</sString>
+				</visRange>
+			</EyeApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR" id="1E658308-5ACC-40BD-A0DC-891A3D861C26">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>Запрет инвиза</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FScAAAACAAAALgAAAEcAAABGYWxsZW5BbmdlbF9BM19TVVAAAEZhbGxlbkFuZ2VsX0EzX1NVUABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBQAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("FallenAngel_A3_SUP")</sString>
+				</enabled>
+				<flag>134217728</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>147</behaviorFlags>
+	<caption>статус Огненное проклятие</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>FallenAngel_A3Status</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/FallenAngel/A3.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEEzX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA3_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/FallenAngel/status_A3_Mark.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpellApplicator>
+	<BackLink DBID="/Summons/EvilTree/TripleBlink.ABLT" Count="3" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<caption>выбор цели и телепорт</caption>
+	<enabled>
+		<compiledString>FSMAAAADAAAAMAAAAEgAAABbAAAATWVsZWVUYXJnZXRzQ291bnRlcgB0YXJnZXRzQ291bnRlcgBVi+yD7AhqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxoFAAAAItN/IsRi038i0JU/9DcHX0AAADf4PbEQXoJx0X4AQAAAOsHx0X4AAAAAIpF+IvlXcMAAAAAAAAAAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.applMeleeTargetsCounter(GLOBAL)-&gt;GetVariable("targetsCounter") &lt;= 0</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<spell href="/Summons/EvilTree/Blink_Jump.APLR" id="02C33A5A-135B-4EAE-89F9-5F73CC589DCD">
+		<Spell>
+			<applicators>
+				<Item href="/Summons/EvilTree/EvilTreeBlinkTurn.APLR" />
+			</applicators>
+			<dispatch href="/Summons/EvilTree/Blink_Jump.APLR" id="919EED36-2DC2-4E8F-94EA-36D958DF0B84">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<spellTarget>ApplicatorTarget</spellTarget>
+	<targetSelector href="/Summons/EvilTree/Blink_Jump.APLR" id="8B48906F-73E6-4A9C-A984-E4D074790CD5">
+		<PointTargetSelector>
+			<checkMinRange>true</checkMinRange>
+			<mode>RangeFromTarget</mode>
+			<offset>
+				<x>0</x>
+				<y>1</y>
+			</offset>
+			<paralleledTarget>false</paralleledTarget>
+			<range>
+				<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+				<returnType>float</returnType>
+				<sString>4</sString>
+			</range>
+			<targetSelector href="/Summons/EvilTree/Blink_Jump.APLR" id="893B6B14-D94B-49F2-80DC-3674E7A372C2">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Summons/EvilTree/Blink_Jump.APLR" id="FB1FBC69-D8E0-48E1-AA50-928365A38DCC">
+						<CountingTargetSelector>
+							<enableSorting>true</enableSorting>
+							<flags>0</flags>
+							<heroesFirst>true</heroesFirst>
+							<mode>Normal</mode>
+							<order>Increasing</order>
+							<sortingValue>
+								<compiledString>FQAAAAAAAAAAVYvsg+wMi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0Nx9+Nld9NlF9IvlXcM=</compiledString>
+								<returnType>float</returnType>
+								<sString>rLife/rMaxLife</sString>
+							</sortingValue>
+							<targetSelector href="/Summons/EvilTree/Blink_Destination.TGSL" />
+							<targetsNumber>
+								<compiledString></compiledString>
+								<returnType>int</returnType>
+								<sString>1</sString>
+							</targetsNumber>
+						</CountingTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+			<traceMode>0</traceMode>
+		</PointTargetSelector>
+	</targetSelector>
+</SpellApplicator>

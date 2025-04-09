@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/Normals/Normal7/PvE_Coop1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal8/PvE_Coop1.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption>Невидимость</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="3D7E3DBF-4E3E-46C0-B145-1195E0970B94">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="23AB63AB-746C-4200-A6F2-0EBA4DF9C0B1">
+					<UnitConstant>
+						<name>Invisibility_FadeIn</name>
+						<var>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="06EF3A7C-5FFB-44B3-8F83-10CFF35E805E">
+					<UnitConstant>
+						<name>Invisibility_Duration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+							<returnType>float</returnType>
+							<sString>-1</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+				<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="4B783C73-4E47-4914-932A-D21084FA6D34">
+					<UnitConstant>
+						<name>TimeToGoInvisible</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>3</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="F627DE0B-F0FF-456F-981F-AE7296E7E331">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption> - вешаю на себя "Покров" если мой урон врагам за последние Х сек был &lt;= 0</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="37A75624-E04F-4EB9-8EE4-74152C9C1A08">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FR4AAAAEAAAAKwAAAFIAAABeAAAAdAAAAFRpbWVUb0dvSW52aXNpYmxlAAAAQ292ZXJPbk1lAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0lHZHCSLRQiLEItNCIuCsAEAAP/Q3B2WAAAA3+D2xEF6K2gUAAAAi00IixGLTQiLgogBAAD/0NwdlgAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+							<returnType>bool</returnType>
+							<sString>(sender.GetDamageDealt(cTimeToGoInvisible) &lt;=0 ) &amp;&amp; (sender.vCoverOnMe == 0)</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="FF60FFE9-4A89-439F-B0FF-13FDECF8AF53">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="CB415B16-A60B-4A4B-B6E7-3FDADA51D52F">
+										<StatusApplicator>
+											<applicators>
+												<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="4552D4F7-2226-45A4-BD79-F203F2650136">
+													<ProgramApplicator>
+														<applicators>
+															<Item>
+																<applicator href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="48523AC5-DE25-4049-B9C3-5720E18AA935">
+																	<ProgramApplicator>
+																		<applicators>
+																			<Item>
+																				<applicator href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="D962941F-9F54-4CA4-AFFD-FE12AFA9DF4E">
+																					<FlagsApplicator>
+																						<applyTarget>ApplicatorTarget</applyTarget>
+																						<behaviorFlags>0</behaviorFlags>
+																						<caption>запрет атаки</caption>
+																						<consumables />
+																						<effect>
+																							<Item href="" />
+																							<Item href="" />
+																						</effect>
+																						<enabled>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</enabled>
+																						<flag>2097156</flag>
+																						<formulaName></formulaName>
+																						<lifeTime>
+																							<compiledString></compiledString>
+																							<returnType>float</returnType>
+																							<sString>-1.0</sString>
+																						</lifeTime>
+																						<LoggingEvent>-1</LoggingEvent>
+																						<providerName></providerName>
+																						<startCondition>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</startCondition>
+																						<talents />
+																						<useListAs>ListAsRule</useListAs>
+																					</FlagsApplicator>
+																				</applicator>
+																				<continueCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>1</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																			<Item>
+																				<applicator href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="08FA6AE9-91ED-4172-B920-71DA0806393C">
+																					<InvisibilityApplicator parent="/GameLogic/GeneralApplicators/Invisibility.APLR">
+																						<enabled>
+																							<compiledString>FQAAAAACAAAABwAAACAAAABVi+xRUdkFSgAAANkcJItFCIsQi00Ii4KsAQAA/9DcHUIAAADf4PbEQXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAM3MTD4=</compiledString>
+																							<returnType>bool</returnType>
+																							<sString>sender.GetDamageTaken(0.2f) &lt;=0</sString>
+																						</enabled>
+																					</InvisibilityApplicator>
+																				</applicator>
+																				<continueCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>2</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																		</applicators>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>2</behaviorFlags>
+																		<caption>невидимость + запрет атаки</caption>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																	</ProgramApplicator>
+																</applicator>
+																<continueCondition>
+																	<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</continueCondition>
+																<continueEvents>2</continueEvents>
+																<delay>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</delay>
+																<stopCondition>
+																	<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</stopCondition>
+																<stopEvents>0</stopEvents>
+															</Item>
+															<Item>
+																<applicator href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="8713E5DD-550D-467D-89FB-4CC0FCBD3EC5">
+																	<FlagsApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>144</behaviorFlags>
+																		<caption>задержка</caption>
+																		<consumables />
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<flag>0</flag>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+																			<returnType>float</returnType>
+																			<sString>3</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<talents />
+																		<useListAs>ListAsRule</useListAs>
+																	</FlagsApplicator>
+																</applicator>
+																<continueCondition>
+																	<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</continueCondition>
+																<continueEvents>2</continueEvents>
+																<delay>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</delay>
+																<stopCondition>
+																	<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</stopCondition>
+																<stopEvents>0</stopEvents>
+															</Item>
+														</applicators>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<behaviorFlags>146</behaviorFlags>
+														<caption>хитрая программа с задержкой длительности статуса после прекращения невидимости</caption>
+														<effect>
+															<Item href="" />
+															<Item href="" />
+														</effect>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<lifeTime>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</lifeTime>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<startCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</startCondition>
+													</ProgramApplicator>
+												</Item>
+												<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="9138E77D-E711-48EB-9534-37BB5288AA4A">
+													<StatModApplicator>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<behaviorFlags>0</behaviorFlags>
+														<caption> - CoverOnMe = 1</caption>
+														<constraint>None</constraint>
+														<dontUpdate>false</dontUpdate>
+														<effect>
+															<Item href="" />
+															<Item href="" />
+														</effect>
+														<enabled>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<lifeTime>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</lifeTime>
+														<LoggingEvent>-1</LoggingEvent>
+														<modifier>
+															<addValue>
+																<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																<returnType>float</returnType>
+																<sString>1</sString>
+															</addValue>
+															<multValue>
+																<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																<returnType>float</returnType>
+																<sString>1</sString>
+															</multValue>
+															<stat>Life</stat>
+															<topModifier>false</topModifier>
+															<variable>CoverOnMe</variable>
+														</modifier>
+														<providerName></providerName>
+														<startCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</startCondition>
+														<statModName></statModName>
+													</StatModApplicator>
+												</Item>
+											</applicators>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>144</behaviorFlags>
+											<caption> статус "Невидимость" (Invisibility_Duration)</caption>
+											<customCounter>
+												<compiledString></compiledString>
+												<returnType>int</returnType>
+												<sString>0</sString>
+											</customCounter>
+											<customProgress>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</customProgress>
+											<description textref="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT_cb415b16a60b4a4bb6e73fdada51d52f_description.txt" />
+											<dispellPriority>NonDispellable</dispellPriority>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<flags>0</flags>
+											<formulaName>Invisibility</formulaName>
+											<image href="/UI/Styles/Icons/Statuses/Standard/Invis.ITEX" />
+											<lifeTime>
+												<compiledString>FRYAAAABAAAAIgAAAEludmlzaWJpbGl0eV9EdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+												<returnType>float</returnType>
+												<sString>cInvisibility_Duration </sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<name textref="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT_cb415b16a60b4a4bb6e73fdada51d52f_name.txt" />
+											<power>0</power>
+											<providerName></providerName>
+											<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+											<stackCount>0</stackCount>
+											<startCondition>
+												<compiledString>FQAAAAAAAAAAVYvsaAAAAAiLRQyLEItNDItCaP/QD7bA99gbwIPAAV3D</compiledString>
+												<returnType>bool</returnType>
+												<sString>!rFlag(134217728)</sString>
+											</startCondition>
+											<statusPosition>0</statusPosition>
+											<stopBehaviour>StopByChild</stopBehaviour>
+											<unstackableWith href="" />
+										</StatusApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="4DC88D84-51EB-48AF-B77D-150756F10686">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="EC6AB26A-1D00-47BA-91E3-F531F2B18EFC">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>снимаем инвиз, если нас видит враг</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsUWgACAAAi0UIixCLTQiLQmj/0A+2yIXJdB9q/4tVCIsCi00Ii1B0/9IPtsCFwHQJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sFlag(2048) &amp;&amp; sender.IsVisibleForEnemy(-1)</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="2A3B36BC-15B6-4304-9A15-CF8AD4AB79A2">
+					<EventProcessorOnTarget>
+						<applyTarget>AbilityOwner</applyTarget>
+						<minTargets>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</minTargets>
+						<spell href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="7E339F3B-C862-4516-8BA8-AC17AC6A6840">
+							<Spell>
+								<applicators>
+									<Item href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="334400EB-C0D9-40BC-B807-A2B0E7714078">
+										<DamageApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<cancelInvisibility>true</cancelInvisibility>
+											<caption></caption>
+											<damage>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>1.0</sString>
+											</damage>
+											<damageMode>0</damageMode>
+											<damageType>Material</damageType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<timeLimiter>-1</timeLimiter>
+											<uiEvent href="" />
+										</DamageApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="257FC6EE-5E36-4DB2-920E-580B63097C2F">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<targetSelector href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="C9F6C1A1-70EB-4EB8-AD8A-AA9B36C66EC1">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+									<returnType>float</returnType>
+									<sString>cRange_Medium</sString>
+								</range>
+								<targetFilter>536871239</targetFilter>
+								<targetSelector href="/Creeps/Normals/Normal7/PvE_Coop1_Invis.ABLT" id="99345147-EB18-454F-A7F5-6F4967A0BBB9">
+									<SelectApplicatorTarget>
+										<applicatorIndex>0</applicatorIndex>
+										<applicatorName></applicatorName>
+										<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+										<selectTarget>AbilityOwner</selectTarget>
+									</SelectApplicatorTarget>
+								</targetSelector>
+							</AreaTargetSelector>
+						</targetSelector>
+					</EventProcessorOnTarget>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Heroes/DefaultStatus/status_Ancient.APLR" />
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

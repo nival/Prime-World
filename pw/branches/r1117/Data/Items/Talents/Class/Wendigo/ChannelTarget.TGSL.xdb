@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PointTargetSelector>
+	<BackLink DBID="/Items/Talents/Class/Wendigo/Ability5.TALENT" Count="2" />
+	<checkMinRange>false</checkMinRange>
+	<mode>RangeFromTarget</mode>
+	<offset>
+		<x>0</x>
+		<y>1</y>
+	</offset>
+	<paralleledTarget>false</paralleledTarget>
+	<range>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>4</sString>
+	</range>
+	<targetSelector href="/Items/Talents/Class/Wendigo/ChannelTarget.TGSL" id="A673D819-A0BA-4C78-92CB-7F32429E6485">
+		<UnitPlaceCorrector>
+			<checkByRangeToRequester>false</checkByRangeToRequester>
+			<checkLineOfSight>false</checkLineOfSight>
+			<nativeTerrainOnly>false</nativeTerrainOnly>
+			<passabilityCheckMode>0</passabilityCheckMode>
+			<radius>7</radius>
+			<targetSelector href="/Items/Talents/Class/Wendigo/ChannelTarget.TGSL" id="6585D2C7-4E15-4EB4-8A1A-C062C7A12E09">
+				<ConvertTargetToLand>
+					<aggregateMode>First</aggregateMode>
+					<targetSelector href="/Items/Talents/Class/Wendigo/ChannelTarget.TGSL" id="52417E82-923F-4A45-99E4-1485D452B901">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FQoAAAABAAAAFAAAAFdlbmRpZ29UUABVi+xqAItFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+								<returnType>bool</returnType>
+								<sString>receiver.applWendigoTP(GLOBAL) != pMisc</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>CaptureTargets</mode>
+							<targetSelector href="/Items/Talents/Class/Wendigo/ChannelTarget.TGSL" id="C7A67275-E6D8-4FC1-984A-A2EA73BBB5DE">
+								<SummonEnumerator>
+									<flags>2</flags>
+									<mode>CaptureTargets</mode>
+									<summonTypes>1</summonTypes>
+								</SummonEnumerator>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+				</ConvertTargetToLand>
+			</targetSelector>
+		</UnitPlaceCorrector>
+	</targetSelector>
+	<traceMode>0</traceMode>
+</PointTargetSelector>
