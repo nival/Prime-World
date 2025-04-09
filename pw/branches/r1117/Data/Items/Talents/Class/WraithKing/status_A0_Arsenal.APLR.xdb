@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/WraithKing/Ability_A0.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/WraithKing/status_A0_Arsenal.APLR" id="F6A156DD-F937-470B-A15D-004285FB2D6B">
+			<AbilityModApplicator>
+				<addValue>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</addValue>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>уменьшить кд абилок</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FR8AAAACAAAAJgAAAD8AAABXcmFpdGhLaW5nX0E0dQAAV3JhaXRoS2luZ19BNHUAVYvsg+wIaAAAAACLRQiLEItNCIuCqAEAAP/QhcB0KmgQAAAAi00IixGLTQiLgqgBAAD/0IlF/ItN/IsRi038i0IE/9CIRfvrBMZF+wCKRfuL5V3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("WraithKing_A4u")</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<mode>cooldown</mode>
+				<multValue>
+					<compiledString>FSYAAAADAAAANQAAAE8AAABoAAAAQTBfQXJzZW5hbFN0dWNrcwAAAABBMF9SZWR1Y0NkUGVyY2VudABVi+yD7AyLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0otFDFCLTQhRaBQAAACLVRCLAotNEItQUN1d+P/S3E343A2CAAAA2eje4dld9NlF9IvlXcMAAAAAAADwP3sUrkfheoQ/</compiledString>
+					<returnType>float</returnType>
+					<sString>1.0f - cA0_ArsenalStucks * cA0_ReducCdPercent * 0.01</sString>
+				</multValue>
+				<providerName></providerName>
+				<specificAbility href="" />
+				<startCondition>
+					<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents>
+					<Item href="/Items/Talents/Class/WraithKing/Ability_A1.TALENT" />
+					<Item href="/Items/Talents/Class/WraithKing/Ability_A2.TALENT" />
+					<Item href="/Items/Talents/Class/WraithKing/Ability_A3.TALENT" />
+					<Item href="/Items/Talents/Class/WraithKing/Ability_A4.TALENT" />
+				</talents>
+				<targetAbilities>128</targetAbilities>
+				<useListAs>ListAsRule</useListAs>
+			</AbilityModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>Статус "Арсенал"</caption>
+	<customCounter>
+		<compiledString>FREAAAABAAAAHQAAAEEwX0Fyc2VuYWxTdHVja3MAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9JR2Rwk6AUAAACDxARdw7gBAAAAD6L3wgAAAAR0B/MPLEQkBMPpAAAAAFWL7IPsDNlFCNl9/A+3RfwNAAwAAIlF+Nlt+Ntd9Nlt/ItF9IvlXcM=</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(cA0_ArsenalStucks)</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FU0AAAAEAAEAWgAAAHgAAACYAAAAxQAAAC0BAABXcmFpdGhLaW5nX0EwUGVyaW9kAEEwX0Fyc2VuYWxQZXJpb2QAAAAAV3JhaXRoS2luZ19BMFBlcmlvZABBMF9BcnNlbmFsUGVyaW9kAFWL7IPsKGoBi0UQUGgAAAAAi00IixGLTQiLgpwBAAD/0IlF/GoBi00QUWgoAAAAi1UIiwKLTQiLkJwBAAD/0olF+ItFDFCLTQhRaDwAAACLVRCLAotNEItQUP/Si0X4ixCLTfiLQhDdXfD/0Nx18ItNDFGLVQhSaBQAAACLRRCLEItNEItCUN1d6P/Qi038ixGLTfyLQhDdXeD/0Nx14Nld3NlF3FHZHCToEAAAAIPEBNxl6Nld2NlF2IvlXcNVi+xR2UUI2Rwk6AUAAACDxARdw1WL7FHZRQiD7AjdHCToyf7//4PECNld/NlF/IvlXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>ceil(pFirst-&gt;FindApplicator("WraithKing_A0Period", pMisc, UNIT)-&gt;GetScale() / cA0_ArsenalPeriod) - pFirst-&gt;FindApplicator("WraithKing_A0Period", pMisc, UNIT)-&gt;GetScale() / cA0_ArsenalPeriod</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/WraithKing/status_A0_Arsenal.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FREAAAACAAAAHgAAADEAAABBMF9BcnNlbmFsU3R1Y2tzAFWL7FGLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0twdUwAAAN/g9sQBdQnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAPA/</compiledString>
+		<returnType>bool</returnType>
+		<sString>cA0_ArsenalStucks &gt;= 1</sString>
+	</enabled>
+	<flags>64</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Heroes/WraithKing/A0.ITEX" />
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/WraithKing/status_A0_Arsenal.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>-100</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

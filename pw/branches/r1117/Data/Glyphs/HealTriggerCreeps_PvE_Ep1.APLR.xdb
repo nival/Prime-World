@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TriggerApplicator>
+	<BackLink DBID="/Creeps/Champions/Champion1/PvE_Ep1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal4/PvE_Ep1.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal3/PvE_Ep1.CREEP" Count="1" />
+	<actionsCount>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>1</sString>
+	</actionsCount>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>152</behaviorFlags>
+	<caption>Лечени команды</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQYAAAACAAAACwAAACEAAABJc1BldABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1DAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vIsPet == 0</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<playAck>false</playAck>
+	<processor href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="017BE07D-DEBC-4CF1-93E7-E93976649ADF">
+		<EventProcessorOnDeath>
+			<applyTarget>ApplicatorTarget</applyTarget>
+			<castSpellDelay>
+				<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+				<returnType>float</returnType>
+				<sString>1</sString>
+			</castSpellDelay>
+			<checkSender>0</checkSender>
+			<objectFilter>1901055</objectFilter>
+			<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+			<spell href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="8F5190CA-87C4-41F7-A5AE-CEA43D7DF431">
+				<Spell>
+					<applicators>
+						<Item href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="3FBA6049-8EB7-4A06-9503-32FAFDBD1193">
+							<ProgramApplicator>
+								<applicators>
+									<Item>
+										<applicator href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="240FAF88-5CF1-448D-B35B-6C9A65C22FBB">
+											<TargetsCounterApplicator>
+												<applyTarget>AbilityOwner</applyTarget>
+												<behaviorFlags>16</behaviorFlags>
+												<caption>считаем глифы рядом</caption>
+												<effect>
+													<Item href="" />
+													<Item href="" />
+												</effect>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName>CountSameGlyphsNear</formulaName>
+												<lifeTime>
+													<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPg==</compiledString>
+													<returnType>float</returnType>
+													<sString>0.4</sString>
+												</lifeTime>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<startCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</startCondition>
+												<targetSelector href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="87499998-49CE-4D73-A527-ED17606AA3AF">
+													<ConditionTargetSelector>
+														<condition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</condition>
+														<flags>0</flags>
+														<mode>Normal</mode>
+														<targetSelector href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="F0C90828-BEEA-4731-8BEE-9F4F1C4C8372">
+															<AreaTargetSelector>
+																<absolutePosition>
+																	<x>0</x>
+																	<y>0</y>
+																</absolutePosition>
+																<flags>0</flags>
+																<mode>Normal</mode>
+																<range>
+																	<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>30</sString>
+																</range>
+																<targetFilter>939528192</targetFilter>
+																<targetSelector href="" />
+															</AreaTargetSelector>
+														</targetSelector>
+													</ConditionTargetSelector>
+												</targetSelector>
+											</TargetsCounterApplicator>
+										</applicator>
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>2</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>0.1</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+									<Item>
+										<applicator href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="347A286E-3DC9-4326-9F95-2BD46B494D5A">
+											<CreateGlyphApplicator>
+												<absolutePosition>
+													<x>0</x>
+													<y>0</y>
+												</absolutePosition>
+												<angle>45</angle>
+												<angleIsRelative>false</angleIsRelative>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>появление лечилки</caption>
+												<distance>3</distance>
+												<enabled>
+													<compiledString>FSEAAAADAAAALgAAAEYAAABZAAAAQ291bnRTYW1lR2x5cGhzTmVhcgB0YXJnZXRzQ291bnQAVYvsg+wIagCLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QiUX8aBQAAACLTfyLEYtN/ItCVP/Q3B17AAAA3+D2xAV6CcdF+AEAAADrB8dF+AAAAACKRfiL5V3DAAAAAAAACEA=</compiledString>
+													<returnType>bool</returnType>
+													<sString>pFirst-&gt;FindApplicator( "CountSameGlyphsNear", pMisc, GLOBAL )-&gt;GetVariable( "targetsCount" ) &lt; 3</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<glyph href="/Glyphs/LifeRestorer.GLPH" />
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<radius>20</radius>
+												<scriptName></scriptName>
+											</CreateGlyphApplicator>
+										</applicator>
+										<continueCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</continueCondition>
+										<continueEvents>2</continueEvents>
+										<delay>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</delay>
+										<stopCondition>
+											<compiledString>FQAAAAAAAAAAVYvsMsBdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>0</sString>
+										</stopCondition>
+										<stopEvents>0</stopEvents>
+									</Item>
+								</applicators>
+								<applyTarget>ApplicatorTarget</applyTarget>
+								<behaviorFlags>16</behaviorFlags>
+								<caption>программа</caption>
+								<effect>
+									<Item href="" />
+									<Item href="" />
+								</effect>
+								<enabled>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</enabled>
+								<formulaName></formulaName>
+								<lifeTime>
+									<compiledString></compiledString>
+									<returnType>float</returnType>
+									<sString>-1.0</sString>
+								</lifeTime>
+								<LoggingEvent>-1</LoggingEvent>
+								<providerName></providerName>
+								<startCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</startCondition>
+							</ProgramApplicator>
+						</Item>
+					</applicators>
+					<dispatch href="/Glyphs/HealTriggerCreeps_PvE_Ep1.APLR" id="FE89EA3A-B244-4985-BACE-4E994E151775">
+						<DispatchImmediate>
+							<alwaysApply>false</alwaysApply>
+							<applyEffect>
+								<Item href="" />
+								<Item href="" />
+							</applyEffect>
+							<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+							<applyEffectOrientation>Default</applyEffectOrientation>
+							<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+							<dieAfterApply>true</dieAfterApply>
+							<dispatchEffect>
+								<Item href="" />
+								<Item href="" />
+							</dispatchEffect>
+							<flags>0</flags>
+							<instantApply>false</instantApply>
+						</DispatchImmediate>
+					</dispatch>
+				</Spell>
+			</spell>
+		</EventProcessorOnDeath>
+	</processor>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<useAbilityCooldown>false</useAbilityCooldown>
+	<useAbilityOwnerMana>false</useAbilityOwnerMana>
+</TriggerApplicator>

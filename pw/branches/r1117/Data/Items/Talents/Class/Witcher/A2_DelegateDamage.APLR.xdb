@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DelegateDamageApplicator>
+	<BackLink DBID="/Items/Talents/Class/Witcher/Ability_A0.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Witcher/status_A2_Guard.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>Распределяем урон</caption>
+	<damageToApply>
+		<compiledString>FTgAAAAEAAAAPwAAAGgAAACKAAAApAAAAERhbWFnZQAAQTJfRGFtYWdlUmVzdHJpY3Rpb24AAAAARGFtYWdlAABBMl9EYW1hZ2VJbmNvbWUAVYvsg+wkaAAAAACLRRCLEItNEItCVP/Qi00IixGLTQiLAt1d+P/Qi00MUYtVCFJoCAAAAItFEIsQi00Qi0JQ3V3w/9DcbfDZXezZRexR2RwkaCAAAACLTRCLEYtNEItCVP/Qi00MUYtVCFJoKAAAAItFEIsQi00Qi0JQ3V3k/9DcTeTZXeDZReBR2Rwk6BAAAACDxAjcbfjZXdzZRdyL5V3DVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>appl.vDamage - min( appl.vDamage * cA2_DamageIncome, sLife - cA2_DamageRestriction )</sString>
+	</damageToApply>
+	<damageToDelegate>
+		<compiledString>FTAAAAADAAAASwAAAG0AAACHAAAAQTJfRGFtYWdlUmVzdHJpY3Rpb24AAAAARGFtYWdlAABBMl9EYW1hZ2VJbmNvbWUAVYvsg+wYi0UIixCLTQiLAv/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcbfjZXfTZRfRR2RwkaBgAAACLTRCLEYtNEItCVP/Qi00MUYtVCFJoIAAAAItFEIsQi00Qi0JQ3V3s/9DcTezZXejZRehR2Rwk6AcAAACDxAiL5V3DVYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>min( appl.vDamage * cA2_DamageIncome, sLife - cA2_DamageRestriction )</sString>
+	</damageToDelegate>
+	<delegateTargets href="/Items/Talents/Class/Witcher/A2_DelegateDamage.APLR" id="ED76D19A-27E5-411D-B289-5659AB35DCD4">
+		<SelectApplicatorTarget>
+			<applicatorIndex>0</applicatorIndex>
+			<applicatorName></applicatorName>
+			<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+			<selectTarget>AbilityOwner</selectTarget>
+		</SelectApplicatorTarget>
+	</delegateTargets>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>1</flags>
+	<forceDontAttackBack>true</forceDontAttackBack>
+	<formulaName></formulaName>
+	<ignoreDefences>false</ignoreDefences>
+	<infiniteTotalDamage>false</infiniteTotalDamage>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<stopCondition>
+		<compiledString>FS0AAAADAAAANAAAAE4AAAB9AAAARGFtYWdlAABBMl9EYW1hZ2VJbmNvbWUAQTJfRGFtYWdlUmVzdHJpY3Rpb24AVYvsg+wcaAAAAACLRRCLEItNEItCVP/Qi00MUYtVCFJoCAAAAItFEIsQi00Qi0JQ3V34/9DcTfiLTQiLEYtNCIsC3V3w/9CLTQxRi1UIUmgYAAAAi0UQixCLTRCLQlDdXej/0Nxt6Nxd8N/g9sQFegnHReQBAAAA6wfHReQAAAAAikXki+Vdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>appl.vDamage * cA2_DamageIncome &gt; sLife - cA2_DamageRestriction</sString>
+	</stopCondition>
+	<totalDamage>
+		<compiledString>FQ0AAAABAAAAGQAAAEEyX01heERhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cA2_MaxDamage</sString>
+	</totalDamage>
+</DelegateDamageApplicator>

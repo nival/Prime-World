@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ChainLightningApplicator>
+	<BackLink DBID="/Heroes/ThunderGod/_.HROB" Count="1" />
+	<applyTarget>AbilityOwner</applyTarget>
+	<betweenJumpsTimeInterval>0.05</betweenJumpsTimeInterval>
+	<caption>Lightning</caption>
+	<effectIndex>
+		<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRRCLEItNEItCEP/Q3B1BAAAA3+D2xER6CcdF/AAAAADrB8dF/AEAAADbRfxR2Rwk6A8AAACDxASL5V3DAAAAAAAA8D+4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l( appl.Scale == 1.0 ? 0 : 1 )</sString>
+	</effectIndex>
+	<effects>
+		<Item href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="6092EB33-D8A2-4D20-BB9A-1AEDC0FAF9F1">
+			<EffectList>
+				<deathType>Manual</deathType>
+				<effects>
+					<Item href="/Effects/Shots/Lightning/_LinkAttack.EFFT" />
+					<Item href="/Effects/Shots/Lightning/_LinkGlowAttack.EFFT" />
+				</effects>
+				<enableCondition href="" />
+				<lifeTime>0</lifeTime>
+			</EffectList>
+		</Item>
+		<Item href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="AEA7625C-5AE4-4BE1-A10D-E1F33A1B615E">
+			<EffectList>
+				<deathType>Manual</deathType>
+				<effects>
+					<Item href="/Effects/Shots/Lightning/_LinkBody.EFFT" />
+					<Item href="/Effects/Shots/Lightning/_LinkGlowBody.EFFT" />
+				</effects>
+				<enableCondition href="" />
+				<lifeTime>0</lifeTime>
+			</EffectList>
+		</Item>
+	</effects>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<jumpOnEvade>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>false</sString>
+	</jumpOnEvade>
+	<LoggingEvent>-1</LoggingEvent>
+	<numJumps>
+		<compiledString>FQwAAAABAAAAEAAAAENoYWluQXR0YWNrAFWL7GgAAAAAi0UIixCLTQiLgogBAAD/0FHZHCToCAAAAIPEBIPAAV3DuAEAAAAPovfCAAAABHQH8w8sRCQEw+kAAAAAVYvsg+wM2UUI2X38D7dF/A0ADAAAiUX42W3421302W38i0X0i+Vdww==</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l( sender.vChainAttack)+1</sString>
+	</numJumps>
+	<onJumpSpellScale>0.8</onJumpSpellScale>
+	<providerName></providerName>
+	<range>
+		<compiledString>FQwAAAABAAAAGAAAAFJhbmdlX1Nob3J0AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cRange_Short</sString>
+	</range>
+	<spell href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="A4ED8089-304C-433F-97C6-75FD0BD6C61F">
+		<Spell>
+			<applicators>
+				<Item href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="713E8674-1FE0-464F-AA95-E684DDA4FF53">
+					<SpellSwitchApplicator>
+						<activeSpellIndex>
+							<compiledString>FQAAAAABAAAAJQAAAFWL7IPsCItFEIsQi00Qi0JI/9CJRfyLTfyLEYtN/ItCEP/Q3B1TAAAA3+D2xER6CcdF+AAAAADrB8dF+AEAAADbRfhR2Rwk6A8AAACDxASL5V3DAAAAAAAA8D+4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+							<returnType>int</returnType>
+							<sString>f2l( appl.parent.Scale == 1.0 ? 0 : 1 )</sString>
+						</activeSpellIndex>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<caption>Вибираем, первый удар или нет</caption>
+						<dontUseDispatches>false</dontUseDispatches>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spells>
+							<Item href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="27714F67-C525-49FB-8744-C855818C9380">
+								<Spell>
+									<applicators>
+										<Item href="/Effects/Shots/HitsApplicators/LightningLink.APLR" />
+										<Item href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="D6632BC2-37C3-413F-B122-EC46E2956DE6">
+											<VariableProxyApplicator>
+												<applicators>
+													<Item>
+														<applicator href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="0935F8E6-F775-4CD9-94EB-DF12E9D51725">
+															<DamageApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<cancelInvisibility>false</cancelInvisibility>
+																<caption>первый урон</caption>
+																<damage>
+																	<compiledString>FQwAAAABAAAAGAAAAEF0dGNrRGFtYWdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cAttckDamage</sString>
+																</damage>
+																<damageMode>11</damageMode>
+																<damageType>Energy</damageType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+																<timeLimiter>-1</timeLimiter>
+																<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+															</DamageApplicator>
+														</applicator>
+														<variableNames>
+															<Item>isCritical</Item>
+														</variableNames>
+													</Item>
+													<Item>
+														<applicator href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="EC4027DE-5093-4DFA-B9E7-B526AE198DDF">
+															<StatModApplicator>
+																<applyTarget>AbilityOwner</applyTarget>
+																<behaviorFlags>0</behaviorFlags>
+																<caption>запоминаем AutoAttack_WasCrit</caption>
+																<constraint>None</constraint>
+																<dontUpdate>false</dontUpdate>
+																<effect>
+																	<Item href="" />
+																	<Item href="" />
+																</effect>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<lifeTime>
+																	<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DzczMPQ==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.1</sString>
+																</lifeTime>
+																<LoggingEvent>-1</LoggingEvent>
+																<modifier>
+																	<addValue>
+																		<compiledString>FQsAAAABAAAAIAAAAGlzQ3JpdGljYWwAVYvsUYtFEIsQi00Qi0JI/9CJRfxoAAAAAItN/IsRi038i0JU/9CL5V3D</compiledString>
+																		<returnType>float</returnType>
+																		<sString>$ParentApplVariable("isCritical")</sString>
+																	</addValue>
+																	<multValue>
+																		<compiledString></compiledString>
+																		<returnType>float</returnType>
+																		<sString>0.0f</sString>
+																	</multValue>
+																	<stat>Life</stat>
+																	<topModifier>false</topModifier>
+																	<variable>AutoAttack_WasCrit</variable>
+																</modifier>
+																<providerName></providerName>
+																<startCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</startCondition>
+																<statModName></statModName>
+															</StatModApplicator>
+														</applicator>
+														<variableNames />
+													</Item>
+													<Item>
+														<applicator href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="02E2297F-8802-4CC5-858E-61494909B5ED">
+															<StatusApplicator>
+																<applicators />
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<behaviorFlags>0</behaviorFlags>
+																<caption></caption>
+																<customCounter>
+																	<compiledString></compiledString>
+																	<returnType>int</returnType>
+																	<sString>0</sString>
+																</customCounter>
+																<customProgress>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</customProgress>
+																<description textref="" />
+																<dispellPriority>Medium</dispellPriority>
+																<effect>
+																	<Item href="" />
+																	<Item href="" />
+																</effect>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<flags>0</flags>
+																<formulaName></formulaName>
+																<image href="" />
+																<lifeTime>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</lifeTime>
+																<LoggingEvent>-1</LoggingEvent>
+																<name textref="" />
+																<power>0</power>
+																<providerName></providerName>
+																<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+																<stackCount>0</stackCount>
+																<startCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</startCondition>
+																<statusPosition>0</statusPosition>
+																<stopBehaviour>StopByTime</stopBehaviour>
+																<unstackableWith href="" />
+															</StatusApplicator>
+														</applicator>
+														<variableNames />
+													</Item>
+												</applicators>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<caption>первый урон + запомнить факт крита</caption>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+											</VariableProxyApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="7BF1BAB9-07B3-44CB-8777-0C6FC42BAE8F">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>5</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</Item>
+							<Item href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="1A4C79D0-AAF1-42D4-A052-E411B3322B8D">
+								<Spell>
+									<applicators>
+										<Item href="/Effects/Shots/HitsApplicators/LightningLink.APLR" />
+										<Item href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="E382F7F6-BB36-4489-A0F2-4FD75A62CA66">
+											<DamageApplicator>
+												<applyTarget>ApplicatorTarget</applyTarget>
+												<cancelInvisibility>false</cancelInvisibility>
+												<caption>последующие уроны</caption>
+												<damage>
+													<compiledString>FSsAAAAEAAAAMgAAAEgAAACTAAAAvQAAAEF1dG9BdHRhY2tfV2FzQ3JpdAAAQXR0Y2tEYW1hZ2UAQXR0Y2tTY2FsZQBVi+yD7CBoAAAAAItFCIsQi00Ii4KIAQAA/9DcHegAAADf4PbERHsSi00IixGLTQiLQiD/0Nld/OsF2ejZXfyLTRCLEYtNEItCSP/QiUX4i034ixGLTfiLQkj/0IlF9ItNDFGLVQhSaCAAAACLRRCLEItNEItCUP/Qi030ixGLTfSLQhDdXez/0ItNDFGLVQhSaBQAAACLRRCLEItNEItCUN1d5P/Q2E383E3k3HXs2V3g2UXgi+VdwwAAgD8AAAAAAAAAAA==</compiledString>
+													<returnType>float</returnType>
+													<sString>(sender.vAutoAttack_WasCrit != 0 ? sCritMult : 1) * cAttckDamage * appl.parent.parent.Scale / cAttckScale</sString>
+												</damage>
+												<damageMode>0</damageMode>
+												<damageType>Energy</damageType>
+												<enabled>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</enabled>
+												<formulaName></formulaName>
+												<LoggingEvent>-1</LoggingEvent>
+												<providerName></providerName>
+												<timeLimiter>-1</timeLimiter>
+												<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Energy.UIEV" />
+											</DamageApplicator>
+										</Item>
+									</applicators>
+									<dispatch href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="5B2D310A-A528-444B-A8BB-B81CA10F0927">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>false</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</Item>
+						</spells>
+					</SpellSwitchApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Class/ThunderGod/TestLightning.APLR" id="C10782E6-3909-493F-B579-A8DF6CA6FAF1">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>2</flags>
+					<instantApply>true</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+	<targetFilter>681312319</targetFilter>
+</ChainLightningApplicator>

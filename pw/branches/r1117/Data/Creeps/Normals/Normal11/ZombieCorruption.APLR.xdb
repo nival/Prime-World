@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Creeps/Normals/Normal11/AddTimeZombieCorruption.APLR" Count="1" />
+	<BackLink DBID="/Creeps/Normals/Normal11/LifeTimeZombie.ABLT" Count="1" />
+	<applicators>
+		<Item href="/Creeps/Normals/Normal11/ZombieCorruption.APLR" id="5955167A-1B7B-4B23-81F4-500F4192E84B">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Защита от заклинаний</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Creeps/Normals/Normal11/ZombieCorruption.APLR" id="FAD2B6FE-FCF5-4BCF-8FD1-27A9F77FD0C9">
+					<EventProcessorDamageTransformer>
+						<abilityFilter>
+							<abilitiesList />
+							<abilityCondition>
+								<compiledString></compiledString>
+								<returnType>bool</returnType>
+								<sString>true</sString>
+							</abilityCondition>
+							<abilityCostMode>Energy</abilityCostMode>
+							<exceptThis>false</exceptThis>
+							<flags>1610614014</flags>
+							<onlySingleTarget>false</onlySingleTarget>
+						</abilityFilter>
+						<add>
+							<compiledString>FRYAAAADAAAAJQAAADoAAAA/AAAAWm9tYmllX0RlZgAAcmF3RGFtYWdlAFWL7IPsDItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S2eDcDWAAAABoDAAAAItFEIsQi00Qi0JU3V34/9DcTfjZXfTZRfSL5V3DexSuR+F6hD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>-cZombie_Def*0.01*appl.GetVariable("rawDamage")</sString>
+						</add>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<damageTypeFilter>31</damageTypeFilter>
+						<flags>0</flags>
+						<matchTargetInverted>false</matchTargetInverted>
+						<mul>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</mul>
+						<objectFilter>572325951</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="" />
+						<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+					</EventProcessorDamageTransformer>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/GameLogic/GeneralApplicators/Uncontrollable.APLR" />
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Status Corruption</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString>FRwAAAACAAAAIwAAAD0AAABkdXJhdGlvbgAAAABab21iaWVfRHVyYXRpb24AVYvsg+wMaAAAAACLRRCLEItNEItCVP/Qi00MUYtVCFJoDAAAAItFEIsQi00Qi0JQ3V34/9DcffjZXfTZRfSL5V3D</compiledString>
+		<returnType>float</returnType>
+		<sString>appl.GetVariable("duration") / cZombie_Duration</sString>
+	</customProgress>
+	<description textref="/Creeps/Normals/Normal11/ZombieCorruption.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>ZombieStatusCorruption</formulaName>
+	<image href="/UI/Styles/Icons/Maps/Mod2.ITEX" />
+	<lifeTime>
+		<compiledString>FRAAAAABAAAAHAAAAFpvbWJpZV9EdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cZombie_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Creeps/Normals/Normal11/ZombieCorruption.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

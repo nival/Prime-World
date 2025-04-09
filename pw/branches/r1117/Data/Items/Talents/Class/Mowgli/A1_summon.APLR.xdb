@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SummonApplicator>
+	<BackLink DBID="/Items/Talents/Class/Mowgli/Ability1.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Life.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Strength.APLR" />
+		<Item href="/Items/Talents/Class/Mowgli/_ConnectiontoMasterSpeed.APLR" />
+		<Item href="/Items/Talents/Class/Mowgli/ProbabilityWrite.APLR" />
+		<Item href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="D99FD459-FA35-4B12-9DF2-9511BB5E6828">
+			<SpellSwitchApplicator>
+				<activeSpellIndex>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABNb3dnbGlfQTRfVXBnAAAATW93Z2xpX0E0X1VwZwBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AA+2Rfv32BvAg8ABi+Vdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>tal("Mowgli_A4_Upg") ? 0 : 1</sString>
+				</activeSpellIndex>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Повесить статус А4, если он уже есть на Маугли</caption>
+				<dontUseDispatches>true</dontUseDispatches>
+				<enabled>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABBNElzRW5hYmxlZABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1JAAAA3+D2xER7CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vA4IsEnabled != 0.0f</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spells>
+					<Item href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="F94E73A5-3CF9-468A-99E2-142CFF35A5E6">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Mowgli/status_A4_GreatHunt.APLR" />
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+					<Item href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="F6117479-C403-4B06-A84E-797DA82A15DE">
+						<Spell>
+							<applicators>
+								<Item href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="5F5E881D-20F9-4693-BFB6-621083A00347">
+									<StatusApplicator>
+										<applicators />
+										<applyTarget>ApplicatorTarget</applyTarget>
+										<behaviorFlags>1</behaviorFlags>
+										<caption>unstackable fx berserk</caption>
+										<customCounter>
+											<compiledString></compiledString>
+											<returnType>int</returnType>
+											<sString>0</sString>
+										</customCounter>
+										<customProgress>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>-1.0</sString>
+										</customProgress>
+										<description textref="" />
+										<dispellPriority>NonDispellable</dispellPriority>
+										<effect>
+											<Item href="/Effects/Buffs/Berserk/_.EFFT" />
+											<Item href="" />
+										</effect>
+										<enabled>
+											<compiledString>FRUAAAABAAAAHwAAAE1vd2dsaV9CZXJzZXJrRWZmZWN0AFWL7GoBi0UQUGgAAAAAi00MixGLTQyLgpwBAAD/0DPJO0UQD5TBisFdww==</compiledString>
+											<returnType>bool</returnType>
+											<sString>receiver.applMowgli_BerserkEffect(UNIT) == pMisc</sString>
+										</enabled>
+										<flags>12</flags>
+										<formulaName>Mowgli_BerserkEffect</formulaName>
+										<image href="" />
+										<lifeTime>
+											<compiledString>FVgAAAAHAAAAbQAAAI0AAAClAAAAvwAAANgAAAAOAQAALgEAAEdyZWF0SHVudFN0YXR1cwBHcmVhdEh1bnRTdGF0dXMAZHVyYXRpb24AAAAATW93Z2xpX0E0AAAATW93Z2xpX0E0AAAATW93Z2xpX0E0AAAAQTR0aW1lcgBVi+yD7BiLRQg7RQx0WGoAi00QUWgAAAAAi1UIiwKLTQiLkJwBAAD/0jtFEHQ4agCLRRBQaBAAAACLTQiLEYtNCIuCnAEAAP/QiUX8aCAAAACLTfyLEYtN/ItCVP/Q2V346ZEAAABoLAAAAItNCIsRi00Ii4KoAQAA/9CFwHQqaDgAAACLTQiLEYtNCIuCqAEAAP/QiUX0i030ixGLTfSLQgT/0IhF8+sExkXzAA+2TfOFyXQ3aEQAAACLVQiLAotNCIuQqAEAAP/SiUXsi0UMUItNCFFoUAAAAItV7IsCi03si1BQ/9LZXejrBdnu2V3o2UXo2V342UX4i+VdwwAAAAA=</compiledString>
+											<returnType>float</returnType>
+											<sString>( pFirst != pSecond &amp;&amp; sender.FindApplicator("GreatHuntStatus",pMisc,GLOBAL) != pMisc ) ? sender.FindApplicator("GreatHuntStatus",pMisc,GLOBAL)-&gt;GetVariable("duration") : talconst("Mowgli_A4","A4timer")</sString>
+										</lifeTime>
+										<LoggingEvent>-1</LoggingEvent>
+										<name textref="" />
+										<power>0</power>
+										<providerName></providerName>
+										<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+										<stackCount>0</stackCount>
+										<startCondition>
+											<compiledString></compiledString>
+											<returnType>bool</returnType>
+											<sString>true</sString>
+										</startCondition>
+										<statusPosition>0</statusPosition>
+										<stopBehaviour>StopByTime</stopBehaviour>
+										<unstackableWith href="" />
+									</StatusApplicator>
+								</Item>
+							</applicators>
+							<dispatch href="" />
+						</Spell>
+					</Item>
+				</spells>
+			</SpellSwitchApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Mowgli/_MasterStatConnectDex.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Level.APLR" />
+		<Item href="/Heroes/DefaultStatus/SummonsInvisible.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_AttackSpeed.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Stamina.APLR" />
+		<Item href="/Heroes/DefaultStatus/_MasterStatConnect_Will.APLR" />
+		<Item href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="AEDAE149-9813-49F0-AF9E-BFB51EDB6429">
+			<SpellApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Запоминаем с родной земли волки или нет</caption>
+				<enabled>
+					<compiledString>FQAAAAAAAAAAVYvsVotFCIsQi00Ii4KQAQAA/9CL8ItNCIsRi00Ii0JM/9AzyTvwD5TBisFeXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sFctn == sTerrainType</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="B11DAEE3-CB54-4C10-8838-17AF7C1ADF3A">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="759EE2B1-9E41-4662-8A36-7DCBBAC0F57F">
+								<PermanentStatModApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>CreateFromTerrain</caption>
+									<customApplyType>None</customApplyType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>CreateFromTerrain</variable>
+									</modifier>
+									<providerName></providerName>
+								</PermanentStatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="93EF0C89-E854-404B-861A-8506E45FDC0A">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>true</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<targetSelector href="" />
+			</SpellApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="F735E83F-1946-4A51-A176-2ED2F2BF287E">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Пометка, что это волк маугли</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<flag>0</flag>
+				<formulaName>MowglyWolf</formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsRule</useListAs>
+			</FlagsApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviour href="/Items/Talents/Class/Mowgli/A1_summon.APLR" id="07D52359-EE10-48F4-B850-5755F6DDC5EE">
+		<SummonBehaviourCommon parent="/GameLogic/SummonBehaviourMelee">
+			<comment>common behaviour - wolves</comment>
+			<lashRange>
+				<compiledString>FQAAAAACAAAAEwAAABkAAABVi+xRi0UIixCLTQiLQhT/0NwlLwAAANwFJwAAANld/NlF/IvlXcMAAAAAAAAwQAAAAAAAACxA</compiledString>
+				<returnType>float</returnType>
+				<sString>16+(sRange-14)</sString>
+			</lashRange>
+			<maxCount>
+				<compiledString>FQwAAAABAAAAGAAAAEExTWF4V29sdmVzAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJOgFAAAAg8QEXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+				<returnType>int</returnType>
+				<sString>f2l(cA1MaxWolves)</sString>
+			</maxCount>
+		</SummonBehaviourCommon>
+	</behaviour>
+	<caption> -- Summon wolves</caption>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>80</flags>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<openWarFog>true</openWarFog>
+	<placeMode>ByBehaviour</placeMode>
+	<placeSelector href="" />
+	<providerName></providerName>
+	<spawnStats>
+		<energy>
+			<compiledString></compiledString>
+			<returnType>float</returnType>
+			<sString>-1.0</sString>
+		</energy>
+		<life>
+			<compiledString></compiledString>
+			<returnType>float</returnType>
+			<sString>-1.0</sString>
+		</life>
+	</spawnStats>
+	<summonedUnitIndex>
+		<compiledString>FQAAAAABAAAAIAAAAFWL7IPsEFaLRQiLEItNCIuClAEAAP/QiUX820X8UdkFfgAAANkcJFHZ6NkcJItNCIsRi00Ii4KQAQAA3V30/9CL8ItNCIsRi00Ii0JM/9A78A+UwQ+20VLoJQAAAIPEDNxF9Nld8NlF8FHZHCToMQAAAIPEBF6L5V3DAACAPwAAgL9Vi+xRD7ZFCIXAdAjZRQzZXfzrBtlFENld/NlF/IvlXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(sOriginalFctn + s(sFctn == sTerrainType, 1, -1))</sString>
+	</summonedUnitIndex>
+	<summonedUnits>
+		<Item href="/Summons/Wolf/_A.SUMMONED" />
+		<Item href="/Summons/Wolf/_B.SUMMONED" />
+		<Item href="/Summons/Wolf/_A2.SUMMONED" />
+		<Item href="/Summons/Wolf/_B2.SUMMONED" />
+	</summonedUnits>
+	<summonedUnitsCount>
+		<compiledString>FQwAAAABAAAAGAAAAEExTWF4V29sdmVzAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJOgFAAAAg8QEXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(cA1MaxWolves)</sString>
+	</summonedUnitsCount>
+	<summonGroupName></summonGroupName>
+	<summonSource>ByApplicator</summonSource>
+	<takeModDmg>
+		<compiledString>FRUAAAABAAAAIQAAAE1vZERhbWFnZUZyb21OZXV0cmFsAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cModDamageFromNeutral</sString>
+	</takeModDmg>
+	<takeTypeUnit>839647712</takeTypeUnit>
+	<unsummonSortCriterion>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</unsummonSortCriterion>
+</SummonApplicator>

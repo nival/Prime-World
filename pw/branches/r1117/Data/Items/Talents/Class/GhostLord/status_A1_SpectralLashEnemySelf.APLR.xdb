@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/GhostLord/A4_SetNewA1Duration.APLR" Count="4" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/A5_AddOngoingA1Duration.APLR" Count="2" />
+	<BackLink DBID="/Items/Talents/Class/GhostLord/status_A1_SpectralLashAlly.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemySelf.APLR" id="11724684-B7B8-4252-8E34-0C0C827F0D10">
+			<StatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption></caption>
+				<constraint>None</constraint>
+				<dontUpdate>true</dontUpdate>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>GhostLord_A1Ally_Count</variable>
+				</modifier>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<statModName></statModName>
+			</StatModApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>AbilityOwner</applyTarget>
+	<behaviorFlags>1</behaviorFlags>
+	<caption>статус Призрачная плеть для союзников на себе</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemySelf.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Effects/Debuffs/Lash/_Puple.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ0AAAABAAEATwAAAHcBAABBMV9Ecm9wUmFuZ2UAVYvsg+wkVo1F+FCLTQyLEYtNDIuCjAEAAP/QUI1N8FGLVQiLAotNCIuQjAEAAP/SUOi2AAAAg8QIi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ3V3o/9LcXejf4PbEAXV1i0UIixCLTQiLgpABAAD/0Ivwi00MixGLTQyLgpABAAD/0DvwdU+LTQiLEYtNCIsC/9CLTQiLEYtNCIuC+AAAAN1d4P/Q2ejewdxd4N/g9sQFeiJoAAAAEItNCIsRi00Ii0Jo/9APtsiFyXUJx0XcAQAAAOsHx0XcAAAAAIpF3F6L5V3DAAAAAAAA8D9Vi+yD7BSLRQjZQASLTQzYYQTZXfTZRfRR2Rwki1UI2QKLRQzYINld8NlF8FHZHCSNTfjoVwAAANlF+NhN+NlF/NhN/N7B2V3s2UXsUdkcJOgHAAAAg8QEi+Vdw1WL7FHZRQjZHCToBQAAAIPEBF3DVYvsUdlFCIPsCN0cJOhh/v//g8QI2V382UX8i+Vdw1WL7FGJTfyLRfzZRQjZGItN/NlFDNlZBItF/IvlXcIIAA==</compiledString>
+		<returnType>bool</returnType>
+		<sString>d( sPos, rPos ) &lt;= cA1_DropRange &amp;&amp; sFctn == rFctn &amp;&amp; sLife &gt; 1 + sLifeRegenTotal &amp;&amp; !sFlag(268435456)</sString>
+	</enabled>
+	<flags>2</flags>
+	<formulaName>GhostLordA1_SpectralLashEnemySelf</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/GhostLord/A1.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEExX0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA1_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/GhostLord/status_A1_SpectralLashEnemySelf.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>100</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EventProcessorGroup>
+	<BackLink DBID="/Items/Talents/Gender/_F_1_Bubble.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Gender/_1/Trigger.APLR" Count="1" />
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<processors>
+		<Item href="/Items/Talents/Gender/_1/GroupProcessor.EVNT" id="88EFC1C3-1B88-44D7-84AE-F98C068D8AF5">
+			<EventProcessorCondition>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<condition>
+					<compiledString>FSEAAAADAAAALgAAAEYAAABZAAAARW5lbXlIZXJvZXNDb3VuZXIAAAB0YXJnZXRzQ291bnQAVYvsg+wIagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QiUX8aBQAAACLTfyLEYtN/ItCVP/Q3B17AAAA3+D2xEF1CcdF+AEAAADrB8dF+AAAAACKRfiL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.FindApplicator( "EnemyHeroesCouner", pMisc, UNIT )-&gt;GetVariable( "targetsCount" ) &gt; 0</sString>
+				</condition>
+				<events>8192</events>
+				<onlyParent>false</onlyParent>
+				<spell href="" />
+			</EventProcessorCondition>
+		</Item>
+		<Item href="/Items/Talents/Gender/_1/GroupProcessor.EVNT" id="AFDD6663-2FCF-4FC4-8451-4C0FF619CF68">
+			<EventProcessorDamageTransformer>
+				<abilityFilter>
+					<abilitiesList />
+					<abilityCondition>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</abilityCondition>
+					<abilityCostMode>Energy</abilityCostMode>
+					<exceptThis>false</exceptThis>
+					<flags>1610614015</flags>
+					<onlySingleTarget>false</onlySingleTarget>
+				</abilityFilter>
+				<add>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</add>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<checkSender>0</checkSender>
+				<damageTypeFilter>31</damageTypeFilter>
+				<flags>0</flags>
+				<matchTargetInverted>false</matchTargetInverted>
+				<mul>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</mul>
+				<objectFilter>1909247</objectFilter>
+				<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+				<spell href="" />
+				<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+			</EventProcessorDamageTransformer>
+		</Item>
+	</processors>
+	<spell href="/Items/Talents/Gender/_1/GroupProcessor.EVNT" id="B4FA3B7F-BD0C-47AE-8686-92DEA9FE3AAF">
+		<Spell>
+			<applicators>
+				<Item href="/GameLogic/GeneralApplicators/Dispell.APLR" />
+				<Item href="/Items/Talents/Gender/status_G3F.APLR" />
+				<Item href="/Items/Talents/Gender/_1/effect_gender1.APLR" />
+				<Item href="/Items/Talents/Gender/_1/effect_gender2.APLR" />
+				<Item href="/Items/Talents/Gender/_1/_status_TriggeredGenderMale.APLR" />
+				<Item href="/Items/Talents/Gender/_1/GroupProcessor.EVNT" id="13D0E93B-A707-4F26-850A-2498DCF75B1D">
+					<SpellApplicator>
+						<applyTarget>AbilityOwner</applyTarget>
+						<caption>Trigger Self</caption>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<spell href="/Items/Talents/Gender/_1/GroupProcessor.EVNT" id="ED035F03-3103-44DD-97A9-4F77572CBCDA">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Gender/_1/_status_TriggeredGenderMale.APLR" />
+								</applicators>
+								<dispatch href="/Items/Talents/Gender/_1/GroupProcessor.EVNT" id="13D476FA-9D42-4F11-8880-2000FAC9E0B4">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<spellTarget>ApplicatorTarget</spellTarget>
+						<targetSelector href="" />
+					</SpellApplicator>
+				</Item>
+			</applicators>
+			<dispatch href="/Items/Talents/Gender/_1/GroupProcessor.EVNT" id="2FF606DD-16D8-43BC-8BD6-6A30339E3D0A">
+				<DispatchImmediate>
+					<alwaysApply>false</alwaysApply>
+					<applyEffect>
+						<Item href="" />
+						<Item href="" />
+					</applyEffect>
+					<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+					<applyEffectOrientation>Default</applyEffectOrientation>
+					<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+					<dieAfterApply>true</dieAfterApply>
+					<dispatchEffect>
+						<Item href="" />
+						<Item href="" />
+					</dispatchEffect>
+					<flags>0</flags>
+					<instantApply>false</instantApply>
+				</DispatchImmediate>
+			</dispatch>
+		</Spell>
+	</spell>
+</EventProcessorGroup>

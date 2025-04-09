@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Scrolls/SignOfPriestess.ARCT" Count="1" />
+	<applicators>
+		<Item href="/Items/Scrolls/status_Priestess.APLR" id="D74E9438-C11B-4927-AA4B-42A84490DBCF">
+			<SpellPeriodicallyVisualApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<attackTimeOffset>
+					<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+					<returnType>float</returnType>
+					<sString>0</sString>
+				</attackTimeOffset>
+				<behaviorFlags>2</behaviorFlags>
+				<caption>SpellPeriodicallyVisual</caption>
+				<effect>
+					<Item href="/Summons/Fairy/_.EFFT" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0f</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FQoAAAABAAAAFgAAAFRpY2tfVGltZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+					<returnType>float</returnType>
+					<sString>cTick_Time</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Items/Scrolls/status_Priestess.APLR" id="205464EA-7447-4656-B206-8744768FC5E3">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Scrolls/status_Priestess.APLR" id="A0F4F5DD-23A2-49DE-97B1-EB13B86D7E0C">
+								<HealApplicator>
+									<amount>
+										<compiledString>FQoAAAABAAAAFgAAAEhlYWxfVGljawBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+										<returnType>float</returnType>
+										<sString>cHeal_Tick</sString>
+									</amount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption> - лечим цель, если ее нужно полечить</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<healTarget>Health</healTarget>
+									<ignoreHealingMods>false</ignoreHealingMods>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<uiEvent href="/UI/Events/CommonEvents/EventHeal.UIEV" />
+								</HealApplicator>
+							</Item>
+							<Item href="/Items/Scrolls/status_Priestess.APLR" id="3AD4F016-4AD7-4F99-9066-ECC439EFCACF">
+								<PermanentStatModApplicator>
+									<applyTarget>AbilityOwner</applyTarget>
+									<caption> -- уменьшаем переменную HealingLeft если лечили цель</caption>
+									<customApplyType>None</customApplyType>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<modifier>
+										<addValue>
+											<compiledString>FRoAAAADAAAAIQAAADYAAAB8AAAAVGFyZ2V0AABUYXJnZXQAAEhlYWxfVGljawBVi+yD7BhoAAAAAItFEIsQi00Qi0JM/9CJRfxoCAAAAItNEIsRi00Qi0JM/9CJRfiLTfiLEYtN+IsC/9CLTfyLEYtN/ItCDN1d8P/Q3GXw2V3s2UXsUdkcJItNDFGLVQhSaBAAAACLRRCLEItNEItCUP/Q2ejeydld6NlF6FHZHCToEQAAAIPECNngi+VdwwAAAAAAAPA/VYvsUdlFCNlFDN7Z3+D2xEF1CNlFCNld/OsG2UUM2V382UX8i+Vdww==</compiledString>
+											<returnType>float</returnType>
+											<sString>-min(1*cHeal_Tick, appl.oTarget.MaxLife -  appl.oTarget.Life)</sString>
+										</addValue>
+										<multValue>
+											<compiledString></compiledString>
+											<returnType>float</returnType>
+											<sString>1.0f</sString>
+										</multValue>
+										<stat>Life</stat>
+										<topModifier>false</topModifier>
+										<variable>HealAmountLeft</variable>
+									</modifier>
+									<providerName></providerName>
+								</PermanentStatModApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Scrolls/status_Priestess.APLR" id="6C2B3EB7-D959-4674-87C3-9ADDD49AA4BA">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAPw==</compiledString>
+					<returnType>float</returnType>
+					<sString>0.5</sString>
+				</startOffset>
+				<targetSelector href="/Items/Scrolls/status_Priestess.APLR" id="8A781410-7ED6-4FD9-B1A7-CE6BC948EE7B">
+					<ComparingTargetSelector>
+						<referenceValue>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</referenceValue>
+						<targetSelector href="/Items/Scrolls/status_Priestess.APLR" id="594CA2D2-2C97-49B4-9C97-3DFA1AEA0583">
+							<ListOfTargetSelectors>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<targetSelectors>
+									<Item href="/Items/Scrolls/status_Priestess.APLR" id="F39E6FBD-2212-4619-8688-469FB2B246D6">
+										<SelectApplicatorTarget>
+											<applicatorIndex>0</applicatorIndex>
+											<applicatorName></applicatorName>
+											<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+											<selectTarget>AbilityOwner</selectTarget>
+										</SelectApplicatorTarget>
+									</Item>
+									<Item href="/Items/Scrolls/status_Priestess.APLR" id="E12B0E48-6DFB-4722-A330-CC7614F664B7">
+										<RelativeUnitTargetSelector>
+											<relation>AlphaSummon</relation>
+										</RelativeUnitTargetSelector>
+									</Item>
+								</targetSelectors>
+							</ListOfTargetSelectors>
+						</targetSelector>
+						<valueToCompare>
+							<compiledString>FQAAAAAAAAAAVYvsg+woi0UMixCLTQyLAv/Qi00MixGLTQyLQgzdXfj/0N1F+Nrp3+D2xER6B9no3V3w6z6LTQyLEYtNDIsC/9CLTQyLEYtNDItCDN1d6P/Q3H3oi00MixGLTQyLQlTdXeD/0A+2yIlN3NtF3NxN4N1d8N1F8Nld2NlF2IvlXcMAAAAAAADwPw==</compiledString>
+							<returnType>float</returnType>
+							<sString>rLife == rMaxLife ? 1 : rLife / rMaxLife * rIsHero</sString>
+						</valueToCompare>
+					</ComparingTargetSelector>
+				</targetSelector>
+			</SpellPeriodicallyVisualApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>3</behaviorFlags>
+	<caption>Статус - Знак ворожеи</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Scrolls/status_Priestess.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQ8AAAACAAAAFAAAACoAAABIZWFsQW1vdW50TGVmdABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1MAAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vHealAmountLeft &gt; 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName></formulaName>
+	<image href="/UI/Styles/Icons/Artifacts/SignOfPriestess.ITEX" />
+	<lifeTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+		<returnType>float</returnType>
+		<sString>-1</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Scrolls/status_Priestess.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

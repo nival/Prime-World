@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talent>
+	<activationConditions />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="/Effects/UI/AOESelection/Circle.MTRL" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>10</sString>
+	</aoeSize>
+	<aoeType>Disk</aoeType>
+	<applicators />
+	<askId>0</askId>
+	<autoTargetSelector href="" />
+	<budget>0</budget>
+	<caption> -- ! -- тестовый талант  -- ! --</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="" />
+	<consumptionBonus>
+		<constant>0</constant>
+		<percent>0</percent>
+	</consumptionBonus>
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="/Test/Talents/Test-DamageMod.TALENT_description.txt" />
+	<devPoints>1</devPoints>
+	<dispatch href="/Test/Talents/Test-DamageMod.TALENT" id="FE929498-DB26-45A7-A1EF-B2600002D0D5">
+		<DispatchByTime>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<cancelOnSenderDeath>true</cancelOnSenderDeath>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<lifeTime>
+				<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+				<returnType>float</returnType>
+				<sString>10</sString>
+			</lifeTime>
+			<persistentApplicators>
+				<Item href="/Test/Talents/Test-DamageMod.TALENT" id="F5DBBB43-F8D3-4ED7-8DC2-679EE73CC886">
+					<AuraApplicator>
+						<applicators>
+							<Item href="/Test/Talents/Test-DamageMod.TALENT" id="D83EF940-56D8-4C35-9998-706BE9CF52E2">
+								<TriggerApplicator>
+									<actionsCount>
+										<compiledString></compiledString>
+										<returnType>int</returnType>
+										<sString>0</sString>
+									</actionsCount>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<behaviorFlags>0</behaviorFlags>
+									<caption></caption>
+									<effect>
+										<Item href="" />
+										<Item href="" />
+									</effect>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName>DamMod</formulaName>
+									<lifeTime>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</lifeTime>
+									<LoggingEvent>-1</LoggingEvent>
+									<playAck>false</playAck>
+									<processor href="/Test/Talents/Test-DamageMod.TALENT" id="CE05EB09-0C2C-44C7-94F8-C9094F6C391B">
+										<EventProcessorOutgoingDamage>
+											<abilityFilter>
+												<abilitiesList />
+												<abilityCondition>
+													<compiledString></compiledString>
+													<returnType>bool</returnType>
+													<sString>true</sString>
+												</abilityCondition>
+												<abilityCostMode>Energy</abilityCostMode>
+												<exceptThis>false</exceptThis>
+												<flags>1610614015</flags>
+												<onlySingleTarget>false</onlySingleTarget>
+											</abilityFilter>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<damageTypeFilter>31</damageTypeFilter>
+											<modifiedDamage>
+												<compiledString>FRsAAAAEAAAAIgAAAD0AAABYAAAAZwAAAERhbWFnZVRha2VyAERhbU1vZAAARGFtYWdlAFWL7IPsEGgAAAAAi0UQixCLTRCLQkz/0IlF/GoBi00QUWgMAAAAi1X8iwKLTfyLkJwBAAD/0jtFEHUL3QWNAAAA3V306wXZ6N1d9GgUAAAAi0UQixCLTRCLQlT/0NxN9Nld8NlF8IvlXcMAAAAAAADwPwAAAAAAAOA/</compiledString>
+												<returnType>float</returnType>
+												<sString>( appl.oDamageTaker.applDamMod(UNIT) == pMisc ? 0.5 : 1.0 ) * appl.vDamage</sString>
+											</modifiedDamage>
+											<spell href="" />
+										</EventProcessorOutgoingDamage>
+									</processor>
+									<providerName></providerName>
+									<startCondition>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</startCondition>
+									<useAbilityCooldown>false</useAbilityCooldown>
+									<useAbilityOwnerMana>false</useAbilityOwnerMana>
+								</TriggerApplicator>
+							</Item>
+						</applicators>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<behaviorFlags>0</behaviorFlags>
+						<caption></caption>
+						<effect>
+							<Item href="" />
+							<Item href="" />
+						</effect>
+						<enabled>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</enabled>
+						<formulaName></formulaName>
+						<lifeTime>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>-1.0</sString>
+						</lifeTime>
+						<LoggingEvent>-1</LoggingEvent>
+						<providerName></providerName>
+						<range>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</range>
+						<startCondition>
+							<compiledString></compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</startCondition>
+						<targets>10428927</targets>
+						<targetSelector href="/Test/Talents/Test-DamageMod.TALENT" id="5CFED9D4-D61A-49B0-A2D7-35A187F33EE4">
+							<AreaTargetSelector>
+								<absolutePosition>
+									<x>0</x>
+									<y>0</y>
+								</absolutePosition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<range>
+									<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+									<returnType>float</returnType>
+									<sString>10</sString>
+								</range>
+								<targetFilter>2015306239</targetFilter>
+								<targetSelector href="" />
+							</AreaTargetSelector>
+						</targetSelector>
+						<type>None</type>
+					</AuraApplicator>
+				</Item>
+			</persistentApplicators>
+		</DispatchByTime>
+	</dispatch>
+	<flags>1</flags>
+	<forceBonus>0</forceBonus>
+	<image href="/UI/Styles/Icons/Artifacts/_Test.ITEX" />
+	<imageSecondState href="" />
+	<isGenderTalent>false</isGenderTalent>
+	<isTakenOnStart>false</isTakenOnStart>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minLevel>0</minLevel>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>1</naftaCost>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId></persistentId>
+	<prerequisiteTalents />
+	<rarity>ordinary</rarity>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<talentRollGroups>15</talentRollGroups>
+	<talentStats />
+	<targetType>16777216</targetType>
+	<type>Active</type>
+	<upgradeLevel>0</upgradeLevel>
+	<useRange>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>30</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<variativeMaxTalentStats />
+	<variativeMinTalentStats />
+	<vendorCost>0</vendorCost>
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Talent>

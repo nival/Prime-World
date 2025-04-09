@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BaseAttack>
+	<BackLink DBID="/Maps/Multiplayer/CTE/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/CTE/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MidOnly/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Mains/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Test/DesignArtTest/Buildings/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Test/DesignArtTest/Buildings/_B.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Tutorial/Mains/_A.MBLD" Count="1" />
+	<BackLink DBID="/Maps/Tutorial/Mains/_B.MBLD" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Buildings/DefaultStats/MainBuildingAutoAttack.APLR" />
+		<Item href="/Buildings/DefaultStats/StackTowerDamage.APLR" />
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Buildings/DefaultStats/MainBuildingAttackConst.UCCN" />
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="759790C8-FBBB-4553-951A-0F21A49BFF1C">
+		<DispatchLinear>
+			<aiming>Straight</aiming>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="/Effects/Shots/Lightning/_Hit.EFFT" />
+				<Item href="/Effects/Shots/Bird/_Hit.EFFT" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="/Effects/Shots/Lightning/_.EFFT" />
+				<Item href="/Effects/Shots/Bird/_.EFFT" />
+			</dispatchEffect>
+			<flags>2</flags>
+			<flyMode>Linear</flyMode>
+			<fromLocator>Attack</fromLocator>
+			<height>0</height>
+			<killEffect>true</killEffect>
+			<locatorOrient>false</locatorOrient>
+			<maxDeviation>180</maxDeviation>
+			<maxDistance>50</maxDistance>
+			<maxRise>0</maxRise>
+			<minRise>0</minRise>
+			<persistentApplicators />
+			<speed>15</speed>
+			<suspendTime>0</suspendTime>
+			<toLocator>Body</toLocator>
+		</DispatchLinear>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isMelee>false</isMelee>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Buildings/DefaultStats/StackTowerRefresh.APLR" />
+		<Item href="/Buildings/DefaultStats/Tower_BaseAttackMod.APLR" />
+		<Item href="/Buildings/DefaultStats/Tower_FixAttackSpeed.APLR" />
+		<Item href="/Buildings/DefaultStats/status_Building_NoCrit.APLR" />
+		<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="C81F8D23-9A83-4B7F-8406-44A352B981D5">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString>FQAAAAAAAAAAVYvsM8Bdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>Триггер на щит (если его нет)</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQoAAAABAAAAFAAAAENhbnREZWF0aABVi+xqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applCantDeath(GLOBAL) == pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="213EA4AA-6EFE-4938-B9F1-FEFF68A5550D">
+					<EventProcessorCondition>
+						<applyTarget>AbilityOwner</applyTarget>
+						<condition>
+							<compiledString>FRMAAAACAAAAIAAAAEcAAABTaGllbGRSZWNoYXJnZVRpbWUAVYvsUYtFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SUdkcJItFCIsQi00Ii4KsAQAA/9DcHWkAAADf4PbEQXoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+							<returnType>bool</returnType>
+							<sString>sender.GetDamageTaken(cShieldRechargeTime) &lt;= 0</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="9AE09F4D-6869-4AC1-AAAA-FCCD6A3346C8">
+							<Spell>
+								<applicators>
+									<Item href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" />
+								</applicators>
+								<dispatch href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="67633229-4E19-4A94-873C-246C329A24F3">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="CA8487DF-FC05-4CB5-ADBF-7A79F878BFB0">
+			<SpellPeriodicallyApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>0</behaviorFlags>
+				<caption>если щит есть</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQoAAAABAAAAFAAAAENhbnREZWF0aABVi+xqAItFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9AzyTtFEA+VwYrBXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applCantDeath(GLOBAL) != pMisc</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<period>
+					<compiledString>FRcAAAABAAAAIwAAAFRFQ0hfU2hpZWxkQ2hlY2tQZXJvaWQAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cTECH_ShieldCheckPeroid</sString>
+				</period>
+				<providerName></providerName>
+				<scaleMode>ScaleIsCount</scaleMode>
+				<spell href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="E7D6CB24-8059-4925-B547-DE13131BB5DB">
+					<Spell>
+						<applicators>
+							<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="DE49A8DC-0501-45E2-8C38-2BBF815BA582">
+								<SpellSwitchApplicator>
+									<activeSpellIndex>
+										<compiledString>FS8AAAADAAAAPAAAAFQAAABpAAAAQ2FudERlYXRoAAAAZGFtYWdlVG9BYnNvcmIAAEN1cnJlbnRTaGllbGRWYWx1ZQBVi+yD7BBqAYtFEFBoAAAAAItNCIsRi00Ii4KcAQAA/9CJRfxoHAAAAItNCIsRi00Ii4KIAQAA/9BoDAAAAItN/IsRi038i0JU3V30/9DdRfTa6d/g9sREegnHRfAAAAAA6wfHRfABAAAAi0Xwi+Vdww==</compiledString>
+										<returnType>int</returnType>
+										<sString>sender.applCantDeath(UNIT)-&gt;GetVariable("damageToAbsorb") == sender.vCurrentShieldValue ? 0 : 1</sString>
+									</activeSpellIndex>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>got shield damaged in TECH_period?</caption>
+									<dontUseDispatches>true</dontUseDispatches>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spells>
+										<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="151D5826-5AF1-4C9F-B0D4-1496E1395CA5">
+											<Spell>
+												<applicators>
+													<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="7F49E222-11F1-4A7C-837D-4741886DE0CA">
+														<SpellSwitchApplicator>
+															<activeSpellIndex>
+																<compiledString>FT8AAAADAAAARgAAAGMAAACAAAAAVEVDSF9TaGllbGRDb3VudGVyAABTaGllbGRSZWNoYXJnZVRpbWUAAFRFQ0hfU2hpZWxkQ2hlY2tQZXJvaWQAVYvsg+wUaAAAAACLRQiLEItNCIuCiAEAAP/Qi00MUYtVCFJoFAAAAItFEIsQi00Qi0JQ3V34/9CLTQxRi1UIUmgoAAAAi0UQixCLTRCLQlDdXfD/0Nx98Nxd+N/g9sRBegnHRewAAAAA6wfHRewBAAAAi0Xsi+Vdww==</compiledString>
+																<returnType>int</returnType>
+																<sString>sender.vTECH_ShieldCounter &gt;= (cShieldRechargeTime/cTECH_ShieldCheckPeroid) ? 0 : 1</sString>
+															</activeSpellIndex>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption></caption>
+															<dontUseDispatches>true</dontUseDispatches>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<providerName></providerName>
+															<spells>
+																<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="109C4C2E-61EB-498F-8805-E2339EFF1269">
+																	<Spell>
+																		<applicators>
+																			<Item href="/Buildings/DefaultStats/status_Building_RechargableShield.APLR" />
+																		</applicators>
+																		<dispatch href="" />
+																	</Spell>
+																</Item>
+																<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="814BF4D2-5A4A-4BB8-A4A5-C709E798B03F">
+																	<Spell>
+																		<applicators>
+																			<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="B905A234-48A5-45D4-BCD7-982F480DC3C3">
+																				<PermanentStatModApplicator>
+																					<applyTarget>ApplicatorTarget</applyTarget>
+																					<caption>counter++</caption>
+																					<customApplyType>None</customApplyType>
+																					<enabled>
+																						<compiledString></compiledString>
+																						<returnType>bool</returnType>
+																						<sString>true</sString>
+																					</enabled>
+																					<formulaName></formulaName>
+																					<LoggingEvent>-1</LoggingEvent>
+																					<modifier>
+																						<addValue>
+																							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+																							<returnType>float</returnType>
+																							<sString>1.0f</sString>
+																						</addValue>
+																						<multValue>
+																							<compiledString></compiledString>
+																							<returnType>float</returnType>
+																							<sString>1.0f</sString>
+																						</multValue>
+																						<stat>Life</stat>
+																						<topModifier>false</topModifier>
+																						<variable>TECH_ShieldCounter</variable>
+																					</modifier>
+																					<providerName></providerName>
+																				</PermanentStatModApplicator>
+																			</Item>
+																		</applicators>
+																		<dispatch href="" />
+																	</Spell>
+																</Item>
+															</spells>
+														</SpellSwitchApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="" />
+											</Spell>
+										</Item>
+										<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="8E6D2622-F226-4620-AD27-56B128D10DA6">
+											<Spell>
+												<applicators>
+													<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="FC4316E0-3E64-4CAE-A5C3-5B167B20A915">
+														<PermanentStatModApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>save old shield value</caption>
+															<customApplyType>None</customApplyType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQQ==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>12</sString>
+																</addValue>
+																<multValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.0f</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>false</topModifier>
+																<variable>CurrentShieldValue</variable>
+															</modifier>
+															<providerName></providerName>
+														</PermanentStatModApplicator>
+													</Item>
+													<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="5995EC51-9D03-4879-B05C-020FA56646AA">
+														<PermanentStatModApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>save new shield value</caption>
+															<customApplyType>None</customApplyType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FRsAAAACAAAAJgAAAD4AAABDYW50RGVhdGgAAABkYW1hZ2VUb0Fic29yYgBVi+xRagGLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QiUX8aAwAAACLTfyLEYtN/ItCVP/Qi+Vdww==</compiledString>
+																	<returnType>float</returnType>
+																	<sString>sender.applCantDeath(UNIT)-&gt;GetVariable("damageToAbsorb")</sString>
+																</addValue>
+																<multValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>false</topModifier>
+																<variable>CurrentShieldValue</variable>
+															</modifier>
+															<providerName></providerName>
+														</PermanentStatModApplicator>
+													</Item>
+													<Item href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="5A7566E5-4B65-444C-B426-0D6C5D48B6FF">
+														<PermanentStatModApplicator>
+															<applyTarget>ApplicatorTarget</applyTarget>
+															<caption>reset counter</caption>
+															<customApplyType>None</customApplyType>
+															<enabled>
+																<compiledString></compiledString>
+																<returnType>bool</returnType>
+																<sString>true</sString>
+															</enabled>
+															<formulaName></formulaName>
+															<LoggingEvent>-1</LoggingEvent>
+															<modifier>
+																<addValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.0f</sString>
+																</addValue>
+																<multValue>
+																	<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+																	<returnType>float</returnType>
+																	<sString>0.0f</sString>
+																</multValue>
+																<stat>Life</stat>
+																<topModifier>false</topModifier>
+																<variable>TECH_ShieldCounter</variable>
+															</modifier>
+															<providerName></providerName>
+														</PermanentStatModApplicator>
+													</Item>
+												</applicators>
+												<dispatch href="" />
+											</Spell>
+										</Item>
+									</spells>
+								</SpellSwitchApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Buildings/DefaultStats/DefaultMainAttack.ATCK" id="AFCEC53E-53F0-4A10-8CDC-5632F2E6B6B6">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<startOffset>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>0.0f</sString>
+				</startOffset>
+				<targetSelector href="" />
+			</SpellPeriodicallyApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>6103551</targetType>
+	<type>Simple</type>
+	<useRange>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</BaseAttack>

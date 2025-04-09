@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProgramApplicator>
+	<BackLink DBID="/Items/Talents/Level1/G461_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level4/G464_Life_StaOrWill.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level5/G463_Life_StrOrInt.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Level2/G462_Life.TALENT" Count="1" />
+	<applicators>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="AFA53DCB-0FFD-4CAA-8D99-7DCEB977C18C">
+				<PermanentStatModApplicator>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<caption>Add_Armor_Redset1_3Counter</caption>
+					<customApplyType>None</customApplyType>
+					<enabled>
+						<compiledString></compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<LoggingEvent>-1</LoggingEvent>
+					<modifier>
+						<addValue>
+							<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</addValue>
+						<multValue>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>1.0f</sString>
+						</multValue>
+						<stat>Life</stat>
+						<topModifier>false</topModifier>
+						<variable>Add_Armor_Redset1_3Counter</variable>
+					</modifier>
+					<providerName></providerName>
+				</PermanentStatModApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>2</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="26ED2F02-E4EF-4522-A399-019269E728D4">
+				<TriggerApplicator>
+					<actionsCount>
+						<compiledString></compiledString>
+						<returnType>int</returnType>
+						<sString>0</sString>
+					</actionsCount>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>152</behaviorFlags>
+					<caption>Триггер на урон</caption>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<playAck>false</playAck>
+					<processor href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="D816B9D5-7AC1-47DC-9344-6AC8FB626D47">
+						<EventProcessorDamageTransformer>
+							<abilityFilter>
+								<abilitiesList />
+								<abilityCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</abilityCondition>
+								<abilityCostMode>Any</abilityCostMode>
+								<exceptThis>false</exceptThis>
+								<flags>1073741953</flags>
+								<onlySingleTarget>false</onlySingleTarget>
+							</abilityFilter>
+							<add>
+								<compiledString>FRIAAAABAAAAHgAAAFB1cmVEZWZlbmNlQW1vdW50AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S2eBdww==</compiledString>
+								<returnType>float</returnType>
+								<sString>-cPureDefenceAmount</sString>
+							</add>
+							<applyTarget>AbilityOwner</applyTarget>
+							<checkSender>0</checkSender>
+							<damageTypeFilter>31</damageTypeFilter>
+							<flags>0</flags>
+							<matchTargetInverted>false</matchTargetInverted>
+							<mul>
+								<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+								<returnType>float</returnType>
+								<sString>1</sString>
+							</mul>
+							<objectFilter>572465663</objectFilter>
+							<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+							<spell href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="8B72CF8E-E28C-4DE6-8C78-4BBA0EAB43CA">
+								<Spell>
+									<applicators>
+										<Item href="/Items/Talents/TalentKits/Redset1_3_Armor/UIMessage_Redset1_3_Armor_DamageDecreased.APLR" />
+									</applicators>
+									<dispatch href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="8277D524-C943-458B-BB3E-76021537B992">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>true</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+							<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+						</EventProcessorDamageTransformer>
+					</processor>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FRsAAAACAAAAIAAAADYAAABBZGRfQXJtb3JfUmVkc2V0MV8zQ291bnRlcgBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1YAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAEA=</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.vAdd_Armor_Redset1_3Counter == 2</sString>
+					</startCondition>
+					<useAbilityCooldown>true</useAbilityCooldown>
+					<useAbilityOwnerMana>false</useAbilityOwnerMana>
+				</TriggerApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+		<Item>
+			<applicator href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="59012829-844B-4E1E-9E2C-1817E2689526">
+				<TriggerApplicator>
+					<actionsCount>
+						<compiledString></compiledString>
+						<returnType>int</returnType>
+						<sString>0</sString>
+					</actionsCount>
+					<applyTarget>ApplicatorTarget</applyTarget>
+					<behaviorFlags>152</behaviorFlags>
+					<caption>Триггер на замедление</caption>
+					<effect>
+						<Item href="" />
+						<Item href="" />
+					</effect>
+					<enabled>
+						<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+						<returnType>bool</returnType>
+						<sString>true</sString>
+					</enabled>
+					<formulaName></formulaName>
+					<lifeTime>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>-1.0</sString>
+					</lifeTime>
+					<LoggingEvent>-1</LoggingEvent>
+					<playAck>false</playAck>
+					<processor href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="88F92FA2-1936-4265-8CB2-A5F7134B217E">
+						<EventProcessorDamageTransformer>
+							<abilityFilter>
+								<abilitiesList />
+								<abilityCondition>
+									<compiledString></compiledString>
+									<returnType>bool</returnType>
+									<sString>true</sString>
+								</abilityCondition>
+								<abilityCostMode>Any</abilityCostMode>
+								<exceptThis>false</exceptThis>
+								<flags>1073741953</flags>
+								<onlySingleTarget>false</onlySingleTarget>
+							</abilityFilter>
+							<add>
+								<compiledString>FRIAAAABAAAAHgAAAFB1cmVEZWZlbmNlQW1vdW50AFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/S2eBdww==</compiledString>
+								<returnType>float</returnType>
+								<sString>-cPureDefenceAmount</sString>
+							</add>
+							<applyTarget>ApplicatorSelectedTarget</applyTarget>
+							<checkSender>0</checkSender>
+							<damageTypeFilter>31</damageTypeFilter>
+							<flags>0</flags>
+							<matchTargetInverted>false</matchTargetInverted>
+							<mul>
+								<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+								<returnType>float</returnType>
+								<sString>1</sString>
+							</mul>
+							<objectFilter>572465663</objectFilter>
+							<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+							<spell href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="DA0A21E9-57C2-4FA8-B318-C37ECD24770A">
+								<Spell>
+									<applicators>
+										<Item href="/Heroes/DefaultStatus/_SLOW_MOVE.APLR" />
+									</applicators>
+									<dispatch href="/Items/Talents/TalentKits/Redset1_3_Armor/Programm_Redset1_3_Armor.APLR" id="A4178535-0F60-4402-A9E3-3884E98D2641">
+										<DispatchImmediate>
+											<alwaysApply>false</alwaysApply>
+											<applyEffect>
+												<Item href="" />
+												<Item href="" />
+											</applyEffect>
+											<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+											<applyEffectOrientation>Default</applyEffectOrientation>
+											<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+											<dieAfterApply>true</dieAfterApply>
+											<dispatchEffect>
+												<Item href="" />
+												<Item href="" />
+											</dispatchEffect>
+											<flags>0</flags>
+											<instantApply>true</instantApply>
+										</DispatchImmediate>
+									</dispatch>
+								</Spell>
+							</spell>
+							<treatDelegatedByDelegator>false</treatDelegatedByDelegator>
+						</EventProcessorDamageTransformer>
+					</processor>
+					<providerName></providerName>
+					<startCondition>
+						<compiledString>FRsAAAACAAAAIAAAADYAAABBZGRfQXJtb3JfUmVkc2V0MV8zQ291bnRlcgBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1YAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAEEA=</compiledString>
+						<returnType>bool</returnType>
+						<sString>sender.vAdd_Armor_Redset1_3Counter == 4</sString>
+					</startCondition>
+					<useAbilityCooldown>true</useAbilityCooldown>
+					<useAbilityOwnerMana>false</useAbilityOwnerMana>
+				</TriggerApplicator>
+			</applicator>
+			<continueCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</continueCondition>
+			<continueEvents>1</continueEvents>
+			<delay>
+				<compiledString></compiledString>
+				<returnType>float</returnType>
+				<sString>-1.0</sString>
+			</delay>
+			<stopCondition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>0</sString>
+			</stopCondition>
+			<stopEvents>0</stopEvents>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>0</behaviorFlags>
+	<caption>Redset1_3_Armor</caption>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FRsAAAACAAAAIAAAADYAAABBZGRfQXJtb3JfUmVkc2V0MV8zQ291bnRlcgBVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1YAAAA3+D2xAV6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAEEA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sender.vAdd_Armor_Redset1_3Counter &lt; 4</sString>
+	</enabled>
+	<formulaName></formulaName>
+	<lifeTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<providerName></providerName>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+</ProgramApplicator>

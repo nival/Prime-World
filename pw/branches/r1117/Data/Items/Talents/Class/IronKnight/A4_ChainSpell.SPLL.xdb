@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Items/Talents/Class/IronKnight/Ability_A4.TALENT" Count="5" />
+	<applicators>
+		<Item href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="B8D0E02D-B2B8-4820-980A-253CC3B5D9F1">
+			<WaitForSpellApplicator>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<behaviour>0</behaviour>
+				<caption>Диспатч цепи со всеми эффектами</caption>
+				<dispatchSource href="" />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<firstTargetToHit href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="DDF261F0-04AD-42F7-BF5E-102BFCD3A2C9">
+					<ComparingTargetSelector>
+						<referenceValue>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</referenceValue>
+						<targetSelector href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="F4255D87-1CD6-46C9-BD88-A62FCF9FF3C3">
+							<ConditionTargetSelector>
+								<condition>
+									<compiledString>FSwAAAAEAAAAMQAAAEcAAABZAAAAeQAAAEltbXVuZTJDb250cm9sAABUaHJvd19KdW1wAABJcm9uS25pZ2h0Q2hhaW4AVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdqQAAAN/g9sREeklqAItNEFFoEAAAAItVDIsCi00Mi5CcAQAA/9I7RRB1KWoBi0UQUGgcAAAAi00MixGLTQyLgpwBAAD/0DtFEHUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+									<returnType>bool</returnType>
+									<sString>receiver.vImmune2Control == 0 &amp;&amp; receiver.applThrow_Jump(GLOBAL) == pMisc &amp;&amp; receiver.applIronKnightChain(UNIT) == pMisc</sString>
+								</condition>
+								<flags>0</flags>
+								<mode>Normal</mode>
+								<targetSelector href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="D97D1993-C380-46BF-BD1E-94F4CEF4A0DF">
+									<CapsuleTargetSelector>
+										<cutoffFirstSegment>true</cutoffFirstSegment>
+										<flags>0</flags>
+										<mode>Normal</mode>
+										<range>
+											<compiledString>FQkAAAACAAAAFgAAACkAAABBNF9XaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTcAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+											<returnType>float</returnType>
+											<sString>cA4_Width * 0.5f</sString>
+										</range>
+										<rangeFromOwner>
+											<compiledString>FQwAAAABAAAAGAAAAEE0X1VzZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+											<returnType>float</returnType>
+											<sString>cA4_UseRange</sString>
+										</rangeFromOwner>
+										<segmentBegin>PreviousPosition</segmentBegin>
+										<segmentDirectionOffset>0</segmentDirectionOffset>
+										<segmentEnd>CurrentPosition</segmentEnd>
+										<segmentEndTargetSelector href="" />
+										<targetFilter>536870915</targetFilter>
+									</CapsuleTargetSelector>
+								</targetSelector>
+							</ConditionTargetSelector>
+						</targetSelector>
+						<valueToCompare>
+							<compiledString>FQAAAAAAAAEAugAAAFWL7IPsEI1F+FCLTQyLEYtNDIuCjAEAAP/QUI1N8FGLVQiLAotNCIuQjAEAAP/SUOgHAAAAg8QIi+Vdw1WL7IPsFItFCNlABItNDNhhBNld9NlF9FHZHCSLVQjZAotFDNgg2V3w2UXwUdkcJI1N+OhXAAAA2UX42E342UX82E383sHZXezZRexR2Rwk6AcAAACDxASL5V3DVYvsUdlFCNkcJOgFAAAAg8QEXcNVi+xR2UUIg+wI3Rwk6B7///+DxAjZXfzZRfyL5V3DVYvsUYlN/ItF/NlFCNkYi0382UUM2VkEi0X8i+VdwggA</compiledString>
+							<returnType>float</returnType>
+							<sString>d( sPos, rPos )</sString>
+						</valueToCompare>
+					</ComparingTargetSelector>
+				</firstTargetToHit>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<spell href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="17E12A0A-4DED-4D19-A47A-444A138725C3">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="120ECAC4-B018-40CD-95DC-C1C53419A9B9">
+								<SpellApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption>Если попали в цель</caption>
+									<enabled>
+										<compiledString>FQAAAAAAAAAAVYvsM8CDfQwAD5XAXcM=</compiledString>
+										<returnType>bool</returnType>
+										<sString>pSecond != 0</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<providerName></providerName>
+									<spell href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="5008BD0C-BDB4-40D2-9E55-BB67A8C114B4">
+										<Spell>
+											<applicators>
+												<Item href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="F6F581DA-2EC1-431E-A254-B77D945EF8A3">
+													<ProgramApplicator>
+														<applicators>
+															<Item>
+																<applicator href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="8068C998-9072-4792-BE35-80E4A257E80F">
+																	<FlagsApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>0</behaviorFlags>
+																		<caption>Отправляем не более одной цепи в цель</caption>
+																		<consumables />
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<flag>0</flag>
+																		<formulaName>IronKnightChain</formulaName>
+																		<lifeTime>
+																			<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAAQA==</compiledString>
+																			<returnType>float</returnType>
+																			<sString>2</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</startCondition>
+																		<talents />
+																		<useListAs>ListAsRule</useListAs>
+																	</FlagsApplicator>
+																</applicator>
+																<continueCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</continueCondition>
+																<continueEvents>1</continueEvents>
+																<delay>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</delay>
+																<stopCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</stopCondition>
+																<stopEvents>0</stopEvents>
+															</Item>
+															<Item>
+																<applicator href="/Items/Talents/Class/IronKnight/IronKnightHIT.APLR" />
+																<continueCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</continueCondition>
+																<continueEvents>1</continueEvents>
+																<delay>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</delay>
+																<stopCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</stopCondition>
+																<stopEvents>0</stopEvents>
+															</Item>
+															<Item>
+																<applicator href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="619E9046-ADC6-4074-A735-C5ED18A83254">
+																	<DamageApplicator>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<cancelInvisibility>false</cancelInvisibility>
+																		<caption>Разовый урон в жертву</caption>
+																		<damage>
+																			<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																			<returnType>float</returnType>
+																			<sString>cA4_Damage</sString>
+																		</damage>
+																		<damageMode>4</damageMode>
+																		<damageType>Material</damageType>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<timeLimiter>-1</timeLimiter>
+																		<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+																	</DamageApplicator>
+																</applicator>
+																<continueCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</continueCondition>
+																<continueEvents>1</continueEvents>
+																<delay>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</delay>
+																<stopCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</stopCondition>
+																<stopEvents>0</stopEvents>
+															</Item>
+															<Item>
+																<applicator href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="9ED36C47-8715-48B1-86E5-D64C4C890519">
+																	<ProgramApplicator>
+																		<applicators>
+																			<Item>
+																				<applicator href="/Items/Talents/Class/IronKnight/status_A4_MoveControl.APLR" />
+																				<continueCondition>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>1</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																			<Item>
+																				<applicator href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="4A48B32E-4699-48E7-8EB1-5E97E85CE68C">
+																					<FlagsApplicator>
+																						<applyTarget>ApplicatorTarget</applyTarget>
+																						<behaviorFlags>1</behaviorFlags>
+																						<caption>Флаг ожидающий притягивание</caption>
+																						<consumables />
+																						<effect>
+																							<Item href="" />
+																							<Item href="" />
+																						</effect>
+																						<enabled>
+																							<compiledString>FQsAAAABAAAAFQAAAFRocm93X0p1bXAAVYvsagKLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+																							<returnType>bool</returnType>
+																							<sString>receiver.applThrow_Jump(ABILITY) != pMisc</sString>
+																						</enabled>
+																						<flag>0</flag>
+																						<formulaName></formulaName>
+																						<lifeTime>
+																							<compiledString></compiledString>
+																							<returnType>float</returnType>
+																							<sString>-1.0</sString>
+																						</lifeTime>
+																						<LoggingEvent>-1</LoggingEvent>
+																						<providerName></providerName>
+																						<startCondition>
+																							<compiledString></compiledString>
+																							<returnType>bool</returnType>
+																							<sString>true</sString>
+																						</startCondition>
+																						<talents />
+																						<useListAs>ListAsRule</useListAs>
+																					</FlagsApplicator>
+																				</applicator>
+																				<continueCondition>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>2</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																			<Item>
+																				<applicator href="/Items/Talents/Class/IronKnight/status_A4_TTMoveControle.APLR" />
+																				<continueCondition>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</continueCondition>
+																				<continueEvents>2</continueEvents>
+																				<delay>
+																					<compiledString></compiledString>
+																					<returnType>float</returnType>
+																					<sString>-1.0</sString>
+																				</delay>
+																				<stopCondition>
+																					<compiledString></compiledString>
+																					<returnType>bool</returnType>
+																					<sString>0</sString>
+																				</stopCondition>
+																				<stopEvents>0</stopEvents>
+																			</Item>
+																		</applicators>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>1</behaviorFlags>
+																		<caption>Программа с удержанием</caption>
+																		<effect>
+																			<Item href="" />
+																			<Item href="" />
+																		</effect>
+																		<enabled>
+																			<compiledString></compiledString>
+																			<returnType>bool</returnType>
+																			<sString>true</sString>
+																		</enabled>
+																		<formulaName></formulaName>
+																		<lifeTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>-1.0</sString>
+																		</lifeTime>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<providerName></providerName>
+																		<startCondition>
+																			<compiledString>FRkAAAABAAAAIwAAAElyb25LbmlnaHRBNF9Nb3ZlQ29udHJvbABVi+xqAYtFEFBoAAAAAItNDIsRi00Mi4KcAQAA/9AzyTtFEA+UwYrBXcM=</compiledString>
+																			<returnType>bool</returnType>
+																			<sString>receiver.applIronKnightA4_MoveControl(UNIT) == pMisc</sString>
+																		</startCondition>
+																	</ProgramApplicator>
+																</applicator>
+																<continueCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</continueCondition>
+																<continueEvents>1</continueEvents>
+																<delay>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</delay>
+																<stopCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</stopCondition>
+																<stopEvents>0</stopEvents>
+															</Item>
+															<Item>
+																<applicator href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="C68044CE-5A09-47FF-A81C-1B9EA88F3BFD">
+																	<ThrowApplicator>
+																		<angle>0</angle>
+																		<applyTarget>ApplicatorTarget</applyTarget>
+																		<behaviorFlags>145</behaviorFlags>
+																		<caption>throw</caption>
+																		<collisionFlags>7</collisionFlags>
+																		<enabled>
+																			<compiledString>FU8AAAAHAAAAawAAALMAAADGAAAA0gAAAOgAAAD6AAAAGgEAAEE0X0VuZW15TW92ZU1heFJhbmdlAAAAAEE0X1Rocm93Q29uZGl0aW9uAAAASW1tdW5lMkNvbnRyb2wAAFRocm93AAAAVGhyb3dfSnVtcABVi+yD7AyLRRCLEItNEItCDP/Qi00MUYtVCFJoAAAAAItFEIsQi00Qi0JQ3V34/9DcXfjf4PbEBQ+KrwAAAGgAAAAQi00MixGLTQyLQmj/0A+2yIXJD4WSAAAAi1UMUotFCFBoGAAAAItNEIsRi00Qi0JQ/9DcHUoBAADf4PbERHtraCwAAACLTQyLEYtNDIuCiAEAAP/Q3B1KAQAA3+D2xER6SWoAi00QUWg8AAAAi1UMiwKLTQyLkJwBAAD/0jtFEHUpagCLRRBQaEQAAACLTQyLEYtNDIuCnAEAAP/QO0UQdQnHRfQBAAAA6wfHRfQAAAAAikX0i+VdwwAAAAAAAAAA</compiledString>
+																			<returnType>bool</returnType>
+																			<sString>(mDist2Target &gt; cA4_EnemyMoveMaxRange)&amp;&amp;!rFlag(268435456) &amp;&amp; cA4_ThrowCondition &amp;&amp; receiver.vImmune2Control == 0 &amp;&amp; receiver.applThrow(GLOBAL) == pMisc &amp;&amp; receiver.applThrow_Jump(GLOBAL) == pMisc</sString>
+																		</enabled>
+																		<firstTargetToHit href="" />
+																		<flightType>Throw</flightType>
+																		<flipTime>
+																			<compiledString></compiledString>
+																			<returnType>float</returnType>
+																			<sString>1.0</sString>
+																		</flipTime>
+																		<flyEffect>
+																			<Item href="" />
+																			<Item href="" />
+																		</flyEffect>
+																		<formulaName>Throw_Jump</formulaName>
+																		<landTime>0</landTime>
+																		<lockRotation>false</lockRotation>
+																		<LoggingEvent>-1</LoggingEvent>
+																		<maxDistance>0</maxDistance>
+																		<maxHeight>0</maxHeight>
+																		<moveSpeed>
+																			<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADwQQ==</compiledString>
+																			<returnType>float</returnType>
+																			<sString>30</sString>
+																		</moveSpeed>
+																		<providerName></providerName>
+																		<startSpell href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="C3775862-B097-4343-8CB3-34AF3FAC353A">
+																			<Spell>
+																				<applicators>
+																					<Item href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="DBFD5F9A-182F-403E-BE83-73B82212266A">
+																						<StatModApplicator parent="/GameLogic/GeneralApplicators/SetTossed.APLR">
+																							<behaviorFlags>152</behaviorFlags>
+																							<startCondition>
+																								<compiledString>FQsAAAABAAAAFQAAAFRocm93X0p1bXAAVYvsagGLRRBQaAAAAACLTQyLEYtNDIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+																								<returnType>bool</returnType>
+																								<sString>receiver.applThrow_Jump(UNIT) != pMisc</sString>
+																							</startCondition>
+																						</StatModApplicator>
+																					</Item>
+																				</applicators>
+																				<dispatch href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="C4DA0485-96ED-4932-BC92-3E407931672A">
+																					<DispatchImmediate>
+																						<alwaysApply>false</alwaysApply>
+																						<applyEffect>
+																							<Item href="" />
+																							<Item href="" />
+																						</applyEffect>
+																						<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+																						<applyEffectOrientation>Default</applyEffectOrientation>
+																						<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+																						<dieAfterApply>true</dieAfterApply>
+																						<dispatchEffect>
+																							<Item href="" />
+																							<Item href="" />
+																						</dispatchEffect>
+																						<flags>0</flags>
+																						<instantApply>false</instantApply>
+																					</DispatchImmediate>
+																				</dispatch>
+																			</Spell>
+																		</startSpell>
+																		<stopSpell href="" />
+																		<surfaceSpeedFromAG>false</surfaceSpeedFromAG>
+																		<takeOffTime>0</takeOffTime>
+																		<targetSelector href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="41785675-B8E2-480E-A211-A5A332097C27">
+																			<PointTargetSelector>
+																				<checkMinRange>true</checkMinRange>
+																				<mode>RangeFromOwner</mode>
+																				<offset>
+																					<x>0</x>
+																					<y>1</y>
+																				</offset>
+																				<paralleledTarget>false</paralleledTarget>
+																				<range>
+																					<compiledString>FRUAAAABAAAAIQAAAEE0X0VuZW15TW92ZU1heFJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																					<returnType>float</returnType>
+																					<sString>cA4_EnemyMoveMaxRange</sString>
+																				</range>
+																				<targetSelector href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="49CB70D4-9ED8-4A26-BFB0-C57C7340C671">
+																					<ConvertTargetToLand>
+																						<aggregateMode>First</aggregateMode>
+																						<targetSelector href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="C9EBE00F-025C-4163-A800-2396815FDB3B">
+																							<SelectApplicatorTarget>
+																								<applicatorIndex>0</applicatorIndex>
+																								<applicatorName></applicatorName>
+																								<namedApplicatorTarget>ApplicatorTarget</namedApplicatorTarget>
+																								<selectTarget>ApplicatorTarget</selectTarget>
+																							</SelectApplicatorTarget>
+																						</targetSelector>
+																					</ConvertTargetToLand>
+																				</targetSelector>
+																				<traceMode>0</traceMode>
+																			</PointTargetSelector>
+																		</targetSelector>
+																		<trackTargetUnit>false</trackTargetUnit>
+																		<trajectory Animated="True">
+																			<Tracks>
+																				<Item>
+																					<Item>
+																						<Key>0</Key>
+																						<Value>0</Value>
+																					</Item>
+																					<Item>
+																						<Key>1</Key>
+																						<Value>0</Value>
+																					</Item>
+																				</Item>
+																			</Tracks>
+																			<Type>Clamp</Type>
+																			<Values>
+																				<Item>
+																					<Key>0</Key>
+																					<Value>0</Value>
+																				</Item>
+																				<Item>
+																					<Key>1</Key>
+																					<Value>0</Value>
+																				</Item>
+																			</Values>
+																		</trajectory>
+																	</ThrowApplicator>
+																</applicator>
+																<continueCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</continueCondition>
+																<continueEvents>6</continueEvents>
+																<delay>
+																	<compiledString></compiledString>
+																	<returnType>float</returnType>
+																	<sString>-1.0</sString>
+																</delay>
+																<stopCondition>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>0</sString>
+																</stopCondition>
+																<stopEvents>0</stopEvents>
+															</Item>
+														</applicators>
+														<applyTarget>ApplicatorTarget</applyTarget>
+														<behaviorFlags>145</behaviorFlags>
+														<caption>Программа</caption>
+														<effect>
+															<Item href="" />
+															<Item href="" />
+														</effect>
+														<enabled>
+															<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</enabled>
+														<formulaName></formulaName>
+														<lifeTime>
+															<compiledString></compiledString>
+															<returnType>float</returnType>
+															<sString>-1.0</sString>
+														</lifeTime>
+														<LoggingEvent>-1</LoggingEvent>
+														<providerName></providerName>
+														<startCondition>
+															<compiledString></compiledString>
+															<returnType>bool</returnType>
+															<sString>true</sString>
+														</startCondition>
+													</ProgramApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="294EE1E8-9184-4E3E-BA2F-8C3200D0A7DF">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>1</flags>
+													<instantApply>true</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</spell>
+									<spellTarget>ApplicatorTarget</spellTarget>
+									<targetSelector href="" />
+								</SpellApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="95CCCC84-0F15-4D00-B246-6C8D339E5354">
+							<DispatchLinearWithLink>
+								<aiming>Straight</aiming>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="/Effects/General/Fake/_STD.EFFT" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<flyMode>Linear</flyMode>
+								<fromLocator>Body</fromLocator>
+								<height>0</height>
+								<killEffect>true</killEffect>
+								<links>
+									<Item>
+										<effect>
+											<Item href="/Heroes/IronKnight/AbilityLink.EFFT" />
+											<Item href="" />
+										</effect>
+									</Item>
+								</links>
+								<locatorOrient>true</locatorOrient>
+								<maxDeviation>180</maxDeviation>
+								<maxDistance>-1</maxDistance>
+								<maxRise>0</maxRise>
+								<minRise>0</minRise>
+								<persistentApplicators>
+									<Item href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="C37D9036-95D6-46D7-A0DA-9680AA285920">
+										<SpellPeriodicallyApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>144</behaviorFlags>
+											<caption>рассылаем урон врагам пока летим</caption>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<period>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</period>
+											<providerName></providerName>
+											<scaleMode>ScaleIsCount</scaleMode>
+											<spell href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="28CAEB28-4B09-445E-8CB3-00999CC1D8B6">
+												<Spell>
+													<applicators>
+														<Item href="/Items/Talents/Class/IronKnight/IronKnightHIT.APLR" />
+														<Item href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="62062FC7-C376-497F-B99C-38821E1FF651">
+															<DamageApplicator>
+																<applyTarget>ApplicatorTarget</applyTarget>
+																<cancelInvisibility>false</cancelInvisibility>
+																<caption>урон</caption>
+																<damage>
+																	<compiledString>FQoAAAABAAAAFgAAAEE0X0RhbWFnZQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+																	<returnType>float</returnType>
+																	<sString>cA4_Damage</sString>
+																</damage>
+																<damageMode>4</damageMode>
+																<damageType>Material</damageType>
+																<enabled>
+																	<compiledString></compiledString>
+																	<returnType>bool</returnType>
+																	<sString>true</sString>
+																</enabled>
+																<formulaName></formulaName>
+																<LoggingEvent>-1</LoggingEvent>
+																<providerName></providerName>
+																<timeLimiter>-1</timeLimiter>
+																<uiEvent href="/UI/Events/CommonEvents/EventDamageDealed_Material.UIEV" />
+															</DamageApplicator>
+														</Item>
+													</applicators>
+													<dispatch href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="CE5AE1EA-ED81-4486-ACCC-5222DF7F5D53">
+														<DispatchImmediate>
+															<alwaysApply>false</alwaysApply>
+															<applyEffect>
+																<Item href="" />
+																<Item href="" />
+															</applyEffect>
+															<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+															<applyEffectOrientation>Default</applyEffectOrientation>
+															<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+															<dieAfterApply>true</dieAfterApply>
+															<dispatchEffect>
+																<Item href="" />
+																<Item href="" />
+															</dispatchEffect>
+															<flags>0</flags>
+															<instantApply>false</instantApply>
+														</DispatchImmediate>
+													</dispatch>
+												</Spell>
+											</spell>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<startOffset>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>0.0f</sString>
+											</startOffset>
+											<targetSelector href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="65097569-FDE2-44C2-89F1-876CD0E25AF0">
+												<ConditionTargetSelector>
+													<condition>
+														<compiledString>FRAAAAACAAAAFQAAACsAAABJZ25vcmFibGVUYXJnZXQAVYvsUWgAAAAAi0UMixCLTQyLgogBAAD/0NwdTQAAAN/g9sREegnHRfwBAAAA6wfHRfwAAAAAikX8i+VdwwAAAAAAAAAA</compiledString>
+														<returnType>bool</returnType>
+														<sString>receiver.vIgnorableTarget == 0</sString>
+													</condition>
+													<flags>0</flags>
+													<mode>Normal</mode>
+													<targetSelector href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="410036A6-F50D-4D71-99FA-06BEBFFBEFAB">
+														<CapsuleTargetSelector>
+															<cutoffFirstSegment>true</cutoffFirstSegment>
+															<flags>0</flags>
+															<mode>SendOnce</mode>
+															<range>
+																<compiledString>FQkAAAACAAAAFgAAACkAAABBNF9XaWR0aABVi+xRi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9LcDTcAAADZXfzZRfyL5V3DAAAAAAAA4D8=</compiledString>
+																<returnType>float</returnType>
+																<sString>cA4_Width * 0.5f</sString>
+															</range>
+															<rangeFromOwner>
+																<compiledString>FQwAAAABAAAAGAAAAEE0X1VzZVJhbmdlAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+																<returnType>float</returnType>
+																<sString>cA4_UseRange</sString>
+															</rangeFromOwner>
+															<segmentBegin>PreviousPosition</segmentBegin>
+															<segmentDirectionOffset>0</segmentDirectionOffset>
+															<segmentEnd>CurrentPosition</segmentEnd>
+															<segmentEndTargetSelector href="" />
+															<targetFilter>547160124</targetFilter>
+														</CapsuleTargetSelector>
+													</targetSelector>
+												</ConditionTargetSelector>
+											</targetSelector>
+										</SpellPeriodicallyApplicator>
+									</Item>
+								</persistentApplicators>
+								<speed>26</speed>
+								<suspendTime>0</suspendTime>
+								<toLocator>Body</toLocator>
+							</DispatchLinearWithLink>
+						</dispatch>
+					</Spell>
+				</spell>
+				<spellTarget>ApplicatorTarget</spellTarget>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</WaitForSpellApplicator>
+		</Item>
+	</applicators>
+	<dispatch href="/Items/Talents/Class/IronKnight/A4_ChainSpell.SPLL" id="43A75EFC-65C5-43CE-99DF-E0EDC8E6CC5E">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+</Spell>

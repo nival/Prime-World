@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Healer/status_A5_Buff.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" id="1A985684-A211-4636-926D-00821BE21B47">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>Задаем макс стеки щита</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString>FRMAAAABAAAAHwAAAEE1X1NVUF9URUNIQ291bnRlcgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+						<returnType>float</returnType>
+						<sString>cA5_SUP_TECHCounter</sString>
+					</addValue>
+					<multValue>
+						<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+						<returnType>float</returnType>
+						<sString>0.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>Healer_A5_SpellShieldCounter</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" id="A06CC940-B0A9-4B64-951E-D5715762DEE0">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>144</behaviorFlags>
+				<caption>Отслеживаем контроли</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" id="82738A61-5D55-4F2A-8F5A-10F83FB6D92B">
+					<EventProcessorApplicatorApplied>
+						<applicatorsList href="/Heroes/DefaultStatus/List_AllControlAppl.APLS" />
+						<applicatorTypesList href="" />
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<checkSender>0</checkSender>
+						<filter>1342177280</filter>
+						<mode>Cancel</mode>
+						<newLifetime>
+							<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+							<returnType>float</returnType>
+							<sString>0</sString>
+						</newLifetime>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" id="08125C5B-7427-496C-BFC1-18C2757BFD63">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" id="711D0659-A190-4D1B-BF55-37CFF4B7D4E6">
+										<PermanentStatModApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>уменьшаем стеки щита</caption>
+											<customApplyType>None</customApplyType>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAvw==</compiledString>
+													<returnType>float</returnType>
+													<sString>-1</sString>
+												</addValue>
+												<multValue>
+													<compiledString>FQAAAAAAAAAAVYvs2ehdwwAAgD8=</compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>Healer_A5_SpellShieldCounter</variable>
+											</modifier>
+											<providerName></providerName>
+										</PermanentStatModApplicator>
+									</Item>
+									<Item href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" id="FEF246E5-01E3-4C43-BCBB-1A382CF6EA24">
+										<FlagsApplicator>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<behaviorFlags>0</behaviorFlags>
+											<caption>эффект кенсела контроля</caption>
+											<consumables />
+											<effect>
+												<Item href="/Effects/Buffs/Defence/_BlessPurple.EFFT" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<flag>0</flag>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAADAPw==</compiledString>
+												<returnType>float</returnType>
+												<sString>1.5</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<talents />
+											<useListAs>ListAsRule</useListAs>
+										</FlagsApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR" id="68481979-CD43-4417-8CB5-2A5BEE5269BD">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorApplicatorApplied>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>144</behaviorFlags>
+	<caption>Шилд от контроля (статус)</caption>
+	<customCounter>
+		<compiledString>FR0AAAABAAAAIQAAAEhlYWxlcl9BNV9TcGVsbFNoaWVsZENvdW50ZXIAVYvsaAAAAACLRQyLEItNDIuCiAEAAP/QUdkcJOgFAAAAg8QEXcO4AQAAAA+i98IAAAAEdAfzDyxEJATD6QAAAABVi+yD7AzZRQjZffwPt0X8DQAMAACJRfjZbfjbXfTZbfyLRfSL5V3D</compiledString>
+		<returnType>int</returnType>
+		<sString>f2l(receiver.vHealer_A5_SpellShieldCounter)</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="/Effects/Buffs/Defence/_Bless.EFFT" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>Healer_A5_SpellShield</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Healer/A5_SpellShield.ITEX" />
+	<lifeTime>
+		<compiledString>FQwAAAABAAAAGAAAAEE1X0R1cmF0aW9uAFWL7ItFDFCLTQhRaAAAAACLVRCLAotNEItQUP/SXcM=</compiledString>
+		<returnType>float</returnType>
+		<sString>cA5_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Healer/status_A5_SUP_Bubble.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FR4AAAACAAAAJQAAAD4AAABIZWFsZXJfQTVfU1VQAAAASGVhbGVyX0E1X1NVUABVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+		<returnType>bool</returnType>
+		<sString>tal("Healer_A5_SUP")</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByAllChilds</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

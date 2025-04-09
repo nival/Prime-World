@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spell>
+	<BackLink DBID="/Items/Talents/Class/Bard/A0_Style.APLR" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Bard/Ability_A3.TALENT" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Bard/A0_Spell.SPLL" id="62058365-0F20-43DC-8239-56D39E4D7038">
+			<PermanentStatModApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>увеличить счётчик стеков</caption>
+				<customApplyType>None</customApplyType>
+				<enabled>
+					<compiledString>FSEAAAACAAAAKAAAAEUAAABCYXJkQ3VycmVudFN0YWNrcwAAAEEwX01heFN0YWNrcwBVi+yD7AxoAAAAAItFCIsQi00Ii4KIAQAA/9CLTQxRi1UIUmgUAAAAi0UQixCLTRCLQlDdXfj/0Nxd+N/g9sRBdQnHRfQBAAAA6wfHRfQAAAAAikX0i+Vdww==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vBardCurrentStacks &lt; cA0_MaxStacks</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<modifier>
+					<addValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</addValue>
+					<multValue>
+						<compiledString></compiledString>
+						<returnType>float</returnType>
+						<sString>1.0f</sString>
+					</multValue>
+					<stat>Life</stat>
+					<topModifier>false</topModifier>
+					<variable>BardCurrentStacks</variable>
+				</modifier>
+				<providerName></providerName>
+			</PermanentStatModApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/A0_Spell.SPLL" id="D4ED969B-3CFC-442D-941C-94ABE0B7D028">
+			<AddNaftaApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>дать прайма</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<isFromImpulseBuff>false</isFromImpulseBuff>
+				<LoggingEvent>-1</LoggingEvent>
+				<nafta>
+					<compiledString>FQ4AAAABAAAAGgAAAEEwX1ByaW1lQm9udXMAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cA0_PrimeBonus</sString>
+				</nafta>
+				<providerName></providerName>
+			</AddNaftaApplicator>
+		</Item>
+		<Item href="/Items/Talents/Class/Bard/status_Haste_No_FX.APLR" />
+	</applicators>
+	<dispatch href="/Items/Talents/Class/Bard/A0_Dispatch.DSCH" />
+</Spell>

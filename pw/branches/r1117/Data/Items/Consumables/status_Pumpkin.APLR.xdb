@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Consumables/Pumpkin.ARCT" Count="1" />
+	<applicators>
+		<Item href="/Items/Consumables/status_Pumpkin.APLR" id="01148374-F8DE-47EC-B5C3-015E0E630E44">
+			<FlagsApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>Запреты</caption>
+				<consumables />
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCSP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sTimeStanding &gt; 0</sString>
+				</enabled>
+				<flag>1144</flag>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<talents />
+				<useListAs>ListAsException</useListAs>
+			</FlagsApplicator>
+		</Item>
+		<Item href="/Items/Consumables/status_Pumpkin.APLR" id="E1614840-05B4-41BE-8B9D-3AB1A2D7DA13">
+			<StatModApplicator parent="/GameLogic/GeneralApplicators/Transformed.APLR">
+				<behaviorFlags>1</behaviorFlags>
+				<dontUpdate>false</dontUpdate>
+				<enabled>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCSP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sTimeStanding &gt; 0</sString>
+				</enabled>
+			</StatModApplicator>
+		</Item>
+		<Item href="/Items/Consumables/status_Pumpkin.APLR" id="93E58A83-1DE5-44B4-A0CA-354369FAA945">
+			<InvisibilityApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>1</behaviorFlags>
+				<caption>невидимость + тыква</caption>
+				<effect>
+					<Item href="/Items/Consumables/status_Pumpkin.APLR" id="58B0FDE7-F8C2-40B7-B93C-67E891A73286">
+						<EffectSwitcher>
+							<deathType>Manual</deathType>
+							<effectOnInvisible href="/Items/Consumables/status_Pumpkin.APLR" id="F7FD00D6-8C0B-43E1-B28E-51902CC996D3">
+								<UnitSceneObjectModify>
+									<deathType>Manual</deathType>
+									<enableCondition href="" />
+									<lifeTime>0</lifeTime>
+									<mode>ReplaceStatic</mode>
+									<sceneObjects>
+										<Item href="/Summons/Pumpkin/_Enemy.SOBJ" />
+										<Item href="" />
+										<Item href="" />
+									</sceneObjects>
+									<visibilityMode>AsObject</visibilityMode>
+								</UnitSceneObjectModify>
+							</effectOnInvisible>
+							<effectOnVisible href="" />
+							<enableCondition href="" />
+							<isVisibleUnderWarfog>true</isVisibleUnderWarfog>
+							<lifeTime>0</lifeTime>
+							<logic>FactionVisibility</logic>
+						</EffectSwitcher>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCSP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sTimeStanding &gt; 0</sString>
+				</enabled>
+				<fadeIn>
+					<compiledString>FRQAAAABAAAAIAAAAEludmlzaWJpbGl0eV9GYWRlSW4AVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+					<returnType>float</returnType>
+					<sString>cInvisibility_FadeIn</sString>
+				</fadeIn>
+				<formulaName>Invisibility</formulaName>
+				<ignoreCancel>false</ignoreCancel>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0f</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<onBecomeInvisible href="/Items/Consumables/status_Pumpkin.APLR" id="BA117F09-E19A-4CC3-A533-319E7163FA06">
+					<Spell>
+						<applicators>
+							<Item href="/Items/Consumables/status_Pumpkin.APLR" id="5BE1917A-922A-4150-A0BB-F2A0438AED2F">
+								<UIMessageApplicator>
+									<applyTarget>ApplicatorTarget</applyTarget>
+									<caption> - FlyOff Message</caption>
+									<enabled>
+										<compiledString></compiledString>
+										<returnType>bool</returnType>
+										<sString>true</sString>
+									</enabled>
+									<formulaName></formulaName>
+									<LoggingEvent>-1</LoggingEvent>
+									<message textref="/Items/Consumables/status_Pumpkin.APLR_5be1917a922a4150a0bbf2a0438aed2f_message.txt" />
+									<providerName></providerName>
+									<uiEvent href="/UI/Events/CommonEvents/EventCustomFlyoff.UIEV" />
+									<value>
+										<compiledString></compiledString>
+										<returnType>float</returnType>
+										<sString>-1.0</sString>
+									</value>
+								</UIMessageApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Items/Consumables/status_Pumpkin.APLR" id="710E1D60-A352-4EE6-8CCC-495EEE21311B">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</onBecomeInvisible>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</InvisibilityApplicator>
+		</Item>
+		<Item href="/Items/Consumables/status_Pumpkin.APLR" id="4348F452-5A4F-4ED3-B6A0-CD15E6182941">
+			<SceneObjectChangeApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>153</behaviorFlags>
+				<caption>Замена модели</caption>
+				<effect>
+					<Item href="/Items/Consumables/status_Pumpkin.APLR" id="A649F552-A275-438D-99B0-E66F53E30C0D">
+						<EffectSwitcher>
+							<deathType>Manual</deathType>
+							<effectOnInvisible href="/Terrain/Events/Halloween/PumpkinRedFX.EFFT" />
+							<effectOnVisible href="/Terrain/Events/Halloween/PumpkinFX.EFFT" />
+							<enableCondition href="" />
+							<isVisibleUnderWarfog>false</isVisibleUnderWarfog>
+							<lifeTime>0</lifeTime>
+							<logic>FactionVisibility</logic>
+						</EffectSwitcher>
+					</Item>
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQAAAAACAAAAEwAAACwAAABVi+xRi0UIixCLTQiLQkj/0NwdTgAAAN/g9sRBdSKLTQiLEYtNCIsC/9DcHU4AAADf4PbEQXUJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sTimeStanding &gt; 0 &amp;&amp; sLife &gt; 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0f</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<providerName></providerName>
+				<sceneObjectIndex>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</sceneObjectIndex>
+				<sceneObjects>
+					<Item href="/Summons/Pumpkin/_.SOBJ" />
+				</sceneObjects>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+			</SceneObjectChangeApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>155</behaviorFlags>
+	<caption> - НЕстандартный статус "Невидимость" (Invisibility_Duration)</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Consumables/status_Pumpkin.APLR_description.txt" />
+	<dispellPriority>High</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString>FQAAAAABAAAAEwAAAFWL7FGLRQiLEItNCItCSP/Q3B01AAAA3+D2xEF1CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+		<returnType>bool</returnType>
+		<sString>sTimeStanding &gt; 0</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>Invisibility</formulaName>
+	<image href="/UI/Styles/Icons/Talents/_270.ITEX" />
+	<lifeTime>
+		<compiledString>FRYAAAABAAAAIgAAAEludmlzaWJpbGl0eV9EdXJhdGlvbgBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+		<returnType>float</returnType>
+		<sString>cInvisibility_Duration</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Consumables/status_Pumpkin.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString>FQAAAAAAAAAAVYvsaAAAAAiLRQyLEItNDItCaP/QD7bA99gbwIPAAV3D</compiledString>
+		<returnType>bool</returnType>
+		<sString>!rFlag(134217728)</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByChild</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

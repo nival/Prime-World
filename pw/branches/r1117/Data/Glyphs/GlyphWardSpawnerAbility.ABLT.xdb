@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Maps/Multiplayer/MOBA/Spawners/Neutral_2.NCSPN" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators />
+	<autoTargetSelector href="" />
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="" />
+	<cooldownTime>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="" />
+	<flags>5</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators>
+		<Item href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="8E181FC9-D15F-4DD2-BDE5-FA9A69191EAD">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Триггер на смерть со спауном варда</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQYAAAACAAAACwAAACEAAABJc1BldABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1DAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsPet == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="3F1934F8-FF6C-4F12-A0ED-35A804234E2E">
+					<EventProcessorOnDeath>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<castSpellDelay>
+							<compiledString></compiledString>
+							<returnType>float</returnType>
+							<sString>0.0f</sString>
+						</castSpellDelay>
+						<checkSender>0</checkSender>
+						<objectFilter>2040319</objectFilter>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="9A00218C-A3FF-447D-8195-CA20BA3787F1">
+							<Spell>
+								<applicators>
+									<Item href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="6F366D63-6804-42E0-A6F6-1BF1EE96204C">
+										<CreateGlyphApplicator>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<angle>45</angle>
+											<angleIsRelative>false</angleIsRelative>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Спавним глиф с вардом</caption>
+											<distance>3</distance>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<glyph href="/Glyphs/WardGlyph.GLPH" />
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<radius>10</radius>
+											<scriptName></scriptName>
+										</CreateGlyphApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="6CD6A687-F1EE-4EA9-A674-31F574C9475A">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorOnDeath>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+		<Item href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="F36DEE04-DA6A-4AE2-987E-9FEFB24F4780">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString>FQAAAAAAAAAAVYvsuAEAAABdww==</compiledString>
+					<returnType>int</returnType>
+					<sString>1</sString>
+				</actionsCount>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<behaviorFlags>152</behaviorFlags>
+				<caption>Триггер на смерть со спауном варда</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQYAAAACAAAACwAAACEAAABJc1BldABVi+xRaAAAAACLRQiLEItNCIuCiAEAAP/Q3B1DAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAA8D8=</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsPet == 1</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="FC1D8F73-3BE1-4C2F-B8F1-4DA6454D999A">
+					<EventProcessorCondition>
+						<applyTarget>ApplicatorTarget</applyTarget>
+						<condition>
+							<compiledString>FQAAAAAAAAAAVYvssAFdww==</compiledString>
+							<returnType>bool</returnType>
+							<sString>true</sString>
+						</condition>
+						<events>8192</events>
+						<onlyParent>false</onlyParent>
+						<spell href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="9EB8AC2C-881F-42F2-8CB9-A3D16C3690CF">
+							<Spell>
+								<applicators>
+									<Item href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="292CA4BE-BB94-47CE-9D5A-0AD88093C6CE">
+										<CreateGlyphApplicator>
+											<absolutePosition>
+												<x>0</x>
+												<y>0</y>
+											</absolutePosition>
+											<angle>45</angle>
+											<angleIsRelative>false</angleIsRelative>
+											<applyTarget>ApplicatorTarget</applyTarget>
+											<caption>Спавним глиф с вардом</caption>
+											<distance>3</distance>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<glyph href="/Glyphs/WardGlyph.GLPH" />
+											<LoggingEvent>-1</LoggingEvent>
+											<providerName></providerName>
+											<radius>10</radius>
+											<scriptName></scriptName>
+										</CreateGlyphApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Glyphs/GlyphWardSpawnerAbility.ABLT" id="509DDF0A-C5A8-40D4-8376-73457A5E7431">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+					</EventProcessorCondition>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</passiveApplicators>
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>136258047</targetType>
+	<type>Passive</type>
+	<useRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>

@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StatusApplicator>
+	<BackLink DBID="/Items/Talents/Class/Wendigo/Ability4_2.TALENT" Count="1" />
+	<BackLink DBID="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" Count="1" />
+	<applicators>
+		<Item href="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" id="EA1FA3A1-44E5-4258-BEEB-FBF0A9DC94E7">
+			<TriggerApplicator>
+				<actionsCount>
+					<compiledString></compiledString>
+					<returnType>int</returnType>
+					<sString>0</sString>
+				</actionsCount>
+				<applyTarget>AbilityOwner</applyTarget>
+				<behaviorFlags>216</behaviorFlags>
+				<caption>триггер на смерть от Вендиго</caption>
+				<effect>
+					<Item href="" />
+					<Item href="" />
+				</effect>
+				<enabled>
+					<compiledString>FQgAAAACAAAADQAAACMAAABJc0Nsb25lAFWL7FFoAAAAAItFCIsQi00Ii4KIAQAA/9DcHUUAAADf4PbERHoJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.vIsClone == 0</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<lifeTime>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</lifeTime>
+				<LoggingEvent>-1</LoggingEvent>
+				<playAck>false</playAck>
+				<processor href="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" id="283A696D-C412-47C8-9F08-8FEC78A811C4">
+					<EventProcessorUnitDieNearMe>
+						<applyTarget>AbilityOwner</applyTarget>
+						<checkSender>0</checkSender>
+						<killerFlags>1</killerFlags>
+						<range>
+							<compiledString>FQ0AAAABAAAAGQAAAFJhbmdlX01lZGl1bQBVi+yLRQxQi00IUWgAAAAAi1UQiwKLTRCLUFD/0l3D</compiledString>
+							<returnType>float</returnType>
+							<sString>cRange_Medium</sString>
+						</range>
+						<senderMatchTarget>ApplicatorTarget</senderMatchTarget>
+						<spell href="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" id="3ED13863-BD7E-464C-B838-01F6E0D854C4">
+							<Spell>
+								<applicators>
+									<Item href="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" id="FAEA71EA-2CC2-4F2D-9290-7FE5AD3C6EB4">
+										<AddApplicatorDuration>
+											<applicators>
+												<Item href="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" />
+											</applicators>
+											<applyTarget>AbilityOwner</applyTarget>
+											<caption>продлеваем длительность ночи</caption>
+											<durationToAdd>
+												<compiledString>FQ4AAAABAAAAGgAAAE5pZ2h0X1Byb2xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+												<returnType>float</returnType>
+												<sString>cNight_Prolong</sString>
+											</durationToAdd>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<flags>0</flags>
+											<formulaName></formulaName>
+											<LoggingEvent>-1</LoggingEvent>
+											<nameToCheck></nameToCheck>
+											<providerName></providerName>
+										</AddApplicatorDuration>
+									</Item>
+									<Item href="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" id="12624C09-E240-4948-AC68-75755169CB46">
+										<StatModApplicator>
+											<applyTarget>AbilityOwner</applyTarget>
+											<behaviorFlags>216</behaviorFlags>
+											<caption>Запоминаем продолжительность</caption>
+											<constraint>None</constraint>
+											<dontUpdate>false</dontUpdate>
+											<effect>
+												<Item href="" />
+												<Item href="" />
+											</effect>
+											<enabled>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</enabled>
+											<formulaName></formulaName>
+											<lifeTime>
+												<compiledString></compiledString>
+												<returnType>float</returnType>
+												<sString>-1.0</sString>
+											</lifeTime>
+											<LoggingEvent>-1</LoggingEvent>
+											<modifier>
+												<addValue>
+													<compiledString>FQ4AAAABAAAAGgAAAE5pZ2h0X1Byb2xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+													<returnType>float</returnType>
+													<sString>cNight_Prolong</sString>
+												</addValue>
+												<multValue>
+													<compiledString></compiledString>
+													<returnType>float</returnType>
+													<sString>1.0f</sString>
+												</multValue>
+												<stat>Life</stat>
+												<topModifier>false</topModifier>
+												<variable>Total_Prolong</variable>
+											</modifier>
+											<providerName></providerName>
+											<startCondition>
+												<compiledString></compiledString>
+												<returnType>bool</returnType>
+												<sString>true</sString>
+											</startCondition>
+											<statModName></statModName>
+										</StatModApplicator>
+									</Item>
+								</applicators>
+								<dispatch href="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR" id="6DC57E1D-D2F4-4ECA-AF2E-2723BEA23136">
+									<DispatchImmediate>
+										<alwaysApply>false</alwaysApply>
+										<applyEffect>
+											<Item href="" />
+											<Item href="" />
+										</applyEffect>
+										<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+										<applyEffectOrientation>Default</applyEffectOrientation>
+										<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+										<dieAfterApply>true</dieAfterApply>
+										<dispatchEffect>
+											<Item href="" />
+											<Item href="" />
+										</dispatchEffect>
+										<flags>0</flags>
+										<instantApply>false</instantApply>
+									</DispatchImmediate>
+								</dispatch>
+							</Spell>
+						</spell>
+						<targets>536870915</targets>
+					</EventProcessorUnitDieNearMe>
+				</processor>
+				<providerName></providerName>
+				<startCondition>
+					<compiledString>FR4AAAACAAAAJQAAAD4AAABXZW5kaWdvX0E0XzJ1AAAAV2VuZGlnb19BNF8ydQBVi+yD7AhoAAAAAItFCIsQi00Ii4KoAQAA/9CFwHQqaBAAAACLTQiLEYtNCIuCqAEAAP/QiUX8i038ixGLTfyLQgT/0IhF++sExkX7AIpF+4vlXcM=</compiledString>
+					<returnType>bool</returnType>
+					<sString>tal("Wendigo_A4_2u")</sString>
+				</startCondition>
+				<useAbilityCooldown>false</useAbilityCooldown>
+				<useAbilityOwnerMana>false</useAbilityOwnerMana>
+			</TriggerApplicator>
+		</Item>
+	</applicators>
+	<applyTarget>ApplicatorTarget</applyTarget>
+	<behaviorFlags>218</behaviorFlags>
+	<caption>статус ночи</caption>
+	<customCounter>
+		<compiledString></compiledString>
+		<returnType>int</returnType>
+		<sString>0</sString>
+	</customCounter>
+	<customProgress>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>-1.0</sString>
+	</customProgress>
+	<description textref="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR_description.txt" />
+	<dispellPriority>NonDispellable</dispellPriority>
+	<effect>
+		<Item href="" />
+		<Item href="" />
+	</effect>
+	<enabled>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</enabled>
+	<flags>0</flags>
+	<formulaName>Wendigo_Night</formulaName>
+	<image href="/UI/Styles/Icons/Heroes/Wendigo/A4_2.ITEX" />
+	<lifeTime>
+		<compiledString>FRQAAAABAAAAIAAAAE5pZ2h0X0R1cmF0aW9uX0Jhc2UAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+		<returnType>float</returnType>
+		<sString>cNight_Duration_Base</sString>
+	</lifeTime>
+	<LoggingEvent>-1</LoggingEvent>
+	<name textref="/Items/Talents/Class/Wendigo/status_A4_2_Night.APLR_name.txt" />
+	<power>0</power>
+	<providerName></providerName>
+	<stackableAcrossUnits>Unstackable</stackableAcrossUnits>
+	<stackCount>0</stackCount>
+	<startCondition>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</startCondition>
+	<statusPosition>0</statusPosition>
+	<stopBehaviour>StopByTime</stopBehaviour>
+	<unstackableWith href="" />
+</StatusApplicator>

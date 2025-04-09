@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ability>
+	<BackLink DBID="/Creeps/A/Heavy/CTE.CREEP" Count="1" />
+	<BackLink DBID="/Creeps/B/Heavy/CTE.CREEP" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Buildings/A/Altar/ChannelingAltarCreep.APLR" />
+		<Item href="/Buildings/A/Altar/AltarChenneling.ABLT" id="3FE3BC2E-E869-45C6-A0BB-FAAA05DE132D">
+			<UIMessageApplicator>
+				<applyTarget>ApplicatorTarget</applyTarget>
+				<caption>оповещение об использовании</caption>
+				<enabled>
+					<compiledString></compiledString>
+					<returnType>bool</returnType>
+					<sString>true</sString>
+				</enabled>
+				<formulaName></formulaName>
+				<LoggingEvent>-1</LoggingEvent>
+				<message textref="/Buildings/A/Altar/AltarChenneling.ABLT_3fe3bc2ee86945c6a0bbfaaa05de132d_message.txt" />
+				<providerName></providerName>
+				<uiEvent href="/Buildings/A/Altar/AltarChenneling.ABLT" id="ECB203CB-A099-4E2D-955F-D66EC528BC74">
+					<UIEvent>
+						<signRecipients>ALL_PLAYERS</signRecipients>
+						<UISigns>
+							<Item href="/Buildings/A/Altar/AltarChenneling.ABLT" id="A5674E95-D4B0-4B40-92CF-83C0F960DEC6">
+								<UISignMessageToStatusLine>
+									<messages>
+										<Item textref="/Buildings/A/Altar/AltarChenneling.ABLT_a5674e95d4b04b4092cf83c0f960dec6_messages_0.txt" />
+										<Item textref="" />
+										<Item textref="" />
+									</messages>
+									<signRecipients>USE_FROM_PARENT</signRecipients>
+								</UISignMessageToStatusLine>
+							</Item>
+							<Item href="/Buildings/A/Altar/AltarChenneling.ABLT" id="D8EB1C19-ACC2-4645-98A7-1773D6607F46">
+								<UISignPlaySound>
+									<signRecipients>USE_FROM_PARENT</signRecipients>
+									<soundDesc>
+										<eventName>minimap_alert</eventName>
+										<groupName>UI</groupName>
+										<projectName>PF</projectName>
+									</soundDesc>
+								</UISignPlaySound>
+							</Item>
+						</UISigns>
+					</UIEvent>
+				</uiEvent>
+				<value>
+					<compiledString></compiledString>
+					<returnType>float</returnType>
+					<sString>-1.0</sString>
+				</value>
+			</UIMessageApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="" />
+	<caption>абилка, которую юзает сидж</caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations>
+		<Item href="/Buildings/A/Altar/AltarChenneling.ABLT" id="E9687516-61CC-4BA3-95DD-E631FC5986F7">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABBbHRhcklzQnVzeQBVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1JAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vAltarIsBusy == 0</sString>
+				</condition>
+				<uiEvent href="" />
+			</ConditionCastLimitation>
+		</Item>
+		<Item href="/Buildings/A/Altar/AltarChenneling.ABLT" id="B69A10BE-9733-4DC7-819F-5BCB104022ED">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQ4AAAABAAAAGAAAAENURV9FZ2dTdGF0dXMAVYvsagCLRRBQaAAAAACLTQiLEYtNCIuCnAEAAP/QM8k7RRAPlcGKwV3D</compiledString>
+					<returnType>bool</returnType>
+					<sString>sender.applCTE_EggStatus(GLOBAL) != pMisc</sString>
+				</condition>
+				<uiEvent href="/UI/Events/ErrorMessages/CastError_NoEgg.UIEV" />
+			</ConditionCastLimitation>
+		</Item>
+		<Item href="/Buildings/A/Altar/AltarChenneling.ABLT" id="9AA81E71-B5FB-4BCA-AE48-8517B603DE18">
+			<ConditionCastLimitation>
+				<condition>
+					<compiledString>FQwAAAACAAAAEQAAACcAAABBbHRhcklzT25DZABVi+xRaAAAAACLRQyLEItNDIuCiAEAAP/Q3B1JAAAA3+D2xER6CcdF/AEAAADrB8dF/AAAAACKRfyL5V3DAAAAAAAAAAA=</compiledString>
+					<returnType>bool</returnType>
+					<sString>receiver.vAltarIsOnCd == 0</sString>
+				</condition>
+				<uiEvent href="/UI/Events/ErrorMessages/CastError_AltarCooldown.UIEV" />
+			</ConditionCastLimitation>
+		</Item>
+	</castLimitations>
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Buildings/A/Altar/AltarChenneling.ABLT" id="EC9F0E8F-DE16-4E24-8BC0-2D42C3181E66">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Buildings/B/Altar/const_FinalDamage" />
+				<Item href="/Buildings/A/Altar/AltarChenneling.ABLT" id="4A5BECE3-FC2D-4201-9D15-222E423604CE">
+					<UnitConstant>
+						<name>ChannelingDuration</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAAgQQ==</compiledString>
+							<returnType>float</returnType>
+							<sString>10</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAABAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>3</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Buildings/A/Altar/AltarChenneling.ABLT" id="4B0441DB-0475-405A-B30C-7A92D93F5CED">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>1</flags>
+	<image href="" />
+	<imageSecondState href="" />
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</manaCost>
+	<marker></marker>
+	<microAI href="/Buildings/A/Altar/AltarChenneling.ABLT" id="E07A7015-D371-43DC-A005-381D25EEC459">
+		<TargetSelectorMicroAI>
+			<castWhenIdle>false</castWhenIdle>
+			<condition>
+				<compiledString></compiledString>
+				<returnType>bool</returnType>
+				<sString>true</sString>
+			</condition>
+			<targetSelector href="/Buildings/A/Altar/AltarChenneling.ABLT" id="47139CF9-7EF3-48EE-9F82-FFB54760A105">
+				<FirstTargetSelector>
+					<nearestTarget>false</nearestTarget>
+					<targetSelector href="/Buildings/A/Altar/AltarChenneling.ABLT" id="BB942A88-DB80-4666-9BE6-09A5FEBECF0F">
+						<ConditionTargetSelector>
+							<condition>
+								<compiledString>FQgAAAACAAAADQAAACMAAABJbUFsdGFyAFWL7FFoAAAAAItFDIsQi00Mi4KIAQAA/9DcHUUAAADf4PbERHsJx0X8AQAAAOsHx0X8AAAAAIpF/IvlXcMAAAAAAAAAAA==</compiledString>
+								<returnType>bool</returnType>
+								<sString>receiver.vImAltar != 0</sString>
+							</condition>
+							<flags>0</flags>
+							<mode>Normal</mode>
+							<targetSelector href="/Buildings/A/Altar/AltarChenneling.ABLT" id="7A1012D8-55FB-40D7-BC74-2AD00984F8EF">
+								<AreaTargetSelector>
+									<absolutePosition>
+										<x>0</x>
+										<y>0</y>
+									</absolutePosition>
+									<flags>0</flags>
+									<mode>Normal</mode>
+									<range>
+										<compiledString>FQsAAAABAAAAFwAAAFJhbmdlX0xvbmcAVYvsi0UMUItNCFFoAAAAAItVEIsCi00Qi1BQ/9Jdww==</compiledString>
+										<returnType>float</returnType>
+										<sString>cRange_Long</sString>
+									</range>
+									<targetFilter>536871424</targetFilter>
+									<targetSelector href="" />
+								</AreaTargetSelector>
+							</targetSelector>
+						</ConditionTargetSelector>
+					</targetSelector>
+				</FirstTargetSelector>
+			</targetSelector>
+		</TargetSelectorMicroAI>
+	</microAI>
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<name textref="" />
+	<node></node>
+	<passiveApplicators />
+	<requireLineOfSight>true</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>570425984</targetType>
+	<type>Channelling</type>
+	<useRange>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACAQA==</compiledString>
+		<returnType>float</returnType>
+		<sString>4</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Ability>
