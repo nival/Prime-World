@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Consumable>
+	<BackLink DBID="/Maps/Tutorial/_.DICT" Count="1" />
+	<activeCustomTrigger>true</activeCustomTrigger>
+	<allowChase>
+		<compiledString></compiledString>
+		<returnType>bool</returnType>
+		<sString>true</sString>
+	</allowChase>
+	<alternativeTargets />
+	<aoeDisplayOnMinimap>false</aoeDisplayOnMinimap>
+	<aoeHeight>0</aoeHeight>
+	<aoeMaterial href="" />
+	<aoePassabilityCheckMode>0</aoePassabilityCheckMode>
+	<aoeSize>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</aoeSize>
+	<aoeType>None</aoeType>
+	<applicators>
+		<Item href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="2CAA5B42-4781-4693-A2EE-7ACD03CC66D8">
+			<SpellApplicator parent="/Items/Talents/_commonData/Teleport_to_friendly_terrain.APLR">
+				<spell href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="8820934B-D993-4EC2-987A-EEB92CDD4808">
+					<Spell>
+						<applicators>
+							<Item href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="73A7F58E-B440-42C7-9097-4B189DC247B9">
+								<ChannellingApplicator parent="/Items/Talents/_commonData/PortalChannelling.APLR">
+									<cancelSpell href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="20B88A3F-8B1E-48E6-883A-1D98682D1D9B">
+										<Spell>
+											<applicators>
+												<Item href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="25FE99D3-858B-488B-AD4F-3A6A998BF285">
+													<AbilityEndApplicator parent="/GameLogic/GeneralApplicators/EndOfAbility.APLR">
+														<applyTarget>AbilityOwner</applyTarget>
+														<cancelApplicators>true</cancelApplicators>
+														<enabled>
+															<compiledString>FQAAAAAAAAAAVYvsi0UQixCLTRCLAv/QXcM=</compiledString>
+															<returnType>bool</returnType>
+															<sString>mIsAbilityOn</sString>
+														</enabled>
+													</AbilityEndApplicator>
+												</Item>
+											</applicators>
+											<dispatch href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="377BD5B8-5D7E-48ED-A3B9-E42F74D45B65">
+												<DispatchImmediate>
+													<alwaysApply>false</alwaysApply>
+													<applyEffect>
+														<Item href="" />
+														<Item href="" />
+													</applyEffect>
+													<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+													<applyEffectOrientation>Default</applyEffectOrientation>
+													<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+													<dieAfterApply>true</dieAfterApply>
+													<dispatchEffect>
+														<Item href="" />
+														<Item href="" />
+													</dispatchEffect>
+													<flags>0</flags>
+													<instantApply>false</instantApply>
+												</DispatchImmediate>
+											</dispatch>
+										</Spell>
+									</cancelSpell>
+								</ChannellingApplicator>
+							</Item>
+						</applicators>
+						<dispatch href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="5FA47D5A-7FBD-41C5-B28D-0FC6C2CC1E3B">
+							<DispatchImmediate>
+								<alwaysApply>false</alwaysApply>
+								<applyEffect>
+									<Item href="" />
+									<Item href="" />
+								</applyEffect>
+								<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+								<applyEffectOrientation>Default</applyEffectOrientation>
+								<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+								<dieAfterApply>true</dieAfterApply>
+								<dispatchEffect>
+									<Item href="" />
+									<Item href="" />
+								</dispatchEffect>
+								<flags>0</flags>
+								<instantApply>false</instantApply>
+							</DispatchImmediate>
+						</dispatch>
+					</Spell>
+				</spell>
+				<targetSelector href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="730B4696-5EF1-4B71-882B-47D4FC581C2D">
+					<UnitPlaceCorrector>
+						<checkByRangeToRequester>false</checkByRangeToRequester>
+						<checkLineOfSight>false</checkLineOfSight>
+						<nativeTerrainOnly>false</nativeTerrainOnly>
+						<passabilityCheckMode>0</passabilityCheckMode>
+						<radius>10</radius>
+						<targetSelector href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="E17ACBFF-9571-46C4-AE06-A065401D50BD">
+							<ConvertTargetToLand>
+								<aggregateMode>First</aggregateMode>
+								<targetSelector href="" />
+							</ConvertTargetToLand>
+						</targetSelector>
+					</UnitPlaceCorrector>
+				</targetSelector>
+			</SpellApplicator>
+		</Item>
+	</applicators>
+	<autoTargetSelector href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="4677F17F-6BE6-42F9-9A11-35CAB0E13707">
+		<FountainTargetSelector />
+	</autoTargetSelector>
+	<caption></caption>
+	<castAllowRange>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</castAllowRange>
+	<castLimitations />
+	<commonDescription textref="" />
+	<compiledDescriptionA textref="" />
+	<compiledDescriptionB textref="" />
+	<conditionFormulas />
+	<constants href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="00A06A6F-5D03-4078-A9C9-8EA5ADF15E30">
+		<UnitConstantsContainer>
+			<vars>
+				<Item href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="E34C894F-E8E2-4B44-AAE1-BDDD7AD23898">
+					<UnitConstant>
+						<name>Channeling_Time</name>
+						<var>
+							<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAACQQA==</compiledString>
+							<returnType>float</returnType>
+							<sString>4.5</sString>
+						</var>
+					</UnitConstant>
+				</Item>
+			</vars>
+		</UnitConstantsContainer>
+	</constants>
+	<cooldownTime>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</cooldownTime>
+	<cooldownTimeSecondState>
+		<compiledString></compiledString>
+		<returnType>float</returnType>
+		<sString>0.0f</sString>
+	</cooldownTimeSecondState>
+	<description textref="" />
+	<dispatch href="/Maps/Tutorial/Tutorial2Teleport.ARCT" id="B376111C-8DD0-4CED-BC8C-218421D799E5">
+		<DispatchImmediate>
+			<alwaysApply>false</alwaysApply>
+			<applyEffect>
+				<Item href="" />
+				<Item href="" />
+			</applyEffect>
+			<applyEffectIgnoreVisibility>false</applyEffectIgnoreVisibility>
+			<applyEffectOrientation>Default</applyEffectOrientation>
+			<applyEffectRandomAnglePoints>0</applyEffectRandomAnglePoints>
+			<dieAfterApply>true</dieAfterApply>
+			<dispatchEffect>
+				<Item href="" />
+				<Item href="" />
+			</dispatchEffect>
+			<flags>0</flags>
+			<instantApply>false</instantApply>
+		</DispatchImmediate>
+	</dispatch>
+	<flags>2081</flags>
+	<gameObject href="" />
+	<image href="/UI/Styles/Icons/Artifacts/_Test.ITEX" />
+	<imageSecondState href="" />
+	<isPotion>false</isPotion>
+	<isUnitFreeAfterCast>true</isUnitFreeAfterCast>
+	<manaCost>
+		<compiledString>FQAAAAAAAAAAVYvs2e5dwwAAAAA=</compiledString>
+		<returnType>float</returnType>
+		<sString>0</sString>
+	</manaCost>
+	<marker></marker>
+	<maxQuantity>5</maxQuantity>
+	<microAI href="" />
+	<minUseRangeCorrection>0</minUseRangeCorrection>
+	<naftaCost>0</naftaCost>
+	<name textref="/Maps/Tutorial/Tutorial2Teleport.ARCT_name.txt" />
+	<node></node>
+	<passiveApplicators />
+	<persistentId></persistentId>
+	<requireLineOfSight>false</requireLineOfSight>
+	<shortDescription textref="" />
+	<targetType>16777216</targetType>
+	<type>Channelling</type>
+	<useRange>
+		<compiledString>FQAAAAABAAAABQAAAFWL7NkFCwAAAF3DAAB6RQ==</compiledString>
+		<returnType>float</returnType>
+		<sString>4000</sString>
+	</useRange>
+	<useRangeMaterial href="" />
+	<warFogRemoveRadius>0</warFogRemoveRadius>
+	<warFogRemoveTime>0</warFogRemoveTime>
+</Consumable>
