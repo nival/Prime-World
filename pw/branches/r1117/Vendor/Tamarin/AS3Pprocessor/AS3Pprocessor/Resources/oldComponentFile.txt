@@ -1,0 +1,18 @@
+import os
+
+sources = {}
+
+sources[''] = ['stdafx.h','allnatives.h' ]
+
+for _root, dirs, files in os.walk('.'):
+  if _root != '.':
+    root = _root.replace('.\\', '')  
+    sources[root] = []
+    for name in files:
+      sources[root].append(os.path.join(root, name))
+
+components = [
+  'System/SystemLog',
+  'Vendor/Tamarin',  
+]
+platformFeatures = { 'win32' : Win32Features( 'stdafx.h' ) }

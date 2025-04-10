@@ -1,0 +1,68 @@
+if platform == 'win32':
+  if configuration == 'debug':
+    includePaths = [ 
+      'include', 
+      'include/msvc', 
+      'lib/vc_lib/mswd',
+      ]
+  else:
+    includePaths = [ 
+      'include', 
+      'include/msvc', 
+      'lib/vc_lib/msw',
+      ]
+else:
+  includePaths = []
+
+if platform == 'win32':
+  if configuration == 'debug':
+    libDependencies = [
+      'wxbase28d.lib',
+      'wxmsw28d_adv.lib',
+      'wxmsw28d_aui.lib',
+      'wxmsw28d_core.lib',
+      'wxmsw28d_gl.lib',
+      'wxmsw28d_dbgrid.lib',
+      'wxmsw28d_richtext.lib',
+      'wxexpatd.lib',
+      'ws2_32.lib', 
+      'rpcrt4.lib',
+      'shlwapi.lib',
+      'comctl32.lib'
+      ]
+  else:
+  	libDependencies = [
+      'wxbase28.lib',
+      'wxmsw28_adv.lib',
+      'wxmsw28_aui.lib',
+      'wxmsw28_core.lib',
+      'wxmsw28_gl.lib',
+      'wxmsw28_dbgrid.lib',
+      'wxmsw28_richtext.lib',
+      'wxexpat.lib',
+      'ws2_32.lib', 
+      'rpcrt4.lib',
+      'shlwapi.lib',
+      'comctl32.lib'
+      ]
+else:
+  libDependencies = []
+
+libPaths = [
+    'lib/vc_lib',
+]
+
+if platform == 'win32':
+  globalCompilerKeys = [
+	  '/D"__WXMSW__"',
+	  '/D"__WXDEBUG__"',
+	  '/D"_WINDOWS"',
+  ]
+else:  
+  globalCompilerKeys = [
+	  '/D"__WXMSW__"',
+	  '/D"__WXDEBUG__"',
+  ]
+
+
+

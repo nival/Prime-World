@@ -1,0 +1,121 @@
+# ***** BEGIN LICENSE BLOCK *****
+# Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#
+# The contents of this file are subject to the Mozilla Public License Version
+# 1.1 (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+# http://www.mozilla.org/MPL/
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+# The Original Code is [Open Source Virtual Machine.].
+#
+# The Initial Developer of the Original Code is
+# Adobe System Incorporated.
+# Portions created by the Initial Developer are Copyright (C) 2009
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s):
+#   Adobe AS3 Team
+#
+# Alternatively, the contents of this file may be used under the terms of
+# either the GNU General Public License Version 2 or later (the "GPL"), or
+# the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+# in which case the provisions of the GPL or the LGPL are applicable instead
+# of those above. If you wish to allow use of your version of this file only
+# under the terms of either the GPL or the LGPL, and not to allow others to
+# use your version of this file under the terms of the MPL, indicate your
+# decision by deleting the provisions above and replace them with the notice
+# and other provisions required by the GPL or the LGPL. If you do not delete
+# the provisions above, a recipient may use your version of this file under
+# the terms of any one of the MPL, the GPL or the LGPL.
+#
+# ***** END LICENSE BLOCK ***** */
+
+# file contains a list of tests to run
+
+# directory , commands ...
+
+# directory = directory to start, most test suites require starting in the directory
+# commands = all commands and parameters to run testsuite
+# any variable enclosed as ${var} will be replaced with the environment variable
+# the common shell variables are: avmr, avmrd, avmd, avmd   (r=release, rd=release-debugger, d=debug, dd=debug-debugger)
+#
+
+# Bug https://bugzilla.mozilla.org/show_bug.cgi?id=514400
+cd ./acceptance;./runtests.py  --notimecheck ecma3/String/eregress_137879.as
+
+# Bug https://bugzilla.mozilla.org/show_bug.cgi?id=500195
+cd ./acceptance;./runtests.py  --notimecheck ecma3/TypeConversion/e9_3_1_3_rt.as
+
+cd ./acceptance;./runtests.py  --notimecheck as3/AbcDecoder/simple.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp as3/AbcDecoder/simple.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit as3/AbcDecoder/simple.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/Date/e15_9_2_2_4.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/Date/e15_9_2_2_4.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/Date/e15_9_2_2_4.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/Date/e15_9_2_2_5.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/Date/e15_9_2_2_5.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/Date/e15_9_2_2_5.as
+
+cd ./acceptance;./runtests.py  --notimecheck as3/Vector/reverse.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp as3/Vector/reverse.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit as3/Vector/reverse.as
+
+cd ./acceptance;./runtests.py  --notimecheck as3/ShellClasses/ByteArray.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp as3/ShellClasses/ByteArray.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit as3/ShellClasses/ByteArray.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/FunctionObjects/e15_3_1_1_1_rt.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/FunctionObjects/e15_3_1_1_1_rt.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/FunctionObjects/e15_3_1_1_1_rt.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/Date/e15_9_2_2_6.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/Date/e15_9_2_2_6.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/Date/e15_9_2_2_6.as
+
+cd ./acceptance;./runtests.py  --notimecheck e4x/Statements/e12_1.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp e4x/Statements/e12_1.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit e4x/Statements/e12_1.as
+
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/Unicode/u0000_BasicLatin.as
+cd ./acceptance;./runtests.py  --notimecheck ecma3/Unicode/u0000_BasicLatin.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/Unicode/u0000_BasicLatin.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/Date/e15_9_5_12_1.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/Date/e15_9_5_12_1.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/Date/e15_9_5_12_1.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/Date/e15_9_5_34_1.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/Date/e15_9_5_34_1.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/Date/e15_9_5_34_1.as
+
+cd ./acceptance;./runtests.py  --notimecheck mmgc/memstats.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp mmgc/memstats.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit mmgc/memstats.as
+
+cd ./acceptance;./runtests.py  --notimecheck as3/DescribeType/describeType.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp as3/DescribeType/describeType.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit as3/DescribeType/describeType.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/TypeConversion/e9_7.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/TypeConversion/e9_7.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/TypeConversion/e9_7.as
+
+cd ./acceptance;./runtests.py  --notimecheck as3/MethodClosures/MethodClosureFunc.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp as3/MethodClosures/MethodClosureFunc.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit as3/MethodClosures/MethodClosureFunc.as
+
+cd ./acceptance;./runtests.py  --notimecheck ecma3/Number/tostring_001.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp ecma3/Number/tostring_001.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit ecma3/Number/tostring_001.as
+
+cd ./acceptance;./runtests.py  --notimecheck regress/bug_460872.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Dinterp regress/bug_460872.as
+cd ./acceptance;./runtests.py  --notimecheck --vmargs=-Ojit regress/bug_460872.as
+

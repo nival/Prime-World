@@ -1,0 +1,45 @@
+includePaths = [ 
+    '.', 
+    'app', 
+]
+
+libPaths = [ 
+    'lib', 
+]
+
+libs = [ ]
+
+if platform == 'win32' :
+  if configuration == "debug":
+    libs.append( 'TProactord.lib')
+    libs.append( 'IOTerabitd.lib')
+
+  if configuration == "release":
+    libs.append( 'TProactor.lib')
+    libs.append( 'IOTerabit.lib' )
+else :
+  libs.append( 'TProactor.so')
+  libs.append( 'IOTerabit.so' )
+
+
+if configuration == "debug":
+    builders = [ 
+        InstallBuilder( 'lib/TProactord.dll' ), 
+        InstallBuilder( 'lib/TProactord.pdb' ), 
+        InstallBuilder( 'lib/IOTerabitd.dll' ), 
+        InstallBuilder( 'lib/IOTerabitd.pdb' ), 
+    ]
+
+if configuration == "release":
+    builders = [ 
+        InstallBuilder( 'lib/TProactor.dll' ), 
+        InstallBuilder( 'lib/TProactor.pdb' ), 
+        InstallBuilder( 'lib/IOTerabit.dll' ), 
+        InstallBuilder( 'lib/IOTerabit.pdb' ), 
+    ]
+
+components = [
+  'Vendor/ACE_wrappers',
+]
+
+compilerKeys = [ "/D AIO_ROOT", ]

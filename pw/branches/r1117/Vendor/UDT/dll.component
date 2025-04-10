@@ -1,0 +1,44 @@
+sources = [
+  'src/udt/api.cpp',
+  'src/udt/api.h',
+  'src/udt/buffer.cpp',
+  'src/udt/buffer.h',
+  'src/udt/cache.cpp',
+  'src/udt/cache.h',
+  'src/udt/ccc.cpp',
+  'src/udt/ccc.h',
+  'src/udt/channel.cpp',
+  'src/udt/channel.h',
+  'src/udt/common.cpp',
+  'src/udt/common.h',
+  'src/udt/core.cpp',
+  'src/udt/core.h',
+  'src/udt/epoll.cpp',
+  'src/udt/epoll.h',
+  'src/udt/list.cpp',
+  'src/udt/list.h',
+  'src/udt/Makefile',
+  'src/udt/md5.cpp',
+  'src/udt/md5.h',
+  'src/udt/packet.cpp',
+  'src/udt/packet.h',
+  'src/udt/queue.cpp',
+  'src/udt/queue.h',
+  'src/udt/udt.h',
+  'src/udt/window.cpp',
+  'src/udt/window.h',
+]
+
+components = [
+  'Vendor/Libc',
+]
+
+libDependencies = [ 'ws2_32.lib' ]
+
+type = 'dll'
+
+inlined = False
+
+compilerKeys = [ '/DUDT_EXPORTS' ]
+
+localCompilerKeys = [ '/wd4127', '/wd4297', '/D_SCL_SECURE_NO_WARNINGS' ]

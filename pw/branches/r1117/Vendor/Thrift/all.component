@@ -1,0 +1,141 @@
+source = 'thrift-0.9.1'
+
+includePaths = [
+    os.path.join(source),
+    os.path.join(source, 'lib/cpp/src')
+]
+
+if platform == 'win32' :
+  compilerKeys = [
+      '/wd4512',
+      '/wd4996',
+      '/wd4127',
+      '/wd4065',
+      '/wd4706',
+      '/wd4701',
+      '/wd4250',
+      '/wd4101',
+      '/wd4244',
+      '/wd4355',
+      '/wd4245',
+      '/wd4310',
+      '/wd4702',
+      '/wd4189',
+  ]
+
+globalCompilerKeys = [
+  '/D_HAS_ITERATOR_DEBUGGING=0',
+]
+
+local_root = 'lib/cpp/src/thrift'
+_sources = [
+    # main
+    'processor/PeekProcessor.cpp',
+    'processor/PeekProcessor.h',
+    'processor/StatsProcessor.h',
+    'TApplicationException.cpp',
+    'TApplicationException.h',
+    'Thrift.cpp',
+    'Thrift.h',
+    # server 
+    'server/TSimpleServer.cpp',
+    'server/TSimpleServer.h',
+    'server/TServer.cpp',
+    'server/TServer.h',
+    #'server/TNonblockingServer.cpp',
+    #'server/TNonblockingServer.h',
+    #'server/TThreadPoolServer.cpp',
+    #'server/TThreadPoolServer.h',
+    # protocol
+    'protocol/TBase64Utils.cpp',
+    'protocol/TDebugProtocol.cpp',
+    'protocol/TDebugProtocol.h',
+    'protocol/TBinaryProtocol.h',
+    'protocol/TBinaryProtocol.tcc',
+    'protocol/TCompactProtocol.h',
+    'protocol/TCompactProtocol.tcc',
+    'protocol/TDenseProtocol.h',
+    'protocol/TDenseProtocol.cpp',
+    'protocol/TJSONProtocol.h',
+    'protocol/TJSONProtocol.cpp',
+    'protocol/TProtocol.h',
+    'protocol/TProtocolException.h',
+    'protocol/TProtocolTap.h',
+    'protocol/TVirtualProtocol.h',
+     # transport
+    'transport/TBufferTransports.cpp',
+    'transport/TBufferTransports.h',
+    'transport/THttpServer.cpp',
+    'transport/THttpServer.h',
+    'transport/THttpClient.cpp',
+    'transport/THttpClient.h',
+    'transport/THttpTransport.cpp',
+    'transport/THttpTransport.h',
+    'transport/TServerSocket.cpp',
+    'transport/TServerSocket.h',
+    'transport/TSocket.cpp',
+    'transport/TSocket.h',
+    'transport/TZlibTransport.cpp',
+    'transport/TZlibTransport.h',
+   # 'transport/TFDTransport.cpp',
+   # 'transport/TFDTransport.h',
+   # 'transport/TFileTransport.cpp',
+   # 'transport/TFileTransport.h',
+    'transport/TSocketPool.cpp',
+    'transport/TSocketPool.h',
+    'transport/TTransportException.cpp',
+    'transport/TTransportException.h',
+    'transport/TTransportUtils.cpp',
+    'transport/TTransportUtils.h',
+    'transport/TVirtualTransport.h',
+    # concurrency
+    #'concurrency/Util.cpp',
+    #'concurrency/Util.h',
+    #'concurrency/TimerManager.cpp',
+    #'concurrency/TimerManager.h',
+    #'concurrency/Monitor.cpp',
+    #'concurrency/Monitor.h',
+    #'concurrency/PosixThreadFactory.cpp',
+    #'concurrency/PosixThreadFactory.h',
+    #'concurrency/ThreadManager.cpp',
+    #'concurrency/ThreadManager.h',
+    #'concurrency/Mutex.cpp',
+    #'concurrency/Mutex.h',
+    # async
+    'async/SimpleCallback.h',
+    'async/TAsyncBufferProcessor.h',
+  #  'async/TAsyncChannel.cpp',
+  #  'async/TAsyncChannel.h',
+    'async/TAsyncProcessor.h',
+    'async/TAsyncProtocolProcessor.cpp',
+    'async/TAsyncProtocolProcessor.h',
+    'async/TEvhttpClientChannel.h',
+    'async/TEvhttpServer.h',
+]
+
+if platform == 'win32' :
+  _sources += [
+    'windows/GetTimeOfDay.cpp',
+    'windows/GetTimeOfDay.h',
+    'windows/SocketPair.cpp',
+    'windows/SocketPair.h',
+    'windows/WinFcntl.cpp',
+    'windows/WinFcntl.h',
+    'windows/TWinsockSingleton.cpp',
+    'windows/TWinsockSingleton.h',
+  ]
+
+sources = ['NivalThriftException.cpp']+[ os.path.join(source, local_root, path) for path in _sources]
+                                     
+localDefines = ['NOMINMAX']
+
+components = [
+    'Vendor/boost',
+    'Vendor/boost/static',
+    'Vendor/zlib',
+]
+
+if platform == 'win32' :
+  components += [ 'Vendor/UnixEnv',
+                  'Vendor/pthreads',
+  ]

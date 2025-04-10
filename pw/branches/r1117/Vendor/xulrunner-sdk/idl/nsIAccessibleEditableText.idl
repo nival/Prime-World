@@ -1,0 +1,121 @@
+/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*-
+ *
+ * ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is the Mozilla browser.
+ *
+ * The Initial Developer of the Original Code is
+ * Netscape Communications Corporation.
+ * Portions created by the Initial Developer are Copyright (C) 1999
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Paul Sandoz (paul.sandoz@sun.com)
+ *   Bill Haneman (bill.haneman@sun.com)
+ *   John Gaunt (jgaunt@netscape.com)
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either of the GNU General Public License Version 2 or later (the "GPL"),
+ * or the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+#include "nsISupports.idl"
+
+interface nsIEditor;
+
+[scriptable, uuid(52837507-202d-4e72-a482-5f068a1fd720)]
+interface nsIAccessibleEditableText : nsISupports
+{
+  /**
+   * Sets the attributes for the text between the two given indices. The old
+   * attributes are replaced by the new list of attributes. For example,
+   * sets font styles, such as italic, bold...
+   *
+   * @param startPos - start index of the text whose attributes are modified.
+   * @param endPos - end index of the text whose attributes are modified.
+   * @param attributes - set of attributes that replaces the old list of
+   *                     attributes of the specified text portion.
+   */
+  void setAttributes (in long startPos, in long endPos,
+                      in nsISupports attributes);
+
+  /**
+   * Replaces the text represented by this object by the given text.
+   */
+  void setTextContents (in AString text);
+
+  /**
+   * Inserts text at the specified position.
+   *
+   * @param text - text that is inserted.
+   * @param position - index at which to insert the text.
+   */
+  void insertText (in AString text, in long position);
+
+  /**
+   * Copies the text range into the clipboard.
+   *
+   * @param startPos - start index of the text to moved into the clipboard.
+   * @param endPos - end index of the text to moved into the clipboard.
+   */
+  void copyText (in long startPos, in long endPos);
+
+  /**
+   * Deletes a range of text and copies it to the clipboard.
+   *
+   * @param startPos - start index of the text to be deleted.
+   * @param endOffset - end index of the text to be deleted.
+   */
+  void cutText (in long startPos, in long endPos);
+
+  /**
+   * Deletes a range of text.
+   *
+   * @param startPos - start index of the text to be deleted.
+   * @param endPos - end index of the text to be deleted.
+   */
+  void deleteText (in long startPos, in long endPos);
+
+  /**
+   * Pastes text from the clipboard.
+   *
+   * @param position - index at which to insert the text from the system
+   *                   clipboard into the text represented by this object.
+   */
+  void pasteText (in long position);
+
+  /**
+   * Returns an editor associated with the accessible.
+   */
+  [noscript] readonly attribute nsIEditor associatedEditor;
+};
+
+/*
+ Assumptions:
+
+ selectAttributes method takes an nsISupports parameter.
+        'set' methods throw exception on failure.
+ 'wstring' inputs are potentially multibyte (UTF-16 for
+        instance); 'string' and UTF-8 may be a better choice.
+
+*/

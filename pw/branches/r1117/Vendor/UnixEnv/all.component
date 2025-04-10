@@ -1,0 +1,23 @@
+
+includePaths = [
+    '.'
+]
+
+sources = [
+    'sys/time.cpp',
+    'sys/time.h',
+    'inttypes.h',
+]
+
+if platform == 'win32' :
+  compilerKeys = [
+      '/wd4018',
+  ]
+
+  libs = [
+      'Ws2_32.lib',
+  ]
+
+components = [
+    'Vendor/Libc',
+]

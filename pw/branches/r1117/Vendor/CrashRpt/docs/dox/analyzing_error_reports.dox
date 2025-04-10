@@ -1,0 +1,45 @@
+/*!
+
+\page analyzing_error_reports Analyzing Error Reports
+
+When a software release is made and CrashRpt support is enabled in your software, sooner or later you
+start receiving crash reports. 
+
+To check the integrity of received crash report files, you may calculate MD5 hash for 
+your error report and compare it with the MD5 hash that is attached to the error report. 
+When you receive error reports using HTTP connection, the MD5 hash is passed to the 
+server-side script through the 'md5' parameter. When you receive error reports using email, 
+the MD5 hash is attached to the email. 
+
+Count of received crash reports may depend on robustness of your software to various 
+exceptional situations and on popularity of your software. So it's nothing unusual
+if you receive hundreds of error reports a day. If there are many incoming error reports,
+you can monitor and analyse them for some period of time after release, and prepare a hot fix 
+release. 
+
+The purpose of the error report is to help you determine the reason of the problem and 
+try to fix it. The keyword is 'try', because in most cases you can't fix crashes as 
+you usually do with normal bugs. You usually can't reproduce the error on your machine,
+so you can't guarantee it is fixed. Typically, you make fixes in parts of code that 
+could cause the crash most probably and release a new version of your software. 
+For some tips on doing such code modifications, see \ref writing_robust_code.
+
+The normal scenario is that your software becomes more and more stable with each evolutional release and
+less and less error reports are received. 
+
+\section zip_structure The Structure of an Error Report
+
+A crash report is a ZIP file containing several files, such as 
+ - crash minidump (<i>crashdump.dmp</i>);
+ - crash description XML (<i>crashrpt.xml</i>);
+ - optional desktop screenshot file(s);
+ - optional screen capture video file;
+ - and other optional application-specific files, for example, log files.
+
+For more information about using crash description XML and crash minidump, 
+see \ref using_crash_descriptor and \ref using_minidump.
+
+For information on how to automate error report processing with a web-server or 
+with a command-line tool, see \ref automating_crash_report_processing.
+
+*/

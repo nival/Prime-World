@@ -1,0 +1,309 @@
+Index: app/IOTerabit/AsynchChannel.cpp
+===================================================================
+--- app/IOTerabit/AsynchChannel.cpp	(revision 31374)
++++ app/IOTerabit/AsynchChannel.cpp	(working copy)
+@@ -107,7 +107,7 @@
+         txt ="";
+     }
+ 
+-    ACE_DEBUG ((LM_DEBUG,
++    ACE_DEBUG ((LM_INFO,
+               ACE_TEXT ("(%t) %s channel id=(%c)%d Snd=%Q(%Q) Rcv=%Q(%Q) Pending=%04x\n"),
+               txt,
+               ACE_BIT_ENABLED (this->mode_flags_, MODE_SERVER) ? 'S' : 'C',
+@@ -378,6 +378,10 @@
+ 
+     this->free_msg (this->wr_mq_);
+     this->wr_mq_ = 0;
++    ACE_ERROR((LM_INFO,
++      ACE_TEXT ("(%t)%T %s: wr_mq_=0 (ch=%d)\n"),
++      __FUNCTION__,
++      this->get_id () ));
+ 
+     return this->info_.state_;
+ }
+@@ -644,11 +648,41 @@
+         return -1;
+     }
+ 
+-    ACE_Message_Block *last = this->get_last_wr_mb ();
++    ////  detect cycle chain
++    //ACE_Message_Block* inprevlast = 0;
++    //ACE_Message_Block* inlast = &mb;
++    //unsigned int cycle_pos = 1;
++    //while (inlast->cont () != 0)
++    //{
++    //  ++cycle_pos;
++    //  if (this->wr_mq_ == inlast->cont())
++    //  {
++    //    ACE_ERROR((LM_CRITICAL,
++    //      ACE_TEXT ("(%t)%T Cycle in out chain detected(ch=%d cycle_pos=%d)\n"),
++    //      this->get_id (),
++    //      cycle_pos));
++
++    //    DebugBreak();
++
++    //    this->free_msg(&mb);
++    //    this->initiate_close (ERR_WRITE, 0);
++    //    return -1;
++    //  }
++    //}
++
++    unsigned int qlen = 0;
++    ACE_Message_Block *last = this->get_last_wr_mb (qlen);
+     if (last != 0)
+     {
+         // enqueue message block
+         last->cont (&mb);
++
++        ACE_ERROR((LM_INFO,
++          ACE_TEXT ("(%t)%T ENqueue mb(ch=%d sz=%d qlen=%d)\n"),
++          this->get_id (),
++		  mb.length(),
++          qlen));
++
+         return 0;
+     }
+ 
+@@ -657,6 +691,12 @@
+     {
+         // pending write, enqueue message block
+         this->wr_mq_ = &mb;
++
++        ACE_ERROR((LM_INFO,
++          ACE_TEXT ("(%t)%T new out queue(ch=%d sz=%d)\n"),
++          this->get_id (),
++		  mb.length()));
++
+         return 0;
+     }
+    
+@@ -675,6 +715,12 @@
+         return -1;
+     }
+ 
++    ACE_ERROR((LM_INFO,
++        ACE_TEXT ("(%t)%T %s: start_write_internal(ch=%d sz=%d)\n"),
++		__FUNCTION__,
++        this->get_id (),
++		length));
++
+     int rc = this->start_write_impl (mb, length);
+         
+     if (rc == -1)
+@@ -958,24 +1004,24 @@
+     {
+         LogGuard log_lock;
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("(%t)%T **** channel id=(%c)%d handle_read_stream() ****\n"),
+             this->is_server () ? 'S' : 'C',
+             this->get_id ()));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("bytes_to_read = %d\n"),
+             (int) result.bytes_to_read ()));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("handle = %d\n"),
+             (int) result.handle ()));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("bytes_transfered = %d\n"),
+             (int) xfer_bytes));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("error = %d\n"),
+             (int) error));
+ 
+@@ -996,7 +1042,7 @@
+     }
+     else if (loglevel == 1)
+     {
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("(%t)%T channel id=(%c)%d bytes=%d read OK\n"),
+             this->is_server () ? 'S' : 'C',
+             this->get_id (),
+@@ -1016,24 +1062,24 @@
+     {
+         LogGuard log_lock;
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("(%t)%T **** channel id=(%c)%d handle_write_stream() ****\n"),
+             this->is_server () ? 'S' : 'C',
+             this->get_id ()));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("bytes_to_write = %d\n"),
+             (int) result.bytes_to_write ()));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("handle = %d\n"),
+             (int) result.handle ()));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("bytes_transfered = %d\n"),
+             (int) xfer_bytes));
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("error = %d\n"),
+             (int) error));
+ 
+@@ -1055,12 +1101,20 @@
+     }
+     else if (loglevel == 1)
+     {
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+             ACE_TEXT ("(%t)%T channel id=(%c)%d bytes=%d write OK\n"),
+             this->is_server () ? 'S' : 'C',
+             this->get_id (),
+             (int) xfer_bytes));
+     }
++    else
++    {
++      ACE_DEBUG ((LM_INFO,
++        ACE_TEXT ("(%t)%T (else) channel id=(%c)%d bytes=%d write OK\n"),
++        this->is_server () ? 'S' : 'C',
++        this->get_id (),
++        (int) xfer_bytes));
++    }
+ }
+ 
+ void
+@@ -1085,10 +1139,10 @@
+         ptr -= len;
+         xfer_bytes -=len;
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+           ACE_TEXT ("buffer is message_block[%d] transferred=%d:\n"), i, (int)len));
+ 
+-        ACE_HEX_DUMP ((LM_DEBUG, ptr, len));
++        ACE_HEX_DUMP ((LM_INFO, ptr, len));
+       }
+     }
+   else if (iovcnt > 0) // iovec 
+@@ -1104,21 +1158,21 @@
+         ptr -= len;
+         xfer_bytes -=len;
+ 
+-        ACE_DEBUG ((LM_DEBUG,
++        ACE_DEBUG ((LM_INFO,
+           ACE_TEXT ("buffer is iov[%d] transferred=%d:\n"), i, (int)len));
+ 
+-        ACE_HEX_DUMP ((LM_DEBUG, ptr, len));
++        ACE_HEX_DUMP ((LM_INFO, ptr, len));
+       }
+     }
+   else // simple  buffer
+     {
+       char *ptr = buf_info.get_buffer ();
+-      ACE_DEBUG ((LM_DEBUG,
++      ACE_DEBUG ((LM_INFO,
+           ACE_TEXT ("buffer is raw transferred=%d:\n"), (int)xfer_bytes));
+ 
+-      ACE_HEX_DUMP ((LM_DEBUG, ptr, xfer_bytes));
++      ACE_HEX_DUMP ((LM_INFO, ptr, xfer_bytes));
+     }
+-  ACE_DEBUG ((LM_DEBUG,
++  ACE_DEBUG ((LM_INFO,
+     ACE_TEXT ("**** end of buffers ****************\n")));
+ }
+ 
+@@ -1137,16 +1191,25 @@
+     length = 0;
+     
+     int num_max = ACE_IOV_MAX;
+-    if (num_max > 64)
+-    {
+-       num_max = 64;
+-    }
++    //if (num_max > 64)
++    //{
++    //   num_max = 64;
++    //}
++    //num_max = 1024;
+   
+     for (int i = 0; i < num_max; ++i)
+     {
+         if (cur == 0)
+         {
+             this->wr_mq_ = 0;
++
++            ACE_ERROR((LM_INFO,
++              ACE_TEXT ("(%t)%T %s: wr_mq_=0 (ch=%d num=%d len=%d)\n"),
++              __FUNCTION__,
++              this->get_id (),
++              i,
++              length));
++
+             return ret;
+         }
+         prev = cur;
+@@ -1155,6 +1218,13 @@
+     }
+ 
+     this->wr_mq_ = cur;
++    ACE_ERROR((LM_INFO,
++      ACE_TEXT ("(%t)%T %s: wr_mq_=cur (ch=%d num=%d len=%d)\n"),
++      __FUNCTION__,
++      this->get_id (),
++      num_max,
++      length));
++
+     prev->cont (0);
+     return ret;
+ }
+@@ -1168,7 +1238,8 @@
+     const char *data    = (const char *) iov[i].iov_base;
+     size_t      datalen = iov[i].iov_len;
+ 
+-    ACE_Message_Block *mb  = this->get_last_wr_mb ();
++    unsigned int qlen = 0;
++    ACE_Message_Block *mb  = this->get_last_wr_mb (qlen);
+     ACE_Message_Block *tmp = 0; 
+ 
+     if (mb == 0 ||
+@@ -1226,13 +1297,16 @@
+ }
+     
+ ACE_Message_Block *
+-AsynchChannel::get_last_wr_mb ()
++AsynchChannel::get_last_wr_mb (unsigned int& qlen)
+ {
++    qlen = 0;
+     ACE_Message_Block *last = this->wr_mq_;
+     if (last != 0)
+     {
++        qlen = 1;
+         while (last->cont () != 0)
+         {
++            ++qlen;
+             last = last->cont ();
+         }
+     }
+Index: app/IOTerabit/AsynchChannel.h
+===================================================================
+--- app/IOTerabit/AsynchChannel.h	(revision 31374)
++++ app/IOTerabit/AsynchChannel.h	(working copy)
+@@ -352,7 +352,7 @@
+ 
+     bool build_write_chain (const iovec *iov, int iov_cnt);
+     ACE_Message_Block * get_write_chain (size_t& length);
+-    ACE_Message_Block * get_last_wr_mb ();
++    ACE_Message_Block * get_last_wr_mb (unsigned int& qlen);
+ 
+ 
+     // members

@@ -1,0 +1,24 @@
+includePaths = [ 
+    'include', 
+]
+
+if platform == 'win32' :
+  libDependencies = [
+      'zdll.lib',
+  ]
+else :
+  libDependencies = [
+      'libz.so',
+  ]
+  
+libPaths = [
+    'lib',
+]
+
+builders = [ 
+    InstallBuilder( 'zlib1.dll' ), 
+]
+
+components = [
+    'Vendor/Libc',
+]

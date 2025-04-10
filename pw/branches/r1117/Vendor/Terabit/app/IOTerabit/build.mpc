@@ -1,0 +1,28 @@
+project(IOTerabit)  : aiodefaults {
+  sharedname   = IOTerabit
+
+  //staticflags += ACE_AS_STATIC_LIBS
+  dynamicflags = IOTERABIT_BUILD_DLL
+
+  includes    += $(AIO_ROOT)/app
+
+  libs        += TProactor 
+  after       += TProactor 
+
+
+  Source_Files {
+    ./*.cpp
+  }
+
+  Template_Files {
+  }
+ 
+  Header_Files {
+    ./*.h
+  }
+}
+
+
+
+
+

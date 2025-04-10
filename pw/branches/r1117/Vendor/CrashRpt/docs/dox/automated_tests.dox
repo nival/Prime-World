@@ -1,0 +1,137 @@
+/*!
+
+\page automated_tests Running Unit Tests
+
+CrashRpt distribution contains project <b>Tests</b> that implements automated tests 
+for CrashRpt functionality.
+
+To run the tests, go to the \b bin directory and click the \b Tests.exe executable
+file. This should launch a console program that will run a set of test cases.
+
+Tests optionally can be launched from a temporary folder having Chinese 
+UNICODE characters in its name. This can be used to test UNICODE compatibility. To
+skip this, just press Enter when prompted.
+
+Tests are organized into several test suites. Below is the list of test suites:
+
+- CrashRptAPITests : CrashRpt API function tests
+- CrashRptProbeAPITests : CrashRptProbe API function tests
+- CrproberTests : crprober.exe tests
+- DeliveryTests : Error report delivery tests
+- LangFileTests : CrashRpt language file tests
+            
+You can run tests from all test suites at once,
+or to run tests from selected test suites. To run tests from all test suites, press Enter when prompted.
+To run tests from selected test suites, type their names when prompted (separate names by space).
+
+\note Automated tests may require an additional software to be installed on your machine (local host). For example, to
+pass HTTP delivery tests, you need to have a Web-server installed on you local host, and having <i>crashrpt.php</i>
+script inside of your <i>htdocs</i> directory. To pass SMTP delivery tests, you need to have an SMTP server configured
+on your local host. 
+
+Below is an example of the output of the <b>Tests.exe</b> console program:
+
+\code
+
+
+Do you want to run tests from a folder containing Chinese characters to 
+test UNICODE compatibility (y/n)?
+Your choice >
+
+=== Automated tests for CrashRpt v.1.2.10 ===
+
+The list of avaliable test suites:
+ - CrashRptAPITests : CrashRpt API function tests
+ - CrashRptProbeAPITests : CrashRptProbe API function tests
+ - CrproberTests : crprober.exe tests
+ - DeliveryTests : Error report delivery tests
+ - LangFileTests : CrashRpt language file tests
+
+Enter which test suites to run (separate names by space) or enter empty 
+line to run all test suites.
+Your choice >
+
+Running tests...
+ - TopLevelTestSuite::SetUp... OK.
+ - CrashRptAPITests::SetUp... OK.
+ - CrashRptAPITests::Test_InstallW... OK.
+ - CrashRptAPITests::Test_InstallA... OK.
+ - CrashRptAPITests::Test_crUninstall... OK.
+ - CrashRptAPITests::Test_AddFile... OK.
+ - CrashRptAPITests::Test_crInstall_null... OK.
+ - CrashRptAPITests::Test_crInstall_wrong_cb... OK.
+ - CrashRptAPITests::Test_crInstall_missing_app_ver... OK.
+ - CrashRptAPITests::Test_crInstallW_zero_info... OK.
+ - CrashRptAPITests::Test_crInstallA_zero_info... OK.
+ - CrashRptAPITests::Test_crInstallA_twice... OK.
+ - CrashRptAPITests::Test_crInstallA_short_path_name... OK.
+ - CrashRptAPITests::Test_crInstallW_short_path_name... OK.
+ - CrashRptAPITests::Test_crInstallToCurrentThread... OK.
+ - CrashRptAPITests::Test_crInstallToCurrentThread_concurrent... OK.
+ - CrashRptAPITests::Test_crAddFileA... OK.
+ - CrashRptAPITests::Test_crAddFileW... OK.
+ - CrashRptAPITests::Test_crAddScreenshot... OK.
+ - CrashRptAPITests::Test_crAddScreenshot2... OK.
+ - CrashRptAPITests::Test_crAddPropertyA... OK.
+ - CrashRptAPITests::Test_crAddPropertyW... OK.
+ - CrashRptAPITests::Test_crAddRegKeyA... OK.
+ - CrashRptAPITests::Test_crAddRegKeyW... OK.
+ - CrashRptAPITests::Test_crGenerateErrorReport... OK.
+ - CrashRptAPITests::Test_crEmulateCrash... OK.
+ - CrashRptAPITests::Test_crGetLastErrorMsgA... OK.
+ - CrashRptAPITests::Test_crGetLastErrorMsgW... OK.
+ - CrashRptAPITests::Test_CrAutoInstallHelper... OK.
+ - CrashRptAPITests::Test_CrThreadAutoInstallHelper... OK.
+ - CrashRptAPITests::Test_crInstall_in_different_folder... OK.
+ - CrashRptAPITests::Test_undecorated_func_names... OK.
+ - CrashRptAPITests::Test_crashrpt_dll_file_version... OK.
+ - CrashRptAPITests::TearDown... OK.
+ - CrashRptProbeAPITests::SetUp... OK.
+ - CrashRptProbeAPITests::Test_crpOpenErrorReportA... OK.
+ - CrashRptProbeAPITests::Test_crpOpenErrorReportW... OK.
+ - CrashRptProbeAPITests::Test_crpCloseErrorReport... OK.
+ - CrashRptProbeAPITests::Test_crpExtractFileW... OK.
+ - CrashRptProbeAPITests::Test_crpExtractFileA... OK.
+ - CrashRptProbeAPITests::Test_crpGetLastErrorW... OK.
+ - CrashRptProbeAPITests::Test_crpGetLastErrorA... OK.
+ - CrashRptProbeAPITests::Test_crpGetPropertyW... OK.
+ - CrashRptProbeAPITests::Test_crpGetPropertyA... OK.
+ - CrashRptProbeAPITests::Test_crpGetProperty... OK.
+ - CrashRptProbeAPITests::Test_crashrptprobe_dll_file_version... OK.
+ - CrashRptProbeAPITests::TearDown... OK.
+ - CrproberTests::SetUp... OK.
+ - CrproberTests::Test_output... OK.
+ - CrproberTests::Test_extract_file... OK.
+ - CrproberTests::TearDown... OK.
+ - DeliveryTests::SetUp... OK.
+ - DeliveryTests::Test_HttpDelivery_legacy_encoding... Failed.
+!!! In test: DeliveryTests::Test_HttpDelivery_legacy_encoding Expr: dwExitCode==
+0
+ - DeliveryTests::Test_HttpDelivery_binary_encoding... Failed.
+!!! In test: DeliveryTests::Test_HttpDelivery_binary_encoding Expr: dwExitCode==
+0
+ - DeliveryTests::Test_SmtpDelivery... Failed.
+!!! In test: DeliveryTests::Test_SmtpDelivery Expr: dwExitCode==0
+ - DeliveryTests::Test_SmtpDelivery_proxy... Failed.
+!!! In test: DeliveryTests::Test_SmtpDelivery_proxy Expr: dwExitCode==0
+ - DeliveryTests::Test_SMAPI_Delivery... OK.
+ - DeliveryTests::TearDown... OK.
+ - LangFileTests::SetUp... OK.
+ - LangFileTests::Test_lang_file_versions... OK.
+ - LangFileTests::TearDown... OK.
+ - TopLevelTestSuite::TearDown... OK.
+
+=== Summary ===
+
+1: In test: DeliveryTests::Test_HttpDelivery_legacy_encoding Expr: dwExitCode==0
+2: In test: DeliveryTests::Test_HttpDelivery_binary_encoding Expr: dwExitCode==0
+3: In test: DeliveryTests::Test_SmtpDelivery Expr: dwExitCode==0
+4: In test: DeliveryTests::Test_SmtpDelivery_proxy Expr: dwExitCode==0
+
+   Test count: 62
+ Tests passed: 58
+ Tests failed: 4
+
+\endcode
+
+*/

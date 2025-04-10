@@ -1,0 +1,121 @@
+/*!
+
+\page crashfix_server Processing Error Reports with CrashFix Server
+
+<a class="el" href="http://crashfixsoftware.com">CrashFix Server</a> is a web-based crash 
+report analysis software. CrashFix server allows to easily receive, store, 
+organize and analyze crash reports sent by your C++ application.
+It is the easiest way to store and process error reports sent by
+CrashRpt library.  CrashFix server can be downloaded from the <a class="el" href="http://crashfixsoftware.com">CrashFix Server Website</a>.
+
+An example of CrashFix user interface is shown in the figure below:
+
+\image html crashfix_server.png 
+
+\section crashfix_features CrashFix Features
+
+Below, the main features of CrashFix are briefly described:
+
+Crash reports are delivered through HTTP (or HTTPS) connection
+to your CrashFix server. CrashFix server automatically receives crash reports and stores 
+them in the database. CrashFix is a server software hosted on your 
+own server infrastructure. This advantage is especially valuable 
+in corporate environment where crash reports and debugging symbols 
+must be stored privately as sensitive data.
+
+Crash report files being sent by an application to CrashFix server 
+are received and stored in <i>project space</i>. If a user needs to 
+access the project to browse and modify crash reports and/or perform 
+other actions, the administrator may assign the user a role in the 
+desired project. A project has associated disc quotas defining how 
+many disc space the project may occupy.
+
+Among hundreds of crash reports there may be only several different 
+problems, while others just duplicate the information about these 
+problems. CrashFix groups similar crash reports into <i>collections</i>. 
+Grouping duplicate crash reports allows to concentrate 
+on most popular bugs. This makes it easier to analyze crash reports - 
+you do not have to view many crash reports in turn, instead you may 
+view a single crash report or several crash reports from a collection, 
+analyze them and (if desired) open a new bug for the entire collection.
+
+CrashFix has a built-in <i>bug tracker</i>. CrashFix allows to associate bugs with crash collections and/or with 
+individual crash reports. Ideally, crash collections and bugs are in 
+one-to-one relationship, meaning each crash collection has exactly 
+one bug. The bug tracker allows several project members to collaborate: 
+a developer may enhance the code that caused crash, a quality assurance 
+engineer may verify that the problem has been fixed, and the project 
+manager may monitor what bugs are not fixed yet.
+
+CrashFix generates <i>statistics 
+reports</i>, so you can browse crash report upload statistics, watch 
+their version distribution, top crash collections, bug dynamics, 
+recent bug changes, symbol file upload dynamics and other useful 
+information. 
+
+For additional information on CrashFix features,
+please refer to 
+<a class="el" href="http://crashfixsoftware.com/index.php/site/page?view=documentation">CrashFix Documentation</a>.
+
+\section crashfix_integration Configuring CrashRpt to Send Error Reports to CrashFix Server
+
+Below, instructions are provided on how to configure CrashRpt 
+to send crash reports to CrashFix server.
+
+The CrashRpt configuration is typically stored in \ref CR_INSTALL_INFO 
+structure. In order to send crash reports to CrashFix server, you must 
+set the following structure fields:
+
+- Set \b pszAppName field with the name of the project you want to store 
+  crash reports in (you should create a new project in CrashFix web application). 
+  For example, if you have created MyApp project, set 
+  the \b pszAppName field with the value "MyApp".
+
+- Set \b pszAppVersion field with the version of your application. For 
+  example, if the current version of MyApp project is v.1.0.0, set 
+  the \b pszAppVersion field with the value "1.0.0".
+
+- Set \b pszUrl field with the the following URL address: 
+  http://example.com/crashfix/index.php/crashReport/uploadExternal. 
+  In the example above, replace the <i>example.com</i> server name 
+  with your own CrashFix server name.
+
+- Set \b uPriorities field as shown below:
+\code
+info.uPriorities[CR_HTTP] = 1;                      // Use HTTP.
+info.uPriorities[CR_SMTP] = CR_NEGATIVE_PRIORITY;   // Not use SMTP.
+info.uPriorities[CR_SMAPI] = CR_NEGATIVE_PRIORITY;  // Not use Simple MAPI.  
+\endcode
+
+- For \b dwFlags field, append the flag \ref CR_INST_HTTP_BINARY_ENCODING.
+
+- Other fields of the structure may be configured on your choise (see \ref using_crashrpt_api page
+  for more information).
+  
+Below is an example of the code you may finally have:
+
+\code
+CR_INSTALL_INFO info;
+
+memset(&info, 0, sizeof(CR_INSTALL_INFO));
+info.cb = sizeof(CR_INSTALL_INFO);  
+info.pszAppName = _T("MyApp");     // Define application name.
+info.pszAppVersion = _T("1.0.0");  // Define application version.
+// URL for sending reports over HTTP.			
+info.pszUrl = _T("http://example.com/crashfix/index.php/crashReport/uploadExternal");         
+// Define delivery transport priorities. 
+info.uPriorities[CR_HTTP] = 1;                     // Use HTTP.
+info.uPriorities[CR_SMTP] = CR_NEGATIVE_PRIORITY;  // Not use SMTP.
+info.uPriorities[CR_SMAPI] = CR_NEGATIVE_PRIORITY; // Not use Simple MAPI.  
+// Define flags.
+info.dwFlags = 0;                    
+// Install all available exception handlers.
+info.dwFlags |= CR_INST_ALL_POSSIBLE_HANDLERS; 
+// Use binary encoding for HTTP uploads (recommended).    
+info.dwFlags |= CR_INST_HTTP_BINARY_ENCODING;  
+\endcode
+
+See also:
+  - <a href="http://crashfixsoftware.com">CrashFix Server Website</a>
+  - <a href="http://crashfixsoftware.com/index.php/site/page?view=client_side_integration_tutorial">Client-Side Integration - a Tutorial</a>  
+*/

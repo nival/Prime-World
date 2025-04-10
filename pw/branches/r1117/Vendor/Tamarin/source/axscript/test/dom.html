@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Tamarin DOM Tests</title>
+    </head>
+
+  <body>
+  <h2>Testing area</h2>
+    <div id="testarea">
+    </div>
+
+    <div id="output">
+        <h2>Output:</h2>
+    </div>
+    <script language="application/javascript;version=2">
+
+var document = window.document //work around for lack of globals
+// from dbaron's tests
+function makeP ( text ) {
+  var pElem, textNode;
+
+  pElem = document.createElement("p"); // lowercase for XHTML
+  textNode = document.createTextNode(text);
+
+  pElem.appendChild ( textNode );
+  return pElem;
+}
+
+function write(s) {
+        var output = document.getElementById("output");
+        output.appendChild( makeP(s) );
+}
+
+function test(event) {
+    write("starting tests")
+
+    if (document.documentElement.tagName != "HTML")
+        throw document.documentElement.tagName;
+    if (document.documentElement.firstChild.tagName != "HEAD")
+        throw document.documentElement.firstChild.tagName
+    if (document.documentElement.lastChild.tagName != "BODY")
+        throw document.documentElement.lastChild.tagName
+
+    if (document.doctype != null)
+        throw document.doctype;
+
+    // from testcreate()
+    ulist = document.createElement("ul");
+    if (ulist.tagName != "UL")
+        throw ulist.tagName
+    if (ulist.nodeType != 1)
+        throw ulist.nodeType
+
+    var testarea = document.getElementById("testarea")
+    testarea.appendChild(ulist);
+
+    var litem = document.createElement("LI");
+    if (litem.tagName != "LI")
+        throw litem.tagName
+
+    if (litem.nodeType != 1)
+        throw litem.nodeType
+    ulist.appendChild(litem);
+
+    tnode = document.createTextNode("This is the text of the list item.");
+    if (tnode.nodeType != 3)
+        throw tnode.nodeType
+    if (tnode.nodeValue != "This is the text of the list item.")
+        throw tnode.nodeValue
+    litem.appendChild(tnode);
+
+    var comment = document.createComment("This is a comment.");
+    if (comment.nodeType != 8)
+        throw comment.nodeType;
+    if (comment.nodeValue != "This is a comment.")
+        throw comment.nodeValue
+
+    litem.appendChild(comment);
+
+    var attrib = document.createAttribute("class");
+    attrib.value = "testclass";
+    if (attrib.nodeType != 2)
+        throw attrib.nodeType
+    litem.setAttributeNode(attrib);
+    // other misc tests.
+    if (litem.ownerDocument != document)
+        throw "docs aren't the same?"
+
+    // a couple of test for our "collection" semantics.
+    var items = document.getElementsByTagName('*')
+    // The object can be called, or indexed
+    if (items[0] != items(0) || items["0"] != items(0))
+        throw "elements aren't the same"
+    if (items[0].tagName != "HTML")
+        throw "expecting first tag to be HTML - got " + items[0].tagName
+
+    write("tests complete")
+}
+
+window.attachEvent("onload", test)
+
+    </script>
+  </body>
+</html>

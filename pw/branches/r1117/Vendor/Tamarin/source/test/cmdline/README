@@ -1,0 +1,105 @@
+#!/usr/bin/env python
+#* ***** BEGIN LICENSE BLOCK *****
+#* Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#*
+#* The contents of this file are subject to the Mozilla Public License Version
+#* 1.1 (the "License"); you may not use this file except in compliance with
+#* the License. You may obtain a copy of the License at
+#* http://www.mozilla.org/MPL/
+#*
+#* Software distributed under the License is distributed on an "AS IS" basis,
+#* WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+#* for the specific language governing rights and limitations under the
+#* License.
+#*
+#* The Original Code is [Open Source Virtual Machine.].
+#*
+#* The Initial Developer of the Original Code is
+#* Adobe System Incorporated.
+#* Portions created by the Initial Developer are Copyright (C) 2009
+#* the Initial Developer. All Rights Reserved.
+#*
+#* Contributor(s):
+#*   Adobe AS3 Team
+#*
+#* Alternatively, the contents of this file may be used under the terms of
+#* either the GNU General Public License Version 2 or later (the "GPL"), or
+#* the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+#* in which case the provisions of the GPL or the LGPL are applicable instead
+#* of those above. If you wish to allow use of your version of this file only
+#* under the terms of either the GPL or the LGPL, and not to allow others to
+#* use your version of this file under the terms of the MPL, indicate your
+#* decision by deleting the provisions above and replace them with the notice
+#* and other provisions required by the GPL or the LGPL. If you do not delete
+#* the provisions above, a recipient may use your version of this file under
+#* the terms of any one of the MPL, the GPL or the LGPL.
+#*
+#* ***** END LICENSE BLOCK ***** */
+#
+
+The cmdline test suite is designed as a flexible way to run automated tests against the shell and other cmdline 
+tamarin tools.
+
+Tests are written in python.  Each test specifies a list of executables with arguments to run.  Also optionally
+a list of strings may be specified for passing input to the vm.
+
+Verfification can be any one of:
+- test exit code matches
+- test stdout regexp matches against a list of strings
+- test stderr regexp matches against a list of strings
+
+All tests must match test*.py
+
+To all run tests run:
+   ./runtests.py
+
+Any specific test can be run individually as long as the __main__ is specified.
+
+Any failures in matching strings or exit code failures the output will be saved to a file with the testcase name.
+
+The testconfig.txt contains a list of known failures.  Testcases can be marked as expectfail.  The test file
+can be marked as skip and the test file will not run.
+
+
+sample usage:
+$ ./runtests.py
+compile all
+compiling testdata/exec.as
+
+exec.abc, 142 bytes written
+compiling testdata/exit.as
+
+exit.abc, 97 bytes written
+compiling testdata/readline.as
+
+readline.abc, 146 bytes written
+compiling testdata/trace1.as
+
+trace1.abc, 162 bytes written
+compiling testdata/write.as
+
+write.abc, 133 bytes written
+compiling testdata/sleep.as
+
+sleep.abc, 234 bytes written
+compiling testdata/debug.as
+
+debug.abc, 852 bytes written
+testAvmShell.run()
+shell -Dtimeout                PASSED
+testDebugger.run()
+debugger basic                 PASSED
+debugger list                  PASSED
+debugger break                 EXPECTED FAIL, see debugger break.output
+debugger stacktrace            PASSED
+debugger break2                EXPECTED FAIL, see debugger break2.output
+debugger next                  EXPECTED FAIL, see debugger next.output
+debugger locals                EXPECTED FAIL, see debugger locals.output
+debugger exception             PASSED
+debugger local exception       EXPECTED FAIL, see debugger local exception.output
+testShellSystem.run()
+ trace                         PASSED
+ write                         PASSED
+ exit                          PASSED
+ readline                      PASSED
+ exec                          PASSED

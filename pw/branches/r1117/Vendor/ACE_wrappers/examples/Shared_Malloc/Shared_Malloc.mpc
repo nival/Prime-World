@@ -1,0 +1,33 @@
+// -*- MPC -*-
+// $Id: Shared_Malloc.mpc 85212 2009-04-29 13:53:34Z johnnyw $
+
+project : aceexe, avoids_ace_for_tao {
+  exename = malloc
+  Source_Files {
+    Malloc.cpp
+    Options.cpp
+    test_malloc.cpp
+  }
+}
+project(*multiple) : aceexe, avoids_ace_for_tao {
+  exename = multiple
+  Source_Files {
+    Malloc.cpp
+    Options.cpp
+    test_multiple_mallocs.cpp
+  }
+}
+project(*persistence) : aceexe, avoids_ace_for_tao {
+  exename = persistence
+  Source_Files {
+    test_persistence.cpp
+  }
+}
+project(*posind) : aceexe, avoids_ace_for_tao {
+  exename = posind
+  Source_Files {
+    Malloc.cpp
+    Options.cpp
+    test_position_independent_malloc.cpp
+  }
+}

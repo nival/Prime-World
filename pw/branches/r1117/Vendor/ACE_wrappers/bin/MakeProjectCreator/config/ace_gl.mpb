@@ -1,0 +1,16 @@
+// -*- MPC -*-
+// $Id: ace_gl.mpb 85345 2009-05-14 19:42:45Z sowayaa $
+
+project : ace_x11 {
+  requires += gl
+
+  // Depends on configration from include/makeinclude/platform_*.GNU
+  verbatim(gnuace,local) {
+    CPPFLAGS += $(PLATFORM_GL_CPPFLAGS) $(PLATFORM_X11_CPPFLAGS)
+    LIBS += $(PLATFORM_GL_LIBS) $(PLATFORM_X11_LIBS)
+    LDFLAGS += $(PLATFORM_GL_LDFLAGS) $(PLATFORM_GL_LDFLAGS)
+  }
+  specific(prop:microsoft) {
+    lit_libs += OpenGL32
+  }
+}

@@ -1,0 +1,205 @@
+# Process this file with autoconf to produce a configure script
+#-------------------------------------------------------------------
+AC_PREREQ(2.59)
+AC_COPYRIGHT([Copyright (C) 2007-2010  Vivek Krishna <vivek200120@users.sourceforge.net>])
+AC_INIT([WSDLPull],[1.24],[vivek200120@users.sourceforge.net],[wsdlpull])
+AC_CONFIG_HEADER([src/config.h])
+AC_CONFIG_SRCDIR([src/wsdlparser/WsdlParser.cpp])
+AC_CONFIG_AUX_DIR([config])
+AM_INIT_AUTOMAKE
+#AM_PATH_CPPUNIT(1.10)
+#AM_CONDITIONAL([HAVE_CPPUNIT], [test "x$CPPUNIT_LIBS" != x])
+
+# Configure file for wsdlpull
+
+# Shared library versioning
+GENERIC_LIBRARY_VERSION="1:24:0"
+#                        | | |
+#                 +------+ | +---+
+#                 |        |     |
+#              current:revision:age
+#                 |        |     |
+#                 |        |     +- increment if interfaces have been added;
+#                 |        |        set to zero if interfaces have been 
+#                 |        |        removed or changed
+#                 |        +- increment if source code has changed;
+#                 |           set to zero if current is incremented
+#                 +- increment if interfaces have been added, removed
+#                    or changed
+AC_SUBST(GENERIC_LIBRARY_VERSION)
+
+# Check for host and disable building a shared library in Windows
+AC_CANONICAL_HOST
+case $host in
+  *-*-msdos* | *-*-go32* | *-*-mingw32* | *-*-cygwin* | *-*-windows*) 
+    AC_DISABLE_SHARED
+    AC_ENABLE_STATIC
+    ;;
+  *)  
+    AC_ENABLE_SHARED
+    AC_DISABLE_STATIC
+    ;;
+esac
+
+# Checks for programs.
+save_CFLAGS="$CFLAGS"
+save_CXXFLAGS="$CXXFLAGS"
+AC_PROG_CXX
+AC_PROG_CXXCPP
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_CPP
+CXXFLAGS="$save_CXXFLAGS"
+CFLAGS="$save_CFLAGS"
+AC_PROG_LN_S
+AC_PROG_INSTALL
+AC_PROG_LIBTOOL
+AC_PROG_MAKE_SET 
+
+# Set default language to C++
+AC_LANG([C++])
+
+AC_ARG_WITH(log,
+	[  --with-log  compile with logging information on],
+	AC_DEFINE([LOGGING],,[Whether to compile with logging information])
+	)
+
+# Provide --with-docdir
+AC_ARG_WITH(docdir,
+            [AS_HELP_STRING([--with-docdir=DIR],
+                            [set documentation directory to DIR])],
+            [DOC_DIR="$withval"],
+            [DOC_DIR=""])
+if test "x$DOC_DIR" != x; then
+  docdir="$DOC_DIR"
+else
+  docdir="${datadir}/doc/$PACKAGE-$VERSION"
+fi
+AC_SUBST(docdir)
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_SIZE_T
+AC_STRUCT_TM
+#AC_C_CONST
+#AC_C_INLINE
+
+AM_WITH_DMALLOC
+
+# Checks for header files
+AC_HEADER_STDC
+AC_HEADER_TIME
+AC_CHECK_HEADERS([ fstream \
+  iostream \
+  list \
+  vector \
+  string])
+
+# Default compilation flags
+if test -z "${CFLAGS}"; then
+   CFLAGS="-g -Wall"
+fi
+
+if test -z "${CXXFLAGS}"; then
+   CXXFLAGS="-g -Wall"
+fi
+
+AC_CHECK_HEADERS(getopt.h,,AC_MSG_WARN(getopt.h missing))
+AC_CHECK_FUNCS(getopt_long, 
+  [AC_DEFINE(HAVE_GETOPT_LONG, 1, long getopt support)],
+  [ # FreeBSD has a gnugetopt library for this:
+    AC_CHECK_LIB([gnugetopt],[getopt_long],
+      [AC_DEFINE(HAVE_GETOPT_LONG,1,getopt support)
+        LDFLAGS="$LDFLAGS -lgnugetopt"
+      ],)
+  ])
+
+AC_LANG_PUSH(C)
+AC_CHECK_LIB(curl,curl_easy_init,
+	[AC_DEFINE(WITH_CURL, 1,libcurl library) LIBS="-lcurl $LIBS"], 
+      	AC_MSG_WARN(curl is needed for HTTP GET/POST))
+AC_LANG_POP(C)
+
+AC_DEFUN([ENABLE_EXAMPLES], [
+    AC_ARG_ENABLE([examples], AC_HELP_STRING([--enable-examples], [ builds examples ]),
+    [build_examples="yes"],
+    [])
+])
+
+ENABLE_EXAMPLES 
+
+AM_CONDITIONAL(EXAMPLES,test "$build_examples" = yes)
+
+AC_OUTPUT([
+Makefile
+docs/Makefile
+man/Makefile
+win32/Makefile
+win32/curl/Makefile
+win32/vs2005/Makefile
+win32/vs2008/Makefile
+src/Makefile
+src/xmlpull/Makefile
+src/schemaparser/Makefile
+src/wsdlparser/Makefile
+src/tools/Makefile
+examples/Makefile
+examples/print/Makefile
+examples/xml/Makefile
+examples/stocks/Makefile
+src/schemas/Makefile
+tests/Makefile
+tests/schema/Makefile
+tests/wsdl/Makefile
+])
+
+echo "
+------------------------------------------------------------------------------
+$PACKAGE-$VERSION library configuration:
+------------------------------------------------------------------------------
+
+Directories:
+  - prefix ............ : ${prefix}
+  - exec_prefix ....... : ${exec_prefix}
+  - includedir ........ : ${includedir}
+  - libdir ............ : ${libdir}
+  - docdir ............ : ${docdir}
+  - mandir ............ : ${mandir}
+  - infodir ........... : ${infodir}
+
+Switches:
+  - exceptions ........ : ${enable_exceptions}
+  - use-nls ........... : ${USE_NLS}
+  - info-doc .......... : ${enable_info_doc}
+  - html-doc .......... : ${enable_html_doc}
+  - shared ............ : ${enable_shared}
+  - static ............ : ${enable_static}
+
+Documentation tools:
+  - texinfo ........... : ${texinfo_ok}
+  - doxygen ........... : ${doxygen_ok}
+  - latex ............. : ${latex_ok}
+  - dvips ............. : ${dvips_ok}
+  - ghostscript ....... : ${gs_ok}
+
+Testing tools:
+  - diff .............. : ${diff_ok}
+  - sed ............... : ${sed_ok}
+
+Compiler/linker flags/libs/defs:
+  - CXX ............... : ${CXX}
+  - CFLAGS ............ : ${CFLAGS}
+  - CXXFLAGS .......... : ${CXXFLAGS}
+  - CPPFLAGS .......... : ${CPPFLAGS}
+  - LDFLAGS ........... : ${LDFLAGS}
+  - LIBS .............. : ${LIBS}
+
+External libraries:
+  - CPPUNIT ........... :
+    o CPPUNIT_VERSION . : ${CPPUNIT_VERSION}
+    o CPPUNIT_CFLAGS .. : ${CPPUNIT_CFLAGS}
+    o CPPUNIT_LIBS .... : ${CPPUNIT_LIBS}
+
+------------------------------------------------------------------------------
+Now type 'make && make install' to build and install $PACKAGE-$VERSION library
+------------------------------------------------------------------------------
+"

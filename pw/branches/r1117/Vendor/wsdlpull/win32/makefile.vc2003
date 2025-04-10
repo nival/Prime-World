@@ -1,0 +1,241 @@
+# Makefile for wsdlpull on Win32
+# Invoke with nmake
+# Tested with VC .NET 2003
+# For questions, contact philip@helger.com
+
+# To make a debug build, define DEBUG to 1
+!ifndef DEBUG
+DEBUG=1
+!endif
+
+# To make a singlethreaded build, define SINGLE_THREADED to 1
+!ifndef SINGLE_THREADED
+SINGLE_THREADED=1
+!endif
+
+# To make a DLL  build, define BUILD_DLL to 1
+!ifndef BUILD_DLL
+BUILD_DLL=0
+!endif
+
+# Determine which version to use (allowed: 6 for VC6 or 7 for VC .NET 2003)
+!ifndef VC_VERSION
+VC_VERSION=7
+!endif
+
+###############################################
+
+# Define base output directory
+!if "$(DEBUG)"=="1"
+DESTDIR_PREFIX=Debug
+!else
+DESTDIR_PREFIX=Release
+!endif
+
+# Create the final output directory name
+!if "$(BUILD_DLL)" == "1"
+DESTDIR=$(DESTDIR_PREFIX)_DLL
+!else
+!if "$(SINGLE_THREADED)" == "1"
+DESTDIR=$(DESTDIR_PREFIX)
+!else
+DESTDIR=$(DESTDIR_PREFIX)_MT
+!endif
+!endif
+
+# Debug related settings
+!if "$(DEBUG)"=="1"
+DEBUG_SUFFIX=d
+!if "$(VC_VERSION)"=="6"
+CL_FLAGS  = -ZI -FR$(DESTDIR)\ -GS -Od
+LINK_FLAGS= -debug -editandcontinue -opt:noicf
+!else
+CL_FLAGS  = -ZI -FR$(DESTDIR)\ -GS -Od -RTC1
+LINK_FLAGS= -debug -editandcontinue -opt:noicf
+!endif
+!else
+DEBUG_SUFFIX=
+!if "$(VC_VERSION)"=="6"
+CL_FLAGS  = -Ox -Os
+LINK_FLAGS= -release -opt:ref
+!else
+CL_FLAGS  = -Ox -Os -GL
+LINK_FLAGS= -release -opt:ref -ltcg
+!endif
+!endif
+
+# Differences between the VC versions
+!if "$(VC_VERSION)"=="6"
+LINK_PATHES  =-libpath:"$(MSVCDIR)/lib"
+RTL_DLL      =msvcrt$(DEBUG_SUFFIX).lib msvcprt$(DEBUG_SUFFIX).lib msvcirt$(DEBUG_SUFFIX).lib
+RTL_STATIC   =libc$(DEBUG_SUFFIX).lib   libcp$(DEBUG_SUFFIX).lib   libci$(DEBUG_SUFFIX).lib
+RTL_STATIC_MT=libcmt$(DEBUG_SUFFIX).lib libcpmt$(DEBUG_SUFFIX).lib libcimt$(DEBUG_SUFFIX).lib
+!else
+LINK_PATHES  =-libpath:"$(MSVCDIR)/lib" -libpath:"$(MSVCDIR)/PlatformSDK/lib"
+RTL_DLL      =msvcrt$(DEBUG_SUFFIX).lib msvcprt$(DEBUG_SUFFIX).lib
+RTL_STATIC   =libc$(DEBUG_SUFFIX).lib   libcp$(DEBUG_SUFFIX).lib
+RTL_STATIC_MT=libcmt$(DEBUG_SUFFIX).lib libcpmt$(DEBUG_SUFFIX).lib
+!endif
+
+# global settings
+SRCDIR=..\src
+EXAMPLESDIR=..\examples
+CL_INCLUDES= -I..\src -I.
+CL_DEFINES=-DWIN32
+CL=cl.exe -nologo -c -GX $(CL_FLAGS) $(CL_INCLUDES) $(CL_DEFINES)
+LIB=lib.exe -nologo
+LINK=link.exe -nologo -map -profile $(LINK_FLAGS) $(LINK_PATHES)
+
+!if "$(BUILD_DLL)" == "1"
+CL=$(CL) -MD$(DEBUG_SUFFIX) -DEXPORT=__declspec(dllexport)
+LINK=$(LINK) $(RTL_DLL)
+OBJ=dlo
+!else # BUILD_DLL
+!if "$(SINGLE_THREADED)" == "1"
+CL=$(CL) -ML$(DEBUG_SUFFIX) -DEXPORT=/**/
+LINK=$(LINK) $(RTL_STATIC)
+OBJ=obj
+!else
+CL=$(CL) -MT$(DEBUG_SUFFIX) -DEXPORT=/**/
+LINK=$(LINK) $(RTL_STATIC_MT)
+OBJ=mto
+!endif
+!endif # BUILD_DLL
+
+WSDLPULL_OBJS=\
+       $(DESTDIR)/XmlPullParser.$(OBJ) \
+       $(DESTDIR)/XmlSerializer.$(OBJ) \
+       $(DESTDIR)/XmlUtils.$(OBJ) \
+       $(DESTDIR)/ConfigFile.$(OBJ) \
+       $(DESTDIR)/Message.$(OBJ) \
+       $(DESTDIR)/Soap.$(OBJ) \
+       $(DESTDIR)/WsdlDebug.$(OBJ) \
+       $(DESTDIR)/WsdlElement.$(OBJ) \
+       $(DESTDIR)/WsdlInvoker.$(OBJ) \
+       $(DESTDIR)/WsdlParser.$(OBJ) \
+       $(DESTDIR)/ComplexType.$(OBJ) \
+       $(DESTDIR)/ContentModel.$(OBJ) \
+       $(DESTDIR)/Group.$(OBJ) \
+       $(DESTDIR)/SchemaDebug.$(OBJ) \
+       $(DESTDIR)/SchemaParser.$(OBJ) \
+       $(DESTDIR)/SchemaValidator.$(OBJ) \
+       $(DESTDIR)/SimpleType.$(OBJ) \
+       $(DESTDIR)/TypeContainer.$(OBJ) \
+       $(DESTDIR)/TypesTable.$(OBJ) \
+       $(DESTDIR)/w3c.$(OBJ) \
+
+WSDLPULL_LIB=$(DESTDIR)/wsdlpull.lib
+WSDLPULL_DLL=$(DESTDIR)/wsdlpull.dll
+
+WSDL_EXE_OBJS=\
+       $(DESTDIR)/wsdl.$(OBJ) \
+       $(WSDLPULL_LIB)
+
+WSDL_EXE=$(DESTDIR)/wsdl.exe
+
+SCHEMA_EXE_OBJS=\
+       $(DESTDIR)/schema.$(OBJ) \
+       $(WSDLPULL_LIB)
+
+SCHEMA_EXE=$(DESTDIR)/schema.exe
+
+PRINT_EXE_OBJS=\
+       $(DESTDIR)/print.$(OBJ) \
+       $(WSDLPULL_LIB)
+
+PRINT_EXE=$(DESTDIR)/print.exe
+
+STOCKS_EXE_OBJS=\
+       $(DESTDIR)/stocks.$(OBJ) \
+       $(WSDLPULL_LIB)
+
+STOCKS_EXE=$(DESTDIR)/stocks.exe
+
+ROUNDTRIP_EXE_OBJS=\
+       $(DESTDIR)/roundtrip.$(OBJ) \
+       $(WSDLPULL_LIB)
+
+ROUNDTRIP_EXE=$(DESTDIR)/roundtrip.exe
+
+# main target
+all: _checkdirs lib tools examples
+
+_checkdirs:
+       @if not exist $(DESTDIR)\. md $(DESTDIR)
+
+lib: $(WSDLPULL_LIB)
+
+tools: $(WSDL_EXE) $(SCHEMA_EXE)
+
+examples: $(PRINT_EXE) $(STOCKS_EXE) $(ROUNDTRIP_EXE)
+
+!if "$(BUILD_DLL)" == "1"
+# dynamic library
+$(WSDLPULL_LIB): $(WSDLPULL_DLL)
+$(WSDLPULL_DLL): $(WSDLPULL_OBJS)
+       $(LINK) $(WSDLPULL_OBJS) -out:$@ -DLL
+!else
+# static library
+$(WSDLPULL_LIB): $(WSDLPULL_OBJS)
+       $(LIB) $(WSDLPULL_OBJS) -out:$@
+!endif
+
+# wsdl exe
+$(WSDL_EXE): $(WSDL_EXE_OBJS)
+       $(LINK) $(**) -out:$@
+
+# schema exe
+$(SCHEMA_EXE): $(SCHEMA_EXE_OBJS)
+       $(LINK) $(**) -out:$@
+
+# print example
+$(PRINT_EXE): $(PRINT_EXE_OBJS)
+       $(LINK) $(**) -out:$@
+
+# stocks example
+$(STOCKS_EXE): $(STOCKS_EXE_OBJS)
+       $(LINK) $(**) -out:$@
+
+# roundtrip example
+$(ROUNDTRIP_EXE): $(ROUNDTRIP_EXE_OBJS)
+       $(LINK) $(**) -out:$@
+
+# generic build rules
+{$(SRCDIR)/xmlpull}.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+{$(SRCDIR)/wsdlparser}.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+{$(SRCDIR)/schemaparser}.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+{$(SRCDIR)/tools}.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+{$(EXAMPLESDIR)/print}.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+{$(EXAMPLESDIR)/stocks}.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+{$(EXAMPLESDIR)/xml}.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+.cpp{$(DESTDIR)}.$(OBJ):
+       $(CL) $< -Fo$@
+
+# generate dependencies
+dep:
+       checkdep --makefile --system_includes --include..\src --prefix$$ --prefix(DESTDIR)/ --suffix.$$ --suffix(OBJ) \
+               ../src/schemaparser/*.cpp --include../src/schemaparser \
+               ../src/wsdlparser/*.cpp --include../src/wsdlparser \
+               ../src/xmlpull/*.cpp --include../src/xmlpull \
+               ../src/tools/*.cpp --include../src/tools \
+               ../examples/print/*.cpp --include../examples/print \
+               ../examples/stocks/*.cpp --include../examples/stocks \
+               ../examples/xml/*.cpp --include../examples/xml \
+               *.cpp --include. \
+               > _depend 2> nul
+
+!include "_depend"
