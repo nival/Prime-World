@@ -1,0 +1,3153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<node name="GameScreen" type="GameScreen">
+  <node name="mainPanel_mc" type="MainWidget" field="_mainWidget">
+    <node name="main_tb" type="Button" field="_tbClanWarsMenuMode" framesCount="4" />
+    <node name="fullScreen_tb" type="ToggleButton" field="_tbFullScreen" framesCount="8" />
+    <node name="hero_tb" type="AnimatedToggleButton" field="_tbHero" />
+    <node name="build_tb" type="AnimatedToggleButton" field="_tbBuild" />
+    <node name="friends_tb" type="AnimatedToggleButtonWithCounter" field="_tbFriends">
+      <node name="friendsCounter_mc" type="Counter" field="_counter">
+        <node name="level_txt" type="TextField" field="_text" />
+      </node>
+    </node>
+    <node name="chat_tb" type="AnimatedToggleButton" field="_tbChat" />
+    <node name="name_txt" type="TrimmedTooltipText" field="_txtUserName" />
+    <node name="playerAvatar_mcz" type="ImageBox" field="_imgUserAvatar" />
+    <node name="levelRoundPlate_mc" type="LevelRoundPlateWidget" field="_levelRoundPlate">
+      <node name="level_txt" type="TextField" field="TxtUserLevel" />
+    </node>
+    <node name="xp_bar" type="ProgressBar" field="_barLevel" />
+    <node name="esc_btn" type="Button" field="_btnEsc" framesCount="4" />
+    <node name="mainPanelBack_img" type="Control" field="_back" />
+  </node>
+  <node name="resources_pnl" type="ResourcesWidget" field="_resourcesWidget">
+    <node name="castleResources_pnl" type="CastleResourcesWidget" field="_castleResourcesWidget">
+      <node name="honorIcon_mc" type="HonorControl" field="_honorControl">
+        <node name="honor_count_text" type="TextField" field="_txtValue" />
+        <node name="progress_bar" type="MovieClip" field="_progressBar" framesCount="7" />
+      </node>
+      <node name="mask" type="PopulationResourceControl" field="_populationControl">
+        <node name="mask" type="Control" field="_mask" />
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="silver" type="ResourceControl" field="_silverControl">
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="gold" type="GoldResourceControl" field="_zzGoldControl">
+        <node name="anim" type="MovieClip" field="_anim" />
+        <node name="question_mc" type="Control" field="_question" />
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="crystal" type="ResourceControlButton" field="_crystalControl">
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="crystalRed" type="ResourceControl" field="_redCrystalControl">
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="food" type="FractionDependResourceControl" field="_foodControl" framesCount="2">
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="oreGomma" type="FractionDependResourceControl" field="_oreControl" framesCount="2">
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="woodSilk" type="FractionDependResourceControl" field="_woodControl" framesCount="2">
+        <node name="value_txt" type="TextField" field="_txtValue" />
+      </node>
+      <node name="premiumIcon_mc" type="PremiumIconResource" field="_premiumIcon">
+        <node name="value_txt" type="TextField" field="_txtValue" />
+        <node name="adornShield_btn" type="Button" field="_btnAdorn" framesCount="4" />
+        <node name="doctShield_btn" type="Button" field="_btnDoct" framesCount="4" />
+        <node name="anim" type="MovieClip" field="_anim" />
+        <node name="frame_mc" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+  </node>
+  <node name="matchmaking_mc" type="MatchMakingWidget" field="_matchMakingWidget">
+    <node name="matchmakingHeroIcon_mc" type="MatchMakingHeroPortrait" field="_ourPortrait">
+      <node name="partyBox" type="PartyBox" field="_partyBox">
+        <node name="inputText" type="InputTextControl" field="_inputTextBox" />
+        <node name="hintText" type="TextField" field="_tooltipText" />
+        <node name="frame" type="Control" field="_back" />
+        <node name="row_btn" type="ComboBoxRow`1" field="_rowBtn">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+        <node name="noFriendsOnline_txt" type="TextField" field="_noFriendsOnline" />
+      </node>
+      <node name="mmShadeSlot" type="MovieClip" field="_shade" />
+      <node name="context" type="MatchMakingPortraitContext" field="_context">
+        <node name="separator" type="Control" field="_separator" />
+        <node name="frame" type="Control" field="_back" />
+        <node name="row_btn" type="ComboBoxRow`1" field="_row">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+      </node>
+      <node name="heroPortraitBtn" type="HeroPortraitButton" field="BtnHeroPortrait">
+        <node name="matchmakinglHeroIcon_icn" type="HeroIconContainer" field="_imgHero">
+          <node name="icon" type="ImageBox" field="Icon" />
+        </node>
+        <node name="friendIcon" type="ImageBox" field="_imgAvatar" />
+        <node name="randomTeam" type="MovieClip" field="_botIcon" />
+        <node name="backFriend" type="Control" field="_friendBack" />
+        <node name="noHeroIcon" type="MovieClip" field="_noHeroIcon" />
+        <node name="plus" type="MovieClip" field="_plus" />
+        <node name="name_txt" type="TrimmedTooltipText" field="_heroName" />
+        <node name="frame" type="SystemTooltipControl" field="_frame" />
+        <node name="redBack" type="SuperHeroFX" field="_superHeroFX">
+          <node name="sparks" type="MovieClip" field="_sparks" />
+          <node name="clouds" type="MovieClip" field="_clouds" />
+        </node>
+        <node name="bordersMatchmaking" type="MovieClip" field="_leagueBorder" />
+      </node>
+      <node name="level_mc" type="PlayerLevelControl" field="_playerLevel">
+        <node name="level_txt" type="TextField" field="_playerLevel" />
+      </node>
+      <node name="crown" type="Control" field="_crown" />
+      <node name="pending_mc" type="SystemTooltipControl" field="_statusIcon" framesCount="14" />
+      <node name="kick_btn" type="Button" field="_kickButton" framesCount="4" />
+      <node name="rankIconContainer" type="RankIcon" field="_rankIcon">
+        <node name="rankIcon" type="ImageBox" field="_icoRank" />
+      </node>
+      <node name="rating" type="FrameText" field="_raiting">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+      <node name="circle_mc" type="Control" field="_circle" />
+      <node name="flag" type="FlagIcon" field="_flag">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+    </node>
+    <node name="matchmakingTeam1" type="MatchMakingHeroPortrait" field="_teammateTemplate">
+      <node name="partyBox" type="PartyBox" field="_partyBox">
+        <node name="inputText" type="InputTextControl" field="_inputTextBox" />
+        <node name="hintText" type="TextField" field="_tooltipText" />
+        <node name="frame" type="Control" field="_back" />
+        <node name="row_btn" type="ComboBoxRow`1" field="_rowBtn">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+        <node name="noFriendsOnline_txt" type="TextField" field="_noFriendsOnline" />
+      </node>
+      <node name="mmShadeSlot" type="MovieClip" field="_shade" />
+      <node name="context" type="MatchMakingPortraitContext" field="_context">
+        <node name="separator" type="Control" field="_separator" />
+        <node name="frame" type="Control" field="_back" />
+        <node name="row_btn" type="ComboBoxRow`1" field="_row">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+      </node>
+      <node name="heroPortraitBtn" type="HeroPortraitButton" field="BtnHeroPortrait">
+        <node name="matchmakinglHeroIcon_icn" type="HeroIconContainer" field="_imgHero">
+          <node name="icon" type="ImageBox" field="Icon" />
+        </node>
+        <node name="friendIcon" type="ImageBox" field="_imgAvatar" />
+        <node name="randomTeam" type="MovieClip" field="_botIcon" />
+        <node name="backFriend" type="Control" field="_friendBack" />
+        <node name="noHeroIcon" type="MovieClip" field="_noHeroIcon" />
+        <node name="plus" type="MovieClip" field="_plus" />
+        <node name="name_txt" type="TrimmedTooltipText" field="_heroName" />
+        <node name="frame" type="SystemTooltipControl" field="_frame" />
+        <node name="redBack" type="SuperHeroFX" field="_superHeroFX">
+          <node name="sparks" type="MovieClip" field="_sparks" />
+          <node name="clouds" type="MovieClip" field="_clouds" />
+        </node>
+        <node name="bordersMatchmaking" type="MovieClip" field="_leagueBorder" />
+      </node>
+      <node name="level_mc" type="PlayerLevelControl" field="_playerLevel">
+        <node name="level_txt" type="TextField" field="_playerLevel" />
+      </node>
+      <node name="crown" type="Control" field="_crown" />
+      <node name="pending_mc" type="SystemTooltipControl" field="_statusIcon" framesCount="14" />
+      <node name="kick_btn" type="Button" field="_kickButton" framesCount="4" />
+      <node name="rankIconContainer" type="RankIcon" field="_rankIcon">
+        <node name="rankIcon" type="ImageBox" field="_icoRank" />
+      </node>
+      <node name="rating" type="FrameText" field="_raiting">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+      <node name="circle_mc" type="Control" field="_circle" />
+      <node name="flag" type="FlagIcon" field="_flag">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+    </node>
+    <node name="matchmakingTeam2" type="MatchMakingHeroPortrait" field="_enemyTemplate">
+      <node name="partyBox" type="PartyBox" field="_partyBox">
+        <node name="inputText" type="InputTextControl" field="_inputTextBox" />
+        <node name="hintText" type="TextField" field="_tooltipText" />
+        <node name="frame" type="Control" field="_back" />
+        <node name="row_btn" type="ComboBoxRow`1" field="_rowBtn">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+        <node name="noFriendsOnline_txt" type="TextField" field="_noFriendsOnline" />
+      </node>
+      <node name="mmShadeSlot" type="MovieClip" field="_shade" />
+      <node name="context" type="MatchMakingPortraitContext" field="_context">
+        <node name="separator" type="Control" field="_separator" />
+        <node name="frame" type="Control" field="_back" />
+        <node name="row_btn" type="ComboBoxRow`1" field="_row">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+      </node>
+      <node name="heroPortraitBtn" type="HeroPortraitButton" field="BtnHeroPortrait">
+        <node name="matchmakinglHeroIcon_icn" type="HeroIconContainer" field="_imgHero">
+          <node name="icon" type="ImageBox" field="Icon" />
+        </node>
+        <node name="friendIcon" type="ImageBox" field="_imgAvatar" />
+        <node name="randomTeam" type="MovieClip" field="_botIcon" />
+        <node name="backFriend" type="Control" field="_friendBack" />
+        <node name="noHeroIcon" type="MovieClip" field="_noHeroIcon" />
+        <node name="plus" type="MovieClip" field="_plus" />
+        <node name="name_txt" type="TrimmedTooltipText" field="_heroName" />
+        <node name="frame" type="SystemTooltipControl" field="_frame" />
+        <node name="redBack" type="SuperHeroFX" field="_superHeroFX">
+          <node name="sparks" type="MovieClip" field="_sparks" />
+          <node name="clouds" type="MovieClip" field="_clouds" />
+        </node>
+        <node name="bordersMatchmaking" type="MovieClip" field="_leagueBorder" />
+      </node>
+      <node name="level_mc" type="PlayerLevelControl" field="_playerLevel">
+        <node name="level_txt" type="TextField" field="_playerLevel" />
+      </node>
+      <node name="crown" type="Control" field="_crown" />
+      <node name="pending_mc" type="SystemTooltipControl" field="_statusIcon" framesCount="14" />
+      <node name="kick_btn" type="Button" field="_kickButton" framesCount="4" />
+      <node name="rankIconContainer" type="RankIcon" field="_rankIcon">
+        <node name="rankIcon" type="ImageBox" field="_icoRank" />
+      </node>
+      <node name="rating" type="FrameText" field="_raiting">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+      <node name="circle_mc" type="Control" field="_circle" />
+      <node name="flag" type="FlagIcon" field="_flag">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+    </node>
+    <node name="grouping_pnl" type="StartGamePanel" field="_startGamePanel">
+      <node name="mapSelect_tb" type="SelectedMapButton" field="_seletedMapButton">
+        <node name="img" type="ImageBox" field="_img" />
+      </node>
+      <node name="team_btn" type="ToggleButton" field="LeftButton" framesCount="8" />
+      <node name="enemyTeam_btn" type="ToggleButton" field="InviteEnemiesBtn" framesCount="8" />
+      <node name="start_btn" type="ToggleTextButton" field="_startButton">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="mapButton_pnl" type="MapChoicePanel" field="_pnlMapChoice">
+        <node name="startGameButton_mc" type="MapSelectionButton" field="_btnMapTemplate">
+          <node name="label_txt" type="TextField" field="_txtLabel" />
+          <node name="noMapImg_mc" type="Control" field="_imgNoMap" />
+          <node name="firstWin" type="ImageBox" field="_firstWin" />
+          <node name="img" type="ImageBox" field="Icon" />
+        </node>
+        <node name="listButtons" type="MapScroller" field="_btnListTemplate">
+          <node name="tutorRight" type="Button" field="_btnScrollRight" framesCount="4" />
+          <node name="tutorLeft" type="Button" field="_btnScrollLeft" framesCount="4" />
+        </node>
+        <node name="frame" type="Control" field="_frame" />
+      </node>
+      <node name="startSessionNotification" type="StartSessionNotification" field="_startSessionNotification">
+        <node name="label_txt" type="TextField" field="_label" />
+      </node>
+      <node name="startSessionTimer" type="StartSessionTimer" field="_startSessionTimer">
+        <node name="timer_txt" type="TextField" field="_timer" />
+      </node>
+      <node name="average" type="MatchMakingAverageControl" field="_averageControl">
+        <node name="average_timer" type="TextField" field="_txtAverageTime" />
+      </node>
+      <node name="matchmakingTimer_mc" type="MatchmakingTimerBlock" field="_timerBlock">
+        <node name="matchmakingTimer_txt" type="TextField" field="_txtTimer" />
+      </node>
+      <node name="warning" type="SystemTooltipControl" field="_serverStateControl" />
+      <node name="globeAnim" type="MovieClip" field="_inMatchMackingAnim" />
+      <node name="firstWin" type="ImageBox" field="_firstWin" />
+      <node name="leaverTimer" type="LeaverFlagTimerControl" field="_dodgeLockTimer">
+        <node name="value_txt" type="TextField" field="_txtTimer" />
+      </node>
+    </node>
+    <node name="globeCombo" type="MovieClip" field="_globeCombo" />
+    <node name="teamCombo" type="MovieClip" field="_teamCombo" />
+    <node name="MMShade" type="MovieClip" field="_back" />
+  </node>
+  <node name="tooltip_mc" type="TooltipWidget" field="_tooltipWidget">
+    <node name="tooltip_txt" type="TextField" field="_text" />
+    <node name="tooltipFrame_mc" type="Control" field="_back" />
+  </node>
+  <node name="heroPanel_pnl" type="ContainersWidget" field="_containersWidget">
+    <node name="heroPanelContainer_mc" type="HeroPanelContainer" field="_heroContainer">
+      <node name="heroItem_mc" type="HeroControl" field="_templateHero" framesCount="3">
+        <node name="level_plate" type="HeroPanelLevel" field="_heroLevel">
+          <node name="level_txt" type="TextField" field="_txtLevel" />
+        </node>
+        <node name="rankIconContainer" type="RankIcon" field="_icoRank">
+          <node name="rankIcon" type="ImageBox" field="_icoRank" />
+        </node>
+        <node name="heroPanelHeroIcon_icn" type="HeroIconContainer" field="_icoHeroContainer">
+          <node name="icon" type="ImageBox" field="Icon" />
+          <node name="iconBg" type="ImageBox" field="IconBg" />
+        </node>
+        <node name="name_txt" type="TextField" field="_txtHeroName" />
+        <node name="priceControl" type="PriceControl" field="_priceControl">
+          <node name="leftCost" type="ResourcePriceControl" field="LeftControl">
+            <node name="icon" type="Control" field="_icoResource" />
+            <node name="cost_txt" type="TextField" field="_text" />
+          </node>
+          <node name="rightCost" type="ResourcePriceControl" field="RightControl">
+            <node name="icon" type="Control" field="_icoResource" />
+            <node name="cost_txt" type="TextField" field="_text" />
+          </node>
+        </node>
+        <node name="heroPanelFrame" type="Control" field="_heroFrame" />
+        <node name="lowLevel" type="HeroLowLevelControl" field="_lowLevelControl" framesCount="4">
+          <node name="level_txt" type="TextField" field="_text" />
+        </node>
+        <node name="heroPanelConditionQuest_img" type="Control" field="_questRequireControl" />
+        <node name="levelAnim_mc" type="Control" field="_heroInTavernAnim" />
+        <node name="crowns" type="MovieClip" field="_leagueCrown" />
+        <node name="bordersHeroPanel" type="MovieClip" field="_leagueBorder" />
+        <node name="heroPanelContainerOver" type="Control" field="_glow" />
+      </node>
+    </node>
+    <node name="heroPanelConstuct_mc" type="BuildingPlansContainer" field="_buildingPlansContainer">
+      <node name="constructItem_mc" type="ConstructControl" field="_templateConstruction">
+        <node name="constructIcon_mc" type="ImageBox" field="_icoConstruct" />
+        <node name="constructText_txt" type="TextField" field="_txtConstruct" />
+        <node name="constructSilverCost_mc" type="PriceControl" field="_priceControl">
+          <node name="leftCost" type="ResourcePriceControl" field="LeftControl">
+            <node name="icon" type="Control" field="_icoResource" />
+            <node name="cost_txt" type="TextField" field="_text" />
+          </node>
+          <node name="rightCost" type="ResourcePriceControl" field="RightControl">
+            <node name="icon" type="Control" field="_icoResource" />
+            <node name="cost_txt" type="TextField" field="_text" />
+          </node>
+        </node>
+        <node name="constructBuild_btn" type="ToggleBuyButton" field="_btnBuild">
+          <node name="txt" type="TextField" field="TextField" />
+        </node>
+        <node name="glow" type="Control" field="_smallGlow" />
+        <node name="lock" type="Control" field="_lock" />
+        <node name="level" type="HeroPanelLevel" field="_buildingLevel">
+          <node name="level_txt" type="TextField" field="_txtLevel" />
+        </node>
+        <node name="lowLevel" type="HeroLowLevelControl" field="_lowLevelControl" framesCount="4">
+          <node name="level_txt" type="TextField" field="_text" />
+        </node>
+        <node name="counter" type="TextField" field="_txtCount" />
+        <node name="resourceIcon_mc" type="MovieClip" field="_resourceIcon" />
+        <node name="heroPanelContainerOver" type="Control" field="_glow" />
+      </node>
+    </node>
+    <node name="friends_mc" type="FriendsContainer" field="_friendsContainer">
+      <node name="friendsInviteLeft" type="BaseFriendPanelItem" field="_friendControl">
+        <node name="name_txt" type="TrimmedTooltipText" field="_txtName" />
+        <node name="level" type="FriendLevel" field="_level" framesCount="2">
+          <node name="level_txt" type="TextField" field="_txtLevel" />
+        </node>
+        <node name="avatar" type="FriendPanelAvatar" field="_avatar" framesCount="3">
+          <node name="avatar_img" type="ImageBox" field="_icoAvatar" />
+        </node>
+        <node name="gerb" type="MovieClip" field="_gerb" framesCount="2" />
+        <node name="friendStatus" type="SystemTooltipControl" field="_statusControl" framesCount="5" />
+        <node name="invite_btn" type="TextButton" field="_button">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+        <node name="muteStatus" type="SystemTooltipControl" field="_muteStatus" />
+        <node name="heroPanelContainerOver" type="Control" field="_glow" />
+      </node>
+      <node name="friendsInviteStack" type="SearchFriendsControl" field="SearchFriendControl">
+        <node name="name_txt" type="TextField" field="_title" />
+        <node name="invite_btn" type="TextButton" field="_btnSearch">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="_frame" />
+        <node name="avatar" type="FriendPanelAvatar" field="_img" framesCount="3">
+          <node name="avatar_img" type="ImageBox" field="_icoAvatar" />
+        </node>
+        <node name="heroPanelContainerOver" type="Control" field="_glow" />
+      </node>
+    </node>
+    <node name="heroPanelTab_sel" type="ContainersTab`1" field="_heroPanelTab">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="heroTypePanelTab_sel" type="ContainersTab`1" field="_heroTypeTab">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="constructionButton_pnl" type="ConstructionButtons" field="_constructButtons">
+      <node name="consctructMoveButton_tb" type="ToggleButton" field="_btnMoveConstruction" framesCount="8" />
+      <node name="constructionArrowRotate_tb" type="ToggleButton" field="_btnRotateConstruction" framesCount="8" />
+      <node name="constructionPocket_tb" type="ToggleButton" field="_btnPocketConstruction" framesCount="8" />
+      <node name="constructionSell_tb" type="ToggleButton" field="_btnSellConstruction" framesCount="8" />
+    </node>
+    <node name="heroPanelFrame" type="Control" field="_panelBackground" />
+    <node name="divider" type="Control" field="_divider" />
+    <node name="heroPanelHeroList_tb" type="Button" field="_btnHeroList" framesCount="4" />
+    <node name="heroPanelListButtonsLeft_mc" type="Scroller" field="_leftScroller">
+      <node name="step" type="Button" field="_btnStep" framesCount="4" />
+      <node name="end" type="Button" field="_btnScroll" framesCount="4" />
+    </node>
+    <node name="heroPanelListButtonsRight_mc" type="Scroller" field="_rightScroller">
+      <node name="step" type="Button" field="_btnStep" framesCount="4" />
+      <node name="end" type="Button" field="_btnScroll" framesCount="4" />
+    </node>
+    <node name="chat_pnl" type="ChatControl" field="_chatContainer">
+      <node name="end_btn" type="Button" field="_btnDownToEnd" framesCount="4" />
+      <node name="inputComboox_pnl" type="InputCombobox" field="_inputComboBox">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="comboox_pnl" type="ComboBox`1" field="_comboBox">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="bottom" type="Control" field="_bottomDecor" />
+      <node name="up" type="Control" field="_upDecor" />
+      <node name="back" type="Control" field="_back" />
+      <node name="left" type="Control" field="_leftDecor" />
+      <node name="right" type="Control" field="_rightDecor" />
+      <node name="resizeButtonUp_btn" type="Button" field="_resizeUpBtn" framesCount="4" />
+      <node name="resizeButtonDown_btn" type="Button" field="_resizeDownBtn" framesCount="4" />
+      <node name="scaleControl" type="MovieClip" field="_scaleMarker" />
+      <node name="container" type="ChatOutputContainer" field="OutputContainer">
+        <node name="chatOutput" type="ChatOutputLine" field="_txtOutput">
+          <node name="txt" type="TextField" field="_txtOutput" />
+          <node name="chatDummy1" type="Control" field="_channelsBack" />
+          <node name="chatDummy2" type="Control" field="_playersBack" />
+        </node>
+      </node>
+      <node name="input" type="InputTextControl" field="TxtInput" />
+      <node name="restrict" type="RestrictedMessage" field="RestrictToWrite">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="back" type="Control" field="_back" />
+      </node>
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+    </node>
+    <node name="friendContext" type="PanelContextMenu" field="_containerContextMenu">
+      <node name="contextMenuArrow" type="Control" field="_arrow" />
+      <node name="frame" type="Control" field="Back" />
+      <node name="line_btn" type="ContextMenuRow" field="_negativSeparator">
+        <node name="txt" type="TextField" field="_textField" />
+        <node name="backLine" type="Control" field="_back" />
+        <node name="clickLine" type="MovieClip" field="_clickLine" />
+        <node name="tower14_mc" type="MovieClip" field="_currencyImage" />
+      </node>
+    </node>
+    <node name="heroPanelTabIgnore_sel" type="ContainersTab`1" field="_friendPanelTabIgnored">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="heroPanelTabFriends_sel" type="ContainersTab`1" field="_friendPanelTabFriends">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="heroPanelTabFavorite_sel" type="ContainersTab`1" field="_friendPanelTabFavorits">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="heroPanelTabInvites_sel" type="ContainersTab`1" field="_friendPanelTabInvites">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="heroPanelTabGuild_sel" type="ContainersTab`1" field="_guildPanelTab">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="heroPanelTabRecent_sel" type="ContainersTab`1" field="_resentPlayedPanelTab">
+      <node name="bookmark_mc" type="ImageSelectionButton" field="BtnTab">
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+    <node name="chatTab" type="ChatBarTab" field="_chatPanelTab">
+      <node name="bookmark_mc" type="ChatTabSelectionButton" field="BtnTab">
+        <node name="lighting" type="Control" field="_allert" />
+        <node name="img" type="ImageBox" field="Icon" />
+      </node>
+    </node>
+  </node>
+  <node name="escMenu_pnl" type="EscMenuWindow" field="_escMenuWindow">
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="escMenuBack_btn" type="TextButton" field="_btnReturn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="escMenuOptions_btn" type="TextButton" field="_btnSettings">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="escMenuExit_btn" type="TextButton" field="_btnExit">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="escMenuAccount_btn" type="TextButton" field="_btnAccount">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="escMenuCredits_btn" type="TextButton" field="_btnCredits">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="dialog_pnl" type="DialogWindow" field="_dialogWindow">
+    <node name="ok_btn" type="TextButton" field="_btnOk">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="yes_btn" type="TextButton" field="_btnYes">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_btnNo">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="dialog_txt" type="TextField" field="_dialogText" />
+    <node name="back" type="Control" field="_backFrame" />
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="dialog_pnl2" type="BuyDialogWindow" field="_dialogBuyWindow">
+    <node name="ok_btn" type="TextButton" field="_btnOk">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="yes_btn" type="ToggleBuyButton" field="_btnYes">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_btnNo">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="dialog_txt" type="TextField" field="_dialogText" />
+    <node name="back" type="Control" field="_backFrame" />
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="opaque_mc" type="NonClickableWidget" field="_nonClickableWidget" />
+  <node name="matchMakingMBox" type="MatchMakingAcceptDialog" field="_machMakingAcceptDialog">
+    <node name="close" type="Button" field="_btnClose" framesCount="4" />
+    <node name="text" type="TextField" field="_txtMessage" />
+    <node name="matchmakingTimer_txt" type="TextField" field="_timerText" />
+    <node name="accept_btn" type="TextButton" field="_btnAccept">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="cancel_btn" type="TextButton" field="_btnCancel">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="eliteHero_mc" type="MatchMakingMapIcon" field="_guardIcon">
+      <node name="img" type="ImageBox" field="Icon" />
+    </node>
+    <node name="title" type="TextField" field="_title" />
+  </node>
+  <node name="dragNDrop_icn" type="FlashDragObject" field="_dragNdropVisualObject">
+    <node name="talentManageSetIcon_img" type="ImageBox" field="_icon" />
+    <node name="talentManageGlow_mc" type="Control" field="_glow" />
+  </node>
+  <node name="overtip_mc" type="OvertipTemplates" field="_overtipsTemplates">
+    <node name="OT_Produce" type="ProductionOvertip" field="_overtipProduction">
+      <node name="bar" type="AnimatedProgressBar" field="_progressBar">
+        <node name="line_mc" type="ProgressBar" field="_animatedProgressBar" />
+      </node>
+      <node name="timer_txt" type="TextField" field="_timer" />
+      <node name="timerBack" type="MovieClip" field="_timerBack" />
+      <node name="resValue_txt" type="TextField" field="_resCount" />
+      <node name="res" type="ResourceIcon" field="_resIcon" />
+      <node name="resBack" type="MovieClip" field="_resBack" />
+      <node name="resIdle" type="ResourceIcon" field="_resIconIdle" />
+      <node name="resBackIdle" type="MovieClip" field="_resBackIdle" />
+      <node name="finishedResBack" type="MovieClip" field="_finishedResBack" />
+      <node name="finishedResValue_txt" type="TextField" field="_finishedResCount" />
+      <node name="finishedRes" type="ResourceIcon" field="_finishedResIcon" />
+      <node name="status_txt" type="TextField" field="_statusText" />
+      <node name="Mouse_icn" type="MovieClip" field="_mouseIcon" />
+      <node name="upgrade" type="Control" field="_upgrade" />
+      <node name="name_txt" type="TextField" field="_name" />
+      <node name="level" type="HeroPanelLevel" field="_level">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+    </node>
+    <node name="OT_Library" type="BuildingLimitOvertip" field="_overtipBuildingLimit">
+      <node name="lib" type="MovieClip" field="_libIco" />
+      <node name="mask" type="MovieClip" field="_populationIco" />
+      <node name="warehouse" type="MovieClip" field="_warehouseIco" />
+      <node name="value_txt" type="TextField" field="_incrementValue" />
+      <node name="upgrade" type="Control" field="_upgrade" />
+      <node name="name_txt" type="TextField" field="_name" />
+      <node name="level" type="HeroPanelLevel" field="_level">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+    </node>
+    <node name="OT_CommonUp" type="CommonOvertip" field="_overtipCommon">
+      <node name="icon_mc" type="Control" field="_overtipIcon" />
+    </node>
+    <node name="OT_CommonText" type="CommonTextOvertip" field="_overtipCommonText">
+      <node name="icon_mc" type="ImageBox" field="_overtipIcon" />
+      <node name="text" type="TextField" field="_txtOvertip" />
+    </node>
+    <node name="OT_Socium" type="SocialOvertip" field="_overtipSocium">
+      <node name="name_txt" type="TextField" field="_txtPlayerName" />
+      <node name="text" type="TextField" field="_txtOvertip" />
+      <node name="avatar" type="ImageBox" field="_overtipIco" />
+      <node name="level_txt" type="TextField" field="_overtipLevel" />
+    </node>
+    <node name="OT_Text" type="OvertipText" field="_overtipText">
+      <node name="txt" type="TextField" field="_txtOvertip" />
+    </node>
+    <node name="OT_Flyoff" type="FlyOutOvertip" field="_overtipFlyOutText">
+      <node name="txt" type="TextField" field="_txtOvertip" />
+    </node>
+    <node name="OT_FlyOffRes" type="FlyOffResOvertip" field="_overtipFlyOffRes">
+      <node name="resBack" type="MovieClip" field="_resBack" />
+      <node name="value_txt" type="TextField" field="_resCount" />
+      <node name="res" type="ResourceIcon" field="_resourceIcon" />
+    </node>
+    <node name="OT_Prof" type="BuffBuildingOvertip" field="_overtipBuffBuilding">
+      <node name="stat1_txt" type="TextField" field="_txtStat1" />
+      <node name="stat2_txt" type="TextField" field="_txtStat2" />
+      <node name="stat1Val_txt" type="TextField" field="_txtStat1Value" />
+      <node name="stat2Val_txt" type="TextField" field="_txtStat2Value" />
+      <node name="upgrade" type="Control" field="_upgrade" />
+      <node name="name_txt" type="TextField" field="_name" />
+      <node name="level" type="HeroPanelLevel" field="_level">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+    </node>
+    <node name="OT_Information" type="SimpleTextOvertip" field="_simpleTextOvertip">
+      <node name="txt" type="TextField" field="_text" />
+      <node name="upgrade" type="Control" field="_upgrade" />
+      <node name="name_txt" type="TextField" field="_name" />
+      <node name="level" type="HeroPanelLevel" field="_level">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+    </node>
+  </node>
+  <node name="options_global" type="OptionsWindow" field="_optionsWindow">
+    <node name="back" type="Control" field="_backSize" />
+    <node name="options_pnl" type="OptionsPanel" field="_optionsPanel">
+      <node name="video" type="TextField" field="_txtGraff" />
+      <node name="resolutionText" type="TextField" field="_txtResolution" />
+      <node name="graphicText" type="TextField" field="_txtGrafQuality" />
+      <node name="warning" type="TextField" field="_txtWarning" />
+      <node name="sound" type="TextField" field="_txtSound" />
+      <node name="sfx" type="TextField" field="_txtSoundVolume" />
+      <node name="music" type="TextField" field="_txtMusucVolume" />
+      <node name="voice" type="TextField" field="_txtVoiceVolume" />
+      <node name="game" type="TextField" field="_txtGameOptions" />
+      <node name="common" type="TextField" field="_txtCommon" />
+      <node name="resolution" type="ComboBox`1" field="_resolutionCombo">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="graphic" type="ComboBox`1" field="_graphicCombo">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="windowed_tb" type="CheckBox" field="_tbWindowed">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="leftClick_tb" type="CheckBox" field="_tbLeftClick">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="filthy" type="CheckBox" field="_tbUseBadwordsFilter">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="castleExitOnPvx" type="CheckBox" field="_castleExitOnPvx">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="smartChat" type="CheckBox" field="_sessionChatOff">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="sfx_mc" type="Slider" field="_soundSlider">
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="back" type="ProgressBar" field="_back" />
+      </node>
+      <node name="music_mc" type="Slider" field="_musicSlider">
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="back" type="ProgressBar" field="_back" />
+      </node>
+      <node name="voice_mc" type="Slider" field="_voiceSlider">
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="back" type="ProgressBar" field="_back" />
+      </node>
+      <node name="common_mc" type="Slider" field="_commonSlider">
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="back" type="ProgressBar" field="_back" />
+      </node>
+      <node name="closeBig" type="TextButton" field="_btnCloseBig">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="cancel_bt" type="TextButton" field="_btnCancel">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="ok_btn" type="TextButton" field="_btnApply">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+    </node>
+    <node name="options_tab" type="ToggleTextButton" field="_optionsTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="shortcuts_tab" type="ToggleTextButton" field="_shortcutsTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="shortcuts_pnl" type="BindsPannel" field="_bindsPannel">
+      <node name="reset_btn" type="TextButton" field="_applyButton">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="back_btn" type="TextButton" field="_backButton">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="scroll_bar" type="ScrollBar" field="_scrollBar">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+      <node name="categoryContainer" type="BindCategoryContainer" field="_bindContainer">
+        <node name="item" type="BindItemCategory" field="_templateBindCategory">
+          <node name="title" type="TextField" field="_txtTitle" />
+          <node name="shortcutsLine" type="BindItem" field="_templateItem">
+            <node name="text" type="TextField" field="_txtBindName" />
+            <node name="value" type="BindTextInput" field="_txtBindValue" />
+            <node name="value_btn" type="ToggleButton" field="_btnSelection" framesCount="8" />
+          </node>
+        </node>
+      </node>
+      <node name="scrollBack" type="Control" field="_scrollBack" />
+      <node name="preset_title" type="TextField" field="_presetTitle" />
+      <node name="preset_combo" type="ComboBox`1" field="_presetCombo">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="mediaPlayerWindow" type="MediaPlayerWindow" field="_mediaPlayerWindow">
+    <node name="mediaPlayer" type="MediaPlayer" field="_mediaPlayer" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="contextMenu_mc" type="ContextMenu" field="_contextMenu">
+    <node name="frame" type="Control" field="Back" />
+    <node name="line_btn" type="ContextMenuRow" field="_negativSeparator">
+      <node name="txt" type="TextField" field="_textField" />
+      <node name="backLine" type="Control" field="_back" />
+      <node name="clickLine" type="MovieClip" field="_clickLine" />
+      <node name="tower14_mc" type="MovieClip" field="_currencyImage" />
+    </node>
+  </node>
+  <node name="inputDialog_pnl" type="InputDialogWindow" field="_inputDialog">
+    <node name="yes_btn" type="TextButton" field="_btnYes">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_btnNo">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="dialog_txt" type="TextField" field="_dialogText" />
+    <node name="back" type="Control" field="_backFrame" />
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="input" type="InputTextControl" field="_txtInput" />
+    <node name="inputBack" type="Control" field="_inputBack" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="account_pnl" type="AccountWindow" field="_accountWindow">
+    <node name="back" type="Control" field="_backSize" />
+    <node name="accountMenuTitle" type="TextField" field="_txtHeader" />
+    <node name="accountReset_btn" type="TextButton" field="_btnResetAcc">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="accountFraction_btn" type="TextButton" field="_btnChangeFraction">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="accountName_btn" type="TextButton" field="_btnChangeNick">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="accountBack_btn" type="TextButton" field="_btnBack">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="accountPremium_btn" type="TextButton" field="_btnPremium">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="flagSelect_btn" type="TextButton" field="_btnFlagSelect">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="friendAdd_pnl" type="Control" field="_addFriendWindow" />
+  <node name="debug_pnl" type="DebugMatchmakingWindow" field="_debugMatchMacking">
+    <node name="A_online" type="TextField" field="_txtDoctPlayersOnline" />
+    <node name="B_online" type="TextField" field="_txtAdornPlayersOnline" />
+    <node name="A_1player" type="TextField" field="_txt1DoctPlayers" />
+    <node name="B_1player" type="TextField" field="_txt1AdornPlayers" />
+    <node name="A_2player" type="TextField" field="_txt2DoctPlayers" />
+    <node name="B_2player" type="TextField" field="_txt2AdornPlayers" />
+    <node name="A_3player" type="TextField" field="_txt3DoctPlayers" />
+    <node name="B_3player" type="TextField" field="_txt3AdornPlayers" />
+    <node name="A_4player" type="TextField" field="_txt4DoctPlayers" />
+    <node name="B_4player" type="TextField" field="_txt4AdornPlayers" />
+    <node name="A_5player" type="TextField" field="_txt5DoctPlayers" />
+    <node name="B_5player" type="TextField" field="_txt5AdornPlayers" />
+    <node name="close_btn" type="Button" field="_btnChangeFrame" framesCount="4" />
+  </node>
+  <node name="warehouse_pnl" type="WarehouseWindow" field="_warehouseWindow">
+    <node name="res1" type="CustomResourceControl" field="_resources">
+      <node name="value_txt" type="TextField" field="TxtValue" />
+      <node name="description_txt" type="TextField" field="Description" />
+    </node>
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="building_pnl" type="SingleProcessBaseWindow" field="_pnlBuilding">
+    <node name="bonus_txt" type="TextField" field="_txtResource" />
+    <node name="paLight_mc" type="MovieClip" field="_premiumBack" />
+    <node name="reward" type="UniversalResourceIcon" field="_prodIcon">
+      <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+    </node>
+    <node name="timeLeft_txt" type="TextField" field="TxtTimeLeft" />
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+    <node name="bar" type="AnimatedProgressBar" field="_progressBar">
+      <node name="line_mc" type="ProgressBar" field="_animatedProgressBar" />
+    </node>
+  </node>
+  <node name="pineTree" type="Control" field="_pineTree" />
+  <node name="libraryBld_pnl" type="LibraryBuildingWindow" field="_libraryBuildingWindow">
+    <node name="value_txt" type="TextField" field="_telentsIncrement" />
+    <node name="description_txt" type="TextField" field="_description" />
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="sidePanel" type="NotificationWidget" field="_notificationWidget">
+    <node name="libFull_btn" type="LibraryFullNotification" field="_libraryFullButton" />
+    <node name="salesContainer" type="EventSalesButton" field="_eventSaleButton">
+      <node name="counter" type="HeroPanelLevel" field="_count">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="sales_btn" type="Button" field="_btnEvents" framesCount="4" />
+    </node>
+    <node name="eliteLeaveContainer_mc" type="GuardModeLeaveButton" field="_guardModeLeaveButton">
+      <node name="value_txt" type="TextField" field="_txtTimer" />
+      <node name="timerBack" type="Control" field="_timerBack" />
+      <node name="anim_btn" type="GuardLeaveAnimationButton" field="_btn">
+        <node name="stopBack_mc" type="MovieClip" field="_backLimitAnim" />
+        <node name="stop_mc" type="MovieClip" field="_limitAnim" />
+      </node>
+    </node>
+    <node name="diconnect_btn" type="DisconnectButton" field="_disconnectButton" />
+    <node name="theLamp" type="GoldenLampButton" field="_goldenLamp">
+      <node name="value_txt" type="TextField" field="_txtTimer" />
+      <node name="timerBack" type="Control" field="_timerBack" />
+      <node name="anim_btn" type="ImageButton" field="_btn">
+        <node name="icon" type="ImageBox" field="_image" />
+      </node>
+    </node>
+    <node name="crystall" type="FreeSkipsButton" field="_crystalSkipsButton">
+      <node name="value_txt" type="TextField" field="_txtTimer" />
+      <node name="timerBack" type="Control" field="_timerBack" />
+      <node name="anim_btn" type="Button" field="_btn" framesCount="4" />
+    </node>
+    <node name="brokenCrystall" type="FreeSkipsButton" field="_talentSkipsButton">
+      <node name="value_txt" type="TextField" field="_txtTimer" />
+      <node name="timerBack" type="Control" field="_timerBack" />
+      <node name="anim_btn" type="Button" field="_btn" framesCount="4" />
+    </node>
+    <node name="clanWars_btn" type="GuildActiveSiegesButton" field="_guildWarButton" />
+    <node name="clanBuffs_btn" type="GuildBuffNotification" field="_guildBuff" />
+    <node name="vassalFull_btn" type="VassalsFullNotification" field="_vassalFullButton" />
+    <node name="IMContainer" type="WebItemMallButton" field="_webItemMallButton">
+      <node name="IM_btn" type="Button" field="_btnIM" framesCount="4" />
+    </node>
+    <node name="admin_btn" type="AdminMessageButton" field="_adminMessageNotification" />
+  </node>
+  <node name="startGame_pnl" type="StartGameWindow" field="_startGameWindow">
+    <node name="friend_mc" type="StartGameHeroPortrait" field="_teamMate">
+      <node name="guildAbbr_mc" type="GuildAbbr" field="_guildAbbr">
+        <node name="frame" type="MovieClip" field="_frame" />
+        <node name="abbr_txt" type="TextField" field="_abbrTxt" />
+      </node>
+      <node name="heroPortraitBtn" type="HeroPortraitButton" field="BtnHeroPortrait">
+        <node name="matchmakinglHeroIcon_icn" type="HeroIconContainer" field="_imgHero">
+          <node name="icon" type="ImageBox" field="Icon" />
+        </node>
+        <node name="friendIcon" type="ImageBox" field="_imgAvatar" />
+        <node name="randomTeam" type="MovieClip" field="_botIcon" />
+        <node name="backFriend" type="Control" field="_friendBack" />
+        <node name="noHeroIcon" type="MovieClip" field="_noHeroIcon" />
+        <node name="plus" type="MovieClip" field="_plus" />
+        <node name="name_txt" type="TrimmedTooltipText" field="_heroName" />
+        <node name="frame" type="SystemTooltipControl" field="_frame" />
+        <node name="redBack" type="SuperHeroFX" field="_superHeroFX">
+          <node name="sparks" type="MovieClip" field="_sparks" />
+          <node name="clouds" type="MovieClip" field="_clouds" />
+        </node>
+        <node name="bordersMatchmaking" type="MovieClip" field="_leagueBorder" />
+      </node>
+      <node name="level_mc" type="PlayerLevelControl" field="_playerLevel">
+        <node name="level_txt" type="TextField" field="_playerLevel" />
+      </node>
+      <node name="crown" type="Control" field="_crown" />
+      <node name="pending_mc" type="SystemTooltipControl" field="_statusIcon" framesCount="14" />
+      <node name="kick_btn" type="Button" field="_kickButton" framesCount="4" />
+      <node name="rankIconContainer" type="RankIcon" field="_rankIcon">
+        <node name="rankIcon" type="ImageBox" field="_icoRank" />
+      </node>
+      <node name="rating" type="FrameText" field="_raiting">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+      <node name="circle_mc" type="Control" field="_circle" />
+      <node name="flag" type="FlagIcon" field="_flag">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+    </node>
+    <node name="chainLock" type="Control" field="_groupChain" />
+    <node name="scroll_bar" type="ScrollBar" field="_scrollBar">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="scrollableContainer" type="HeroesTableContainer" field="_heroesContainer">
+      <node name="listContainer" type="HeroesTableControl" field="_templateHeroesContainer">
+        <node name="text" type="TextField" field="_txtTitle" />
+        <node name="heroIcon_mc" type="HeroButton" field="_templateHero">
+          <node name="heroIcon_sel" type="VideoSelectionButton" field="_selHero">
+            <node name="img" type="VideoIconContainer" field="Icon">
+              <node name="icon" type="ImageBox" field="Icon" />
+            </node>
+          </node>
+          <node name="startGameHeroListLevelPlate_mc" type="HeroPanelLevel" field="_heroLevel">
+            <node name="level_txt" type="TextField" field="_txtLevel" />
+          </node>
+          <node name="startGameHeroExclamation_mc" type="Control" field="_icoExclamation" />
+          <node name="hired" type="SystemTooltipControl" field="_alreadyPicked" />
+          <node name="noTalent" type="SystemTooltipControl" field="_notValidTalentSet" />
+          <node name="inTavern" type="SystemTooltipControl" field="_inTavern" />
+          <node name="noMight" type="SystemTooltipControl" field="_notEnoughForce" />
+        </node>
+        <node name="cross" type="Control" field="_cross" />
+        <node name="rankIconContainerLeft" type="RankIcon" field="_rankIconLeft">
+          <node name="rankIcon" type="ImageBox" field="_icoRank" />
+        </node>
+        <node name="rankIconContainerRight" type="RankIcon" field="_rankIconRight">
+          <node name="rankIcon" type="ImageBox" field="_icoRank" />
+        </node>
+      </node>
+    </node>
+    <node name="heroSkin" type="HeroSkinControl" field="_heroSkin">
+      <node name="img1" type="ImageBox" field="_skinImage" />
+      <node name="img2" type="ImageBox" field="_animationImage" />
+      <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+      <node name="right" type="Button" field="_btnRight" framesCount="4" />
+      <node name="heroName_txt" type="TextField" field="_txtHeroName" />
+      <node name="warning" type="SystemTooltipControl" field="_warning" />
+      <node name="heroBtns_mc" type="HeroSkinButtonsControl" field="_buttons">
+        <node name="buy_btn" type="ToggleBuyButtonWithIcon" field="_btnBuySkin">
+          <node name="cost_txt" type="TextField" field="_txtCost" />
+          <node name="gold_mc" type="Control" field="_resource" />
+          <node name="txt" type="TextField" field="TextField" />
+        </node>
+      </node>
+      <node name="txt_back" type="MovieClip" field="_txtBack" />
+    </node>
+    <node name="heroTalents" type="StartGameTalentsPanel" field="_heroTalents">
+      <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+      <node name="right" type="Button" field="_btnRight" framesCount="4" />
+      <node name="warning" type="SystemTooltipControl" field="_warning" />
+      <node name="warning2" type="SystemTooltipControl" field="_warningForce" />
+      <node name="text" type="InputTextControl" field="_textField" />
+      <node name="text_back" type="Control" field="_ctrlTextField" />
+      <node name="talentManageSetIcon_mc" type="TalentSetButton" field="_templateTalent">
+        <node name="dropEffect_mc" type="MovieClip" field="_dropEffect" />
+        <node name="icon_mc" type="ImageBox" field="Icon" />
+        <node name="activeTalent" type="MovieClip" field="_activeTalantFrame" />
+        <node name="redArrow" type="MovieClip" field="_arrow" />
+        <node name="upgradeIco" type="Control" field="_upgradeIcon1" />
+        <node name="upgradeIco2" type="Control" field="_upgradeIcon2" />
+        <node name="upgradeIco3" type="Control" field="_upgradeIcon3" />
+        <node name="plusLevel" type="MovieClip" field="_plusLevel" />
+        <node name="upgrade_bar" type="ProgressBar" field="_upgradeBar" />
+        <node name="upgradeLevel" type="UpgradeLevelIndicator" field="_upgradeLevelIndicator">
+          <node name="count" type="TextField" field="_txtCount" />
+        </node>
+        <node name="stop_mc" type="MovieClip" field="_cantUpgradeNotificator" />
+        <node name="glow" type="Control" field="_glow" />
+      </node>
+      <node name="talentLine" type="TalentHighLight" field="_highlightLine1" />
+      <node name="talentLine_2" type="TalentHighLight" field="_highlightLine2" />
+      <node name="talentLine_3" type="TalentHighLight" field="_highlightLine3" />
+      <node name="talentLine_4" type="TalentHighLight" field="_highlightLine4" />
+      <node name="talentLine_5" type="TalentHighLight" field="_highlightLine5" />
+      <node name="talentLine_6" type="TalentHighLight" field="_highlightLine6" />
+    </node>
+    <node name="chatContainer" type="PreSelectHeroControl" field="_chatContainer">
+      <node name="chat_mc" type="BaseChatControl" field="_chatControl">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="container" type="ChatOutputContainer" field="OutputContainer">
+          <node name="chatOutput" type="ChatOutputLine" field="_txtOutput">
+            <node name="txt" type="TextField" field="_txtOutput" />
+            <node name="chatDummy1" type="Control" field="_channelsBack" />
+            <node name="chatDummy2" type="Control" field="_playersBack" />
+          </node>
+        </node>
+        <node name="input" type="InputTextControl" field="TxtInput" />
+        <node name="restrict" type="RestrictedMessage" field="RestrictToWrite">
+          <node name="txt" type="TextField" field="_text" />
+          <node name="back" type="Control" field="_back" />
+        </node>
+      </node>
+      <node name="timerText" type="TextField" field="_txtTimer" />
+      <node name="timerBack" type="Control" field="_timerBack" />
+    </node>
+    <node name="size" type="Control" field="_positionalSize" />
+    <node name="enemy_mc" type="TamburEnemy" field="_enemyTeam">
+      <node name="counter_mc" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="name_txt" type="TrimmedTooltipText" field="_txtEnemy" />
+      <node name="complete_mc" type="Control" field="_complete" />
+    </node>
+    <node name="heroesBack" type="Control" field="_heroesBack" />
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="titleBack" type="MovieClip" field="_titleBack" />
+    <node name="notSelected_mc" type="FrameText" field="_notSelectedWarning">
+      <node name="txt" type="TextField" field="_text" />
+      <node name="txtBack" type="MovieClip" field="_frame" />
+    </node>
+    <node name="hero_btn" type="TextButton" field="_btnHero">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="Ready_btn" type="TextButton" field="_btnReady">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="mapMode" type="FrameImageBox" field="_mapImg">
+      <node name="icon" type="ImageBox" field="_img" />
+    </node>
+    <node name="mode_txt" type="TrimmedTooltipText" field="_txtMode" />
+    <node name="firstWin" type="ImageBox" field="_firstWin" />
+    <node name="play_btn" type="ToggleTextButton" field="_btnStartGame">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="glow" type="BlinkinAnimation" field="_glow" />
+    <node name="talents_tb" type="ToggleButton" field="_talentsTb" framesCount="8" />
+    <node name="skins_tb" type="ToggleButton" field="_skinsTb" framesCount="8" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="chat_pnl" type="Control" field="_chatWindow" />
+  <node name="heroManage_wnd" type="NewHeroManageWindow" field="_newHeroManageWindow">
+    <node name="iconHero" type="HeroBlock" field="_heroBlock">
+      <node name="left_btn" type="Button" field="_btnHeroListLeft" framesCount="4" />
+      <node name="right_btn" type="Button" field="_btnHeroListRight" framesCount="4" />
+      <node name="icon" type="ImageBox" field="_heroPortait" />
+      <node name="name" type="TrimmedTooltipText" field="_name" />
+      <node name="level" type="TextField" field="_level" />
+      <node name="lowLevel" type="HeroLowLevelControl" field="_lowLevelControl" framesCount="4">
+        <node name="level_txt" type="TextField" field="_text" />
+      </node>
+      <node name="workHeroPanel_mc" type="MovieClip" field="_workIcon" />
+      <node name="rankIconContainer" type="RankIcon" field="_icoRank">
+        <node name="rankIcon" type="ImageBox" field="_icoRank" />
+      </node>
+      <node name="frame" type="MovieClip" field="_frame" />
+      <node name="redBack" type="SuperHeroFX" field="_superHeroFX">
+        <node name="sparks" type="MovieClip" field="_sparks" />
+        <node name="clouds" type="MovieClip" field="_clouds" />
+      </node>
+      <node name="Border122" type="MovieClip" field="_leagueBorder" />
+    </node>
+    <node name="heroStats_pnl" type="StatisticPanel" field="_heroStatsPanel">
+      <node name="attackBar" type="CharacterBarControl" field="_attackBar">
+        <node name="redBar_mc" type="MovieClip" field="_redBar" />
+        <node name="greenBar_mc" type="MovieClip" field="_greenBar" />
+        <node name="yellowBar_mc" type="MovieClip" field="_yellowBar" />
+        <node name="blueBar_mc" type="MovieClip" field="_blueBar" />
+      </node>
+      <node name="defenceBar" type="CharacterBarControl" field="_defenceBar">
+        <node name="redBar_mc" type="MovieClip" field="_redBar" />
+        <node name="greenBar_mc" type="MovieClip" field="_greenBar" />
+        <node name="yellowBar_mc" type="MovieClip" field="_yellowBar" />
+        <node name="blueBar_mc" type="MovieClip" field="_blueBar" />
+      </node>
+      <node name="talantsBar" type="CharacterBarControl" field="_talentsBar">
+        <node name="redBar_mc" type="MovieClip" field="_redBar" />
+        <node name="greenBar_mc" type="MovieClip" field="_greenBar" />
+        <node name="yellowBar_mc" type="MovieClip" field="_yellowBar" />
+        <node name="blueBar_mc" type="MovieClip" field="_blueBar" />
+      </node>
+      <node name="difficultysBar" type="CharacterBarControl" field="_difficultysBar">
+        <node name="redBar_mc" type="MovieClip" field="_redBar" />
+        <node name="greenBar_mc" type="MovieClip" field="_greenBar" />
+        <node name="yellowBar_mc" type="MovieClip" field="_yellowBar" />
+        <node name="blueBar_mc" type="MovieClip" field="_blueBar" />
+      </node>
+      <node name="heroClassIcon1_mc" type="MovieClip" field="_icoLeft" />
+      <node name="heroClassIcon2_mc" type="MovieClip" field="_icoRight" />
+      <node name="level_mc" type="HeroStateBarControl" field="_playerLevel">
+        <node name="name_txt" type="TextField" field="_comment" />
+        <node name="text_txt" type="TextField" field="_countText" />
+        <node name="roundProgressBarShape_mc" type="MovieClip" field="_progress" />
+      </node>
+      <node name="roundProgressBarRaiting_mc" type="CurrentSeasonResult" field="_playerRating">
+        <node name="roundProgressBarShape_mc" type="MovieClip" field="_progress" />
+        <node name="name_txt" type="TextField" field="_comment" />
+        <node name="text_txt" type="TextField" field="_count" />
+        <node name="rankIconBig" type="ImageBox" field="_iconRank" />
+      </node>
+      <node name="rating_mc" type="BestSeasonResult" field="_playerBestRating">
+        <node name="name_txt" type="TextField" field="_comment" />
+        <node name="text_txt" type="TextField" field="_count" />
+        <node name="rankIconBig" type="ImageBox" field="_iconRank" />
+      </node>
+      <node name="hystory_txt" type="TextField" field="_hystory_txt" />
+      <node name="heroClass_txt" type="TextField" field="_txtHeroClass" />
+      <node name="heroSkin" type="HeroSkinControl" field="_heroSkin">
+        <node name="img1" type="ImageBox" field="_skinImage" />
+        <node name="img2" type="ImageBox" field="_animationImage" />
+        <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+        <node name="right" type="Button" field="_btnRight" framesCount="4" />
+        <node name="heroName_txt" type="TextField" field="_txtHeroName" />
+        <node name="warning" type="SystemTooltipControl" field="_warning" />
+        <node name="heroBtns_mc" type="HeroSkinButtonsControl" field="_buttons">
+          <node name="buy_btn" type="ToggleBuyButtonWithIcon" field="_btnBuySkin">
+            <node name="cost_txt" type="TextField" field="_txtCost" />
+            <node name="gold_mc" type="Control" field="_resource" />
+            <node name="txt" type="TextField" field="TextField" />
+          </node>
+        </node>
+        <node name="txt_back" type="MovieClip" field="_txtBack" />
+      </node>
+      <node name="skinBack" type="MovieClip" field="_skinBack" />
+      <node name="attackStat_txt" type="TextField" field="_attackStat_txt" />
+      <node name="defenceStat_txt" type="TextField" field="_defenceStat_txt" />
+      <node name="talantsStat_txt" type="TextField" field="_talantsStat_txt" />
+      <node name="difficultyStat_txt" type="TextField" field="_difficultyStat_txt" />
+      <node name="historyName_txt" type="TextField" field="_historyName_txt" />
+      <node name="buyGold_btn" type="ToggleBuyButtonWithIcon" field="_btnBuyHeroByGold">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="buySilver_btn" type="ToggleBuyButtonWithIcon" field="_btnBuyHeroBySilver">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="leaderboard_btn" type="Button" field="_leaderboardBtn" framesCount="4" />
+    </node>
+    <node name="talents_pnl" type="TalentsPanel" field="_talentsPanel">
+      <node name="might" type="TextField" field="_txtMight" />
+      <node name="might_val" type="TextField" field="_txtMightValue" />
+      <node name="share_btn" type="ToggleButton" field="_btnShare" framesCount="8" />
+      <node name="resetPoints_btn" type="ToggleButton" field="_btnResetPoints" framesCount="8" />
+      <node name="item_1" type="ToggleTextButton" field="_btnLevel1">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_2" type="ToggleTextButton" field="_btnLevel2">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_3" type="ToggleTextButton" field="_btnLevel3">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_4" type="ToggleTextButton" field="_btnLevel4">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_5" type="ToggleTextButton" field="_btnLevel5">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_6" type="ToggleTextButton" field="_btnLevel6">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="talentUpgrade_btn" type="ToggleButton" field="_btnTalentUpgrade" framesCount="8" />
+      <node name="talentEntityUpgrade_btn" type="ToggleButton" field="_btnTalentEntityUpgrade" framesCount="8" />
+      <node name="unsoulbound_tb" type="ToggleButton" field="_btnUnsoulBound" framesCount="8" />
+      <node name="recycle_tb" type="ToggleButton" field="_btnDeleteTalents" framesCount="8" />
+      <node name="talentManageActionBarActive_pnl" type="TalantPanelActiveActionBar" field="_actionBar">
+        <node name="talentManageActionBarActiveFrame_mc" type="ActionBarItem" field="_templateActionButton">
+          <node name="number_txt" type="TextField" field="_txtNumber" />
+          <node name="instacast" type="ToggleButton" field="_isInstaCast" framesCount="8" />
+          <node name="icon_mc" type="ImageBox" field="Icon" />
+          <node name="glow" type="Control" field="_glow" />
+        </node>
+      </node>
+      <node name="status" type="TextField" field="_talentStatusMessage" />
+      <node name="error" type="TextField" field="_talentErrorMessage" />
+      <node name="library" type="MovieClip" field="_libraryContainer" />
+      <node name="talentSetSize" type="MovieClip" field="_talentSetShareSize" />
+      <node name="talentSetSizeSmall" type="MovieClip" field="_talentSetShareSizeSmall" />
+      <node name="dmgIcon" type="Control" field="_damageTypeIcon" />
+      <node name="statHealth_mc" type="StatisticTextWithBitmap" field="_statHealth">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="healthVal_txt" type="TextField" field="_txtHealthValue" />
+      <node name="statEnergy_mc" type="StatisticTextWithBitmap" field="_statEnergy">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="energyVal_txt" type="TextField" field="_txtEnergyValue" />
+      <node name="statStrength_mc" type="StatisticTextWithBitmap" field="_statStrength">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="strengthVal_txt" type="TextField" field="_txtStrengthValue" />
+      <node name="statIntelligence_mc" type="StatisticTextWithBitmap" field="_statIntellect">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="intellectVal_txt" type="TextField" field="_txtIntellectValue" />
+      <node name="statAgility_mc" type="StatisticTextWithBitmap" field="_statAttackSpeed">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="attackspeedVal_txt" type="TextField" field="_txtAttackSpeedValue" />
+      <node name="statDexterity_mc" type="StatisticTextWithBitmap" field="_statDexterity">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="dexterityVal_txt" type="TextField" field="_txtDexterityValue" />
+      <node name="statFortitude_mc" type="StatisticTextWithBitmap" field="_statStamina">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="staminaVal_txt" type="TextField" field="_txtStaminaValue" />
+      <node name="statWill_mc" type="StatisticTextWithBitmap" field="_statWill">
+        <node name="star_mc" type="SystemTooltipControl" field="_star" />
+        <node name="txt" type="TextField" field="_txtStatName" />
+      </node>
+      <node name="willVal_txt" type="TextField" field="_txtWillValue" />
+      <node name="movespeed_txt" type="TextField" field="_txtMoveSpeed" />
+      <node name="movespeedVal_txt" type="TextField" field="_txtMoveSpeedValue" />
+      <node name="damage_txt" type="TextField" field="_txtDamage" />
+      <node name="damageVal_txt" type="TextField" field="_txtDamageValue" />
+      <node name="apm_txt" type="TextField" field="_txtAttackPerSec" />
+      <node name="apmVal_txt" type="TextField" field="_txtAttackPerSecValue" />
+      <node name="critChance_txt" type="TextField" field="_txtCritChanse" />
+      <node name="critChanceVal_txt" type="TextField" field="_txtCritChanseValue" />
+      <node name="punching_txt" type="TextField" field="_txtPunching" />
+      <node name="punchingVal_txt" type="TextField" field="_txtPunchingValue" />
+      <node name="phisicalRes_txt" type="TextField" field="_txtPhisicalResist" />
+      <node name="phisicalResVal_txt" type="TextField" field="_txtPhisicalResistValue" />
+      <node name="energyRes_txt" type="TextField" field="_txtSpiritResist" />
+      <node name="energyResVal_txt" type="TextField" field="_txtSpiritResistValue" />
+      <node name="healthInc_btn" type="Button" field="_btnHealthIncrease" framesCount="4" />
+      <node name="energyInc_btn" type="Button" field="_btnEnergyIncrease" framesCount="4" />
+      <node name="strengthInc_btn" type="Button" field="_btnStrengthIncrease" framesCount="4" />
+      <node name="intellectInc_btn" type="Button" field="_btnIntellectIncrease" framesCount="4" />
+      <node name="attackspeedInc_btn" type="Button" field="_btnAttackSpeedIncrease" framesCount="4" />
+      <node name="dexterityInc_btn" type="Button" field="_btnDexterityIncrease" framesCount="4" />
+      <node name="staminaInc_btn" type="Button" field="_btnStaminaIncrease" framesCount="4" />
+      <node name="willInc_btn" type="Button" field="_btnWillIncrease" framesCount="4" />
+      <node name="combobox" type="ComboBox`1" field="_levelComboBox">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="devPoints_txt" type="TextField" field="_txtDevPoints" />
+      <node name="devPointsVal_txt" type="TextField" field="_txtDevPointsValue" />
+      <node name="devPointsBack_mc" type="MovieClip" field="_devPointsBack" />
+      <node name="talentsCollectionBtn" type="TextButton" field="_talentsCollectionBtn">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="text" type="InputTextControl" field="_textField" />
+      <node name="text_back" type="Control" field="_ctrlTextField" />
+      <node name="talentManageSetIcon_mc" type="TalentSetButton" field="_templateTalent">
+        <node name="dropEffect_mc" type="MovieClip" field="_dropEffect" />
+        <node name="icon_mc" type="ImageBox" field="Icon" />
+        <node name="activeTalent" type="MovieClip" field="_activeTalantFrame" />
+        <node name="redArrow" type="MovieClip" field="_arrow" />
+        <node name="upgradeIco" type="Control" field="_upgradeIcon1" />
+        <node name="upgradeIco2" type="Control" field="_upgradeIcon2" />
+        <node name="upgradeIco3" type="Control" field="_upgradeIcon3" />
+        <node name="plusLevel" type="MovieClip" field="_plusLevel" />
+        <node name="upgrade_bar" type="ProgressBar" field="_upgradeBar" />
+        <node name="upgradeLevel" type="UpgradeLevelIndicator" field="_upgradeLevelIndicator">
+          <node name="count" type="TextField" field="_txtCount" />
+        </node>
+        <node name="stop_mc" type="MovieClip" field="_cantUpgradeNotificator" />
+        <node name="glow" type="Control" field="_glow" />
+      </node>
+      <node name="talentLine" type="TalentHighLight" field="_highlightLine1" />
+      <node name="talentLine_2" type="TalentHighLight" field="_highlightLine2" />
+      <node name="talentLine_3" type="TalentHighLight" field="_highlightLine3" />
+      <node name="talentLine_4" type="TalentHighLight" field="_highlightLine4" />
+      <node name="talentLine_5" type="TalentHighLight" field="_highlightLine5" />
+      <node name="talentLine_6" type="TalentHighLight" field="_highlightLine6" />
+    </node>
+    <node name="tab_mc" type="ToggleTextButton" field="_statisticsTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="tab2_mc" type="ToggleTextButton" field="_talentsTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="tab3_mc" type="ToggleTextButton" field="_talentsTab2">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="tab4_mc" type="ToggleTextButton" field="_talentsTab3">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="talentUpgrade_pnl" type="TalentUpgradeWindow" field="_talentUpgradeWindow">
+    <node name="item" type="TalentUpgradeControl" field="_upgradeable">
+      <node name="icon" type="ImageBox" field="_icoTalent" />
+      <node name="count" type="TextField" field="_txtCount" />
+    </node>
+    <node name="fill_btn" type="TextButton" field="_btnFill">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buy_btn" type="ToggleBuyButtonWithIcon" field="_btnBuy">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="buy_btn2" type="ToggleBuyButtonWithIcon" field="_btnBuy2">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="buyFree_btn" type="TextButton" field="_btnBuyFree">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="bar" type="ExperienceProgressBar" field="_barExperience">
+      <node name="greenLine_mc" type="ProgressBar" field="_greenLine" />
+      <node name="blueLine_mc" type="ProgressBar" field="_blueLine" />
+      <node name="txt" type="TextField" field="_title" />
+    </node>
+    <node name="plusStars" type="StarCounter" field="_plusStarsCount">
+      <node name="count" type="TextField" field="_plusStarsCount" />
+    </node>
+    <node name="talentsCount" type="TextField" field="_txtTalentsCount" />
+    <node name="title" type="TextField" field="_title" />
+    <node name="container" type="UpgradeTalentsContainer" field="_upgradeTalentsContainer">
+      <node name="back" type="Control" field="_back" />
+      <node name="libraryItem" type="ConsumableTalentForUpgrade" field="_itemTemplate">
+        <node name="tutorialItemHighlight" type="MovieClip" field="_highlight" />
+        <node name="bound_mc" type="MovieClip" field="_boundTalent" />
+        <node name="icon_mc" type="ImageBox" field="Icon" />
+        <node name="activeFrame" type="Control" field="_activeTalantFrame" />
+        <node name="new_mc" type="Control" field="_newTalentIcon" />
+        <node name="count" type="TextField" field="_txtCount" />
+        <node name="upgradeIco" type="Control" field="_upgradeIcon1" />
+        <node name="upgradeIco2" type="Control" field="_upgradeIcon2" />
+        <node name="upgradeIco3" type="Control" field="_upgradeIcon3" />
+        <node name="plusLevel" type="MovieClip" field="_plusLevel" />
+        <node name="upgrade_bar" type="ProgressBar" field="_upgradeBar" />
+        <node name="upgradeLevel" type="UpgradeLevelIndicator" field="_upgradeLevelIndicator">
+          <node name="count" type="TextField" field="_txtCount" />
+        </node>
+        <node name="stop_mc" type="MovieClip" field="_cantUpgradeNotificator" />
+        <node name="glow" type="Control" field="_glow" />
+      </node>
+    </node>
+    <node name="warning" type="TextField" field="_txtWarning" />
+    <node name="status" type="TextField" field="_statusBar" />
+    <node name="library" type="MovieClip" field="_libraryContainer" />
+    <node name="item_1" type="ToggleTextButton" field="_btnLevel1">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_2" type="ToggleTextButton" field="_btnLevel2">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_3" type="ToggleTextButton" field="_btnLevel3">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_4" type="ToggleTextButton" field="_btnLevel4">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_5" type="ToggleTextButton" field="_btnLevel5">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_6" type="ToggleTextButton" field="_btnLevel6">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="blue_tb" type="ToggleButton" field="_btnRarityExcellent" framesCount="8" />
+    <node name="magenta_tb" type="ToggleButton" field="_btnRarityMagnificant" framesCount="8" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="talentUpgradeEntity_pnl" type="TalentUpgradeByEntityWindow" field="_talentUpgradeByEntityWindow">
+    <node name="item" type="TalentUpgradeControl" field="_upgradeable">
+      <node name="icon" type="ImageBox" field="_icoTalent" />
+      <node name="count" type="TextField" field="_txtCount" />
+    </node>
+    <node name="upgrade_btn" type="TextButton" field="_btnBuyFree">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="container" type="TalentUpgradesEnityItemsContainer" field="_entitiesContainer">
+      <node name="libraryItem" type="TalentUpgradeEntityItem" field="_itemTemplate">
+        <node name="icon_mc" type="ImageBox" field="_icon" />
+        <node name="new_mc" type="Control" field="_newIcon" />
+        <node name="count" type="TextField" field="_txtCount" />
+        <node name="glow" type="Control" field="_glow" />
+        <node name="stop_mc" type="Control" field="_b1" />
+        <node name="upgradeLevel" type="Control" field="_b2" />
+        <node name="plusLevel" type="Control" field="_b3" />
+        <node name="upgrade_bar" type="Control" field="_b4" />
+        <node name="upgradeIco" type="Control" field="_b5" />
+        <node name="upgradeIco2" type="Control" field="_b6" />
+        <node name="upgradeIco3" type="Control" field="_b7" />
+        <node name="bound_mc" type="Control" field="_b8" />
+        <node name="activeFrame" type="Control" field="_b9" />
+        <node name="tutorialItemHighlight" type="Control" field="_b10" />
+      </node>
+    </node>
+    <node name="runeItem" type="EntityDropSlot" field="_runeSlot">
+      <node name="icon" type="ImageBox" field="_icon" />
+      <node name="chance" type="TextField" field="_txtChance" />
+    </node>
+    <node name="CatItem1" type="EntityDropSlot" field="_catSlot1">
+      <node name="icon" type="ImageBox" field="_icon" />
+      <node name="chance" type="TextField" field="_txtChance" />
+    </node>
+    <node name="CatItem2" type="EntityDropSlot" field="_catSlot2">
+      <node name="icon" type="ImageBox" field="_icon" />
+      <node name="chance" type="TextField" field="_txtChance" />
+    </node>
+    <node name="status" type="TextField" field="_status" />
+    <node name="talentsCount" type="TextField" field="_chanceTextField" />
+    <node name="title" type="TextField" field="_containerTitleTextField" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="talentReforge_pnl" type="TalentReforgeWindow" field="_talentReforgeWindow">
+    <node name="container" type="ReforgeTalentsContainer" field="_talentsContainer">
+      <node name="libraryItem" type="ReforgeTalent" field="_itemTemplate">
+        <node name="tutorialItemHighlight" type="MovieClip" field="_highlight" />
+        <node name="bound_mc" type="MovieClip" field="_boundTalent" />
+        <node name="icon_mc" type="ImageBox" field="Icon" />
+        <node name="activeFrame" type="Control" field="_activeTalantFrame" />
+        <node name="new_mc" type="Control" field="_newTalentIcon" />
+        <node name="count" type="TextField" field="_txtCount" />
+        <node name="upgradeIco" type="Control" field="_upgradeIcon1" />
+        <node name="upgradeIco2" type="Control" field="_upgradeIcon2" />
+        <node name="upgradeIco3" type="Control" field="_upgradeIcon3" />
+        <node name="plusLevel" type="MovieClip" field="_plusLevel" />
+        <node name="upgrade_bar" type="ProgressBar" field="_upgradeBar" />
+        <node name="upgradeLevel" type="UpgradeLevelIndicator" field="_upgradeLevelIndicator">
+          <node name="count" type="TextField" field="_txtCount" />
+        </node>
+        <node name="stop_mc" type="MovieClip" field="_cantUpgradeNotificator" />
+        <node name="glow" type="Control" field="_glow" />
+      </node>
+    </node>
+    <node name="talentReroll" type="TalentRerollControl" field="_talentReroll">
+      <node name="talent_reroll_txt" type="TextField" field="_txtTitle" />
+      <node name="postReforgeStateCounter" type="ReforgeSlotStateControl" field="_postReforgeState">
+        <node name="counter" type="TextField" field="_txtCounter" />
+        <node name="lock" type="MovieClip" field="_lock" />
+      </node>
+      <node name="reroll_btn" type="ToggleBuyButtonWithTwoIcons" field="_btnReroll">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="cost2_txt" type="TextField" field="_txtCost2" />
+        <node name="gold2_mc" type="Control" field="_resource2" />
+        <node name="custom_mc" type="ImageBox" field="_custom" />
+      </node>
+      <node name="lock" type="MovieClip" field="_lock" />
+      <node name="talent_btn_txt" type="TextField" field="_txtBtnTitle" />
+    </node>
+    <node name="talentUpgrade" type="TalentRerollControl" field="_talentUpgrade">
+      <node name="talent_reroll_txt" type="TextField" field="_txtTitle" />
+      <node name="postReforgeStateCounter" type="ReforgeSlotStateControl" field="_postReforgeState">
+        <node name="counter" type="TextField" field="_txtCounter" />
+        <node name="lock" type="MovieClip" field="_lock" />
+      </node>
+      <node name="reroll_btn" type="ToggleBuyButtonWithTwoIcons" field="_btnReroll">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="cost2_txt" type="TextField" field="_txtCost2" />
+        <node name="gold2_mc" type="Control" field="_resource2" />
+        <node name="custom_mc" type="ImageBox" field="_custom" />
+      </node>
+      <node name="lock" type="MovieClip" field="_lock" />
+      <node name="talent_btn_txt" type="TextField" field="_txtBtnTitle" />
+    </node>
+    <node name="talentRoll" type="TransmutationControl" field="_talentRoll">
+      <node name="talentRollTxt" type="TextField" field="_txtName" />
+      <node name="priceControl" type="IncrementResourceControl" field="_priceControl">
+        <node name="produceIconPlus_mc" type="ResourceIcon" field="_resIcon" />
+        <node name="res_txt" type="InputTextControl" field="_txtResources" />
+        <node name="minus_btn" type="Button" field="_buttonGuildResDecrement" framesCount="4" />
+        <node name="plus_btn" type="Button" field="_buttonGuildResIncrement" framesCount="4" />
+      </node>
+      <node name="end_R" type="Button" field="_btnFillCrystals" framesCount="4" />
+      <node name="end_L" type="Button" field="_btnRemoveCrystals" framesCount="4" />
+      <node name="takeBtn" type="TextButton" field="_btnCollect">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="startBtn" type="ToggleBuyButtonWithIcon" field="_btnStart">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+    </node>
+    <node name="comboboxOrange" type="ImageComboBox`1" field="_comboOrangeSets">
+      <node name="chatCombo_btn" type="ImageComboBoxButton" field="BtnComboBox">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+      <node name="frame" type="Control" field="Back" />
+      <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+        <node name="row_btn" type="ImageComboBoxRow`1" field="_comboRow">
+          <node name="icon" type="ImageBox" field="_icon" />
+        </node>
+      </node>
+    </node>
+    <node name="comboboxRed" type="ImageComboBox`1" field="_comboRedSets">
+      <node name="chatCombo_btn" type="ImageComboBoxButton" field="BtnComboBox">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+      <node name="frame" type="Control" field="Back" />
+      <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+        <node name="row_btn" type="ImageComboBoxRow`1" field="_comboRow">
+          <node name="icon" type="ImageBox" field="_icon" />
+        </node>
+      </node>
+    </node>
+    <node name="library" type="MovieClip" field="_libraryContainer" />
+    <node name="item_1" type="ToggleTextButton" field="_btnLevel1">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_2" type="ToggleTextButton" field="_btnLevel2">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_3" type="ToggleTextButton" field="_btnLevel3">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_4" type="ToggleTextButton" field="_btnLevel4">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_5" type="ToggleTextButton" field="_btnLevel5">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="item_6" type="ToggleTextButton" field="_btnLevel6">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="status" type="TextField" field="_txtStatus" />
+    <node name="scrollBar" type="ScrollBar" field="_scrollBar">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="questContainer_mc" type="QuestButtonsWidget" field="QuestIconsPanel">
+    <node name="questIcon_mc" type="QuestPortret" field="_questItem">
+      <node name="quest_btn" type="ImageButton" field="_btnIcon">
+        <node name="icon" type="ImageBox" field="_image" />
+      </node>
+      <node name="attention" type="MovieClip" field="_animAttension" />
+      <node name="complete" type="MovieClip" field="_animComplete" />
+      <node name="expArrow" type="MovieClip" field="_animArrow" />
+      <node name="dialog" type="MovieClip" field="_animDialog" />
+      <node name="glow_anim" type="BlinkinAnimation" field="_glowAnimation" />
+      <node name="timer" type="FrameText" field="_timer">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="up_btn" type="Button" field="_upBtn" framesCount="4" />
+    <node name="down_btn" type="Button" field="_downBtn" framesCount="4" />
+  </node>
+  <node name="dialogContainer_pnl" type="QuestWindow" field="_questDialog">
+    <node name="dialog_pnl" type="QuestDialog" field="_dialog">
+      <node name="item1" type="QuestPhraseControl" field="_leftPersonDialog">
+        <node name="icon" type="ImageBox" field="_imgPortret" />
+        <node name="frame" type="Control" field="_frame" />
+        <node name="npcName" type="TextField" field="_txtName" />
+        <node name="text" type="TextField" field="_txtPhrase" />
+      </node>
+      <node name="item2" type="QuestPhraseControl" field="_rightPersonDialog">
+        <node name="icon" type="ImageBox" field="_imgPortret" />
+        <node name="frame" type="Control" field="_frame" />
+        <node name="npcName" type="TextField" field="_txtName" />
+        <node name="text" type="TextField" field="_txtPhrase" />
+      </node>
+      <node name="choiceContainer" type="QuestQuestionControl" field="_questQuestion">
+        <node name="choice_btn" type="QuestChoiseButton" field="_questChoiseButton">
+          <node name="back" type="Button" field="_btnBack" framesCount="4" />
+          <node name="text" type="TextField" field="_txtChoise" />
+        </node>
+        <node name="frame" type="Control" field="_backFrame" />
+      </node>
+      <node name="right_btn" type="Button" field="_btnNext" framesCount="4" />
+      <node name="end_btn" type="Button" field="_btnScrollToEnd" framesCount="4" />
+      <node name="title" type="TrimmedTooltipText" field="_txtTitle" />
+      <node name="shadow_mc" type="MovieClip" field="_shadow" />
+      <node name="dialogBack_mc" type="ImageBox" field="_dialogBack" />
+    </node>
+    <node name="quest_pnl" type="QuestControl" field="_objectives">
+      <node name="textBig" type="TextField" field="_txtTitle" />
+      <node name="textSmall" type="TextField" field="_txtQuestLine" />
+      <node name="text" type="TextField" field="_txtDescription" />
+      <node name="questPicture_mc" type="ImageBox" field="_questPicture" />
+      <node name="objRewardContainer" type="QuestObjectiveContainer" field="_objectiveContainer">
+        <node name="objective_mc" type="QuestObjectiveControl" field="_questObjectiveControl">
+          <node name="counterBack" type="Control" field="_counterBack" />
+          <node name="counter_txt" type="TextField" field="_txtCounter" />
+          <node name="text" type="TextField" field="_txtObjective" />
+          <node name="checkBack" type="Control" field="_complete" />
+          <node name="accept_btn" type="TextButton" field="_btnQuickAction">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+          <node name="skip_btn" type="OldBuyButton" field="_btnSkip" framesCount="3">
+            <node name="cost_txt" type="TextField" field="_txtCost" />
+            <node name="gold_mc" type="Control" field="_resource" />
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+          <node name="frame" type="MovieClip" field="_back" />
+          <node name="frame2" type="MovieClip" field="_readyObjectiveBack" />
+        </node>
+        <node name="rewardContainer" type="QuestSimleRewardContainer" field="_rewardsContainer">
+          <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+          <node name="right" type="Button" field="_btnRight" framesCount="4" />
+          <node name="reward_mc" type="QuestReward" field="_reward">
+            <node name="icon" type="ImageBox" field="_talentIco" />
+            <node name="bld" type="ImageBox" field="_buildingIco" />
+            <node name="hero" type="ImageBox" field="_bigIcon" />
+            <node name="quest" type="ImageBox" field="_questIcon" />
+            <node name="exp" type="MovieClip" field="_heroExpIco" />
+            <node name="level" type="QuestRewardLevelControl" field="_level">
+              <node name="level_txt" type="TextField" field="_text" />
+            </node>
+            <node name="premiumIcon_mc" type="MovieClip" field="_premiumIcon" framesCount="2" />
+            <node name="cross" type="MovieClip" field="_devPointPlus" />
+            <node name="randomTalent" type="MovieClip" field="_randomTalent" />
+            <node name="allHeroStatsReset" type="MovieClip" field="_allHeroStatsResetIcon" />
+            <node name="guildLogoChange" type="MovieClip" field="_guildLogoChangeIcon" />
+            <node name="guildExperience" type="MovieClip" field="_guildExperienceIcon" />
+            <node name="nickNameChangeIcon" type="MovieClip" field="_nickNameChangeIcon" />
+            <node name="fractionChangedIcon" type="MovieClip" field="_fractionChangedIcon" />
+            <node name="heroStatsReset" type="MovieClip" field="_heroStatsResetIcon" />
+            <node name="randomHeroSkin" type="MovieClip" field="_randomHeroSkin" />
+            <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+            <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+              <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+            </node>
+            <node name="value_txt" type="TextField" field="TxtResourceCount" />
+          </node>
+        </node>
+      </node>
+      <node name="objRewardContainer2" type="QuestObjectiveContainer" field="_alternativeObjectiveContainer">
+        <node name="objective_mc" type="QuestObjectiveControl" field="_questObjectiveControl">
+          <node name="counterBack" type="Control" field="_counterBack" />
+          <node name="counter_txt" type="TextField" field="_txtCounter" />
+          <node name="text" type="TextField" field="_txtObjective" />
+          <node name="checkBack" type="Control" field="_complete" />
+          <node name="accept_btn" type="TextButton" field="_btnQuickAction">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+          <node name="skip_btn" type="OldBuyButton" field="_btnSkip" framesCount="3">
+            <node name="cost_txt" type="TextField" field="_txtCost" />
+            <node name="gold_mc" type="Control" field="_resource" />
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+          <node name="frame" type="MovieClip" field="_back" />
+          <node name="frame2" type="MovieClip" field="_readyObjectiveBack" />
+        </node>
+        <node name="rewardContainer" type="QuestSimleRewardContainer" field="_rewardsContainer">
+          <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+          <node name="right" type="Button" field="_btnRight" framesCount="4" />
+          <node name="reward_mc" type="QuestReward" field="_reward">
+            <node name="icon" type="ImageBox" field="_talentIco" />
+            <node name="bld" type="ImageBox" field="_buildingIco" />
+            <node name="hero" type="ImageBox" field="_bigIcon" />
+            <node name="quest" type="ImageBox" field="_questIcon" />
+            <node name="exp" type="MovieClip" field="_heroExpIco" />
+            <node name="level" type="QuestRewardLevelControl" field="_level">
+              <node name="level_txt" type="TextField" field="_text" />
+            </node>
+            <node name="premiumIcon_mc" type="MovieClip" field="_premiumIcon" framesCount="2" />
+            <node name="cross" type="MovieClip" field="_devPointPlus" />
+            <node name="randomTalent" type="MovieClip" field="_randomTalent" />
+            <node name="allHeroStatsReset" type="MovieClip" field="_allHeroStatsResetIcon" />
+            <node name="guildLogoChange" type="MovieClip" field="_guildLogoChangeIcon" />
+            <node name="guildExperience" type="MovieClip" field="_guildExperienceIcon" />
+            <node name="nickNameChangeIcon" type="MovieClip" field="_nickNameChangeIcon" />
+            <node name="fractionChangedIcon" type="MovieClip" field="_fractionChangedIcon" />
+            <node name="heroStatsReset" type="MovieClip" field="_heroStatsResetIcon" />
+            <node name="randomHeroSkin" type="MovieClip" field="_randomHeroSkin" />
+            <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+            <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+              <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+            </node>
+            <node name="value_txt" type="TextField" field="TxtResourceCount" />
+          </node>
+        </node>
+      </node>
+      <node name="icon" type="ImageBox" field="_icoNpc" />
+      <node name="objectiveComplete" type="Control" field="_completeObjective" />
+      <node name="back" type="Control" field="_back" />
+      <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+      <node name="reward_btn" type="TextButton" field="_btnReward">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="StoryText" type="QuestStoryText" field="_storyText">
+        <node name="scroll" type="ScrollBar" field="_scrollBar">
+          <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+          <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+          <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+          <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+        </node>
+        <node name="text" type="TextField" field="_storyTxt" />
+        <node name="mask" type="MovieClip" field="_mask" />
+        <node name="FrameBorder" type="MovieClip" field="_frameBorder" />
+        <node name="FrameBack" type="MovieClip" field="_frameBack" />
+      </node>
+      <node name="ReadHide_btn" type="TextButton" field="_readHideBtn">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="value_txt" type="TextField" field="_txtTimer" />
+      <node name="timerBack" type="Control" field="_timerBack" />
+      <node name="orSeparator" type="ObjectSeparator" field="_orSeparator">
+        <node name="categoryName_txt" type="TextField" field="_txtOr" />
+      </node>
+      <node name="FirstSeparator" type="MovieClip" field="_firstSeparator" />
+    </node>
+    <node name="reward_pnl" type="QuestRewardControl" field="_rewards">
+      <node name="textBig" type="TextField" field="_header" />
+      <node name="textSmall" type="TextField" field="_questTitle" />
+      <node name="heroFrame_mc" type="SimpleFrameImageBox" field="_questGiverPortrait">
+        <node name="icon" type="ImageBox" field="_portrait" />
+      </node>
+      <node name="reward_btn" type="TextButton" field="_collectBtn">
+        <node name="txt" type="TextField" field="_textField" />
+      </node>
+      <node name="rewardContainer" type="QuestSimleRewardContainer" field="_rewardContainer">
+        <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+        <node name="right" type="Button" field="_btnRight" framesCount="4" />
+        <node name="reward_mc" type="QuestReward" field="_reward">
+          <node name="icon" type="ImageBox" field="_talentIco" />
+          <node name="bld" type="ImageBox" field="_buildingIco" />
+          <node name="hero" type="ImageBox" field="_bigIcon" />
+          <node name="quest" type="ImageBox" field="_questIcon" />
+          <node name="exp" type="MovieClip" field="_heroExpIco" />
+          <node name="level" type="QuestRewardLevelControl" field="_level">
+            <node name="level_txt" type="TextField" field="_text" />
+          </node>
+          <node name="premiumIcon_mc" type="MovieClip" field="_premiumIcon" framesCount="2" />
+          <node name="cross" type="MovieClip" field="_devPointPlus" />
+          <node name="randomTalent" type="MovieClip" field="_randomTalent" />
+          <node name="allHeroStatsReset" type="MovieClip" field="_allHeroStatsResetIcon" />
+          <node name="guildLogoChange" type="MovieClip" field="_guildLogoChangeIcon" />
+          <node name="guildExperience" type="MovieClip" field="_guildExperienceIcon" />
+          <node name="nickNameChangeIcon" type="MovieClip" field="_nickNameChangeIcon" />
+          <node name="fractionChangedIcon" type="MovieClip" field="_fractionChangedIcon" />
+          <node name="heroStatsReset" type="MovieClip" field="_heroStatsResetIcon" />
+          <node name="randomHeroSkin" type="MovieClip" field="_randomHeroSkin" />
+          <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+          <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+            <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+          </node>
+          <node name="value_txt" type="TextField" field="TxtResourceCount" />
+        </node>
+      </node>
+      <node name="back" type="Control" field="_back" />
+      <node name="close_btn" type="Button" field="_closeBtn" framesCount="4" />
+      <node name="text" type="TextField" field="_txtDescription" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="news_pnl" type="Control" field="_newsPanel" />
+  <node name="heroPanel2_pnl" type="Control" field="_heroPanel2" />
+  <node name="overtipContainer_mc" type="Control" field="_overtipsLayer" />
+  <node name="proBuilding_pnl" type="HeroesBuffWindow" field="_proBuilding">
+    <node name="allHeroesDesc_txt" type="TextField" field="_txtAllHeroesDesc" />
+    <node name="allStatsHeroDesc_txt" type="TextField" field="_txtAllStatsHeroDesc" />
+    <node name="cost_txt" type="TextField" field="_txtCost" />
+    <node name="costVal_txt" type="TextField" field="_txtCostValue" />
+    <node name="stat1_txt" type="TextField" field="_txtStat1" />
+    <node name="stat2_txt" type="TextField" field="_txtStat2" />
+    <node name="stat1Val_txt" type="TextField" field="_txtStat1Value" />
+    <node name="stat2Val_txt" type="TextField" field="_txtStat2Value" />
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="firstBuy_pnl" type="FirstBuyWindow" field="_firstBuy">
+    <node name="pet_ico" type="ImageBox" field="_petIcon" />
+    <node name="petName" type="TextField" field="_petName" />
+    <node name="item1" type="DescriptedResourceControl" field="_talents">
+      <node name="description_txt" type="TextField" field="_description" />
+      <node name="value_txt" type="TextField" field="TxtValue" />
+      <node name="resource" type="UniversalResourceIcon" field="_resourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+    </node>
+    <node name="item2" type="DescriptedResourceControl" field="_resources">
+      <node name="description_txt" type="TextField" field="_description" />
+      <node name="value_txt" type="TextField" field="TxtValue" />
+      <node name="resource" type="UniversalResourceIcon" field="_resourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+    </node>
+    <node name="item3" type="DescriptedResourceControl" field="_experience">
+      <node name="description_txt" type="TextField" field="_description" />
+      <node name="value_txt" type="TextField" field="TxtValue" />
+      <node name="resource" type="UniversalResourceIcon" field="_resourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+    </node>
+    <node name="fx" type="Control" field="_premiumAccountLight" />
+    <node name="txt" type="TextField" field="_prodBonusValue" />
+    <node name="resBot" type="UniversalResourceIcon" field="_prodBonusIcon">
+      <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+    </node>
+    <node name="desc2_txt" type="TextField" field="_firstBuyResourcesDescription" />
+    <node name="timeLeft_txt" type="TextField" field="TxtTimeLeft" />
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+    <node name="bar" type="AnimatedProgressBar" field="_progressBar">
+      <node name="line_mc" type="ProgressBar" field="_animatedProgressBar" />
+    </node>
+  </node>
+  <node name="addedAsFriend_pnl" type="Control" field="_addedAsFriendPnl" />
+  <node name="addFriend_pnl" type="InviteFriendWindow" field="_addFriendPnl">
+    <node name="title" type="TextField" field="_title" />
+    <node name="input" type="InputTextControl" field="_input" />
+    <node name="yes_btn" type="TextButton" field="_searchBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_cancel">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="waitAnim" type="MovieClip" field="_anim" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="premium_mc" type="MarketingEventWindow" field="_marketingEventWindow">
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="buy_btn" type="TextButton" field="_btnCenterFromOne">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="actionNavigateContainer" type="EventsContainer" field="_actionsContainer">
+      <node name="actionNavigate_btn" type="EventControl" field="_templateEventControl">
+        <node name="navigate_sel" type="EventButton" field="_btnNavigate">
+          <node name="icon" type="ImageBox" field="_image" />
+          <node name="txt" type="TextField" field="TextField" />
+        </node>
+        <node name="state" type="Control" field="_state" />
+        <node name="navigateOrange_sel" type="EventButton" field="_btnSpecialNavigate">
+          <node name="icon" type="ImageBox" field="_image" />
+          <node name="txt" type="TextField" field="TextField" />
+        </node>
+      </node>
+    </node>
+    <node name="question_mc" type="HoweredTooltipControl" field="_notification" framesCount="2" />
+    <node name="actionPicture" type="ImageBox" field="_actionPicture" />
+    <node name="buyBtnGlow" type="BlinkinAnimation" field="_buyBtnGlow" />
+    <node name="questionBtnGlow" type="BlinkinAnimation" field="_questionBtnGlow" />
+    <node name="buy1" type="OldBuyButton" field="_btnLeftFromThree" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buy2" type="OldBuyButton" field="_btnCenterFromThree" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buy3" type="OldBuyButton" field="_btnRightFromThree" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buyA" type="OldBuyButton" field="_btnLeftFromTwo" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buyB" type="OldBuyButton" field="_btnRightFromTwo" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buySteam_btn" type="MarketingImageButton" field="_templateBuyItemButton">
+      <node name="anim" type="MovieClip" field="_anim" />
+      <node name="icon" type="ImageBox" field="_image" />
+    </node>
+    <node name="bonusLine" type="ImageBox" field="_bonusImage" />
+    <node name="scroll" type="ScrollBar" field="_scrollBar">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="smallImage_btn" type="MarketingImageButton" field="_btnSmallImage">
+      <node name="anim" type="MovieClip" field="_anim" />
+      <node name="icon" type="ImageBox" field="_image" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="premiumWindow" type="PremiumWindow" field="_premiumWindow">
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="question_mc" type="HoweredTooltipControl" field="_notification" framesCount="2" />
+    <node name="actionPicture" type="ImageBox" field="_actionPicture" />
+    <node name="buy1" type="OldBuyButton" field="_btnLeftFromThree" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buy2" type="OldBuyButton" field="_btnCenterFromThree" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="buy3" type="OldBuyButton" field="_btnRightFromThree" framesCount="3">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="library" type="LibraryControl" field="_library">
+    <node name="clear_btn" type="Button" field="_btnReset" framesCount="4" />
+    <node name="libComboBox" type="ComboBox`1" field="_comboBox">
+      <node name="rowMask" type="Control" field="RowMask" />
+      <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+        <node name="txt" type="InputTextControl" field="_textField" />
+      </node>
+      <node name="frame" type="Control" field="Back" />
+      <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+        <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+      </node>
+    </node>
+    <node name="blue_tb" type="ToggleButton" field="_btnRarityExcellent" framesCount="8" />
+    <node name="magenta_tb" type="ToggleButton" field="_btnRarityMagnificant" framesCount="8" />
+    <node name="orange_tb" type="ToggleButton" field="_btnRarityExclusive" framesCount="8" />
+    <node name="red_tb" type="ToggleButton" field="_btnRarityOutstanding" framesCount="8" />
+    <node name="heroFilter_tb" type="ToggleButton" field="_tbHero" framesCount="8" />
+    <node name="inventoryButtonsContainer" type="LibraryItemContainer`1" field="_libraryItemContainer">
+      <node name="libraryItem" type="LibraryItem" field="_itemTemplate">
+        <node name="activeFrame" type="Control" field="_activeTalantFrame" />
+        <node name="new_mc" type="Control" field="_newTalentIcon" />
+        <node name="count" type="TextField" field="_txtCount" />
+        <node name="bound_mc" type="MovieClip" field="_boundTalent" />
+        <node name="icon_mc" type="ImageBox" field="Icon" />
+        <node name="upgradeIco" type="Control" field="_upgradeIcon1" />
+        <node name="upgradeIco2" type="Control" field="_upgradeIcon2" />
+        <node name="upgradeIco3" type="Control" field="_upgradeIcon3" />
+        <node name="plusLevel" type="MovieClip" field="_plusLevel" />
+        <node name="upgrade_bar" type="ProgressBar" field="_upgradeBar" />
+        <node name="upgradeLevel" type="UpgradeLevelIndicator" field="_upgradeLevelIndicator">
+          <node name="count" type="TextField" field="_txtCount" />
+        </node>
+        <node name="stop_mc" type="MovieClip" field="_cantUpgradeNotificator" />
+        <node name="glow" type="Control" field="_glow" />
+      </node>
+    </node>
+    <node name="library_scr" type="ScrollBar" field="_scrollBar">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="libCount" type="TextField" field="_txtLibCount" />
+    <node name="title" type="TextField" field="_txtLibraryTitle" />
+    <node name="comboboxOrange" type="ImageComboBox`1" field="_comboSets">
+      <node name="chatCombo_btn" type="ImageComboBoxButton" field="BtnComboBox">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+      <node name="frame" type="Control" field="Back" />
+      <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+        <node name="row_btn" type="ImageComboBoxRow`1" field="_comboRow">
+          <node name="icon" type="ImageBox" field="_icon" />
+        </node>
+      </node>
+    </node>
+    <node name="comboboxRed" type="ImageComboBox`1" field="_comboRedSets">
+      <node name="chatCombo_btn" type="ImageComboBoxButton" field="BtnComboBox">
+        <node name="icon" type="ImageBox" field="_icon" />
+      </node>
+      <node name="frame" type="Control" field="Back" />
+      <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+        <node name="row_btn" type="ImageComboBoxRow`1" field="_comboRow">
+          <node name="icon" type="ImageBox" field="_icon" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node name="lvlUp" type="LevelUpWindow" field="_levelUpWindow">
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="avatar_mc" type="LevelUpLord" field="_lordControl">
+      <node name="avatar" type="ImageBox" field="_avatarIco" />
+      <node name="level" type="HeroPanelLevel" field="_level">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="name_txt" type="TrimmedTooltipText" field="_playerName" />
+    </node>
+    <node name="desc" type="TextField" field="_txtDescription" />
+    <node name="heroContainer" type="LevelUpHeroReward" field="_levelUpHero">
+      <node name="heroItem" type="LevelUpItem" field="_heroItem">
+        <node name="icon" type="ImageBox" field="_rewardIcon" />
+        <node name="priceControl" type="PriceControl" field="_priceControl">
+          <node name="leftCost" type="ResourcePriceControl" field="LeftControl">
+            <node name="icon" type="Control" field="_icoResource" />
+            <node name="cost_txt" type="TextField" field="_text" />
+          </node>
+          <node name="rightCost" type="ResourcePriceControl" field="RightControl">
+            <node name="icon" type="Control" field="_icoResource" />
+            <node name="cost_txt" type="TextField" field="_text" />
+          </node>
+        </node>
+      </node>
+      <node name="newHero" type="TextField" field="_txtHeroAvailable" />
+      <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+      <node name="right" type="Button" field="_btnRight" framesCount="4" />
+      <node name="talentUpgradeTitle" type="TextField" field="_txtUpgradeButtonTitle" />
+      <node name="talentUpgradeText" type="TextField" field="_txtUpgradeButtonText" />
+      <node name="talentUpgrade" type="Control" field="_talentUpgrade" />
+    </node>
+    <node name="reward_txt" type="TextField" field="_txtRewardTitle" />
+    <node name="lvlUpItem_mc" type="LevelUpRewardsContainer" field="_rewards">
+      <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+      <node name="right" type="Button" field="_btnRight" framesCount="4" />
+      <node name="reward_mc" type="QuestReward" field="_reward">
+        <node name="icon" type="ImageBox" field="_talentIco" />
+        <node name="bld" type="ImageBox" field="_buildingIco" />
+        <node name="hero" type="ImageBox" field="_bigIcon" />
+        <node name="quest" type="ImageBox" field="_questIcon" />
+        <node name="exp" type="MovieClip" field="_heroExpIco" />
+        <node name="level" type="QuestRewardLevelControl" field="_level">
+          <node name="level_txt" type="TextField" field="_text" />
+        </node>
+        <node name="premiumIcon_mc" type="MovieClip" field="_premiumIcon" framesCount="2" />
+        <node name="cross" type="MovieClip" field="_devPointPlus" />
+        <node name="randomTalent" type="MovieClip" field="_randomTalent" />
+        <node name="allHeroStatsReset" type="MovieClip" field="_allHeroStatsResetIcon" />
+        <node name="guildLogoChange" type="MovieClip" field="_guildLogoChangeIcon" />
+        <node name="guildExperience" type="MovieClip" field="_guildExperienceIcon" />
+        <node name="nickNameChangeIcon" type="MovieClip" field="_nickNameChangeIcon" />
+        <node name="fractionChangedIcon" type="MovieClip" field="_fractionChangedIcon" />
+        <node name="heroStatsReset" type="MovieClip" field="_heroStatsResetIcon" />
+        <node name="randomHeroSkin" type="MovieClip" field="_randomHeroSkin" />
+        <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+        <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+          <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+        </node>
+        <node name="value_txt" type="TextField" field="TxtResourceCount" />
+      </node>
+    </node>
+    <node name="getLordReward_btn" type="TextButton" field="_btnGetLordReward">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="lvlUpGerb_mc" type="BlazonControl" field="_blazonControl" />
+    <node name="back" type="Control" field="_back" />
+    <node name="hero_btn" type="TextButton" field="_btnLeft">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="getReward_btn" type="TextButton" field="_btnRight">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="right" type="Button" field="_btnScrollRight" framesCount="4" />
+    <node name="left" type="Button" field="_btnScrollLeft" framesCount="4" />
+    <node name="heroItem" type="LevelUpHeroControl" field="_heroControl">
+      <node name="level" type="TextField" field="_txtLevel" />
+      <node name="name_txt" type="TrimmedTooltipText" field="_txtHeroName" />
+      <node name="icon" type="ImageBox" field="_heroImage" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="guild_pnl" type="GuildManageWindow" field="_guildWindow">
+    <node name="bld_mc" type="GuildVisualBlock" field="_guildVisualBlock">
+      <node name="img" type="MovieClip" field="_gerb" framesCount="2" />
+      <node name="customImg" type="ImageBox" field="_gerbCustomImage" />
+      <node name="options_btn" type="Button" field="_guildOptions" framesCount="4" />
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+    </node>
+    <node name="guildMain_pnl" type="GuildMainPanel" field="_guildMain">
+      <node name="gRating_txt" type="TextField" field="_raitingText" />
+      <node name="gRating" type="TextField" field="_raitingValue" />
+      <node name="gToday_txt" type="TextField" field="_pointsTodayText" />
+      <node name="gToday" type="TextField" field="_pointsTodayValue" />
+      <node name="gRatingTomorrow_txt" type="TextField" field="_raitingTomorrowText" />
+      <node name="gRatingTomorrow" type="TextField" field="_ratingTomorrowValue" />
+      <node name="gWorld_txt" type="TextField" field="_worldPlaceText" />
+      <node name="gWorld" type="TextField" field="_worldPlaceValue" />
+      <node name="gPlayersCount_txt" type="TextField" field="_playersCountText" />
+      <node name="gPlayersCount" type="TextField" field="_playersCountValue" />
+      <node name="RankIcon" type="MovieClip" field="_rankIcon" />
+      <node name="sort_rank" type="SortButton" field="_colRank">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_heroName" type="SortButton" field="_colName">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_level" type="SortButton" field="_colLevel">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_status" type="SortButton" field="_colStatus">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_weekPoints" type="SortButton" field="_colWeekPoints">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_dayPoints" type="SortButton" field="_colDayPoints">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_heroRating" type="SortButton" field="_colHeroRating">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_activity" type="SortButton" field="_colInvestedRes">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="guildMembers" type="GuildMembersTable" field="_membersTable">
+        <node name="addPlayer_btn" type="TextButton" field="_addPlayerButton">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+        <node name="guildLine" type="GuildMemberControl" field="_memberTemplate">
+          <node name="rankIcon" type="SystemTooltipControl" field="_rank" framesCount="3" />
+          <node name="name" type="TrimmedTooltipText" field="_name" />
+          <node name="level" type="TextField" field="_level" />
+          <node name="status" type="TextField" field="_status" />
+          <node name="weekPoints" type="TextField" field="_weekPoints" />
+          <node name="classIcon" type="FrameImageBox" field="_classIcon">
+            <node name="icon" type="ImageBox" field="_img" />
+          </node>
+          <node name="acticity" type="TextField" field="_invested" />
+          <node name="glow" type="MovieClip" field="_glow" />
+          <node name="dayPoints" type="TextField" field="_dayPoints" />
+          <node name="heroRating" type="TextField" field="_heroRating" />
+          <node name="options_btn" type="Button" field="_playerOptions" framesCount="4" />
+        </node>
+      </node>
+      <node name="scr" type="ScrollBar" field="_scrollBar">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+      <node name="level_txt" type="TextField" field="_guildLevel" />
+      <node name="levelValue" type="TextField" field="_guildLevelValue" />
+      <node name="guildAccept_btn" type="Button" field="AcceptMessageBtn" framesCount="4" />
+      <node name="messageTitle_txt" type="TextField" field="MessageOfTheDayTitle" />
+      <node name="message_txt" type="InputTextControl" field="_messageValue" />
+      <node name="msgScroll" type="ScrollBar" field="_messageScroll">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+    </node>
+    <node name="guildBank_pnl" type="GuildBankPanel" field="_guildBank">
+      <node name="item_1" type="ToggleTextButton" field="_btnLevel1">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_2" type="ToggleTextButton" field="_btnLevel2">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_3" type="ToggleTextButton" field="_btnLevel3">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_4" type="ToggleTextButton" field="_btnLevel4">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_5" type="ToggleTextButton" field="_btnLevel5">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="item_6" type="ToggleTextButton" field="_btnLevel6">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="talentUpgrade_btn" type="ToggleButton" field="_btnTalentUpgrade" framesCount="8" />
+      <node name="talentEntityUpgrade_btn" type="ToggleButton" field="_btnTalentEntityUpgrade" framesCount="8" />
+      <node name="unsoulbound_tb" type="ToggleButton" field="_btnUnsoulBound" framesCount="8" />
+      <node name="recycle_tb" type="ToggleButton" field="_btnDeleteTalents" framesCount="8" />
+      <node name="msgScroll" type="ScrollBar" field="_guildBankLogScrollbar">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+      <node name="container" type="GuildLibrary" field="_talentsContainer">
+        <node name="libraryItem" type="GuildLibraryItem" field="_itemTemplate">
+          <node name="bound_mc" type="MovieClip" field="_boundTalent" />
+          <node name="icon_mc" type="ImageBox" field="Icon" />
+          <node name="activeFrame" type="Control" field="_activeTalantFrame" />
+          <node name="new_mc" type="Control" field="_newTalentIcon" />
+          <node name="count" type="TextField" field="_txtCount" />
+          <node name="upgradeIco" type="Control" field="_upgradeIcon1" />
+          <node name="upgradeIco2" type="Control" field="_upgradeIcon2" />
+          <node name="upgradeIco3" type="Control" field="_upgradeIcon3" />
+          <node name="plusLevel" type="MovieClip" field="_plusLevel" />
+          <node name="upgrade_bar" type="ProgressBar" field="_upgradeBar" />
+          <node name="upgradeLevel" type="UpgradeLevelIndicator" field="_upgradeLevelIndicator">
+            <node name="count" type="TextField" field="_txtCount" />
+          </node>
+          <node name="stop_mc" type="MovieClip" field="_cantUpgradeNotificator" />
+          <node name="glow" type="Control" field="_glow" />
+        </node>
+      </node>
+      <node name="bankScroll" type="ScrollBar" field="_guildBankScroll">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+      <node name="bankBack" type="MovieClip" field="_bankBack" />
+      <node name="talentsCount" type="TextField" field="_txtTalentsCount" />
+      <node name="bankTitle" type="TextField" field="_txtBankTitle" />
+      <node name="text1" type="TextField" field="_txtTalentsTaken" />
+      <node name="text2" type="TextField" field="_txtTalentsGiven" />
+      <node name="val1" type="TextField" field="_txtTalentsTakenValue" />
+      <node name="val2" type="TextField" field="_txtTalentsGivenValue" />
+      <node name="logContainer" type="GuildBankLogContainer" field="_logContainer">
+        <node name="logMessage" type="GuildBankLogMessage" field="_templateMessage">
+          <node name="message_txt" type="TextField" field="Text" />
+        </node>
+      </node>
+      <node name="library" type="MovieClip" field="_libraryContainer" />
+    </node>
+    <node name="guildUpgrade_pnl" type="GuildUpgradePanel" field="_guildUpgrade">
+      <node name="guildUpgradeTitle" type="FrameText" field="_guildUpgradeTitle">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+      <node name="title2" type="TextField" field="_txtGuildUpgradeTitle2" />
+      <node name="needTitle_txt" type="TextField" field="_txtGuildUpgradeNeeds" />
+      <node name="needVal_txt" type="TextField" field="_txtGuildUpgradeNeedsValue" />
+      <node name="level_txt" type="TextField" field="_txtGuildLevel" />
+      <node name="nextlevel_txt" type="TextField" field="_txtGuildNextLevel" />
+      <node name="msgScroll" type="ScrollBar" field="_guildInvestLogScrollbar">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+      <node name="listScroll" type="ScrollBar" field="_guildRewardScrollbar">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+      <node name="guildLevel_bar" type="ExperienceProgressBar" field="_barGuildLevel">
+        <node name="greenLine_mc" type="ProgressBar" field="_greenLine" />
+        <node name="blueLine_mc" type="ProgressBar" field="_blueLine" />
+        <node name="txt" type="TextField" field="_title" />
+      </node>
+      <node name="production" type="GuildProductionBlock" field="_guildProductionBlock">
+        <node name="timeLeft_txt" type="TextField" field="_txtTimeLeft" />
+        <node name="clock_ico" type="MovieClip" field="_mcTimeLeft" />
+        <node name="bar" type="AnimatedProgressBar" field="_progressBar">
+          <node name="line_mc" type="ProgressBar" field="_animatedProgressBar" />
+        </node>
+        <node name="bonus_txt" type="TextField" field="_txtResource" />
+        <node name="paLight_mc" type="MovieClip" field="_premiumBack" />
+        <node name="reward" type="UniversalResourceIcon" field="_prodIcon">
+          <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+        </node>
+      </node>
+      <node name="gerb" type="MovieClip" field="_guildProductionGerb" framesCount="2" />
+      <node name="counter1" type="GuildBonusControl" field="_guildGiveControl3">
+        <node name="incrementBtns" type="IncrementGuildButtonsControl" field="_incButtons">
+          <node name="all_btn" type="Button" field="_buttonGuildFillAll" framesCount="4" />
+          <node name="removeAll_btn" type="Button" field="_buttonGuildRemoveAll" framesCount="4" />
+          <node name="minus_btn" type="Button" field="_buttonGuildResDecrement" framesCount="4" />
+          <node name="plus_btn" type="Button" field="_buttonGuildResIncrement" framesCount="4" />
+        </node>
+        <node name="icon" type="Control" field="_icoResource" />
+        <node name="cost_txt" type="TextField" field="_text" />
+      </node>
+      <node name="counter2" type="GuildBonusControl" field="_guildGiveControl2">
+        <node name="incrementBtns" type="IncrementGuildButtonsControl" field="_incButtons">
+          <node name="all_btn" type="Button" field="_buttonGuildFillAll" framesCount="4" />
+          <node name="removeAll_btn" type="Button" field="_buttonGuildRemoveAll" framesCount="4" />
+          <node name="minus_btn" type="Button" field="_buttonGuildResDecrement" framesCount="4" />
+          <node name="plus_btn" type="Button" field="_buttonGuildResIncrement" framesCount="4" />
+        </node>
+        <node name="icon" type="Control" field="_icoResource" />
+        <node name="cost_txt" type="TextField" field="_text" />
+      </node>
+      <node name="counter3" type="GuildBonusControl" field="_guildGiveControl1">
+        <node name="incrementBtns" type="IncrementGuildButtonsControl" field="_incButtons">
+          <node name="all_btn" type="Button" field="_buttonGuildFillAll" framesCount="4" />
+          <node name="removeAll_btn" type="Button" field="_buttonGuildRemoveAll" framesCount="4" />
+          <node name="minus_btn" type="Button" field="_buttonGuildResDecrement" framesCount="4" />
+          <node name="plus_btn" type="Button" field="_buttonGuildResIncrement" framesCount="4" />
+        </node>
+        <node name="icon" type="Control" field="_icoResource" />
+        <node name="cost_txt" type="TextField" field="_text" />
+      </node>
+      <node name="counter4" type="GuildBonusControl" field="_guildGiveControl4">
+        <node name="incrementBtns" type="IncrementGuildButtonsControl" field="_incButtons">
+          <node name="all_btn" type="Button" field="_buttonGuildFillAll" framesCount="4" />
+          <node name="removeAll_btn" type="Button" field="_buttonGuildRemoveAll" framesCount="4" />
+          <node name="minus_btn" type="Button" field="_buttonGuildResDecrement" framesCount="4" />
+          <node name="plus_btn" type="Button" field="_buttonGuildResIncrement" framesCount="4" />
+        </node>
+        <node name="icon" type="Control" field="_icoResource" />
+        <node name="cost_txt" type="TextField" field="_text" />
+      </node>
+      <node name="give_btn" type="ToggleBuyButton" field="_btnGiveResources">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="rewardContainer" type="GuildBonusContainer" field="_guildBonusContainer">
+        <node name="rewardLine" type="GuildBonusLine" field="_templateLine">
+          <node name="level" type="TextField" field="_level" />
+          <node name="levelFrame" type="MovieClip" field="_levelFrame" />
+          <node name="name" type="TextField" field="_name" />
+          <node name="glow" type="MovieClip" field="_glow" framesCount="3" />
+          <node name="icon" type="MovieClip" field="_icon" />
+          <node name="iconFrame" type="MovieClip" field="_iconFrame" />
+          <node name="tooltipShower" type="SystemTooltipControl" field="_tooltipShower" />
+        </node>
+      </node>
+      <node name="logContainer" type="GuildInvestLogContainer" field="_logContainer">
+        <node name="logMessage" type="GuildInvestLogMessage" field="_templateMessage">
+          <node name="message_txt" type="TextField" field="Text" />
+        </node>
+      </node>
+    </node>
+    <node name="tab1" type="GuildTab" field="_mainTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="tab2" type="GuildTab" field="_upgradeTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="tab3" type="GuildTab" field="_bankTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="tab4" type="GuildTab" field="_recruitTab">
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="guildPremium" type="PremiumIconAvatar" field="_guildPremium" framesCount="2" />
+    <node name="guildRecruit_pnl" type="GuildRecruitPanel" field="_guildRecruitPanel">
+      <node name="gRank_txt" type="TextField" field="_txtMinimalRankLabel" />
+      <node name="gLang_txt" type="TextField" field="_txtLanguageLabel" />
+      <node name="gPlayersCount_txt" type="TextField" field="_txtPlayersInClanLabel" />
+      <node name="comboboxRank" type="ComboBox`1" field="_rankCombo">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="comboboxLang" type="ComboBox`1" field="_languageComboBox">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="gPlayersCount" type="TextField" field="_txtPlayersCountValue" />
+      <node name="sort_heroName" type="SortButton" field="_sortPlayerName">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_level" type="SortButton" field="_sortLevel">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_status" type="SortButton" field="_sortStatus">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_heroRating" type="SortButton" field="_sortHeroRating">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_text" type="SortButton" field="_sortMessageText">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="guildRecruits" type="GuildsListContainer`2" field="_recruitsContainer">
+        <node name="guildLine" type="RecruitRowItem" field="_templateRow">
+          <node name="name" type="TrimmedTooltipText" field="_txtPlayerName" />
+          <node name="level" type="TextField" field="_txtLevel" />
+          <node name="status" type="TextField" field="_txtStatus" />
+          <node name="heroRating" type="TextField" field="_txtHeroRating" />
+          <node name="classIcon" type="ImageBox" field="_icoClassImage" />
+          <node name="text" type="TrimmedTooltipText" field="_txtMessage" />
+          <node name="glow" type="MovieClip" field="_glow" />
+        </node>
+      </node>
+      <node name="scr" type="ScrollBar" field="_scrollBar">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+      <node name="guildAccept_btn" type="Button" field="AcceptMessageBtn" framesCount="4" />
+      <node name="messageTitle_txt" type="TextField" field="MessageOfTheDayTitle" />
+      <node name="message_txt" type="InputTextControl" field="_messageValue" />
+      <node name="msgScroll" type="ScrollBar" field="_messageScroll">
+        <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+        <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+        <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+        <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+      </node>
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="guildMbox" type="GuildNameMessageBox" field="_guildMessageBox">
+    <node name="title" type="TextField" field="_title" />
+    <node name="dialog_txt" type="TextField" field="_text" />
+    <node name="name" type="TextField" field="_nameHeader" />
+    <node name="abbr" type="TextField" field="_shortNameHeader" />
+    <node name="inputName" type="InputTextControl" field="_inputName" />
+    <node name="inputAbbr" type="InputTextControl" field="_inputShortName" />
+    <node name="yes_btn" type="ToggleBuyButtonWithIcon" field="_acceptButton">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_cancelButton">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="goldenAgeSalute" type="Control" field="_goldenAgeSalute" />
+  <node name="tavern_pnl" type="TavernWindow" field="_tavernWindow">
+    <node name="title_txt" type="TrimmedTooltipText" field="_txtTitle" />
+    <node name="title_back" type="MovieClip" field="_titleBack" />
+    <node name="conditionDesc_txt" type="TextField" field="_txtConditionDesc" />
+    <node name="condition_txt" type="TextField" field="_txtCondition" />
+    <node name="condition_val" type="TextField" field="_txtConditionVal" />
+    <node name="rewardItem" type="TavernReward" field="_unknownReward">
+      <node name="noReward" type="Control" field="_noReward" />
+      <node name="paLight_mc" type="Control" field="_premiumAccHighlight" />
+      <node name="icon" type="ImageBox" field="_talentIco" />
+      <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+      <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+      <node name="value_txt" type="TextField" field="TxtResourceCount" />
+    </node>
+    <node name="startfinish" type="StartFinishBlock" field="_startFinish">
+      <node name="finish_btn" type="ToggleBuyButton" field="_btnFinish">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="start_btn" type="ToggleBuyButton" field="_btnStart">
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="speedFX_mc" type="MovieClip" field="_waitingHurryUpAnimation" />
+    </node>
+    <node name="cancel_btn" type="Button" field="_cancelButton" framesCount="4" />
+    <node name="list_mc" type="HeroItemsScroller" field="_heroItemsScroller">
+      <node name="hero_mc" type="BuildingHeroControl" field="_heroIcon">
+        <node name="iconEmpty" type="Control" field="_emptyIcon" />
+        <node name="plus" type="Control" field="_plusIcon" />
+        <node name="icon" type="HeroIconContainer" field="_iconContainer">
+          <node name="icon" type="ImageBox" field="Icon" />
+          <node name="iconBg" type="ImageBox" field="IconBg" />
+        </node>
+        <node name="rankIconContainer" type="RankIcon" field="_icoRank">
+          <node name="rankIcon" type="ImageBox" field="_icoRank" />
+        </node>
+        <node name="fx" type="Control" field="_fxContainer" />
+      </node>
+      <node name="crystal_mc" type="Control" field="_crystalIcon" />
+      <node name="avatar_mc" type="Control" field="_avatarIcon" />
+      <node name="fill_btn" type="Button" field="BtnFill" framesCount="4" />
+      <node name="unfill_btn" type="Button" field="BtnUnFill" framesCount="4" />
+      <node name="bookButton_mc" type="WrappedTextButton" field="BookButton">
+        <node name="value_txt" type="TextField" field="ValueTxt" />
+        <node name="orange_btn" type="Button" field="Button" framesCount="4" />
+        <node name="blackBack" type="MovieClip" field="_blackBack" />
+      </node>
+      <node name="PageList_L" type="Button" field="_btnScrollLeft" framesCount="4" />
+      <node name="PageList_R" type="Button" field="_btnScrollRight" framesCount="4" />
+      <node name="status" type="TextField" field="_txtStatus" />
+      <node name="bathPanelGlow_mc" type="Control" field="_backGlow" />
+    </node>
+    <node name="priceControl" type="CostControl" field="_price">
+      <node name="silver_txt" type="TextField" field="_txtCost" />
+    </node>
+    <node name="priceFrame" type="Control" field="_priceBack" />
+    <node name="rewardItem2" type="TavernReward" field="_rewardItem">
+      <node name="noReward" type="Control" field="_noReward" />
+      <node name="paLight_mc" type="Control" field="_premiumAccHighlight" />
+      <node name="icon" type="ImageBox" field="_talentIco" />
+      <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+      <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+      <node name="value_txt" type="TextField" field="TxtResourceCount" />
+    </node>
+    <node name="paShields_mc" type="PremiumIconAvatar" field="_premiumIconAvatar" framesCount="2" />
+    <node name="anim_mc" type="MovieClip" field="_noHurryUpAnim" />
+    <node name="timeLeft_txt" type="TextField" field="TxtTimeLeft" />
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+    <node name="bar" type="AnimatedProgressBar" field="_progressBar">
+      <node name="line_mc" type="ProgressBar" field="_animatedProgressBar" />
+    </node>
+  </node>
+  <node name="report_pnl" type="ReportWindow" field="_reportWindow">
+    <node name="report_btn" type="TextButton" field="_reportBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="cancel_btn" type="TextButton" field="_cancelBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="combobox" type="ComboBox`1" field="_comboBox">
+      <node name="rowMask" type="Control" field="RowMask" />
+      <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+        <node name="txt" type="InputTextControl" field="_textField" />
+      </node>
+      <node name="frame" type="Control" field="Back" />
+      <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+        <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+          <node name="txt" type="TextField" field="_textField" />
+        </node>
+      </node>
+    </node>
+    <node name="hintChoose_txt" type="TextField" field="_hintChooseTxt" />
+    <node name="hint_txt" type="TextField" field="_hintTxt" />
+    <node name="title_txt" type="TextField" field="_titleTxt" />
+    <node name="nickname_txt" type="TextField" field="_nicknameTxt" />
+    <node name="count_txt" type="TextField" field="_countTxt" />
+    <node name="input_txt" type="InputTextControl" field="_inputTxt" />
+    <node name="scroll" type="ScrollBar" field="_scroll">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="counterIcon" type="MovieClip" field="_counterIcon" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="messageBox_2" type="ThreeButtonsMessageBox" field="_threeButtonsMessageBox">
+    <node name="dialog_txt" type="TextField" field="_dialogText" />
+    <node name="back" type="Control" field="_backFrame" />
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="yes1_btn" type="ToggleBuyButtonWithIcon" field="_payBtn">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="yes2_btn" type="TextButton" field="_alternatePayBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_btnNo">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="playerStatistics_pnl" type="Control" field="_playerStatistics" />
+  <node name="statistics_mc" type="Control" field="_playerStatisticsNew" />
+  <node name="credits_pnl" type="CreditsWindow" field="_credits">
+    <node name="textMaskContainer" type="CreditsMaskTextContainer" field="_textMaskContainer">
+      <node name="textContaiiner" type="CreditsTextContainer" field="_textContainer">
+        <node name="title_txt" type="TextField" field="_titleTxt" />
+        <node name="copyright_txt" type="TextField" field="_copyright" />
+        <node name="textLine" type="CreditsTextLine" field="_textLine">
+          <node name="occupation_txt" type="TextField" field="_occupationTxt" />
+          <node name="name_txt" type="TextField" field="_nameTxt" />
+        </node>
+      </node>
+    </node>
+    <node name="backImage_mc" type="ImageBox" field="_imagebox" />
+    <node name="exit_btn" type="TextButton" field="_exitBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="mask" type="MovieClip" field="_mask" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="TutorialMC" type="Control" field="_tutorialMC" />
+  <node name="flag_pnl" type="FlagsShopWindow" field="_flagsWindow">
+    <node name="title_txt" type="TextField" field="_titleTxt" />
+    <node name="scroll_bar" type="ScrollBar" field="_scrollBar">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="flagsBack" type="Control" field="_flagsBack" />
+    <node name="exit_btn" type="TextButton" field="_txtBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="scrollableContainer" type="FlagsTypeContainer" field="_flagsTypeContainer">
+      <node name="listContainer" type="FlagsTypeControl" field="_templateFlagsType">
+        <node name="text" type="TextField" field="_title" />
+        <node name="heroIcon_mc" type="ShopFlagItem" field="_templateFlagItem">
+          <node name="heroIcon_sel" type="FlagSelectionButton" field="_flagButton">
+            <node name="priceBar" type="FlagPriceBar" field="_price">
+              <node name="text" type="TextField" field="_text" />
+            </node>
+            <node name="img" type="ImageBox" field="Icon" />
+          </node>
+        </node>
+        <node name="cross" type="MovieClip" field="_cross" />
+      </node>
+    </node>
+    <node name="currentFlag_mc" type="CurrentFlagIcon" field="_currentFlagIcon">
+      <node name="img" type="ImageBox" field="_img" />
+    </node>
+    <node name="size" type="MovieClip" field="_backSize" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="flagMessageBox" type="FlagsShopMessageBox" field="_flagsMessageBox">
+    <node name="title" type="TextField" field="_title" />
+    <node name="dialog_txt" type="TextField" field="_dialogTxt" />
+    <node name="currentFlag_mc" type="CurrentFlagIcon" field="_currentFlagIcon">
+      <node name="img" type="ImageBox" field="_img" />
+    </node>
+    <node name="yes_btn" type="TextButton" field="_yesBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_noBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="IM_mc" type="WebItemMallWindow" field="_webItemMall">
+    <node name="web_wnd" type="ImageBox" field="_web_wnd" />
+    <node name="noResponse" type="ImageBox" field="_noResponse" />
+    <node name="disable_mc" type="WIMDisabler" field="_disabler">
+      <node name="anim_mc" type="MovieClip" field="_animation" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="findclan" type="FindGuildWindow" field="_findClanWindow">
+    <node name="gCount_txt" type="TextField" field="_txtLeftRequestsLabel" />
+    <node name="countValue" type="TextField" field="_txtLeftRequestsCount" />
+    <node name="gRank_txt" type="TextField" field="_txtMaxRangLabel" />
+    <node name="rankValue" type="TextField" field="_txtMaxRangValue" />
+    <node name="status" type="TextField" field="_txtStatusLine" />
+    <node name="disable_mc" type="Disabler" field="_disableClip">
+      <node name="anim_mc" type="MovieClip" field="_animation" />
+      <node name="bg" type="MovieClip" field="_bg" />
+    </node>
+    <node name="filter_btn" type="Button" field="_filterResetBtn" framesCount="4" />
+    <node name="filter" type="FindGuildFilterControl" field="_filtersControl">
+      <node name="sort_num" type="SortButton" field="_sortPosition">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_clanName" type="SortButton" field="_sortGuildName">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_language" type="SortButton" field="_sortLanguage">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_rating" type="SortButton" field="_sortRating">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_level" type="SortButton" field="_sortLevel">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_members" type="SortButton" field="_sortMembers">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_status" type="SortButton" field="_sortStatus">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="clanNameInputBox" type="PopupTextField" field="_pencilClan">
+        <node name="inputClanName" type="InputTextControl" field="_txtInput" />
+        <node name="pencilClan_btn" type="Button" field="_button" framesCount="4" />
+        <node name="back" type="MovieClip" field="_back" />
+        <node name="separator" type="MovieClip" field="_separator" />
+      </node>
+      <node name="languageComboBox" type="ComboBox`1" field="_languageComboBox">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="ratingComboBox" type="ComboBox`1" field="_ratingComboBox">
+        <node name="rowMask" type="Control" field="RowMask" />
+        <node name="chatCombo_btn" type="ComboBoxInputButton" field="BtnComboBox">
+          <node name="txt" type="InputTextControl" field="_textField" />
+        </node>
+        <node name="frame" type="Control" field="Back" />
+        <node name="rowContainer" type="ComboBoxRowContainer`2" field="RowContainer">
+          <node name="row_btn" type="ComboBoxRow`1" field="_comboRow">
+            <node name="txt" type="TextField" field="_textField" />
+          </node>
+        </node>
+      </node>
+      <node name="s1" type="MovieClip" field="_s1" />
+      <node name="s2" type="MovieClip" field="_s2" />
+      <node name="s3" type="MovieClip" field="_s3" />
+      <node name="s4" type="MovieClip" field="_s4" />
+      <node name="s5" type="MovieClip" field="_s5" />
+      <node name="s6" type="MovieClip" field="_s6" />
+    </node>
+    <node name="guildMembers" type="GuildsListContainer`2" field="_guildListContainer">
+      <node name="guildLine" type="FindGuildRowItem" field="_templateRow">
+        <node name="clanPos" type="TextField" field="_txtPosition" />
+        <node name="rankIcon" type="SystemTooltipControl" field="_rankIcon" framesCount="3" />
+        <node name="clanIcon" type="FrameImageBox" field="_guildIcon">
+          <node name="icon" type="ImageBox" field="_img" />
+        </node>
+        <node name="clanName" type="TrimmedTooltipText" field="_txtName" />
+        <node name="clanLanguage" type="TextField" field="_txtLocale" />
+        <node name="clanRating" type="TextField" field="_txtRating" />
+        <node name="clanLevel" type="TextField" field="_txtLevel" />
+        <node name="clanPlayers" type="TextField" field="_txtPlayersCount" />
+        <node name="requestStatus" type="TextField" field="_txtRequestStatus" />
+        <node name="options_btn" type="Button" field="_guildOptions" framesCount="4" />
+        <node name="glow" type="MovieClip" field="_glow" />
+      </node>
+    </node>
+    <node name="scr" type="ScrollBar" field="_scrollBar">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="findclan_mb" type="GuildRequestMessageBox" field="_findClanMb">
+    <node name="title" type="TextField" field="_txtTitle" />
+    <node name="dialog_txt" type="TextField" field="_txtDialogTxt" />
+    <node name="message_txt" type="InputTextControl" field="_inputTextControl" />
+    <node name="yes_btn" type="TextButton" field="_btnYes">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_btnNo">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="textBack" type="MovieClip" field="_back" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="produce_pnl_new" type="ProductionWindow" field="_newProductionWindow">
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+    <node name="item1" type="ProductionItem" field="_templateItem">
+      <node name="produceBtn" type="ToggleBuyButtonWithIcon" field="_btnBuy">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="description_txt" type="TextField" field="_txtDescription" />
+      <node name="produceItemBoost_mc" type="MovieClip" field="_boostAnim" />
+      <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+      <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+      <node name="value_txt" type="TextField" field="TxtResourceCount" />
+    </node>
+    <node name="background_mc" type="MovieClip" field="_back" />
+  </node>
+  <node name="contextBuyWindow" type="ContextBuyWindow" field="_contextBuyWindow">
+    <node name="yes_btn" type="ToggleBuyButtonWithIcon" field="_btnYes">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_btnNo">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="desc_txt" type="TextField" field="_txtDescription" />
+    <node name="title_txt" type="TextField" field="_txtTitle" />
+    <node name="item1" type="ProductionItem" field="_templateItem">
+      <node name="produceBtn" type="ToggleBuyButtonWithIcon" field="_btnBuy">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="description_txt" type="TextField" field="_txtDescription" />
+      <node name="produceItemBoost_mc" type="MovieClip" field="_boostAnim" />
+      <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+      <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+      <node name="value_txt" type="TextField" field="TxtResourceCount" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="house_pnl_new" type="NewDwellingWindow" field="_newDwellingWindow">
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+    <node name="item1" type="ProductionItem" field="_templateItem">
+      <node name="produceBtn" type="ToggleBuyButtonWithIcon" field="_btnBuy">
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="gold_mc" type="Control" field="_resource" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="description_txt" type="TextField" field="_txtDescription" />
+      <node name="produceItemBoost_mc" type="MovieClip" field="_boostAnim" />
+      <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+      <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+        <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+      </node>
+      <node name="value_txt" type="TextField" field="TxtResourceCount" />
+    </node>
+    <node name="background_mc" type="MovieClip" field="_back" />
+  </node>
+  <node name="crystallBuyWindow" type="ResourceBuyWindow" field="_resourceBuyWindow">
+    <node name="yes_btn" type="ToggleBuyButtonWithIcon" field="_btnYes">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="no_btn" type="TextButton" field="_btnNo">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="desc_txt" type="TextField" field="_txtDescription" />
+    <node name="title_txt" type="TextField" field="_txtTitle" />
+    <node name="priceControl" type="IncrementResourceControl" field="_templateItem">
+      <node name="produceIconPlus_mc" type="ResourceIcon" field="_resIcon" />
+      <node name="res_txt" type="InputTextControl" field="_txtResources" />
+      <node name="minus_btn" type="Button" field="_buttonGuildResDecrement" framesCount="4" />
+      <node name="plus_btn" type="Button" field="_buttonGuildResIncrement" framesCount="4" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="rerollShop" type="RerollShopWindow" field="_rerollShop">
+    <node name="rerollTime_txt" type="TextField" field="_rerollTimeTxt" />
+    <node name="timer_txt" type="TextField" field="_actionTimeTxt" />
+    <node name="timerBack" type="MovieClip" field="_actionTimerBack" />
+    <node name="item" type="RerollShopItemContainer" field="_shopItemContainer">
+      <node name="item" type="RerollShopItemControl" field="_itemTemplate">
+        <node name="icon" type="ImageBox" field="_icon" />
+        <node name="name_txt" type="TextField" field="_txtName" />
+        <node name="count_txt" type="TextField" field="_txtCount" />
+        <node name="inputBack" type="MovieClip" field="_txtCountBack" />
+        <node name="cost_txt" type="TextField" field="_txtCost" />
+        <node name="priceIcon" type="MovieClip" field="_priceIcon" />
+        <node name="premiumIcon_mc" type="MovieClip" field="_premiumIcon" />
+        <node name="time_txt" type="TextField" field="_txtTimer" />
+        <node name="itemBackBuy" type="MovieClip" field="_buyBack" />
+        <node name="gradient" type="MovieClip" field="_gradient" />
+        <node name="blic_anim" type="MovieClip" field="_blic" />
+        <node name="hoverEpicFrame_mc" type="MovieClip" field="_hoverEpicFrame" />
+      </node>
+      <node name="back" type="MovieClip" field="_back" />
+      <node name="hoverEpic_mc" type="MovieClip" field="_hoverEpic" />
+      <node name="hover_mc" type="MovieClip" field="_hover" />
+    </node>
+    <node name="desc2_txt" type="TextField" field="_statusLine" />
+    <node name="rerollBtn" type="ToggleBuyButtonWithIcon" field="_rerollButton">
+      <node name="cost_txt" type="TextField" field="_txtCost" />
+      <node name="gold_mc" type="Control" field="_resource" />
+      <node name="txt" type="TextField" field="TextField" />
+    </node>
+    <node name="disable_mc" type="Disabler" field="_disableClip">
+      <node name="anim_mc" type="MovieClip" field="_animation" />
+      <node name="bg" type="MovieClip" field="_bg" />
+    </node>
+    <node name="question_mc" type="HoweredTooltipControl" field="_notification" framesCount="2" />
+    <node name="back" type="RerollShopBack" field="_bannerImage">
+      <node name="banner" type="ImageBox" field="_bannerImage" />
+    </node>
+    <node name="hoverEpic_mc" type="MovieClip" field="_rerollAnim" />
+    <node name="bld_mc" type="UpgradeBuildingBlock" field="PnlBilding">
+      <node name="upg_btn" type="ToggleButton" field="_btnUpgrade" framesCount="8" />
+      <node name="icon" type="ImageBox" field="_icoBuilding" />
+      <node name="level" type="HeroPanelLevel" field="_levelBlock">
+        <node name="level_txt" type="TextField" field="_txtLevel" />
+      </node>
+      <node name="bldName_mc" type="FrameText" field="BuildingNameText">
+        <node name="txt" type="TextField" field="_text" />
+        <node name="txtBack" type="MovieClip" field="_frame" />
+      </node>
+    </node>
+    <node name="desc_txt" type="TextField" field="TxtDescription" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="SeasonRewardBack_mc" type="SeasonRewardWindow" field="_seasonRewardWindow">
+    <node name="title" type="TextField" field="_title" />
+    <node name="bestResultTitle" type="TextField" field="_bestResultLabel" />
+    <node name="okBtn" type="TextButton" field="_okClose">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="heroIcon" type="ImageBox" field="_heroIcon" />
+    <node name="leagueBorder" type="MovieClip" field="_leagueBorder" />
+    <node name="placeTxt" type="TextField" field="_placeText" />
+    <node name="rewardLabel" type="TextField" field="_rewardTitle" />
+    <node name="rewardsContainer" type="SeasonRewardContainer" field="_rewards">
+      <node name="flagReward" type="SeasonReward" field="_flagReward">
+        <node name="icon" type="ImageBox" field="_icon" />
+        <node name="name" type="TextField" field="_name" />
+        <node name="back" type="MovieClip" field="_back" />
+        <node name="value_txt" type="TextField" field="_countLable" />
+      </node>
+      <node name="crystalReward" type="SeasonReward" field="_crystalReward">
+        <node name="icon" type="ImageBox" field="_icon" />
+        <node name="name" type="TextField" field="_name" />
+        <node name="back" type="MovieClip" field="_back" />
+        <node name="value_txt" type="TextField" field="_countLable" />
+      </node>
+      <node name="skinReward" type="SeasonReward" field="_skinReward">
+        <node name="icon" type="ImageBox" field="_icon" />
+        <node name="name" type="TextField" field="_name" />
+        <node name="back" type="MovieClip" field="_back" />
+        <node name="value_txt" type="TextField" field="_countLable" />
+      </node>
+      <node name="centrator3_flag" type="MovieClip" field="_centrator3_flag" />
+      <node name="centrator3_crystals" type="MovieClip" field="_centrator3_crystals" />
+      <node name="centrator2_flag" type="MovieClip" field="_centrator2_flag" />
+      <node name="centrator2_crystals" type="MovieClip" field="_centrator2_crystals" />
+      <node name="centrator2_skin" type="MovieClip" field="_centrator2_skin" />
+      <node name="centrator1_flag" type="MovieClip" field="_centrator1_flag" />
+      <node name="centrator1_crystals" type="MovieClip" field="_centrator1_crystals" />
+      <node name="centrator1_skin" type="MovieClip" field="_centrator1_skin" />
+      <node name="centrator1_talents" type="MovieClip" field="_centrator1_talents" />
+      <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+      <node name="right" type="Button" field="_btnRight" framesCount="4" />
+      <node name="reward_mc" type="SeasonReward" field="_reward">
+        <node name="icon" type="ImageBox" field="_icon" />
+        <node name="name" type="TextField" field="_name" />
+        <node name="back" type="MovieClip" field="_back" />
+        <node name="value_txt" type="TextField" field="_countLable" />
+      </node>
+    </node>
+    <node name="rankIconContainer" type="SeasonRewardRankIcon" field="_icoRank">
+      <node name="rankIcon" type="ImageBox" field="RankIcon" />
+    </node>
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="LeaderboardWindow" type="SeasonLeaderboardWindow" field="_leaderboardWindow">
+    <node name="guildMembers" type="LeaderboardHerosTable" field="_table">
+      <node name="guildLine" type="LeaderboardHeroRow" field="_templateRow">
+        <node name="clanName" type="TextField" field="_playerName" />
+        <node name="clanPos" type="TextField" field="_place" />
+        <node name="rankIcon" type="MovieClip" field="_placeDynamic" />
+        <node name="glow" type="MovieClip" field="_glow" />
+      </node>
+    </node>
+    <node name="src" type="ScrollBar" field="_scrollBar">
+      <node name="up_btn" type="Button" field="_btnUp" framesCount="4" />
+      <node name="down_btn" type="Button" field="_btnDown" framesCount="4" />
+      <node name="slider_btn" type="Button" field="_btnSlider" framesCount="4" />
+      <node name="sliderPath_mc" type="MovieClip" field="_sliderPath" />
+    </node>
+    <node name="disable_mc" type="Disabler" field="_disableClip">
+      <node name="anim_mc" type="MovieClip" field="_animation" />
+      <node name="bg" type="MovieClip" field="_bg" />
+    </node>
+    <node name="filter" type="LeaderboardFilterControl" field="_filtersControl">
+      <node name="sort_num" type="SortButton" field="_sortPlace">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="sort_clanName" type="SortButton" field="_sortPlayerName">
+        <node name="arr" type="MovieClip" field="_arrow" />
+        <node name="txt" type="TextField" field="TextField" />
+      </node>
+      <node name="clanNameInputBox" type="PopupTextField" field="_pencilPlayerName">
+        <node name="inputClanName" type="InputTextControl" field="_txtInput" />
+        <node name="pencilClan_btn" type="Button" field="_button" framesCount="4" />
+        <node name="back" type="MovieClip" field="_back" />
+        <node name="separator" type="MovieClip" field="_separator" />
+      </node>
+    </node>
+    <node name="LeaderBoardTitle" type="TextField" field="_title" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+  <node name="lootbox_wnd" type="LootboxWindow" field="_lootboxWindow">
+    <node name="open_btn" type="TextButton" field="openBtn">
+      <node name="txt" type="TextField" field="_textField" />
+    </node>
+    <node name="reward_container" type="QuestSimleRewardContainer" field="rewardContainer">
+      <node name="left" type="Button" field="_btnLeft" framesCount="4" />
+      <node name="right" type="Button" field="_btnRight" framesCount="4" />
+      <node name="reward_mc" type="QuestReward" field="_reward">
+        <node name="icon" type="ImageBox" field="_talentIco" />
+        <node name="bld" type="ImageBox" field="_buildingIco" />
+        <node name="hero" type="ImageBox" field="_bigIcon" />
+        <node name="quest" type="ImageBox" field="_questIcon" />
+        <node name="exp" type="MovieClip" field="_heroExpIco" />
+        <node name="level" type="QuestRewardLevelControl" field="_level">
+          <node name="level_txt" type="TextField" field="_text" />
+        </node>
+        <node name="premiumIcon_mc" type="MovieClip" field="_premiumIcon" framesCount="2" />
+        <node name="cross" type="MovieClip" field="_devPointPlus" />
+        <node name="randomTalent" type="MovieClip" field="_randomTalent" />
+        <node name="allHeroStatsReset" type="MovieClip" field="_allHeroStatsResetIcon" />
+        <node name="guildLogoChange" type="MovieClip" field="_guildLogoChangeIcon" />
+        <node name="guildExperience" type="MovieClip" field="_guildExperienceIcon" />
+        <node name="nickNameChangeIcon" type="MovieClip" field="_nickNameChangeIcon" />
+        <node name="fractionChangedIcon" type="MovieClip" field="_fractionChangedIcon" />
+        <node name="heroStatsReset" type="MovieClip" field="_heroStatsResetIcon" />
+        <node name="randomHeroSkin" type="MovieClip" field="_randomHeroSkin" />
+        <node name="back" type="MovieClip" field="BackCoverMovieClip" />
+        <node name="resource" type="UniversalResourceIcon" field="ResourseIcon">
+          <node name="custom_currency_icon" type="ImageBox" field="customResourceIcon" />
+        </node>
+        <node name="value_txt" type="TextField" field="TxtResourceCount" />
+      </node>
+    </node>
+    <node name="desc_label" type="TextField" field="descLabel" />
+    <node name="header_label" type="TextField" field="headerLabel" />
+    <node name="back" type="MovieClip" field="back" />
+    <node name="heroFrame_mc" type="MovieClip" field="portrait" />
+    <node name="opening_label" type="TextField" field="openingLabel" />
+    <node name="press_open_label" type="TextField" field="presOpenLabel" />
+    <node name="question_icon" type="TextField" field="questionIcon" />
+    <node name="close_btn" type="Button" field="_btnClose" framesCount="4" />
+  </node>
+</node>
