@@ -1,0 +1,65 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Filesystem Release History</title>
+<link rel="stylesheet" type="text/css" href="../../../../doc/src/minimal.css">
+</head>
+
+<body>
+
+<table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+  <tr>
+    <td width="277">
+<a href="../../../../index.htm">
+<img src="../../../../boost.png" alt="boost.png (6897 bytes)" align="middle" width="300" height="86" border="0"></a></td>
+    <td align="middle">
+    <font size="7">Filesystem Release History</font>
+    </td>
+  </tr>
+</table>
+
+<table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" bgcolor="#D7EEFF" width="100%">
+  <tr>
+    <td><a href="../../../../index.htm">Boost Home</a> &nbsp;&nbsp;
+    <a href="index.htm">Library Home</a> &nbsp;&nbsp; <a href="reference.html">Reference</a> &nbsp;&nbsp;
+    <a href="tutorial.html">Tutorial</a> &nbsp;&nbsp;
+    <a href="faq.htm">FAQ</a> &nbsp;&nbsp;
+    <a href="portability_guide.htm">Portability</a> &nbsp;&nbsp;
+    <a href="v3.html">V3 Intro</a> &nbsp;&nbsp;
+    <a href="v3_design.html">V3 Design</a> &nbsp;&nbsp;
+    <a href="deprecated.html">Deprecated</a> &nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<h2>1.46.0</h2>
+<ul>
+  <li>Version 3 of the library is now the default.</li>
+  <li>IBM vacpp: Workaround for compiler bug affecting iterator_facade. (<a href="https://svn.boost.org/trac/boost/ticket/4912">#4912</a>)</li>
+  <li>Verify, clarify, document that &lt;boost/config/user.hpp&gt; can be used to 
+  specify BOOST_FILESYSTEM_VERSION. (<a href="https://svn.boost.org/trac/boost/ticket/4891">#4891</a>)</li>
+  <li>Replaced C-style assert with BOOST_ASSERT.</li>
+  <li>Undeprecated unique_path(). Instead, add a note mentioning the workaround 
+  for lack of thread safety and possible change to cwd. unique_path() is just 
+  too convenient to deprecate!</li>
+  <li>Cleared several GCC warnings.</li>
+  <li>Changed V2 code to use BOOST_THROW_EXCEPTION.</li>
+  <li>Windows: Fix status() to report non-symlink reparse point correctly.</li>
+  <li>Add <code>symlink_option</code> to <code>recursive_directory_iterator</code>, 
+  allowing control over recursion into directory symlinks. Note that the default 
+  is changed to not recurse into directory symlinks.</li>
+  <li><a href="reference.html">Reference</a> documentation cleanup, including 
+  fixing missing and broken links, and adding missing functions.</li>
+  <li>Miscellaneous implementation code cleanup. </li>
+</ul>
+<hr>
+<p>Revised
+<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%d %B, %Y" startspan -->20 February, 2011<!--webbot bot="Timestamp" endspan i-checksum="40524" --></p>
+<p>© Copyright Beman Dawes, 2011</p>
+<p> Use, modification, and distribution are subject to the Boost Software 
+License, Version 1.0. See <a href="http://www.boost.org/LICENSE_1_0.txt">
+www.boost.org/LICENSE_1_0.txt</a></p>

@@ -1,0 +1,17 @@
+// -*- MPC -*-
+// $Id: QOS_Diffserv.mpc 85212 2009-04-29 13:53:34Z johnnyw $
+
+project(*client) : aceexe, qos, avoids_ace_for_tao {
+  exename = client
+  requires += qos
+  Source_Files {
+    diffserv_test.cpp
+  }
+}
+project(*server) : aceexe, qos {
+  exename = server
+  requires += qos
+  Source_Files {
+    server.cpp
+  }
+}

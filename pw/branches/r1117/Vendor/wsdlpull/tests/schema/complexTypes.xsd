@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: /cvsroot/wsdlpull/wsdlpull/tests/schema/complexTypes.xsd,v 1.1 2008/05/03 11:13:35 vivek200120 Exp $ -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+	<xs:complexType name="elementWithID">
+					<xs:attribute ref="id"/>
+	</xs:complexType>
+					<xs:complexType name="bookTmp">
+									<xs:complexContent>
+													<xs:extension base="elementWithID">
+			<xs:sequence>
+				<xs:element ref="isbn"/>
+				<xs:element ref="title"/>
+				<xs:element ref="author" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="character" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute ref="available"/>
+			<xs:attribute ref="id"/>
+													</xs:extension>
+									</xs:complexContent>
+		</xs:complexType>
+	
+	<xs:complexType name="personType">
+					<xs:complexContent>
+									<xs:extension base="elementWithID">
+			<xs:sequence>
+				<xs:element ref="name"/>
+				<xs:element ref="born"/>
+				<xs:element name="country" type="xs:string" minOccurs="0"/>
+				<xs:element ref="dead" minOccurs="0"/>
+				<xs:element ref="qualification"  minOccurs="0"/>
+			</xs:sequence>
+									</xs:extension>
+					</xs:complexContent>
+		</xs:complexType>
+		
+	
+</xs:schema>

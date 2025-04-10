@@ -1,0 +1,22 @@
+import os
+
+root_path = os.getcwd()
+
+sources = [
+    'global.h',
+    'md4.h',
+    'md4c.c',
+    'md5.h',
+    'md5c.c',
+]
+
+defines = ['PROTOTYPES']
+
+includePaths = [ root_path]
+
+components = [
+    'Vendor/Libc',
+]
+
+if platform == 'win32' :
+  localCompilerKeys = ['/wd4131']

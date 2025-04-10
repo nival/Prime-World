@@ -1,0 +1,642 @@
+/*!
+
+\page writing_robust_code Making Your Code Robust
+
+This page contains some tips on writing C++ code robust to errors. 
+A program that conforms to these rules is less likely to crash.
+
+This page contains the following topics:
+
+- \ref coding_guide_intro
+- \ref init_vars
+- \ref init_winapi_structures
+- \ref validate_input
+- \ref validate_pointers
+- \ref init_func_output
+- \ref clean_up_pointers
+- \ref clean_up_handles
+- \ref delete_operator
+- \ref allocate_memory_carefully
+- \ref use_asserts_carefully
+- \ref check_return_code
+- \ref use_smart_ptrs
+- \ref equality_operator
+
+\section coding_guide_intro Introduction
+
+As a program grows in size and dependencies, you start losing trace of its components, 
+get further away from the big picture, and ease the introduction of bugs
+[<a href="http://www.iovene.com/28/">How to write robust code</a>]. So it is
+important to realise that some rules should be followed to write a code
+more tolerant to errors.
+
+Generally speaking, robust code has such features as: it is well designed, neat and tidy, well named, 
+well commented, well tested, it rarely crashes.
+
+If your program follows consistent coding rules (for example, 
+<a href="http://geosoft.no/development/cppstyle.html">C++ Programming Style Guidelines</a>,
+<a href="http://www.doc.ic.ac.uk/lab/cplus/c%2b%2b.rules/chap4.html#sect2">Programming in C++, Rules and Recommendations</a> or
+<a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a>)
+it is less likely to crash, because it has a consistent structure.
+
+Even if your program currently doesn't follow any coding rules because of its complexity and
+because of your team structure, following the simple rules listed below may help you to avoid
+the majority of the crash situations.
+
+\section init_vars Initializing Local Variables
+
+Not ininitialized local variables are a common reason of program crashes. For example,
+see the following code fragment:
+
+\code    
+  // Define local variables
+
+  BOOL bExitResult; // This will be TRUE if the function exits successfully
+  FILE* f; // Handle to file
+  TCHAR szBuffer[_MAX_PATH];   // String buffer
+    
+  // Do something with variables above...
+\endcode
+
+The code fragment above can be a potential reason of a crash, because none
+of local variables is initialized. The correct code would be the following:
+
+\code
+  // Define local variables
+  
+  // Initialize function exit code with FALSE to indicate failure assumption
+  BOOL bExitResult = FALSE; // This will be TRUE if the function exits successfully
+
+  // Initialize file handle with NULL
+  FILE* f = NULL; // Handle to file
+
+  // Initialize string buffer with empty string
+  TCHAR szBuffer[_MAX_PATH] = _T("");   // String buffer
+
+  // Do something with variables above...
+\endcode 
+
+\section init_winapi_structures Initializing WinAPI Structures
+
+Many WinAPI functions receive/return parameters through C structures. Such a
+structure, if incorrectly initialized, may be the reason of a crash.
+
+It is recommended to use \b ZeroMemory() or \b memset() to fill the structure
+with zeroes (this typically sets structure fields to their default values).
+
+Many WinAPI structures also have the \b cbSize parameter that must be initialized
+with the size of the structure before using.
+
+The following code shows how to initialize a WinAPI structure:
+
+\code
+
+  NOTIFYICONDATA nf;
+  memset(&nf,0,sizeof(NOTIFYICONDATA)); // Zero memory
+  nf.cbSize = sizeof(NOTIFYICONDATA); // Set structure size!
+  // Initialize other structure members
+  nf.hWnd = hWndParent;
+  nf.uID = 0;	
+  nf.uFlags = NIF_ICON | NIF_TIP;
+  nf.hIcon = ::LoadIcon(NULL, IDI_APPLICATION);
+  _tcscpy_s(nf.szTip, 128, _T("Popup Tip Text"));
+	
+  // Add a tray icon
+  Shell_NotifyIcon(NIM_ADD, &nf);
+\endcode
+
+But! DO NOT use \b ZeroMemory() or \b memset() for your C++ structures that contain objects as structure members, 
+that may corrupt their internal state and be the reason of a crash.
+
+\code
+
+  // Declare a C++ structure
+  struct ItemInfo
+  {
+    std::string sItemName; // The structure has std::string object inside
+    int nItemValue;
+  };
+
+  // Init the structure
+  ItemInfo item;
+
+  // Do not use memset()! It can corrupt the structure
+  // memset(&item, 0, sizeof(ItemInfo));
+
+  // Instead use the following
+  item.sItemName = "item1";
+  item.nItemValue = 0;  	
+
+
+\endcode
+
+It is even better to use a constructor for your C++ structure that would init its members with default values:
+
+\code
+
+  // Declare a C++ structure
+  struct ItemInfo
+  {
+    // Use structure constructor to set members with default values
+    ItemInfo()
+    {
+      sItemName = _T("unknown");
+      nItemValue = -1;
+    }
+	
+    std::string sItemName; // The structure has std::string object inside
+    int nItemValue;
+  };
+
+  // Init the structure
+  ItemInfo item;
+
+  // Do not use memset()! It can corrupt the structure
+  // memset(&item, 0, sizeof(ItemInfo));
+
+  // Instead use the following
+  item.sItemName = "item1";
+  item.nItemValue = 0;  	
+
+\endcode
+
+\section validate_input Validating Function Input 
+
+It is recommended to always validate function input parameters. 
+
+\code
+
+  BOOL DrawVehicle(HWND hWnd, LPRECT prcDraw, int nDrawingQuality)
+  {
+    // Check that window is valid
+    if(!IsWindow(hWnd))
+      return FALSE;
+
+    // Check that drawing rect is valid
+    if(prcDraw==NULL)
+      return FALSE;
+
+    // Check drawing quality is valid
+    if(nDrawingQuality<0 || nDrawingQuality>100)
+      return FALSE;
+   
+    // Now it's safe to draw the vehicle
+
+    return TRUE;
+  }
+  
+\endcode
+
+\section validate_pointers Validating Pointers
+
+If you use a pointer, make sure it is not equal to NULL.
+
+\code
+
+  CVehicle* pVehicle = GetCurrentVehicle();
+  
+  // Validate pointer
+  if(pVehicle==NULL)
+  {
+    // Invalid pointer, do not use it!
+    return FALSE;
+  }
+
+  // Use the pointer
+  
+\endcode
+
+\section init_func_output Initializing Function Output
+
+If your function creates an object and returns it as a function parameter, it is
+recommended to initialize the pointer with NULL in the beginning of the function body.
+
+If you do not explicitly initialize the output parameter and further it is not set 
+due to a bug in function logics, the caller may use invalid pointer which would possibly 
+cause a crash.
+
+Example of incorrect code:
+
+\code
+
+  int CreateVehicle(CVehicle** ppVehicle)
+  {
+    if(CanCreateVehicle())
+    {
+      *ppVehicle = new CVehicle();
+      return 1;
+    }    
+
+    // If CanCreateVehicle() returns FALSE,
+    // the pointer to *ppVehcile would never be set!
+
+    return 0;
+  }
+
+\endcode
+
+The correct code:
+
+\code
+
+  int CreateVehicle(CVehicle** ppVehicle)
+  {
+    // First initialize the output parameter with NULL
+    *ppVehicle = NULL;
+
+    if(CanCreateVehicle())
+    {
+      *ppVehicle = new CVehicle();
+      return 1;
+    }    
+
+    return 0;
+  }
+
+\endcode
+
+\section clean_up_pointers Cleaning Up Pointers to Deleted Objects
+
+Assign NULL to a pointer after freeing (or deleting) it. This will
+help to ensure noone will try to reuse an invalid pointer.
+
+\code
+ // Create object
+ CVehicle* pVehicle = new CVehicle();
+ 
+ delete pVehicle; // Free pointer
+ pVehicle = NULL; // Set pointer with NULL
+\endcode
+
+\section clean_up_handles Cleaning Up Released Handles
+
+Assign NULL (or zero, or something else default value) to a handle after freeing it. This will
+help to ensure noone will try to reuse an invalid handle.
+
+Below is an example of how to clean up a WinAPI file handle.
+\code
+  HANDLE hFile = INVALID_HANDLE_VALUE; 
+  
+  // Open file
+  hFile = CreateFile(_T("example.dat"), FILE_READ|FILE_WRITE, FILE_OPEN_EXISTING);
+  if(hFile==INVALID_HANDLE_VALUE)
+  {
+    return FALSE; // Error opening file
+  }
+
+  // Do something with file
+
+  // Finally, close the handle
+  if(hFile!=INVALID_HANDLE_VALUE)
+  {
+    CloseHandle(hFile);   // Close handle to file
+    hFile = INVALID_HANDLE_VALUE;   // Clean up handle
+  }
+
+\endcode
+
+Below is an example of how to clean up a FILE* handle.
+\code
+  // First init file handle pointer with NULL
+  FILE* f = NULL;
+
+  // Open handle to file
+  errno_t err = _tfopen_s(_T("example.dat"), _T("rb"));
+  if(err!=0 || f==NULL)
+    return FALSE; // Error opening file
+
+  // Do something with file
+
+  // When finished, close the handle
+  if(f!=NULL) // Check that handle is valid
+  {
+    fclose(f);
+    f = NULL; // Clean up pointer to handle
+  }
+
+\endcode
+
+
+\section delete_operator Using delete [] Operator for Arrays
+
+If you allocate a single object with the operator \b new, you should
+free it with the operator \b delete.
+
+But if you allocate an array of objects with the operator \b new,
+you should free this array with <b> delete [] </b>.
+
+\code
+ // Create an array of objects
+ CVehicle* paVehicles = new CVehicle[10];
+ 
+ delete [] paVehicles; // Free pointer to array
+ paVehicles = NULL; // Set pointer with NULL
+\endcode
+
+or
+
+\code
+ // Create a buffer of bytes
+ LPBYTE pBuffer = new BYTE[255];
+ 
+ delete [] pBuffer; // Free pointer to array
+ pBuffer = NULL; // Set pointer with NULL
+\endcode
+        
+\section allocate_memory_carefully Allocating Memory Carefully
+
+Ensure that 0 (zero) bytes are not allocated using \b malloc() or \b new. 
+
+\code
+  UINT uBufferSize = GetBufferSize(); // Determine what buffer to allocate.
+
+  LPBYTE* pBuffer = NULL; // Init pointer to buffer
+
+  // Allocate a buffer only if buffer size > 0
+  if(uBufferSize!=0)
+   pBuffer = new BYTE[uBufferSize];
+
+\endcode
+
+For additional tips on how to allocate memory correctly, you can read 
+the <a href="http://www.codeproject.com/KB/tips/CBP_for_memory_allocation.aspx">
+Secure Coding Best Practices for Memory Allocation in C and C++</a> article.
+
+\section use_asserts_carefully Using Asserts Carefully
+
+Asserts can be used in debug mode for checking preconditions and postconditions.
+But when you compile your program in release mode, asserts are removed on the
+preprocessing stage. So, using asserts is not enough to validate your program's state.
+
+Incorrect code:
+
+\code
+  #include <assert.h>
+  
+  CVehicle* ReadVehicleModelFromFile(LPCTSTR szFileName)
+  {
+    CVehicle* pVehicle = NULL; // Pointer to vehicle object
+
+    // Check preconditions
+    assert(szFileName!=NULL); // This will be removed by preprocessor in Release mode!
+    assert(_tcslen(szFileName)!=0); // This will be removed by preprocessor in Release mode!
+
+    // Open the file
+    FILE* f = _tfopen(szFileName, _T("rt"));
+
+    // Create new CVehicle object
+    pVehicle = new CVehicle();
+
+    // Read vehicle model from file
+
+    // Check postcondition 
+    assert(pVehicle->GetWheelCount()==4); // This will be removed by preprocessor in Release mode!
+
+    // Return pointer to the vehicle object
+    return pVehicle;
+  }
+\endcode
+
+As you can see in the code above, usage of asserts can help you to check your program
+state in Debug mode, but in Release mode these checks will just disappear.
+
+The correct code would be:
+
+\code
+  #include <assert.h>
+  
+  CVehicle* ReadVehicleModelFromFile(LPCTSTR szFileName, )
+  {
+    CVehicle* pVehicle = NULL; // Pointer to vehicle object
+
+    // Check preconditions
+    assert(szFileName!=NULL); // This will be removed by preprocessor in Release mode!
+    assert(_tcslen(szFileName)!=0); // This will be removed by preprocessor in Release mode!
+
+    if(szFileName==NULL || _tcslen(szFileName)==0)
+      return NULL; // Invalid input parameter
+
+    // Open the file
+    FILE* f = _tfopen(szFileName, _T("rt"));
+
+    // Create new CVehicle object
+    pVehicle = new CVehicle();
+
+    // Read vehicle model from file
+
+    // Check postcondition 
+    assert(pVehicle->GetWheelCount()==4); // This will be removed by preprocessor in Release mode!
+
+    if(pVehicle->GetWheelCount!=4)
+    { 
+      // Oops... an invalid wheel count was encountered!  
+      delete pVehicle; 
+      pVehicle = NULL;
+    }
+
+    // Return pointer to the vehicle object
+    return pVehicle;
+  }
+\endcode
+
+\section check_return_code Checking Return Code of a Function
+
+It is a common mistake to call the function and assume it will succeed.
+When you call a function, it is recommended to check its return code and 
+values of output parameters.
+
+The following code calls functions in succession. Whether to
+proceed or to exit depends on return code and output parameters.
+
+\code
+    HRESULT hres = E_FAIL;
+    IWbemServices *pSvc = NULL;
+    IWbemLocator *pLoc = NULL;
+    
+    hres =  CoInitializeSecurity(
+        NULL, 
+        -1,                          // COM authentication
+        NULL,                        // Authentication services
+        NULL,                        // Reserved
+        RPC_C_AUTHN_LEVEL_DEFAULT,   // Default authentication 
+        RPC_C_IMP_LEVEL_IMPERSONATE, // Default Impersonation  
+        NULL,                        // Authentication info
+        EOAC_NONE,                   // Additional capabilities 
+        NULL                         // Reserved
+        );
+
+                      
+    if (FAILED(hres))
+    {
+	log_write(_T("Failed to initialize security. Error code = %X\n"), hres);
+        if(hres!=RPC_E_TOO_LATE) return FALSE;
+    }
+    
+    hres = CoCreateInstance(
+        CLSID_WbemLocator,             
+        0, 
+        CLSCTX_INPROC_SERVER, 
+        IID_IWbemLocator, (LPVOID *) &pLoc);
+ 
+    if (FAILED(hres) || !pLoc)
+    {
+	log_write(_T("Failed to create IWbemLocator object. Err code = %X"), hres);
+        return FALSE;               
+    }
+   
+    hres = pLoc->ConnectServer(
+         _bstr_t(L"ROOT\\CIMV2"), // Object path of WMI namespace
+         NULL,                    // User name. NULL = current user
+         NULL,                    // User password. NULL = current
+         0,                       // Locale. NULL indicates current
+         NULL,                    // Security flags.
+         0,                       // Authority (e.g. Kerberos)
+         0,                       // Context object 
+         &pSvc                    // pointer to IWbemServices proxy
+         );
+    
+    if (FAILED(hres) || !pSvc)
+    {
+	log_write(_T("Couldn't conect server\n"));      
+	if(pLoc) pLoc->Release();     
+        return FALSE;  
+    }
+
+    hres = CoSetProxyBlanket(
+       pSvc,                        // Indicates the proxy to set
+       RPC_C_AUTHN_WINNT,           // RPC_C_AUTHN_xxx
+       RPC_C_AUTHZ_NONE,            // RPC_C_AUTHZ_xxx
+       NULL,                        // Server principal name 
+       RPC_C_AUTHN_LEVEL_CALL,      // RPC_C_AUTHN_LEVEL_xxx 
+       RPC_C_IMP_LEVEL_IMPERSONATE, // RPC_C_IMP_LEVEL_xxx
+       NULL,                        // client identity
+       EOAC_NONE                    // proxy capabilities 
+    );
+
+    if (FAILED(hres))
+    {
+	log_write(_T("Could not set proxy blanket.\n"));
+        if(pSvc) pSvc->Release();
+        if(pLoc) pLoc->Release();     
+        return FALSE;               
+    }
+\endcode
+
+\section use_smart_ptrs Using Smart Pointers
+
+If you intensively use pointers to shared objects (e.g., COM interfaces),
+it is a good practice to wrap them into smart pointers. The smart pointer
+will take care of your object's reference counting and will protect you
+from accessing an object that was already deleted. That is, you don't need 
+to worry about controlling the lifetime of your interface pointer.
+
+For additional info on smart pointers, see the following articles: 
+<a href="http://ootips.org/yonat/4dev/smart-pointers.html">Smart Pointers - What, Why, Which?</a> and
+<a href="http://www.codeproject.com/KB/cpp/SmartPointers.aspx">Implementing a Simple Smart Pointer in C++</a>.
+
+Below is an example code (borrowed from MSDN) that uses ATL's 
+<a href="http://msdn.microsoft.com/en-us/library/ezzw7k98(v=VS.100).aspx"><b>CComPtr</b></a> template class as a
+smart pointer. 
+
+\code
+#include <windows.h>
+#include <shobjidl.h> 
+#include <atlbase.h> // Contains the declaration of CComPtr.
+
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
+{
+    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | 
+        COINIT_DISABLE_OLE1DDE);
+    if (SUCCEEDED(hr))
+    {
+        CComPtr<IFileOpenDialog> pFileOpen;
+
+        // Create the FileOpenDialog object.
+        hr = pFileOpen.CoCreateInstance(__uuidof(FileOpenDialog));
+        if (SUCCEEDED(hr))
+        {
+            // Show the Open dialog box.
+            hr = pFileOpen->Show(NULL);
+
+            // Get the file name from the dialog box.
+            if (SUCCEEDED(hr))
+            {
+                CComPtr<IShellItem> pItem;
+                hr = pFileOpen->GetResult(&pItem);
+                if (SUCCEEDED(hr))
+                {
+                    PWSTR pszFilePath;
+                    hr = pItem->GetDisplayName(SIGDN_FILESYSPATH, &pszFilePath);
+
+                    // Display the file name to the user.
+                    if (SUCCEEDED(hr))
+                    {
+                        MessageBox(NULL, pszFilePath, L"File Path", MB_OK);
+                        CoTaskMemFree(pszFilePath);
+                    }
+                }
+
+                // pItem goes out of scope.
+            }
+
+            // pFileOpen goes out of scope.
+        }
+        CoUninitialize();
+    }
+    return 0;
+} 
+\endcode
+
+\section equality_operator Using == Operator Carefully
+
+Look at the following code fragment:
+
+\code
+
+  CVehicle* pVehicle = GetCurrentVehicle();
+
+  // Validate pointer
+  if(pVehicle==NULL) // Using == operator to compare pointer with NULL
+     return FALSE; 
+
+  // Do something with the pointer
+  pVehicle->Run();
+
+\endcode
+
+The code above is correct and uses pointer validation. But, assume you 
+made a mistyping and used an assignment operator (=) instead of equality operator (==):
+
+\code
+
+  CVehicle* pVehicle = GetCurrentVehicle();
+
+  // Validate pointer
+  if(pVehicle=NULL) // Oop! A mistyping here!
+     return FALSE; 
+
+  // Do something with the pointer
+  pVehicle->Run(); // Crash!!! 
+
+\endcode
+
+As you can see from the code above, such mistyping may be the result of a stupid crash.
+
+Such error can be avoided by slightly modifying the pointer
+validation code (exchange left side and right side of the equality operator). If you 
+mistype in such modifyed code, such mistyping will be detected on compilation stage.
+
+\code
+  // Validate pointer
+  if(NULL==pVehicle) // Exchange left side and right side of the equality operator
+     return FALSE; 
+
+  // Validate pointer
+  if(NULL=pVehicle) // Oop! A mistyping here! But the compiler returns an error message.
+     return FALSE; 
+
+\endcode
+
+
+*/
+

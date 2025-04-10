@@ -1,0 +1,32 @@
+have_func: checking for strlcpy() in string.h... -------------------- no
+
+"gcc -o conftest -I. -I/usr/lib/ruby/1.8/x86_64-linux -I. -D_FORTIFY_SOURCE=2  -D_FORTIFY_SOURCE=2 -fsigned-char -g -O2 -Wall -Werror  conftest.c  -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -rdynamic -Wl,-export-dynamic     -lruby1.8-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:5:53: error: 'strlcpy' undeclared (first use in this function)
+conftest.c:5:53: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:5:28: error: variable 'p' set but not used [-Werror=unused-but-set-variable]
+cc1: all warnings being treated as errors
+checked program was:
+/* begin */
+1: #include <string.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))strlcpy; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/usr/lib/ruby/1.8/x86_64-linux -I. -D_FORTIFY_SOURCE=2  -D_FORTIFY_SOURCE=2 -fsigned-char -g -O2 -Wall -Werror  conftest.c  -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -rdynamic -Wl,-export-dynamic     -lruby1.8-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:5:1: error: implicit declaration of function 'strlcpy' [-Werror=implicit-function-declaration]
+cc1: all warnings being treated as errors
+checked program was:
+/* begin */
+1: #include <string.h>
+2: 
+3: /*top*/
+4: int main() { return 0; }
+5: int t() { strlcpy(); return 0; }
+/* end */
+
+--------------------
+

@@ -1,0 +1,54 @@
+def ParseSources(path):
+    files = []
+    result = ''
+    for line in open(os.path.join('src', path, 'sources.mk'), 'rb').readlines():
+        if len(line) > 2:
+            if line[-2] == '\\':
+                result += line[:-2]
+            else:
+                result += line[:-1]
+            if line[-2] != '\\': # append next line
+                tokens = result.split()
+                result = ''            
+                files.extend( [name.replace('$(top_srcdir)/src/%s/' % path, '') for name in tokens[2:] ])
+    return files                
+    
+includePaths = [ 
+    'src', 
+    'win32',
+]
+
+paths = [
+    'wsdlparser',
+    'schemaparser',
+    'xmlpull',
+]
+
+sources = {
+}
+
+for path in paths:
+    files = ParseSources(path)
+    sources[path] = [ os.path.join('src', path, name) for name in files ]
+    
+win32_sources = [
+    'w3c.cpp',
+    'w3c.h',
+]    
+
+if platform == 'win32' :
+  sources['win32'] = [ os.path.join('win32', name) for name in win32_sources ]
+  compilerKeys = [ '/wd4512', '/wd4005', '/wd4244', '/wd4127', '/wd4706', '/wd4702', '/wd4101', '/wd4189', '/wd4245', '/wd4701']
+
+localDefines = ['_CRT_SECURE_NO_WARNINGS']
+
+components = [
+    'Vendor/Libc',
+]
+
+builders = [
+    InstallBuilder( 'src/schemas/soap.xsd', 'schemas' ), 
+    InstallBuilder( 'src/schemas/wsdl10.xsd', 'schemas' ), 
+]
+
+

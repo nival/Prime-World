@@ -1,0 +1,46 @@
+/*!
+
+\page using_crashrpt_api Using CrashRpt API
+
+CrashRpt library provides several API functions, structures and classes that can be used in your 
+project (see \ref CrashRptAPI, \ref CrashRptStructs, \ref CrashRptWrappers). These are declared
+in \ref CrashRpt.h header file.
+
+\note Older versions of CrashRpt provided different set of API functions that are now 
+declared obsolete. Those obsolete API functions are still supported for compatibility 
+with older versions of CrashRpt, but may be removed in the future. 
+It is recommended that you use the newer functions instead. 
+Here is the complete list of \ref DeprecatedAPI.
+
+\section common_conventions Common Naming Conventions
+
+All CrashRpt functions have \c cr prefix, CrashRpt structures have \c CR prefix 
+and CrashRpt classes have \c Cr prefix.
+
+All CrashRpt functions using character set dependent arguments have two versions of function name 
+(multibyte versions are A-suffixed and wide character versions are W-suffixed). For example, crInstall()
+function has two versions of function name: crInstallA() and crInstallW(). Typically in your program you use a
+character set independent mapping of function name, for example use crInstall() that 
+expands into crInstallW() if you use wide character set or into crInstallA() if you use multibyte 
+character set.
+
+\section api_by_topic CrashRpt API by Topic
+
+The following pages cover features provided by CrashRpt API:
+
+- \subpage enabling_crash_reporting page describes the functions, structures and wrapper classes for
+  setting up exception handlers in your program and adding various files to crash report; 
+- \subpage sending_error_reports page describes different crash report delivery methods and how to
+  configure them;
+- \subpage misc_api_features page describes different features not mentioned in the previous two pages.
+
+\section api_reference CrashRpt API Reference
+
+Below is the complete list of API provided by CrashRpt:
+
+- \ref CrashRptAPI
+- \ref CrashRptStructs
+- \ref CrashRptWrappers
+- \ref DeprecatedAPI 
+
+*/

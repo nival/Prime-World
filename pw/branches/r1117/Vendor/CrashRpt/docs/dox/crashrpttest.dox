@@ -1,0 +1,85 @@
+/*!
+
+\page demos Demo Applications 
+
+CrashRpt distribution contains several demo programs intended to show how CrashRpt 
+intercepts critical errors and how it delivers error reports to software
+vendor:
+ - WTLDemo application demonstrates how CrashRpt works with WTL-based
+   applications;
+ - MFCDemo application demonstrates how CrashRpt works with MFC-based
+   applications;
+ - ConsoleDemo application demonstrates how CrashRpt works with console
+   applications.
+
+\section crashrpttest WTLDemo
+
+\b WTLDemo application shows how CrashRpt intercepts exceptions in a WTL-based 
+program and how it sends error reports to the software vendor. The application 
+has simple dialog-based GUI that allows to choose what type of exception and in 
+what thread to raise. 
+
+To run WTLDemo, open \c bin directory and run \b WTLDemo.exe.
+You can also compile the demo yourself.
+
+WTLDemo application (see the figure below) is designed to test the most probable 
+crash situations. 
+
+The <i>Exception type</i> combo box allows to select an 
+exception type. For more information about these exception types, refer to \ref exception_handling.
+
+The <i>Thread</i> combo box allows to select the thread exception should be 
+raised in. The <i>Capture Screen</i> button allows to capture end user's 
+desktop and generate a video file that will be included to crash report.
+
+\image html crashrpttest.png "WTLDemo Application Window"
+
+The demo does not upload error reports to any server, it just demonstrates 
+how error report delivery works.To make this demo to upload error reports to your
+own server or to your E-mail address, you need to edit its configuration 
+(see the <i>WTLDemo.cpp</i> file inside of <i>/demos/WTLDemo</i> 
+folder) and then recompile the demo.
+
+\section mfcdemo MFCDemo
+
+\b MFCDemo application shows how CrashRpt intercepts exceptions in an MFC-based 
+program and how it sends error reports to the software vendor. To run MFCDemo, 
+open \c bin directory and run \b MFCDemo.exe. You can also compile the demo yourself.
+
+MFCDemo application is shown in the figure below. To see what happens on crash, 
+in the MFCDemo window, open menu File and choose Save. Then enter some file name 
+and press the Save button. The application will terminate with an error message.
+
+The MFCDemo application was created from scratch using the Visual Studio MFC 
+wizard, and then it has been slightly modified to integrate it with CrashRpt. 
+In <i>MFCDemo.cpp</i> file, <i>CMFCDemoApp::Run()</i> method was overridden, and
+in <i>MFCDemoDoc.cpp</i>, the method <i>CMFCDemoDoc::Serialize()</i> was modified
+to cause crash.
+
+\image html mfcdemo.png "MFCDemo Application Window"
+
+The MFCDemo does not upload error reports to any server, it just demonstrates 
+how error report delivery works.To make this demo to upload error reports to your
+own server or to your E-mail address, you need to edit its configuration 
+(see the <i>MFCDemo.cpp</i> file inside of <i>/demos/MFCDemo</i> 
+folder) and then recompile the demo.
+
+\section crashcon ConsoleDemo 
+
+\b ConsoleDemo application is a console application (presented in the figure below). 
+It generates a SEH exception and shows how CrashRpt intercepts the exception and 
+sends the error report to software support team.
+
+\image html crashcon.png "ConsoleDemo Application Window"
+
+To run the demo, open <i>bin</i> directory and run <i>ConsoleDemo.exe</i>.
+You can also compile the demo yourself.
+
+This demo does not upload error reports to any server, it just demonstrates how 
+error report delivery works. To make this demo to upload your error reports, you 
+need to edit its configuration (see <i>ConsoleDemo.cpp</i> file inside of 
+<i>/demos/ConsoleDemo</i> folder) and then recompile the demo.
+
+<i>Further reading:</i>  <a class="el" href="http://code.google.com/p/crashrpt/wiki/FAQ">Frequently Asked Questions</a>.
+
+*/

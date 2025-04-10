@@ -1,0 +1,10 @@
+// $Id: HTBP_Macros.h 80826 2008-03-04 14:51:23Z wotte $
+
+#ifndef ACE_HTBP_MACROS_H
+#define ACE_HTBP_MACROS_H
+
+#if !defined (ACE_HTBP_ENVIRONMENT_CONFIG_FILE)
+#define ACE_HTBP_ENVIRONMENT_CONFIG_FILE "HT_Config.conf"
+#endif /* ACE_HTBP_ENVIRONMENT_CONFIG_FILE */
+
+#endif /* ACE_HTBP_MACROS_H */

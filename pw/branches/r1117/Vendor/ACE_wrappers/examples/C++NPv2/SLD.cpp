@@ -1,0 +1,17 @@
+/*
+** $Id: SLD.cpp 80826 2008-03-04 14:51:23Z wotte $
+**
+** Copyright 2002 Addison Wesley. All Rights Reserved.
+*/
+
+#include "ace/Log_Msg.h"
+
+#include "Reactor_Logging_Server_Adapter.h"
+#include "Logging_Acceptor.h"
+#include "SLD_export.h"
+
+typedef Reactor_Logging_Server_Adapter<Logging_Acceptor>
+        Server_Logging_Daemon;
+
+ACE_FACTORY_DEFINE (SLD, Server_Logging_Daemon)
+

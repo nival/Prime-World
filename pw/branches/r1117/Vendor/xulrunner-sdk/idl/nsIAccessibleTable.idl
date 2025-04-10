@@ -1,0 +1,234 @@
+/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*-
+ *
+ * ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is the Mozilla browser.
+ *
+ * The Initial Developer of the Original Code is
+ * Netscape Communications Corporation.
+ * Portions created by the Initial Developer are Copyright (C) 1999
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Paul Sandoz (paul.sandoz@sun.com)
+ *   Bill Haneman (bill.haneman@sun.com)
+ *   John Gaunt (jgaunt@netscape.com)
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either of the GNU General Public License Version 2 or later (the "GPL"),
+ * or the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+#include "nsISupports.idl"
+
+interface nsIAccessible;
+
+[scriptable, uuid(dcc1e5c3-966e-45b2-b30a-839d35432b24)]
+interface nsIAccessibleTable : nsISupports
+{
+  readonly attribute nsIAccessible       caption;
+  readonly attribute AString             summary;
+  readonly attribute long                columns;
+  readonly attribute nsIAccessibleTable  columnHeader;
+  readonly attribute long                rows;
+  readonly attribute nsIAccessibleTable  rowHeader;
+
+  /**
+   * Returns the accessible object at the specified row and column in the table.
+   * If both row and column index are valid then the corresponding accessible
+   * object is returned that represents the requested cell regardless of whether
+   * the cell is currently visible (on the screen).
+   *
+   * @param row - The row index for which to retrieve the cell.
+   * @param column - The column index for which to retrieve the cell.
+   */
+  nsIAccessible cellRefAt(in long row, in long column);
+
+  /**
+   * Translates the given row and column indices into the corresponding cell
+   * index.
+   *
+   * @param row - index of the row of the table for which to return the cell
+   *              index.
+   * @param column - index of the column of the table for which to return
+   *                 the cell index.
+   */
+  long getIndexAt(in long row, in long column);
+
+  /**
+   * Translates the given child index into the corresponding column index.
+   *
+   * @param index - index of the child of the table for which to return
+   *                the column index.
+   */
+  long getColumnAtIndex(in long index);
+
+  /**
+   * Translates the given child index into the corresponding row index.
+   *
+   * @param index - index of the child of the table for which to return
+   *                the row index.
+   */
+  long getRowAtIndex(in long index);
+
+  /**
+   * Returns the number of columns occupied by the accessible object
+   * at the specified row and column in the table. The result differs from 1
+   * if the specified cell spans multiple columns.
+   *
+   * @param row - Row index of the accessible for which to return
+   *              the column extent.
+   * @param column - Column index of the accessible for which to return
+   *                 the column extent.
+   */
+  long getColumnExtentAt(in long row, in long column);
+
+  /**
+   * Returns the number of rows occupied by the accessible oject
+   * at the specified row and column in the table. The result differs from 1
+   * if the specified cell spans multiple rows.
+   *
+   * @param row  - Row index of the accessible for which to return
+   *               the column extent.
+   * @param column - Column index of the accessible for which to return
+   *                 the column extent.
+   */
+  long getRowExtentAt(in long row, in long column);
+
+  /**
+   * Returns the description text of the specified column in the table.
+   * @param column - The index of the column for which to retrieve
+   *                 the description.
+   */
+  AString getColumnDescription(in long column);
+
+  /**
+   * Returns the description text of the specified row in the table.
+   * @param row - The index of the row for which to retrieve the description.
+   */
+  AString getRowDescription(in long row);
+
+  /**
+   * Returns a boolean value indicating whether the specified column is
+   * completely selected.
+   *
+   * @param column  - Index of the column for which to determine whether it is
+   *                   selected.
+   */
+  boolean isColumnSelected(in long column);
+
+  /**
+   * Returns a boolean value indicating whether the specified row is completely
+   * selected.
+   *
+   * @param row - Index of the row for which to determine whether it is
+   *              selected.
+   */
+  boolean isRowSelected(in  long row);
+
+  /**
+   * Returns a boolean value indicating whether the specified cell is selected.
+   *
+   * @param row - Index of the row for the cell to determine whether it is
+   *              selected.
+   * @param column - Index of the column for the cell to determine whether it
+   *                 is selected.
+   */
+  boolean isCellSelected(in long row, in long column);
+
+  /**
+   * Returns the total number of selected cells.
+   */
+  readonly attribute unsigned long selectedCellsCount;
+
+  /**
+   * Returns the total number of selected columns.
+   */
+  readonly attribute unsigned long selectedColumnsCount;
+
+  /**
+   * Returns the total number of selected rows.
+   */
+  readonly attribute unsigned long selectedRowsCount;
+
+  /**
+   * Returns a list of cells indexes currently selected.
+   *
+   * @param cellsSize - length of array
+   * @param cells - array of indexes of selected cells
+   */
+  void getSelectedCells(out unsigned long cellsSize,
+                        [retval, array, size_is(cellsSize)] out long cells);
+
+  /**
+   * Returns a list of column indexes currently selected.
+   *
+   * @param columnsSize - Length of array
+   * @param columns - Array of indexes of selected columns
+   */
+  void getSelectedColumns(out unsigned long columnsSize,
+                          [retval, array, size_is(columnsSize)] out long columns);
+
+  /**
+   * Returns a list of row indexes currently selected.
+   *
+   * @param rowsSize - Length of array
+   * @param rows - Array of indexes of selected rows
+   */
+  void getSelectedRows(out unsigned long rowsSize,
+                       [retval, array, size_is(rowsSize)] out long rows);
+
+  /**
+   * Selects a row and unselects all previously selected rows.
+   *
+   * @param row - Index of the row to be selected.
+   */
+  void selectRow(in long row);
+
+  /**
+   * Selects a column and unselects all previously selected columns.
+   *
+   * @param column - Index of the column to be selected.
+   */
+  void selectColumn(in long column);
+
+  /**
+   * Unselects one row, leaving other selected rows selected (if any).
+   *
+   * @param row  - Index of the row to be selected.
+  */
+  void unselectRow(in long row);
+
+  /**
+   * Unselects one column, leaving other selected columns selected (if any).
+   *
+   * @param column - Index of the column to be selected.
+   */
+  void unselectColumn(in long column);
+
+  /**
+   * Use heuristics to determine if table is most likely used for layout.
+   */
+  boolean isProbablyForLayout();
+};
+

@@ -1,0 +1,227 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+function main() {
+	getlocal0
+	pushscope
+	findproperty START 
+	pushstring "Instructions that start with the letter D" 
+	callpropvoid START 1
+	newfunction .function_id(runTest)
+	getlocal0
+	call 0
+	findproperty END
+	callpropvoid END 0
+	returnvoid
+}
+
+.method_info { 
+	name: runTest 
+	flags: SETS_DXNS
+}
+.method_body_info {
+
+	method: .function_id(runTest)
+
+	traits: {
+		.trait { kind: Trait_Slot name: var1 }
+	}
+	code:
+	{
+		getlocal0
+		pushscope
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals int and uint"
+		pushtrue // expected
+		pushint 7
+		pushuint 7
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals int and double"
+		pushtrue // expected
+		pushint 7
+		pushdouble 7.
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals int and string"
+		pushtrue // expected
+		pushint 7
+		pushstring "7"
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals (not) int and string"
+		pushfalse // expected
+		pushint 7
+		pushstring "7.9."
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals (not) double and Nan"
+		pushfalse // expected
+		pushdouble 97.9
+		pushnan
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals (not) Nan and double"
+		pushfalse // expected
+		pushnan
+		pushdouble 97.9
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals (not) NaN and NaN"
+		pushfalse // expected
+		pushnan
+		pushnan
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals null and undefined"
+		pushtrue // expected
+		pushnull
+		pushundefined
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals undefined and null "
+		pushtrue // expected
+		pushundefined
+		pushnull
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		/*
+		findproperty COMPARE_STRICTEQ
+	pushstring "equals +0 and -0"
+		pushtrue // expected
+		pushint 0
+		pushint -0 //  FIXME: not really -0 in the ABC
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+		*/
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "Compare same Object"
+		pushtrue // expected
+		findproperty Object
+		constructprop Object 0
+		dup
+		dup
+		setlocal1
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "Compare different Objects"
+		pushfalse // expected
+		findproperty Object
+		constructprop Object 0
+		getlocal1
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "Compare Strings"
+		pushtrue // expected
+		pushstring "abcd"
+		pushstring "ab"
+		pushstring "cd"
+		add
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "Compare (not) Strings"
+		pushfalse // expected
+		pushstring "abcd"
+		pushstring "ab"
+		pushstring "cd "
+		add
+		equals
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "esc_xattr"
+		pushstring "7" // expected
+		pushint 7
+		esc_xattr
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "esc_xattr"
+		// TODO: assembler limitation
+		// pushstring "&amp;\&quot;" // expected
+		// pushstring "&\""
+		pushstring "&amp;" // expected
+		pushstring "&"
+		esc_xattr
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "esc_xelem"
+		pushstring "7" // expected
+		pushint 7
+		esc_xelem
+		callpropvoid COMPARE_STRICTEQ 3
+
+		findproperty COMPARE_STRICTEQ
+	pushstring "esc_xelem"
+		pushstring "&lt;foo&gt;" // expected
+		pushstring "<foo>"
+		esc_xelem
+		callpropvoid COMPARE_STRICTEQ 3
+
+
+
+
+
+		returnvoid
+	}
+}

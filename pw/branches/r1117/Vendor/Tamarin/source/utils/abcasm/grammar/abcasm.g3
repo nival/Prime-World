@@ -1,0 +1,1075 @@
+/* -*- Mode: Java; c-basic-offset: 4; indent-tabs-mode: nil; tab-width: 4 -*- */
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+grammar abcasm;
+
+options
+{
+	// output  = via the AssemblerCore;
+	language = Java;
+}
+
+@header {
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+package abcasm;
+import static abcasm.AbcConstants.*;
+}
+
+@lexer::header {
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+package abcasm;
+}
+
+
+@members
+{
+    AssemblerCore asmCore;
+
+	/**
+	 *  Override default error handling; 
+	 *  send errors to the assembler.
+	 */
+	public void emitErrorMessage(String msg)
+	{
+        asmCore.syntaxError(msg);
+    }
+
+	/*
+	*/
+	public void reportError(RecognitionException x)
+	{
+	    if ( asmCore.options.expandedDiagnostics )
+			x.printStackTrace();
+		super.reportError(x);
+	}
+
+	void seekToEOL(Token bad_token)
+	{
+	    int start_line = bad_token.getLine();
+
+		while ( input.LT(1).getLine() == start_line )
+		{
+		    input.consume();
+		}
+	}
+}
+
+translation_unit:
+    decl*
+	;
+
+decl
+	scope { MethodBodyInfo method_body_info; }
+	:
+	script_info
+	| method_info
+	| method_body_info
+	| sugared_function_decl
+	;
+
+method_info
+	@init { MethodInfo mi; }
+	:
+		'.method_info' 
+		{
+			mi = new MethodInfo();
+		}
+		LBRACE
+		(
+			'name' ':' function_name = IDENTIFIER
+			{
+			    mi.methodName = function_name.getText();
+			}
+			| 'return_type' ':' rettype = type_name
+			{
+			    mi.returnType = rettype;
+			}
+			| 'flags' ':' flags = method_info_flags
+			{
+				mi.flags = flags;
+			}
+			| 'param_type' ':' LBRACE method_parameters[mi.paramTypes] RBRACE
+		)*
+		RBRACE
+		{
+			asmCore.addMethodInfo(mi);
+		}
+	;
+
+method_parameters[java.util.Vector<Name> param_types]
+	:
+	(
+		first_type = type_name
+		{
+			param_types.add(first_type);
+		}
+		(
+			COMMA next_type = type_name
+			{
+			    param_types.add(next_type);
+			}
+		)*
+	)?
+	;
+
+method_info_flags
+	returns [byte flags]
+	@init { flags = 0; }
+	:
+	( 
+		('|' | '+' )?
+		'NEED_ARGUMENTS' { flags |= METHOD_Arguments; }
+		| 'NEED_ACTIVATION' { flags |= METHOD_Activation; }
+		| 'NEED_REST' { flags |= METHOD_Needrest;}
+		| 'HAS_OPTIONAL' { flags |= METHOD_HasOptional; }
+		| 'SET_DXNS' { flags |= METHOD_Setsdxns; }
+		| 'SETS_DXNS' { flags |= METHOD_Setsdxns; }
+		| 'HAS_PARAM_NAMES' { flags |= METHOD_HasParamNames; }
+	)*
+	{
+		return flags;
+	}
+	;
+
+
+attribute[String attr_name]
+	: id = IDENTIFIER { $id.getText().equals(attr_name) }? '=' attribute_value
+	;
+
+script_info
+	returns [ScriptInfo result]
+	@init { result = new ScriptInfo(); }
+	: '.script_info' LBRACE
+	(
+		'init' ':' initial_function = function_id
+		{
+		    result.setInit(initial_function);
+		}
+		| 'traits' ':' LBRACE traits[result.traits] RBRACE
+	)+
+	RBRACE
+	{
+		asmCore.addScript(result);
+	}
+	;
+	
+method_body_info
+	@init { Traits traits; }
+	: '.method_body_info'
+	{
+		$decl::method_body_info = new MethodBodyInfo();
+		traits = $decl::method_body_info.traits;
+	}
+	LBRACE
+	(
+		'method' ':' method_id = function_id
+		{
+			$decl::method_body_info.methodId = method_id;
+		}
+		| 'local_count' ':' max_local = integer_literal
+		{
+			$decl::method_body_info.explicit_max_local = new Integer(max_local);
+		}
+		| 'max_stack' ':' max_stack = integer_literal
+		{
+			$decl::method_body_info.explicit_max_stack = new Integer(max_stack);
+		}
+		| 'max_scope_depth' ':' max_scope = integer_literal
+		{
+			$decl::method_body_info.explicit_max_scope = new Integer(max_scope);
+		}
+		| 'init_scope_depth' ':' init_scope = integer_literal
+		{
+			$decl::method_body_info.explicit_init_scope = new Integer(init_scope);
+		}
+		| 'code' ':' block
+		| 'traits' ':' LBRACE traits[traits] RBRACE
+		| 'exception' ':' LBRACE exception_info* RBRACE
+	)*
+	RBRACE
+	{
+		asmCore.addMethodBodyInfo($decl::method_body_info);
+	}
+	;
+
+
+function_id returns [Object result]
+	: literal_id = integer_literal
+	{
+		result = new Integer(literal_id);
+	}
+	| '.function_id' LPAREN referenced_func = IDENTIFIER RPAREN
+	{
+	    result = new SymbolicReference(SymbolicReference.function_id, referenced_func.getText());
+	}
+	;
+
+
+attribute_value
+	: IDENTIFIER
+	| integer_literal
+	;
+
+traits[Traits traits]
+	:
+	(
+		'.trait' LBRACE
+		te = trait_entry { traits.add(te); }
+		RBRACE
+	)*
+	;
+
+trait_entry
+	returns [Trait result]
+	:
+	   st = slot_trait { result = st; }
+	   |
+	   mt = method_trait { result = mt; }
+	;
+
+slot_trait
+	returns [Trait result]
+	: 'kind' ':' ('Trait_Slot' | 'var') kind = trait_kind_modifiers[TRAIT_Var]
+	{
+		result = new Trait(kind);
+	}
+	(
+	  trait_name[result]
+	  |
+	  'slot_id' ':' slot_literal = integer_literal
+	  {
+	  	result.addAttr("slot_id", slot_literal);
+	  }
+	  |
+	  'type_name' ':' trait_type_name = type_name
+	  {
+	  	result.addAttr("type_name", trait_type_name);
+	  }
+	)*
+	;
+
+/*
+ *  Parse the various trait kinds that refer to methods.
+ */
+method_trait
+	returns [Trait result]
+	:
+	'kind' ':'
+	(
+		  (('Trait_Method'   | 'method')   kind = trait_kind_modifiers[TRAIT_Method])
+		| (('Trait_Function' | 'function') kind = trait_kind_modifiers[TRAIT_Function])
+		| (('Trait_Getter' | 'get') kind = trait_kind_modifiers[TRAIT_Getter])
+		| (('Trait_Setter' | 'set') kind = trait_kind_modifiers[TRAIT_Setter])
+	)
+	{
+		result = new Trait(kind);
+	}
+	(
+		trait_name[result]
+		|
+		('method_id'|'method') ':' method_id = function_id
+		{
+			result.addAttr("method_id", method_id);
+		}
+		| 
+		'disp_id' ':' disp_id = integer_literal
+		{
+			result.addAttr("disp_id", disp_id);
+		}
+	)*
+	;
+
+trait_name[Trait t]
+	:
+		'name' ':' name = identifier
+		{
+			t.addAttr("name", name);
+		}
+	;
+
+trait_kind_modifiers[int initial_kind]
+	returns [int result]
+	@init { result = initial_kind; }
+	:
+	(
+		('+' | '|') modifier = trait_kind_modifier { result |= modifier; }
+	)*
+	;
+
+trait_kind_modifier
+	returns [int result]
+	:
+		'ATTR_Final' { result = TRAIT_FLAG_final; }
+	|	'ATTR_Override' { result = TRAIT_FLAG_override; }
+	|	'ATTR_Metadata' { result = TRAIT_FLAG_metadata; }
+	;
+	
+exception_info
+	@init { ExceptionInfo info; }
+	:
+		'.exception' { info = new ExceptionInfo(); }
+		LBRACE
+		(
+			'from' ':' from = control_flow_target
+			{
+				info.from = from;
+			}
+			| 'to' ':' to = control_flow_target
+			{
+				info.to = to;
+			}
+			| 'target' ':' target = control_flow_target
+			{
+				info.target = target;
+			}
+			| ('exc_type' | 'type') ':' exc_type = type_name
+			{
+				info.exc_type = asmCore.getNameId(exc_type);
+			}
+			| 'name' ':' name = IDENTIFIER
+			{
+				info.name_id = asmCore.createPoolId($IDENTIFIER.getText());
+			}
+			
+		)*
+		RBRACE
+		{
+			info.validateSemantics();
+			$decl::method_body_info.addExceptionInfo(info);
+		}
+	;
+
+type_name
+	returns [Name result]
+	:
+	type_any = '*' 
+	{
+		result = asmCore.getName(type_any.getText());
+	}
+	| mpid = multipart_identifier { result = mpid; }
+	;
+
+
+
+sugared_function_decl
+	:
+    sugared_function_header
+    block
+    {
+    	asmCore.addMethodBodyInfo($decl::method_body_info);
+    }
+	;
+
+sugared_function_header
+	scope { MethodInfo signature; }
+	@init { MethodInfo signature; }
+	:
+	'function' func_name = IDENTIFIER
+	{
+		$sugared_function_header::signature = signature = new MethodInfo();
+		signature.methodName = func_name.getText();
+		
+	} 
+	plist[signature.paramTypes]
+	((COLON rettype = type_name) {signature.returnType = rettype; })?
+	{
+	    asmCore.addMethodInfo(signature);
+	    
+	    //  Tie this header to the corresponding block.
+	    $decl::method_body_info = new MethodBodyInfo();
+	    $decl::method_body_info.methodId = new Integer(signature.methodId);
+	}
+	;
+
+block
+	:
+	//  NB: unknown_element is last for a reason;
+	//  it translates the current line as an error.  
+	//  try_block is internally guarded but still is 
+	//  better off following all rules except unknown_element.
+	LBRACE (insn |pseudo_insn | try_block | unknown_element )+ RBRACE
+	;
+
+plist[java.util.Vector<Name>param_types]
+	: LPAREN method_parameters[param_types] RPAREN
+	;
+
+insn:
+	label = control_flow_target COLON
+	{
+		//  Put a label on the current block,
+		//  or start a new one.
+	    $decl::method_body_info.startBlock(label);
+	}
+	|
+	(
+		// Accept but ignore labels from dumpabc
+		// TODO: Use these as "weak" labels?
+		DECIMAL_LITERAL?  
+
+		//  Rules for the various instructions.  
+		//  Note: Instructions are grouped by 
+		//  syntactic characteristics, not by purpose.
+		(
+			  single_cfg_target_insn
+			| no_operand_insn
+			| integer_operands_insn
+			| pool_insn
+			| call_insn
+			| multiname_insn
+			| function_insn
+			| slot_insn
+			| mops_insn
+			| ad_hoc_insn
+		)
+		
+	)
+	;
+
+slot_insn
+	: opcode = ('getslot' | 'getglobalslot' | 'setslot' | 'setglobalslot' ) operand = slot_id
+	{
+		$decl::method_body_info.insn(opcode, new Object[] { operand } );
+	}
+	;
+
+slot_id
+	returns [Object result]
+	: 
+		literal_id = integer_literal
+		{
+			result = new Integer(literal_id);
+		}
+		| '.slot_id' LPAREN slot_symbol = IDENTIFIER RPAREN
+		{
+			result = new SymbolicReference(SymbolicReference.slot_id, slot_symbol.getText());
+		}
+	;
+
+/*
+ *  Indirect (MOPS) instructions.
+ */
+mops_insn
+	: mops_opcode = 
+	( 
+		'li8' | 'li16' | 'li32'
+		| 'lf32' | 'lf64'
+		| 'si8' | 'si16' | 'si32'
+		| 'sf32' | 'sf64'
+		| 'sxi1' | 'sxi8' | 'sxi16'
+	)
+	{
+		$decl::method_body_info.insn(mops_opcode);
+	}
+	;
+
+
+
+/*
+ *  Instructions with a single control-flow target.
+ */
+single_cfg_target_insn
+	: opcode =
+	  ( 'ifnlt'  | 'ifnle'  | 'ifngt'  | 'ifnge'  | 'iftrue'   | 'iffalse'  | 
+		'ifeq'  | 'ifne'  | 'iflt'  | 'ifle'  | 'ifgt'  | 'ifge'  | 'ifstricteq'  | 'ifstrictne' |
+		'jump'
+	  )
+	  DECIMAL_LITERAL? ( LPAREN MINUS? DECIMAL_LITERAL RPAREN )?  //  abcdump stuff for human consumption
+	  label = control_flow_target
+	  {
+	      $decl::method_body_info.insn(opcode, label);
+		  $decl::method_body_info.startBlock();
+	  }
+	  ;
+
+control_flow_target 
+    returns [Label result]
+	: label_text = IDENTIFIER
+	{
+	    return asmCore.getLabel(label_text.getText());
+	}
+	;
+
+
+/*
+ *  Instructions with integer operands.
+ *  @warn Instructions that need to operate on a numeric pool,
+ *     i.e., pushdouble, pushint, pushuint, can't use this rule.
+ */
+integer_operands_insn
+	: int_opcode = (
+		  'applytype' |
+	      'debug' | 'debugline' | 'declocal' | 'declocal_i' |	 
+		  'getlocal' | 
+		  'getscopeobject' |
+		  'hasnext2' | 
+		  'inclocal' | 'inclocal_i' | 
+		  'kill' |
+		  'newarray' | 'newcatch' | 'newobject' |
+		  'pushbyte' | 'pushshort' | 
+		  'setlocal' /* | 'setslot' | 'setglobalslot' */
+	  )
+	  operands = integer_operands_list
+	  {
+	      $decl::method_body_info.insn(int_opcode, operands);
+	  }
+	  ;
+
+/*
+ *  Instructions that operate on a pool.
+ */
+pool_insn
+	: 'pushint' int_operand = integer_literal
+	{
+	    $decl::method_body_info.insn(OP_pushint, asmCore.createPoolId(new Integer(int_operand)));
+	}
+	| 'pushuint' uint_operand = long_literal
+	{
+	    $decl::method_body_info.insn(OP_pushuint, asmCore.createPoolId(new Long(uint_operand)));
+	}
+	| 'pushdouble' double_operand = double_literal
+	{
+	    $decl::method_body_info.insn(OP_pushdouble, asmCore.createPoolId(new Double(double_operand)));
+	}
+	| 'pushnamespace' ns = namespace_specification
+	{
+	    $decl::method_body_info.insn(OP_pushnamespace, asmCore.createPoolId(ns));
+	}
+	| opcode = ( 'debugfile' | 'dxns'  | 'pushstring' )
+	string_operand = string_literal
+	{
+		$decl::method_body_info.insn(opcode, asmCore.createPoolId(string_operand)); 
+	}
+	;
+
+/*
+ *  Call-type instructions.
+ */
+call_insn
+	:   call_opcode = (
+	        'callmethod' | 'callproplex' | 'callproperty' | 'callpropvoid' |
+			'callsuper' | 'callsupervoid' |
+			'constructprop'
+	    )
+		callee = identifier 
+		LPAREN? arg_count = integer_literal RPAREN?
+	{
+		$decl::method_body_info.insn(call_opcode, callee, arg_count);
+	}
+	|  'call' 	LPAREN? arg_count = integer_literal RPAREN? 
+	{
+	    $decl::method_body_info.insn(OP_call, new Object[] { new Integer(arg_count) } );
+	}
+	| 'callstatic' method_id = function_id arg_count = integer_literal
+	{
+		$decl::method_body_info.insn(OP_callstatic, new Object[] { method_id, new Integer(arg_count) } );
+	}
+	| construct_opcode = ( 'construct' | 'constructsuper' ) arg_count = integer_literal
+	{
+		$decl::method_body_info.insn(construct_opcode, new Object[] { new Integer(arg_count) } );
+	}
+	;
+
+pseudo_insn
+		:  '.print'
+        {
+			$decl::method_body_info.insn(OP_findproperty, asmCore.getName( asmCore.getUsualSuspectNamespaces(), "print"), new Object[0]);
+            $decl::method_body_info.insn(OP_swap, new Object[0]);
+            $decl::method_body_info.insn(OP_callpropvoid, asmCore.getName( asmCore.getUsualSuspectNamespaces(), "print"), new Object[] { new Integer(1) } );
+		}
+		;
+	
+/*
+ *  TODO: All integer operands should accept .function_id()  .slot_id() etc.
+ */
+function_insn
+	:	'newfunction' fid = function_id
+	{
+		$decl::method_body_info.insn(OP_newfunction, fid);
+	}
+	;
+
+/*
+ *  Instructions with no operands.
+ */
+no_operand_insn
+	: opcode = ( 
+		'add' | 'add_i' | 'astypelate' |
+		'bitand' | 'bitnot' | 'bitor' | 'bitxor' |
+		'checkfilter' | 'coerce_a' | 'coerce_b' | 'coerce_d' | 'coerce_i' | 'coerce_s' |
+		'convert_b' | 'convert_i' | 'convert_d' | 'convert_o' | 'convert_u' | 'convert_s' |
+		'decrement' | 'decrement_i' | 'divide' | 'dup' | 
+	    'dxnslate' |
+		'equals' |
+		'esc_xattr' | 'esc_xelem' |
+		'getglobalscope' | 
+		'getlocal0' | 'getlocal1' | 'getlocal2' | 'getlocal3' |
+		'greaterequals' | 'greaterthan' |
+		'hasnext' | 
+		'in' | 'increment' | 'increment_i' | 'instanceof' | 'istypelate' |
+		'label' | 'lessequals' | 'lessthan' | 'lshift' |
+		'modulo' | 'multiply' | 'multiply_i' |
+		'negate' | 'negate_i' | 'newactivation' | 'nextname' | 'nextvalue' | 'nop' | 'not' |
+		'pop' | 'popscope' | 'pushfalse' | 'pushtrue' | 'pushnan' | 'pushnull' | 'pushscope' | 
+		'pushundefined' | 'pushwith' |
+		'returnvalue' | 'returnvoid' | 'rshift' |
+		'setlocal0' | 'setlocal1' | 'setlocal2' | 'setlocal3' |
+		'subtract' | 'subtract_i' | 'swap' |
+		'throw' | 'typeof' |
+		'urshift'
+
+		)
+	{
+	    $decl::method_body_info.insn(opcode);
+	}
+	;
+
+/*
+ *  Instructions that operate on a multiname.
+ */
+multiname_insn :
+	opcode = (
+		'astype' |
+	    'coerce' | 
+		'deleteproperty' | 
+		'finddef' | 'findproperty' | 'findpropstrict' |
+		'getlex' | 'getproperty' | 'getsuper' |
+		'istype' |
+		'setproperty'
+	)
+	name_key = multipart_identifier
+	{
+		$decl::method_body_info.insn(opcode, name_key);
+	}
+	| opcode = ('getdescendants') name_key = identifier
+	{
+		$decl::method_body_info.insn(OP_getdescendants, name_key, null);
+	}
+	;
+
+/*
+ *  An instruction defined by the assembly program.
+ */
+ad_hoc_insn
+	: opcode = hex_literal imm_array = integer_operands_list
+	{
+		//  HACK: This insn signature dodges around the lack
+		//  of a token, and the fact that the signature list
+		//  is an ArrayList of Integers (which would match
+		//  the signature (int, Object) better than the correct
+		//  signature (int, ArrayList<Object>
+	    $decl::method_body_info.insn(new Integer(opcode), imm_array);
+	}
+	;
+
+/*
+ *  Emit a more informative diagnostic.
+ */
+unknown_element
+	: bad_opcode = IDENTIFIER
+	{
+	    String diagnostic = "line ";
+		diagnostic += Integer.toString(bad_opcode.getLine());
+		diagnostic += ":";
+		diagnostic += Integer.toString(bad_opcode.getCharPositionInLine());
+		diagnostic += " Unimplemented opcode \"";
+		diagnostic += bad_opcode.getText();
+		diagnostic += "\"";
+	    asmCore.syntaxError(diagnostic);
+
+		seekToEOL(bad_opcode);
+	}
+	;
+
+try_block
+	@init 
+	{
+		Label try_start_label = null;
+		Label try_end_label = null;
+		Label catch_target_label = null; 
+
+		ExceptionInfo info = null;
+
+		if ( TRY == input.LA(1) )
+		{
+			info = new ExceptionInfo();
+			info.name_id  = new Integer(0);
+			info.exc_type = new Integer(0);
+
+			try_start_label = asmCore.generateLabel("start try block");
+			try_end_label = asmCore.generateLabel("end try block");
+			catch_target_label = asmCore.generateLabel("catch target");
+
+			$decl::method_body_info.startBlock(try_start_label);
+		}
+	}
+	:
+	TRY block
+	{
+		$decl::method_body_info.startBlock(try_end_label);
+		$decl::method_body_info.startBlock(catch_target_label);
+	}
+	CATCH 
+
+	//  Name of the exception to catch, defaults to *
+	(
+		exc_type = type_name
+		{
+			info.exc_type = asmCore.getNameId(exc_type);
+		}
+	)?
+
+	block
+	{
+		info.from     = try_start_label;
+		info.to       = try_end_label;
+		info.target   = catch_target_label;
+
+		$decl::method_body_info.addExceptionInfo(info);
+	}
+	;
+/*
+ *  **************************
+ *  ** Section: identifiers **
+ *  **************************
+ */
+
+/*
+ *  A potentially qualified identifier.
+ *  Returns a QName if the name's not qualified,
+ *  as opposed to multipart_identifier which
+ *  always returns a multiname.
+ */
+identifier
+	returns [Name result]
+	: 
+	mpid = qualified_multipart_id
+	{
+	    result = mpid;
+	}
+	| IDENTIFIER
+	{
+		//  Simple QName.
+	    result = asmCore.getName($IDENTIFIER.getText());
+	}
+	;
+
+multipart_identifier
+	returns [Name result]
+	: 
+	mpid = qualified_multipart_id
+	{
+	    result = mpid;
+	}
+	| IDENTIFIER
+	{
+	    result = asmCore.getName( asmCore.getUsualSuspectNamespaces(), $IDENTIFIER.getText());
+	}
+	;
+
+qualified_multipart_id
+	returns [Name result]
+	:
+		nsset = multiname_qualifier COLON COLON  id = IDENTIFIER
+	{
+	    result = asmCore.getName(nsset, id.getText());
+	}
+	;
+
+multiname_qualifier
+    returns [Nsset result]
+	@init { java.util.Vector<Namespace> namespaces = new java.util.Vector(); }
+	:
+	LBRACE 
+	    ns1 = namespace_specification { namespaces.add(ns1); }
+		( COMMA nsx = namespace_specification { namespaces.add(nsx); } )*
+	RBRACE
+	{
+	    return asmCore.getNsset(namespaces);
+	}
+	;
+
+namespace_specification 
+    returns [Namespace result]
+	@init { StringBuffer nameBuffer = new StringBuffer(); }
+	: 
+		ns_id1 = IDENTIFIER { nameBuffer.append(ns_id1.getText()); }
+		( '.' ns_idx = IDENTIFIER { nameBuffer.append("."); nameBuffer.append(ns_idx.getText()); })*
+	{
+	    result = asmCore.getNamespace(nameBuffer.toString());
+	}
+	;
+
+/*
+ *  ***********************
+ *  ** Section: literals **
+ *  ***********************
+ */
+
+
+/*
+ *  A list of integer operands.
+ */
+integer_operands_list 
+	returns [java.util.ArrayList<Integer> result]
+	@init { result = new ArrayList<Integer>(); }
+	: 
+	first_value = integer_literal { result.add(first_value); }
+	(COMMA next_value = integer_literal { result.add(next_value); } )*
+	;
+
+integer_literal returns [int result]
+	: DECIMAL_LITERAL
+	{
+		result = Integer.parseInt($DECIMAL_LITERAL.getText());
+	}
+	| MINUS DECIMAL_LITERAL
+	{
+		result = - Integer.parseInt($DECIMAL_LITERAL.getText());
+	}
+	| hex_value = hex_literal
+	{
+	    result = hex_value;
+	}
+	;
+
+long_literal returns [long result]
+	: DECIMAL_LITERAL
+	{
+		result = Long.parseLong($DECIMAL_LITERAL.getText());
+	}
+	| HEX_LITERAL
+	{
+	    result = Long.parseLong($HEX_LITERAL.getText().substring(2), 16);
+	}
+	;
+
+double_literal returns [double result]
+	: FLOATING_POINT_LITERAL
+	{
+	    result = Double.parseDouble($FLOATING_POINT_LITERAL.getText());
+	}
+	| MINUS FLOATING_POINT_LITERAL
+	{
+	    result = - Double.parseDouble($FLOATING_POINT_LITERAL.getText());
+	}
+	| 'NaN'
+	{
+		result = Double.NaN;
+	}
+	;
+
+hex_literal returns [int result]
+	: HEX_LITERAL
+	{
+	    result = Integer.parseInt($HEX_LITERAL.getText().substring(2), 16);
+	}
+	;
+
+string_literal returns [String result]
+	: STRING_LITERAL
+	{
+	    String raw_result = $STRING_LITERAL.getText();
+		result = raw_result.substring(1, raw_result.length() - 1);
+	}
+	;
+
+/*
+ *  *********************
+ *  ** Section: tokens **
+ *  *********************
+ */
+
+	COLON	: ':' ;
+	LBRACE	: '{' ;
+	RBRACE	: '}' ;
+	LPAREN	: '(' ;
+	RPAREN	: ')' ;
+	LBRACK	: '[' ;
+	RBRACK	: ']' ;
+	DOT		: '.' ;
+	COMMA	: ',' ;
+	QUOTE	: '"' ;
+	SPLAT	: '*' ; 
+	MINUS	: '-' ;
+
+	TRY		: '.try';
+	CATCH	: '.catch';
+
+IDENTIFIER
+	:	LETTER (LETTER|'0'..'9')*
+	;
+
+fragment
+LETTER
+	:	'$'
+	|	'A'..'Z'
+	|	'a'..'z'
+	|	'_'
+	;
+
+CHARACTER_LITERAL
+    :   '\'' ( EscapeSequence | ~('\''|'\\') ) '\''
+    ;
+
+STRING_LITERAL
+    :  '"' ( EscapeSequence | ~('\\'|'"') )* '"'
+    ;
+
+HEX_LITERAL : '0' ('x'|'X') HexDigit+  ;
+
+DECIMAL_LITERAL : ('0' | '1'..'9' '0'..'9'*)  ;
+
+fragment
+HexDigit : ('0'..'9'|'a'..'f'|'A'..'F') ;
+
+FLOATING_POINT_LITERAL
+    :   ('0'..'9')+ '.' ('0'..'9')* Exponent? 
+    |   '.' ('0'..'9')+ Exponent? 
+    |   ('0'..'9')+ Exponent? 
+	;
+
+fragment
+Exponent : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
+
+fragment
+FloatTypeSuffix : ('f'|'F'|'d'|'D') ;
+
+/*
+ *  FIXME: Turn escape sequences into the correct chars
+ */
+fragment
+EscapeSequence
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+    |   OctalEscape
+	|   UnicodeEscape
+    ;
+
+fragment
+OctalEscape
+    :   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
+    |   '\\' ('0'..'7') ('0'..'7')
+    |   '\\' ('0'..'7')
+    ;
+
+fragment
+UnicodeEscape
+    :   '\\' 'u' HexDigit HexDigit HexDigit HexDigit
+    ;
+
+WS  :  (' '|'\r'|'\t'|'\u000C'|'\n') {$channel=HIDDEN;}
+    ;
+
+COMMENT
+    :   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
+    ;
+
+LINE_COMMENT
+    : '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    ;
+

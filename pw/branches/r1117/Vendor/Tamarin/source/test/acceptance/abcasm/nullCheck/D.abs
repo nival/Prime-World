@@ -1,0 +1,220 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+function main() {
+    getlocal0
+    pushscope
+    findproperty START 
+    pushstring "Instructions that start with the letter D" 
+    callpropvoid START 1
+    
+    newfunction .function_id(runTest)
+    getlocal0
+    call 0
+    
+    newfunction .function_id(runTest1)
+    getlocal0
+    call 0
+    
+    findproperty END
+    callpropvoid END 0
+    returnvoid
+}
+
+.method_info { 
+    name: runTest 
+    flags: SETS_DXNS
+}
+.method_body_info {
+
+    method: .function_id(runTest)
+
+    traits: {
+        .trait { kind: Trait_Slot name: var1 }
+    }
+    code:
+    {
+        getlocal0
+        pushscope
+        
+        
+        pushint 7
+        setlocal 1
+        pushdouble 7.5
+        setlocal2
+        pushnull
+        setlocal3
+
+        //  TODO: add debug, debugfile and debugline
+        
+        findproperty COMPARE_STRICTEQ
+        pushstring "declocal - null"
+        pushint -1 // expected
+        declocal 3
+        getlocal3
+        callpropvoid COMPARE_STRICTEQ 3
+
+        // reset local register 3 to null
+        pushnull
+        setlocal3
+
+        findproperty COMPARE_STRICTEQ
+        pushstring "declocal_i null"
+        pushint -1 // expected
+        declocal_i 3
+        getlocal3
+        callpropvoid COMPARE_STRICTEQ 3
+
+        findproperty COMPARE_STRICTEQ
+        pushstring "decrement null"
+        pushint -1 // expected
+        pushnull
+        decrement
+        callpropvoid COMPARE_STRICTEQ 3
+
+        findproperty COMPARE_STRICTEQ
+        pushstring "decrement_i null"
+        pushint -1 // expected
+        pushnull
+        decrement_i
+        callpropvoid COMPARE_STRICTEQ 3
+        
+        
+        .try 
+        {
+            pushnull
+            deleteproperty NoSuchProperty
+            pop
+            
+            
+            findproperty FAIL
+            pushstring "deleteproperty on null object"
+            pushstring "exception should have been thrown: TypeError: Error #1009: Cannot access a property or method of a null object reference."
+            getlocal1
+            callpropvoid FAIL 3
+            
+            // need to returnvoid here so verifier is ok with assigning a new type to local register 1 in the catch block
+            returnvoid
+            
+            jump finished_deleteproperty_on_null_object
+        }
+        .catch
+        {
+            getlocal0
+            pushscope
+            setlocal1   // save typeError
+            findproperty COMPARE_TYPEERROR
+            pushstring "deleteproperty on null object"
+            pushstring "TypeError: Error #1009" // Cannot access a property or method of a null object reference.   // expected
+            getlocal1
+            callpropvoid COMPARE_TYPEERROR 3
+        }
+        
+        finished_deleteproperty_on_null_object:
+        returnvoid
+    }
+}
+
+.method_info { 
+    name: runTest1 
+    flags: SETS_DXNS
+}
+.method_body_info {
+
+    method: .function_id(runTest1)
+
+    traits: {
+        .trait { kind: Trait_Slot name: var1 }
+    }
+    code:
+    {
+        getlocal0
+        pushscope
+        findproperty COMPARE_STRICTEQ
+        pushstring "divide double by null"
+        findpropstrict Infinity
+        getproperty Infinity // expected
+        pushdouble 8.5
+        pushnull
+        divide
+        callpropvoid COMPARE_STRICTEQ 3
+
+        findproperty COMPARE_STRICTEQ
+        pushstring "divide null by null"
+        pushnan
+        pushnull
+        pushnull
+        divide
+        callpropvoid COMPARE_STRICTEQ 3
+        
+        findproperty COMPARE_STRICTEQ
+        pushstring "divide null by uint"
+        pushint 0
+        pushnull
+        pushuint 0xFFFFFF
+        divide
+        callpropvoid COMPARE_STRICTEQ 3
+
+        findproperty COMPARE_STRICTEQ
+        pushstring "dup null"
+        pushnull    // expected
+        dup
+        callpropvoid COMPARE_STRICTEQ 3
+
+        findproperty COMPARE_STRICTEQ
+        pushstring "dxns"
+        dxns "foo"
+        findproperty PASS
+        swap
+        callpropvoid PASS 1
+        pop // COMPARE_STRICTEQ
+        
+        
+        findproperty COMPARE_STRICTEQ
+        pushstring "dxnslate - null"
+        pushnull
+        dxnslate
+        findproperty PASS
+        swap
+        callpropvoid PASS 1
+        pop // COMPARE_STRICTEQ
+
+
+        returnvoid
+    }
+}
+

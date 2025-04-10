@@ -1,0 +1,57 @@
+/*!
+
+\page architecture_overview Architecture Overview
+
+CrashRpt consists of two kinds of functionality: error reporting functionality 
+and error report analyzis functionality. Error reporting functionality is distributed with
+a client software and responsible for handling exceptions in the client software and 
+deliverying error reports to the developer.
+
+Error report analyzis functionality is designed to help the developer to extract data
+contained in error reports and to simplify error report analyzis. It is usually located
+at the side of the developer and not distributed with the client software.
+
+\image html architecture.png "CrashRpt Architecture"
+
+\section error_reporting_functionality Error Reporting Functionality
+
+Error reporting functionality consists of two core modules: \b CrashRpt.dll and \b CrashSender.exe.
+- \b CrashRpt.dll contains functionality for handling exceptions in the client software.
+- \b CrashSender.exe contains functionality for sending error reports to the software's support team.
+
+\note Actually, CrashRpt files have version suffices, for example \b CrashRpt1400.dll, 
+\b CrashSender1400.exe. In some places of the documentation we will omit these suffices 
+for simplicity.
+
+Two modules are needed to be able to close the application 
+that crashes and to continue sending error report through \b CrashSender.exe 
+in background.
+
+Typically a process (executable file) loads \b CrashRpt.dll into its address space 
+when process starts. This single instance of CrashRpt is shared between all DLL 
+modules that are loaded into the process' address space. 
+
+Client application uses \ref CrashRptAPI to set exception handlers in the process once, typically 
+in its \b main() (or \b WinMain()) function. In a multi-threaded program, client additionally 
+sets exception handlers in the beginning of the thread procedure of each worker thread.
+For additional info, see \ref using_crashrpt_api.
+
+\section error_report_analyzis_functionality Error Report Analyzis Functionality
+
+Error report analyzis functionality consists of two modules:
+
+- \b CrashRptProbe.dll implements API that can be used to access error report data.
+- \b crprober.exe is a console tool that helps to extract error report data and
+   write the summary in a human-readable form.
+
+When you receive many error reports from users of your software, you 
+would have to spend a lot of time to open each report, analyze its contents and
+write some summary about the report. There may be many reports related to the same 
+problem, so opening such reports doesn't tell anything new. The error report analyzis
+functionality is designed to address these problems. For additional information, 
+see \ref analyzing_error_reports.
+
+<i>Further reading:</i> \ref error_report.
+
+*/
+

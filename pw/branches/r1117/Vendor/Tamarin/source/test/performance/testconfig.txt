@@ -1,0 +1,105 @@
+# ***** BEGIN LICENSE BLOCK *****
+# Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#
+# The contents of this file are subject to the Mozilla Public License Version
+# 1.1 (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+# http://www.mozilla.org/MPL/
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+# The Original Code is tamarin-central test harness.
+#
+# The Initial Developer of the Original Code is: 
+# dschaffe@adobe.com
+#
+# Portions created by the Initial Developer are Copyright (C) 2008
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s):
+#
+# Alternatively, the contents of this file may be used under the terms of
+# either the GNU General Public License Version 2 or later (the "GPL"), or
+# the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+# in which case the provisions of the GPL or the LGPL are applicable instead
+# of those above. If you wish to allow use of your version of this file only
+# under the terms of either the GPL or the LGPL, and not to allow others to
+# use your version of this file under the terms of the MPL, indicate your
+# decision by deleting the provisions above and replace them with the notice
+# and other provisions required by the GPL or the LGPL. If you do not delete
+# the provisions above, a recipient may use your version of this file under
+# the terms of any one of the MPL, the GPL or the LGPL.
+#
+# ***** END LICENSE BLOCK *****
+
+# format for testconfig:
+# name,operation,description
+# name=regular expression matching testname 
+# operation:
+#    skip - the test/dir is not run, for example the configuration does not support a feature or the file is not a test and is a helper file to another test
+#    include - includes a specific testcase/dir even if the parent has been skipped
+#    largerValuesFaster - test metric larger values indicate faster execution
+
+
+sunspider/.*          , sunspider , include , sunspider testsuite
+jsbench/.*            , jsbench   , include , jsbench testsuite
+v8/.*                 , v8        , include , v8 testsuite 
+scimark/.*            , scimark   , include , scimark testsuite
+language/.*           , language  , include , language micro-benchmarks testsuite
+
+canaries/.*           , canaries  , include , canaries testsuite
+.*/canaries/.*        , canaries  , include , canaries testsuite
+
+sunspider/.*          , misc    , skip  , skip sunspider
+jsbench/.*            , misc    , skip  , skip jsbench
+v8.*/.*               , misc    , skip  , skip v8
+
+misc/.*               , miscdir    , include  , misc testsuite
+
+## skip mmgc tests always, they are to be run manually for the time being
+mmgc/.*               , .*      , skip , mmgc diagnostic tests
+
+## skip fc64, crashes -memstats on windows
+.*fc64.*              , .*      , skip  , skip fc64 bug 488114
+
+## misc-mobile : required since the canaries tests require access to additional abc files which will not be on the device
+sunspider/.*          , misc-mobile.*  , skip  , skip sunspider
+sunspider/.*          , misc-mobile.*  , skip  , skip sunspider
+jsbench/.*            , misc-mobile.*  , skip  , skip jsbench
+v8.*/.*               , misc-mobile.*  , skip  , skip v8
+canaries/.*           , misc-mobile.*  , skip  , skip canaries as they require additional files to run which will not be on the device
+.*/canaries/.*        , misc-mobile.*  , skip  , skip canaries as they require additional files to run which will not be on the device
+
+## sunspider-mobile : required because controlflow-recursive overflows the stack https://bugzilla.mozilla.org/show_bug.cgi?id=458055
+sunspider/.*                , sunspider-mobile.* , include , sunspider testsuite
+.*/controlflow-recursive.*  , sunspider-mobile.* , skip , sunspider testsuite
+## WONTFIX: Stack-overflow on winmo when running sunspider/s3d-cude.as with the interpreter
+.*/s3d-cube.as  , sunspider-mobile-Dinterp , skip , https://bugzilla.mozilla.org/show_bug.cgi?id=496942
+
+jsbench/Search.as               ,       .*              ,       skip    ,       skip test runs too long and times out buildbot
+.*util.*                        ,       .*              ,       skip    ,       skip internal files
+
+sunspider/(as3/|)regexp-dna.as  ,.*       ,skip, large string.match(regexp) verifier error:1068 https://bugzilla.mozilla.org/show_bug.cgi?id=409206
+#sunspider/(as3/|)date-format-tofte.as  ,.*       ,skip, contains eval
+sunspider/(as3/|)date-format-xparb.as ,.*       ,skip, contains eval
+#sunspider/(as3/|)string-unpack-code.as,.*       ,skip, too slow: javascript compressor code runs slowly https://bugzilla.mozilla.org/show_bug.cgi?id=409225
+sunspider/(as3/|)string-base64.as ,.*       ,skip, string indexing throws ReferenceError "z"[0] https://bugzilla.mozilla.org/show_bug.cgi?id=409210
+sunspider/(as3/|)string-tagcloud.as ,.*       ,skip, contains eval
+
+# util file for language tests
+language/string/timetest.as, .*, skip, included in test files
+
+# util files for v8 tests
+v8.*/base.as,         .*, skip, included by test files
+v8.*/run.as ,         .*, skip, file used to run entire suite at once
+v8.*/earley-boyer.as, .*, skip, VerifyError - https://bugzilla.mozilla.org/show_bug.cgi?id=464134
+v8.*/.*/base.as,   .*, skip, included by test files
+v8.*/.*/run.as ,   .*, skip, file used to run entire suite at once
+v8.*/.*/earley-boyer.as, .*, skip, VerifyError - https://bugzilla.mozilla.org/show_bug.cgi?id=464134
+
+
+# v8 tests: larger values are faster
+v8.*/.*           ,  .*  , largerValuesFaster, reports v8 metric: http://v8.googlecode.com/svn/data/benchmarks/v3/run.html

@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Tamarin Script Engine README</title>
+
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <meta name="author" content="Mark hammond">
+</head>
+
+<!-- This is used as the "README" for binary distributions.  Using .HTA
+     makes this a "HTML Application" and as such, can load Tamarin without
+     prompting the user (whereas if it was HTML, the script would not be 
+     executed until the user explicitly allowed it via the Info Bar.)
+
+     This file is targetted at users of the binary distribution - see 
+     README.txt in the source distribution for information targetted at
+     developers of the script engine.
+-->
+
+<body>
+  <h2>The Tamarin Script Engine</h2>
+  <p>
+    The Tamarin Script Engine (also known as ScreamingMonkey) is an 
+    ActiveScripting engine using the Open Source 
+    <a href="http://www.mozilla.org/projects/tamarin/">Tamarin</a> virtual machine.
+    It allows you to use JavaScript 2 inside Internet Explorer, Windows Scripting Host,
+    Active Server Pages, and any other application which supports ActiveScripting.
+    For those who care, it is built using tamarin-central but will move to
+    tamarin-tracing as soon as possible (see
+    <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=431541">bug 431541</a>.)
+  </p>
+  <!-- a <div> that will be hidden by our script code - so if we aren't
+       installed it remains visible
+   -->
+  <div id="not-installed">
+    <h3>Oops!</h3>
+    <p>It appears ScreamingMonkey is not working correctly, or has not
+       been registered.  It can be registered manually by executing 
+       <code>regsvr32.exe {install_path}\axtam.dll</code>, where 
+       <code>{install_path}</code> is the location you installed the engine.
+    </p>
+    <p>If you contine to have problems, please see the contact information below</p>
+  </div>
+
+  <!-- This div only shows up when the engine is installed -->
+  <div id="is-installed" style="display=none">
+
+    <h3>Congratulations!</h3>
+    <p>ScreamingMonkey has been installed and is working correctly.  Your web
+       pages can include script blocks similar to</p>
+    <pre>
+      &lt;script language=&quot;application/javascript;version=2&quot;&gt;
+        window.alert('hello from tamarin!');
+      &lt;/script&gt;
+    </pre>
+    <p>to start taking advantage of the latest revision of JavaScript.  You
+       can find one such script block at the bottom of the source for this page.</p>
+
+    <h3>Getting Started</h3>
+    <p>Demos and documentation is pretty thin at the moment, but we
+       have included some <a href="test/">test HTML files</a> that you may like to browse.
+    </p>
+    <p>Check out the 
+       <a href="http://wiki.mozilla.org/Tamarin:ScreamingMonkey">main project page</a>
+       for current information</p>
+
+    <h4>Using Tamarin with the Windows Scripting Host</h4>
+    <p>Tamarin registers the <code>.js2</code> and <code>.es4</code> extensions,
+       which means the Windows Scripting Host will automatically use the Tamarin
+       engine for script files with these extensions.  For more information on
+       WSH, please see
+       <a href="http://support.microsoft.com/kb/232211">Microsoft KB article 232211</a>
+    </p>
+    <p>A quick example: create a file named <code>hello.js2</code> with the contents:</p>
+    <pre>WScript.Echo("Hello from WSH version " + WScript.Version)</pre>
+    <p>and double-click on this file (alternatively, execute either
+      <code>cscript.exe hello.js2</code> or <code>wscript.exe hello.js2</code>)
+      and you should see a message box with the version of WSH you are running.
+    </p>
+
+    <h3>Getting Involved</h3>
+    <p>Please help us put together better documentation or demos.  Report
+       bugs you find - anything you can help us with will be gratefully 
+       accepted - see the contact information below, or 
+       <a href="http://wiki.mozilla.org/Tamarin:ScreamingMonkey">edit the wiki</a>
+    </p>
+    <p>The source code can be browsed at 
+       <a href="http://hg.mozilla.org/tamarin-central/">http://hg.mozilla.org/tamarin-central/</a>
+       <!-- hrm - how to link directly to the axscript dir of the repository?? -->
+       in the <code>axscript</code> directory - see the
+       <a href="http://www.mozilla.org/projects/tamarin/">Tamarin project pages</a>
+       for more information.
+    </p>
+  </div>
+
+  <h3>Known Issues</h3>
+  <ul>
+    <li>
+      eval() doesn't work.
+      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=413434">(bug 413434)</a>
+    </li>
+    <li>
+      Global object semantics don't work correctly - you must 
+      always use the <code>window.</code> prefix when getting or setting
+      any attributes on the global object
+      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=417342">(bug 417342)</a>
+    </li>
+    <li>
+      JS2 is not yet fully implemented by the ESC compiler.  The compiler is
+      being developed independently from ScreamingMonkey, so you may like
+      to <a href="https://bugzilla.mozilla.org/buglist.cgi?product=Tamarin&component=Self-hosting+compiler+%28ESC%29&resolution=---">view ESC related bugs on bugzilla</a>
+    </li>
+    <li>
+      Implicit event handlers don't work - you must use 
+      <code>object.attachEvent(event_name, event_handler);</code> - see 
+      <a href="test/events.html">test/events.html</a> for an example.
+    </li>
+    <li>
+      The control is not signed.  This means IE may impose a stricter 
+      security policy than for other script engines.
+    </li>
+  </ul>
+  <p>See the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=screamingmonkey"
+             >tracking bug</a> for more up-to-date information about known bugs.
+  </p>
+  
+
+  <h3>Contact Information</h3>
+  <p>Contact us using email via the 
+     <a href="https://mail.mozilla.org/listinfo/tamarin-devel">tamarin-devel mailing list</a>
+     or you can report bugs via 
+     <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tamarin&component=ScreamingMonkey">bugzilla</a>
+     but please check the known-issues above before reporting problems (eg, 
+     we already know that you must use a <code>window.</code> prefix when it 
+     should not be necessary!).  The <code>#tamarin</code> channel on 
+     irc.mozilla.org might also find someone who can help.
+   </p>
+
+  <script language="application/javascript;version=2">
+    // hide the 'div' that says we aren't installed.
+    let d = window.document.getElementById("not-installed");
+    d.style.display = 'none';
+    // and show the one that says we are.
+    window.document.getElementById("is-installed").style.display = 'block';
+  </script>
+    
+</body>

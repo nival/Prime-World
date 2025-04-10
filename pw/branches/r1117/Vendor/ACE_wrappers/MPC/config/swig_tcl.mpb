@@ -1,0 +1,15 @@
+// -*- MPC -*-
+// $Id: swig_tcl.mpb 1123 2007-01-11 19:21:53Z elliott_c $
+
+project {
+  Define_Custom(SWIG) {
+    automatic         = 1
+    command           = swig
+    commandflags      = -tcl -c++
+    inputext          = .swg, .swig, .i
+    source_outputext  = _wrap.cxx
+  }
+  requires += swig_tcl
+  includes += $(TCL_INCLUDE)/.
+  libpaths += $(TCL_LIBPATH)/.
+}

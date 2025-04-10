@@ -1,0 +1,17 @@
+// -*- MPC -*-
+// $Id: ace_mc.mpb 85345 2009-05-14 19:42:45Z sowayaa $
+
+project : ace_etcl_parser {
+  after += Monitor_Control
+  libs += ACE_Monitor_Control
+  avoids += wince
+
+  specific (prop:microsoft) {
+    lit_libs += pdh
+  }
+  verbatim (gnuace, local) {
+    "ifeq (1,$(winnt))"
+    "  ACE_SHLIBS += pdh.lib"
+    "endif"
+  }
+}

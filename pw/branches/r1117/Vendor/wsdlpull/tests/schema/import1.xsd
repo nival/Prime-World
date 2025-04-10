@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdlpull/import1"  tns="http://wsdlpull/import1">
+
+<xs:attribute name="booktype">
+<xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HardBound"/>
+			<xs:enumeration value="PaperBack"/>
+		</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+
+<xs:complexType name="AuthorType">
+<xs:sequence>
+<xs:element name="fname" type="xs:string"/>
+<xs:element name="lname" type="xs:string"/>
+<xs:element name="rating" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:element name="PublisherDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="address" type="xs:string"/>
+<xs:element name="city" type="xs:string"/>
+<xs:element name="zip" type="tns:zipcode"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="zipcode">
+		<xs:restriction base="xs:int">
+			<xs:length value="5"/>
+		</xs:restriction>
+</xs:simpleType>
+</xs:schema>

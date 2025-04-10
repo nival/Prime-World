@@ -1,0 +1,172 @@
+/*!
+
+\page getting_started Getting Started
+
+<b>CrashRpt</b> is a light-weight open-source error reporting 
+library for C++ applications created in Microsoft Visual 
+Studio IDE and running in Windows. 
+
+\section why Why CrashRpt?
+
+Errors in the code are inevitable, no matter how well you test your application. 
+When a critical error (also called a crash) occurs on the end user's machine, it can be difficult to 
+reproduce it and take action to address it. That is, you get an unstable 
+application and dissatisfied users.
+
+Crash reporting is a technique allowing to receive user feedback and improve 
+quality and stability of your software. To enable crash reporting in your app, 
+you integrate it with CrashRpt -- a light-weight crash reporting library.
+
+CrashRpt's purpose is to automatically collect crash data and deliver them to the software vendor over
+the Internet. Crash reports include data such as stack traces, type of crash, and version 
+of software. This information helps software developers to diagnose and fix the 
+underlying problem causing the crash.
+
+\section crashrpt_mission CrashRpt Mission
+
+The mission of CrashRpt is to provide a set of tools for:
+ - handling exceptions (critical errors) in a client software;
+ - automatically collecting necessary error info and generating error reports;
+ - deliverying error reports over the internet;
+ - and simplifying error report postprocessing.
+
+\section license License
+
+This library is distributed under the <a href="../../License.txt">New BSD license</a>. 
+Other software included in CrashRpt distribution is provided under other licenses, as listed 
+in the table below. 
+
+<table>
+
+<tr>
+<th> Name
+<th> License
+<tr>
+<td><a href="http://sourceforge.net/projects/wtl/">WTL</a>
+<td><a href="http://opensource.org/licenses/ms-pl.html">Microsoft Permissive License</a>
+<tr>
+<td><a href="http://msdn.microsoft.com/en-us/library/ms679309%28VS.85%29.aspx">Microsoft Debug Help Library</a> 	
+<td><a href="http://msdn.microsoft.com/en-us/library/ms679309%28VS.85%29.aspx">Microsoft Software License Terms for Microsoft Debugging Tools for Windows</a>
+<tr>
+<td><a href="http://www.grinninglizard.com/tinyxml/">TinyXml</a>
+<td><a href="http://en.wikipedia.org/wiki/TinyXML">licence of zlib/libpng</a>
+<tr>
+<td><a href="http://www.zlib.net/">ZLib</a> 	
+<td><a href="http://www.gzip.org/zlib/zlib_license.html">zlib license</a>
+<tr>
+<td><a href="http://www.winimage.com/zLibDll/minizip.html">minizip</a>
+<td><a href="http://www.gzip.org/zlib/zlib_license.html">zlib license</a>
+<tr>
+<td><a href="http://www.libpng.org/pub/png/libpng.html">libpng</a>
+<td><a href="http://www.libpng.org/pub/png/src/libpng-LICENSE.txt">libpng license</a>
+<tr>
+<td><a href="http://www.ijg.org/">JPEG library</a>
+<td><a href="http://www.ijg.org/">Independent JPEG Group license</a>
+<tr>
+<td><a href="http://www.theora.org/">libtheora</a>
+<td><a href="http://www.theora.org/faq/#14">BSD-style license</a>
+<tr>
+<td><a href="http://xiph.org/ogg/">libogg</a>
+<td><a href="http://xiph.org/ogg/">BSD-style license</a>
+</table>
+                 
+\section main_features Main Features
+
+Below, the main features of CrashRpt library are briefly described.
+
+<b>Intercepts Critical Errors in Your Application.</b>
+
+CrashRpt handles exceptions (critical errors causing application crash) in the 
+main thread and in all worker threads of your 
+user-mode program: SEH exceptions, C run-time (CRT) errors and signals.
+Among error types CrashRpt can handle, there are: NULL pointer assignment, 
+access violation, infinite recursion, stack overflow, memory depletion and so on.
+For advanced information on available exception handling techniques used by CrashRpt, 
+you may refer to \ref exception_handling page.
+
+<b>Automatically Collects Information about a Crash. </b>
+
+If you have ever tried to determine the reason why your program crashes on user's 
+machine, you might know how difficult it may be, given user's directions only: 
+"I opened something, then I clicked something and then it stopped working". Most of 
+users do not contact you to tell about the problem and just give up using 
+your program after several crashes. 
+
+Users who decide to report the problem might not have technical knowledge, 
+so it is difficult to determine the reason of the problem based on their 
+incomplete instructions. This makes debugging remote crashes 
+almost impossible, except in the simplest situations. 
+
+CrashRpt does all technical information collection work automatically. CrashRpt uses Microsoft 
+Debug Help library for minidump creation and postprocessing, supporting all variety of processor architectures.
+CrashRpt generates error reports including crash minidump, extensible crash description XML, 
+application-defined files, desktop screenshots and screen video capture. For additional information on
+error reports, please refer to \ref error_report page.
+
+When information has been collected, CrashRpt 
+sends error report over the Internet to software vendor. 
+ 
+<b>Friendly User Interface.</b>
+
+CrashRpt provides UI allowing user to review the crash report and it can display its 
+UI using different languages, which makes it even more suitable for multi-lingual 
+applications. CrashRpt user interface can be customized to fit software 
+vendor's needs. For examples of CrashRpt user interface, please refer to 
+<a href="http://code.google.com/p/crashrpt/wiki/MoreScreenshots">More Screenshots</a> page.
+
+For software vendors who care about user's privacy, CrashRpt supports 
+privacy policy definition.
+
+For services (also called NT services, long-living noninteractive programs), 
+CrashRpt provides the silent (non-GUI) mode, in which crash reports are generated 
+and sent without any user interaction.
+
+<b>Provides Several Methods of Error Report Delivery.</b>
+
+After user has provided his consent, CrashRpt sends the report in background over the Internet.
+CrashRpt can send error reports using HTTP/HTTPS or as an E-mail message. 
+
+HTTP/HTTPS delivery method is suitable for users having a web-server. Secure HTTPS connection
+allows to send error report data through an SSL-protected channel.
+
+Sending crash report as an E-mail message is suitable for software vendors not having servers for storing 
+error reports. In order to send error reports over E-mail, a end user's machine should have a mail 
+program installed, for example Mozilla Thunderbird or Microsoft Outlook.
+
+For server software, CrashRpt provides a built-in SMTP client feature allowing
+to send crash reports through a pre-defined SMTP server.
+
+For additional information on error report delivery methods, please refer to 
+\ref sending_error_reports page.
+
+<b>Makes it Easier to Postprocess Error Reports.</b>
+
+Assume a software vendor receives thousands of error reports from users of his 
+software. He would have to spend a lot of time to open each report, analyze its 
+contents and write some summary about the report. There may be many crash reports 
+related to the same problem, so opening them doesn't tell anything new. 
+
+That's why it is important to use a special tool helping to automate processing 
+of arriving error reports. CrashRpt provides such a tool. 
+
+For additional information on automating crash report processing, please 
+refer to \ref automating_crash_report_processing page.
+
+<b>Designed for Windows.</b>
+
+Unlike some cross-platform libraries, CrashRpt supports only one OS (Windows), 
+only one programming language (C++) and only one compiler (Visual C++). 
+CrashRpt supports Visual C++ 2005, 2008, 2010, 2012 and Visual C++ 
+Express. It can be compiled for 32-bit and 64-bit platform. For more information,
+please refer to \ref compiling_crashrpt page.
+
+<b>Light-Weight.</b>
+
+CrashRpt library is light-weight, which means you should distribute only about 1.9 Mb 
+of additional files with your software (<i>dbghelp.dll</i>, <i>CrashRpt.dll</i>, 
+<i>CrashSender.exe</i>).
+
+<i>Further reading:</i> \ref architecture_overview.
+
+
+*/

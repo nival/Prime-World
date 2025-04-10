@@ -1,0 +1,419 @@
+/*!
+
+\page simple_example An Example of Using CrashRpt API
+
+The following example shows how to use CrashRpt API functions and structures 
+to enable crash reporting support in a console C++ application. We use console 
+application for simplicity, but in general the application may be WinAPI/MFC/ATL/WTL 
+based, as well. For additional information on CrashRpt API functions and structures, 
+please refer to \ref using_crashrpt_api.
+
+First create a console Win32 application and call it MyApp. Then configure the MyApp application
+as described in \ref configuring_project.
+
+Let's assume the case when MyApp application has two threads. The first thread, the application thread,
+will be the main one. The \b main() function will be executed in this thread and interaction with user
+will also be performed in this thread. The second thread, the worker thread, is 
+typically used when some time-consuming computational work is to be done without blocking the application thread.
+
+The MyApp application will create a log file that will be included in error report on crash. The
+log file is typically helpful when debugging a crash.
+
+Let's create the code template.
+
+\code
+
+#include <windows.h>
+#include <stdio.h>
+#include <tchar.h>
+
+FILE* g_hLog = NULL; // Global handle to the application log file
+
+// The following function writes an entry to the log file
+void log_write(LPCTSTR szFormat, ...)
+{
+  if (g_hLog == NULL) 
+    return; // Log file seems to be closed
+
+  va_list args;
+  va_start(args); 
+  _vftprintf_s(g_hLog, szFormat, args);
+  fflush(g_hLog);
+}
+
+// Thread procedure
+DWORD WINAPI ThreadProc(LPVOID lpParam)
+{
+  log_write(_T("Entering the thread proc\n"));
+
+  // Define the infinite loop where some processing will be done 
+  for(;;)
+  {
+    // There is a hidden error somewhere inside of the loop...
+    int* p = NULL;
+    *p = 13; // This results in Access Violation
+  }    
+   
+  log_write(_T("Leaving the thread proc\n"));
+
+  return 0;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+  // Open log file
+  errno_t err = _tfopen_s(&g_hLog, _T("log.txt"), _T("wt"));
+  if(err!=0 || g_hLog==NULL)
+  {
+    _tprintf_s(_T("Error opening log.txt\n"));
+    return 1; // Couldn't open log file
+  }
+
+  log_write(_T("Started successfully\n"));
+
+  // Create the worker thread
+  HANDLE hWorkingThread = CreateThread(NULL, 0, 
+           ThreadProc, (LPVOID)NULL, 0, NULL);
+
+  log_write(_T("Created working thread\n"));
+
+  // There is a hidden error in the main() function
+  // Call of _tprintf_s with NULL parameter
+  TCHAR* szFormatString = NULL;
+  _tprintf_s(szFormatString);
+
+  // Wait until the worker thread is exited
+  WaitForSingleObject(hWorkingThread, INFINITE);
+
+  log_write(_T("Working thread has exited\n"));
+
+  // Close the log file
+  if(g_hLog!=NULL)
+  {
+    fclose(g_hLog);
+    g_hLog = NULL;// Clean up handle
+  }
+
+  // Exit
+  return 0;
+}
+
+\endcode
+
+We intentionally inserted the code that would cause an exception in both threads. In real-life
+programs such a code always exists, even when you test your application very carefully.
+
+To enable crash reporting support in the application, we need to include CrashRpt 
+header in the beginning of the code:
+
+\code
+// Include CrashRpt Header 
+#include "CrashRpt.h"
+\endcode
+
+Next, we define the crash callback function and call it \b CrashCallback().
+The crash callback function will be called by CrashRpt when crash occurs, so we will
+be able to close the handle to log file.
+For more information on crash callback, see the the \ref PFNCRASHCALLBACK()
+prototype.
+
+\code
+// Define the callback function that will be called on crash
+int CALLBACK CrashCallback(CR_CRASH_CALLBACK_INFO* pInfo)
+{  
+  // The application has crashed!
+
+  // Close the log file here
+  // to ensure CrashRpt is able to include it into error report
+  if(g_hLog!=NULL)
+  {
+    fclose(g_hLog);
+    g_hLog = NULL;// Clean up handle
+  }
+
+  // Return CR_CB_DODEFAULT to generate error report
+  return CR_CB_DODEFAULT;
+}
+\endcode
+
+Because we have a multi-threaded application, we need to use some \ref CrashRptAPI
+to set exception handlers for the worker thread. In this example, we use the \ref
+crInstallToCurrentThread2() and \ref crUninstallFromCurrentThread() functions to
+set exception handlers in the beginning of the thread procedure and unset them
+in the end of the thread procedure, respectively.
+
+\code
+// Thread procedure
+DWORD WINAPI ThreadProc(LPVOID lpParam)
+{
+  // Install exception handlers for this thread
+  crInstallToCurrentThread2(0);
+
+  ...
+
+  // Unset exception handlers before exiting the thread
+  crUninstallFromCurrentThread();    
+
+  return 0;
+}    
+\endcode
+
+Next, in the beginning of the \b main() function, we initialize the CrashRpt library    
+and install the exception handlers for the entire process with the help of crInstall()
+function and pass configuration information to it through the \ref CR_INSTALL_INFO structure.
+If something goes wrong, we can check the last error message with the \ref crGetLastErrorMsg()
+function.
+
+\code
+int _tmain(int argc, _TCHAR* argv[])
+{  
+  // Define CrashRpt configuration parameters
+  CR_INSTALL_INFO info;  
+  memset(&info, 0, sizeof(CR_INSTALL_INFO));  
+  info.cb = sizeof(CR_INSTALL_INFO);    
+  info.pszAppName = _T("MyApp");  
+  info.pszAppVersion = _T("1.0.0");  
+  info.pszEmailSubject = _T("MyApp 1.0.0 Error Report");  
+  info.pszEmailTo = _T("myapp_support@hotmail.com");    
+  info.pszUrl = _T("http://myapp.com/tools/crashrpt.php");  
+  info.uPriorities[CR_HTTP] = 3;  // First try send report over HTTP 
+  info.uPriorities[CR_SMTP] = 2;  // Second try send report over SMTP  
+  info.uPriorities[CR_SMAPI] = 1; // Third try send report over Simple MAPI    
+  // Install all available exception handlers
+  info.dwFlags |= CR_INST_ALL_POSSIBLE_HANDLERS;
+  // Restart the app on crash 
+  info.dwFlags |= CR_INST_APP_RESTART; 
+  info.dwFlags |= CR_INST_SEND_QUEUED_REPORTS; 
+  info.pszRestartCmdLine = _T("/restart");
+  // Define the Privacy Policy URL 
+  info.pszPrivacyPolicyURL = _T("http://myapp.com/privacypolicy.html"); 
+  
+  // Install crash reporting
+  int nResult = crInstall(&info);    
+  if(nResult!=0)  
+  {    
+    // Something goes wrong. Get error message.
+    TCHAR szErrorMsg[512] = _T("");        
+    crGetLastErrorMsg(szErrorMsg, 512);    
+    _tprintf_s(_T("%s\n"), szErrorMsg);    
+    return 1;
+  } 
+
+\endcode
+
+Next, we want to set the crash callback function by calling crSetCrashCallback().
+
+\code
+  // Set crash callback function
+  crSetCrashCallback(CrashCallback, NULL);
+\endcode
+
+Next, we want to add our error log file to the crash report. We do this
+with the crAddFile2() function.
+
+\code
+  // Add our log file to the error report
+  crAddFile2(_T("log.txt"), NULL, _T("Log File"), CR_AF_MAKE_FILE_COPY);    
+\endcode
+
+When the app crashes, we can include the screen shot to the crash report.
+We do this with the crAddScreenshot2() function.
+
+\code
+  // We want the screenshot of the entire desktop is to be added on crash
+  crAddScreenshot2(CR_AS_VIRTUAL_SCREEN, 0);   
+\endcode
+
+The following code adds a named property to the crash description XML file
+(see the crAddProperty() function). The property tells what graphics adapter
+is installed on end user's computer (for simplicity, it is hardcoded, but
+you usually determine adapter's model dynamically using Windows Management 
+Instrumentation, shortly WMI).
+
+\code
+  // Add a named property that means what graphics adapter is
+  // installed on end user's machine
+  crAddProperty(_T("VideoCard"), _T("nVidia GeForce 8600 GTS"));
+\endcode
+
+In the end of the \b main() function, we uninitialize CrashRpt and
+unset the exception handlers using the crUninstall() function.
+
+\code
+  // Uninitialize CrashRpt before exiting the main function
+  crUninstall();
+
+\endcode
+
+Below we have it all in one piece of code:
+
+\code
+#include <windows.h>
+#include <stdio.h>
+#include <tchar.h>
+// Include CrashRpt Header 
+#include "CrashRpt.h"
+
+FILE* g_hLog = NULL; // Global handle to the application log file
+
+// Define the callback function that will be called on crash
+int CALLBACK CrashCallback(CR_CRASH_CALLBACK_INFO* pInfo)
+{  
+  // The application has crashed!
+
+  // Close the log file here
+  // to ensure CrashRpt is able to include it into error report
+  if(g_hLog!=NULL)
+  {
+    fclose(g_hLog);
+    g_hLog = NULL;// Clean up handle
+  }
+
+  // Return CR_CB_DODEFAULT to generate error report
+  return CR_CB_DODEFAULT;
+}
+
+// The following function writes an entry to the log file
+void log_write(LPCTSTR szFormat, ...)
+{
+  if (g_hLog == NULL) 
+    return; // Log file seems to be closed
+
+  va_list args; 
+  va_start(args); 
+  _vftprintf_s(g_hLog, szFormat, args);
+  fflush(g_hLog);
+}
+
+// Thread procedure
+DWORD WINAPI ThreadProc(LPVOID lpParam)
+{
+  // Install exception handlers for this thread
+  crInstallToCurrentThread2(0);
+
+  log_write(_T("Entering the thread proc\n"));
+
+  // Define the infinite loop where some processing will be done 
+  for(;;)
+  {
+    // There is a hidden error somewhere inside of the loop...
+    int* p = NULL;
+    *p = 13; // This results in Access Violation
+  }    
+   
+  log_write(_T("Leaving the thread proc\n"));
+
+  // Unset exception handlers before exiting the thread
+  crUninstallFromCurrentThread();    
+
+  return 0;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{  
+  // Define CrashRpt configuration parameters
+  CR_INSTALL_INFO info;  
+  memset(&info, 0, sizeof(CR_INSTALL_INFO));  
+  info.cb = sizeof(CR_INSTALL_INFO);    
+  info.pszAppName = _T("MyApp");  
+  info.pszAppVersion = _T("1.0.0");  
+  info.pszEmailSubject = _T("MyApp 1.0.0 Error Report");  
+  info.pszEmailTo = _T("myapp_support@hotmail.com");    
+  info.pszUrl = _T("http://myapp.com/tools/crashrpt.php");  
+  info.uPriorities[CR_HTTP] = 3;  // First try send report over HTTP 
+  info.uPriorities[CR_SMTP] = 2;  // Second try send report over SMTP  
+  info.uPriorities[CR_SMAPI] = 1; // Third try send report over Simple MAPI    
+  // Install all available exception handlers
+  info.dwFlags |= CR_INST_ALL_POSSIBLE_HANDLERS;
+  // Restart the app on crash 
+  info.dwFlags |= CR_INST_APP_RESTART; 
+  info.dwFlags |= CR_INST_SEND_QUEUED_REPORTS; 
+  info.pszRestartCmdLine = _T("/restart");
+  // Define the Privacy Policy URL 
+  info.pszPrivacyPolicyURL = _T("http://myapp.com/privacypolicy.html"); 
+  
+  // Install crash reporting
+  int nResult = crInstall(&info);    
+  if(nResult!=0)  
+  {    
+    // Something goes wrong. Get error message.
+    TCHAR szErrorMsg[512] = _T("");        
+    crGetLastErrorMsg(szErrorMsg, 512);    
+    _tprintf_s(_T("%s\n"), szErrorMsg);    
+    return 1;
+  } 
+
+  // Set crash callback function
+  crSetCrashCallback(CrashCallback, NULL);
+
+  // Add our log file to the error report
+  crAddFile2(_T("log.txt"), NULL, _T("Log File"), CR_AF_MAKE_FILE_COPY);    
+
+  // We want the screenshot of the entire desktop is to be added on crash
+  crAddScreenshot2(CR_AS_VIRTUAL_SCREEN, 0);   
+
+  // Add a named property that means what graphics adapter is
+  // installed on user's machine
+  crAddProperty(_T("VideoCard"), _T("nVidia GeForce 8600 GTS"));
+
+  // The main code follows...
+
+  // Open log file
+  errno_t err = _tfopen_s(&g_hLog, _T("log.txt"), _T("wt"));
+  if(err!=0 || g_hLog==NULL)
+  {
+    _tprintf_s(_T("Error opening log.txt\n"));
+    return 1; // Couldn't open log file
+  }
+
+  log_write(_T("Started successfully\n"));
+
+  // Create the worker thread
+  HANDLE hWorkingThread = CreateThread(NULL, 0, 
+           ThreadProc, (LPVOID)NULL, 0, NULL);
+
+  log_write(_T("Created working thread\n"));
+
+  // There is a hidden error in the main() function
+  // Call of _tprintf_s with NULL parameter
+  TCHAR* szFormatString = NULL;
+  _tprintf_s(szFormatString);
+
+  // Wait until the worker thread is exited
+  WaitForSingleObject(hWorkingThread, INFINITE);
+
+  log_write(_T("Working thread has exited\n"));
+
+  // Close the log file
+  if(g_hLog!=NULL)
+  {
+    fclose(g_hLog);
+    g_hLog = NULL;// Clean up handle
+  }
+
+  // Uninitialize CrashRpt before exiting the main function
+  crUninstall();
+
+  // Exit
+  return 0;
+}
+\endcode
+
+Do not forget to add <b>CrashRptXXXX.lib</b> file to the list of input libraries of your project 
+(XXXX is the placeholder for the version of CrashRpt). For additional info, see \ref configuring_project.
+
+Before running the application, you should place the following files to the directory 
+where your application executable file is located (for additional information, 
+see \ref preparing_to_software_release):
+                                                                              
+- \b CrashRptXXXX.dll (here and below XXXX should be replaced with the actual version of CrashRpt)
+- \b CrashSenderXXXX.exe
+- \b dbghelp.dll
+- \b crashrpt_lang.ini 
+
+When files have been copied, run the application. As error occurs, you should be able to see an
+error report window (for additional information, see \ref error_report)
+
+<i>Further reading:</i> \ref internationalization_support.
+
+*/

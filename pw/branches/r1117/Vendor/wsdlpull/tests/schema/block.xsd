@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: /cvsroot/wsdlpull/wsdlpull/tests/schema/block.xsd,v 1.1 2008/05/03 11:13:33 vivek200120 Exp $ -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="name" type="xs:token"/>
+	<xs:element name="qualification" type="xs:token"/>
+	<xs:element name="born" type="xs:date"/>
+	<xs:element name="dead" type="xs:date"/>
+	<xs:element name="isbn" type="xs:unsignedLong"/>
+	
+	<xs:attribute name="id" type="xs:ID"/>
+	<xs:attribute name="available" type="xs:boolean"/>
+	<xs:attribute name="lang" type="xs:language"/>
+	
+	<xs:element name="title">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:token">
+					<xs:attribute ref="lang"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="library">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="person" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:complexType name="personType">
+			<xs:sequence>
+				<xs:element ref="name"/>
+				<xs:element ref="born"/>
+				<xs:element ref="dead" minOccurs="0"/>
+				<xs:element ref="qualification" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute ref="id"/>
+		</xs:complexType>
+
+		<xs:complexType name="authorType">
+			<xs:complexContent>
+				<xs:extension base="personType">
+					<xs:sequence>
+						<xs:element name="book" type="xs:token" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+
+		<xs:complexType name="characterType">
+			<xs:complexContent>
+				<xs:restriction base="personType">
+					<xs:sequence>
+				<xs:element ref="name"/>
+				<xs:element ref="born"/>
+				<xs:element ref="qualification"/>
+			</xs:sequence>
+			</xs:restriction>
+			</xs:complexContent>
+			</xs:complexType>
+
+	<xs:element name="person" type="personType"/>
+	
+	<xs:element name="author" type="authorType" substitutionGroup="person"/>
+	<xs:element name="character" type="characterType" substitutionGroup="person"/>
+	<xs:element name="human" type="personType" substitutionGroup="person"/>
+	
+	
+</xs:schema>

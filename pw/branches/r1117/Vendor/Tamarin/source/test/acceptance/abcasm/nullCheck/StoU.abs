@@ -1,0 +1,278 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+.script_info {
+    traits: {
+        .trait { kind: Trait_Slot name:setpropertyTestVar }
+        .trait { kind: Trait_Slot name:setSlotTestSlot }
+    }
+}
+
+
+function main() {
+    getlocal0
+    pushscope
+    findproperty START 
+    pushstring "Instructions that start with the letter S through U" 
+    callpropvoid START 1
+    
+    newfunction .function_id(runTest)
+    getlocal0
+    call 0
+    
+    newfunction .function_id(runTest1)
+    getlocal0
+    call 0
+    
+    newfunction .function_id(runTest2)
+    getlocal0
+    call 0
+    
+    findproperty END
+    callpropvoid END 0
+    returnvoid
+}
+
+function runTest()
+{
+    getlocal0
+    pushscope
+    findproperty COMPARE_STRICTEQ
+    pushstring "setglobalslot"
+    pushnull // expected
+    pushnull
+    setglobalslot .slot_id(setSlotTestSlot)
+    findproperty setSlotTestSlot
+    getproperty setSlotTestSlot
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "setproperty"
+    pushnull // expected
+    findproperty setpropertyTestVar
+    pushnull
+    setproperty setpropertyTestVar
+
+    findproperty setpropertyTestVar
+    getslot .slot_id(setpropertyTestVar)
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "setslot"
+    pushnull // expected
+    findproperty setSlotTestSlot
+    pushnull
+    setslot .slot_id(setSlotTestSlot)
+    findproperty setSlotTestSlot
+    getproperty setSlotTestSlot
+    callpropvoid COMPARE_STRICTEQ 3
+    
+    // TODO: strictequals opcode not implemented
+    /*
+    findproperty COMPARE_STRICTEQ
+    pushstring "strictequals null null"
+    pushtrue // expected
+    pushnull
+    pushnull
+    strictequals
+    callpropvoid COMPARE_STRICTEQ 3
+    */
+    returnvoid
+}
+
+function runTest1()
+{
+    getlocal0
+    pushscope
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract int null"
+    pushint 12 // expected
+    pushint 12
+    pushnull
+    subtract
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract null negative int"
+    pushint 6 // expected
+    pushnull
+    pushint -6
+    subtract
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract null null"
+    pushint 0 // expected
+    pushnull
+    pushnull
+    subtract
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract null double"
+    pushdouble -3.14 // expected
+    pushnull
+    pushdouble 3.14
+    subtract
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract_i int null"
+    pushint 12 // expected
+    pushint 12
+    pushnull
+    subtract_i
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract_i null negative int"
+    pushint 6 // expected
+    pushnull
+    pushint -6
+    subtract_i
+    callpropvoid COMPARE_STRICTEQ 3
+    returnvoid
+}
+
+function runTest2()
+{
+    getlocal0
+    pushscope
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract_i null null"
+    pushint 0 // expected
+    pushnull
+    pushnull
+    subtract_i
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract_i null double"
+    pushint -3 // expected
+    pushnull
+    pushdouble 3.14
+    subtract_i
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "subtract_i null uint"
+    pushint 1 // expected 0x80000001 
+    pushnull
+    pushuint 0xFFFFFFFF
+    subtract_i
+    callpropvoid COMPARE_STRICTEQ 3
+    
+    /* TODO: unimplemented opcode sxi_1
+    findproperty COMPARE_STRICTEQ
+    pushstring "sxi_1 null"
+    pushint 0 // expected
+    pushnull
+    sxi_1
+    callpropvoid COMPARE_STRICTEQ 3
+    */
+
+    newfunction .function_id(testThrow)
+    getlocal0
+    call 0
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "typeof null"
+    pushstring "object" 
+    pushnull
+    typeof
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "urshift null null"
+    pushint 0   // expected
+    pushnull
+    pushnull
+    urshift 
+    callpropvoid COMPARE_STRICTEQ 3
+
+    findproperty COMPARE_STRICTEQ
+    pushstring "urshift positive"
+    pushint 2139329425
+    pushuint 0x7f839391
+    pushnull
+    urshift 
+    callpropvoid COMPARE_STRICTEQ 3
+
+
+    returnvoid
+}
+
+.method_info { name: testThrow flags: NEED_ACTIVATION }
+
+.method_body_info {
+    method: .function_id(testThrow)
+    exception: {
+        .exception { from: startTry to: endTry target:catch type:String }
+    }
+    code: 
+    {
+        getlocal0
+        pushscope
+
+        startTry:
+            pushstring "throw test"
+            throw 
+
+        endTry:
+        pushstring "FAILED"
+        .print
+        returnvoid
+
+        catch:
+            getlocal0
+            pushscope
+            pushstring "caught:"
+            swap
+            add
+            findproperty PASS
+            swap
+            callproperty PASS 1
+
+        endit:
+        returnvoid
+    }
+}
+
+function typeofTestFunction()
+{
+    returnvoid
+}

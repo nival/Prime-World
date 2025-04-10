@@ -1,0 +1,106 @@
+/*!
+
+\page misc_api_features Miscellaneous API Features
+
+This page covers miscellaneous API features not mentioned in previous two pages. 
+
+\section manual_report_generation Generating Error Report Manually
+
+Typically CrashRpt generates error reports automatically, when a critical error
+occurs. But sometimes it is required to generate error report manually, on user demand. 
+
+Assume it is required to remotely debug some application logics error. Such an error,
+for example, infinite loop in a worker thread, may not cause program crash. To collect the information about
+error that doesn't cause crash, a software developer might provide an ability to generate 
+error report manually on user demand, for example on a key combination press. 
+
+The crGenerateErrorReport() function allows to generate an error report manually.
+When you generate an error report manually, the caller process is not terminated and continues its execution.
+To send the error report, CrashRpt creates another process named <i>CrashSender.exe</i>.
+
+\section catching_seh_exceptions Catching Structured Exceptions in a Block of Code
+
+Sometimes it may be required to catch a SEH exception inside of a block of code 
+(using \c __try/__except construction) and generate error report when an exception happens.
+CrashRpt provides a conveniense function \ref crExceptionFilter() for this purpose.
+
+For additional information on SEH exceptions, please refer to \ref exception_handling page.
+
+\section silent_mode Silent (non-GUI) Mode
+
+CrashRpt can function in silent (non-GUI) mode. 
+In this mode, <i>Error Report</i> window is not displayed on crash and
+no interaction with user is performed.
+The silent mode is enabled by specifying the \ref CR_INST_NO_GUI
+flag for \ref CR_INSTALL_INFO::dwFlags structure member.
+
+ The silent mode is designed for server applications or services
+that do not need to interact with user on crash. 
+The silent mode should not be used for regular GUI applications. For regular interactive applications,
+a user should provide his/her consent to allow sending the error report.
+
+\section automatic_app_restart Automatic Application Restart
+
+You can tell CrashRpt to restart your application automatically when crash occurs.
+This can be done by specifying the \ref CR_INST_APP_RESTART flag for the \ref CR_INSTALL_INFO::dwFlags structure member.
+
+You can pass command line parameters to the executable being restarted using \ref CR_INSTALL_INFO::pszRestartCmdLine, but can't specify another executable
+for restart. Only the same executable can be restarted that was used to start the current process.  
+
+The application is restarted only if at least 60 seconds have elapsed since its start up. This is done
+to avoid cyclic restarts of an application that crashes right on its start up. Also, the application is
+restarted only if the user does provide his/her consent.
+
+If you generate an error report manually with automatic restart feature enabled, 
+the caller process is not terminated automatically and another instance of client application is launched. If you 
+want to avoid starting the second instance of the client application, specify the \ref CR_EXCEPTION_INFO::bManual flag.
+
+\section customizing_ui Customizing CrashRpt User Interface
+
+CrashRpt provides several options for customizing look and feel of its UI
+(Error Report Dialog and other dialogs).
+
+You can specify custom icon for CrashRpt dialogs by specifying 
+\ref CR_INSTALL_INFO::pszCustomSenderIcon structure member.
+The value of this parameter should be absolute path to the module containing the icon resource, 
+followed by resource identifier separated by comma. 
+For example, specifying this with "C:\\WINDOWS\\System32\\user32.dll, 1" results in the following appearance 
+(see the figure below).
+
+\image html custom_icon.png "Custom Icon"
+
+By default, CrashRpt allows user to choose, whether to send error report (user clicks the "Send report"
+button) or exit the application (user clicks the "Exit the program" button). Hovewer, for some applications
+it may be useful to make sending error reports mandatory.
+Specifying \ref CR_INST_SEND_MANDATORY flag for \ref CR_INSTALL_INFO::dwFlags structure member 
+makes sending procedure mandatory by removing the "Close" button and 
+"Close the program" button from the Error Report dialog (as shown in the figure below). Typically, it is not recommended 
+to use this flag, unless you intentionally want users to always send error reports for your application.
+
+\image html send_mandatory.png "Sending Error Report Mandatory"
+
+Specifying the \ref CR_INST_SHOW_ADDITIONAL_INFO_FIELDS flag for \ref CR_INSTALL_INFO::dwFlags structure member 
+makes "Your E-mail" and "Describe what you were doing when the problem occurred" 
+fields of <i>Error Report</i> dialog always visible (see the figure below). By default (when this parameter not specified), 
+these fields are hidden and user needs to click the "Provide additional info (recommended)" link to show them.
+You can specify this flag if you need to attract user's attention to those fields.
+
+\image html more_info_fields.png "Showing User E-mail and Problem Description Fields"
+
+\section crashender_cmdline CrashSender.exe Command-line Options
+
+The following is not a real "API feature", but a useful command-line option for <i>CrashSender.exe</i>
+executable. 
+
+As of v.1.3.1, CrashRpt allows to specify a command line parameter <i>/terminate</i> for <i>CrashSender.exe</i>. 
+This resolves a problem with installers that will want to update or remove the EXE file during software installation
+process. Earlier, there was no way to programmatically tell the <i>CrashSender.exe</i> program to exit immediatelly.
+
+Launching "CrashSender.exe /terminate" from command shell would 
+look for all open <i>CrashSender.exe</i> processes 
+and terminate them immediately (without sending crash reports or waiting for completion). 
+Terminating the process is acomplished with <b>TerminateProcess()</b> function.
+
+<i>Further reading:</i> \ref simple_example.
+
+*/

@@ -1,0 +1,12 @@
+// -*- MPC -*-
+// $Id: global.mpb 1190 2007-08-03 11:52:59Z elliott_c $
+
+project {
+  // By default send all libraries to the same directory as the project
+  libout = .
+
+  // Automake doesn't need the project directory in the libpaths
+  specific(!automake) {
+    libpaths = .
+  }
+}
