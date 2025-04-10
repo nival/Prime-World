@@ -1,0 +1,230 @@
+<html>
+<head>
+    <link href="index.css" rel="stylesheet" />
+</head>
+ 
+<body onload="onSkinLoaded();">    
+    <!-- Preload images -->
+    <div style="display:none;">    
+        <img src="images/main-dialog-normal.png" />
+        <img src="images/main-progressbar-indefinite.png" />
+        <img src="images/main-progressbar.png" />
+    </div>
+    
+    <img id="closeButton" src="images/main-button-close-normal.png" alt="" />
+    <img id="minimizeButton" src="images/main-button-minimize-normal.png" alt="" />
+    
+    <img id="pauseButton" src="images/main-button-pause-disabled.png" alt="" onmouseover="pauseHoverEnter(this)" onmouseout="pauseHoverExit(this)" onclick="pauseClick(this)" />
+    <img id="resumeButton" src="images/main-button-resume-disabled.png" alt="" onmouseover="resumeHoverEnter(this)" onmouseout="resumeHoverExit(this)" onclick="resumeClick(this)" />
+    
+    <!-- <div id="resizeGripArea" onmousedown="beginSizeWindow(this)"></div> -->    
+    <div id="moveWindowArea"></div>
+    
+    <div id="bodyAuthenticate">
+        <div id="authenticateCaption">Authentication required</div>
+        <div id="authenticateMessage">A server has requested authentication.</div>
+        <div id="authenticateInfo">
+            <table style="margin:0, 0, 0, 0; padding:0, 0, 0, 0;" cellpadding="6" cellspacing="0" border="0">
+                <tr>
+                    <td class="informationKey">Host<td>
+                    <td id="authenticateServer" class="informationValue"></td>
+                    <td class="informationKey">Port<td>
+                    <td id="authenticatePort" class="informationValue"></td>
+                    <td class="informationKey">Realm<td>
+                    <td id="authenticateRealm" class="informationValue"></td>
+               </tr>
+            </table>
+        </div>
+        <div id="authenticateCredentials">
+            <table style="margin:0, 0, 0, 0; padding:0, 0, 0, 0;" cellpadding="6" cellspacing="0" border="0">
+                <tr>
+                    <td class="informationKey">Username<td>
+                    <td><input id="authenticateUsername" type="text"></input></td>
+                    <td class="informationKey">Password<td>
+                    <td><input id="authenticatePassword" type="password"></input></td>
+               </tr>
+            </table>
+        </div>
+        <input id="authenticateOk" class="verifyButtonNormal" type="button" value="Ok" onclick="authenticateOkClick()" onmouseover="verifyHoverEnter(this)" onmouseout="verifyHoverExit(this)" />
+        <input id="authenticateCancel" class="verifyButtonNormal" type="button" value="Cancel" onclick="authenticateCancelClick()" onmouseover="verifyHoverEnter(this)" onmouseout="verifyHoverExit(this)" />
+    </div>
+    
+    <div id="bodyBackground">
+        <div id="mainTabHeader" class="tabHeaderSelect">MAIN</div>    
+        <div id="performanceTabHeader" class="tabHeaderNormal">PERFORMANCE</div>    
+        <div id="optionsTabHeader" class="tabHeaderNormal">OPTIONS</div>    
+        
+        <!-- <canvas id="canvasTest" width="300" height="300" style="opacity:.5"></canvas> -->             
+        <div id="mainTabContent" class="tabContent">
+            <table style="margin:5, 10, 5, 5" width="530px" border="0">
+                <tr>
+                    <td width="70%">
+                        <table style="margin:-3, 0, 0, 0; padding:0, 0, 0, 0;" cellpadding="3" cellspacing="0" border="0">
+                            <tr>
+                                <td class="informationKey" width="50px"><b>Status</b></td>
+                                <td id="statusText" class="informationValue">Starting...</td>
+                            </tr>
+                            <tr> 
+                                <td width="50px" />
+                                <td>
+                                    <div id="progressBar-wrap">
+                                        <div id="progressBar-value", style="background-color: #00a000; width:0%;" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="informationKey" width="50px"></td>
+                                <td id="subStatusText" class="informationValue"></td>
+                            </tr>
+                            <tr> 
+                                <td id="statusTimeEstimateKey" class="informationKey" width="50px"></td>
+                                <td id="statusTimeEstimate" class="informationValue"></td>
+                            </tr>
+                            <tr> 
+                                <td id="statusBytesLeftKey" class="informationKey" width="50px"></td>
+                                <td id="statusBytesLeft" class="informationValue"></td>
+                            </tr>
+                            <tr> 
+                                <td id="statusTransferSpeedKey" class="informationKey" width="50px"></td>
+                                <td id="statusTransferSpeed" class="informationValue"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div id="deliveryMethod"></div>
+            <input id="verifyButton" class="verifyButtonNormal" type="button" value="Verify" onclick="verifyClick()" onmouseover="verifyHoverEnter(this)" onmouseout="verifyHoverExit(this)" />
+            <button id="launchButton" class="launchButtonNormal" onclick="launch()" onmouseover="launchHoverEnter(this)" onmouseout="launchHoverExit(this)">Launch</button>                        
+        </div>
+        <div id="performanceTabContent" class="tabContent">
+            <table style="margin:5, 5, 5, 5;" border="0" width="530px">
+                <tr>
+                    <td class="informationKey"><b>Incoming:</b></td>
+                    <td class="informationValue" id="incomingMaxSpeed" align="right">Max</td>
+                    <td width="10"></td>
+                    <td class="informationKey"><b>Outgoing:</b></td>
+                    <td class="informationValue" id="outgoingMaxSpeed" align="right">Max</td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="230">
+                        <div id="incomingGraph" class="graph"></div>
+                    </td>
+                    <td width="10"></td>
+                    <td colspan="2" width="230">
+                        <div id="outgoingGraph" class="graph"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="informationValue" id="incomingAvgSpeed">Avg</td>
+                    <td class="informationValue" id="incomingCurSpeed" align="right">Cur</td>
+                    <td width="10"></td>
+                    <td class="informationValue" id="outgoingAvgSpeed">Avg</td>
+                    <td class="informationValue" id="outgoingCurSpeed" align="right">Cur</td>
+                </tr>
+            </table>
+        </div>
+        <div id="optionsTabContent" class="tabContent">
+            <table style="margin:5, 5, 5, 5;">
+                <tr>
+                    <td width="250px">
+                        <label class="informationKey">Max Upload Speed (kBps)</label>
+                    </td>
+                    <td width="275px">
+                        <label class="informationKey">When a pre-release patch is available</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="informationKey" id="maxUploadRate" onchange="settingsChanged()">
+                            <option value="0">Unlimited</option>
+                            <option value="64">64</option>
+                            <option value="128">128</option>
+                            <option value="256">256</option>
+                            <option value="512">512</option>
+                            <option value="1024">1024</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="informationKey" id="upcomingPatchDownload" onchange="settingsChanged()"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="informationKey">Max Download Speed (kBps)</label>
+                    </td>
+                    <td>
+                        <label class="informationKey">Download Using</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="informationKey" id="maxDownloadRate" onchange="settingsChanged()">
+                            <option value="0">Unlimited</option>
+                            <option value="64">64</option>
+                            <option value="128">128</option>
+                            <option value="256">256</option>
+                            <option value="512">512</option>
+                            <option value="1024">1024</option>
+                            <option value="2048">2048</option>
+                            <option value="4096">4096</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="informationKey" id="downloadProtocols" onchange="settingsChanged()">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td align="right">
+                        <input id="saveButton" class="hiddenItem" type="button" value="Save" onclick="saveSettings()" onmouseover="saveHoverEnter(this)" onmouseout="saveHoverExit(this)" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <script language="javascript">
+        // To ensure that everything is rendered properly before loading 
+        // you can remove this tag
+        function showWindowBeforeLoad() {
+            if ((typeof NativeInterop == 'undefined')) {
+                var skinWindowId = document.NativeInterop.createInstance("SSN.SkinWindow");
+                document.NativeInterop.invoke(skinWindowId, "{ \"method\": \"show\" }");
+                document.NativeInterop.releaseInstance(skinWindowId);
+            } else {
+                var skinWindowId = NativeInterop.createInstance("SSN.SkinWindow");
+                NativeInterop.invoke(skinWindowId, "{ \"method\": \"show\" }");
+                NativeInterop.releaseInstance(skinWindowId);
+            }
+        };
+
+        showWindowBeforeLoad();
+    </script>
+    
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/app/_js/excanvas.min.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="/app/_js/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/app/_js/jquery.flot.min.js"></script>
+    
+    <script src="/app/_host/jshelper.js" type="text/javascript"></script>
+    <script src="/app/_host/json2.js" type="text/javascript"></script>
+    <script src="/app/_host/interop.js" type="text/javascript"></script>
+    <script src="/app/_host/oserror.js" type="text/javascript"></script>    
+    <script src="/app/_host/host.js" type="text/javascript"></script>
+    <script src="/app/_host/app.js" type="text/javascript"></script>
+    <script src="/app/_host/skinwindow.js" type="text/javascript"></script>
+    <script src="/app/_host/httpdownload.js" type="text/javascript"></script>
+    <script src="/app/_host/textfilereader.js" type="text/javascript"></script>
+    <script src="/app/_host/textfilewriter.js" type="text/javascript"></script>
+    <script src="/app/_host/bundleloader.js" type="text/javascript"></script>
+    
+    <script src="/app/_js/pnganim.js" type="text/javascript"></script>    
+    <script src="/app/_js/language-en.js" type="text/javascript"></script>
+
+    <script src="/app/_js/authenticate.js" type="text/javascript"></script>
+    <script src="/app/_js/repair.js" type="text/javascript"></script>
+    
+    <script src="index.js" type="text/javascript"></script>
+</body>
+</html>

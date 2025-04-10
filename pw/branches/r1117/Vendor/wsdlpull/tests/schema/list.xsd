@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: /cvsroot/wsdlpull/wsdlpull/tests/schema/list.xsd,v 1.1 2008/05/03 11:13:35 vivek200120 Exp $ -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:simpleType name="USState">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="AK"/>
+    <xsd:enumeration value="AL"/>
+    <xsd:enumeration value="AR"/>
+    <xsd:enumeration value="TX"/>
+    <xsd:enumeration value="IL"/>
+    <xsd:enumeration value="FL"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="myInteger">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minExclusive value="10000"/>
+    <xsd:maxInclusive value="99999"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="listOfMyIntType">
+  <xsd:list itemType="myInteger"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="listOfInt">
+  <xsd:list itemType="xsd:int"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="USStateList">
+ <xsd:list itemType="USState"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="SixUSStates">
+ <xsd:restriction base="USStateList">
+  <xsd:length value="8"/>
+ </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="listOfMyInt" type="listOfMyIntType"/>
+<xsd:element name="sixStates" type="SixUSStates"/>
+</xsd:schema>

@@ -1,0 +1,26 @@
+// -*- MPC -*-
+// $Id: bmakedllexe.mpt 1477 2008-09-16 08:36:05Z johnnyw $
+
+conditional_include "bmakecommon"
+
+startup_letter   = x
+
+Release {
+  optimize         = 1
+  defines          = NDEBUG
+  output_dir       = Release
+  intermediate_dir = Release
+  lib_modifier     = _br
+  postlinkrmext    = .tds
+}
+
+Debug {
+  optimize         =
+  debug_prj        = 1
+  defines          = _DEBUG
+  intermediate_dir = Debug
+  lib_modifier     = _bd
+  postlinkrmext    = .tds
+}
+
+conditional_include "user_bmakedllexe"

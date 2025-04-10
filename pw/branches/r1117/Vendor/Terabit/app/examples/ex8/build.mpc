@@ -1,0 +1,25 @@
+project(ex8) : iotdefaults, assl  {
+  exename      = ex8
+
+  //staticflags += ACE_AS_STATIC_LIBS
+
+  includes    += .
+  includes    += ../common
+  libs        += IOTerabit IOTerabit_SSL
+  after       += IOTerabit IOTerabit_SSL
+    
+
+  Source_Files {
+    ./*.cpp
+    ../common/Cfg.cpp
+  }
+
+  Template_Files {
+  }
+ 
+  Header_Files {
+    ./*.h
+    ../common/Cfg.h
+  }
+}
+

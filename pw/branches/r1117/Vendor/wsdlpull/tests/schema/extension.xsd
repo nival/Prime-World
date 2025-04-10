@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdlpull/extension" xmlns:imp1="http://wsdlpull/extension" tns="http://wsdlpull/extension">
+
+<xsd:complexType name="Person">
+   <xsd:sequence>
+     <xsd:element name="name" type="xsd:string"/>
+   </xsd:sequence>
+ </xsd:complexType>
+ 
+ <xsd:complexType name="Superman">
+   <xsd:complexContent>
+     <xsd:extension base="Person">
+       <xsd:attribute name="can_fly" type="xsd:boolean"/>
+     </xsd:extension>
+   </xsd:complexContent>
+ </xsd:complexType>
+ 
+ <xsd:element name="person" type="Person"/>
+</xsd:schema>

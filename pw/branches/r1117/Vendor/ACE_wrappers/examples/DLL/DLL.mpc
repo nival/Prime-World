@@ -1,0 +1,22 @@
+// -*- MPC -*-
+// $Id: DLL.mpc 80826 2008-03-04 14:51:23Z wotte $
+
+project(*Newsweek) : acelib {
+  Source_Files {
+    Newsweek.cpp
+  }
+}
+
+project(*Today) : acelib {
+  Source_Files {
+    Today.cpp
+  }
+}
+
+project(*Main) : aceexe {
+  exename = test_dll
+  after  += DLL_Newsweek DLL_Today
+  Source_Files {
+    test_dll.cpp
+  }
+}

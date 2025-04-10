@@ -1,0 +1,655 @@
+
+  Introduction
+
+wsdlpull is a C++ web services client library. It includes a WSDL
+Parser,a XML Schema Parser and Validator and XML Parser and serializer
+and an API and command line tool for dynamic WSDL inspection and
+invocation.
+
+wsdlpull comes with a generic web service client.Using wsdlpull's /wsdl/
+tool you can invoke most web services from command line without writing
+any code.
+
+
+  Table of Contents
+
+   1. *Overview 
+   2. *Download <http://sf.net/projects/wsdlpull>*
+   3. *Installation 
+   4. *Usage 
+   5. *Writing a web service client 
+   6. *Parsing WSDL* 
+   7. *Using the Schema Parser API 
+   8. *Using the schema validation tool 
+   9. *Examples 
+  10. *XML processing 
+  11. *API Documentation <documentation.html>*
+  12. *wsdlpull Discussion <http://groups.yahoo.com/group/wsdlpull>*
+  13. *Reporting bugs and Submitting patches
+
+------------------------------------------------------------------------
+
+
+      Overview
+
+wsdlpull uses the xml pull api to parse a WSDL1.1 document. This makes
+wsdlpull /highly efficient/ which is why you can process and invoke a
+WSDL in no time.
+
+The Web service Invocation API <#client> allows you to /dynamically/
+inspect and invoke a web service. Unlike other toolkits there is no need
+to generate stubs or type serializers.
+You can use the dynamic invocation API to write your own web service
+clients in one step. Writing a web service client involves providing the
+WSDL URL,setting the operation,the input types and getting back the
+results. No knowledge of SOAP is needed to write a web service client
+using wsdlpull. The invocation API is quite protocol independent and
+focusses on presenting a simple and intutive interface and abstracts
+away protocol specific details.
+
+wsdlpull comes with a generic web service invocation tool /wsdl/
+which uses the above API. Both the API and the tool are *very dynamic*
+and allow invocation of WSDLs which have complex types and simple types
+in the schema.Using the /wsdl/ tool you can invoke complex
+web services from command line /without writing any code./
+
+The WSDL parser <#parse> provides APIs to access various WSDL elements 
+such as operations,messages,bindings,port types.Although wsdlpull is
+based on the pull parsing style of xml parsing the API is meant to be
+semantically as close as possible to the standard API for parsing
+WSDL,namely WSDL4J.
+
+The schema parser <#schemap> and validator provides an API for parsing
+XSD schema documents and validating their xml instance documents. The
+schema parser is used to parse the types section of the WSDL document.
+The schema <#schema> tool can be used for many purposes such as
+validating schemas and accessing REST services <#examples>.
+
+The Xml parser and serializer provide a C++ implementation of the XML
+Pull API <http://www.xmlpull.org>.WSDL processing,XSD schema
+processing,sending and receiving SOAP messages use the parser and
+serializer.
+
+Download wsdlpull <http://sourceforge.net/projects/wsdlpull> and follow
+the instructions below. The package has detailed doxygen documentation
+for all the APIs
+
+
+
+------------------------------------------------------------------------
+
+
+      Installation
+
+Linux/Unix *Installing from source*
+
+Unpack the archive and give the following commands 
+./configure --help
+./configure --prefix=%{prefix} [other options] 
+make 
+make install 
+
+This will compile all the targets excluding examples. If you want to
+compile the examples use the --enable-examples option with configure.
+
+Normally ,g++ does optimization of c++ code and it becomes impossible to
+debug.If you wish to debug then do --disable-opt with configure.
+
+For logging related code to be present add --with-log with configure.
+
+To write a web service client using wsdlpull make sure to add the
+$(prefix)/include in your include path and add $(prefix)/libs and -lwsdl
+-lschema -lxmlpull to your LDFLAGS .
+
+*Installing from rpms/debian packages*
+Many packages are available for wsdlpull via various distributions on the web.
+You can install using rpm -i <package name> or dpkg -i  <package name>
+
+Windows
+The wsdl.exe is present in the win32 directory.Copy it to the main wsdlpull directory and start using it.
+
+To build users can find MSVC++ project files in the win32 directory.
+Open wsdlpull.dsw in MSVC++ and do a clean build. For logging related code to
+be present add LOGGING in the preprocessor defines of the MSVC++ project
+
+Additionally a windows makefile is included which allows singlethreaded,multighreaded and dll builds.
+
+Since the soap.xsd schema is required for parsing wsdl documents with
+soap binding elements (which means almost all wsdl documents) you need
+to adjust the relative path so that the parser can locate the soap
+binding schema. Soap.cpp file has the path to the soap schema. Hence for
+win32 platforms executables for the wsdl tool is generated in the
+wsdlpull root directory ,and has the path to the soap.xsd schema
+hardcoded relative to the wsdlpull root directory .So be wary before you
+move try to execute this from another location ,because you would have
+to change some code to make it work from other locations. 
+
+Some older compilers may give errors with the << operator on Qname.If this is
+the case then change those statments to use the << on Qname::getLocalName().
+
+------------------------------------------------------------------------
+
+
+      Usage
+
+wsdlpull has a tool called /wsdl/,a generic web service invocation tool
+which uses the invocation API.Using this command you can see the web
+service operations,their descriptions and provide operation's inputs and
+get the output.
+
+A way to use it is like this.
+
+[user@localhost]wsdl http://services.xmethods.net/soap/urn:xmethods-delayed-quotes.wsdl getQuote XYZW
+27.101
+
+If you do not specify the operation name or any of the parameters,the
+tool gives a choice of operations to invoke and prompts for the
+operation's parameters.With the -d option you can also see the
+operation's documentation.
+
+[user@localhost]wsdl  http://www.xmethods.net/sd/2001/CurrencyExchangeService.wsdl
+1.getRate :
+Choose one of the above operations [1-1] :1
+country1:Japan
+country2:India
+46.23 
+
+If you just want it in one shot then you can do
+
+[user@localhost]wsdl  http://www.xmethods.net/sd/2001/CurrencyExchangeService.wsdl getRate "United States" India
+43.81 
+
+If the parameter is a space separated string make sure you enclose it in
+" " or else the shell would treat it as 2 arguments.
+
+The -l option simply lists the operations of the web service.The below
+command shows how you can see a list of operations available for the
+MovieSearch Web service from www.ignyte.com along with a description of
+what each operation does.
+
+[user@localhost]wsdl -l -d http://www.ignyte.com/webservices/ignyte.whatsshowing.webservice/moviefunctions.asmx?wsdl 
+1.GetTheatersAndMovies(This method will retrieve a list of all theaters and the movies playing today.)
+2.GetUpcomingMovies(This method will retrieve a list of all movies that are scheduled to be released in the future and their anticipated release dates.)
+
+The -v options runs the tool in the verbose mode. It displays wsdl
+operations' documentation and also logs the SOAP requests and response.
+
+Invoking the tool with no arguments shows the usage of the command.
+
+The /wsdl/ invocation tool can invoke web services which accept and/or
+return complex types and simple types in their description.If a web
+service needs a complex type then only its constituent simple type
+particles,are passed as inputs. Simple types are validated for basic
+checks and also against any schema provided restrictions such as
+enumeration. For example invoking the instant messenger service from
+/http://www.bindingpoint.com/ws/imalert// involves sending a complex
+type defined as below
+
+ 
+      <s:element name="SendYahoo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LKEY" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+
+When you run the /wsdl / tool on the IM web service you will have to
+just enter the 4 simple constituent elements.
+
+[user@localhost wsdls]$wsdl im.wsdl 
+1.SendAIM
+2.SendICQ
+3.SendMSN
+4.SendYahoo
+Choose one of the above operations [1-4] :4
+LKEY: ******
+FromName: Foo
+ToUserID: bar666
+Message:Message1
+### or a one liner 
+[user@localhost wsdls]$wsdl im.wsdl SendYahoo   *****   Foo  bar666   "This is a test message"
+
+Sometimes a schema can specify how many times or a
+range(minOccurs..maxOccurs) a particle can occur inside its content
+model. This is often used to implement arrays by specifiying the
+maxOccurs as unbounded. By using the -o options the /wsdl/ tool prompts
+for occurrences of input parameters.
+
+*Notes*
+
+Obviously there is a limit on the expressive power of providing
+parameters from command line for wsdl invocation. Here are a few notes.
+
+   1. There is no way yet to handle correctly and completely,web
+      services which expect soapenc:Array.Some support exists for web
+      services returning soap arrays since 1.9.5.GoogleSearch/mp3 search
+      works.Although multidimensional SOAP arrays are not and probably
+      never will be supported since SOAP arrays themselves are
+      deprecated as per section 5.2.3 of the WS-I basic profile.
+   2. Web services which return complex derived types cannot be invoked
+      dynamically as of release 1.9.5b.
+   3. A web service which accepts a complex type which has a content
+      model(group,sequence) with possible multiple occurrences can
+      accept only one occurrence via the invocaton API as of
+      1.9.5b.Return complex types can be arbitrarily complex except for
+      the above 2 cases.
+   4. Simple types are validated via facets/restriction provided in the
+      schema.If a simple string type is a restricted by an enumeration
+      with values "Male" and "Female",anything other than those values
+      is considered illegal and the tool exits with an error
+      message.There is no way as of now to turn this kind of checking off.
+   5. There is no way as of now to specify occurrence constraints
+      (minOccurs, maxOccurs) of particles in complex types in the input
+      of an operation using the command line in the non interactive
+      mode.Using -o starts the tool in the interactive mode. The
+      invocation API however supports multiple occurences. If you want
+      anything more than the default behavior of the wsdl tool then you
+      should consider writing your own client using the api.
+   6. HTTP POST needed to send SOAP messages and HTTP GET needed to
+      fetch WSDL uri's are done using curl on linux/unix
+      platforms.libcurl is available on most platforms so shouldn't be a
+      problem though.
+
+
+2,3,4  are likely to be fixed in later releases.
+
+
+
+------------------------------------------------------------------------
+
+
+      Writing a web service client
+
+You can use the invocation API to write a web service client. Unlike
+many other toolkits you don't need to generate skeleton stubs or write
+type serializers or even have any knowledge of SOAP.The below example
+illustrates how to write  a client for the StockQuotes.wsdl web service
+included in the distribution.
+
+
+<s:element name="GetQuotes">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="QuoteTicker" type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="GetQuotesResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="GetQuotesResult"
+type="s0:ArrayOfQuote" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="ArrayOfQuote">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="Quote"
+type="s0:Quote" />
+</s:sequence>
+</s:complexType>
+<s:complexType name="Quote">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="StockTicker" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="StockQuote" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="LastUpdated" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="Change" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="OpenPrice" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="DayHighPrice"
+type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="DayLowPrice" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="Volume" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="MarketCap" type="s:string" />
+<s:element minOccurs="0" maxOccurs="1" name="YearRange" type="s:string" />
+</s:sequence>
+</s:complexType>
+<s:element name="ArrayOfQuote" nillable="true" type="s0:ArrayOfQuote" />
+</s:schema>
+
+
+
+<message name="GetQuotesSoapIn">
+<part name="parameters" element="s0:GetQuotes" />
+</message>
+<message name="GetQuotesSoapOut">
+<part name="parameters" element="s0:GetQuotesResponse" />
+</message>
+
+ 
+
+<portType name="StockQuotesSoap">
+<operation name="GetStockQuotes">
+<input name="GetQuotes" message="s0:GetQuotesSoapIn" />
+<output name="GetQuotes" message="s0:GetQuotesSoapOut" />
+</operation>
+</portType>
+
+
+First,include the relevant header file.
+
+| #include <wsdlparser/WsdlInvoker.h> |
+
+The convention while including files from wsdlpull is to specify the
+root include directory in the include path and then specify the actually
+directory while #include -ing. Files belonging to the schema parser
+would be included like
+
+| #include <schemaparser/SchemaParser.h>|
+
+Create an instance of the WsdlInvoker.
+
+| |
+
+ 
+  WsdlInvoker invoker; 
+  if (!invoker.setWSDLUri("StockQuotes.wsdl")) {
+    std::cerr<<invoker.errors()<<std::endl; return 2;
+  }
+  
+
+Now set the operation .Before that you can also get a list of operations
+available
+
+| |
+
+ 
+  std::vector<std::string> ops;
+  invoker.getOperations(ops);
+  if(!invoker.setOperation("GetStockQuotes")){
+     
+      std::cerr<<"Error calling GetStockQuotes "<<std::endl;
+      return 2;
+   }
+
+Set the input values. Setting the input values can be done by passing a
+void* or by passing a string representation of the value.
+The string representation is provided for convinience so that you can
+just read something from the standard input using scanf or cin and pass
+it on to the WsdlInvoker to do the type validation check.You dont have
+to bother about reading an int or a float or a string.Just read the data
+from the stream as a string and allow the invoker to do all the validation.
+
+| |
+
+ 
+   if (invoker.status()){
+
+       std::string ticker("XYZ");
+       if (!invoker.setValue("QuoteTicker",(void*)(&ticker))){
+          
+            std::cerr<<"Incorrect input value "<<ticker<<std::endl;
+            return 2;
+       }
+
+        if (invoker.invoke()){
+ 
+         Schema::Type type;
+         void *val = invoker.getValue("OpenPrice",type);
+         //type is a string 
+         cout<<*((std::string*)val)<<std::endl;  
+   }
+
+The above example is illustrates the simple API usage. However you can
+get more control over the input and output with more of the API. You can
+set the occurrence constraints like this. | |
+
+ 
+     std::vector<std::string> stocks
+     stocks.push_back("IBM");
+     stocks.push_back("YHOO");
+     stocks.push_back("MSFT");
+     stocks.push_back("MOT");
+     //4 occurrences of the <QuoteTicker> element 
+     invoker.setValue("QuoteTicker",stocks);
+	 
+
+After invoking the web service ,you can get the individual elements
+using getValue() like above.
+
+The getValue() method returns a type via reference ,which can be used to
+typecast the return void*. xsdType:string is serialized as std::string
+and others are fairly obvious such as int and float for xsdType:int and
+xsdType:float respectively.
+ 
+See examples/stocks/stocks.cpp to see the above code in action. Apart
+from the simple style above there are apis to examine all the inputs of
+a web service and set values with occurrence constraints for each of
+them. ||
+
+    int getNextInput(std::string & param ,Schema::Type & type,int & min,int & max);
+
+The above API exposes all the simple types that need to be passed as
+input.Even if a web service accepts a complex type ,calls to
+getNextInput exposes the constituent particles which are of a simple
+type. You can either use this style or directly set the value using
+setValue() as shown earlier.
+
+Outputs can be read either using getValue() or by getting the
+TypeContainer for all the message response parts using
+getNextOutput().The TypeContainer interface is more complicated but
+allows better access to the XML structure,such as reading
+attributes,multiple occurrences etc. The api is in the
+schemaparser/TypeContainer.h
+
+The generic web service invocation tool 'wsdl' in wsdlparser/wsdl.cpp
+uses the complex style.Check that for an example
+
+
+
+------------------------------------------------------------------------
+
+
+      Parsing and validating a schema
+
+wsdlpull also includes a schema parser. The Schema parser itself can be
+used in isolation to parse xsd schemas. The schema parser can validate
+an instance document of the xsd schema just parsed.
+Create a SchemaParser object
+||
+
+  #include <schemaparser/SchemaParser.h>
+  #include <schemaparser/SchemaValidator.h>
+  ... 
+  SchemaParser sParser= new SchemaParser(uri,"target namespace");
+
+
+Calling SchemaParser::parseSchemaTag() parses the entire document. Use
+getter methods to get types/elements and attributes .Use SchemaValidator
+to parse an instance of a type or element by calling       
+| |
+
+ SchemaValidator::validate(int xType, XmlPullParser* ,TypeContainer*)
+ 
+
+The TypeContainer returned is a recursvive container structure holding
+the values of xml elements and attributes in the instance. See
+src/schemaparser/schema.cpp to understand how to do this.
+
+See the doxygen documentation of the API that comes with the package
+
+
+
+------------------------------------------------------------------------
+
+
+      Schema Validation tool
+
+wsdlpull includes a schema validation tool 'schema' Take the schema
+below which has a bunch of restricted schema types
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:simpleType name="USState">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="AK"/>
+    <xsd:enumeration value="AL"/>
+    <xsd:enumeration value="AR"/>
+    <xsd:enumeration value="TX"/>
+    <xsd:enumeration value="IL"/>
+    <xsd:enumeration value="FL"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="myInteger">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minExclusive value="10000"/>
+    <xsd:maxInclusive value="99999"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="listOfMyIntType">
+  <xsd:list itemType="myInteger"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="listOfInt">
+  <xsd:list itemType="xsd:int"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="USStateList">
+ <xsd:list itemType="USState"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="SixUSStates">
+ <xsd:restriction base="USStateList">
+  <xsd:length value="8"/>
+ </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="listOfMyInt" type="listOfMyIntType"/>
+<xsd:element name="sixStates" type="SixUSStates"/>
+</xsd:schema>
+
+
+The below xml is an instance of the above schema which we want to
+validate with the /schema/ tool.
+
+
+<listOfMyInt>20003 15037 95977 95945</listOfMyInt>
+<listOfMyInt>10000 10001</listOfMyInt>
+<sixStates>PA NY CA NY LA AK</sixStates>
+<sixStates>FL IL</sixStates>
+<listOfMyInt>3 4 5</listOfMyInt>
+<sixStates>FL IL AK</sixStates>
+<sixStates>PA IL AK</sixStates>
+
+The output below catches the errors that some of the data types have wrt
+the schema,including violation of enumeration,length,max and min facets.
+
+ [user@localhost]schema list.xsd -i list.xml 
+Successfully parsed schema  
+:listOfMyInt 20003 15037 95977 95945
+:listOfMyInt 10000 10001 -->Invalid value for data type
+:sixStates PA NY CA NY LA AK -->Invalid value for data type
+:sixStates FL IL -->Invalid value for data type
+:listOfMyInt 3 4 5 -->Invalid value for data type
+:sixStates FL IL AK
+:sixStates PA IL AK -->Invalid value for data type
+
+The tool can flag many other validation errors including violation of
+occurrence constraints,and missing attributes
+
+
+
+------------------------------------------------------------------------
+
+
+      Examples
+
+Invoking the popular stock quotes web service and the currency exchange
+services
+
+wsdl http://services.xmethods.net/soap/urn:xmethods-delayed-quotes.wsdl getQuote SYMBOL
+wsdl  http://www.xmethods.net/sd/2001/CurrencyExchangeService.wsdl getRate "United States" India
+
+Get the local time in you city
+
+wsdl http://www.nanonull.com/TimeService/TimeService.asmx?wsdl getCityTime Tokyo
+
+Or a more complex google search whose wsdl is included in the test
+directory.Get the first 5 google search results for 'wsdlpull'
+
+wsdl GoogleSearch.wsdl doGoogleSearch "****license-key****" wsdlpull 1 5 0 1 1 1 1 1
+
+Get a dictionary/thesarus on your command line
+
+wsdl http://services.aonaware.com/DictService/DictService.asmx?WSDL DefineInDict wn thesaurus
+wsdl http://services.aonaware.com/DictService/DictService.asmx?WSDL DefineInDict moby-thes thesaurus
+
+Use the /schema/ tool to access the Yahoo REST API like this below to
+search for Madonna video.
+
+schema
+http://api.search.yahoo.com/VideoSearchService/V1/VideoSearchResponse.xsd
+-i
+"http://api.search.yahoo.com/VideoSearchService/V1/videoSearch?appid=YahooDemo&query=madonna&results=1"
+
+
+The below code returns a list of movies running within a radius of 3
+miles from Beverly Hills,CA.The result is a huge list but takes hardly a
+few seconds on a high speed connection to parse the wsdl,send requests
+and get back the response!
+
+wsdl
+http://www.ignyte.com/webservices/ignyte.whatsshowing.webservice/moviefunctions.asmx?wsdl GetTheatersAndMovies 90209 3
+
+
+------------------------------------------------------------------------
+
+
+      Xml Processing
+
+XML parser and serializer can be used to handle XML .The api is the xml
+pull api <http://www.xmlpull.org> and can be used in the same
+fashion.The roundtrip example in examples/xml gives a demonstration.
+
+
+
+------------------------------------------------------------------------
+
+
+      Reporting Bugs and Submitting patches
+
+Send a bug report to http://groups.yahoo.com/group/wsdlpull or to the
+author <mailto:vivek200120@users.sourceforge.net?subject=wsdlpull>.
+You may also use the sourceforge.net tracker.
+
+If you are submitting a patch then do send the diffs either on the
+mailing list or to the author.Also send a brief description of the patch
+and whether you tested it or if it needs testing. If you need to check
+in to the CVS contact the author for developer access.
+
+Before submitting a patch ,please perform some unit tests to ensure if
+the fix hasnt broken any existing functionality.
+
+   1. If the fix is in the xml parser then run the roundtrip example on
+      as many xml files as possible.Atleast on all the wsdl,schema and
+      xml files that come in the test directory.
+   2. If the fix is in the schema parser then build and run the /schema/
+      tool on the schema files and their instances in the test/schema
+      directory.
+   3. If the fix is in the wsdl parser then invoke the web services in
+      the test/wsdls directory and check if they work You must atleast
+      test one RPC style web service and one Doc/Literal style from the
+      test suite.
+
+If you fixed the xml parser then you must do all of the above,If you
+fixed the schema parser you need to do steps 2 and 3. If you fixed
+something in the wsdlparser,test step 3. If what you fixed was in one of
+the two tools /wsdl/ or /schema/ or in the examples then test them as
+instructed in the documentation of the tools.
+
+
+If you are reporting a bug with the invocation tool make sure to run
+with -v option and send the SOAP request and response along with a link
+to the WSDL
+
+------------------------------------------------------------------------
+
+
+      Authors
+
+Vivek Krishna <mailto:vivek200120@users.sourceforge.net>
+SourceForge.net Logo <http://sourceforge.net>

@@ -1,0 +1,31 @@
+includePaths = [ 
+    'include', 
+]
+
+if platform == 'win32' :
+  if configuration == 'debug':
+    libDependencies = [
+      'ssleay32MTd.lib',
+      'libeay32MTd.lib',
+    ]
+  if configuration == 'release':
+    libDependencies = [
+      'ssleay32MT.lib',
+      'libeay32MT.lib',
+    ]
+else :
+  libDependencies = [
+      'libssl.so'
+    ]
+
+libPaths = [
+    'lib/static',
+]
+
+'''
+builders = [ 
+    InstallBuilder( 'libeay32.dll' ), 
+    InstallBuilder( 'libssl32.dll' ), 
+    InstallBuilder( 'ssleay32.dll' ), 
+]
+'''

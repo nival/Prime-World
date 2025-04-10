@@ -1,0 +1,667 @@
+/*!
+
+\page exception_handling About Exceptions and Exception Handling
+
+Reading this page is not necessary for using CrashRpt. However read this page if you need extended 
+knowledge of exception handling.
+
+This page describes techniques of handling exceptions in Visual C++ programs under Windows. 
+CrashRpt uses the techniques described below internally.   
+
+The page covers the following topics:
+
+- \ref about_exceptions
+- \ref structured_exc
+- \ref vectored_exc
+- \ref crt_errors
+- \ref cpp_signals
+- \ref getting_exception_context
+- \ref cxx_compiler_flags
+- \ref crt_version_and_dll
+- \ref exception_handling_reference
+
+\section about_exceptions About Exceptions
+
+An exception or a critical error typically means that a program 
+stops working normally and needs to stop its execution. 
+
+For example, an exception may occur because of the following:
+
+- program accesses an invalid memory address (such as NULL pointer)
+- stack is overflown due to infinite recursion 
+- large block of data is written to a small buffer
+- a pure virtual method of a C++ class is called
+- memory buffer can't be allocated (out of memory)
+- invalid parameter is passed to a C++ system function
+- C run-time libraries detect an error and request program termination
+
+There are two kinds of exceptions that have different nature: SEH exceptions (Structured Exception Handling, SEH) 
+and typed C++ exceptions.
+
+SEH exceptions were designed for C language, but they can be used in C++, too. 
+They are handled using __try{}__except(){} 
+construction. SEH exceptions are Visual C++ compiler-specific. 
+You shouldn't use structured exception handling if you write portable code. 
+
+C++ typed exceptions are handled using try{}catch{} construction.
+Example (taken from http://www.cplusplus.com/doc/tutorial/exceptions/):
+
+\code
+// exceptions
+#include <iostream>
+using namespace std;
+
+int main () {
+  try
+  {
+    throw 20;
+  }
+  catch (int e)
+  {
+    cout << "An exception occurred. Exception Nr. " << e << endl;
+  }
+  return 0;
+}
+\endcode
+
+\section structured_exc Structured Exception Handling
+
+When a SEH exception occurs, you typically see a pop-up window (Dr.Watson) that 
+offers to send error report to Microsoft. 
+
+You can generate a SEH exception yourself using \b RaiseException() function.
+
+You can catch a SEH exception in your code using __try{}__except(Expression){} construction.
+The \b main() function of your program is guarded with such construction, so by default all unhandled
+SEH exceptions are caught and Dr.Watson is invoked.
+
+Example:
+
+\code
+  int* p = NULL;   // pointer to NULL
+  __try
+  {
+    // Guarded code
+
+    *p = 13; // causes an access violation exception;
+  }
+  __except(EXCEPTION_EXECUTE_HANDLER) // Here is exception filter expression
+  {  
+    // Here is exception handler
+ 
+    // Terminate program
+    ExitProcess(1);
+  }
+\endcode 
+
+Each SEH exception has an associated exception code. You can extract the exception code inside of __except statement 
+using \b GetExceptionCode() intrinsic function. You can extract exception information inside of __except 
+statement using \b GetExceptionInformation() intrinsic function. To use these intrinsic functions you usually
+create your custom exception filter as shown in the example below.
+
+The following example shows how to use a SEH exception filter.
+
+\code 
+
+int seh_filter(unsigned int code, struct _EXCEPTION_POINTERS* ep)
+{
+  // Generate error report
+
+  // Execute exception handler
+  return EXCEPTION_EXECUTE_HANDLER;
+}
+
+void main()
+{
+  __try
+  {
+    // .. some buggy code here
+  }
+  __except(seh_filter(GetExceptionCode(), GetExceptionInformation()))
+  {    
+    // Terminate program
+    ExitProcess(1);
+  }
+}
+
+\endcode
+
+The __try{}__except(){} construction is mostly C oriented. However, you can redirect a SEH exception to a C++
+typed exception and handle it as you do with C++ typed exceptions. This can be done using the \b _set_se_translator() 
+function provided by C++ runtime libraries (CRT).
+
+Example taken from MSDN:
+
+\code
+
+// crt_settrans.cpp
+// compile with: /EHa
+#include <stdio.h>
+#include <windows.h>
+#include <eh.h>
+
+void SEFunc();
+void trans_func( unsigned int, EXCEPTION_POINTERS* );
+
+class SE_Exception
+{
+private:
+    unsigned int nSE;
+public:
+    SE_Exception() {}
+    SE_Exception( unsigned int n ) : nSE( n ) {}
+    ~SE_Exception() {}
+    unsigned int getSeNumber() { return nSE; }
+};
+int main( void )
+{
+    try
+    {
+        _set_se_translator( trans_func );
+        SEFunc();
+    }
+    catch( SE_Exception e )
+    {
+        printf( "Caught a __try exception with SE_Exception.\n" );
+    }
+}
+void SEFunc()
+{
+    __try
+    {
+        int x, y=0;
+        x = 5 / y;
+    }
+    __finally
+    {
+        printf( "In finally\n" );
+    }
+}
+void trans_func( unsigned int u, EXCEPTION_POINTERS* pExp )
+{
+    printf( "In trans_func.\n" );
+    throw SE_Exception();
+}
+
+\endcode
+
+
+The disadvantage of the __try{}__catch(Expression){} construction is that you may forget to guard a potentially incorrect
+code that may cause an exception that won't be handled by your program. However, such an unhandled SEH exception
+can be caught using the top-level unhandled exception filter set with the \b SetUnhandledExceptionFilter() function.
+
+The exception information (CPU state before the exception occurred) is passed to the exception handler
+through \b EXCEPTION_POINTERS structure.
+
+Example:
+
+\code
+
+LONG WINAPI MyUnhandledExceptionFilter(PEXCEPTION_POINTERS pExceptionPtrs)
+{
+  // Do something, for example generate error report
+
+  //..
+
+  // Execute default exception handler next
+  return EXCEPTION_EXECUTE_HANDLER; 
+}
+
+void main()
+{ 
+  SetUnhandledExceptionFilter(MyUnhandledExceptionFilter);
+
+  // .. some unsafe code here 
+}
+
+\endcode
+
+The top-level SEH exception handler works for all threads of the caller process, so its enough to call it once
+in the beginning of your \b main() function.
+
+The top-level SEH exception handler is called in context of the thread where exception have occurred. 
+This can affect the exception handler's ability to recover from certain exceptions, such as an invalid stack.
+
+If your exception handler function is located inside of a DLL, be careful when using the \b SetUnhandledExceptionFilter()
+function. If your DLL is unloaded at the moment of crash, the behavior may be unpredictable.
+
+\section vectored_exc Vectored Exception Handling
+
+Vectored exception handling (VEH) is an extension to structured exception handling. 
+It was introduced in Windows XP.
+
+To add a vectored exception handler, you can use the \b AddVectoredExceptionHandler() function. 
+The disadvantage is that VEH is available in WinXP and later, so the presence of
+\b AddVectoredExceptionHandler() function should be checked at run-time.
+
+To remove the previously installed handler, use the \b RemoveVectoredExceptionHandler()  function.
+
+VEH allows to watch or handle <i>all</i> exceptions for the application. To preserve backward compatibility, 
+when a SEH exception occurs in some part of the program, the system calls installed VEH handlers in turn, 
+after that it searches for the usual SEH handlers.
+
+An advantage of VEH is an ability to chain exception handlers, so if somebody
+installs vectored exception handler above yours, you still can intercept the exception.
+
+Vectored exception handling is suitable when you need to monitor _ALL_ exceptions,
+like a debugger does. But the problem is you have to decide which exception to handle and
+which to skip. In program's code, some exceptions may be intentionally guarded by
+__try{}__except(){} construction, and handling such exceptions in VEH and not passing it to
+frame-based SEH handler, you may introduce bugs into application logics.
+
+VEH is currently not used by CrashRpt. \b SetUnhandledExceptionFilter() is more suitable, because it is the top-level SEH
+handler. If nobody handles the exception, top-level SEH handler is called and you
+don't need to decide if you should skip the exception or not.
+
+\section crt_errors CRT Error Handling
+
+In addition to SEH exceptions and C++ typed exceptions, C runtime libraries (CRT) provide their own
+error handling mechanism that should be taken into account in your program.
+
+When CRT encounters an unhandled C++ typed exception, 
+it calls \b terminate() function. To intercept 
+such calls and take an appropriate action you should set error handler using 
+\b set_terminate() function.
+
+Example:
+
+\code
+void my_terminate_handler()
+{
+  // Abnormal program termination (terminate() function was called)
+
+  // Do something here
+
+  // Finally, terminate program
+  exit(1); 
+}
+
+void main()
+{
+  set_terminate(my_terminate_handler);
+
+  terminate();
+}
+
+\endcode
+
+There is \b unexpected() function that is not used with the current implementation 
+of Visual C++ exception handling. However, consider using the \b set_unexpected() function
+to set handler for the \b unexpected() function, too.
+
+\note
+In a multi-threaded environment, unexpected and terminate functions are maintained 
+separately for each thread. Each new thread needs to install its own 
+unexpected and terminate function. Thus, each thread is in charge of its own unexpected and
+terminate handling.
+
+Use the \b _set_purecall_handler() function to handle pure virtual function calls. This function can be used
+in VC++ .NET 2003 and later. This function works for all threads of the caller process.
+
+Example (taken from MSDN):
+
+\code
+// _set_purecall_handler.cpp
+// compile with: /W1
+#include <tchar.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+class CDerived;
+class CBase
+{
+public:
+   CBase(CDerived *derived): m_pDerived(derived) {};
+   ~CBase();
+   virtual void function(void) = 0;
+
+   CDerived * m_pDerived;
+};
+
+class CDerived : public CBase
+{
+public:
+   CDerived() : CBase(this) {};   // C4355
+   virtual void function(void) {};
+};
+
+CBase::~CBase()
+{
+   m_pDerived -> function();
+}
+
+void myPurecallHandler(void)
+{
+   printf("In _purecall_handler.");
+   exit(0);
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+   _set_purecall_handler(myPurecallHandler);
+   CDerived myDerived;
+}
+\endcode
+
+Use the \b _set_new_handler() function to handle memory allocation faults. This function can be used
+in VC++ .NET 2003 and later. This function works for all threads of the caller process. Consider also
+using the \b _set_new_mode() function to define error behaviour for the \b malloc() function. 
+
+Example (taken from MSDN):
+
+\code
+#include <new.h>
+int handle_program_memory_depletion( size_t )
+{
+   // Your code
+}
+int main( void )
+{
+   _set_new_handler( handle_program_memory_depletion );
+   int *pi = new int[BIG_NUMBER];
+}
+\endcode
+
+In Visual C++ .NET 2003, you can use \b _set_security_error_handler() function to handle buffer overrun errors. This
+function is declared deprecated and is removed from CRT in later versions of VC++. 
+
+Use the \b _set_invalid_parameter_handler() function to handle situations when CRT detects an invalid argument in
+a system function call. This function can be used
+in VC++ 2005 and later. This function works for all threads of the caller process.
+
+Example (taken from MSDN):
+
+\code
+// crt_set_invalid_parameter_handler.c
+// compile with: /Zi /MTd
+#include <stdio.h>
+#include <stdlib.h>
+#include <crtdbg.h>  // For _CrtSetReportMode
+
+void myInvalidParameterHandler(const wchar_t* expression,
+   const wchar_t* function, 
+   const wchar_t* file, 
+   unsigned int line, 
+   uintptr_t pReserved)
+{
+   wprintf(L"Invalid parameter detected in function %s."
+            L" File: %s Line: %d\n", function, file, line);
+   wprintf(L"Expression: %s\n", expression);
+}
+
+
+int main( )
+{
+   char* formatString;
+
+   _invalid_parameter_handler oldHandler, newHandler;
+   newHandler = myInvalidParameterHandler;
+   oldHandler = _set_invalid_parameter_handler(newHandler);
+
+   // Disable the message box for assertions.
+   _CrtSetReportMode(_CRT_ASSERT, 0);
+
+   // Call printf_s with invalid parameters.
+
+   formatString = NULL;
+   printf(formatString);
+}
+\endcode
+
+\section cpp_signals C++ Signal Handling
+
+C++ provides program interruption mechanism called signals. You can handle signals with the \b signal()
+function. 
+
+In Visual C++, there are 6 types of signals: 
+
+ - \c SIGABRT Abnormal termination
+ - \c SIGFPE  Floating-point error
+ - \c SIGILL  Illegal instruction
+ - \c SIGINT  CTRL+C signal
+ - \c SIGSEGV Illegal storage access
+ - \c SIGTERM Termination request
+
+MSDN says that the \c SIGILL, \c SIGSEGV, and \c SIGTERM signals are not generated under Windows NT and 
+included for ANSI compatiblity. However, if you set the SIGSEGV signal handler in the main thread, it is called by CRT 
+instead of SEH exception handler set with \b SetUnhandledExceptionFilter() function and the global
+variable \b _pxcptinfoptrs contains a pointer to the exception information. In other threads the exception filter set 
+with \b SetUnhandledExceptionFilter() function is called instead of SIGSEGV handler.
+
+The \b _pxcptinfoptrs can be also used in the SIGFPE handler. In all other signal handlers it seems to be NULL.
+
+The SIGFPE signal handler is called by CRT when a floating point error occurs, such as division by zero. 
+However, by default floating point exceptions are not generated, instead NaN or infinity numbers are generated 
+as the result of a floating point operation. Use the \b _controlfp_s() function to enable the floating point
+exception generation.
+
+You can generate all 6 signals manually using \b raise() function. 
+
+Example:
+
+\code
+
+void sigabrt_handler(int)
+{
+  // Caught SIGABRT C++ signal
+
+  // Terminate program
+  exit(1);
+}
+
+void main()
+{
+  signal(SIGABRT, sigabrt_handler);
+     
+  // Cause abort
+  abort();       
+}                
+
+\endcode
+
+\note
+Although it is not well documented in MSDN, it seems that you should install SIGFPE, SIGILL and SIGSEGV 
+signal handlers for each new thread in your program. The SIGABRT, SIGINT and SIGTERM signal handlers
+seems to work for all threads of the caller process, so you should install them once in your \b main()
+function.
+
+\section getting_exception_context Retrieving Exception Information
+
+When an exception occurs you typically want to get the CPU state to determine the place in your code that
+caused the problem. You use the information to debug the problem. 
+The way you retrieve the exception information differs
+depending on the exception handler you use.
+
+In the SEH exception handler set with the \b SetUnhandledExceptionFilter() function, 
+the exception information is retrieved from \b EXCEPTION_POINTERS structure passed as 
+function parameter.
+
+In __try{}__catch(Expression){} construction you retrieve exception information using \b GetExceptionInformation()
+intrinsic function and pass it to the SEH exception filter function as parameter.
+
+In the SIGFPE and SIGSEGV signal handlers you can retrieve the exception information from the \b _pxcptinfoptrs
+global CRT variable that is declared in <signal.h>. This variable is not documented well in MSDN.
+
+In other signal handlers and in CRT error handlers you have no ability to easily extract the exception information.
+I found a workaround used in CRT code (see CRT 8.0 source files, invarg.c, line 104).
+
+The following code shows how to get current CPU state used as exception information.
+
+\code
+
+#if _MSC_VER>=1300
+#include <rtcapi.h>
+#endif
+
+#ifndef _AddressOfReturnAddress
+
+// Taken from: http://msdn.microsoft.com/en-us/library/s975zw7k(VS.71).aspx
+#ifdef __cplusplus
+#define EXTERNC extern "C"
+#else
+#define EXTERNC
+#endif
+
+// _ReturnAddress and _AddressOfReturnAddress should be prototyped before use 
+EXTERNC void * _AddressOfReturnAddress(void);
+EXTERNC void * _ReturnAddress(void);
+
+#endif 
+
+// The following function retrieves exception info
+
+void GetExceptionPointers(DWORD dwExceptionCode, 
+  EXCEPTION_POINTERS** ppExceptionPointers)
+{
+  // The following code was taken from VC++ 8.0 CRT (invarg.c: line 104)
+  
+  EXCEPTION_RECORD ExceptionRecord;
+  CONTEXT ContextRecord;
+  memset(&ContextRecord, 0, sizeof(CONTEXT));
+  
+#ifdef _X86_
+
+  __asm {
+      mov dword ptr [ContextRecord.Eax], eax
+      mov dword ptr [ContextRecord.Ecx], ecx
+      mov dword ptr [ContextRecord.Edx], edx
+      mov dword ptr [ContextRecord.Ebx], ebx
+      mov dword ptr [ContextRecord.Esi], esi
+      mov dword ptr [ContextRecord.Edi], edi
+      mov word ptr [ContextRecord.SegSs], ss
+      mov word ptr [ContextRecord.SegCs], cs
+      mov word ptr [ContextRecord.SegDs], ds
+      mov word ptr [ContextRecord.SegEs], es
+      mov word ptr [ContextRecord.SegFs], fs
+      mov word ptr [ContextRecord.SegGs], gs
+      pushfd
+      pop [ContextRecord.EFlags]
+  }
+
+  ContextRecord.ContextFlags = CONTEXT_CONTROL;
+#pragma warning(push)
+#pragma warning(disable:4311)
+  ContextRecord.Eip = (ULONG)_ReturnAddress();
+  ContextRecord.Esp = (ULONG)_AddressOfReturnAddress();
+#pragma warning(pop)
+  ContextRecord.Ebp = *((ULONG *)_AddressOfReturnAddress()-1);
+
+
+#elif defined (_IA64_) || defined (_AMD64_)
+
+  /* Need to fill up the Context in IA64 and AMD64. */
+  RtlCaptureContext(&ContextRecord);
+
+#else  /* defined (_IA64_) || defined (_AMD64_) */
+
+  ZeroMemory(&ContextRecord, sizeof(ContextRecord));
+
+#endif  /* defined (_IA64_) || defined (_AMD64_) */
+
+  ZeroMemory(&ExceptionRecord, sizeof(EXCEPTION_RECORD));
+
+  ExceptionRecord.ExceptionCode = dwExceptionCode;
+  ExceptionRecord.ExceptionAddress = _ReturnAddress();
+
+  ///
+  
+  EXCEPTION_RECORD* pExceptionRecord = new EXCEPTION_RECORD;
+  memcpy(pExceptionRecord, &ExceptionRecord, sizeof(EXCEPTION_RECORD));
+  CONTEXT* pContextRecord = new CONTEXT;
+  memcpy(pContextRecord, &ContextRecord, sizeof(CONTEXT));
+
+  *ppExceptionPointers = new EXCEPTION_POINTERS;
+  (*ppExceptionPointers)->ExceptionRecord = pExceptionRecord;
+  (*ppExceptionPointers)->ContextRecord = pContextRecord;  
+}
+\endcode
+
+\section cxx_compiler_flags Visual C++ Compiler Flags
+
+There are several Visual C++ compiler switches that are related to exception handling. You can find
+the switches if open project Properties->Configuration Properties->C/C++->Code Generation.
+
+<b>Exception Handling Model</b>
+
+You set an exception handling model for your Visual C++ compiler with \b /EHs (or \b EHsc) to specify  
+synchronous exception handling model or \b /EHa to specify asynchronous exception 
+handling model. See the <i>/EH (Exception Handling Model)</i> in the Reference section below
+for more information.
+
+<b>Floating Point Exceptions</b>
+
+You enable floating point exceptions using <b>/fp:except</b> compiler flag. For more information, see the <i>
+/fp (Specify Floating Point Behavior)</i> in the Reference section below.
+
+<b>Buffer Security Checks</b>
+
+By default you have the \b /GS (Buffer Security Check) compiler flag enabled that force compiler to
+inject code that would check buffer overruns. A buffer overrun is a situation when a large block of data is
+written to a small buffer. When a buffer overrun is detected, CRT calls internal security 
+handler that invokes Watson directly. For more information, see the <i> 
+/GS (Buffer Security Check)</i> in the Reference section below. 
+
+\note 
+
+In Visual C++ .NET (CRT 7.1) you can use \b _set_security_error_handler function that CRT calls when
+buffer overrun is detected. However, this function is deprecated in the later versions of CRT. 
+
+Since CRT 8.0 you can't intercept security errors in your code. When buffer overrun is detected, 
+CRT invokes Watson directly instead of calling unhandled exception 
+filter. This is done because of security reasons and Microsoft doesn't plan to change this behavior.
+
+For additional info please see these links:
+- https://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=101337
+- http://blog.kalmbachnet.de/?postid=75 
+
+\section crt_version_and_dll Exception Handling and CRT Linkage
+
+Each module (EXE, DLL) in your application is linked to CRT (C run-time libraries). 
+You may link CRT as multi-threaded static library or as multi-threaded dynamic link library. 
+When you set CRT error handlers, such as terminate handler, unexpected handler, 
+pure call handler, invalid parameter handler, new operator error handler or a signal handler, they will work for 
+the CRT the caller module is linked to and won't intercept exceptions 
+in different CRT modules (if exist), because each CRT module has its own internal state. 
+
+Several project modules may share single CRT DLL. This reduces to minimum the overall size 
+of linked CRT code. And all exceptions within that CRT DLL can be handled 
+at once. That's why multi-threaded CRT DLL is the recommended way of CRT linkage.
+
+If you plan to use CRT as a static link library (which is not recommended to do) and want to use some crash
+reporting functionality, you have to build the functionality as a static library with /NODEFAULTLIB linker 
+flag and then link this functionality to each EXE and DLL module of your application. You would also have to 
+install the CRT error handlers for each module of your application, while the SEH exception handler 
+would still be installed once.
+
+For additional info about C run-time libraries (CRT), see the <i>C Run-time Libraries (CRT)</i> 
+link in the Reference section below.
+
+See also:
+- \ref crtdll
+- \ref crtver
+
+\section exception_handling_reference Reference
+
+- <a href="http://msdn.microsoft.com/en-us/library/x057540h%28VS.80%29.aspx">Exception Handling in Visual C++</a>      
+- <a href="http://msdn.microsoft.com/en-us/library/ms680634%28VS.85%29.aspx">SetUnhandledExceptionFilter()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/ms680552%28VS.85%29.aspx">RaiseException()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/ms679357%28VS.85%29.aspx">GetExceptionInformation()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/ms679356%28VS.85%29.aspx">GetExceptionCode()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/t6fk7h29%28VS.71%29.aspx">set_terminate()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/h46t5b69%28VS.71%29.aspx">set_unexpected()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/5z4bw5h5%28VS.71%29.aspx">_set_se_translator()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/ms395801%28VS.71%29.aspx">_set_security_error_handler()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/t296ys27%28VS.71%29.aspx">_set_purecall_handler()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/a45x8asx%28VS.71%29.aspx">_set_new_handler()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/a9yf33zb%28VS.80%29.aspx">_set_invalid_parameter_handler()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/xdkz3x12%28VS.71%29.aspx">signal()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/dwwzkt4c%28VS.71%29.aspx">raise()</a>
+- <a href="http://msdn.microsoft.com/en-us/library/1deeycx5%28VS.80%29.aspx">/EH (Exception Handling Model)</a>
+- <a href="http://msdn.microsoft.com/en-us/library/e7s85ffb%28VS.80%29.aspx">/fp (Specify Floating-Point Behavior)</a>
+- <a href="http://msdn.microsoft.com/en-us/library/8dbf701c%28VS.80%29.aspx">/GS (Buffer Security Check)</a>
+- <a href="http://msdn.microsoft.com/en-us/library/abx4dbyh%28VS.80%29.aspx">C Run-time Libraries (CRT)</a>
+- <a href="http://msdn.microsoft.com/en-us/magazine/cc301714.aspx">Under the Hood: New Vectored Exception Handling in Windows XP</a>
+- <a href="http://msdn.microsoft.com/en-us/library/ms681420%28VS.85%29.aspx">Vectored Exception Handling</a>
+- <a href="http://msdn.microsoft.com/en-us/library/ms679274%28VS.85%29.aspx">AddVectoredExceptionHandler Function</a>
+- <a href="http://msdn.microsoft.com/en-us/library/ms680571%28VS.85%29.aspx">RemoveVectoredExceptionHandler Function</a>
+*/

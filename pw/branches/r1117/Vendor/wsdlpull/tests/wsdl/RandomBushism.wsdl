@@ -1,0 +1,41 @@
+<?xml version="1.0"?><definitions name="RandomBushism" targetNamespace="urn:RandomBushism" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:RandomBushism" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:RandomBushism">
+<complexType name="RandomBushism">
+<all>
+<element name="bushism" type="xsd:string" />
+<element name="context" type="xsd:string" />
+</all>
+</complexType>
+</schema>
+</types>
+<message name="getRandomBushismRequest" />
+<message name="getRandomBushismResponse">
+<part name="return" type="tns:RandomBushism" />
+</message>
+<portType name="RandomBushismPort">
+<operation name="getRandomBushism">
+<input message="tns:getRandomBushismRequest" />
+<output message="tns:getRandomBushismResponse" />
+</operation>
+</portType>
+
+<binding name="RandomBushismBinding" type="tns:RandomBushismPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="getRandomBushism">
+<soap:operation soapAction="urn:RandomBushism#bushism#getRandomBushism" />
+<input>
+<soap:body use="encoded" namespace="urn:RandomBushism" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:RandomBushism" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="RandomBushismService">
+<documentation />
+<port name="RandomBushismPort" binding="tns:RandomBushismBinding">
+<soap:address location="http://greg.froh.ca/fun/random_bushism/soap/index.php" />
+</port>
+</service>
+</definitions>

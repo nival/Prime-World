@@ -1,0 +1,296 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is [Open Source Virtual Machine.].
+ *
+ * The Initial Developer of the Original Code is
+ * Adobe System Incorporated.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Adobe AS3 Team
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+function main() {
+	getlocal0
+	pushscope
+	findproperty START 
+	pushstring "Instructions that start with the letter A" 
+	callpropvoid START 1
+	newfunction .function_id(runTest)
+	getlocal0
+	call 0
+	findproperty END
+	callpropvoid END 0
+	returnvoid
+}
+
+function runTest()
+{
+	getlocal0
+	pushscope
+
+	findproperty START 
+	pushstring "add" 
+	callpropvoid START 1
+
+	pushstring "String "
+	pushstring "concat"
+	add
+	findproperty PASS
+	swap
+	callpropvoid PASS 1
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "Integer add"
+	pushint 5390519 // expected
+
+	pushint 9381
+	pushint 5381138
+	add
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "uint add"
+	pushuint 0x87003232 // expected
+
+	pushuint 0x84000001
+	pushuint 0x03003231
+	add
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "double add"
+	pushdouble 999993000000000000000. // expected
+
+	pushdouble 847.2982
+	pushdouble 999993E+15
+	add
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "double plus int"
+	pushdouble 851.2982 // expected
+
+	pushdouble 847.2982
+	pushint 4
+	add
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "double plus string"
+	pushstring "4.2foo" // expected
+
+	pushdouble 4.2
+	pushstring "foo"
+	add
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty END
+	callpropvoid END 0
+
+	findproperty START 
+	pushstring "add_i" 
+	callpropvoid START 1
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "add_i ints"
+	pushint 44 // expected
+	pushint 33
+	pushint 11
+	add_i
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "add_i int/uint"
+	pushint 0x34508918 // expected
+	pushint 0x00008918
+	pushuint 0x34500000
+	add_i
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "add_i uint/int [1]"
+	pushint 0x7FFFFFFD // expected
+	pushuint 0xFFFFFFFF
+	pushint  0x7ffffffe
+	add_i
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "add_i uint/int [2]"
+	pushint 0x7FFFFFFD // expected
+	pushint -1
+	pushuint  0x7ffffffe
+	add_i
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "add_i int/double"
+	pushint 16 // expected
+	pushint 7
+	pushdouble 9.987
+	add_i
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "add_i int/string"
+	pushint 7 // expected
+	pushint 7
+	pushstring "foo"
+	add_i
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty END
+	callpropvoid END 0
+
+	findproperty START 
+	pushstring "astype" 
+	callpropvoid START 1
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "int astype int"
+	pushint 7 // expected
+	pushint 7
+	astype int
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "int astype number"
+	pushint 7 // expected
+	pushint 7
+	astype Number
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "int astype String"
+	pushnull // expected
+	pushint 7
+	astype String
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "positive int astype uint"
+	pushuint 7 // expected
+	pushint 7
+	astype uint
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "negative int astype uint"
+	pushnull // expected
+	pushint -7
+	astype uint
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "uint as uint"
+	pushuint 9837 // expected
+	pushuint 9837
+	astype uint
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "uint as Number"
+	pushuint 9837 // expected
+	pushuint 9837
+	astype uint
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "uint as int"
+	pushuint 9837 // expected
+	pushuint 9837
+	astype int
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "double astype int"
+	pushnull // expected
+	pushdouble 4.2
+	astype int
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "double astype number"
+	pushdouble 4.2 // expected
+	pushdouble 4.2
+	astype Number
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "String astype Object"
+	pushstring "haa thaar" // expected
+	pushstring "haa thaar"
+	astype Object
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "String astype String"
+	pushstring "haa thaar" // expected
+	pushstring "haa thaar"
+	astype String
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "String astype void"
+	pushnull // expected
+	pushstring "haa thaar"
+	astype void
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty END
+	callpropvoid END 0
+
+
+	findproperty START 
+	pushstring "astypelate" 
+	callpropvoid START 1
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "String astypelate String"
+	pushstring "haa thaar" // expected
+	pushstring "haa thaar"
+	findproperty String
+	getproperty String
+	astypelate
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty COMPARE_STRICTEQ
+	pushstring "String astypelate Number"
+	pushnull // expected
+	pushstring "haa thaar"
+	findproperty Number
+	getproperty Number
+	astypelate
+	callpropvoid COMPARE_STRICTEQ 3
+
+	findproperty END
+	callpropvoid END 0
+
+	returnvoid
+}

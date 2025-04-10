@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://services.aonaware.com/webservices/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://services.aonaware.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.aonaware.com/webservices/">
+      <s:element name="LetterSolutions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="anagram" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LetterSolutionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LetterSolutionsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LetterSolutionsMin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="anagram" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minLetters" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LetterSolutionsMinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LetterSolutionsMinResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LetterSolutionsSoapIn">
+    <wsdl:part name="parameters" element="tns:LetterSolutions" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsSoapOut">
+    <wsdl:part name="parameters" element="tns:LetterSolutionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsMinSoapIn">
+    <wsdl:part name="parameters" element="tns:LetterSolutionsMin" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsMinSoapOut">
+    <wsdl:part name="parameters" element="tns:LetterSolutionsMinResponse" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsHttpGetIn">
+    <wsdl:part name="anagram" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsMinHttpGetIn">
+    <wsdl:part name="anagram" type="s:string" />
+    <wsdl:part name="minLetters" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsMinHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsHttpPostIn">
+    <wsdl:part name="anagram" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsMinHttpPostIn">
+    <wsdl:part name="anagram" type="s:string" />
+    <wsdl:part name="minLetters" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LetterSolutionsMinHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:portType name="CountCheatServiceSoap">
+    <wsdl:operation name="LetterSolutions">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Returns solutions to the Countdown word game</documentation>
+      <wsdl:input message="tns:LetterSolutionsSoapIn" />
+      <wsdl:output message="tns:LetterSolutionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LetterSolutionsMin">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Returns solutions to the Countdown word game with a minimum letter count</documentation>
+      <wsdl:input message="tns:LetterSolutionsMinSoapIn" />
+      <wsdl:output message="tns:LetterSolutionsMinSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CountCheatServiceHttpGet">
+    <wsdl:operation name="LetterSolutions">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Returns solutions to the Countdown word game</documentation>
+      <wsdl:input message="tns:LetterSolutionsHttpGetIn" />
+      <wsdl:output message="tns:LetterSolutionsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LetterSolutionsMin">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Returns solutions to the Countdown word game with a minimum letter count</documentation>
+      <wsdl:input message="tns:LetterSolutionsMinHttpGetIn" />
+      <wsdl:output message="tns:LetterSolutionsMinHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CountCheatServiceHttpPost">
+    <wsdl:operation name="LetterSolutions">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Returns solutions to the Countdown word game</documentation>
+      <wsdl:input message="tns:LetterSolutionsHttpPostIn" />
+      <wsdl:output message="tns:LetterSolutionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LetterSolutionsMin">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Returns solutions to the Countdown word game with a minimum letter count</documentation>
+      <wsdl:input message="tns:LetterSolutionsMinHttpPostIn" />
+      <wsdl:output message="tns:LetterSolutionsMinHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountCheatServiceSoap" type="tns:CountCheatServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="LetterSolutions">
+      <soap:operation soapAction="http://services.aonaware.com/webservices/LetterSolutions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LetterSolutionsMin">
+      <soap:operation soapAction="http://services.aonaware.com/webservices/LetterSolutionsMin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CountCheatServiceHttpGet" type="tns:CountCheatServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="LetterSolutions">
+      <http:operation location="/LetterSolutions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LetterSolutionsMin">
+      <http:operation location="/LetterSolutionsMin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CountCheatServiceHttpPost" type="tns:CountCheatServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="LetterSolutions">
+      <http:operation location="/LetterSolutions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LetterSolutionsMin">
+      <http:operation location="/LetterSolutionsMin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountCheatService">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">CountCheat Web Service - Returns solutions to Countdown problems</documentation>
+    <wsdl:port name="CountCheatServiceSoap" binding="tns:CountCheatServiceSoap">
+      <soap:address location="http://services.aonaware.com/CountCheatService/CountCheatService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CountCheatServiceHttpGet" binding="tns:CountCheatServiceHttpGet">
+      <http:address location="http://services.aonaware.com/CountCheatService/CountCheatService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CountCheatServiceHttpPost" binding="tns:CountCheatServiceHttpPost">
+      <http:address location="http://services.aonaware.com/CountCheatService/CountCheatService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,35 @@
+/*!
+
+\page automating_crash_report_processing Automating Crash Report Processing
+
+The error report processing means opening a crash report, reading crash description 
+XML, opening crash minidump file, retrieving important information about the 
+exception, and finally presenting the information to the developer in text form.
+
+Automating the error report processing becomes the critical task when you receive a 
+lot of error reports after software release. Among hundreds of reports there may be 
+only several different problems, while others just duplicate the information about 
+those problems. Opening so many reports manually in Visual Studio or in WinDbg and 
+analyzing their content may become boring and take a lot of time.
+
+\image html reports_path.png 
+
+The easiest way to process error reports automatically is to install the 
+CrashFix web application. CrashFix server allows to easily receive, store, 
+organize and analyze crash reports sent by your C++ application. For additional information,
+please see the \subpage crashfix_server page.
+
+An alternative way is to use a command-line tool named <i>crprober.exe</i> provided  
+by CrashRpt. The tool is designed for processing error report 
+files and outputting the results to a text file or to terminal.
+For additional information, please refer to the \subpage crprober_tool page.
+
+The <i>crprober.exe</i> tool uses <i>CrashRptProbe API</i> internally. The API 
+is designed to provide programming access to crash report file contents and
+can be useful if you want to write your own crash report processing application.
+For additional information, please refer to the \subpage using_crashrptprobe_api and
+\subpage crashrptprobe_api_examples pages.
+
+<i>Further reading:</i> \ref crashfix_server.
+    
+*/

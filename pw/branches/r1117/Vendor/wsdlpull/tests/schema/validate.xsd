@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdlpull/validate" xmlns:imp1="http://wsdlpull/validate" tns="http://wsdlpull/validate">
+
+<xsd:complexType name="Person">
+   <xsd:sequence>
+     <xsd:element name="sex" type="xsd:string" nillable="true"/>
+     <xsd:element name="fname" type="xsd:string"/>
+     <xsd:element name="lname" type="xsd:string"/>
+     <xsd:element name="age" type="xsd:int" nillable="true"/>
+     <xsd:element name="DL" type="xsd:string"/>
+   </xsd:sequence>
+ </xsd:complexType>
+ 
+<xsd:complexType name ="SuperPerson">
+   <xsd:complexContent>
+     <xsd:extension base="Person">
+   <xsd:sequence>
+ 
+     <xsd:element name="superpower" type="xsd:string"/>
+     <xsd:element name="nemesis" type="xsd:string"/>
+     <xsd:element name="weakness" type="xsd:string"/>
+
+   </xsd:sequence>
+   </xsd:extension>
+   </xsd:complexContent>
+</xsd:complexType>
+
+ <xsd:element name="person" type="Person"/>
+
+<xsd:complexType name="GodPerson">
+   <xsd:sequence>
+			<xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+   </xsd:sequence>
+</xsd:complexType>
+
+</xsd:schema>

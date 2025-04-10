@@ -1,0 +1,30 @@
+includePaths = [ 
+    '.', 
+]
+
+sources = [
+    'PsaApi.h', 
+    'PscApi.h', 
+    'PsConfig.h',
+    'PsConstants.h',
+] 
+
+if configuration == 'debug':
+	libDependencies = [
+		'protect.lib',
+	]
+if configuration == 'release':
+	libDependencies = [
+		'protect.lib',
+	]
+
+
+libPaths = [
+    '.',
+]
+
+builders = [ 
+    InstallBuilder( 'protect.dll' ), 
+    InstallBuilder( 'protect.exe' ), 
+    InstallBuilder( 'protect.x86' ), 
+]

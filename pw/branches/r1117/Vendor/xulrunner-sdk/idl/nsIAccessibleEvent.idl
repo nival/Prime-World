@@ -1,0 +1,585 @@
+/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*-
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is mozilla.org code.
+ *
+ * The Initial Developer of the Original Code is
+ * Netscape Communications Corporation.
+ * Portions created by the Initial Developer are Copyright (C) 2003
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributors:
+ *   Aaron Leventhal <aleventh@us.ibm.com> (original author)
+ *   Alexander Surkov <surkov.alexander@gmail.com>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+#include "nsISupports.idl"
+
+interface nsIAccessible;
+interface nsIAccessibleDocument;
+interface nsIDOMNode;
+
+%{C++
+#define NS_ACCESSIBLE_EVENT_TOPIC "accessible-event"
+%}
+
+/**
+ * An interface for accessibility events listened to
+ * by in-process accessibility clients, which can be used
+ * to find out how to get accessibility and DOM interfaces for
+ * the event and its target. To listen to in-process accessibility invents,
+ * make your object an nsIObserver, and listen for accessible-event by 
+ * using code something like this:
+ *   nsCOMPtr<nsIObserverService> observerService = 
+ *     do_GetService("@mozilla.org/observer-service;1", &rv);
+ *   if (NS_SUCCEEDED(rv)) 
+ *     rv = observerService->AddObserver(this, "accessible-event", PR_TRUE);
+ *
+ * @status UNDER_REVIEW
+ */
+[scriptable, uuid(ba448f0e-a761-48c8-a0f5-1f25e23d4fe4)]
+interface nsIAccessibleEvent : nsISupports
+{
+  /**
+   * An object has been created.
+   */
+  const unsigned long EVENT_DOM_CREATE = 0x0001;
+
+  /**
+   * An object has been destroyed.
+   */
+  const unsigned long EVENT_DOM_DESTROY = 0x0002;
+
+  /**
+   * An object's properties or content have changed significantly so that the
+   * type of object has really changed, and therefore the accessible should be 
+   * destroyed or recreated.
+   */
+  const unsigned long EVENT_DOM_SIGNIFICANT_CHANGE = 0x0003;
+
+  /**
+   * A hidden object is shown -- this is a layout occurance and is thus asynchronous
+   */
+  const unsigned long EVENT_ASYNCH_SHOW = 0x0004;
+
+  /**
+   * An object is hidden -- this is a layout occurance and is thus asynchronous
+   */
+  const unsigned long EVENT_ASYNCH_HIDE = 0x0005;
+
+  /**
+   * An object had a significant layout change which could affect
+   * the type of accessible object -- this is a layout occurance and is thus asynchronous
+   */
+  const unsigned long EVENT_ASYNCH_SIGNIFICANT_CHANGE = 0x0006;
+
+  /**
+   * The active descendant of a component has changed. The active descendant
+   * is used in objects with transient children.
+   */
+  const unsigned long EVENT_ACTIVE_DECENDENT_CHANGED = 0x0007;
+
+  /**
+   * An object has received the keyboard focus.
+   */
+  const unsigned long EVENT_FOCUS = 0x0008;
+
+  /**
+   * An object's state has changed.
+   */
+  const unsigned long EVENT_STATE_CHANGE = 0x0009;
+
+  /**
+   * An object has changed location, shape, or size.
+   */
+  const unsigned long EVENT_LOCATION_CHANGE = 0x000A;
+
+  /**
+   * An object's Name property has changed.
+   */
+  const unsigned long EVENT_NAME_CHANGE = 0x000B;
+
+  /**
+   * An object's Description property has changed.
+   */
+  const unsigned long EVENT_DESCRIPTION_CHANGE = 0x000C;
+
+  /**
+   * An object's Value property has changed.
+   */
+  const unsigned long EVENT_VALUE_CHANGE = 0x000D;
+
+  /**
+   * An object's help has changed.
+   */
+  const unsigned long EVENT_HELP_CHANGE = 0x000E;
+
+  /**
+   * An object's default action has changed.
+   */
+  const unsigned long EVENT_DEFACTION_CHANGE = 0x000F;
+
+  /**
+   * An object's action has changed.
+   */
+  const unsigned long EVENT_ACTION_CHANGE = 0x0010;
+
+  /**
+   * An object's keyboard shortcut has changed.
+   */
+  const unsigned long EVENT_ACCELERATOR_CHANGE = 0x0011;
+
+  /**
+   * The selection within a container object has changed.
+   */
+  const unsigned long EVENT_SELECTION = 0x0012;
+
+  /**
+   * An item within a container object has been added to the selection.
+   */
+  const unsigned long EVENT_SELECTION_ADD = 0x0013;
+
+  /**
+   * An item within a container object has been removed from the selection.
+   */
+  const unsigned long EVENT_SELECTION_REMOVE = 0x0014;
+
+  /**
+   * Numerous selection changes have occurred within a container object.
+   */
+  const unsigned long EVENT_SELECTION_WITHIN = 0x0015;
+
+  /**
+   * An alert has been generated. Server applications send this event when a
+   * user needs to know that a user interface element has changed.
+   */
+  const unsigned long EVENT_ALERT = 0x0016;
+
+  /**
+   * The foreground window has changed.
+   */
+  const unsigned long EVENT_FOREGROUND = 0x0017;
+
+  /**
+   * A menu item on the menu bar has been selected.
+   */
+  const unsigned long EVENT_MENU_START = 0x0018;
+
+  /**
+   * A menu from the menu bar has been closed.
+   */
+  const unsigned long EVENT_MENU_END = 0x0019;
+
+  /**
+   * A pop-up menu has been displayed.
+   */
+  const unsigned long EVENT_MENUPOPUP_START = 0x001A;
+
+  /**
+   * A pop-up menu has been closed.
+   */
+  const unsigned long EVENT_MENUPOPUP_END = 0x001B;
+
+  /**
+   * A window has received mouse capture.
+   */
+  const unsigned long EVENT_CAPTURE_START = 0x001C;
+
+  /**
+   * A window has lost mouse capture.
+   */
+  const unsigned long EVENT_CAPTURE_END = 0x001D;
+
+  /**
+   * A window is being moved or resized.
+   */
+  const unsigned long EVENT_MOVESIZE_START = 0x001E;
+
+  /**
+  * The movement or resizing of a window has finished
+  */
+  const unsigned long EVENT_MOVESIZE_END = 0x001F;
+
+  /**
+   * A window has entered context-sensitive Help mode
+   */
+  const unsigned long EVENT_CONTEXTHELP_START = 0x0020;
+
+  /**
+   * A window has exited context-sensitive Help mode
+   */
+  const unsigned long EVENT_CONTEXTHELP_END = 0x0021;
+
+  /**
+   * An application is about to enter drag-and-drop mode
+   */
+  const unsigned long EVENT_DRAGDROP_START = 0x0022;
+
+  /**
+   * An application is about to exit drag-and-drop mode
+   */
+  const unsigned long EVENT_DRAGDROP_END = 0x0023;
+  
+  /**
+   * A dialog box has been displayed
+   */
+  const unsigned long EVENT_DIALOG_START = 0x0024;
+
+  /**
+   * A dialog box has been closed
+   */
+  const unsigned long EVENT_DIALOG_END = 0x0025;
+
+  /**
+   * Scrolling has started on a scroll bar
+   */
+  const unsigned long EVENT_SCROLLING_START = 0x0026;
+
+  /**
+   * Scrolling has ended on a scroll bar
+   */
+  const unsigned long EVENT_SCROLLING_END = 0x0027;
+
+  /**
+   * A window object is about to be minimized or maximized
+   */
+  const unsigned long EVENT_MINIMIZE_START = 0x0028;
+
+  /**
+   * A window object has been minimized or maximized
+   */
+  const unsigned long EVENT_MINIMIZE_END = 0x0029;
+
+  /**
+   * XXX:
+   */
+  const unsigned long EVENT_DOCUMENT_LOAD_START = 0x002A;
+
+  /**
+   * The loading of the document has completed.
+   */
+  const unsigned long EVENT_DOCUMENT_LOAD_COMPLETE = 0x002B;
+
+  /**
+   * The document contents are being reloaded.
+   */
+  const unsigned long EVENT_DOCUMENT_RELOAD = 0x002C;
+
+  /**
+   * The loading of the document was interrupted.
+   */
+  const unsigned long EVENT_DOCUMENT_LOAD_STOPPED = 0x002D;
+
+  /**
+   * The document wide attributes of the document object have changed.
+   */
+  const unsigned long EVENT_DOCUMENT_ATTRIBUTES_CHANGED = 0x002E;
+
+  /**
+   * The contents of the document have changed.
+   */
+  const unsigned long EVENT_DOCUMENT_CONTENT_CHANGED = 0x002F;
+
+  const unsigned long EVENT_PROPERTY_CHANGED = 0x0030;
+  const unsigned long EVENT_SELECTION_CHANGED = 0x0031;
+
+  /**
+   * A text object's attributes changed.
+   * Also see EVENT_OBJECT_ATTRIBUTE_CHANGED.
+   */
+  const unsigned long EVENT_TEXT_ATTRIBUTE_CHANGED = 0x0032;
+
+  /**
+   * The caret has moved to a new position.
+   */
+  const unsigned long EVENT_TEXT_CARET_MOVED = 0x0033;
+
+  /**
+   * This event indicates general text changes, i.e. changes to text that is
+   * exposed through the IAccessibleText and IAccessibleEditableText interfaces.
+   */
+  const unsigned long EVENT_TEXT_CHANGED = 0x0034;
+
+  /**
+   * Text was inserted.
+   */
+  const unsigned long EVENT_TEXT_INSERTED = 0x0035;
+
+  /**
+   * Text was removed.
+   */
+  const unsigned long EVENT_TEXT_REMOVED = 0x0036;
+
+  /**
+   * Text was updated.
+   */
+  const unsigned long EVENT_TEXT_UPDATED = 0x0037;
+
+  /**
+   * The text selection changed.
+   */
+  const unsigned long EVENT_TEXT_SELECTION_CHANGED = 0x0038;
+
+  /**
+   * A visibile data event indicates the change of the visual appearance
+   * of an accessible object.  This includes for example most of the
+   * attributes available via the IAccessibleComponent interface.
+   */
+  const unsigned long EVENT_VISIBLE_DATA_CHANGED = 0x0039;
+
+  /**
+   * The caret moved from one column to the next.
+   */
+  const unsigned long EVENT_TEXT_COLUMN_CHANGED = 0x003A;
+
+  /**
+   * The caret moved from one section to the next.
+   */
+  const unsigned long EVENT_SECTION_CHANGED = 0x003B;
+
+  /**
+   * A table caption changed.
+   */
+  const unsigned long EVENT_TABLE_CAPTION_CHANGED = 0x003C;
+
+  /**
+   * A table's data changed.
+   */
+  const unsigned long EVENT_TABLE_MODEL_CHANGED = 0x003D;
+
+  /**
+   * A table's summary changed.
+   */
+  const unsigned long EVENT_TABLE_SUMMARY_CHANGED = 0x003E;
+
+  /**
+   * A table's row description changed.
+   */
+  const unsigned long EVENT_TABLE_ROW_DESCRIPTION_CHANGED = 0x003F;
+
+  /**
+   * A table's row header changed.
+   */
+  const unsigned long EVENT_TABLE_ROW_HEADER_CHANGED = 0x0040;
+
+  const unsigned long EVENT_TABLE_ROW_INSERT = 0x0041;
+  const unsigned long EVENT_TABLE_ROW_DELETE = 0x0042;
+  const unsigned long EVENT_TABLE_ROW_REORDER = 0x0043;
+
+  /**
+   * A table's column description changed.
+   */
+  const unsigned long EVENT_TABLE_COLUMN_DESCRIPTION_CHANGED = 0x0044;
+
+  /**
+   * A table's column header changed.
+   */
+  const unsigned long EVENT_TABLE_COLUMN_HEADER_CHANGED = 0x0045;
+
+  const unsigned long EVENT_TABLE_COLUMN_INSERT = 0x0046;
+  const unsigned long EVENT_TABLE_COLUMN_DELETE = 0x0047;
+  const unsigned long EVENT_TABLE_COLUMN_REORDER = 0x0048;
+
+  const unsigned long EVENT_WINDOW_ACTIVATE = 0x0049;
+  const unsigned long EVENT_WINDOW_CREATE = 0x004A;
+  const unsigned long EVENT_WINDOW_DEACTIVATE = 0x004B;
+  const unsigned long EVENT_WINDOW_DESTROY = 0x004C;
+  const unsigned long EVENT_WINDOW_MAXIMIZE = 0x004D;
+  const unsigned long EVENT_WINDOW_MINIMIZE = 0x004E;
+  const unsigned long EVENT_WINDOW_RESIZE = 0x004F;
+  const unsigned long EVENT_WINDOW_RESTORE = 0x0050;
+
+  /**
+   * The ending index of this link within the containing string has changed.
+   */
+  const unsigned long EVENT_HYPERLINK_END_INDEX_CHANGED = 0x0051;
+
+  /**
+   * The number of anchors assoicated with this hyperlink object has changed.
+   */
+  const unsigned long EVENT_HYPERLINK_NUMBER_OF_ANCHORS_CHANGED = 0x0052;
+
+  /**
+   * The hyperlink selected state changed from selected to unselected or
+   * from unselected to selected.
+   */
+  const unsigned long EVENT_HYPERLINK_SELECTED_LINK_CHANGED = 0x0053;
+
+  /**
+   * One of the links associated with the hypertext object has been activated.
+   */
+  const unsigned long EVENT_HYPERTEXT_LINK_ACTIVATED = 0x0054;
+
+  /**
+   * One of the links associated with the hypertext object has been selected.
+   */
+  const unsigned long EVENT_HYPERTEXT_LINK_SELECTED = 0x0055;
+
+  /**
+   * The starting index of this link within the containing string has changed.
+   */
+  const unsigned long EVENT_HYPERLINK_START_INDEX_CHANGED = 0x0056;
+
+  /**
+   * Focus has changed from one hypertext object to another, or focus moved
+   * from a non-hypertext object to a hypertext object, or focus moved from a
+   * hypertext object to a non-hypertext object.
+   */
+  const unsigned long EVENT_HYPERTEXT_CHANGED = 0x0057;
+
+  /**
+   * The number of hyperlinks associated with a hypertext object changed.
+   */
+  const unsigned long EVENT_HYPERTEXT_NLINKS_CHANGED = 0x0058;
+
+  /**
+   * An object's attributes changed. Also see EVENT_TEXT_ATTRIBUTE_CHANGED.
+   */
+  const unsigned long EVENT_OBJECT_ATTRIBUTE_CHANGED = 0x0059;
+
+  /**
+   * A slide changed in a presentation document or a page boundary was
+   * crossed in a word processing document.
+   */
+  const unsigned long EVENT_PAGE_CHANGED = 0x005A;
+
+  /**
+   * Used internally in Gecko.
+   */
+  const unsigned long EVENT_INTERNAL_LOAD = 0x005B;
+
+  /**
+   * An object's children have changed
+   */
+  const unsigned long EVENT_REORDER = 0x005C;
+
+  /**
+   * Help make sure event map does not get out-of-line.
+   */
+  const unsigned long EVENT_LAST_ENTRY = 0x005D;
+
+  /**
+   * The type of event, based on the enumerated event values
+   * defined in this interface.
+   */
+  readonly attribute unsigned long eventType;
+  
+  /**
+   * The nsIAccessible associated with the event.
+   * May return null if no accessible is available
+   */
+  readonly attribute nsIAccessible accessible;
+  
+  /**
+   * The nsIAccessibleDocument that the event target nsIAccessible
+   * resides in. This can be used to get the DOM window,
+   * the DOM document and the window handler, among other things.
+   */
+  readonly attribute nsIAccessibleDocument accessibleDocument;
+
+  /**
+   * The nsIDOMNode associated with the event
+   * May return null if accessible for event has been shut down
+   */
+  readonly attribute nsIDOMNode DOMNode;
+
+  /**
+   * Returns true if the event was caused by explicit user input,
+   * as opposed to purely originating from a timer or mouse movement
+   */
+  attribute boolean isFromUserInput;
+};
+
+
+[scriptable, uuid(444db51a-05fd-4576-8a64-32dbb2a83884)]
+interface nsIAccessibleStateChangeEvent : nsIAccessibleEvent
+{
+  /**
+   * Returns the state of accessible (see constants declared
+   * in nsIAccessibleStates).
+   */
+  readonly attribute unsigned long state;
+
+  /**
+   * Returns true if the state is extra state.
+   */
+  boolean isExtraState();
+
+  /**
+   * Returns true if the state is turned on.
+   */
+  boolean isEnabled();
+};
+
+
+[scriptable, uuid(50a1e151-8e5f-4bcc-aaaf-a4bed1190e93)]
+interface nsIAccessibleTextChangeEvent : nsIAccessibleEvent
+{
+  /**
+   * Returns offset of changed text in accessible.
+   */
+  readonly attribute long start;
+
+  /**
+   * Returns length of changed text.
+   */
+  readonly attribute unsigned long length;
+
+  /**
+   * Returns true if text was inserted, otherwise false.
+   */
+  boolean isInserted();
+
+  /**
+   * The inserted or removed text
+   */
+  readonly attribute DOMString modifiedText;
+};
+
+[scriptable, uuid(b9076dce-4cd3-4e3d-a7f6-7f33a7f40c31)]
+interface nsIAccessibleCaretMoveEvent: nsIAccessibleEvent
+{
+  /**
+   * Return caret offset.
+   */
+  readonly attribute long caretOffset;
+};
+
+[scriptable, uuid(a9485c7b-5861-4695-8441-fab0235b205d)]
+interface nsIAccessibleTableChangeEvent: nsIAccessibleEvent
+{
+  /**
+   * Return the row or column index.
+   */
+  readonly attribute long rowOrColIndex;
+
+  /**
+   * Return the number of rows or cols
+   */
+  readonly attribute long numRowsOrCols;
+};
+

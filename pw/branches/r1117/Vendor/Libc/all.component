@@ -1,0 +1,20 @@
+if platform == 'win32':
+  defines = ["WIN32"]
+else:
+  defines = []
+
+if platform == 'win32':
+  compilerKeys = [ '/Zi', '/MP' ]
+  globalCompilerKeys = [ '/WX', '/wd4100' ]
+  if configuration == "debug":
+    globalCompilerKeys.append( '/MDd' )
+  else:
+    globalCompilerKeys.append( '/MD' )
+else:
+  compilerKeys = []
+  globalCompilerKeys = [ '-march=native' ]
+
+if configuration == "debug":
+  defines.extend( [ "_DEBUG" ] )
+if configuration == "release":
+  defines.extend( [ "NDEBUG" ] )

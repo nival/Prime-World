@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Tamarin Tests</title>
+    </head>
+
+    <script language="jscript">
+        window.js1object = {}
+        window.js1object.sub = "hello tamarin!"
+    </script>
+    <script language="application/javascript;version=2">
+        // first a sanity test - can we see the jscript expando?
+        if (window.js1object.sub != "hello tamarin!")
+            throw "can't see the jscript value?"
+
+        // test that 'global' semantics are working as we expect.
+        // XXX - they are not working yet
+        if(!window.customObject)
+            window.customObject = {} // define it explicitly with 'window.' prefix.
+        window.customObject.customValue = "foo"
+        /* XXX - window prefix must be used
+        customObject.customValue = "foo" // but now reference it without the prefix.
+        */
+        if (window.customObject.customValue != "foo")
+            throw "Property values wrong after explicit get?"
+        /* XXX - window prefix must be used
+        if (window.customObject.customValue != customObject.customValue)
+            throw "Property values wrong?"
+        // check new names implicitly go to 'window'
+        if(!window.customObject2)
+            customObject2 = {} // define it without a prefix - should still to go 'window'
+        customObject2.customValue = "foo"
+        if (window.customObject2.customValue != customObject2.customValue)
+            throw "Property values wrong?"
+        ***/
+
+        // assign a function to the window
+        function func(arg1, arg2) {
+            return arg1 + arg2
+        }
+        window.func = func
+
+        window.document.write("tamarin has set the values - now let's see if jscript/vbscript can see them!<br>")
+    </script>
+    <!-- Now some jscript code that checks the values were setup correctly. -->
+    <script language="jscript">
+        if (!customObject || customObject.customValue != "foo")
+            throw "js couldn't see property?"
+        if (func('hello ', 'there') != 'hello there')
+            throw "js couldn't call the function?"
+        document.write("jscript tests of tamarin worked<br>")
+    </script>
+    <!-- now the devil's child, vbscript -->
+    <script language="vbscript">
+        sub Throw(msg)
+            Err.Description = msg
+            Err.Raise
+        end sub
+
+        ' XXX - vbscript fails with std properties - it passes DISPATCH_PROPERTYGET 
+        ' *and* DISPATCH_METHOD - so we attempt to call a property :(
+        'if customObject.customValue <> "foo" then
+        '   Throw "vbscript couldn't see property"
+        'end if
+        if func("hello ", "there") <> "hello there" then
+            Throw "vbscript couldn't call the function"
+        end if
+        document.write "vbscript tests of tamarin worked too!<br>"
+    </script>
+</html>

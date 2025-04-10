@@ -1,0 +1,164 @@
+Version Terabit2_566.2
+-------------------------                                      
+  Fixed errors:
+  missing ready signals for edge-triggered providers in 
+  TRB_POSIX_AIO_FD_Info::execute_write_list () and 
+  TRB_POSIX_AIO_FD_Info::execute_read_list () methods. 
+
+  Improvment in TRB_POSIX_Asynch_Connect_Result::start_impl ():
+  Immediate failure in connect () call is interpreted 
+  as "operation completed with errors" rather than "unable to
+  start operation". Such behavior is compatible with Windows.
+
+
+Version Terabit2_566.1
+-------------------------
+  Added support of kqueue for BSD and MacOS OS families.
+  The new provider's name is TRB_POSIX_AIO_Kqueue_Provider and
+  the corresponded proactor configuration is wrappred in class 
+  TRB_Kqueue_Proactor. To compile TRB_POSIX_AIO_Kqueue_Provider the
+  macro ACE_HAS_KQUEUE must be defined in config.h
+
+
+
+  TProactor now supports UNIX domain sockets (AF_UNIX family)
+  in addition to AF_INET/AF_INET6 families. The new internal class
+  TRB_Sock_Addr can encapsulate any ACE socket address class:
+  ACE_INET_Addr or ACE_UNIX_Addr.
+  Potentially this class can be extened to support any address family.
+  Although  this class in not exposed to the developer, he(she) can freely
+  use it.
+ 
+  Asynch_Acceptor/Asynch_Connector deals only with the base ACE_Addr class
+  and recongnize the real address family.
+
+  Class TRB_Sevrice_Handler is replaced by template class:
+
+        template <class ADDRESS> class TRB_Service_Handler_T;
+  
+  To preserve compatibility with previous TProactor and ACE
+  TRB_Service_Handler is defined as
+
+  typedef TRB_Service_Handler_T<ACE_INET_Addr> TRB_Service_Handler;
+ 
+    
+
+Version Terabit2_561.4
+-------------------------
+  SSL_Asynch_Stream: added  ERR_clear_error call before SSL_read, SSL_write
+                                                                        
+  Asynch_Read_Dgram/Asynch_Write_Dgram: restored compatibility with ACE,
+  i.e. parameters bytes_read/bytes_write do not limit the max bytes to
+  transfer.
+
+  WIN32_Asynch_IO: special processing for ERROR_HANDL_EOF, so EOF error is
+  always delivered as completion and not as start error.
+
+  POSIX_AIO_Event_Poll_Provider: ignored error EPERM
+
+  POSIX_AIO_FD_Info: file descriptor initially during open() marked as
+  ready to READ and WRITE. With above POSIX_AIO_Event_Poll_Provider change 
+  it allows faked AIO processing for regular files (hard drives,etc)
+
+  POSIX_AIO_LINUX_NAIO_Provider: improved diagnostic
+
+  F2_Test: new test only for regular files (no socket, pipes)
+  mostly designed to test LINUX NAIO (KAIO) and WIN32 , 
+  but it must work and works for any Proactor   
+
+
+Version Terabit2_561.3
+-------------------------
+  Added read_n/readv_n methods to TRB_Asynch_Read_Stream
+  and   write_n/writev_n methods to TRB_Asynch_Write_Stream.
+
+  For POSIX emulation providers : write/writev work as write_n/writev_n by default.
+  This is done for compatibility with Windows overlapped I/O.
+
+  read_n/readv_n are supported correctly only for POSIX emulation providers.
+  For POSIX native providers and for Windows read_n/readv_n  behave as read/readv. 
+
+  Thanks to Martin Scholl for that.
+    
+
+Version Terabit2_561.2
+-------------------------
+  Fixed missprint errors in POSIX_AIO_SUN_Provider and 
+  POSIX_AIO_SUN_Port_Provider.
+
+Version Terabit2_561.1
+-------------------------
+  Compiled with ACE 5.6.1, fixed minor issues
+  ACE 5.6 does not have ACE_FD_SET_TYPE (fd_set)
+  
+  TProactor:
+  Fixed Asynch_IO_Impl.cpp  - very very old bug still existing in ACE
+  and inherited from WIN32_Asynch_IO.cpp
+  in assembling iovec from chain of ACE_Message_Block's.
+  
+  Fixed SEGV in POSIX_SUN_Provider.cpp
+  Still POSIX and SUN aio  have bad scalabity and performance,
+  it is recommended  to use emulation providers:
+  POSIX_AIO_Dev_Poll_Provider and POSIX_AIO_SUN_Port_Provider
+  
+  IOTerabit:
+  AsynchChannel - improved logic of processing write queue.
+  
+
+Version Terabit2_556.8
+-------------------------
+  TProactor:
+  Minor improvements in TRB_SSL_Asynch_Stream.
+
+  IOTerabit:
+  Fixed bug in ChannelManager 
+  (potential deadlock in free_channel method)
+
+  Added SSL support as new library IOTerabit_SSL:
+  new class SslChannel
+  
+
+
+Version Terabit2_556.7
+-------------------------
+
+ TProactor:
+ Everywhere where the ACE_Message_Block is passed as a parameter of asynch.
+ operation, it is possible to use direct raw buffer (char *) or iovec. 
+
+ This is done via helper class :
+
+   class TPROACTOR_Export Buffer_Info
+   {
+   private:
+     union
+     {
+         ACE_Message_Block  *message_block_ptr_;
+         char               *buffer_;
+         iovec              *iov_;
+     };
+
+     // iov_count_ as switch
+     // > 0  : select iov_
+     //   0  : select buffer_
+     // < 0  : select message_block_ptr_
+     int    iov_count_;
+
+   public:
+
+     Buffer_Info (char *buffer = 0);
+     Buffer_Info (iovec *iov, int iovcnt);
+     Buffer_Info (ACE_Message_Block &mb);
+
+     int     get_iov_count () const;
+     char   *get_buffer (void) const;
+     iovec  *get_iov (void) const;
+     ACE_Message_Block * get_message_block_ptr() const;
+   };
+
+ Added new library IOTerabit.
+ IOTerabit resides in :
+ app/doc        description
+ app/IOTerabit  library itself
+ app/examples   IOTerabit examples
+

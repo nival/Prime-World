@@ -1,0 +1,114 @@
+/*!
+
+\page configuring_project Configuring Your Project's Build Settings
+
+\section link Include and Lib Directories
+
+At this point you should have the CrashRpt source code compiled as described in
+\ref compiling_crashrpt. 
+
+To let your Visual C++ compiler and linker know about the
+location of CrashRpt include and lib files, do the following.
+
+If you use Visual Studio 2005 or 2008, open menu <i>Tools->
+Options</i>. Then in appeared dialog, select <i>Projects and Solutions->VC++ Directories</i>.
+
+If you use Visual Studio 2010 or 2012, open the Property Manager window, multi-select 
+all projects in your solution and right click the selection. In the appeared 
+dialog, open <i>Configuration Properties->VC++ Directories</i>. 
+
+Finally,
+
+- In the 'Show directories for' combo box, select 'Include files', then add 
+  the path to <i><CRASHRPT_HOME>\\include</i> directory to the list.
+- In the 'Show directories for' combo box, select 'Library files', then add 
+  the path to <i><CRASHRPT_HOME>\\lib</i> directory to the list.
+
+Here <i><CRASHRPT_HOME></i> should be replaced with the actual path of the 
+directory you unzipped CrashRpt distribution to.
+
+Before you start using CrashRpt API functions in your program, do not forget to include 
+\ref CrashRpt.h header file in the beginning of your code: 
+
+\code
+// Include CrashRpt header
+#include "CrashRpt.h"
+\endcode
+
+You also need to add CrashRpt LIB file to the list of input libraries for your project.
+In the Solution Explorer window, right-click your project and choose Properties item from the
+context menu. Then open <i>Configuration Properties->Linker->Input->Additional Dependencies</i> 
+and then add \b CrashRptXXXX.lib to the list of libraries (here XXXX should be replaced with CrashRpt
+version number). 
+
+\section crtdll Using CRT as Multi-Threaded DLL (/MD) in Release Configuration
+
+It is important that you configure your project to use C runtime libraries (CRT)
+as Multi-threaded DLL (/MD) for Release configuration. This is the way recommended in MSDN.
+See the \ref crt_version_and_dll section for more information.
+
+In the Solution Explorer window, right-click your project and open project Properties. 
+Then choose <i>Configuration Properties->C/C++->Code Generation</i>. In the <b>Runtime Library</b> field,
+choose <b>Multi-threaded DLL (/MD)</b>. See the figure below for example.
+
+This should be done for all projects in your solution to share single CRT DLL.
+
+\note In Debug configuration it is not important what CRT linkage you use. Typically  
+your default debugger intercepts exceptions instead of CrashRpt in Debug configuration.
+
+\image html crtdll.png "Multi-threaded DLL (/MD)"    
+
+\section crtver Using the Same Version of CRT for All Application Modules
+
+Ensure that all modules that exist in your application use the same version of CRT. 
+If some dependent modules were compiled using an older version of CRT, you should recompile them 
+to ensure the single version or CRT DLL is used. 
+
+For example, assume you use Visual Studio 2008 and CRT 9.0 linked as DLL, but some dependent module in your 
+application was compiled in Visual Studio 2005 and uses CRT 8.0 linked as DLL. 
+In such situation a CRT error in the dependent module won't be intercepted by CrashRpt, because error handlers 
+are installed for CRT 9.0 only. 
+
+\section prgdb Enabling Program Database (/Zi, /DEBUG) in Release Configuration
+
+To be able to recover the stack traces from the crash minidump, the debugger needs 
+your application's debugging symbols (PDB files). 
+
+To enable the generation of PDB files:
+-# In the Solution Explorer window, right-click your project and open project Properties. 
+Then choose Configuration Properties->C/C++->General. In the <b>Debug Information Format</b> field,
+choose <b>Program Database (/Zi)</b>.
+-# Choose Configuration Properties->Linker->Debugging. In the <b>Generate Debug Info</b> field,
+choose <b>Yes (/DEBUG)</b>. 
+
+Steps 1 and 2 should be performed for all projects in your solution that support program database 
+(EXE, DLL).
+
+The steps 1 and 2 are presented on the figures below.
+
+\image html program_database.png "Program Database (/Zi)"
+
+\image html linker_debug_settings.png "Enabling Debugging Information in Linker (/DEBUG)"
+
+\section disable_fpo Disabling Frame Pointer Omission Optimizations
+
+We recommend turning off Frame Pointer Omission (FPO) optimization in release version 
+configurations, as this optimization does not really give an appreciable gain, but greatly 
+complicates the analysis of the dump: the /Oy compiler option makes using the debugger more 
+difficult because the compiler suppresses frame pointer information. Moreover, in Visual 
+Studio 2010 this optimization is disabled by default.
+
+To disable the FPO optimization:
+
+-# In the Solution Explorer window, right-click your project and open project Properties. 
+-# Choose Configuration Properties->C/C++->Optimization. 
+-# In the <b>Omit Frame Pointers</b> field, choose <b>No (/Oy-)</b>.
+
+\image html disable_fpo.png "Disabling Frame Pointer Omission Optimzation (/Oy-)"
+
+\note If you can't afford yourself to turn the FPO optimization off, you can manage an 
+error log file which is not affected by optimizations.
+
+<i>Further reading:</i> \ref using_crashrpt_api.
+
+*/

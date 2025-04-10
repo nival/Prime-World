@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: /cvsroot/wsdlpull/wsdlpull/tests/schema/import.xsd,v 1.1 2008/06/15 17:35:23 vivek200120 Exp $ -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdlpull/import" xmlns:imp1="http://wsdlpull/import1" tns="http://wsdlpull/import">
+
+<xs:import namespace="http://wsdlpull/import1" schemaLocation="import1.xsd"/>
+	<xs:complexType name="Book">
+			<xs:sequence>
+
+				<xs:element name="isbn" type="xs:string"/>
+				<xs:element name="title" type= "xs:string"/>
+				<xs:element name="author" type="imp1:AuthorType"/>
+                                <xs:element ref="imp1:PublisherDetails"/>
+			</xs:sequence>
+			<xs:attribute ref="imp1:booktype"/>
+	</xs:complexType>
+<xs:element name="samplebook" type="tns:Book"/>
+</xs:schema>

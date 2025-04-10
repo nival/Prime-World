@@ -1,0 +1,26 @@
+// -*- MPC -*-
+// $Id: ASX_CCM_App.mpc 81239 2008-04-04 22:28:48Z iliyan $
+
+project(*Lib) : acelib {
+  sharedname = CCM_App
+  Source_Files {
+    CCM_App.cpp
+  }
+}
+
+project(*Server) : aceexe {
+  exename = server
+  after += ASX_CCM_App_Lib
+  Source_Files {
+    SC_Server.cpp
+  }
+}
+
+project(*Client) : aceexe {
+  exename = client
+  after += ASX_CCM_App_Server
+  Source_Files {
+    SC_Client.cpp
+  }
+}
+

@@ -1,0 +1,61 @@
+
+   1. be sure that env. variable AIO_ROOT is set properly Path_to_XXX/Terabit
+
+   2. Assume YYY is directory where this install.txt resides.
+      cd YYY
+
+   3. generate IOTerabit and example makefiles with command :
+
+
+      for Linux 2.6
+      perl $ACE_ROOT/bin/mwc.pl -type gnuace -include $AIO_ROOT  -global $AIO_ROOT/linaio.mpb build.mwc
+
+      for Windows
+      perl $ACE_ROOT/bin/mwc.pl -type VC71 -include $AIO_ROOT build.mwc
+
+   4. build IOTerabit library and makefiles 
+
+      
+      for Linux 2.6
+      gmake
+
+      for Windows 
+      run MS Visual Studio to build solution
+
+   5. export LD_LIBRARY_PATH=$AIO_ROOT/lib:$ACE_ROOT/lib:$LD_LIBRARY_PATH
+
+   6. run examples:
+      cd $AIO_ROOT/lib;
+      ./ex1
+      ./ex2
+
+
+Examples description
+----------------------------------------------------------------
+ex0 - basic test for throughtput.
+      Senders only sends data, Receiver only reads data
+
+ex1 - pseudo-telnet client aka Sender and echo-server aka Receiver
+
+ex2 - same as ex1, but Acceptor for Receivers works in separate
+      IOThreadPool (thread pool sise is one thread which is enough)
+      this technique is recommended for production applications.
+
+ex3 - same as ex2, but it demonstates reference counted protocols
+
+ex4 - same as ex2, but server-side "message processing" is performed
+      in background WorkerThread
+
+ex5 - same as ex2, but echo Reciver parses input stream to find
+      compeleted lines (line separator  \r\n)
+
+ex6 - example of chat root (publiher-subsriber)
+      The oririnal message is copied for each subsriber
+
+ex7 - another example of chat room.
+      Chat server implements reference counted message blocks and
+      special factory, so the original message is deleted when it
+      has been sent to all subsriber.
+
+ex8 - as ex2, but uses SSL connections (SslChannel instead of TcpChannel)
+ 

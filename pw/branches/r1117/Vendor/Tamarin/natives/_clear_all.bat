@@ -1,0 +1,2 @@
+set dir_list=accessibility display errors events filters geom media net system text ui utils xml .\
+for %%i in (%dir_list%) do del %%i\*.abc del %%i\*.h del %%i\*.cpp del %%i\*.h2 del %%i\*.cpp2 del %%i\*.log

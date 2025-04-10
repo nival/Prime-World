@@ -1,0 +1,599 @@
+/* -*- Mode: IDL; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is Places.
+ *
+ * The Initial Developer of the Original Code is
+ * Google Inc.
+ * Portions created by the Initial Developer are Copyright (C) 2005
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Brian Ryner <bryner@brianryner.com> (original author)
+ *   Joe Hughes <joe@retrovirus.com>
+ *   Dietrich Ayala <dietrich@mozilla.com>
+ *   Asaf Romano <mano@mozilla.com>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+#include "nsISupports.idl"
+
+%{C++
+#include "nsTArray.h"
+#include "prtypes.h"
+%}
+
+interface nsIFile;
+interface nsIURI;
+interface nsITransaction;
+interface nsINavHistoryBatchCallback;
+
+[ptr] native PRInt64Array(nsTArray<PRInt64>);
+
+/**
+ * Observer for bookmark changes.
+ */
+
+[scriptable, uuid(f9828ba8-9c70-4d95-b926-60d9e4378d7d)]
+interface nsINavBookmarkObserver : nsISupports
+{
+  /**
+   * Notify this observer that a batch transaction has started.
+   * Other notifications will be sent during the batch change,
+   * but the observer is guaranteed that onEndUpdateBatch() will be called
+   * at the completion of changes.
+   */
+  void onBeginUpdateBatch();
+
+  /**
+   * Notify this observer that a batch transaction has ended.
+   */
+  void onEndUpdateBatch();
+
+  /**
+   * Notify this observer that an item was added.  Called after the actual
+   * add took place. The items following the index will be shifted down, but
+   * no additional notifications will be sent.
+   *
+   * @param aItemId
+   *        The id of the bookmark that was added.
+   * @param aFolder
+   *        The folder that the item was added to.
+   * @param aIndex
+   *        The item's index in the folder.
+   */
+  void onItemAdded(in long long aItemId, in long long aFolder,
+                   in long aIndex);
+
+  /**
+   * Notify this observer that an item was removed.  Called after the actual
+   * remove took place. The items following the index will be shifted up, but
+   * no additional notifications will be sent.
+   *
+   * @param aItemId
+   *        The id of the bookmark that was removed.
+   * @param aFolder
+   *        The folder that the item was removed from.
+   * @param aIndex
+   *        The bookmark's index in the folder.
+   */
+  void onItemRemoved(in long long aItemId, in long long aFolder,
+                     in long aIndex);
+
+  /**
+   * Notify this observer that an item's information has changed.  This
+   * will be called whenever any attributes like "title" are changed.
+   * 
+   * @param aItemId
+   *        The id of the item that was changed.
+   * @param aProperty
+   *        The property which changed.
+   * @param aIsAnnotationProperty
+   *        Is aProperty the name of an item annotation
+   *
+   * property = "cleartime": (history was deleted, there is no last visit date):
+   *                         value = empty string.
+   * property = "title": value = new title.
+   * property = "favicon": value = new "moz-anno" URL of favicon image
+   * property = "uri": value = new uri spec.
+   * property = "tags: (tags set for the bookmarked uri have changed)
+   *             value = empty string.
+   * property = "dateAdded": value = PRTime when the item was first added
+   * property = "lastModified": value = PRTime when the item was last modified
+   * aIsAnnotationProperty = true: value = empty string.
+   */
+  void onItemChanged(in long long aBookmarkId, in ACString aProperty,
+                     in boolean aIsAnnotationProperty,
+                     in AUTF8String aValue);
+
+  /**
+   * Notify that the item was visited. Normally in bookmarks we use the last
+   * visit date, and normally the time will be a new visit that will be more
+   * recent, but this is not guaranteed. You should check to see if it's
+   * actually more recent before using this new time.
+   *
+   * @param aBookmarkId
+   *        The id of the bookmark that was visited.
+   * @see onItemChanged property = "cleartime" for when all visit dates are
+   * deleted for the URI.
+   */
+  void onItemVisited(in long long aBookmarkId, in long long aVisitID,
+                     in PRTime time);
+
+  /**
+   * Notify this observer that an item has been moved.
+   *  @param aItemId
+   *         The id of the item that was moved.
+   *  @param aOldParent
+   *         The id of the old parent.
+   *  @param aOldIndex
+   *         The old index inside aOldParent.
+   *  @param aNewParent
+   *         The id of the new parent.
+   *  @param aNewIndex
+   *         The foindex inside aNewParent.
+   */
+  void onItemMoved(in long long aItemId,
+                   in long long aOldParent, in long aOldIndex,
+                   in long long aNewParent, in long aNewIndex);
+};
+
+/**
+ * Additional notifications for bookmark observers.  Your observer will not be
+ * notified for this unless it can QI to this interface.
+ *
+ * This interface was added after the binary compatibility freeze, so it lives
+ * in a separate interface for 1.9.1.  In future releases, the methods found in
+ * this interface will be in nsINavBookmarkObserver.
+ */
+[scriptable, uuid(76440c39-1085-4f2b-9535-5ba4658fcdad)]
+interface nsINavBookmarkObserver_MOZILLA_1_9_1_ADDITIONS : nsISupports
+{
+  /**
+   * Notify this observer that an item is about to be removed.  Called before
+   * the actual removal will take place.
+   *
+   * @param aItemId
+   *        The id of the bookmark to be removed.
+   */
+  void onBeforeItemRemoved(in long long aItemId);
+};
+
+
+/**
+ * The BookmarksService interface provides methods for managing bookmarked
+ * history items.  Bookmarks consist of a set of user-customizable
+ * folders.  A URI in history can be contained in one or more such folders.
+ */
+
+[scriptable, uuid(3b6ff5c5-0ab4-4aab-b1be-d569763a6ce0)]
+interface nsINavBookmarksService : nsISupports
+{
+  /**
+   * The item ID of the Places root.
+   */
+  readonly attribute long long placesRoot;
+
+  /**
+   * The item ID of the bookmarks menu folder.
+   */
+  readonly attribute long long bookmarksMenuFolder;
+
+  /**
+   * The item ID of the top-level folder that contain the tag "folders".
+   */
+  readonly attribute long long tagsFolder;
+
+ /**
+  * The item ID of the unfiled-bookmarks folder.
+  */
+  readonly attribute long long unfiledBookmarksFolder;
+
+  /**
+   * The item ID of the personal toolbar folder.
+   */
+  readonly attribute long long toolbarFolder;
+
+  /**
+   * This value should be used for APIs that allow passing in an index
+   * where an index is not known, or not required to be specified.
+   * e.g.: When appending an item to a folder.
+   */
+  const short DEFAULT_INDEX = -1;
+
+  const unsigned short TYPE_BOOKMARK = 1;
+  const unsigned short TYPE_FOLDER = 2;
+  const unsigned short TYPE_SEPARATOR = 3;
+  const unsigned short TYPE_DYNAMIC_CONTAINER = 4;
+
+  /**
+   * Inserts a child bookmark into the given folder.
+   *
+   *  @param aParentFolder
+   *         The id of the parent folder
+   *  @param aURI
+   *         The URI to insert
+   *  @param aIndex
+   *         The index to insert at, or DEFAULT_INDEX to append
+   *  @param aTitle
+   *         The title for the new bookmark
+   *  @returns The ID of the newly-created bookmark
+   */
+  long long insertBookmark(in long long aParentFolder, in nsIURI aURI,
+                           in long aIndex, in AUTF8String aTitle);
+
+  /**
+   * Removes a child item. Used to delete a bookmark or separator.
+   *  @param aItemId
+   *         The child item to remove
+   */
+  void removeItem(in long long aItemId);
+
+  /**
+   * Creates a new child folder and inserts it under the given parent.
+   *  @param aParentFolder
+   *         The id of the parent folder
+   *  @param aName
+   *         The name of the new folder
+   *  @param aIndex
+   *         The index to insert at, or DEFAULT_INDEX to append
+   *  @returns the ID of the newly-inserted folder
+   */
+  long long createFolder(in long long aParentFolder, in AUTF8String name,
+                         in long index);
+
+  /**
+   * Creates a dynamic container under the given parent folder.
+   *
+   *  @param aParentFolder
+   *         The id of the parent folder
+   *  @param aName
+   *         The name of the new folder
+   *  @param aContractId
+   *         The contract id of the service which is to manipulate this
+   *         container.
+   *  @param aIndex
+   *         The index to insert at, or DEFAULT_INDEX to append
+   *         
+   *  @returns the ID of the newly-inserted folder
+   */
+  long long createDynamicContainer(in long long aParentFolder, in AUTF8String aName,
+                                   in AString aContractId, in long aIndex);
+
+  /**
+   * Removes a folder from the bookmarks tree.
+   *
+   * NOTE: This API is deprecated. The correct method to use is removeItem.
+   *       This will be removed in the next release after Firefox 3.0. The
+   *       removal is in bug 428558.
+   *
+   *  @param aFolder
+   *         The id of the folder to remove.
+   */
+  void removeFolder(in long long aFolder);
+
+  /**
+   * Gets an undo-able transaction for removing a folder from the bookmarks
+   * tree. 
+   *  @param folder
+   *         The id of the folder to remove.
+   *  @returns An object implementing nsITransaction that can be used to undo 
+   *           or redo the action. 
+   *
+   * This method exists because complex delete->undo operations rely on 
+   * recreated folders to have the same ID they had before they were deleted, 
+   * so that any other items deleted in different transactions can be 
+   * re-inserted correctly. This provides a safe encapsulation of this 
+   * functionality without exposing the ability to recreate folders with 
+   * specific IDs (potentially dangerous if abused by other code!) in the
+   * public API.
+   */
+  nsITransaction getRemoveFolderTransaction(in long long aFolder);
+
+  /**
+   * Convenience function for container services.  Removes
+   * all children of the given folder.
+   *  @param aFolder
+   *         The id of the folder to remove children from.
+   */
+  void removeFolderChildren(in long long aFolder);
+
+  /**
+   * Moves an item to a different container, preserving its contents.
+   *  @param aItemId
+   *         The id of the item to move
+   *  @param aNewParent
+   *         The id of the new parent
+   *  @param aIndex
+   *         The index under aNewParent, or DEFAULT_INDEX to append
+   *
+   * NOTE: When moving down in the same container we take into account the
+   * removal of the original item. If you want to move from index X to
+   * index Y > X you must use moveItem(id, folder, Y + 1)
+   */
+  void moveItem(in long long aItemId, in long long aNewParent, in long aIndex);
+
+  /**
+   * Returns the ID of a child folder with the given name. This does not
+   * recurse, you have to give it an immediate sibling of the given folder.
+   * If the given subfolder doesn't exist, it will return 0.
+   *  @param aFolder
+   *         Parent folder whose children we will search
+   *  @param aSubFolder
+   *         Name of the folder to search for in folder
+   */
+  long long getChildFolder(in long long aFolder, in AString aSubFolder);
+
+  /**
+   * Inserts a bookmark separator into the given folder at the given index.
+   * The separator can be removed using removeChildAt().
+   *  @param aFolder
+   *         Parent folder of the separator
+   *  @param aIndex
+   *         The separator's index under folder, or DEFAULT_INDEX to append
+   *  @returns the id of the new separator
+   */
+  long long insertSeparator(in long long aFolder, in long aIndex);
+
+  /**
+   * Removes any type of child (item, folder, or separator) at the given index.
+   *  @param aFolder
+   *         The folder to remove a child from
+   *  @param aIndex
+   *         The index of the child to remove
+   */
+  void removeChildAt(in long long aFolder, in long aIndex);
+
+  /**
+   * Get the itemId given the containing folder and the index.
+   *  @param aFolder
+   *         The direct parent folder of the item
+   *  @param aIndex
+   *         The index of the item within aFolder, DEFAULT_INDEX for the last item
+   *  @returns the id of the found item, -1 if the item does not exists
+   */
+  long long getIdForItemAt(in long long aFolder, in long aIndex);
+
+  /**
+   * Get a globally unique identifier for an item, meant to be used in
+   * sync scenarios.  Even if their contents are exactly the same
+   * (including an item in a different profile with the same ItemId),
+   * the GUID would be different.
+   *  @param   aItemId
+   *           The ID of the item to get the GUID for
+   *  @returns The GUID string
+   */
+  AString getItemGUID(in long long aItemId);
+
+  /**
+   * Set a globally unique identifier.  This can be useful when a sync
+   * algorithm deems two independently created items (on different
+   * profiles) to be the same item.
+   *  @param   aItemId
+   *           The id of the item to set the GUID of
+   *  @param   aGUID
+   *           The GUID string
+   */
+  void setItemGUID(in long long aItemId, in AString aGUID);
+
+  /**
+   * Get the ID of the item with the given GUID.
+   * @param   aGUID
+   *          The GUID string of the item to search for
+   * @returns The item ID, or -1 if not found
+   */
+  long long getItemIdForGUID(in AString aGUID);
+
+  /**
+   * Set the title for an item.
+   *  @param aItemId
+   *         The id of the item whose title should be updated 
+   *  @param aTitle
+   *         The new title for the bookmark.
+   */
+  void setItemTitle(in long long aItemId, in AUTF8String aTitle);
+
+  /**
+   * Get the title for an item.
+   *
+   * If no item title is available it will return a void string (null in JS).
+   *
+   *  @param aItemId
+   *         The id of the item whose title should be retrieved
+   *  @returns The title of the item.
+   */
+  AUTF8String getItemTitle(in long long aItemId);
+
+  /**
+   * Set the date added time for an item.
+   */
+  void setItemDateAdded(in long long aItemId, in PRTime aDateAdded);
+  /**
+   * Get the date added time for an item.
+   */
+  PRTime getItemDateAdded(in long long aItemId);
+
+  /**
+   * Set the last modified time for an item.
+   */
+  void setItemLastModified(in long long aItemId, in PRTime aLastModified);
+  /**
+   * Get the last modified time for an item.
+   */
+  PRTime getItemLastModified(in long long aItemId);
+
+  /**
+   * Get the URI for a bookmark item.
+   */
+  nsIURI getBookmarkURI(in long long aItemId);
+
+  /**
+   * Get the index for an item.
+   */
+  long getItemIndex(in long long aItemId);
+
+  /**
+   * Changes the index for a item. This method does not change the indices of
+   * any other items in the same folder, so ensure that the new index does not
+   * already exist, or change the index of other items accordingly, otherwise
+   * the indices will become corrupted.
+   *
+   * WARNING: This is API is intended for scenarios such as folder sorting,
+   *          where the caller manages the indices of *all* items in the folder.
+   *
+   *  @param aItemId    The id of the item to modify
+   *  @param aNewIndex  The new index
+   */
+  void setItemIndex(in long long aItemId, in long aNewIndex);
+
+  /**
+   * Get an item's type (bookmark, separator, folder).
+   * The type is one of the TYPE_* constants defined above.
+   */
+  unsigned short getItemType(in long long aItemId);
+
+  /**
+   * Checks whether a folder is marked as read-only.
+   * If this is set to true, UI will not allow the user to add, remove,
+   * or reorder children in this folder. The default for all folders is false.
+   * Note: This does not restrict API calls, only UI actions.
+   *
+   * @param aFolder
+   *        the item-id of the folder.
+   */
+  boolean getFolderReadonly(in long long aFolder);
+
+  /**
+   * Sets or unsets the readonly flag from a folder.
+   * If this is set to true, UI will not allow the user to add, remove,
+   * or reorder children in this folder. The default for all folders is false.
+   * Note: This does not restrict API calls, only UI actions.
+   *
+   * @param aFolder
+   *        the item-id of the folder.
+   * @param aReadOnly
+   *        the read-only state (boolean).
+   */
+  void setFolderReadonly(in long long aFolder, in boolean aReadOnly);
+
+  /**
+   * Returns true if the given URI is in any bookmark folder. If you want the
+   * results to be redirect-aware, use getBookmarkedURIFor()
+   */
+  boolean isBookmarked(in nsIURI aURI);
+
+  /**
+   * Used to see if the given URI is bookmarked, or any page that redirected to
+   * it is bookmarked. For example, if I bookmark "mozilla.org" by manually
+   * typing it in, and follow the bookmark, I will get redirected to
+   * "www.mozilla.org". Logically, this new page is also bookmarked. This
+   * function, if given "www.mozilla.org", will return the URI of the bookmark,
+   * in this case "mozilla.org".
+   *
+   * If there is no bookmarked page found, it will return NULL.
+   */
+  nsIURI getBookmarkedURIFor(in nsIURI aURI);
+
+  /**
+   * Change the bookmarked URI for a bookmark.
+   * This changes which "place" the bookmark points at,
+   * which means all annotations, etc are carried along.
+   */
+  void changeBookmarkURI(in long long aItemId, in nsIURI aNewURI);
+
+  /**
+   * Get the parent folder's id for an item.
+   */
+  long long getFolderIdForItem(in long long aItemId);
+
+  /**
+   * Returns the list of bookmark ids that contain the given URI.
+   */
+  void getBookmarkIdsForURI(in nsIURI aURI, out unsigned long count,
+                            [array, retval, size_is(count)] out long long bookmarks);
+
+  /**
+   * TArray version of getBookmarksIdForURI for ease of use in C++ code.
+   * Pass in a reference to a TArray; it will get cleared and filled with
+   * the resulting list of folder IDs.
+   */
+  [noscript] void getBookmarkIdsForURITArray(in nsIURI aURI,
+                                           in PRInt64Array aResult);
+
+  /**
+   * Associates the given keyword with the given bookmark.
+   *
+   * Use an empty keyword to clear the keyword associated with the URI.
+   * In both of these cases, succeeds but does nothing if the URL/keyword is not found.
+   */
+  void setKeywordForBookmark(in long long aItemId, in AString aKeyword);
+
+  /**
+   * Retrieves the keyword for the given URI. Will be void string
+   * (null in JS) if no such keyword is found.
+   */
+  AString getKeywordForURI(in nsIURI aURI);
+
+  /**
+   * Retrieves the keyword for the given bookmark. Will be void string
+   * (null in JS) if no such keyword is found.
+   */
+  AString getKeywordForBookmark(in long long aItemId);
+
+  /**
+   * Returns the URI associated with the given keyword. Empty if no such
+   * keyword is found.
+   */
+  nsIURI getURIForKeyword(in AString keyword);
+
+  /**
+   * Adds a bookmark observer. If ownsWeak is false, the bookmark service will
+   * keep an owning reference to the observer.  If ownsWeak is true, then
+   * aObserver must implement nsISupportsWeakReference, and the bookmark
+   * service will keep a weak reference to the observer.
+   */
+  void addObserver(in nsINavBookmarkObserver observer, in boolean ownsWeak);
+
+  /**
+   * Removes a bookmark observer.
+   */
+  void removeObserver(in nsINavBookmarkObserver observer);
+
+  /**
+   * Runs the passed callback inside of a database transaction.
+   * Use this when a lot of things are about to change, for example
+   * adding or deleting a large number of bookmark items. Calls can
+   * be nested. Observers are notified when batches begin and end, via 
+   * nsINavBookmarkObserver.onBeginUpdateBatch/onEndUpdateBatch.
+   *
+   * @param aCallback
+   *        nsINavHistoryBatchCallback interface to call.
+   * @param aUserData
+   *        Opaque parameter passed to nsINavBookmarksBatchCallback
+   */
+  void runInBatchMode(in nsINavHistoryBatchCallback aCallback,
+                      in nsISupports aUserData);
+};

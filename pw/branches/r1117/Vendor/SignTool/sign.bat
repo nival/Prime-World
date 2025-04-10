@@ -1,0 +1,1 @@
+%~dp0signtool.exe sign /a /d "Prime World" /du "www.nival.com" /t http://timestamp.verisign.com/scripts/timstamp.dll %1
