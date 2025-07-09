@@ -75,4 +75,7 @@ It's necessary to have folders `Localization`, `Profiles`, and `Data` next to th
 5. Other optimization settings can also be changed in the `performance section`.
 
 ## Acknowledgements
+To the **Prime World: Classic** community for their contribution to open-source development, documentation, and bug fixing.
+GitHub: Prime-World-Classic/Prime-World
+
 To the **Prime World: Nova** community for their contribution to documentation and error fixing.
