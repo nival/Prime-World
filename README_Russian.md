@@ -75,4 +75,7 @@
 5. В секции `performance section` можно поменять и другие настройки оптимизации.
 
 ## Благодарности
+Сообществу **Prime World: Classic** — за вклад в развитие open-source, работу над документацией и исправление ошибок.
+ [GitHub](https://github.com/Prime-World-Classic/Prime-World)
+
 Сообществу **Prime World: Nova** за вклад в документацию и исправление ошибок.
