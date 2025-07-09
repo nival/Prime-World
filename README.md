@@ -76,6 +76,6 @@ It's necessary to have folders `Localization`, `Profiles`, and `Data` next to th
 
 ## Acknowledgements
 To the **Prime World: Classic** community for their contribution to open-source development, documentation, and bug fixing.
-GitHub: Prime-World-Classic/Prime-World
+ [GitHub](https://github.com/Prime-World-Classic/Prime-World)
 
 To the **Prime World: Nova** community for their contribution to documentation and error fixing.
