@@ -24,6 +24,11 @@ dbghelp.dll (Microsoft)
     Удалён: компонент Debugging Tools for Windows.
     Подробности: pw/branches/r1117/Vendor/DTW/README.txt
 
+DxTex.exe (Microsoft)
+    Просмотр и конвертация текстур DDS — утилита из состава DirectX SDK.
+    Удалена: распространяется Microsoft по лицензии SDK.
+    Подробности: pw/branches/r1117/Vendor/DirectX/README.txt
+
 Что осталось в папке
     Распространяемые компоненты, которые Microsoft и NVIDIA разрешают
     поставлять вместе с приложением: Microsoft.VC90.CRT (msvcr90, msvcp90,
