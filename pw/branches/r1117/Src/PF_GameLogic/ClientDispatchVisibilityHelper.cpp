@@ -16,7 +16,7 @@ namespace NGameX
 
     // TODO: ?
     if (!visible || !sceneObject->getVoxelGrid())
-      sceneObject->EnableRender(_visible)
+      sceneObject->EnableRender(_visible);
   }
 
   void ClientDispatchVisibilityHelper::InitVisibility(NScene::SceneObject* const sceneObject)
